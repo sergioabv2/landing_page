@@ -1,0 +1,1086 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+
+</head>
+  
+
+<style>
+  body {
+	position: relative;
+}
+
+input {
+	background-color: #202830!important;
+	color: white!important;
+}
+
+#playstore-logo {
+	width: 200px!important;
+	margin: 6%!important;
+}
+
+#download-information {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	min-height: 40vh!important;
+	height: 100%;
+	padding: 6%!important;
+}
+
+#download-section {
+	background-color: #202830;
+	margin-top: 3%;
+}
+
+.card {
+	background-color: #202830!important;
+}
+
+
+
+.cardp {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  width: 50%;
+  transition: all ease-in-out 400ms;
+  cursor: pointer;
+}
+
+.cardp:hover {
+  transform: scale(1.05);
+}
+
+.cardp:active {
+  transform: translateY(-1px);
+}
+
+.card__side {
+  transition: all 0.8s ease;
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 150px;
+  width: 100%;
+  backface-visibility: hidden;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+
+.card__side--front {
+  background-color: #2196f3;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card__side--back {
+  background-color: #303f9f;
+  transform: rotateY(180deg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.showGreen {
+  transform: rotateY(-180deg);
+}
+
+.showRed {
+  transform: rotateY(0);
+}
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  font-size: 24;
+  font-weight: 700;
+}
+
+
+
+#front-1 {
+  background-image: 
+    url("https://i.ibb.co/yB25bcL/wepik-business-timeline-infographic-20230719233438f-ROY.jpg");
+}
+
+#back-1 {
+  background-image: 
+    url("https://i.ibb.co/yB25bcL/wepik-business-timeline-infographic-20230719233438f-ROY.jpg");
+
+}
+
+
+
+
+footer {
+	background: black;
+	padding: 15px;
+	position: static!important;
+}
+
+hr {
+	border-top: 1px solid #888!important;
+	border-bottom: 1px solid rgba(0,0,0,0.2)!important;
+}
+
+#app-summary{
+	text-align: center!important;
+	margin-top: 3%!important;
+	margin-bottom: 3%!important;
+}
+
+.jumbotron {
+	background: URL(https://i.ibb.co/8xTTnvv/Copia-de-Whats-App-Image-2023-02-07-at-14-15-04.jpg);
+	background-size: cover;
+	background-position: top;
+	border-radius: 0px!important;
+	text-align: center!;
+	margin-top: 55px;
+}
+
+
+
+
+.strong-shadow {
+	text-shadow: 1px 2px 3px black, 0px 8px 13px black, 0px 18px 23px black!important;  
+}
+
+
+
+
+
+
+.row--center{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.row--margin{
+  margin-top:45px;
+}
+
+.row__title{
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+  margin-top: 0px;
+}
+
+.row__sub{
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0px; 
+  color: #8198ae;
+}
+
+.price-box{
+  padding: 0px 25px;  
+}
+
+.price-box__wrap{
+  background-color: #202830!important;;
+  border-radius:6px;
+  box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2); /*0px 22px 20px -10px rgba(0, 0, 0,0.2)*/
+  padding: 35px 35px 40px 35px;
+  text-align:center;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+
+.price-box__img{
+  display: inline-block;
+}
+
+.price-box__img{
+  width:130px;
+  height:130px;
+  border-radius: 15%;
+  margin-bottom: 2.5vw;
+  background-position: center;
+    background-size:cover;
+  background-repeat:no-repeat;
+}
+
+
+
+.price-box--purple .price-box__img{
+  background-image: url("https://i.ibb.co/wNZgTDD/8747f66e29b301b7e1339cf8497a0ed89692ed55.jpg");
+
+}
+
+
+.price-box--violet .price-box__img{
+  background-image: url("https://i.ibb.co/W3bVHyp/Skype-piano-lessons-copy-2-750x750-2.jpg");
+
+}
+
+.price-box--blue .price-box__img{
+  background-image: url("https://i.ibb.co/c8xTZFM/Whats-App-Image-2022-05-27-at-8-42-00-AM.jpg");
+
+}
+
+.price-box__title{
+  font-size:22px;
+  letter-spacing:1px;
+  margin-bottom:4px;
+}
+
+.price-box__people{
+  font-size:12px;
+  color:#8198ae;
+  font-weight: 300;
+  letter-spacing:1px;
+}
+.price-box__discount{
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.price-box__dollar {
+    font-size: 18px;
+    font-weight: 400;
+    vertical-align: top;
+    margin-right: 4px;
+}
+
+.price-box--purple .price-box__dollar{
+  color: #8a3aff;
+}
+
+.price-box--violet .price-box__dollar{
+  color: #6f79ff;
+}
+
+.price-box--blue .price-box__dollar{
+  color: #3a9fff;
+}
+
+.price-box__discount--light{
+  font-weight: 400;
+  font-size: 20px;
+  margin-left: 3px;
+}
+
+.price-box__price {
+    margin-top: 3px;
+    font-size: 14px;
+    color: #8198ae;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    font-weight: 300;
+    text-decoration: line-through;
+}
+
+.price-box__feat {
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+.price-box__list {
+    text-align: left;
+    padding-left: 30px;
+    margin: 0;
+    list-style: none;
+}
+
+.price-box__list-el{
+  position: relative;
+  margin-bottom: 8px;
+  font-weight: 300;
+}
+
+.price-box__list-el:before{
+  content: "✓";
+  position: absolute;
+  left: -25px;
+  font-size: 18px;
+  top: -4px;
+}
+
+.price-box--purple .price-box__list-el:before{
+  color: #8a3aff;
+}
+
+.price-box--violet .price-box__list-el:before{
+  color: #6f79ff;
+}
+
+.price-box--blue .price-box__list-el:before{
+  color: #3a9fff;
+}
+
+.price-box__wrap:hover {
+  backface-visibility: hidden;
+  transform: scale(1.05, 1.05);
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+}
+
+.btn{
+  background-color:#3a9fff;
+  border-radius: 20px;
+  padding: 10px 25px;
+  color: #fff;
+  box-shadow: 0px 18px 13px -6px rgba(0, 0, 0,0.2);
+  transition: all 0.4s;
+-webkit-transition: all 0.4s;
+-moz-transition: all 0.4s;
+-ms-transition: all 0.4s;
+-o-transition: all 0.4s;
+}
+
+
+
+.btn:hover{
+box-shadow: 0px 25px 18px -6px rgba(0, 0, 0,0.2);
+background-color: #63b2fc;
+color: #fff;
+}
+
+.price-box__wrap:hover .btn {
+  box-shadow: 0px 25px 18px -6px rgba(0, 0, 0,0.2);
+}
+
+.btn--revert{
+    background-color:transparent;
+    color: #8198ae;
+    box-shadow: none;
+    border:1px solid #c9d9e9;
+}
+
+.btn--revert:hover{
+    background-color:transparent;
+    color: #1f4568;
+    box-shadow: none;
+    border:1px solid #8198ae;
+}
+
+
+.btn--purple {
+    background-color: #8a3aff;
+}
+
+.btn--purple:hover{
+    background-color: #b284f6;
+}
+
+.btn--violet {
+    background-color: #6f79ff;
+}
+.btn--violet:hover {
+    background-color: #878ef3;
+}
+
+.btn--blue {
+    background-color: #3a9fff;
+}
+.btn--blue:hover {
+    background-color: #63b2fc;
+}
+.btn--width{
+  width: 120px;
+}
+
+.btn--white{
+  background-color: #fff;
+  border: 1px solid #ededed;
+  color: #8198ae;
+}
+
+.btn--white:hover{
+  background-color: #fff;
+  color: #8198ae;
+}
+
+.price-box__btn {
+    position: absolute;
+    bottom: -17px;
+    left: 50%;
+    margin-left: -55px;
+}
+
+.row__sub--light{
+  color: #aec0d2;
+}
+.item__img{
+  width:25px;
+  margin-right:10px;
+}
+
+.sect{
+  padding: 90px 0;
+  position: relative;
+  padding-bottom:115px;
+}
+
+
+.contact-info{
+  background-image: url("https://i.ibb.co/yQT891P/Copia-de-Whats-App-Image-2023-01-05-at-14-43-22-2.jpg");
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
+
+
+
+.footer__title{
+  font-size: 18px;
+
+display: inline-block;
+line-height: 18px;
+vertical-align: middle;
+  color:#3a9fff;
+}
+
+.footer__light{
+   color:#fff;
+}
+
+
+.isoc {
+  vertical-align: 0.6em;
+}
+
+.rounded-social-buttons .social-button {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 2.125rem;
+  height: 2.125rem;
+  border: 0.125rem solid transparent;
+  padding: 0;
+  text-decoration: none;
+  text-align: center;
+  color: #fefefe;
+  font-size: 1.5625rem;
+  font-weight: normal;
+  line-height: 2em;
+  border-radius: 1.6875rem;
+  transition: all 0.5s ease;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.rounded-social-buttons .social-button:hover, .rounded-social-buttons .social-button:focus {
+  -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+.rounded-social-buttons .fa-twitter, .fa-facebook-f, .fa-linkedin, .fa-youtube, .fa-instagram {
+  font-size: 19px;
+}
+
+.rounded-social-buttons .social-button.facebook {
+  background: #3b5998;
+}
+
+.rounded-social-buttons .social-button.facebook:hover, .rounded-social-buttons .social-button.facebook:focus {
+  color: #3b5998;
+  background: #fefefe;
+  border-color: #3b5998;
+}
+
+.rounded-social-buttons .social-button.twitter {
+  background: #55acee;
+}
+
+.rounded-social-buttons .social-button.twitter:hover, .rounded-social-buttons .social-button.twitter:focus {
+  color: #55acee;
+  background: #fefefe;
+  border-color: #55acee;
+}
+
+.rounded-social-buttons .social-button.linkedin:hover, .rounded-social-buttons .social-button.linkedin:focus {
+  color: #007bb5;
+  background: #fefefe;
+  border-color: #007bb5;
+}
+
+.rounded-social-buttons .social-button.youtube {
+  background: #bb0000;
+}
+
+.rounded-social-buttons .social-button.youtube:hover, .rounded-social-buttons .social-button.youtube:focus {
+  color: #bb0000;
+  background: #fefefe;
+  border-color: #bb0000;
+}
+
+.rounded-social-buttons .social-button.instagram {
+  background: #C13584;
+}
+
+.rounded-social-buttons .social-button.instagram:hover, .rounded-social-buttons .social-button.instagram:focus {
+  color: #125688;
+  background: #fefefe;
+  border-color: #125688;
+}
+
+
+
+
+
+@media screen and (max-width:1024px){
+  .collapse{
+ display: none;
+}
+  .navbar-toggle {
+    margin: 0;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+  .header__container{
+    width: 100%;
+    padding: 0;
+  }
+  .header__menu {
+    width: 100%;
+}
+  .header{
+    background-color:#fff; 
+    padding: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+  }
+  .header__logo{
+    padding: 12px 20px 12px 20px;
+  }
+  .header__el {
+    display: block;
+    padding: 10px 20px;
+    border-top: 1px solid #ededed;
+}
+  
+  .header .btn--white, .header .btn--white:hover{
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    color:#fff;
+    background-color:transparent;
+  }
+  .header__el--blue{
+    background-color:#3a9fff;
+  }
+
+}
+
+
+@media screen and (max-width:991px){
+  .price-box {
+    padding: 0px 10px;
+  }
+  .item__content {
+    height: auto;
+}
+
+}
+
+@media screen and (max-width:767px) {
+  .price-box {
+    padding: 0px 35px;
+    margin-bottom: 50px;
+  }
+ .price-box__title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+  .price-box__img {
+    width: 90px;
+    height: 90px;
+  }
+  .price-box__wrap {
+    padding: 20px 20px 30px 20px;
+  }
+  .price-box__people {
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .price-box__discount {
+    font-size: 22px;
+  }
+  .price-box__price {
+    font-size: 12px;
+  }
+  .price-box__feat {
+      margin-top: 15px;
+      font-size: 14px;
+  }
+  .price-box__list-el {
+    font-size: 12px;
+    margin-bottom: 5px;
+} 
+    .btn {
+    font-size: 12px;
+    margin-left: 5px;
+}
+  .btn--width {
+    width: 100px;
+}
+  .footer {
+    padding: 25px 0;
+  }
+}
+
+
+@media screen and (max-width:575px) {
+   .price-box {
+    padding: 0px 35px;
+    margin-bottom: 50px;
+  }
+
+ .price-box__title {
+    font-size:25px;
+  letter-spacing:1px;
+  margin-bottom:4px;
+}
+  .price-box__img {
+    width:130px;
+  height:130px;
+  }
+  .price-box__wrap {
+    background-color: #202830!important;;
+  border-radius:6px;
+  box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2); /*0px 22px 20px -10px rgba(0, 0, 0,0.2)*/
+  padding: 35px 35px 40px 35px;
+  text-align:center;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  }
+  .price-box__people{
+  font-size:12px;
+}
+.price-box__discount{
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+  .price-box__feat {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.price-box__list-el{
+  position: relative;
+  margin-bottom: 8px;
+  font-weight: 300;
+  font-size: 15px;
+}
+  .btn--width{
+  width: 120px;
+  font-size: 14px;
+}
+  
+
+}
+
+
+
+@media screen and (max-width:340px){
+  .reduce{
+    font-size: 26px;
+  }
+  .price-box {
+    padding: 0px 20px;
+  }
+
+  .footer {
+    padding: 15px 0;
+  }
+  .footer__img {
+    width: 15px;
+  }
+  .footer__title {
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  .sect {
+    padding: 20px 0;
+  }
+  .sect--padding-top{
+    padding-top: 80px;
+  }
+  .row__sub {
+    font-size: 16px;
+   }
+  .row__title {
+    font-size: 20px;
+    margin-bottom: 5px;
+   }
+  .price-box__title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+  .price-box__img {
+    width: 100px;
+    height: 100px;
+  }
+  .price-box__wrap {
+    padding: 20px 20px 30px 20px;
+  }
+  .price-box__people {
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .price-box__discount {
+    font-size: 22px;
+  }
+  .price-box__price {
+    font-size: 12px;
+  }
+  .price-box__feat {
+      margin-top: 15px;
+      font-size: 14px;
+  }
+  .price-box__list-el {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+  .site__title {
+    font-size: 24px;
+}
+  .site__subtitle {
+    font-size: 18px;
+    margin: 10px 0 20px 0;
+  }
+  .site__img {
+    margin-top: 30px;
+  }
+  .row--margin {
+    margin-top: 30px;
+}
+  .btn {
+    font-size: 12px;
+    padding: 8px 8px;
+}
+  .btn--width {
+    width: 100px;
+}
+ 
+  .text-box {
+  width: 80%;
+  font-size: 18px;
+  font-weight: 500;
+}
+  .cardp { 
+  
+  width: 90%;
+  height: 10%;
+}
+ 
+
+}
+
+</style>
+  
+<body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-dark text-light">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Mozart Studio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#app-summary">Esquemas <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#payment">Pagos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#download-section">Informes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#download-section">Informes</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="email" placeholder="Usuario">
+        <input class="form-control mr-sm-2" type="password" placeholder="Contraseña">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Ingresar</button>
+      </form>
+    </div>
+  </nav>
+
+  <div id="jumbotron" class="jumbotron text-light">
+
+      <h1 class="strong-shadow" style="text-align: center; font-size: 13vw;">Mozart Studio</h1>
+      
+    <br><br>  
+   <hr class="my-4">
+      <br>
+   
+      <div class="cardp" onclick="toggleCard()">
+          <div class="card__side card__side--front" id="front-1">
+          </div>
+          <div class="card__side card__side--back" id="back-1">  
+              <h1 class="text-box">yeah!</h1>        
+          </div>
+      </div>  
+           
+  </div>
+
+  
+  
+  
+  <div id="app-summary" class="container">
+    <h1 class="reduce">Inovamos la educación musical</h1>
+    <p id="summary-paragraph">Razones por las que Mozart Studio es tu mejor opción</p>
+  </div>
+  <div class="container">
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727756/canary-wharf-shops-services-bremont-ss18-2-741x417-362x200.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><i class="far fa-clock"></i> Calidad de conservatorio</h5>
+          <p class="card-text">There are countless ways to waste your precious time... Wastrel-ness decreases a thousand-fold when using our app.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727746/ESTATE11-362x200.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><i class="far fa-building"></i> Instalaciones equipadas</h5>
+          <p class="card-text">Discover the great deals, compare hotel prices & save money on your next holiday or trip.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727751/Emma-Luke-limelight-films-362x200.png">
+        <div class="card-body">
+          <h5 class="card-title"><i class="far fa-gem"></i> Profesores capacitados</h5>
+          <p class="card-text">Do you have to plan a wedding, a party or any other event? The event Planner can help you keep everything under control.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727756/canary-wharf-shops-services-bremont-ss18-2-741x417-362x200.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><i class="far fa-clock"></i> Costos accesibles</h5>
+          <p class="card-text">There are countless ways to waste your precious time... Wastrel-ness decreases a thousand-fold when using our app.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727746/ESTATE11-362x200.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><i class="far fa-building"></i> Tecnología inovadora</h5>
+          <p class="card-text">Discover the great deals, compare hotel prices & save money on your next holiday or trip.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727751/Emma-Luke-limelight-films-362x200.png">
+        <div class="card-body">
+          <h5 class="card-title"><i class="far fa-gem"></i> Plan events</h5>
+          <p class="card-text">Do you have to plan a wedding, a party or any other event? The event Planner can help you keep everything under control.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sect sect--padding-bottom">
+    <div class="container" id="payment">
+
+      <div class="container text-center">
+        <h1>Modalidades de aprendizaje</h1>
+        <p>Tenemos a tu disposición distintos formatos de enseñanza</p>
+      </div>
+      
+  
+   
+
+      
+      
+      
+      
+      
+      
+
+      <div class="row row--center row--margin" >
+  <div class=" col-md-4 col-sm-4 price-box price-box--purple">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+            Presencial
+          </h1>
+          <p class="price-box__people">
+            1 - 100 people
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>49<span class="price-box__discount--light">/mo</span>
+          </h2>
+          <h3 class="price-box__price">
+            $65/mo
+          </h3>
+          <p class="price-box__feat">
+            Features
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">1 License</li>
+            <li class="price-box__list-el">24h helpcenter</li>
+            <li class="price-box__list-el">No tasks limit</li>
+            <li class="price-box__list-el">No contractors limit </li>
+          </ul>
+          <div class="price-box__btn">
+            <a class="btn btn--purple btn--width" style="color: white;">Start now</a>
+          </div>
+        </div>
+      </div>
+      <!-- second -->
+      <div class="col-md-4 col-sm-4 price-box price-box--violet">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+            En Linea
+          </h1>
+          <p class="price-box__people">
+            100 - 500 people
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>149<span class="price-box__discount--light">/mo</span>
+          </h2>
+          <h3 class="price-box__price">
+            $225/mo
+          </h3>
+          <p class="price-box__feat">
+            Features
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">1 License</li>
+            <li class="price-box__list-el">24h helpcenter</li>
+            <li class="price-box__list-el">No tasks limit</li>
+            <li class="price-box__list-el">No contractors limit </li>
+          </ul>
+          <div class="price-box__btn">
+            <a class="btn btn--violet btn--width" style="color: white;">Start now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- terzo -->
+      <div class="col-md-4 col-sm-4 price-box price-box--blue">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+            Asincrono
+          </h1>
+          <p class="price-box__people">
+            500+ people
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>399<span class="price-box__discount--light">/mo</span>
+          </h2>
+          <h3 class="price-box__price">
+            $499/mo
+          </h3>
+          <p class="price-box__feat">
+            Features
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">1 License</li>
+            <li class="price-box__list-el">24h helpcenter</li>
+            <li class="price-box__list-el">No tasks limit</li>
+            <li class="price-box__list-el">No contractors limit </li>
+          </ul>
+          <div class="price-box__btn">
+            <a class="btn btn--blue btn--width" style="color: white;">Start now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="download-section" class="contact-info">
+    <div id="download-information" class="container text-center strong-shadow">
+      <div>
+      <h3 class="card-title"> Cupo limitado </h3>  
+      <h2 class="card-title">¡Aparta tu lugar!</h2> <br>
+        <p class="card-text">Contacto:  <a href="#">55 6698 6544 </a> </p>
+      </div> <br>
+     
+          <div class="col-auto">
+            <button href="#" class="btn btn-light mb-2">Pedir informes</button>
+          </div>
+         
+      <br>
+      
+      
+
+  <div class="rounded-social-buttons">
+                    <a class="social-button facebook" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f isoc"></i></a>
+    <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram isoc"></i></a>                    
+                    <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube isoc"></i></a>
+    <a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter isoc"></i></a>
+                    
+                </div>
+
+      
+    </div>
+  </div>
+
+  <footer class="fixed-bottom">
+      <div class="col-md-2 col-xs-6">
+       <h1 class="footer__title">mozart<span class="footer__light">.studio</span></h1>   
+      </div> 
+  </footer>
+
+
+
+</body>
+
+  <script>
+    $(".navbar-nav>li>a").on("click", function() {
+	$(".navbar-collapse").collapse("hide");
+});
+
+
+
+function toggleCard() {
+    const frontSide = document.getElementById("front-1");
+    const backSide = document.getElementById("back-1");
+    if (frontSide.classList.contains("showGreen")) {
+      frontSide.classList.remove("showGreen");
+      backSide.classList.remove("showRed");
+    } else {
+      frontSide.classList.add("showGreen");
+      backSide.classList.add("showRed");
+    }
+  }
+
+  </script>
+
+</html>
