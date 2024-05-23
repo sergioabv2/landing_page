@@ -549,15 +549,16 @@ vertical-align: middle;
 .social-icons a {
     border-radius: 50px;
     color: #3f345f;
-    display: inline-block;
-    /*line-height: 52px;*/
-    line-height: 90px;
+    display: inline-flex; /* Cambia inline-block a inline-flex */
+    align-items: center;  /* Centra verticalmente */
+    justify-content: center;  /* Centra horizontalmente */
     height: 50px;
     width: 50px;
     box-shadow: 0 5px 25px rgba(93, 70, 232, 0.15);
     margin: 10px 10px;
     font-size: 22px;
 }
+
 
 
 
@@ -797,10 +798,7 @@ vertical-align: middle;
   align-items: flex-end;
     }
     
-    .social-icons a {
-    /*line-height: 52px;*/
-       line-height: 60px;
-}
+
   .jumbotron{
     
     height: 550px;
@@ -811,8 +809,8 @@ vertical-align: middle;
   .card__side{
     top: -20px;
     left: 30px;
-      height: 28vh;
-  width: 28vh;
+      height: 30vh;
+  width: 30vh;
   }
  
   }
@@ -993,7 +991,12 @@ vertical-align: middle;
     height: 260px;
   }
 
-
+.card__side{
+    top: -20px;
+    
+      height: 18vh;
+  width: 18vh;
+  }
 
 }
 
