@@ -1324,7 +1324,7 @@ vertical-align: middle;
   </div>
   
   <div class="text-center" style="margin-top: 15px;">
-            <button href="https://wa.me/5215577676657?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20acerca%20de%20las%20clases%20de%20piano%20%F0%9F%8E%B9" class="btn btn-outline-light mb-2">Más información</button>
+            <button class="btn btn-outline-light mb-2" id="redirectButton">Más información</button>
           </div>
   
   <section class="trial-block shadow3">
@@ -1379,7 +1379,9 @@ vertical-align: middle;
 	$(".navbar-collapse").collapse("hide");
 });
 
-
+document.getElementById('redirectButton').addEventListener('click', function() {
+  window.location.href = 'https://wa.me/5215577676657?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20acerca%20de%20las%20clases%20de%20piano%20%F0%9F%8E%B9'; 
+});
 
 function toggleCard() {
     const frontSide = document.getElementById("front-1");
