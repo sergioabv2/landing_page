@@ -12,6 +12,9 @@
   
    <link rel="stylesheet" href="https://unpkg.com/swiper@9.2.4/swiper-bundle.min.css">
    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+  
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
   
@@ -24,7 +27,14 @@
 input {
   background-color: #202830!important;
   color: white!important;
+  margin-bottom: 5px;
 }
+  
+  select{
+    background-color: #202830!important;
+  color: white!important;
+    margin-bottom: 5px;
+  }
 
 #playstore-logo {
   width: 200px!important;
@@ -115,7 +125,7 @@ input {
 
 #back-1 {
   background-image: 
-    url("https://i.ibb.co/yB25bcL/wepik-business-timeline-infographic-20230719233438f-ROY.jpg");
+    url("https://lh3.googleusercontent.com/d/1GGIRHZ6w7Hl-u51og30iqCpOkT3Xc8EC");
 
 }
 
@@ -217,7 +227,7 @@ hr {
 
 
 .price-box--purple .price-box__img{
-  background-image: url("https://i.ibb.co/wNZgTDD/8747f66e29b301b7e1339cf8497a0ed89692ed55.jpg");
+  background-image: url("https://i.ibb.co/c8xTZFM/Whats-App-Image-2022-05-27-at-8-42-00-AM.jpg");
 
 }
 
@@ -228,7 +238,7 @@ hr {
 }
 
 .price-box--blue .price-box__img{
-  background-image: url("https://i.ibb.co/c8xTZFM/Whats-App-Image-2022-05-27-at-8-42-00-AM.jpg");
+  background-image: url("https://lh3.googleusercontent.com/d/1hZaFrumtvmBz_tJXZrm3mmc3dOhE4qjo");
 
 }
 
@@ -440,7 +450,7 @@ vertical-align: middle;
 }
 
 
-  #modal-container {
+  .modal-container {
     position: fixed;
     display: table;
     height: 100%;
@@ -450,39 +460,43 @@ vertical-align: middle;
     transform: scale(0);
     
   }
+  
 
-  #modal-container.four {
+  .modal-container.four {
      z-index: 10;
     transform: scale(1);
   }
 
-  #modal-container.four .modal-background .modal {
+  .modal-container.four .modal-background .modal {
     animation: blowUpModal 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   }
-  #modal-container.four + body {
+  .modal-container.four + body {
     z-index: 1;
     animation: blowUpContent 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   }
-  #modal-container.four.out .modal-background .modal {
+  .modal-container.four.out .modal-background .modal {
     animation: blowUpModalTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   }
-  #modal-container.four.out + body {
+  .modal-container.four.out + body {
     animation: blowUpContentTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   }
 
-  #modal-container .modal-background {
+  .modal-container .modal-background {
     display: table-cell;
     background: rgba(0, 0, 0, 0.8);
     text-align: center;
     vertical-align: middle;
   }
-  #modal-container .modal-background .modal {
+  .modal-container .modal-background .modal {
     padding: 50px;
     display: inline-block;
     border-radius: 3px;
     font-weight: 300;
     position: relative;
   }
+  
+  
+  
 
   @keyframes blowUpContent {
     0% {
@@ -743,11 +757,7 @@ vertical-align: middle;
     cursor: pointer;
 }
 
-  .swiper-container-main{
-    max-height: 250px;
-  
-  }
-  
+
   .swiper-pagination-bullet {
   background: white; /* Cambia el color de las bolitas a blanco */
 }
@@ -788,9 +798,7 @@ vertical-align: middle;
 
 
 @media screen and (min-width:1024px){
-    iframe{
-      height: 230px;
-    }
+
     .contact-info{
       
         height: 250px;
@@ -812,8 +820,38 @@ vertical-align: middle;
       height: 30vh;
   width: 30vh;
   }
- 
+  
+   .modal-container .modal-background .modal img{
+      width: 55%;
+      height: auto;
   }
+  
+  input {
+  margin-bottom: 10px;
+}
+  
+  select{
+    margin-bottom: 10px;
+  }
+  
+  /*.modal-container .modal-background .modal card{
+    max-width: 300px;
+  }*/
+  
+  .form-insc{
+    max-width: 750px;
+  }
+
+  #youtube {
+    height: 250px;
+  }
+
+  #drive{
+    height: 480px;
+    width: 380px;
+    margin-top: 30px;
+  }
+ }  
   
 
 @media screen and (max-width:1024px){
@@ -862,6 +900,26 @@ vertical-align: middle;
   .header__el--blue{
     background-color:#3a9fff;
   }
+  
+   .modal-container .modal-background .modal img{
+      width: 60%;
+      height: auto;
+  }
+  
+  .form-insc{
+    max-width: 700px;
+  }
+
+  #youtube {
+    height: 210px;
+  }
+
+  #drive{
+    height: 480px;
+    width: 380px;
+    margin-top: 30px;
+  }
+   
 }
 
 
@@ -872,6 +930,9 @@ vertical-align: middle;
   .item__content {
     height: auto;
 }
+  #youtube {
+    height: 150px;
+  }
 }
 
 @media screen and (max-width:767px) {
@@ -916,13 +977,17 @@ vertical-align: middle;
     padding: 25px 0;
   }
   
-   iframe{
-    height: 100px;
-  }
+
   
-  .swiper-container-main{
-    height: 100px;
+   .modal-container .modal-background .modal img{
+      width: 80%;
+      height: auto;
   }
+
+#youtube {
+    height: 105px;
+  }
+
   
   
 }
@@ -983,13 +1048,7 @@ vertical-align: middle;
   font-size: 14px;
 }
   
-   iframe{
-    height: 250px;
-  }
-  
-  .swiper-container-main{
-    height: 260px;
-  }
+ 
 
 .card__side{
     top: -20px;
@@ -997,6 +1056,20 @@ vertical-align: middle;
       height: 18vh;
   width: 18vh;
   }
+
+   .modal-container .modal-background .modal img{
+      width: 100%;
+      height: auto;
+  }
+
+  #youtube {
+    height: 280px;
+  }
+   #drive{
+    height: 400px;
+    width: 100%;
+  }
+
 
 }
 
@@ -1092,17 +1165,23 @@ vertical-align: middle;
   font-size: 18px;
   font-weight: 500;
 }
-
- iframe{
-    height: 175px;
+  
+  #youtube {
+    height: 200px;
   }
   
-  .swiper-container-main{
-    height: 175px;
-  }
- 
+
+  
 
 }
+  
+  @media (max-height: 500px) {
+     .modal-container .modal-background .modal .card{
+      transform: scale(0.9) translate(0,-35px);
+  }
+}
+  
+ 
 </style>
   
 <body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-dark text-light">
@@ -1142,8 +1221,7 @@ vertical-align: middle;
       <div class="cardp" onclick="toggleCard()">
           <div class="card__side card__side--front" id="front-1">
           </div>
-          <div class="card__side card__side--back" id="back-1">  
-              <h1 class="text-box">yeah!</h1>        
+          <div class="card__side card__side--back" id="back-1">     
           </div>
       </div>  
            
@@ -1159,29 +1237,30 @@ vertical-align: middle;
   <div class="container">
     <div class="card-deck">
       <div class="card">
-        <img class="card-img-top" src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727756/canary-wharf-shops-services-bremont-ss18-2-741x417-362x200.jpg" alt="Card image cap">
+        <img class="card-img-top" src="https://lh3.googleusercontent.com/d/1VoRvfiHUpjUJUhDmzvD02QhBWN0m0Lnh" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title"><i class="far fa-clock"></i> Calidad de conservatorio</h5>
+          <h5 class="card-title"><i class="ri-award-fill"></i> Calidad de conservatorio</h5>
           <p class="card-text">There are countless ways to waste your precious time... Wastrel-ness decreases a thousand-fold when using our app.</p>
         </div>
-      </div>
-      <div class="card activate-content">
-        <img class="card-img-top button" id="four" src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727746/ESTATE11-362x200.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><i class="far fa-building"></i> Costos accesibles</h5>
-          <p class="card-text">Discover the great deals, compare hotel prices & save money on your next holiday or trip.</p>
-        </div>
-      </div>
+      </div> 
+
+
       <div class="card">
-        <div class="card-img-top">
-          
-          
-          
+        <div class="card-img-top"> 
           <div class="swiper swiper-container-main">
     <div class="swiper-wrapper">
-      <div class="swiper-slide minimum-height"><img class="swiper-slide-img" src="https://live.staticflickr.com/6079/6136071267_797265d54d.jpg"></div>
-      <div class="swiper-slide minimum-height"><img class="swiper-slide-img" src="https://c1.staticflickr.com/1/189/442112564_aad204d2de.jpg"></div>
-      <div class="swiper-slide minimum-height"><img class="swiper-slide-img" src="https://c1.staticflickr.com/5/4451/24162846828_8500a2fec4.jpg"></div>
+       <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1pzqojF02mq_cC9mvJsz-Tt-GP3eZcldD"></div>
+     <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/13GWDN862fWBqSWRZvboeHEWqeGzCtcyu"></div> 
+      <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1WPV4G0xb_CQUMiiq9bby2C80hnvErplR"></div>
+      <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1i9CIMoY2uKv5WKw7EHUYn_FRyafasDnL"></div>
+       
+      <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1xx4RgzHVS1PJC_Y8hrerYKOzg8tfEMmh"></div>
+      <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1oz_MUQCq-0cSMJ0gOWR45CUNI2EVWaTy"></div>
+     
+      
+
+      
+
 
     </div>
     <!-- Add Pagination -->
@@ -1195,40 +1274,49 @@ vertical-align: middle;
 <div class="swiper gallery-thumbs">
   <div class="swiper-wrapper">
   </div>       
-</div>  
-          
-          
-          
-          
+</div>     
         </div>
         <div class="card-body">
-          <h5 class="card-title"><i class="far fa-gem"></i> Instalaciones equipadas</h5>
+          <h5 class="card-title"><i class="ri-building-fill"></i> Instalaciones equipadas</h5>
           <p class="card-text">Do you have to plan a wedding, a party or any other event? The event Planner can help you keep everything under control.</p>
         </div>
       </div>
+
+
+ <div class="card activate-content">
+        <img class="card-img-top button" data-modal="modal1" src="https://lh3.googleusercontent.com/d/1zFBZ558bRQjXIQWEtQPxWl56eonZNbtr" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><i class="ri-git-repository-fill"></i> Material de trabajo de calidad</h5>
+          <p class="card-text">Discover the great deals, compare hotel prices & save money on your next holiday or trip.</p>
+        </div>
+      </div>
+
+
     </div>
   </div>
   <br>
   <div class="container">
     <div class="card-deck">
+
       <div class="card">
-        <img class="card-img-top" src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727756/canary-wharf-shops-services-bremont-ss18-2-741x417-362x200.jpg" alt="Card image cap">
+        <img class="card-img-top" src="https://lh3.googleusercontent.com/d/1nDZsSdIct2LvW2KC44UX2zMImK_OnaXL" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title"><i class="far fa-clock"></i> Material de trabajo</h5>
+          <h5 class="card-title"><i class="ri-discount-percent-line"></i> Costos accesibiles</h5>
           <p class="card-text">There are countless ways to waste your precious time... Wastrel-ness decreases a thousand-fold when using our app.</p>
         </div>
       </div>
+
       <div class="card">
-        <iframe class="card-img-top" src="https://www.youtube.com/embed/50AKzcMPMxU?&autoplay=1" > </iframe>
+        <iframe class="card-img-top" id="youtube" src="https://www.youtube.com/embed/50AKzcMPMxU?&autoplay=1" > </iframe>
         <div class="card-body">
-          <h5 class="card-title"><i class="far fa-building"></i> Participación en eventos</h5>
+          <h5 class="card-title"><i class="ri-vidicon-2-fill"></i> Presentaciones</h5>
           <p class="card-text">Discover the great deals, compare hotel prices & save money on your next holiday or trip.</p>
         </div>
       </div>
       <div class="card">
-         <img class="card-img-top" src="https://lh3.googleusercontent.com/d/1XvXn7m5uhpToi1ZvaOo4ilBTLZJPyAfN" alt="Card image cap">
+         <img class="card-img-top button" src="https://lh3.googleusercontent.com/d/1XvXn7m5uhpToi1ZvaOo4ilBTLZJPyAfN" alt="Card image cap" data-modal="modal2">
         <div class="card-body">
-          <h5 class="card-title"><i class="far fa-gem"></i> Horarios flexibles</h5>
+          <h5 class="card-title"><i class="ri-calendar-schedule-fill"></i> Horarios flexibles</h5>
           <p class="card-text">Do you have to plan a wedding, a party or any other event? The event Planner can help you keep everything under control.</p>
         </div>
       </div>
@@ -1242,50 +1330,27 @@ vertical-align: middle;
         <h1>Planes de pago</h1>
         <p>Tenemos a tu disposición distintos formatos de enseñanza</p>
       </div>
-     
+     <div class="row row--center row--margin">
       
+ <!-- First -->
+<div class="col-md-4 col-sm-4 price-box price-box--blue">
+          <div class="swiper swiper-container-main">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
 
-      <div class="row row--center row--margin">
-  <div class=" col-md-4 col-sm-4 price-box price-box--purple">
         <div class="price-box__wrap">
           <div class="price-box__img"></div>
           <h1 class="price-box__title">
-           Plan Híbrido
+           Plan Standard
           </h1>
-
-          <h2 class="price-box__discount">
-            <span class="price-box__dollar">$</span>250<span class="price-box__discount--light">/mensuales</span>
-          </h2>
-          <h3 class="price-box__price">
-            $150 por clase
-          </h3>
-          <p class="price-box__feat">
-            Servicios
+  <p class="price-box__people">
+            Clases Presenciales
           </p>
-          <ul class="price-box__list">
-            <li class="price-box__list-el">1 Clase de 1 hora</li>
-            <li class="price-box__list-el">24h helpcenter</li>
-            <li class="price-box__list-el">No tasks limit</li>
-<br>
-          </ul>
-          <div class="price-box__btn">
-            <a class="btn btn--purple btn--width" style="color: white;">Agendar</a>
-          </div>
-        </div>
-      </div>
-      <!-- second -->
-      <div class="col-md-4 col-sm-4 price-box price-box--violet">
-        <div class="price-box__wrap">
-          <div class="price-box__img"></div>
-          <h1 class="price-box__title">
-            Plan Standard
-          </h1>
-
           <h2 class="price-box__discount">
             <span class="price-box__dollar">$</span>450<span class="price-box__discount--light">/mes</span>
           </h2>
           <h3 class="price-box__price">
-            Aprox. $112 por clase
+           Aprox. $112 por clase
           </h3>
           <p class="price-box__feat">
             Servicios
@@ -1294,24 +1359,24 @@ vertical-align: middle;
             <li class="price-box__list-el">4 Clases de 1 hora</li>
             <li class="price-box__list-el">24h helpcenter</li>
             <li class="price-box__list-el">No tasks limit</li>
-            <li class="price-box__list-el">No contractors limit </li>
+<br>
           </ul>
-          <div class="price-box__btn">
-            <a class="btn btn--violet btn--width" style="color: white;">Agendar</a>
-          </div>
+            <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a>
         </div>
+
       </div>
 
-      <!-- terzo -->
-      <div class="col-md-4 col-sm-4 price-box price-box--blue">
+
+      <div class="swiper-slide">
+
         <div class="price-box__wrap">
           <div class="price-box__img"></div>
           <h1 class="price-box__title">
            Plan PRO
           </h1>
-     <!---     <p class="price-box__people">
-            500+ people
-          </p> --->
+ <p class="price-box__people">
+            Clases Presenciales
+          </p>
           <h2 class="price-box__discount">
             <span class="price-box__dollar">$</span>750<span class="price-box__discount--light">/mes</span>
           </h2>
@@ -1325,13 +1390,258 @@ vertical-align: middle;
             <li class="price-box__list-el">8 Clases de 1 hora</li>
             <li class="price-box__list-el">24h helpcenter</li>
             <li class="price-box__list-el">No tasks limit</li>
-            <li class="price-box__list-el">No contractors limit </li>
+<br>
           </ul>
-          <div class="price-box__btn">
-            <a class="btn btn--blue btn--width" style="color: white;">Agendar</a>
-          </div>
+      
+            <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a>     
         </div>
       </div>
+
+
+      <div class="swiper-slide">
+
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+           Plan PREMIUM
+          </h1>
+ <p class="price-box__people">
+            Clases Presenciales
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>1350<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <h3 class="price-box__price">
+           Aprox. $84 por clase
+          </h3>
+          <p class="price-box__feat">
+            Servicios
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">16 Clases de 1 hora</li>
+            <li class="price-box__list-el">24h helpcenter</li>
+            <li class="price-box__list-el">No tasks limit</li>
+<br>
+          </ul>
+      
+            <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a>        
+        </div>
+      </div>
+
+
+      <div class="swiper-slide">
+
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+           Plan Estudiante
+          </h1>
+ <p class="price-box__people">
+            Clases Presenciales
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>300<span class="price-box__discount--light">/mes</span>
+          </h2>
+           <h3 class="price-box__price">
+            Aprox. $75 por clase
+           Quedan 3 lugares
+          </h3>
+          <p class="price-box__feat">
+            Servicios
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">4 Clases de 1 hora</li>
+            <li class="price-box__list-el">24h helpcenter</li>
+            <li class="price-box__list-el">No tasks limit</li>
+<br>
+          </ul>
+      
+            <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal4">Agendar</a>
+          
+        </div>
+
+      </div>
+
+
+     </div> 
+
+
+       <div class="swiper-pagination"></div>
+    <!-- Add Pagination -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+</div>
+</div>
+      
+
+      <!-- second -->
+
+        <div class="col-md-4 col-sm-4 price-box price-box--violet">
+          <div class="swiper swiper-container-main">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+          Clases por ZOOM
+          </h1>
+  <p class="price-box__people">
+            Clases en línea por ZOOM
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>300<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <p class="price-box__feat">
+            Servicios
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">4 Clases de 1 hora</li>
+            <li class="price-box__list-el">24h helpcenter</li>
+            <li class="price-box__list-el">No tasks limit</li>
+<br>
+          </ul>
+            <a class="btn btn--violet btn--width button" style="color: white;" data-modal="modal4">Agendar</a>
+        </div>
+
+      </div>
+
+
+     
+
+
+<div class="swiper-slide">
+
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+           Curso Asíncrono
+          </h1>
+ <p class="price-box__people">
+           Seguimiento en Línea
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>150<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <p class="price-box__feat">
+            Servicios
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">Uso de plataforma</li>
+            <li class="price-box__list-el">24h helpcenter</li>
+            <li class="price-box__list-el">No tasks limit</li>
+<br>
+          </ul>
+      
+            <a class="btn btn--violet btn--width button" style="color: white;" data-modal="modal4">Agendar</a>
+          
+        </div>
+
+      </div>
+
+
+     </div> 
+
+
+       <div class="swiper-pagination"></div>
+    <!-- Add Pagination -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+</div>
+    
+      </div>
+
+
+
+
+
+      <!-- Third-->    
+
+
+       <div class="col-md-4 col-sm-4 price-box price-box--purple">
+          <div class="swiper swiper-container-main">
+    <div class="swiper-wrapper">
+
+
+         <div class="swiper-slide">
+
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+           Clases Híbridas
+          </h1>
+ <p class="price-box__people">
+           Clases Presenciales y Seguimiento en línea
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>250<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <p class="price-box__feat">
+            Servicios
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">1 clase de 1 hora</li>
+            <li class="price-box__list-el">24h helpcenter</li>
+            <li class="price-box__list-el">No tasks limit</li>
+<br>
+          </ul>
+      
+            <a class="btn btn--purple btn--width button" style="color: white;" data-modal="modal4">Agendar</a>
+          
+        </div>
+
+      </div>
+
+
+      <div class="swiper-slide">
+
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+          Curso Intersemestral
+          </h1>
+  <p class="price-box__people">
+            Curso Intensivo por temporada
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>550<span class="price-box__discount--light">.</span>
+          </h2>
+           <h3 class="price-box__price">
+           AGOTADO
+          </h3>
+          <p class="price-box__feat">
+            Servicios
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">6 Clases de 1 hora</li>
+            <li class="price-box__list-el">24h helpcenter</li>
+            <li class="price-box__list-el">No tasks limit</li>
+<br>
+          </ul>
+            <a class="btn btn--purple btn--width button" style="color: white;" data-modal="modal4">Agendar</a>
+        </div>
+
+      </div>
+
+
+
+     </div> 
+
+
+       <div class="swiper-pagination"></div>
+    <!-- Add Pagination -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+</div>
+    
+      </div>
+
+ <!-- End-->
+
+    
     </div>
   </div>
   </div>
@@ -1358,13 +1668,13 @@ vertical-align: middle;
                               <div class="social-icons text-center">
                                  
                                   
-                <a href="https://www.facebook.com/mozart.stdio" class="slider-nav-item"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.facebook.com/mozart.stdio" class="slider-nav-item"><i class="ri-facebook-box-fill"></i></a>
                                 
                                  
                <a href="https://www.instagram.com/mozart.studio_academy/"  class="slider-nav-item"><i class="fab fa-instagram"></i></a>
                                  
                                   <a href="https://www.youtube.com/@TallerdePiano" class="slider-nav-item"><i class="fab fa-youtube"></i></a>
-                                 <a href="https://twitter.com/m0zart_studio"  class="slider-nav-item"><i class="fab fa-twitter"></i></a>
+                                 <a href="https://maps.app.goo.gl/Jhf1sMdnQ7QRA3RP9"  class="slider-nav-item"><i class="ri-map-pin-line"></i></a> <!-- https://twitter.com/m0zart_studio -->
                                   <a href="https://wa.me/5215577676657"  class="slider-nav-item"><i class="fab fa-whatsapp"></i></a>
                              
                               </div>
@@ -1384,16 +1694,134 @@ vertical-align: middle;
 
 
   
-<div id="modal-container">
+  
+  <div id="modal1" class="modal-container modal-hidden">
   <div class="modal-background">
     <div class="modal"> 
      
 
-     <img src="https://res.cloudinary.com/dv5brwenm/image/upload/v1537727756/canary-wharf-shops-services-bremont-ss18-2-741x417-362x200.jpg">
+    <iframe id="drive" src=" https://drive.google.com/file/d/1kxLyedr3tlxEG-rE0RGlRC2gFL2H05o1/preview" frameborder="0" ></iframe>
 
     </div>
   </div>
 </div>
+  
+  
+<div id="modal2" class="modal-container modal-hidden">
+  <div class="modal-background">
+    <div class="modal"> 
+     
+
+     <img src="https://lh3.googleusercontent.com/d/1XvXn7m5uhpToi1ZvaOo4ilBTLZJPyAfN">
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+ <div ng-app="myApp"> 
+  <div id="modal3" class="modal-container modal-hidden">
+  <div class="modal-background">
+    <div class="modal form-insc"> 
+       
+<div class="card" ng-controller="FormController1" >
+              <div class="card-body">
+                <h4>Formulario de registro</h4>
+                <div class="settings-profile">
+                  <div class="form-row mt-4">
+                    <div class="col-md-6">
+                      <label for="dayList">Día</label>
+                      <select id="dayList" class="form-control" ng-model="formData.dia" ng-change="updateHourList()" ng-options="day for day in days">
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label ng-if="formData.dia" for="hourList">Hora</label>
+                      <select ng-if="formData.dia" id="hourList" class="form-control" ng-model="formData.hora" ng-options="hour for hour in hours">
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label ng-if="formData.hora" for="dateClass">Fecha de tu primer clase</label>
+                      <select ng-if="formData.hora" id="dateClass" class="form-control" ng-model="formData.fecha" ng-options="date for date in dates">
+                      </select>
+                    </div>
+                    
+                     <div class="col-md-6">
+                      <label for="formFirst" ng-if="formData.fecha">Nombre</label>
+                      <input id="formFirst" type="text" class="form-control" placeholder="Nombre completo" autocomplete="off" ng-model="formData.nombre" ng-if="formData.fecha">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="phone" ng-if="formData.fecha">Teléfono</label>
+                      <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono" ng-if="formData.fecha">
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+               </div>  
+                <div class="modal-footer col-md-12">
+                  <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                </div>
+            </div>
+
+    </div>
+  </div>
+</div>
+
+
+ <div id="modal4" class="modal-container modal-hidden">
+  <div class="modal-background">
+    <div class="modal form-insc"> 
+       
+<div class="card" ng-controller="FormController2" >
+              <div class="card-body">
+                <h4>Formulario de registro</h4>
+                <div class="settings-profile">
+                  <div class="form-row mt-4">
+                    <div class="col-md-6">
+                      <label for="dayList">Día</label>
+                      <select id="dayList" class="form-control" ng-model="formData.dia" ng-change="updateHourList()" ng-options="day for day in days">
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label ng-if="formData.dia" for="hourList">Hora</label>
+                      <select ng-if="formData.dia" id="hourList" class="form-control" ng-model="formData.hora" ng-options="hour for hour in hours">
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label ng-if="formData.hora" for="dateClass">Fecha de tu primer clase</label>
+                      <select ng-if="formData.hora" id="dateClass" class="form-control" ng-model="formData.fecha" ng-options="date for date in dates">
+                      </select>
+                    </div>
+                    
+                     <div class="col-md-6">
+                      <label for="formFirst" ng-if="formData.fecha">Nombre</label>
+                      <input id="formFirst" type="text" class="form-control" placeholder="Nombre completo" autocomplete="off" ng-model="formData.nombre" ng-if="formData.fecha">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="phone" ng-if="formData.fecha">Teléfono</label>
+                      <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono" ng-if="formData.fecha">
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+               </div>  
+                <div class="modal-footer col-md-12">
+                  <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                </div>
+            </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
 
 </body>
 
@@ -1418,22 +1846,26 @@ function toggleCard() {
     }
   }
     
-$(document).ready(function(){
-    $('.button').click(function(){
-      var buttonId = $(this).attr('id');
-      $('#modal-container').removeClass('modal-hidden').removeAttr('class').addClass(buttonId);
-      $('body').addClass('modal-active');
-    });
-
-    $('#modal-container').click(function(){
-      $(this).addClass('out');
-      $('body').removeClass('modal-active');
-      setTimeout(function(){
-        $('#modal-container').removeClass().addClass('modal-hidden');
-      }, 300); // Ajusta el tiempo según la duración de tu animación
-    });
+$(document).ready(function() {
+  $('.button').click(function() {
+    var modalId = $(this).data('modal');
+    $('#' + modalId).removeClass('modal-hidden').addClass('four');
+    $('body').addClass('modal-active');
   });
-    
+
+  $('.modal-container').click(function() {
+    $(this).addClass('out');
+    $('body').removeClass('modal-active');
+    var modal = $(this);
+    setTimeout(function() {
+      modal.removeClass('four out').addClass('modal-hidden');
+    }, 500); // Ajusta el tiempo según la duración de tu animación
+  });
+  
+  $('.form-insc').click(function(event) {
+                event.stopPropagation();
+            });
+});
     
     
     
@@ -1483,6 +1915,274 @@ var swiper = new Swiper('.swiper-container-main', {
   }
 
 });
+    
+    
+    
+    
+    
+    
+angular.module('myApp', [])
+  .controller('FormController1', ['$scope', function($scope) {
+    $scope.formData = {};
+
+
+    $scope.classtime = {
+      lunes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      martes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      miercoles: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      jueves: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      viernes: ["11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
+      sabado: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
+      domingo: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs"]
+    };
+
+    $scope.capacity = {
+      lunes: {
+        "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 1,
+        "15:00 a 16:00 Hrs": 1,
+        "16:00 a 17:00 Hrs": 2,
+        "17:00 a 18:00 Hrs": 1,
+        "18:00 a 19:00 Hrs": 1
+      },
+      martes: {
+         "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 1,
+        "15:00 a 16:00 Hrs": 1,
+        "16:00 a 17:00 Hrs": 2,
+        "17:00 a 18:00 Hrs": 1,
+        "18:00 a 19:00 Hrs": 1
+      },
+      miercoles: {
+        "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 1,
+        "15:00 a 16:00 Hrs": 1,
+        "16:00 a 17:00 Hrs": 2,
+        "17:00 a 18:00 Hrs": 1,
+        "18:00 a 19:00 Hrs": 1
+      },
+      jueves: {
+        "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 1,
+        "15:00 a 16:00 Hrs": 1,
+        "16:00 a 17:00 Hrs": 2,
+        "17:00 a 18:00 Hrs": 1,
+        "18:00 a 19:00 Hrs": 1
+      },
+      viernes: {
+        "11:00 a 12:00 Hrs": 1,
+        "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 1,
+        "14:00 a 15:00 Hrs": 2,
+        "15:00 a 16:00 Hrs": 2,
+      },
+      sabado: {
+        "9:00 a 10:00 Hrs": 1,
+        "10:00 a 11:00 Hrs": 3,
+        "11:00 a 12:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 4,
+        "15:00 a 16:00 Hrs": 2,
+      },
+      domingo: {
+        "9:00 a 10:00 Hrs": 1,
+        "10:00 a 11:00 Hrs": 2,
+        "11:00 a 12:00 Hrs": 3,
+        "12:00 a 13:00 Hrs": 2,
+      }
+    };
+    
+
+        $scope.days = ["Jueves", "Viernes", "Sábado", "Domingo"];
+
+
+    $scope.updateHourList = function() {
+      var plan = $scope.formData.plan;
+      var day = $scope.formData.dia;
+      $scope.dates = getDat(day);
+      const selectedDay = $scope.formData.dia.toLowerCase();
+      const availableHours = $scope.classtime[selectedDay] || [];
+      $scope.hours = availableHours.filter(hour => $scope.capacity[selectedDay][hour] > 0);
+      if (plan.includes("ESTUDIANTE") && day == "Sábado") {
+        $scope.hours = ["13:00 a 14:00 Hrs"];
+      }
+    };
+
+    $scope.submitForm = function() {
+      console.log('Form submitted with:', $scope.formData);
+    };
+
+   
+    
+    function getDat(day) {
+      const options = { weekday: 'long', month: 'long', day: 'numeric' };
+      const date1 = new Date();
+      const currentDay = date1.getDay();
+      var dayOfWeek = getNumDay(day);
+      const daysUntilNextDay = (dayOfWeek + 7 - currentDay) % 7;
+      const daysToAdd = daysUntilNextDay === 0 ? 7 : daysUntilNextDay;
+      date1.setDate(date1.getDate() + daysToAdd);
+      var date2 = new Date(date1);
+      date2.setDate(date2.getDate() + 7);
+  
+      var dat1 = date1.toLocaleDateString("es-mx", options).replace(",", "");
+      var dat2 = date2.toLocaleDateString("es-mx", options).replace(",", "");
+      return [dat1.charAt(0).toUpperCase() + dat1.slice(1), dat2.charAt(0).toUpperCase() + dat2.slice(1)];
+    }
+
+    function getNumDay(day) {
+      switch(day) {
+        case "Domingo":
+          return 0;
+        case "Lunes":
+          return 1;
+        case "Martes":
+          return 2;
+        case "Miércoles":
+          return 3;
+        case "Jueves":
+          return 4;
+        case "Viernes":
+          return 5;
+        case "Sábado":
+          return 6;
+        default:
+          return 0;
+      }
+    }
+    
+    
+    $scope.cancel = function() {
+        var modal = angular.element(document.getElementById('modal3'));
+        modal.addClass('out');
+        angular.element(document.body).removeClass('modal-active');
+        setTimeout(function() {
+            modal.removeClass('four out').addClass('modal-hidden');
+        }, 500); // Ajusta el tiempo según la duración de tu animación
+    };
+    
+  }])
+.controller('FormController2', ['$scope', function($scope) {
+    $scope.formData = {};
+
+
+    $scope.classtime = {
+      lunes: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
+      martes: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
+      miercoles: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
+      jueves: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
+      sabado: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs"],
+
+    };
+
+    $scope.capacity = {
+      lunes: {
+        "19:00 a 20:00 Hrs": 2,
+        "20:00 a 21:00 Hrs": 2,
+        "21:00 a 22:00 Hrs": 1
+      },
+      martes: {
+        "19:00 a 20:00 Hrs": 2,
+        "20:00 a 21:00 Hrs": 2,
+        "21:00 a 22:00 Hrs": 1
+      },
+      miercoles: {
+        "19:00 a 20:00 Hrs": 2,
+        "20:00 a 21:00 Hrs": 2,
+        "21:00 a 22:00 Hrs": 1
+      },
+      jueves: {
+        "19:00 a 20:00 Hrs": 2,
+        "20:00 a 21:00 Hrs": 2,
+        "21:00 a 22:00 Hrs": 1
+      },
+      viernes: {
+        "11:00 a 12:00 Hrs": 1,
+        "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 1,
+        "14:00 a 15:00 Hrs": 2,
+        "15:00 a 16:00 Hrs": 2,
+      },
+      sabado: {
+        "12:00 a 13:00 Hrs": 1,
+        "13:00 a 14:00 Hrs": 3
+      }
+    };
+    
+
+        $scope.days = ["Lunes", "Martes", "Miércoles", "Jueves", "Sábado"];
+
+
+    $scope.updateHourList = function() {
+      var plan = $scope.formData.plan;
+      var day = $scope.formData.dia;
+      $scope.dates = getDat(day);
+      const selectedDay = $scope.formData.dia.toLowerCase();
+      const availableHours = $scope.classtime[selectedDay] || [];
+      $scope.hours = availableHours.filter(hour => $scope.capacity[selectedDay][hour] > 0);
+      if (plan.includes("ESTUDIANTE") && day == "Sábado") {
+        $scope.hours = ["13:00 a 14:00 Hrs"];
+      }
+    };
+
+    $scope.submitForm = function() {
+      console.log('Form submitted with:', $scope.formData);
+    };
+
+   
+    
+    function getDat(day) {
+      const options = { weekday: 'long', month: 'long', day: 'numeric' };
+      const date1 = new Date();
+      const currentDay = date1.getDay();
+      var dayOfWeek = getNumDay(day);
+      const daysUntilNextDay = (dayOfWeek + 7 - currentDay) % 7;
+      const daysToAdd = daysUntilNextDay === 0 ? 7 : daysUntilNextDay;
+      date1.setDate(date1.getDate() + daysToAdd);
+      var date2 = new Date(date1);
+      date2.setDate(date2.getDate() + 7);
+  
+      var dat1 = date1.toLocaleDateString("es-mx", options).replace(",", "");
+      var dat2 = date2.toLocaleDateString("es-mx", options).replace(",", "");
+      return [dat1.charAt(0).toUpperCase() + dat1.slice(1), dat2.charAt(0).toUpperCase() + dat2.slice(1)];
+    }
+
+    function getNumDay(day) {
+      switch(day) {
+        case "Domingo":
+          return 0;
+        case "Lunes":
+          return 1;
+        case "Martes":
+          return 2;
+        case "Miércoles":
+          return 3;
+        case "Jueves":
+          return 4;
+        case "Viernes":
+          return 5;
+        case "Sábado":
+          return 6;
+        default:
+          return 0;
+      }
+    }
+    
+    
+    $scope.cancel = function() {
+        var modal = angular.element(document.getElementById('modal4'));
+        modal.addClass('out');
+        angular.element(document.body).removeClass('modal-active');
+        setTimeout(function() {
+            modal.removeClass('four out').addClass('modal-hidden');
+        }, 500); // Ajusta el tiempo según la duración de tu animación
+    };
+    
+  }])
+
 
 
   </script>
