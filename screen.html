@@ -1,0 +1,777 @@
+online<link href="http://gabrielw.de/dev/_storage/liquidcrystal/liquidcrystal.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+
+<style>
+  :root {
+  --padding: 4rem;
+  --border: hsl(0, 0%, 20%);
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+transform: scale(2)
+}
+
+
+.overlay {
+  z-index: 3;
+  position: relative;
+  top: 20px;
+  /*width: 620px;*/
+  width: 620px;
+  height: 480px;
+  left: 55px;
+  border-radius: 20px; 
+  background: #0E0520;
+  /*
+  background:#110725;
+  background-image: 
+    url("https://i.ibb.co/8bshVj9/paper-print-music-melody-piano-sheet-music.jpg");
+  background-size: cover; 
+  background-position: center;*/
+
+  padding: 10px;
+}
+
+
+.clock {
+ /* z-index: 4;
+  font-size: 12rem; 
+  position: fixed;
+  margin-top: 400px;
+  margin-left: 20px;*/
+  font-family: 'liquid_crystalregular', sans-serif;
+  height: 100px;
+  width: 60%;
+  line-height: 100px;  
+  /*margin: 20px 160px 10px;*/
+  padding: 0 50px;
+  background: #222;
+  color: #eee;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 0 7px #222;
+  text-shadow: 0 0 3px #fff;
+}
+
+
+.eleganttext{
+  /*text-align: center;*/
+  font-size: 4em;
+  font-weight: 600;
+  color:#e8dff6;
+font-family:'Titillium Web', sans-serif;
+  line-height: 70px;  
+  margin: 120px auto 0;
+  padding: 0 50px;
+  /*background: #222;
+  color: #eee;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 0 7px #222;
+  text-shadow: 0 0 3px #fff;*/
+}
+
+
+.eleganttext2{
+  /*text-align: center;*/
+  font-size: 1.4em;
+ 
+  color:#e8dff6;
+  font-family:'Titillium Web', sans-serif;
+  line-height: 30px;  
+  margin: 35px auto 0;
+  padding: 0 50px;
+  /*background: #222;
+  color: #eee;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 0 7px #222;
+  text-shadow: 0 0 3px #fff;*/
+}
+
+.divider{
+  margin-top: 60px;
+  border: 0; 
+  height: 2px; 
+  background-image: linear-gradient(to right, orange, red);
+}
+
+
+
+.clock-container{
+  position: fixed;
+  top: 540px;
+  left: 40px;
+  text-align: center;
+  color: black;
+  
+}
+
+.clock2 {
+  font-size: 7em;
+  font-weight: 500;
+  /*letter-spacing: -8px;*/
+}
+
+.date {
+  margin-top: -14px;
+  font-size: 1.6em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.statusText{
+  font-size: 2rem;
+  font-weight: 400;
+  text-shadow: 0 0 0 black;
+  color: white;
+  font-family:'Titillium Web', sans-serif;
+
+}
+
+
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2.8rem;
+}
+
+body {
+  background: #e7e5e4;
+  /*background: #000000;*/
+  color: #ffffff;
+  font-family: system-ui, sans-serif;
+}
+
+.heading {
+  line-height: 2;
+  font-weight: 900;
+}
+
+.section-container {
+  padding: var(--padding);
+}
+.section-container a {
+  color: #ffffff;
+}
+
+.schedule-container {
+  overflow: auto;
+}
+
+.schedule-stage__wrapper {
+  display: inline-block;
+}
+
+.schedule-stage {
+  display: grid;
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
+  grid-gap: 2rem;
+  padding-bottom: 5rem;
+  padding-top: 2rem;
+  min-width: 100vw;
+}
+.schedule-stage::after {
+  content: "";
+  width: var(--padding);
+}
+
+
+
+.schedule-stage:nth-child(1) > .schedule-stage__title > h3 {
+  background: red;
+  background: linear-gradient(to right, #eb3349, #f45c43);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.schedule-stage:nth-child(3) > .schedule-stage__title > h3 {
+  background: red;
+  background: linear-gradient(to right, #1d976c, #93f9b9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+.schedule-stage__title {
+  position: sticky;
+  left: 0;
+  padding-right: 13rem;
+  height: 100%;
+  padding-left: var(--padding);
+}
+.schedule-stage__title > h3 {
+  font-weight: 900;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); } /* Inicio del desplazamiento */
+  100% { transform: translateX(calc(-100% - 2rem)); } /* Fin del desplazamiento */
+}
+
+.schedule-stage_guide-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 350px;
+  grid-gap: 16rem;
+  /*animation: scroll 100s linear infinite;*/
+}
+
+.guide-slot {
+  color: white;
+  text-align: center;
+}
+.guide-slot > p {
+  text-align: center;
+  margin-bottom: 1rem;
+  
+}
+
+.guide-slot_card {
+  /*background: black;
+  border: 1px solid var(--border);
+  border-color: #b3b3b3;
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  padding: 1.6rem;
+  cursor: pointer;
+  text-align: center;*/
+  font-family:'Titillium Web', sans-serif;
+  line-height: 45px;  
+  margin: 20px auto 0;
+  padding: 0 50px;
+  background: #222;
+  color: #eee;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 0 7px #222;
+  text-shadow: 0 0 3px #fff;
+  position: relative;
+}
+
+
+
+.guide-slot_card > h4 {
+  margin-right: 5rem;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+
+[class*="band"] {
+  position: absolute;
+  width: 12px;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  box-shadow: inset 0px 10px 20px -10px #000, 
+              inset 0px -10px 20px -10px #000;
+}
+[class*="band"] * {
+  background: red;
+}
+.band:nth-child(1) { right: 15px; }
+.band:nth-child(2) { right: 35px; }
+.band:nth-child(3) { right: 55px; }
+
+.n0{
+   background: #ff0404;
+}
+
+.n1{
+   background: #9024dc;
+}
+
+.n2{
+   background: #1894cc;
+}
+
+.n3{
+   background: #489454;
+}
+.n4{
+  background: #f0ac14;
+}
+.n5{
+  background: #485cb4;
+}
+.n6{
+  background: #CD7F32;
+}
+.n7{
+  background: silver;
+}
+
+
+
+
+
+
+
+.mask {
+  height:  95px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mask span {
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  top: 150px;
+  padding-bottom: 6px;
+  
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  font-size: 1.5em;
+  font-family:'Titillium Web', sans-serif;
+  line-height: 30px;   
+  padding: 0 50px;
+}
+
+.mask span[data-show] {
+  transform: translateY(-100%);
+  transition: .5s transform ease-in-out;
+}
+
+.mask span[data-up] {
+  transform: translateY(-200%);
+  transition: .5s transform ease-in-out;
+}
+
+.mask span:nth-child(1) {
+  background-image: linear-gradient(45deg, #0ecffe 50%, #07a6f1);
+}
+
+.mask span:nth-child(2) {
+  background-image: linear-gradient(45deg, #18e198 50%, #0ec15d);
+}
+
+.mask span:nth-child(3) {
+  background-image: linear-gradient(45deg, #8a7cfb 50%, #633e9c);
+}
+
+.mask span:nth-child(4) {
+  background-image: linear-gradient(45deg, #fa7671 50%, #f45f7f);
+}
+
+
+
+
+
+
+
+
+
+
+.heart label {
+  box-shadow: 0px 0px 0px 0px rgba(88, 123, 248, 0.5);
+}
+.heart label:after {
+  content: "\f256";
+}
+.heart input:checked + label {
+  background-color: #587bf8;
+  border-color: #587bf8;
+  box-shadow: 0px 0px 0px 0.5em rgba(88, 123, 248, 0);
+}
+.heart input:checked + label:after {
+  color: #587bf8;
+}
+.star label {
+  box-shadow: 0px 0px 0px 0px rgba(253, 151, 39, 0.5);
+}
+.star label:after {
+  content: "\f256";
+}
+.star input:checked + label {
+  background-color: #fd9727;
+  border-color: #fd9727;
+  box-shadow: 0px 0px 0px 0.5em rgba(253, 151, 39, 0);
+}
+.star input:checked + label:after {
+  color: #fd9727; 
+}
+.bookmark label {
+  box-shadow: 0px 0px 0px 0px rgba(140, 193, 82, 0.5);
+}
+.bookmark label:after {
+  content: "\f00c";
+}
+.bookmark input:checked + label {
+  background-color: #8cc152;
+  border-color: #8cc152;
+  box-shadow: 0px 0px 0px 0.5em rgba(140, 193, 82, 0);
+}
+.bookmark input:checked + label:after {
+  color: #8cc152;
+}
+.anim-icon {
+  width: 1.9em;
+  height: 1.9em;
+  margin: 17px;
+  margin-left: -40px;
+  font-size: 13px;
+  position: absolute;
+}
+.anim-icon input {
+  display: none;
+}
+.anim-icon label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 0.1em solid #ccc;
+  border-radius: 100%;
+  display: block;
+  font: normal normal normal 13px/1 FontAwesome;
+  color: #ccc;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.anim-icon label:after {
+  left: 0;
+  top: 50%;
+  margin-top: -0.5em;
+  display: block;
+  position: relative;
+  text-align: center;
+}
+.anim-icon input:checked + label {
+  -webkit-animation: check-in 0.3s forwards;
+          animation: check-in 0.3s forwards;
+  transition: background-color 0.1s 0.2s, box-shadow 1s;
+  border-width: 0.1em;
+  border-style: solid;
+}
+.anim-icon input:checked + label:after {
+  -webkit-animation: icon 0.3s forwards;
+          animation: icon 0.3s forwards;
+}
+.anim-icon-md {
+  font-size: 20px;
+}
+.anim-icon-lg {
+  font-size: 30px;
+}
+@-webkit-keyframes icon {
+  0% {
+    margin-top: -0.5em;
+    font-size: 1.5em;
+  }
+  100% {
+    font-size: 1em;
+    opacity: 1;
+    color: white;
+  }
+}
+@keyframes icon {
+  0% {
+    margin-top: -0.5em;
+    font-size: 1.5em;
+  }
+  100% {
+    font-size: 1em;
+    opacity: 1;
+    color: white;
+  }
+}
+@-webkit-keyframes check-in {
+  0% {
+    left: 20%;
+    top: 20%;
+    width: 60%;
+    height: 60%;
+  }
+  80% {
+    left: -5%;
+    top: -5%;
+    width: 110%;
+    height: 110%;
+  }
+  100% {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+@keyframes check-in {
+  0% {
+    left: 20%;
+    top: 20%;
+    width: 60%;
+    height: 60%;
+  }
+  80% {
+    left: -5%;
+    top: -5%;
+    width: 110%;
+    height: 110%;
+  }
+  100% {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+@-webkit-keyframes check {
+  0% {
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: 90%;
+  }
+  10% {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  80% {
+    left: -5%;
+    top: -5%;
+    width: 110%;
+    height: 110%;
+  }
+  90% {
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: 90%;
+  }
+  100% {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+@keyframes check {
+  0% {
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: 90%;
+  }
+  10% {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  80% {
+    left: -5%;
+    top: -5%;
+    width: 110%;
+    height: 110%;
+  }
+  90% {
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: 90%;
+  }
+  100% {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+</style>
+
+<body ng-app="studentsApp" ng-controller="Controller1">
+<div class="schedule-container" >
+  <div class="schedule-stage__wrapper">
+    <section class="schedule-stage">
+      
+  <div class="clock-container">
+   <div id="clock2" class="clock2"></div>   
+        <p class="date"> cargando...</p>
+  </div>   
+      <div class="schedule-stage__title" >
+      <!---<div id="clock" class="clock">loading ...</div> --->
+        
+       
+        
+  <div class="overlay">   
+  <div class="eleganttext">Mozart Studio Academy </div>  
+    
+    <div class="mask">
+    <span data-show> "La afirmación sin disciplina es el comienzo de la desilusión" </span>
+    <span ng-repeat="text in banner">"{{text.quote}}"</span>
+  </div>
+   <hr class="divider" />  
+</div>      
+      </div>
+      
+      
+      
+      <div class="schedule-stage_guide-container">
+        <div class="guide-slot"> 
+         <!--- <p style="color: black; font-size: 3rem; font-weight:900; font-family: Helvetica;">ALUMNOS</p>--->
+          
+      
+    <div class="guide-slot_card"> 
+   <div>
+      <div class="band 2">  </div>
+      <div class="band n2">  </div>
+     <div class="band n2">  </div>
+    </div>
+     <div class="anim-icon anim-icon-lg bookmark" id="bookmark">
+  <!-- <input type="checkbox" id="bookmark2" /> -->
+  <label for="bookmark"></label>
+</div>
+
+   <h1>Sergio</h1>  
+              <div class="statusText ">N0-2</div>   
+      
+</div>
+          
+   
+          
+     
+      <div class="guide-slot_card" ng-repeat="user in userData" ng-if="user.online == 1"> 
+        <div ng-repeat="n in [].constructor(user.blq) track by $index" class="band {{user.code}}" > </div>
+    <div class="anim-icon anim-icon-lg star">
+        <input type="checkbox" id="star{{$index}}" ng-checked="user.ready == 1" />
+        <label for="star{{$index}}"></label>
+    </div>
+    <h1>{{user.firstname}}</h1>  
+    <div class="statusText">{{user.level}}</div>   
+</div> 
+          
+          
+        </div>
+        
+        
+       
+      </div>
+    </section>
+    
+  </div>
+</div>
+</body>
+
+
+<script>
+  
+
+/*$('#clock2').fitText(0.6);*/
+
+function update() {
+  /*$('#clock').html(moment().format('D MMMM YYYY H:mm'));*/
+  $('#clock2').html(moment().format('H:mm '));
+  $('.date').html(moment().locale('es').format('dddd D [de] MMMM '));
+}
+
+
+
+setInterval(update, 1000);
+
+
+setInterval(function () {
+  const show = document.querySelector('span[data-show]')
+  const next = show.nextElementSibling || document.querySelector('span:first-child')
+  const up = document.querySelector('span[data-up]')
+  
+  if (up) {
+    up.removeAttribute('data-up')
+  }
+  
+  show.removeAttribute('data-show')
+  show.setAttribute('data-up', '')
+  
+  next.setAttribute('data-show', '')
+}, 10000)
+
+
+/*
+// Función para obtener la hora actual en formato HH:MM:SS
+function getCurrentTime() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+  return `${hours}:${minutes}`;
+}
+
+// Función para actualizar el reloj cada segundo
+function updateClock() {
+  const clockElement = document.getElementById('clock');
+  if (clockElement) {
+    clockElement.textContent = getCurrentTime();
+  }
+}
+
+// Actualizar el reloj cada segundo
+setInterval(updateClock, 1000);*/
+
+
+
+ angular.module('studentsApp', [])
+ .controller('Controller1', ['$http', '$scope', '$interval', function($http, $scope, $interval) {
+  $scope.userData = {};
+function obtenerDatos() {
+    $http({
+      method: 'GET',
+      url: 'https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(function(response) {
+        $scope.userData = response.data; 
+    });
+}  
+
+
+  $scope.banner = [
+    {"quote": "La afirmación sin disciplina es el comienzo de la desilusión"},
+    {"quote": "La afirmación sin disciplina es el comienzo de la desilusión"}
+  ]
+
+   obtenerDatos();
+  $interval(obtenerDatos, 1000);
+
+   
+
+}]);
+</script>
