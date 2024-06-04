@@ -1,4 +1,4 @@
-online<link href="http://gabrielw.de/dev/_storage/liquidcrystal/liquidcrystal.css" rel="stylesheet">
+<link href="http://gabrielw.de/dev/_storage/liquidcrystal/liquidcrystal.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
@@ -648,25 +648,7 @@ body {
         <div class="guide-slot"> 
          <!--- <p style="color: black; font-size: 3rem; font-weight:900; font-family: Helvetica;">ALUMNOS</p>--->
           
-      
-    <div class="guide-slot_card"> 
-   <div>
-      <div class="band 2">  </div>
-      <div class="band n2">  </div>
-     <div class="band n2">  </div>
-    </div>
-     <div class="anim-icon anim-icon-lg bookmark" id="bookmark">
-  <!-- <input type="checkbox" id="bookmark2" /> -->
-  <label for="bookmark"></label>
-</div>
-
-   <h1>Sergio</h1>  
-              <div class="statusText ">N0-2</div>   
-      
-</div>
-          
-   
-          
+  
      
       <div class="guide-slot_card" ng-repeat="user in userData" ng-if="user.online == 1"> 
         <div ng-repeat="n in [].constructor(user.blq) track by $index" class="band {{user.code}}" > </div>
