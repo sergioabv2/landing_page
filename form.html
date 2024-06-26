@@ -1,0 +1,573 @@
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+</head>
+
+<style>
+  body {
+  background: #aaa;
+  font-family: "Open Sans", sans-serif;
+}
+
+
+
+.begin-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;    /* Centra verticalmente */
+  height: 100vh; 
+  margin-top: 120px;
+}
+
+.begin {
+  border: 1px solid #e0e3eb;
+  border-radius: 5px;
+  font-size: 20px;
+  height: 50px;
+  width: 145px;
+  background: #007bff;
+  color: white;            /* Añadido para mejor contraste */
+  font-weight: 600;
+  padding: 10px 25px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.slider {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: #777;
+  overflow: hidden;
+}
+.slider__wrap {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(100vw);
+  top: 0%;
+  left: 0;
+  right: auto;
+  overflow: hidden;
+  transition: transform 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transform-origin: 0% 50%;
+  transition-delay: 450ms;
+  opacity: 0;
+}
+.slider__wrap--hacked {
+  opacity: 1;
+}
+.slider__back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: none;
+  transition: filter 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.slider__inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -5%;
+  right: 1%;
+  background-size: auto 133.3333%;
+  background-position: center;
+  background-repeat: none;
+  transform: scale(0.75);
+  transition: transform 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86), box-shadow 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 450ms step-end;
+  opacity: 0;
+  box-shadow: 0 3vh 3vh rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+}
+.slider__content {
+  position: relative;
+  top: 50%;
+  width: auto;
+  transform: translateY(-50%);
+
+  font-family: "Heebo", sans-serif;
+  opacity: 0;
+  transition: opacity 450ms;
+}
+.slider__content h3 {
+
+  font-size: 30px;
+}
+.slider__content h5 {
+  font-size: 23px;
+}
+
+.slider__slide {
+  position: absolute;
+  left: 0;
+  height: 100vh;
+  width: 111vw;
+  transition: transform 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition-delay: 600ms;
+  pointer-events: none;
+  z-index: 0;
+}
+.slider__slide--active {
+  transform: translatex(0%);
+  z-index: 2;
+}
+.slider__slide--active .slider__wrap {
+  transform: translateX(0);
+  transform-origin: 100% 50%;
+  opacity: 1;
+  -webkit-animation: none;
+          animation: none;
+}
+.slider__slide--active .slider__back {
+  filter: blur(1.5vh);
+  transition: filter 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition-delay: 900ms !important;
+}
+.slider__slide--active .slider__inner {
+  transform: scale(0.8);
+  box-shadow: 0 1vh 6vh rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+  opacity: 1;
+  transition: transform 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86), box-shadow 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 1ms step-end;
+  transition-delay: 900ms;
+}
+.slider__slide--active .slider__content {
+  opacity: 1;
+  transition-delay: 1350ms;
+}
+.slider__slide:not(.slider__slide--active) .slider__wrap {
+  -webkit-animation-name: hack;
+          animation-name: hack;
+  -webkit-animation-duration: 900ms;
+          animation-duration: 900ms;
+  -webkit-animation-delay: 450ms;
+          animation-delay: 450ms;
+  -webkit-animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+          animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+@-webkit-keyframes hack {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-100vw);
+    opacity: 1;
+  }
+  51% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  52% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100vw);
+    opacity: 1;
+  }
+}
+@keyframes hack {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-100vw);
+    opacity: 1;
+  }
+  51% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  52% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100vw);
+    opacity: 1;
+  }
+}
+.slider__slide:nth-child(1) .slider__back, .slider__slide:nth-child(1) .slider__inner {
+  background-image: url(https://i.ibb.co/BswdFTt/296e11fc9a7af89dbfedf3058a489814932df35c.jpg);
+}
+.slider__slide:nth-child(2) .slider__back, .slider__slide:nth-child(2) .slider__inner {
+  background-image: url(https://unsplash.it/1600/800/?image=929);
+}
+.slider__slide:nth-child(3) .slider__back, .slider__slide:nth-child(3) .slider__inner {
+  background-image: url(https://unsplash.it/1600/800/?image=927);
+}
+
+
+
+.settings-profile .custom-file {
+    display: inline-block;
+    width: 20%;
+    margin-left: 20px;
+}
+
+.settings-profile input, .settings-profile select {
+    border: 1px solid #e0e3eb;
+    border-radius: 5px;
+    font-size: 18px;
+    height: 50px;
+}
+
+.settings-profile input[type='submit'] {
+    background: #007bff;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 25px;
+    font-size: 20px;
+    height: 50px;
+    width: 145px;
+    margin-top: 10px;
+}
+
+.settings-profile a {
+  border: 1px solid #e0e3eb;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 50px;
+    width: 145px;
+    background: #007bff;
+    float: right;
+    font-weight: 600;
+    padding: 10px 25px;
+    margin-top: 10px;
+  cursor: pointer;
+}
+
+
+.settings-profile .custom-file label:after {
+  background: #007bff;
+  color: #fff;
+  font-weight: 600;
+}
+
+
+
+  label{
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+
+</style>
+
+<div ng-app="myApp" ng-controller="FormController">
+  <form name="registrationForm" ng-submit="submitForm()">
+    <div class="slider">
+      <div class="slider__slide slider__slide--active" data-slide="1">
+        <div class="slider__wrap">
+          <div class="slider__back"></div>
+        </div>
+        <div class="slider__inner">
+          <div class="slider__content">
+            <div class="begin-container">
+              <button type="button" class="go-to-next begin" ng-click="nextSlide()" style="margin-top: 20px; color: #fff;">Comenzar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider__slide" data-slide="2">
+        <div class="slider__wrap">
+          <div class="slider__back"></div>
+        </div>
+        <div class="slider__inner">
+          <div class="slider__content">
+            <div class="card">
+              <div class="card-body">
+                <h3>Formulario de registro</h3>
+                <div class="settings-profile">
+                  <h5 style="margin-top: 40px;">Datos de contacto</h5>
+                  <div class="form-row mt-4">
+                    <div class="col-md-6">
+                      <label for="formFirst">Nombre</label>
+                      <input id="formFirst" type="text" class="form-control" placeholder="Nombre completo" autocomplete="off" ng-model="formData.nombre">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="phone">Teléfono</label>
+                      <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="Plan">Membresía</label>
+                      <select id="Plan" class="custom-select" ng-model="formData.plan" ng-disabled="isDiscountApplied" >
+                        <option ng-repeat="plan in plans" ng-value="plan">{{plan}}</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="discount">Código de descuento</label>
+                      <input id="discount" type="text" inputmode="numeric" class="form-control" autocomplete="off" maxlength="5" pattern="^[0-9]*$" style="width: 150px;" ng-model="formData.descuento">
+                      <button type="button" class="btn btn-primary mt-2" ng-click="applyDiscount()">Aplicar Código</button>
+                      <p class="text-success mt-2" ng-show="isDiscountValid">¡Código de descuento válido!</p>
+                      <p class="text-danger mt-2" ng-show="isDiscountInvalid">Código de descuento inválido.</p>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <a type="button" class="go-to-next" ng-click="nextSlide(); updateDayList()" style="margin-top: 20px; color: #fff;">Siguiente</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider__slide" data-slide="3">
+        <div class="slider__wrap">
+          <div class="slider__back"></div>
+        </div>
+        <div class="slider__inner">
+          <div class="slider__content">
+            <div class="card">
+              <div class="card-body">
+                <h3>Formulario de registro</h3>
+                <div class="settings-profile">
+                  <h5 style="margin-top: 40px;">Horario de clase</h5>
+                  <div class="form-row mt-4">
+                    <div class="col-md-6">
+                      <label for="dayList">Día</label>
+                      <select id="dayList" class="form-control" ng-model="formData.dia" ng-change="updateHourList()" ng-options="day for day in days">
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label ng-if="formData.dia" for="hourList">Hora</label>
+                      <select ng-if="formData.dia" id="hourList" class="form-control" ng-model="formData.hora" ng-options="hour for hour in hours">
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label ng-if="formData.hora" for="dateClass">Fecha de tu primer clase</label>
+                      <select ng-if="formData.hora" id="dateClass" class="form-control" ng-model="formData.fecha" ng-options="date for date in dates">
+                      </select>
+                    </div>
+                    <div class="col-md-12">
+                      <a type="submit" class="go-to-next" style="margin-top: 20px; float: right; color: white">Registrar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider__indicators"></div>
+    </div>
+  </form>
+</div>
+
+
+
+<script>
+  $(document).ready(function(){
+    for (var i = 1; i <= $('.slider__slide').length; i++) {
+      $('.slider__indicators').append('<div class="slider__indicator" data-slide="' + i + '"></div>')
+    }
+    setTimeout(function(){
+      $('.slider__wrap').addClass('slider__wrap--hacked');
+    }, 1000);
+  });
+
+  function goToSlide(number) {
+    $('.slider__slide').removeClass('slider__slide--active');
+    $('.slider__slide[data-slide=' + number + ']').addClass('slider__slide--active');
+  }
+
+  $('.slider__next, .go-to-next').on('click', function(){
+    var currentSlide = Number($('.slider__slide--active').data('slide'));
+    var totalSlides = $('.slider__slide').length;
+    currentSlide++;
+    if (currentSlide > totalSlides) {
+      currentSlide = 1;
+    }
+    goToSlide(currentSlide);
+  });
+
+angular.module('myApp', [])
+  .controller('FormController', ['$scope', function($scope) {
+    $scope.formData = {};
+    $scope.plans = [
+      "Plan Standard - $500 MXN (4 sesiones)",
+      "Plan Pro - $750 MXN (8 sesiones)",
+      "Clase de 1 hora - $150 MXN"
+    ];
+
+    const originalPlans = angular.copy($scope.plans);
+    
+    $scope.isDiscountApplied = false;
+    $scope.isDiscountValid = false;
+    $scope.isDiscountInvalid = false;
+    
+    $scope.days = [];
+    $scope.dates = [];
+
+    $scope.classtime = {
+      lunes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      martes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      miercoles: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      jueves: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      viernes: ["11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
+      sabado: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
+      domingo: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs"]
+    };
+
+    $scope.capacity = {
+      lunes: {
+        "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 1,
+        "15:00 a 16:00 Hrs": 1,
+        "16:00 a 17:00 Hrs": 2,
+        "17:00 a 18:00 Hrs": 1,
+        "18:00 a 19:00 Hrs": 1
+      },
+      martes: {
+         "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 1,
+        "15:00 a 16:00 Hrs": 1,
+        "16:00 a 17:00 Hrs": 2,
+        "17:00 a 18:00 Hrs": 1,
+        "18:00 a 19:00 Hrs": 1
+      },
+      miercoles: {
+        "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 1,
+        "15:00 a 16:00 Hrs": 1,
+        "16:00 a 17:00 Hrs": 2,
+        "17:00 a 18:00 Hrs": 1,
+        "18:00 a 19:00 Hrs": 1
+      },
+      jueves: {
+        "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 1,
+        "15:00 a 16:00 Hrs": 1,
+        "16:00 a 17:00 Hrs": 2,
+        "17:00 a 18:00 Hrs": 1,
+        "18:00 a 19:00 Hrs": 1
+      },
+      viernes: {
+        "11:00 a 12:00 Hrs": 1,
+        "12:00 a 13:00 Hrs": 2,
+        "13:00 a 14:00 Hrs": 1,
+        "14:00 a 15:00 Hrs": 2,
+        "15:00 a 16:00 Hrs": 2,
+      },
+      sabado: {
+        "9:00 a 10:00 Hrs": 1,
+        "10:00 a 11:00 Hrs": 3,
+        "11:00 a 12:00 Hrs": 2,
+        "14:00 a 15:00 Hrs": 4,
+        "15:00 a 16:00 Hrs": 2,
+      },
+      domingo: {
+        "9:00 a 10:00 Hrs": 1,
+        "10:00 a 11:00 Hrs": 2,
+        "11:00 a 12:00 Hrs": 3,
+        "12:00 a 13:00 Hrs": 2,
+      }
+    };
+    
+    $scope.updateDayList = function() {
+      var plan = $scope.formData.plan;
+      if (plan.includes("Standard") || plan.includes("Pro") || plan.includes("Descuento")) {
+        $scope.days = ["Jueves", "Viernes", "Sábado", "Domingo"];
+      } else if (plan.includes("de")) {
+        $scope.days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+      } else if (plan.includes("ESTUDIANTE")) {
+        $scope.days = ["Lunes", "Martes", "Miércoles", "Jueves", "Sábado"];
+      }
+    };
+
+    $scope.updateHourList = function() {
+      var plan = $scope.formData.plan;
+      var day = $scope.formData.dia;
+      $scope.dates = getDat(day);
+      const selectedDay = $scope.formData.dia.toLowerCase();
+      const availableHours = $scope.classtime[selectedDay] || [];
+      $scope.hours = availableHours.filter(hour => $scope.capacity[selectedDay][hour] > 0);
+      if (plan.includes("ESTUDIANTE") && day == "Sábado") {
+        $scope.hours = ["13:00 a 14:00 Hrs"];
+      }
+    };
+
+    $scope.submitForm = function() {
+      console.log('Form submitted with:', $scope.formData);
+    };
+
+    $scope.discountPlan = "Plan Descuento -20% $400 MXN (4 sesiones)";
+    $scope.discountPlan2 = "Plan ESTUDIANTE - $250 MXN (4 sesiones)";
+    $scope.applyDiscount = function() {
+      if ($scope.formData.descuento == '07865') {
+        $scope.plans = [$scope.discountPlan];
+        $scope.isDiscountApplied = true;
+        $scope.isDiscountValid = true;
+        $scope.isDiscountInvalid = false;
+        $scope.formData.plan = $scope.discountPlan;
+      } else if ($scope.formData.descuento == '09865') {
+        $scope.plans = [$scope.discountPlan2];
+        $scope.isDiscountApplied = true;
+        $scope.isDiscountValid = true;
+        $scope.isDiscountInvalid = false;
+        $scope.formData.plan = $scope.discountPlan2;
+      } else {
+        $scope.plans = originalPlans;
+        $scope.isDiscountApplied = false;
+        $scope.isDiscountValid = false;
+        $scope.isDiscountInvalid = true;
+      }
+    };
+    
+    function getDat(day) {
+      const options = { weekday: 'long', month: 'long', day: 'numeric' };
+      const date1 = new Date();
+      const currentDay = date1.getDay();
+      var dayOfWeek = getNumDay(day);
+      const daysUntilNextDay = (dayOfWeek + 7 - currentDay) % 7;
+      const daysToAdd = daysUntilNextDay === 0 ? 7 : daysUntilNextDay;
+      date1.setDate(date1.getDate() + daysToAdd);
+      var date2 = new Date(date1);
+      date2.setDate(date2.getDate() + 7);
+  
+      var dat1 = date1.toLocaleDateString("es-mx", options).replace(",", "");
+      var dat2 = date2.toLocaleDateString("es-mx", options).replace(",", "");
+      return [dat1.charAt(0).toUpperCase() + dat1.slice(1), dat2.charAt(0).toUpperCase() + dat2.slice(1)];
+    }
+
+    function getNumDay(day) {
+      switch(day) {
+        case "Domingo":
+          return 0;
+        case "Lunes":
+          return 1;
+        case "Martes":
+          return 2;
+        case "Miércoles":
+          return 3;
+        case "Jueves":
+          return 4;
+        case "Viernes":
+          return 5;
+        case "Sábado":
+          return 6;
+        default:
+          return 0;
+      }
+    }
+  }]);
+
+</script>
