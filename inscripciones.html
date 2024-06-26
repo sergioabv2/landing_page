@@ -7,6 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
 </head>
 
+
 <style>
   body {
   background: #aaa;
@@ -298,16 +299,18 @@
                       <label for="formFirst">Nombre</label>
                       <input id="formFirst" type="text" class="form-control" placeholder="Nombre completo" autocomplete="off" ng-model="formData.nombre">
                     </div>
-                   <div class="col-md-6">
+         <div class="col-md-6">
   <label for="phone">Teléfono</label>
   <div class="input-group">
-    <select class="custom-select" id="countryCode" ng-model="formData.countryCode" style="max-width: 100px;">
-      <option value="+52">🇲🇽 +52</option>
+    <div class="input-group-prepend">
+      <select id="country-code" class="custom-select">
+       <option value="+52">🇲🇽 +52</option>
       <option value="+1">🇺🇸 +1</option>
       <option value="+1">🇨🇦 +1</option>
       <option value="+57">🇨🇴 +57</option>
       <option value="+54">🇦🇷 +54</option>
-    </select>
+      </select>
+    </div>
     <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono">
   </div>
 </div>
@@ -382,8 +385,10 @@
             <div class="card">
               <div class="card-body">
                 <h3>Registro completado</h3> <br>
-                <span> Su clase ha sido agendada con exito.<br> Recibirá un mensaje de recordatorio un día antes de la fecha programada para su primer clase. </span>
-              </div>
+              <span>
+  Su clase ha sido agendada con éxito.<br>
+  Recibirá un mensaje de recordatorio un día antes de la fecha programada para su primera clase.
+</span>
             </div>
           </div>
         </div>
@@ -395,12 +400,11 @@
 </div>
 
 
-
 <script>
   
 
 angular.module('myApp', [])
-  .controller('FormController', ['$scope', function($scope) {
+  .controller('FormController', ['$scope', '$http', function($scope, $http) {
     $scope.formData = {};
     $scope.plans = [
       "Plan Standard - $450 MXN (4 sesiones)",
@@ -421,10 +425,10 @@ angular.module('myApp', [])
     $scope.classtime = {
       lunes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
       martes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      miercoles: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      jueves: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      miercoles: [ "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
+      jueves: [ "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
       viernes: ["11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
-      sabado: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
+      sabado: [ "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
       domingo: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs"]
     };
 
@@ -432,20 +436,20 @@ angular.module('myApp', [])
       lunes: {
         "12:00 a 13:00 Hrs": 2,
         "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
+        "14:00 a 15:00 Hrs": 2,
+        "15:00 a 16:00 Hrs": 2,
         "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
+        "17:00 a 18:00 Hrs": 2,
+        "18:00 a 19:00 Hrs": 2
       },
       martes: {
          "12:00 a 13:00 Hrs": 2,
         "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
+        "14:00 a 15:00 Hrs": 2,
+        "15:00 a 16:00 Hrs": 2,
         "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
+        "17:00 a 18:00 Hrs": 2,
+        "18:00 a 19:00 Hrs": 2
       },
       miercoles: {
         "12:00 a 13:00 Hrs": 2,
@@ -489,12 +493,12 @@ angular.module('myApp', [])
     
     $scope.updateDayList = function() {
       var plan = $scope.formData.plan;
-      if (plan.includes("Standard") || plan.includes("Pro") || plan.includes("Descuento")) {
-        $scope.days = ["Jueves", "Viernes", "Sábado", "Domingo"];
+      if (plan.includes("Standard") || plan.includes("Pro") || plan.includes("Descuento") || plan.includes("PREMIUM")) {
+        $scope.days = ["Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
       } else if (plan.includes("de")) {
-        $scope.days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+        $scope.days = ["Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
       } else if (plan.includes("ESTUDIANTE")) {
-        $scope.days = ["Lunes", "Martes", "Miércoles", "Jueves", "Sábado"];
+        $scope.days = ["Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
       }
     };
 
@@ -510,9 +514,6 @@ angular.module('myApp', [])
       }
     };
 
-    $scope.submitForm = function() {
-      console.log('Form submitted with:', $scope.formData);
-    };
 
     $scope.discountPlan = "Plan Descuento -12% $400 MXN (4 sesiones)";
     $scope.discountPlan2 = "Plan ESTUDIANTE - $350 MXN (4 sesiones)";
@@ -547,10 +548,13 @@ angular.module('myApp', [])
       date1.setDate(date1.getDate() + daysToAdd);
       var date2 = new Date(date1);
       date2.setDate(date2.getDate() + 7);
+      var date3 = new Date(date2);
+      date3.setDate(date3.getDate() + 7);
   
       var dat1 = date1.toLocaleDateString("es-mx", options).replace(",", "");
       var dat2 = date2.toLocaleDateString("es-mx", options).replace(",", "");
-      return [dat1.charAt(0).toUpperCase() + dat1.slice(1), dat2.charAt(0).toUpperCase() + dat2.slice(1)];
+      var dat3 = date3.toLocaleDateString("es-mx", options).replace(",", "");
+      return [dat1.charAt(0).toUpperCase() + dat1.slice(1), dat2.charAt(0).toUpperCase() + dat2.slice(1), dat3.charAt(0).toUpperCase() + dat3.slice(1)];
     }
 
     function getNumDay(day) {
@@ -586,10 +590,40 @@ angular.module('myApp', [])
      $scope.submitForm = function() {
     if ($scope.formData.dia && $scope.formData.hora && $scope.formData.fecha) {
       $scope.nextSlide();
+      $scope.sendData($scope.formData.nombre, $scope.formData.telefono, $scope.formData.plan, $scope.formData.dia, $scope.formData.hora, $scope.formData.fecha);
+
     } else {
       alert('Por favor, complete todos los campos requeridos.');
     }
   };
+    
+    
+    $scope.sendData = function(name, phone, plan, day, hour, date){
+       var requestData = {
+    action: "postForm",
+    name: name,
+    phone: phone,
+    plan: plan,
+    day: day,
+    hour: hour,
+    date: date ,   
+    }
+
+  var config = {
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    followRedirects: true, 
+  };
+
+ $http.post('https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec', requestData, config)
+    .then(function(response) {
+    setTimeout(function() {
+            window.location.href = 'https://www.mozart.studio';
+        }, 4000);
+
+  })
+    };
     
     
     
