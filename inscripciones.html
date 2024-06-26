@@ -2,8 +2,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
-
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
@@ -199,13 +197,16 @@
   }
 }
 .slider__slide:nth-child(1) .slider__back, .slider__slide:nth-child(1) .slider__inner {
-  background-image: url(https://i.ibb.co/BswdFTt/296e11fc9a7af89dbfedf3058a489814932df35c.jpg);
+  background-image: url(https://lh3.googleusercontent.com/d/1oLg2FeKcJuJ9p0zDK2Z0WnTb15HyaGV-);
 }
 .slider__slide:nth-child(2) .slider__back, .slider__slide:nth-child(2) .slider__inner {
-  background-image: url(https://unsplash.it/1600/800/?image=929);
+  background-image: url(https://lh3.googleusercontent.com/d/1nDZsSdIct2LvW2KC44UX2zMImK_OnaXL);
 }
 .slider__slide:nth-child(3) .slider__back, .slider__slide:nth-child(3) .slider__inner {
-  background-image: url(https://unsplash.it/1600/800/?image=927);
+  background-image: url(https://lh3.googleusercontent.com/d/1C6BFYOMriR8d6puGHAka85KNJe4WVZmi);
+}
+.slider__slide:nth-child(4) .slider__back, .slider__slide:nth-child(4) .slider__inner {
+  background-image: url(https://lh3.googleusercontent.com/d/1p_HHTHKDce0akyVP-M3oicvNGanHU4Xa);
 }
 
 
@@ -297,10 +298,19 @@
                       <label for="formFirst">Nombre</label>
                       <input id="formFirst" type="text" class="form-control" placeholder="Nombre completo" autocomplete="off" ng-model="formData.nombre">
                     </div>
-                    <div class="col-md-6">
-                      <label for="phone">Teléfono</label>
-                      <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono">
-                    </div>
+                   <div class="col-md-6">
+  <label for="phone">Teléfono</label>
+  <div class="input-group">
+    <select class="custom-select" id="countryCode" ng-model="formData.countryCode" style="max-width: 100px;">
+      <option value="+52">🇲🇽 +52</option>
+      <option value="+1">🇺🇸 +1</option>
+      <option value="+1">🇨🇦 +1</option>
+      <option value="+57">🇨🇴 +57</option>
+      <option value="+54">🇦🇷 +54</option>
+    </select>
+    <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono">
+  </div>
+</div>
                     <div class="col-md-6">
                       <label for="Plan">Membresía</label>
                       <select id="Plan" class="custom-select" ng-model="formData.plan" ng-disabled="isDiscountApplied" >
@@ -316,7 +326,7 @@
                     </div>
                   </div>
                   <div class="col-md-12">
-                    <a type="button" class="go-to-next" ng-click="nextSlide(); updateDayList()" style="margin-top: 20px; color: #fff;">Siguiente</a>
+                    <a type="button" class="go-to-next" ng-click="checkAndProceed()" style="margin-top: 20px; color: #fff;">Siguiente</a>
                   </div>
                 </div>
               </div>
@@ -353,10 +363,26 @@
                       </select>
                     </div>
                     <div class="col-md-12">
-                      <a type="submit" class="go-to-next" style="margin-top: 20px; float: right; color: white">Registrar</a>
+                      <a type="submit" ng-click="submitForm()" style="margin-top: 20px; float: right; color: white">Registrar</a>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="slider__slide" data-slide="4">
+        <div class="slider__wrap">
+          <div class="slider__back"></div>
+        </div>
+        <div class="slider__inner">
+          <div class="slider__content">
+            <div class="card">
+              <div class="card-body">
+                <h3>Registro completado</h3> <br>
+                <span> Su clase ha sido agendada con exito.<br> Recibirá un mensaje de recordatorio un día antes de la fecha programada para su primer clase. </span>
               </div>
             </div>
           </div>
@@ -371,37 +397,16 @@
 
 
 <script>
-  $(document).ready(function(){
-    for (var i = 1; i <= $('.slider__slide').length; i++) {
-      $('.slider__indicators').append('<div class="slider__indicator" data-slide="' + i + '"></div>')
-    }
-    setTimeout(function(){
-      $('.slider__wrap').addClass('slider__wrap--hacked');
-    }, 1000);
-  });
-
-  function goToSlide(number) {
-    $('.slider__slide').removeClass('slider__slide--active');
-    $('.slider__slide[data-slide=' + number + ']').addClass('slider__slide--active');
-  }
-
-  $('.slider__next, .go-to-next').on('click', function(){
-    var currentSlide = Number($('.slider__slide--active').data('slide'));
-    var totalSlides = $('.slider__slide').length;
-    currentSlide++;
-    if (currentSlide > totalSlides) {
-      currentSlide = 1;
-    }
-    goToSlide(currentSlide);
-  });
+  
 
 angular.module('myApp', [])
   .controller('FormController', ['$scope', function($scope) {
     $scope.formData = {};
     $scope.plans = [
-      "Plan Standard - $500 MXN (4 sesiones)",
+      "Plan Standard - $450 MXN (4 sesiones)",
       "Plan Pro - $750 MXN (8 sesiones)",
-      "Clase de 1 hora - $150 MXN"
+      "Plan PREMIUM - $1350 MXN (16 sesiones)",
+      "1 clase de 1 hora - $150 MXN"
     ];
 
     const originalPlans = angular.copy($scope.plans);
@@ -509,8 +514,8 @@ angular.module('myApp', [])
       console.log('Form submitted with:', $scope.formData);
     };
 
-    $scope.discountPlan = "Plan Descuento -20% $400 MXN (4 sesiones)";
-    $scope.discountPlan2 = "Plan ESTUDIANTE - $250 MXN (4 sesiones)";
+    $scope.discountPlan = "Plan Descuento -12% $400 MXN (4 sesiones)";
+    $scope.discountPlan2 = "Plan ESTUDIANTE - $350 MXN (4 sesiones)";
     $scope.applyDiscount = function() {
       if ($scope.formData.descuento == '07865') {
         $scope.plans = [$scope.discountPlan];
@@ -568,6 +573,49 @@ angular.module('myApp', [])
           return 0;
       }
     }
+    
+    $scope.checkAndProceed = function() {
+    if ($scope.formData.nombre && $scope.formData.telefono && $scope.formData.plan) {
+      $scope.nextSlide();
+      $scope.updateDayList();
+    } else {
+      alert('Por favor, complete los campos requeridos.');
+    }
+  };
+    
+     $scope.submitForm = function() {
+    if ($scope.formData.dia && $scope.formData.hora && $scope.formData.fecha) {
+      $scope.nextSlide();
+    } else {
+      alert('Por favor, complete todos los campos requeridos.');
+    }
+  };
+    
+    
+    
+    $(document).ready(function(){
+    for (var i = 1; i <= $('.slider__slide').length; i++) {
+      $('.slider__indicators').append('<div class="slider__indicator" data-slide="' + i + '"></div>')
+    }
+    setTimeout(function(){
+      $('.slider__wrap').addClass('slider__wrap--hacked');
+    }, 1000);
+  });
+
+  function goToSlide(number) {
+    $('.slider__slide').removeClass('slider__slide--active');
+    $('.slider__slide[data-slide=' + number + ']').addClass('slider__slide--active');
+  }
+
+  $scope.nextSlide = function(){
+    var currentSlide = Number($('.slider__slide--active').data('slide'));
+    var totalSlides = $('.slider__slide').length;
+    currentSlide++;
+    if (currentSlide > totalSlides) {
+      currentSlide = 1;
+    }
+    goToSlide(currentSlide);
+  }
   }]);
 
 </script>
