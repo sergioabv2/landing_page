@@ -1,4 +1,8 @@
 <head>
+	 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1L1kLwLAt2KksPG2tN4tT1bRle4RqveWo" type="image/x-icon">
+    <title>Mozart Studio | Academia de Piano</title>
+	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 
@@ -594,26 +598,16 @@ $(document).ready(function() {
 
   //Angular Materialize
 var app = angular.module('materializeApp', ['ui.materialize']);
+
 app.factory('SharedState', function() {
- 
-
-  var getNum = function() {
-
-
-    return  3;
-  };
-
   return {
-    getNum: getNum
+    num: 3 // Inicializa la variable num aquí
   };
 });
 
-
   app
 .controller('levelP', ["$scope", "SharedState", function($scope, SharedState) {
-    SharedState.getNum().then(function(num) {
-    $scope.num = num;
-  })
+    $scope.num = SharedState.num
     $scope.allData = [
      {
           block: "Bloque 1",
@@ -1241,10 +1235,7 @@ app.factory('SharedState', function() {
   }])
 
 .controller('level1', ["$scope", "SharedState", function($scope, SharedState) {
-   SharedState.getNum().then(function(num) {
-    $scope.num = num;
-  })
-   
+   $scope.num = SharedState.num
  $scope.allData = [
      {
           block: "Bloque 1",
@@ -1823,10 +1814,8 @@ app.factory('SharedState', function() {
 
  
 .controller('level2', ["$scope", "SharedState", function($scope, SharedState) {
-   SharedState.getNum().then(function(num) {
-    $scope.num = num;
-  })
-    
+	
+   $scope.num = SharedState.num
   
    $scope.allData = [
      {
