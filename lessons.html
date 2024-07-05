@@ -594,29 +594,13 @@ $(document).ready(function() {
 
   //Angular Materialize
 var app = angular.module('materializeApp', ['ui.materialize']);
-app.factory('SharedState', function($http, $q) {
-  var requestData = {
-    action: "getBasicData",
-    token: "U2FsdGVkX19FDH1PRGhq4QhqBpHJ+YJUDdiHtUdlThTQ+RV5lSZX3UvmVjpZfkIT"
-  };
-
-  var config = {
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    }
-  };
+app.factory('SharedState', function() {
+ 
 
   var getNum = function() {
-    var deferred = $q.defer();
 
-    $http.post('https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec', requestData, config)
-      .then(function(response) {
-        deferred.resolve(response.data.id);
-      }, function(error) {
-        deferred.reject(error);
-      });
 
-    return deferred.promise;
+    return  3;
   };
 
   return {
