@@ -314,7 +314,7 @@
       <option value="+54">🇦🇷 +54</option>
       </select>
     </div>
-    <input type="text" inputmode="numeric" class="form-control" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono">
+    <input type="text" inputmode="numeric" maxlength="10" pattern="[0-9]*" class="form-control" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono">
   </div>
 </div>
                     <div class="col-md-6">
