@@ -170,7 +170,7 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
 }
 
 .wrap[data-pos="2"] .header { height: 0px }
-.wrap[data-pos="2"] .content { height: calc(100% - 80px); }
+.wrap[data-pos="2"] .content { height: calc(100% - 60px);  margin-top: -20px;}
 
 .form, .list, .ticket {
   float: left;
@@ -1639,9 +1639,17 @@ $('.zmdi-chevron-left').on('click', function() {
     }
     
     var selectedDay = selectedDateText.split(',')[0].trim().toLowerCase();
+   var name = $('.form__field.name').val()
+    var phone = $('.form__field.phone').val()
    if (selectedDay === "lunes" || selectedDay === "martes") {
         // Renderizar mensaje de que la academia está cerrada
         alert("La academia está cerrada los lunes y martes. Por favor, seleccione otra fecha.");
+    }else if(name == ""){
+      alert("Ingresa tu nombre")
+    }else if (phone === "") {
+    alert("Por favor, ingresa tu número de teléfono.");
+    } else if (!/^\d{10}$/.test(phone)) {
+    alert("Por favor, ingresa los 10 digitos de tu número de telefono.");
     } else {
         // Continuar con el renderizado de los vuelos
         doFlightsRender(false);
