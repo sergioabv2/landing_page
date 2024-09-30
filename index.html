@@ -28,14 +28,14 @@
 }
 
 input {
-  background-color: #202830!important;
-  color: white!important;
+  background-color: white !important;
+  color: black !important;
   margin-bottom: 5px;
 }
   
   select{
-    background-color: #202830!important;
-  color: white!important;
+    background-color:  white!important;
+  color: black !important;
     margin-bottom: 5px;
   }
 
@@ -48,7 +48,7 @@ input {
 
 
 .card {
-  background-color: #202830!important;
+  background-color: white !important;
 }
 
 
@@ -72,7 +72,7 @@ input {
 
 .card__side {
   transition: all 0.8s ease;
-  color: white;
+  color: black;
   font-size: 2rem;
   position: absolute;
   top: 0;
@@ -85,7 +85,7 @@ input {
 }
 
 .card__side--front {
-  background-color: #2196f3;
+  background-color: whiite;
   position: relative;
   background-position: center;
   background-repeat: no-repeat;
@@ -93,7 +93,7 @@ input {
 }
 
 .card__side--back {
-  background-color: #303f9f;
+  background-color: white;
   transform: rotateY(180deg);
   background-position: center;
   background-repeat: no-repeat;
@@ -191,15 +191,24 @@ hr {
   font-size: 18px;
   font-weight: 400;
   margin: 0px; 
-  color: #8198ae;
+  color: black;
 }
+
+   .swiper-container-main{
+     box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);
+  }
+  
+  .card-deck .card{
+     box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);
+  }
+
 
 .price-box{
   padding: 0px 25px;  
 }
 
 .price-box__wrap{
-  background-color: #202830!important;;
+  background-color: white !important;;
   border-radius:6px;
   box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2); /*0px 22px 20px -10px rgba(0, 0, 0,0.2)*/
   padding: 35px 35px 40px 35px;
@@ -251,7 +260,7 @@ hr {
 
 .price-box__people{
   font-size:12px;
-  color:#8198ae;
+  color:black;
   font-weight: 300;
   letter-spacing:1px;
 }
@@ -761,13 +770,13 @@ vertical-align: middle;
 
 
   .swiper-pagination-bullet {
-  background: white; /* Cambia el color de las bolitas a blanco */
+  background: black; /* Cambia el color de las bolitas a blanco */
 }
 
 .swiper-button-prev {
   position: absolute;
-  transform: translateX(-40%);
-  color: white;
+  transform: translateX(-40%) scale(0.7);
+  color: black;
 }
 
 .swiper-button-prev:focus {
@@ -777,8 +786,8 @@ vertical-align: middle;
 
 .swiper-button-next {
   position: absolute;
-  transform: translateX(40%);
-  color: white;
+  transform: translateX(40%) scale(0.7);
+  color: black;
   font-weight: 900;
 
 }
@@ -1021,7 +1030,6 @@ vertical-align: middle;
   height:130px;
   }
   .price-box__wrap {
-    background-color: #202830!important;;
   border-radius:6px;
   box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2); /*0px 22px 20px -10px rgba(0, 0, 0,0.2)*/
   padding: 35px 35px 40px 35px;
@@ -1200,30 +1208,33 @@ vertical-align: middle;
  
 </style>
   
-<body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-dark text-light">
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Mozart Academy</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+<body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-light text-dark">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-light fixed-top text-dark">
+    <a class="navbar-brand" href="#" style="color: black; font-weight: 600"> <img src="https://lh3.googleusercontent.com/d/1EIVHue1UhcSP-82ftLN01xyi_yp7s0de" width="35" height="35" style="margin-right: 10px; border-radius: 50%;"/>Mozart Academy</a>
+    <button class="navbar-toggler btn bg-dark" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#services">Servicios <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#services" style="color: black;">Servicios <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#payment">Planes de pago</a>
+          <a class="nav-link" href="#payment" style="color: black;">Planes de pago</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact">Informes</a>
+          <a class="nav-link" href="#contact" style="color: black;">Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact" style="color: black;">Galeria</a>
         </li>
       </ul>
 
       <div class="form-inline my-2 my-lg-0" style="float: right;">
       <!--  <input class="form-control mr-sm-2" type="email" placeholder="Usuario">
         <input class="form-control mr-sm-2" type="password" placeholder="Contraseña"> -->
-       <a href="https://app.mozartacademy.mx" ><button class="btn btn-outline-light my-2 my-sm-0"  >Inicia sesión</button></a>
+       <a href="https://app.mozartacademy.mx" ><button class="btn btn-outline-dark my-2 my-sm-0"  >Inicia sesión</button></a>
       </div>
     </div>
   </nav>
@@ -1242,8 +1253,8 @@ vertical-align: middle;
   
   
   <div id="services" class="container">
-    <h1 class="reduce">Bienvenido al mundo del piano!</h1>
-    <p id="summary-paragraph">Nos especializamos en el piano. Nuestras clases se enfocan en los fundamentos teóricos y técnicos de la lectura fluida de partituras y la limpieza en la interpretación de piezas. <br><br>Te ofrecemos:</p>
+    <h1 class="reduce">Innovamos la educación musical</h1>
+    <p id="summary-paragraph">Razones por las que Mozart Academy es tu mejor opción <br><br>Te ofrecemos:</p>
   </div>
   <div class="container">
     <div class="card-deck">
@@ -1318,7 +1329,7 @@ vertical-align: middle;
       </div>
 
       <div class="card">
-        <iframe class="card-img-top" id="youtube" src="https://www.youtube.com/embed/f0TeYaXzSjk?&autoplay=1" > </iframe>
+        <iframe class="card-img-top" id="youtube" src="https://www.youtube.com/embed/f0TeYaXzSjk?" > </iframe>
         <div class="card-body">
           <h5 class="card-title"><i class="ri-vidicon-2-fill"></i> Participación en eventos</h5>
           <p class="card-text">Participa en recitales, concursos y presentaciones en auditorios y en nuestras instalaciones. Te promocionamos en nuestras redes.</p>
@@ -1723,21 +1734,23 @@ vertical-align: middle;
   </div>
   </div>
 
-  <div id="contact" class="contact-info" style="background-color: #202830;">
+  <div id="contact" class="contact-info" style="background-color: #202830; color: white">
     <div class="container text-center strong-shadow ">
-  
+   <br>  <br>
       <h3 class="card-title"> Cupo limitado </h3>  
       <h2 class="card-title">¡Aparta tu lugar!</h2> <br>
      
-      <br>
+      <br> 
+      
     </div>    
   </div>
   
-  <div class="text-center" style="margin-top: 15px;">
+ 
+  
+  <section class="trial-block shadow3" style="background-color: #202830; color: white">
+     <div class="text-center" > <br>  
             <button class="btn btn-outline-light mb-2" id="redirectButton">Más información</button>
           </div>
-  
-  <section class="trial-block shadow3">
              <div class="social-overlap process-scetion ">
               <div class="container">
                   <div class="row justify-content-center">
@@ -1765,7 +1778,7 @@ vertical-align: middle;
 
   <footer class="fixed-bottom">
       <div class="col-md-2 col-xs-6">
-       <h1 class="footer__title">mozart<span class="footer__light">.studio</span></h1>   
+       <h1 class="footer__title">Mozart<span class="footer__light"> Academy</span></h1>   
       </div> 
   </footer>
 
