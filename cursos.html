@@ -597,7 +597,9 @@ $scope.courses = [
   
   
   $scope.openLesson = function(course) {
-    window.location.href = course.url;
+    if(course.url){
+        window.location.href = course.url;
+    }
    /* $scope.selectedItem = course.title;
     $scope.selectedURL = course.url;
     document.getElementById("lesson-container").style.display = "block"
