@@ -190,6 +190,7 @@ body {
   font-size: 13px;
   font-weight: 600;
   margin-top: 14px;
+  cursor: pointer;
 }
 
 .job-wrapper {
@@ -591,7 +592,7 @@ body {
    Mozart Academy
   </div>
  <div class="header-menu">
-      <a href="/#payment">Planes de pago</a>
+      <a href="/payment">Planes de pago</a>
  <a class="active">Cursos</a>
     <a href="https://app.mozartacademy.mx" ><button class="search-buttons card-buttons-msg" style="width: 100px;" >Inicia sesión</button></a>
    </div> 
@@ -604,44 +605,27 @@ body {
   <div class="main-container" id="main-container">
  <div class="search-type">
     <div class="alert">
-     <div class="alert-title">Create Job Alert</div>
-     <div class="alert-subtitle">Create a job alert now and never miss a job</div>
+     <div class="alert-title">Accede a todo nuestro contenido con una subscripción mensual</div> <br>
+     <div class="alert-subtitle">Consulta nuestros planes de pago</div>
      
-     <button class="search-buttons">Create Job Alerts</button>
+     <button class="search-buttons" style="float: right;">Más información</button>
     </div>
     <div class="job-time">
-     <div class="job-time-title">Type of Employment</div>
+     <div class="job-time-title">Escoge tus cursos</div>
      <div class="job-wrapper">
-      <div class="type-container">
-       <input type="checkbox" id="job1" class="job-style" checked>
-       <label for="job1">Full Time Jobs</label>
-       <span class="job-number">56</span>
-      </div>
-      <div class="type-container">
-       <input type="checkbox" id="job2" class="job-style">
-       <label for="job2">Part Time Jobs</label>
-       <span class="job-number">43</span>
-      </div>
-      <div class="type-container">
-       <input type="checkbox" id="job3" class="job-style">
-       <label for="job3">Remote Jobs</label>
-       <span class="job-number">24</span>
-      </div>
-      <div class="type-container">
-       <input type="checkbox" id="job4" class="job-style">
-       <label for="job4">Internship Jobs</label>
-       <span class="job-number">27</span>
-      </div>
-      <div class="type-container">
-       <input type="checkbox" id="job5" class="job-style">
-       <label for="job5">Contract</label>
-       <span class="job-number">76</span>
-      </div>
-      <div class="type-container">
-       <input type="checkbox" id="job6" class="job-style">
-       <label for="job6">Training Jobs</label>
-       <span class="job-number">28</span>
-      </div>
+       
+   <div class="type-container" ng-repeat="course in courses track by $index">
+   <input type="checkbox" id="job{{$index}}" class="job-style" ng-model="course.selected" ng-change="updateTotal()">
+   <label for="job{{$index}}">{{course.title}}</label>
+   <span class="job-number">$ {{course.price}}</span>
+</div>
+       
+       <div class="total-container" style="margin-top: 25px;">
+         Total: <span style="float: right;"> ${{totalPrice}} MXN </span>
+           <button class="search-buttons card-buttons-msg" id="buyButton">Comprar</button>
+</div>
+       
+
      </div>
     </div>
    </div>
@@ -685,55 +669,100 @@ body {
   </div>
 
 
+
+
+
 <script>
-  //$(document).ready(function() {
-//$('.search-box').focus();
-//});
 
-
-
-
-  //Angular Materialize
 var app = angular.module('app', []);
 
 
-app.controller('main', ["$scope", "$sce", "$http", function($scope, $sce, $http) {
+app.controller('main', function($scope) {
   // Datos de los cursos
 $scope.courses = [
-  {"img": "https://lh3.googleusercontent.com/d/1hehOXFySwwgHSYm5ND5NInQoosAscMvx", "price": "3000", "title": "Taller de Piano", "description": "En este curso aprenderás los fundamentos de la lectura de partituras", "NoLsns": "12 lecciones", 
-    "time": "20 horas", "level": "Principiante", "url": "https://www.mozartacademy.mx/lessons"},{"img": "https://lh3.googleusercontent.com/d/1z3SvZ_B3VTvEgcCrW_Cscx1D1X5z8md6","bg": "https://lh3.googleusercontent.com/d/1KdPZwT1dWIfSYoP-BsXA9P1tUgapEx9L", "title": "Taller de Piano - Avanzado", "description": "En este curso aprenderás los fundamentos de armonía", "NoLsns": "9 lecciones", 
-    "time": "22 horas", "level": "Avanzado"},{"img": "https://lh3.googleusercontent.com/d/1B_IxvzjTkE-2F_WWsTkhHegGajrswoQr","bg": "", "title": "Solfeo", "description": "En este curso aprenderás los fundamentos de la lectura de partituras", "NoLsns": "12 lecciones", 
-    "time": "20 horas", "level": "principiante"},{"img": "https://lh3.googleusercontent.com/d/10OB7GYosbcANXqMyUxuiRkvZzIq_9Jvz", "title": "Lectura a primer vista", "description": "En este curso aprenderás los fundamentos de armonía", "NoLsns": "9 lecciones", 
-    "time": "22 horas", "level": "intermedio temprano"},{"img": "https://lh3.googleusercontent.com/d/1SFRiqJ5HL7-R6gJf6apLtMVNJJGnZYff", "bg": "https://lh3.googleusercontent.com/d/1BqTh4jdVtF83wfGea9Eimk0JtAZYxu-4", "title": "Historia de la música", "description": "En este curso aprenderás los fundamentos de armonía", "NoLsns": "9 lecciones", 
-    "time": "22 horas", "level": "intermedio temprano"},{"img": "https://lh3.googleusercontent.com/d/1k1WcmpMRCDYEjq0GC6Ed2vakvYjcu17X", "title": "Biografías de compositores", "description": "En este curso aprenderás los fundamentos de armonía", "NoLsns": "9 lecciones", 
-    "time": "22 horas", "level": "intermedio temprano"},{"img": "https://lh3.googleusercontent.com/d/1AP246MlVz0lKOQri6ly-ybwc4GgScGzf", "title": "Taller de Composición", "description": "En este curso aprenderás los fundamentos de armonía", "NoLsns": "9 lecciones", 
-    "time": "22 horas", "level": "intermedio temprano"}
-]
-  
+  {
+    "img": "https://lh3.googleusercontent.com/d/1hehOXFySwwgHSYm5ND5NInQoosAscMvx", 
+    "price": "3000", 
+    "title": "Taller de Piano", 
+    "description": "En este curso aprenderás los fundamentos de la lectura de partituras", 
+    "NoLsns": "5 Modulos", 
+    "time": "20 horas", 
+    "level": "Principiante", 
+    "url": "https://www.mozartacademy.mx/lessons"
+  },
+  {
+    "img": "https://lh3.googleusercontent.com/d/1z3SvZ_B3VTvEgcCrW_Cscx1D1X5z8md6", 
+    "price": "5000", 
+    "title": "Curso de Piano Avanzado", 
+    "description": "Perfecciona tu técnica y amplía tu repertorio musical con este curso diseñado para pianistas que buscan un mayor desafío.", 
+    "NoLsns": "3 Módulos", 
+    "time": "22 horas", 
+    "level": "Avanzado"
+  },
+  {
+    "img": "https://lh3.googleusercontent.com/d/1W2aGnwRwtbQ4NVLjw9RKjbtsSdR7wYQc", 
+    "price": "1000", 
+    "title": "Solfeo", 
+    "description": "Aprende a leer notas con este enfoque teórico", 
+    "NoLsns": "2 Módulos", 
+    "time": "20 horas", 
+    "level": "principiante"
+  },
+  {
+    "img": "https://lh3.googleusercontent.com/d/10OB7GYosbcANXqMyUxuiRkvZzIq_9Jvz", 
+    "price": "1000", 
+    "title": "Lectura a primer vista", 
+    "description": "Mejora tu habilidad para leer partituras al instante y aumenta tu fluidez al tocar nuevas piezas musicales", 
+     "NoLsns": "4 Módulo", 
+    "time": "22 horas", 
+    "level": "intermedio temprano"
+  },
+  {
+    "img": "https://lh3.googleusercontent.com/d/1-A9oZ5hVHzA1WyhkUkIC4DnF1gYL1uto", 
+    "price": "5000", 
+    "title": "Historia de la música", 
+    "description": "Explora la evolución de la música a través de los siglos y conoce los estilos, compositores y obras más influyentes.", 
+    "NoLsns": "4 Módulos", 
+    "time": "22 horas", 
+    "level": "intermedio temprano"
+  },
+  {
+    "img": "https://lh3.googleusercontent.com/d/1qBSPqmPqcnh7W0Z7EGvIrml9XvvfLuoW", 
+    "price": "2000", 
+    "title": "Biografías de compositores", 
+    "description": "Descubre las vidas y obras de los grandes compositores de la historia y cómo su legado ha influido en la música actual.", 
+    "NoLsns": "2 Modulos", 
+    "time": "22 horas", 
+    "level": "Intermedio"
+  },
+  {
+    "img": "https://lh3.googleusercontent.com/d/1AP246MlVz0lKOQri6ly-ybwc4GgScGzf", 
+    "price": "3000", 
+    "title": "Taller de Composición", 
+    "description": "Este curso aborda las bases estructurales de una composición musical, desde la melodía hasta la armonía, además de como desarrollar tu creatividad.", 
+    "NoLsns": "3 Módulos", 
+    "time": "22 horas", 
+    "level": "Intermedio"
+  }
+];
+
+ 
   
   $scope.openLesson = function(course) {
     if(course.url){
         window.location.href = course.url;
     }
-   /* $scope.selectedItem = course.title;
-    $scope.selectedURL = course.url;
-    document.getElementById("lesson-container").style.display = "block"
-    document.getElementById("main-container").style.display = "none"
-    document.querySelector(".wrapper").style.display = "none";*/
-
   
   };
-
   
-  $scope.trustAsResourceUrl = function(url) {
-        return $sce.trustAsResourceUrl(url);
-    };
+  
+  $scope.totalPrice = 0;
 
-}])
+$scope.updateTotal = function() {
+    $scope.totalPrice = $scope.courses
+        .filter(course => course.selected)
+        .reduce((sum, course) => sum + parseFloat(course.price), 0);
+};
 
-
+})
 </script>
-
-
-
- 
