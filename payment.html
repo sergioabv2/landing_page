@@ -13,6 +13,8 @@
 </head>
 
 <style> 
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+  
   *,
 *:after,
 *:before{
@@ -322,7 +324,119 @@ input[type="radio"]:checked + .option h3{
   border-color: #454cad;
   cursor: pointer;
 }
+  
+
+
+
+:root {
+  --body-bg-color: #e5ecef;
+  --theme-bg-color: #fafafb;
+  --body-font: "Poppins", sans-serif;
+  --body-color: #2f2f33;
+  --active-color: #0162ff;
+  --active-light-color: #e1ebfb;
+  --header-bg-color: #fff;
+  --search-border-color: #efefef;
+  --border-color: #d8d8d8;
+  --alert-bg-color: #e8f2ff;
+  --subtitle-color: #83838e;
+  --inactive-color: #f0f0f0;
+  --placeholder-color: #9b9ba5;
+  --time-button: #fc5757;
+  --level-button: #5052d5;
+  --button-color: #fff;
+}
+  
+  .logo {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+}
+.logo svg {
+  width: 24px;
+  margin-right: 12px;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+ box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  padding: 0 40px;
+  white-space: nowrap;
+  background-color: var(--header-bg-color);
+  height: 60px;
+  width: 100%;
+  font-size: 14px;
+  justify-content: space-between;
+}
+.header-menu a {
+  text-decoration: none;
+  color: var(--body-color);
+  font-weight: 500;
+}
+.header-menu a:hover {
+  color: var(--active-color);
+}
+.header-menu a:not(:first-child) {
+  margin-left: 30px;
+}
+.header-menu a.active {
+  color: var(--active-color);
+}
+.search-buttons {
+  border: none;
+  color: var(--button-color);
+  background-color: var(--active-color);
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+
+}
+
+  
+  
+  @media screen and (max-width: 620px) {
+  .job-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+.header{
+    margin-left: -15px;
+    width: 110%;
+  }
+      .header-menu {
+    display: none;
+  }
+}
+@media screen and (min-width: 620px) {
+    #loginButton{
+    display: none;
+  }
+     .header-menu{
+    margin-right: -20px;
+  }
+  }
 </style>
+
+
+    <div class="header">
+  <div class="logo" onclick="window.top.location.href='https://www.mozartacademy.mx';">
+  <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="35" height="35" style="margin-right: 10px; border-radius: 50%;"/>
+   Mozart Academy
+  </div>
+ <div class="header-menu">
+      <a  class="active">Planes de pago</a>
+ <a href="/courses">Cursos</a>
+    <a href="https://app.mozartacademy.mx" ><button class="search-buttons card-buttons-msg" style="width: 100px;" >Inicia sesión</button></a>
+   </div> 
+
+           <a href="https://app.mozartacademy.mx"  id="loginButton" ><button class="search-buttons card-buttons-msg" style="float: right" >Inicia sesión</button></a>
+ </div>  
+
 
 <div class="tab" style="display: none;" id="sendStatus">
     <div class="container">
