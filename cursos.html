@@ -93,6 +93,33 @@ body {
 }
 
 
+.header {
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.3s;
+  flex-shrink: 0;
+  padding: 0 40px;
+  white-space: nowrap;
+  background-color: var(--header-bg-color);
+  height: 60px;
+  width: 100%;
+  font-size: 14px;
+  justify-content: space-between;
+}
+.header-menu a {
+  text-decoration: none;
+  color: var(--body-color);
+  font-weight: 500;
+}
+.header-menu a:hover {
+  color: var(--active-color);
+}
+.header-menu a:not(:first-child) {
+  margin-left: 30px;
+}
+.header-menu a.active {
+  color: var(--active-color);
+}
 
 .wrapper {
   width: 100%;
@@ -366,15 +393,24 @@ body {
 }
 
 .menu-dot {
-  background-color: var(--placeholder-color);
-  box-shadow: -6px 0 0 0 var(--placeholder-color), 6px 0 0 0 var(--placeholder-color);
-  width: 4px;
-  height: 4px;
-  border: 0;
-  padding: 0;
-  border-radius: 50%;
+  font-size: 22px;
+  font-weight: 600;
   margin-left: auto;
-  margin-right: 8px;
+  color: black;
+  
+}
+
+.price-box__dollar{
+  font-size: 14px;
+    font-weight: 400;
+    vertical-align: top;
+    margin-right: 4px;
+  color: green;
+}
+.price-box__discount--light{
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 3px;
 }
 
 .header-shadow {
@@ -529,7 +565,17 @@ body {
 
 <div class="job" ng-app="app" ng-controller="main">
 
-  
+    <div class="header">
+  <div class="logo">
+  <img src="https://lh3.googleusercontent.com/d/1EIVHue1UhcSP-82ftLN01xyi_yp7s0de" width="35" height="35" style="margin-right: 10px; border-radius: 50%;"/>
+   Mozart Academy
+  </div>
+ <div class="header-menu">
+   <a href="#">Cursos</a>
+   <a href="#">Partituras</a>
+   <a href="#">Iniciar sesión</a>
+   </div> 
+ </div>
   
   
  <div class="wrapper">
@@ -589,7 +635,9 @@ body {
      <div class="job-card" ng-repeat="course in courses"> 
       <div class="job-card-header"> 
        <img ng-src="{{course.img}}" width="50" height="50" style="margin-right: 10px; border-radius: 10px;"/>
-       <div class="menu-dot"></div>
+       <div class="menu-dot"> 
+          <span class="price-box__dollar">$</span>{{course.price}}<span class="price-box__discount--light">MXN</span>
+        </div>
       </div>
       <div class="job-card-title">{{course.title}}</div> 
       <div class="job-card-subtitle"> 
@@ -631,7 +679,7 @@ var app = angular.module('app', []);
 app.controller('main', ["$scope", "$sce", "$http", function($scope, $sce, $http) {
   // Datos de los cursos
 $scope.courses = [
-  {"img": "https://lh3.googleusercontent.com/d/1hehOXFySwwgHSYm5ND5NInQoosAscMvx", "bg": "https://lh3.googleusercontent.com/d/1rlF9FPo-cn93vx7NaYK6Z0LNogarJWk_", "title": "Taller de Piano", "description": "En este curso aprenderás los fundamentos de la lectura de partituras", "NoLsns": "12 lecciones", 
+  {"img": "https://lh3.googleusercontent.com/d/1hehOXFySwwgHSYm5ND5NInQoosAscMvx", "price": "3000", "title": "Taller de Piano", "description": "En este curso aprenderás los fundamentos de la lectura de partituras", "NoLsns": "12 lecciones", 
     "time": "20 horas", "level": "Principiante", "url": "https://www.mozartacademy.mx/lessons"},{"img": "https://lh3.googleusercontent.com/d/1z3SvZ_B3VTvEgcCrW_Cscx1D1X5z8md6","bg": "https://lh3.googleusercontent.com/d/1KdPZwT1dWIfSYoP-BsXA9P1tUgapEx9L", "title": "Taller de Piano - Avanzado", "description": "En este curso aprenderás los fundamentos de armonía", "NoLsns": "9 lecciones", 
     "time": "22 horas", "level": "Avanzado"},{"img": "https://lh3.googleusercontent.com/d/1B_IxvzjTkE-2F_WWsTkhHegGajrswoQr","bg": "", "title": "Solfeo", "description": "En este curso aprenderás los fundamentos de la lectura de partituras", "NoLsns": "12 lecciones", 
     "time": "20 horas", "level": "principiante"},{"img": "https://lh3.googleusercontent.com/d/10OB7GYosbcANXqMyUxuiRkvZzIq_9Jvz", "title": "Lectura a primer vista", "description": "En este curso aprenderás los fundamentos de armonía", "NoLsns": "9 lecciones", 
