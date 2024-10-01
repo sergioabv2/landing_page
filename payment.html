@@ -471,14 +471,14 @@ input[type="radio"]:checked + .option h3{
  <div class="wrapper">
         <input type="radio" name="option" id="free">
         <label class="option" for="free">
-          <img src="https://i.ibb.co/W3bVHyp/Skype-piano-lessons-copy-2-750x750-2.jpg" />
-            <h4 class="price">$300 MXN <span style="font-size: 13px;">/mes</span></h4>
+          <img src="https://lh3.googleusercontent.com/d/1i9CIMoY2uKv5WKw7EHUYn_FRyafasDnL" />
+            <h4 class="price">$199 MXN <span style="font-size: 13px;">/mes</span></h4>
             <div class="details">
               <div class="text">
-                <h4>Curso de piano por ZOOM</h4>
-                <p >Toma 1 clase de piano semanal de 1 hora de duración.</p>
+                <h4>Suscripción Mensual</h4>
+                <p >Nuestro plan básico</p>
               </div>                           
-              <button class="detail_button" onclick="openClasstimeModal()">Horarios</button>
+         <!--     <button class="detail_button" onclick="openClasstimeModal()">Horarios</button> -->
                <button class="detail_button" onclick="openPaymentInfoModal(1)">Inscribir</button>
           </div>
           </label>
@@ -486,12 +486,12 @@ input[type="radio"]:checked + .option h3{
       <div class="wrapper">
         <input type="radio" name="option" id="production">
         <label class="option" for="production">
-          <img src="https://lh3.googleusercontent.com/d/1i9CIMoY2uKv5WKw7EHUYn_FRyafasDnL" alt="production" />
-          <h4 class="price">$150 MXN <span style="font-size: 13px;">/mes</span></h4>
+          <img src="https://lh3.googleusercontent.com/d/1XT7zo0_STOtE5e7a-gdVL3eoiCKIn-gC" alt="production" />
+          <h4 class="price">$850 MXN <span style="font-size: 13px;"> /6 meses</span></h4>
             <div class="details">
               <div class="text">
-                <h4>Piano sin límites</h4>
-                <p>Desbloquea lecciones.</p>
+                <h4>Suscripción Semestral</h4>
+                <p>Plan ahorrativo</p>
               </div>
                            <button class="detail_button" onclick="openPaymentInfoModal(2)">Inscribir</button>
           </div>
@@ -500,12 +500,12 @@ input[type="radio"]:checked + .option h3{
       <div class="wrapper">
         <input type="radio" name="option" id="advanced">
         <label class="option" for="advanced">
-          <img src="https://i.ibb.co/c8xTZFM/Whats-App-Image-2022-05-27-at-8-42-00-AM.jpg" alt="advanced" />
-           <h4 class="price">$1500 MXN</h4>
+          <img src="https://lh3.googleusercontent.com/d/1KdPZwT1dWIfSYoP-BsXA9P1tUgapEx9L" alt="advanced" />
+           <h4 class="price">$1199 MXN<span style="font-size: 13px;"> /12 meses</span></h4>
             <div class="details">
               <div class="text">
-                <h4>Acceso Total</h4>
-                <p>Desbloquea y accede a todo nuestro contenido sin restricciones de por vida.</p>
+                <h4>Suscripción Anual</h4>
+                <p>Para conocedores</p>
               </div>
                           <button class="detail_button" onclick="openPaymentInfoModal(3)">Inscribir</button>
           </div>
@@ -711,11 +711,11 @@ input[type="radio"]:checked + .option h3{
    function openPaymentInfoModal(option) {
    $('#profileModal').modal('show');  
       if (option == 1) {
-        $('.amount').text('$300 MXN pesos');
+        $('.amount').text('$199 MXN pesos');
     } else if (option == 2) {
-        $('.amount').text('$150 MXN pesos');
+        $('.amount').text('$850 MXN pesos');
     } else if (option == 3) {
-        $('.amount').text('$1500 MXN pesos');
+        $('.amount').text('$1200 MXN pesos');
     }
 }
   
