@@ -2160,13 +2160,13 @@ $('.zmdi-chevron-left').on('click', function() {
    if (selectedDay === "lunes" || selectedDay === "martes") {
         // Renderizar mensaje de que la academia está cerrada
         alert("La academia está cerrada los lunes y martes. Por favor, seleccione otra fecha.");
-    }/*else if(name == ""){
+    }else if(name == ""){
       alert("Ingresa tu nombre")
     }else if (phone === "") {
     alert("Por favor, ingresa tu número de teléfono.");
     } else if (!/^\d{10}$/.test(phone)) {
     alert("Por favor, ingresa los 10 digitos de tu número de telefono.");
-    }*/ else {
+    } else {
       const contentDiv = document.querySelector('.content');
 contentDiv.style.backgroundColor = 'white';
         // Continuar con el renderizado de los vuelos
