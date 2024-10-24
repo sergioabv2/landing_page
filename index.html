@@ -153,16 +153,119 @@ hr {
   margin-bottom: 3%!important;
 }
 
-.jumbotron {
-  background: URL(https://lh3.googleusercontent.com/d/1N-Idp7uUKN5vEuGcGIqJ2xtsgUMfeM8l);
-  background-size: cover;
-  background-position: top;
-  border-radius: 0px!important;
+
+
+.video-background {
   text-align: center;
   margin-top: 55px;
+  background: #000;
+  position: relative; /* Cambiado de 'fixed' a 'relative' para limitar su tamaño */
+  height: 500px; /* Ajusta la altura al tamaño deseado */
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#vidtop-content {
+  top: 0;
+  color: #fff;
+}
+
+.vid-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 33%;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  padding: 1rem;
+  font-family: Avenir, Helvetica, sans-serif;
+}
+
+.vid-info h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+.vid-info a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(0,0,0,0.5);
+  transition: .6s background;
+  border-bottom: none;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .vid-info {
+    width: 50%;
+    padding: .5rem;
+  }
+  .vid-info h1 {
+    margin-bottom: .2rem;
+  }
+  .video-background {
+    height: 300px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .vid-info .acronym {
+    display: none;
+  }
 }
 
 
+
+#fashion {
+  position: absolute;
+  min-height: 120vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#fashion h2 { 
+  font-family: Century Schoolbook, Century Schoolbook L, Georgia, serif;
+  font-size: 12vmin;
+  text-align: center;
+  margin: 2rem 3rem 0;
+  mix-blend-mode: overlay;
+  color: #fff;
+  font-weight: 100;
+}
+  
+  
 
 
 .strong-shadow {
@@ -1252,15 +1355,20 @@ vertical-align: middle;
     </div>
   </nav>
 
-  <div id="jumbotron" class="jumbotron text-light">
 
-      <h1 class="strong-shadow" style="text-align: center; font-size: 12vw;">Mozart Academy</h1>
-      
-<br><br><br><br><br><br><br><br>
-   
-  
-           
+    
+<div class="video-background">
+    <div class="video-foreground">
+      <iframe src="https://www.youtube.com/embed/AqOKL1YDPew?version=3&loop=1&playlist=AqOKL1YDPew&rel=0&autoplay=1&mute=1&start=1703&end=95&controls=0&fs=0&vq=small" frameborder="0" allowfullscreen></iframe>
+    </div>
+  <div id="fashion">
+  <h2>Mozart Academy</h2>
+</div>
   </div>
+
+
+           
+
 
   
   
@@ -1330,37 +1438,7 @@ vertical-align: middle;
     </div>
   </div>
   <br>
-  <div class="container">
-    <div class="card-deck">
 
-      <div class="card">
-        <img class="card-img-top" src="https://lh3.googleusercontent.com/d/1SV55fehgbU5aAnTrs2kZcPVSZJGiXQva" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><i class="ri-discount-percent-line"></i> Costos accesibiles</h5>
-          <p class="card-text">Ofrecemos distintos planes de pago según la cantidad de sesiones que desees tomar. ¿Vives lejos? Plan en línea. ¿Quieres avanzar más rápido? Plan premium. ¡Encuentra tu plan ideal!.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <iframe class="card-img-top" id="youtube" src="https://www.youtube.com/embed/f0TeYaXzSjk?" > </iframe>
-        <div class="card-body">
-          <h5 class="card-title"><i class="ri-vidicon-2-fill"></i> Participación en eventos</h5>
-          <p class="card-text">Participa en recitales, concursos y presentaciones en auditorios y en nuestras instalaciones. Te promocionamos en nuestras redes.</p>
-        </div>
-      </div>
-
-      <div class="card activate-content">
-        <img class="card-img-top button" data-modal="modal1" src="https://lh3.googleusercontent.com/d/1zFBZ558bRQjXIQWEtQPxWl56eonZNbtr" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><i class="ri-git-repository-fill"></i> Material de calidad<div style="font-size: 14px;">    (Da click en la imagen para consultar nuestro plan de trabajo) </div></h5>
-          <p class="card-text">
-          
-            Te proporcionamos los recursos didácticos mas actuales para garantizarte un aprendizaje efectivo. Te preparamos para la certificación del programa ABRSM.</p>
-        </div>
-      </div>
-     
-    </div>
-  </div>
 
 
   <div class="sect sect--padding-bottom" >
@@ -1747,17 +1825,7 @@ vertical-align: middle;
   </div>
   </div>
 
-  <div id="contact" class="contact-info" style="background-color: #202830; color: white">
-    <div class="container text-center strong-shadow ">
-   <br>  <br>
-      <h3 class="card-title"> Cupo limitado </h3>  
-      <h2 class="card-title">¡Aparta tu lugar!</h2> <br>
-     
-      <br> 
-      
-    </div>    
-  </div>
-  
+
  
   
   <section class="trial-block shadow3" style="background-color: #202830; color: white">
@@ -1810,118 +1878,10 @@ vertical-align: middle;
 </div>
   
   
-<div id="modal2" class="modal-container modal-hidden">
-  <div class="modal-background">
-    <div class="modal"> 
-     
-
-     <img src="https://lh3.googleusercontent.com/d/1jQB5HgPDBCcMUByqasgOZCywgoKaezEL">
-
-    </div>
-  </div>
-</div>
 
 
 
 
-<!--
- <div ng-app="myApp"> 
-  <div id="modal3" class="modal-container modal-hidden">
-  <div class="modal-background">
-    <div class="modal form-insc"> 
-       
-<div class="card" ng-controller="FormController1" >
-              <div class="card-body">
-                <h4>Formulario de registro</h4>
-                <div class="settings-profile">
-                  <div class="form-row mt-4">
-                    <div class="col-md-6">
-                      <label for="dayList">Día</label>
-                      <select id="dayList" class="form-control" ng-model="formData.dia" ng-change="updateHourList()" ng-options="day for day in days">
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <label ng-if="formData.dia" for="hourList">Hora</label>
-                      <select ng-if="formData.dia" id="hourList" class="form-control" ng-model="formData.hora" ng-options="hour for hour in hours">
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <label ng-if="formData.hora" for="dateClass">Fecha de tu primer clase</label>
-                      <select ng-if="formData.hora" id="dateClass" class="form-control" ng-model="formData.fecha" ng-options="date for date in dates">
-                      </select>
-                    </div>
-                    
-                     <div class="col-md-6">
-                      <label for="formFirst" ng-if="formData.fecha">Nombre</label>
-                      <input id="formFirst" type="text" class="form-control" placeholder="Nombre completo" autocomplete="off" ng-model="formData.nombre" ng-if="formData.fecha">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="phone" ng-if="formData.fecha">Teléfono</label>
-                      <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono" ng-if="formData.fecha">
-                    </div>
-                    
-                    
-                  </div>
-                </div>
-               </div>  
-                <div class="modal-footer col-md-12">
-                  <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
-                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                </div>
-            </div>
-
-    </div>
-  </div>
-</div>
-
- <div id="modal4" class="modal-container modal-hidden">
-  <div class="modal-background">
-    <div class="modal form-insc"> 
-       
-<div class="card" ng-controller="FormController2" >
-              <div class="card-body">
-                <h4>Formulario de registro</h4>
-                <div class="settings-profile">
-                  <div class="form-row mt-4">
-                    <div class="col-md-6">
-                      <label for="dayList">Día</label>
-                      <select id="dayList" class="form-control" ng-model="formData.dia" ng-change="updateHourList()" ng-options="day for day in days">
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <label ng-if="formData.dia" for="hourList">Hora</label>
-                      <select ng-if="formData.dia" id="hourList" class="form-control" ng-model="formData.hora" ng-options="hour for hour in hours">
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <label ng-if="formData.hora" for="dateClass">Fecha de tu primer clase</label>
-                      <select ng-if="formData.hora" id="dateClass" class="form-control" ng-model="formData.fecha" ng-options="date for date in dates">
-                      </select>
-                    </div>
-                    
-                     <div class="col-md-6">
-                      <label for="formFirst" ng-if="formData.fecha">Nombre</label>
-                      <input id="formFirst" type="text" class="form-control" placeholder="Nombre completo" autocomplete="off" ng-model="formData.nombre" ng-if="formData.fecha">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="phone" ng-if="formData.fecha">Teléfono</label>
-                      <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono" ng-if="formData.fecha">
-                    </div>
-                    
-                    
-                  </div>
-                </div>
-               </div>  
-                <div class="modal-footer col-md-12">
-                  <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
-                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                </div>
-            </div>
-
-    </div>
-  </div>
-</div> -->
-   
    
 </div>
 
@@ -2018,274 +1978,8 @@ var swiper = new Swiper('.swiper-container-main', {
 
 });
     
+
     
-    
-    
-   /* 
-    
-angular.module('myApp', [])
-  .controller('FormController1', ['$scope', function($scope) {
-    $scope.formData = {};
-
-
-    $scope.classtime = {
-      lunes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      martes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      miercoles: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      jueves: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      viernes: ["11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
-      sabado: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
-      domingo: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs"]
-    };
-
-    $scope.capacity = {
-      lunes: {
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
-        "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
-      },
-      martes: {
-         "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
-        "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
-      },
-      miercoles: {
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
-        "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
-      },
-      jueves: {
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
-        "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
-      },
-      viernes: {
-        "11:00 a 12:00 Hrs": 1,
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 1,
-        "14:00 a 15:00 Hrs": 2,
-        "15:00 a 16:00 Hrs": 2,
-      },
-      sabado: {
-        "9:00 a 10:00 Hrs": 1,
-        "10:00 a 11:00 Hrs": 3,
-        "11:00 a 12:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 4,
-        "15:00 a 16:00 Hrs": 2,
-      },
-      domingo: {
-        "9:00 a 10:00 Hrs": 1,
-        "10:00 a 11:00 Hrs": 2,
-        "11:00 a 12:00 Hrs": 3,
-        "12:00 a 13:00 Hrs": 2,
-      }
-    };
-    
-
-        $scope.days = ["Jueves", "Viernes", "Sábado", "Domingo"];
-
-
-    $scope.updateHourList = function() {
-      var plan = $scope.formData.plan;
-      var day = $scope.formData.dia;
-      $scope.dates = getDat(day);
-      const selectedDay = $scope.formData.dia.toLowerCase();
-      const availableHours = $scope.classtime[selectedDay] || [];
-      $scope.hours = availableHours.filter(hour => $scope.capacity[selectedDay][hour] > 0);
-      if (plan.includes("ESTUDIANTE") && day == "Sábado") {
-        $scope.hours = ["13:00 a 14:00 Hrs"];
-      }
-    };
-
-    $scope.submitForm = function() {
-      console.log('Form submitted with:', $scope.formData);
-    };
-
-   
-    
-    function getDat(day) {
-      const options = { weekday: 'long', month: 'long', day: 'numeric' };
-      const date1 = new Date();
-      const currentDay = date1.getDay();
-      var dayOfWeek = getNumDay(day);
-      const daysUntilNextDay = (dayOfWeek + 7 - currentDay) % 7;
-      const daysToAdd = daysUntilNextDay === 0 ? 7 : daysUntilNextDay;
-      date1.setDate(date1.getDate() + daysToAdd);
-      var date2 = new Date(date1);
-      date2.setDate(date2.getDate() + 7);
-  
-      var dat1 = date1.toLocaleDateString("es-mx", options).replace(",", "");
-      var dat2 = date2.toLocaleDateString("es-mx", options).replace(",", "");
-      return [dat1.charAt(0).toUpperCase() + dat1.slice(1), dat2.charAt(0).toUpperCase() + dat2.slice(1)];
-    }
-
-    function getNumDay(day) {
-      switch(day) {
-        case "Domingo":
-          return 0;
-        case "Lunes":
-          return 1;
-        case "Martes":
-          return 2;
-        case "Miércoles":
-          return 3;
-        case "Jueves":
-          return 4;
-        case "Viernes":
-          return 5;
-        case "Sábado":
-          return 6;
-        default:
-          return 0;
-      }
-    }
-    
-    
-    $scope.cancel = function() {
-        var modal = angular.element(document.getElementById('modal3'));
-        modal.addClass('out');
-        angular.element(document.body).removeClass('modal-active');
-        setTimeout(function() {
-            modal.removeClass('four out').addClass('modal-hidden');
-        }, 500); // Ajusta el tiempo según la duración de tu animación
-    };
-    
-  }])
-.controller('FormController2', ['$scope', function($scope) {
-    $scope.formData = {};
-
-
-    $scope.classtime = {
-      lunes: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
-      martes: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
-      miercoles: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
-      jueves: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
-      sabado: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs"],
-
-    };
-
-    $scope.capacity = {
-      lunes: {
-        "19:00 a 20:00 Hrs": 2,
-        "20:00 a 21:00 Hrs": 2,
-        "21:00 a 22:00 Hrs": 1
-      },
-      martes: {
-        "19:00 a 20:00 Hrs": 2,
-        "20:00 a 21:00 Hrs": 2,
-        "21:00 a 22:00 Hrs": 1
-      },
-      miercoles: {
-        "19:00 a 20:00 Hrs": 2,
-        "20:00 a 21:00 Hrs": 2,
-        "21:00 a 22:00 Hrs": 1
-      },
-      jueves: {
-        "19:00 a 20:00 Hrs": 2,
-        "20:00 a 21:00 Hrs": 2,
-        "21:00 a 22:00 Hrs": 1
-      },
-      viernes: {
-        "11:00 a 12:00 Hrs": 1,
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 1,
-        "14:00 a 15:00 Hrs": 2,
-        "15:00 a 16:00 Hrs": 2,
-      },
-      sabado: {
-        "12:00 a 13:00 Hrs": 1,
-        "13:00 a 14:00 Hrs": 3
-      }
-    };
-    
-
-        $scope.days = ["Lunes", "Martes", "Miércoles", "Jueves", "Sábado"];
-
-
-    $scope.updateHourList = function() {
-      var plan = $scope.formData.plan;
-      var day = $scope.formData.dia;
-      $scope.dates = getDat(day);
-      const selectedDay = $scope.formData.dia.toLowerCase();
-      const availableHours = $scope.classtime[selectedDay] || [];
-      $scope.hours = availableHours.filter(hour => $scope.capacity[selectedDay][hour] > 0);
-      if (plan.includes("ESTUDIANTE") && day == "Sábado") {
-        $scope.hours = ["13:00 a 14:00 Hrs"];
-      }
-    };
-
-    $scope.submitForm = function() {
-      console.log('Form submitted with:', $scope.formData);
-    };
-
-   
-    
-    function getDat(day) {
-      const options = { weekday: 'long', month: 'long', day: 'numeric' };
-      const date1 = new Date();
-      const currentDay = date1.getDay();
-      var dayOfWeek = getNumDay(day);
-      const daysUntilNextDay = (dayOfWeek + 7 - currentDay) % 7;
-      const daysToAdd = daysUntilNextDay === 0 ? 7 : daysUntilNextDay;
-      date1.setDate(date1.getDate() + daysToAdd);
-      var date2 = new Date(date1);
-      date2.setDate(date2.getDate() + 7);
-  
-      var dat1 = date1.toLocaleDateString("es-mx", options).replace(",", "");
-      var dat2 = date2.toLocaleDateString("es-mx", options).replace(",", "");
-      return [dat1.charAt(0).toUpperCase() + dat1.slice(1), dat2.charAt(0).toUpperCase() + dat2.slice(1)];
-    }
-
-    function getNumDay(day) {
-      switch(day) {
-        case "Domingo":
-          return 0;
-        case "Lunes":
-          return 1;
-        case "Martes":
-          return 2;
-        case "Miércoles":
-          return 3;
-        case "Jueves":
-          return 4;
-        case "Viernes":
-          return 5;
-        case "Sábado":
-          return 6;
-        default:
-          return 0;
-      }
-    }
-    
-    
-    $scope.cancel = function() {
-        var modal = angular.element(document.getElementById('modal4'));
-        modal.addClass('out');
-        angular.element(document.body).removeClass('modal-active');
-        setTimeout(function() {
-            modal.removeClass('four out').addClass('modal-hidden');
-        }, 500); // Ajusta el tiempo según la duración de tu animación
-    };
-    
-  }])
-
-*/
 
   </script>
 
