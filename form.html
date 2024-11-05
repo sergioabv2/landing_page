@@ -254,7 +254,7 @@ body {
     padding-left: 15px;
     font-size: 1.1em;
     font-weight: 500;
-	 margin-bottom: 20px;
+   margin-bottom: 20px;
 }
 
 .headbar .btnBack { 
@@ -901,7 +901,7 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
   border: 0;
   outline: 0;
   font-size: 1rem;
-  color: #fff;
+  color: black !important;
   background: transparent;
   transition: border-color 0.2s;
 }
@@ -915,14 +915,16 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
   border-width: 3px;
   border-image: linear-gradient(to right, #11998e, #38ef7d);
   border-image-slice: 1;
+  color: black !important;
 }
+
 .form__field:focus ~ .form__label {
   position: absolute;
   top: 0;
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: #11998e;
+  /*color: #11998e;*/
   font-weight: 700;
 }
   
@@ -1913,27 +1915,27 @@ var carrier = {
 var airports = [{"name":"Miércoles","city":"Vichy","country":"Día","IATA":"M11"},{"name":"Jueves","city":"Vichy","country":"Día","IATA":"M12"},{"name":"Viernes","city":"Vichy","country":"Día","IATA":"M14"},{"name":"Sábado","city":"Vichy","country":"Día","IATA":"M15"},{"name":"Domingo","city":"Vichy","country":"Día","IATA":"M16"}];
 
 (function () {
-	
-	var _airports = _.groupBy(airports, o => o.country),
-		selectIndex = [], 
-		selectData = [];
+  
+  var _airports = _.groupBy(airports, o => o.country),
+    selectIndex = [], 
+    selectData = [];
 
-	_.each(_airports, (countryList, countryName) => {
-		var firstLeter = countryName.split('')[0];
-		selectData.push(`<li class="sep" data-index="${firstLeter}">${countryName}</li>`);
-		selectIndex.push(`<li>${firstLeter}</li>`);
+  _.each(_airports, (countryList, countryName) => {
+    var firstLeter = countryName.split('')[0];
+    selectData.push(`<li class="sep" data-index="${firstLeter}">${countryName}</li>`);
+    selectIndex.push(`<li>${firstLeter}</li>`);
 
-		_.each(countryList, (airport, i) => {
-			selectData.push(`<li data-iata="${airport.IATA}" data-city="${airport.city}">
-				${airport.IATA}, ${airport.name}</li>`);
-		});
-	});
+    _.each(countryList, (airport, i) => {
+      selectData.push(`<li data-iata="${airport.IATA}" data-city="${airport.city}">
+        ${airport.IATA}, ${airport.name}</li>`);
+    });
+  });
 
-	$('.select ul.select-index').html(_.uniq(selectIndex).join(''));
-	$('.select ul.select-data').html(selectData.join(''));
+  $('.select ul.select-index').html(_.uniq(selectIndex).join(''));
+  $('.select ul.select-data').html(selectData.join(''));
 
 
-	// Calendar days
+  // Calendar days
 var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
 // Obtener la fecha actual
@@ -2041,113 +2043,113 @@ $('.zmdi-chevron-left').on('click', function() {
   
   
 
-	// Flight Results
-	doFlightsRender(true);
+  // Flight Results
+  doFlightsRender(true);
 
 
-	// Events
-	// Open inputs
-	$('.control:not(.open) .control-head').on('click', function(evt) {
-		$(evt.currentTarget).parent('.control').addClass('open');
-	});
+  // Events
+  // Open inputs
+  $('.control:not(.open) .control-head').on('click', function(evt) {
+    $(evt.currentTarget).parent('.control').addClass('open');
+  });
 
-	$('.control .close').on('click', function(evt) {
-		var z = $(evt.currentTarget).closest('.control');
-		setTimeout(() => { z.removeClass('open') }, 50);
-	});
+  $('.control .close').on('click', function(evt) {
+    var z = $(evt.currentTarget).closest('.control');
+    setTimeout(() => { z.removeClass('open') }, 50);
+  });
   
   $('.control .close2').on('click', function(evt) {
-		var z = $(evt.currentTarget).closest('.control');
-		setTimeout(() => { z.removeClass('open') }, 50);
-	});
+    var z = $(evt.currentTarget).closest('.control');
+    setTimeout(() => { z.removeClass('open') }, 50);
+  });
 
-	// SpinnerInput add/substract action
-	$('.spinner button').on('click', function(evt) {
-		var isAdding = evt.currentTarget.getAttribute('data-action') == 'plus',
-			$input = $('input[name="passengers"]:checked'),
-			$control = $input.siblings('div').find('span'),
-			value = parseInt($control.text());
+  // SpinnerInput add/substract action
+  $('.spinner button').on('click', function(evt) {
+    var isAdding = evt.currentTarget.getAttribute('data-action') == 'plus',
+      $input = $('input[name="passengers"]:checked'),
+      $control = $input.siblings('div').find('span'),
+      value = parseInt($control.text());
 
-		if(isAdding)
-			value++;
-		else if (value !== 0)
-			value--;
+    if(isAdding)
+      value++;
+    else if (value !== 0)
+      value--;
 
-		$control.text(value);
-	});
+    $control.text(value);
+  });
 
-	// SelectInput find index
-	$('.select-index').on('click', 'li', function(evt) {
-		var index = evt.currentTarget.textContent,
-			$nano = $(evt.currentTarget).parent('.select-index').siblings('.nano'),
-			el = $nano.find(`li.sep[data-index="${index}"]`)[0];
+  // SelectInput find index
+  $('.select-index').on('click', 'li', function(evt) {
+    var index = evt.currentTarget.textContent,
+      $nano = $(evt.currentTarget).parent('.select-index').siblings('.nano'),
+      el = $nano.find(`li.sep[data-index="${index}"]`)[0];
 
-		$nano.find('.nano-content').animate({ scrollTop: el.offsetTop }, 600);
-	});
+    $nano.find('.nano-content').animate({ scrollTop: el.offsetTop }, 600);
+  });
 
-	// SelectInput set data
-	$('.select-data').on('click', 'li:not(.sep)', function(evt) {
-		var text = evt.currentTarget.textContent,
-			iata = evt.currentTarget.getAttribute('data-iata'),
-			$select = $(evt.currentTarget).closest('.select'),
-			$nameContainer = $select.find('.airport-name');
+  // SelectInput set data
+  $('.select-data').on('click', 'li:not(.sep)', function(evt) {
+    var text = evt.currentTarget.textContent,
+      iata = evt.currentTarget.getAttribute('data-iata'),
+      $select = $(evt.currentTarget).closest('.select'),
+      $nameContainer = $select.find('.airport-name');
 
-		if($nameContainer.data('role') == 'from') {
-			var _iata = iata.split('');
-			var div = $('.header .fromPlace').addClass('rotate');
-			var span = $('.header .fromPlace span');
-			span.eq(0).text(_iata[0]);
-			span.eq(1).text(_iata[1]);
-			span.eq(2).text(_iata[2]);
-			setTimeout(() => div.removeClass('rotate'), 900);
-			//$('.xfrom').text(iata);
-		}
-		else {
-			var _iata = iata.split('');
-			var div = $('.header .toPlace').addClass('rotate');
-			var span = $('.header .toPlace span');
-			span.eq(0).text(_iata[0]);
-			span.eq(1).text(_iata[1]);
-			span.eq(2).text(_iata[2]);
-			setTimeout(() => div.removeClass('rotate'), 900);
-			//$('.xto').text(iata);
-		}
+    if($nameContainer.data('role') == 'from') {
+      var _iata = iata.split('');
+      var div = $('.header .fromPlace').addClass('rotate');
+      var span = $('.header .fromPlace span');
+      span.eq(0).text(_iata[0]);
+      span.eq(1).text(_iata[1]);
+      span.eq(2).text(_iata[2]);
+      setTimeout(() => div.removeClass('rotate'), 900);
+      //$('.xfrom').text(iata);
+    }
+    else {
+      var _iata = iata.split('');
+      var div = $('.header .toPlace').addClass('rotate');
+      var span = $('.header .toPlace span');
+      span.eq(0).text(_iata[0]);
+      span.eq(1).text(_iata[1]);
+      span.eq(2).text(_iata[2]);
+      setTimeout(() => div.removeClass('rotate'), 900);
+      //$('.xto').text(iata);
+    }
 
-		$nameContainer.text(text);
-		$select.toggleClass('open');
+    $nameContainer.text(text);
+    $select.toggleClass('open');
 
-		$(evt.currentTarget).addClass('selected').siblings('li').removeClass('selected');
-	});
+    $(evt.currentTarget).addClass('selected').siblings('li').removeClass('selected');
+  });
 
-	// Date input
-	$('.calendar .days span').on('click', function(evt) {
-		var $this = $(evt.currentTarget),
-			day = evt.currentTarget.textContent;
+  // Date input
+  $('.calendar .days span').on('click', function(evt) {
+    var $this = $(evt.currentTarget),
+      day = evt.currentTarget.textContent;
 
-		$this.addClass('checked').siblings('span').removeClass('checked');
+    $this.addClass('checked').siblings('span').removeClass('checked');
 
-		var currentMonth = new Date().getMonth(); 
+    var currentMonth = new Date().getMonth(); 
     var currentYear = new Date().getFullYear(); 
     var date = new Date(currentYear, currentMonth, day);
-		var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     var formattedDate = date.toLocaleDateString('es-ES', options);
 
     // Exportar la fecha formateada
     $('.dateinput .control-item span').eq(0).text(formattedDate);
-	});
+  });
 
 
-	$('.btnBack').on('click', function(evt) {
-		var wrap = document.querySelector('.wrap'),
-			index = parseInt(wrap.getAttribute('data-pos'));
-		
-		$('.ticket button.btnBook').text('Agendar clase');
-		wrap.setAttribute('data-pos', index - 1);
-	});
+  $('.btnBack').on('click', function(evt) {
+    var wrap = document.querySelector('.wrap'),
+      index = parseInt(wrap.getAttribute('data-pos'));
+    
+    $('.ticket button.btnBook').text('Agendar clase');
+    wrap.setAttribute('data-pos', index - 1);
+  });
 
-	// Search button
-	$('.btnSearch').on('click', function(evt) {
-		var selectedDateText = $('.dateinput .control-item span').eq(0).text();
+  // Search button
+  $('.btnSearch').on('click', function(evt) {
+    var selectedDateText = $('.dateinput .control-item span').eq(0).text();
      
     if (selectedDateText === "Selecciona una fecha") {
         alert("Por favor, seleccione la fecha de su primer clase para continuar");
@@ -2175,18 +2177,18 @@ contentDiv.style.backgroundColor = 'white';
             document.querySelector('.wrap').setAttribute('data-pos', 1);
         }, 50);
     }
-	});
+  });
 
-	$('.ticket button').on('click', function(evt) {
-		var $button = $(evt.currentTarget);
-		var $loader = $('.loader').show();
-		$button.text('Agendando...');
+  $('.ticket button').on('click', function(evt) {
+    var $button = $(evt.currentTarget);
+    var $loader = $('.loader').show();
+    $button.text('Agendando...');
 
-		setTimeout(() => {
-			$loader.hide();
-			$button.html('<i class="zmdi zmdi-check-circle"></i> Clase agendada');
-			$button.addClass('success');
-		}, 1200);
+    setTimeout(() => {
+      $loader.hide();
+      $button.html('<i class="zmdi zmdi-check-circle"></i> Clase agendada');
+      $button.addClass('success');
+    }, 1200);
      
     var name = $('.form__field.name').val()
   var phone = $('.form__field.phone').val()
@@ -2232,87 +2234,87 @@ contentDiv.style.backgroundColor = 'white';
       } 
     })
 
-	});
+  });
 
-	// Select Flight
-	$('.list').on('click', 'article', function(evt) {
-		var index = parseInt(evt.currentTarget.getAttribute('data-index'))
+  // Select Flight
+  $('.list').on('click', 'article', function(evt) {
+    var index = parseInt(evt.currentTarget.getAttribute('data-index'))
         thisIndex = index;
-			flight = flights[index];
+      flight = flights[index];
 
-		var [from, t1, to, t2] = flight.nodes[0].split(' ');
+    var [from, t1, to, t2] = flight.nodes[0].split(' ');
 
-		var p = $('.radio.passengers label span'),
-			peopleTotal = 0,
-			people = _.map(p, function(el, i) {
-				var v = parseInt(el.textContent),
-					str = '';
+    var p = $('.radio.passengers label span'),
+      peopleTotal = 0,
+      people = _.map(p, function(el, i) {
+        var v = parseInt(el.textContent),
+          str = '';
 
-				if(i == 0 && v)
-					str = `${v} Adults`;
-				if(i == 1 && v)
-					str = `${v} Kids`;
-				if(i == 2 && v)
-					str = `${v} Elders`;
-				
-				peopleTotal += v;
+        if(i == 0 && v)
+          str = `${v} Adults`;
+        if(i == 1 && v)
+          str = `${v} Kids`;
+        if(i == 2 && v)
+          str = `${v} Elders`;
+        
+        peopleTotal += v;
 
-				return str;
-			});
+        return str;
+      });
 
-		from = $('.fromPlace span').text();
-		to = $('.toPlace span').text();
+    from = $('.fromPlace span').text();
+    to = $('.toPlace span').text();
 
-		var time1 = new Date(t1), 
-			time2 = new Date(t2);
+    var time1 = new Date(t1), 
+      time2 = new Date(t2);
     
     var name = $('.form__field.name').val()
     var firstclass = $('.dateinput .control-item span').eq(0).text();
     var plan = $('input[name="plan"]:checked').val();
     var day = firstclass.split(",")[0]
-		var flightRender = `
-		
-			<div class="row">
-				<div class="cell">
-					<small>Nombre</small><span>${name}</span>
-				</div>
-        <div class="cell">
-				</div>
-			</div>
+    var flightRender = `
+    
       <div class="row">
-				<div class="cell">
-					<small>Horario</small>
+        <div class="cell">
+          <small>Nombre</small><span>${name}</span>
+        </div>
+        <div class="cell">
+        </div>
+      </div>
+      <div class="row">
+        <div class="cell">
+          <small>Horario</small>
           ${day} <br>
           <span style="position: absolute">  ${time1.toLocaleTimeString().replace(':00','')} - 
             ${time2.toLocaleTimeString().replace(':00','')}</span>
-				</div>
-				<div class="cell" >
-					<small>Plan</small><span>${plan}</span>
-				</div>
-			</div>
-			<div class="row" style="display: flex;">
+        </div>
+        <div class="cell" >
+          <small>Plan</small><span>${plan}</span>
+        </div>
+      </div>
+      <div class="row" style="display: flex;">
   <div class="cell" style="flex: 1; padding: 21px;">
     <small>Fecha de primer clase</small> 
     <span>${firstclass}</span>
   </div>
 </div>
-			<div class="total" style="margin-top: 40px;">
+      <div class="total" style="margin-top: 40px;">
        <span style="text-decoration: line-through; font-size: 20px;">${flight.discount} MXN</span> <br>
-				<small>Total</small> <span>$${flight.price}</span>
-			</div>
-		`;
+        <small>Total</small> <span>$${flight.price}</span>
+      </div>
+    `;
 
-		$('.ticket section').html(flightRender);
-		setTimeout(() => {
-			document.querySelector('.wrap').setAttribute('data-pos', 2);
-		}, 50);
-	});
+    $('.ticket section').html(flightRender);
+    setTimeout(() => {
+      document.querySelector('.wrap').setAttribute('data-pos', 2);
+    }, 50);
+  });
 
-	// Init scroll
-	$(".nano").nanoScroller();
+  // Init scroll
+  $(".nano").nanoScroller();
 
 
-	function doFlightsRender(isInit) {
+  function doFlightsRender(isInit) {
     
   /*   var studentFlights = flights.filter(function(o) {
        var firstclass = $('.dateinput .control-item span').eq(0).text();
@@ -2329,30 +2331,30 @@ contentDiv.style.backgroundColor = 'white';
     return o.date.toLowerCase() === day && o.plan === plan;
   });
     
-		var flightsRender = _.map(studentFlights, function(o, i) {
-			var sumText = "";
-			var [from, t1, to, t2] = o.nodes[0].split(' ');
+    var flightsRender = _.map(studentFlights, function(o, i) {
+      var sumText = "";
+      var [from, t1, to, t2] = o.nodes[0].split(' ');
 
-			var d1 = new Date(t1), 
-				d2 = new Date(t2);
+      var d1 = new Date(t1), 
+        d2 = new Date(t2);
       
 
-			if(!isInit) {
-				var ppl = $('.radio.passengers label span'),
-					sum = parseInt(ppl.eq(0).text()) + parseInt(ppl.eq(1).text()) + parseInt(ppl.eq(2).text());
+      if(!isInit) {
+        var ppl = $('.radio.passengers label span'),
+          sum = parseInt(ppl.eq(0).text()) + parseInt(ppl.eq(1).text()) + parseInt(ppl.eq(2).text());
 
-				sumText = `${sum} people $${(o.price * sum).toFixed(2)}`;
-				from = $('.fromPlace span').text();
-				to = $('.toPlace span').text();
-			}
+        sumText = `${sum} people $${(o.price * sum).toFixed(2)}`;
+        from = $('.fromPlace span').text();
+        to = $('.toPlace span').text();
+      }
 
-			var img;
-			if(o.carrier == 'KL')
-				img = 'https://dl.dropbox.com/s/02ve5kn75rpo0s3/KL.png';
-			else if(o.carrier == 'BA')
-				img = 'https://dl.dropbox.com/s/6fpuy898zzuk7nn/BA.png';
-			else
-				img = 'https://dl.dropbox.com/s/dhmufay65yer2jz/AF.png';
+      var img;
+      if(o.carrier == 'KL')
+        img = 'https://dl.dropbox.com/s/02ve5kn75rpo0s3/KL.png';
+      else if(o.carrier == 'BA')
+        img = 'https://dl.dropbox.com/s/6fpuy898zzuk7nn/BA.png';
+      else
+        img = 'https://dl.dropbox.com/s/dhmufay65yer2jz/AF.png';
 var demandText = "";
 
 if (o.discount === "") {
@@ -2371,27 +2373,27 @@ if (demandText.includes("Alta demanda")) {
   priceColor = "#4A4A4A"; // Por defecto, negro
 }
 
-			return `<article data-index="${o.originalIndex}">
-			<!--	<div class="img">
-					<img src="${img}" alt="ualogo" />
-				</div> -->
-				<div class="info">
+      return `<article data-index="${o.originalIndex}">
+      <!--  <div class="img">
+          <img src="${img}" alt="ualogo" />
+        </div> -->
+        <div class="info">
         <span style='font-size: 14px;'>${o.date}</span>
-					<span class="time">Plan ${o.plan}</span>
-					<span class="airline">
-						${d1.toLocaleTimeString().replace(':00','')} - 
-						${d2.toLocaleTimeString().replace(':00','')}
-					</span>
+          <span class="time">Plan ${o.plan}</span>
+          <span class="airline">
+            ${d1.toLocaleTimeString().replace(':00','')} - 
+            ${d2.toLocaleTimeString().replace(':00','')}
+          </span>
           
-					<!--<span>${carrier[o.carrier]} ${from} - ${to}</span>-->
+          <!--<span>${carrier[o.carrier]} ${from} - ${to}</span>-->
 ${demandText}
-					<h5 style='color: ${priceColor}'><small style='text-decoration: line-through; font-size: 15px;'>${o.discount}</small>  $${o.price} </h5>
-				</div>
-			</article>`;
-		});
+          <h5 style='color: ${priceColor}'><small style='text-decoration: line-through; font-size: 15px;'>${o.discount}</small>  $${o.price} </h5>
+        </div>
+      </article>`;
+    });
 
-		$('.list .nano-content').html(flightsRender.join(''));
-	}
+    $('.list .nano-content').html(flightsRender.join(''));
+  }
 
 })();
 
