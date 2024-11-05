@@ -2640,7 +2640,8 @@ var app = angular.module('materializeApp', ['ui.materialize']);
 app.factory('SharedState', function($http, $q) {
   var requestData = {
     action: "getBasicData",
-    token: localStorage.getItem('TPtoken')
+    token: "U2FsdGVkX18Y3Ikd7Ppb+2aVdv2AgN/p1JCgChHIAXGylvVbAToWW9G0M2yhM3aa"
+       //localStorage.getItem('TPtoken')
   };
 
   var config = {
