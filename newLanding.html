@@ -1454,34 +1454,6 @@ body::-webkit-scrollbar-thumb {
         
         
 
-   
-
-
-
-
-
-        <div class="contacts">
-          <h1>Contacts</h1>
-          <div class="contacts-container">
-
-
-            <div class="contact-status" ng-repeat="entry in history | filter:filterByLevel | limitTo:6">
-              <div class="contact-activity">
-              <!--  <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e56800db-687d-4d0e-a470-51e37a4431c7"
-                  alt="" /> -->
-                  <i class="ri-video-chat-fill"></i>
-                <p>{{entry.name}} <span>abrir</span></p>
-              </div>
-              <small>{{entry.status}}</small>
-            </div>
-
-     
-          </div>
-        </div>
-
-        
-
              <div class="analytics">
           <h1>Analytics</h1>
           <div class="analytics-container">
@@ -1505,6 +1477,29 @@ body::-webkit-scrollbar-thumb {
           </div>
         </div>
 
+
+
+
+
+            <div class="contacts">
+          <h1>Contacts</h1>
+          <div class="contacts-container">
+
+
+            <div class="contact-status" ng-repeat="entry in history | filter:filterByLevel | limitTo:6">
+              <div class="contact-activity">
+              <!--  <img
+                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e56800db-687d-4d0e-a470-51e37a4431c7"
+                  alt="" /> -->
+                  <i class="ri-video-chat-fill"></i>
+                <p>{{entry.name}} <span>abrir</span></p>
+              </div>
+              <small>{{entry.status}}</small>
+            </div>
+
+     
+          </div>
+        </div>
 
 
 
