@@ -1860,7 +1860,7 @@ html {
 
 
     <div class="row" >
-      <div class="col-sm-5">
+      <div class="col-sm-12">
         <div class="profile-user-data clearfix">
           <div class="circle">
               <img class="profile-pic" src={{picture}}>
@@ -1910,7 +1910,7 @@ html {
         <h4><i class="fa fa-fw fa-flag"></i> Actividad</h4>
           
           </div>
-          <div class="panel-body log-list-container" id="lsnContainer" style="max-height: 185px;"> 
+          <div class="panel-body log-list-container" id="lsnContainer" style="max-height: 400px;"> 
              <ul class="list-unstyled log-list">
              <li ng-repeat="entry in history | filter:filterByLevel" ng-class="{'status-pending': entry.status === 'En revisión', 'status-delayed': entry.status === 'Límite de entrega: ' && stringToDate(entry.limitdate) < today, 'status-completed': entry.status === 'Evaluada', 'status-error': entry.status === 'A corrección', 'status-default': (entry.status === 'Límite de entrega: '  && stringToDate(entry.limitdate) >= today) || entry.status === 'Asignado'}">
                 <button style="float:right; margin-right: -15px; margin-top: 7px; font-size: 11px;" data-pdf-url="{{entry.pdf}}" onclick="showModal(this)" ng-click="selectEntry(entry)" ng-if="entry.status !== 'En revisión' && entry.status !== 'Evaluada'" class="btn btn-dark btn-sm">Abrir </button>
@@ -1932,87 +1932,6 @@ class="js-trigger-video-modal" onclick="toggle_video_modal(this)" style="color: 
           </div>
         </div>
       </div>
-      <div class="col-sm-7" >
-        <div class="dashboard-panel achievement-list-panel">
-          <div class="panel-header">
-      <h4><i class="fa fa-fw fa-trophy"></i> Ranking</h4>
-          </div>
-         <div class="panel-body" style="max-height: 450px !important">
- 
-         
-
- 
-    <div class="page-leaderboard">
-        
-         
- <section class="ranking">
-                <div class="contain">
-                    <div class="ranking-table">
-                        <div class="ranking-table-header-row">
-                            <div class="ranking-table-header-data h6">Posición</div>
-                            <div class="ranking-table-header-data h6">Alumno</div>
-                            <div class="ranking-table-header-data h6">Puntaje</div>
-                        </div>
-                        <div class="ranking-table-row-leader-1">
-                            <div class="ranking-table-data-leader-1">
-                                <div class="medal-gold"></div>
-                            </div>
-                            <div class="ranking-table-data">
-                              {{userData.ranking[0].name}} 
-                <br>  <span style="font-size: 12px; color: {{userData.ranking[0].color}}">  {{userData.ranking[0].lvl}}</span>
-                          </div>
-                            <div class="ranking-table-data">
-                                <div class="complete" style="color: orange !important; text-shadow: 0 0 10px orange; font-weight: 700; font-size: 20px !important;">{{userData.ranking[0].score}}</div>
-                            </div>
-                        </div>
-                        <div class="ranking-table-row-leader-2">
-                            <div class="ranking-table-data-leader-2">
-                                <div class="medal-silver"></div>
-                            </div> 
-                            <div class="ranking-table-data">
-                                {{userData.ranking[1].name}}
-        <br>  <span style="font-size: 12px; color: {{userData.ranking[1].color}}">  {{userData.ranking[1].lvl}}</span>
-                        </div>
-                            <div class="ranking-table-data">
-                                <div class="complete" style="color: #2980b9  !important; text-shadow: 0 0 10px #85c1e9 ; font-weight: 500; font-size: 18px !important;">{{userData.ranking[1].score}}</div>
-                            </div> 
-                        </div>
-                        <div class="ranking-table-row-leader-3">
-                            <div class="ranking-table-data-leader-3">
-                                <div class="medal-bronze"></div>
-                            </div>
-                            <div class="ranking-table-data">
-                               {{userData.ranking[2].name}}
-                               <br>  <span style="font-size: 12px; color: {{userData.ranking[2].color}}">  {{userData.ranking[2].lvl}}</span>
-</div>
-                            <div class="ranking-table-data">
-                                <div class="complete" style="color: #85929e   !important; text-shadow: 0 0 5px #85929e; font-size: 16.5px !important;">{{userData.ranking[2].score}}</div>
-                            </div>
-                        </div>
-
-
-                         <div class="ranking-table-body">
-        <div class="ranking-table-row" ng-repeat="user in userData.ranking.slice(3)">
-            <div class="ranking-table-data">{{ $index + 4 }}</div> <!-- Muestra posición -->
-            <div class="ranking-table-data">{{ user.name }}<br>  <span style="font-size: 12px; color: {{user.color}}">  {{user.lvl}}</span></div>
-            <div class="ranking-table-data"><div class="complete">{{ user.score }}</div></div>
-        </div>
-    </div>
-                        </div>
-                    </div>
-                </div>
-            </section>  
-    
-                <div class="contain contain--small"></div>
-
-            
-   
-    
-    
-     </div>
-    </div>
- </div> 
-
 
   
   
