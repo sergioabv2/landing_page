@@ -1,9 +1,8 @@
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
 <link rel="icon" href="https://lh3.googleusercontent.com/d/1k9LA88h-FVVn9EeryBRVBrtc5tPl92CK" type="image/x-icon">
     <title>Mozart Academy</title>
-   
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.1/angular-materialize.min.js"></script>
@@ -25,7 +24,7 @@
 body {
 
   font-family: "Poppins", sans-serif;
-/*background-color: #e5ecef;*/
+background-color: #e5ecef;
 }
   
   .collection {
@@ -435,7 +434,13 @@ iframe#quiz {
   box-shadow: 0px 8px 20px -8px rgba(26, 33, 43, 0.5), 0px 4px 12px 0px rgba(26, 33, 43, 0.05), 0px 1px 3px 0px rgba(26, 33, 43, 0.25), 0px 1.5px 0.5px 0px #454D57 inset, 0px -3px 1px 0px rgba(0, 0, 0, 0.5) inset;
 }
 /* Cambia el diseño a vertical en pantallas amplias (médium y superiores) */
-@media (min-width: 600px) {
+  @media (min-width: 990px) {
+/*@media (min-width: 600px) {*/
+    
+    .mainContain{
+      display: flex;
+      flex-direction: row;
+    }
 
   .job-explain{
     margin-top: 20px;
@@ -463,14 +468,14 @@ iframe#quiz {
     ul.lvlmenu li.tab {
     display: flex;
   flex-direction: column;
-  width: 330px;
+  width: 260px;
   height: auto;
   flex-shrink: 0;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   transform: scale(0.9);
-      width: 100%;
+     /* width: 100%;*/
        text-transform: none;
   }
   
@@ -1656,8 +1661,10 @@ input[type="radio"]:checked + label.green-bg::after {
 
   <!-- End Header -->
   <!-- Tabs Nav Start -->    
-  <div class="row"> 
-       <div class="col s12 m4" ng-controller="lvlMenu">  
+ <!-- <div class="row"> -->  
+  <div class="mainContain">
+      <!-- <div class="col s12 m4" ng-controller="lvlMenu">  -->
+     <div  ng-controller="lvlMenu">
    <div class="col s12" style="overflow-x: auto;">
   <ul class="tabs lvlmenu"  > 
       <li class="tab levelp"> 
@@ -1879,17 +1886,18 @@ input[type="radio"]:checked + label.green-bg::after {
     <!-- Tabs Nav End -->
 
      
-   <div class="col s12 m8">      
+   <!--<div class="col s12 m8">  -->    
+    <div style="width: 100%; margin-right: 10px;">
     <div id="test1" class="col s12" ng-controller="levelP">
   <!-- CSS Course Start -->
        
-      <div class="job-explain" >
+      <div class="job-explain">
       <img class="job-bg" src="https://lh3.googleusercontent.com/d/1rlF9FPo-cn93vx7NaYK6Z0LNogarJWk_">
       <div class="job-logos"> 
  
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-         <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/profile';" ng-if="lvl == 0 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/payment';" ng-if="lvl == 0 && status != 'ACTIVO'"> Inscribirse </button>  
+         <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 0 && status == 'ACTIVO'"> Ver progreso </button>   
+ <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 0 && status != 'ACTIVO'"> Inscribirse </button>  
       </div>  
       <div class="job-explain-content">
       <div class="job-title-wrapper">
@@ -2045,8 +2053,8 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-   <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/profile';" ng-if="lvl == 1 && status == 'ACTIVO'"> Ver progreso </button> 
- <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/payment';" ng-if="lvl == 1 && status != 'ACTIVO'"> Inscribirse </button>  
+   <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 1 && status == 'ACTIVO'"> Ver progreso </button> 
+ <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 1 && status != 'ACTIVO'"> Inscribirse </button>  
       </div>  
      
       <div class="job-explain-content"> 
@@ -2104,7 +2112,7 @@ input[type="radio"]:checked + label.green-bg::after {
          </div> 
                 </div> 
 
-                  <div class="explain-bar" ng-if="lvl < 1 || status != 'ACTIVO'">
+                  <div class="explain-bar" ng-if="lvl < 1 && status == 'ACTIVO'">
         <div class="explain-contents">
         <div class="explain-title">Progreso</div>
         <div class="explain-subtitle">-</div>
@@ -2124,7 +2132,24 @@ input[type="radio"]:checked + label.green-bg::after {
                 </div> 
         
      <!--   <div class="overview-text-subheader" style="margin-top: 15px;" ng-if="status != 'ACTIVO'">Este nivel establece los fundamentos del concepto de tonalidad.</div>  -->
-
+            <div class="explain-bar" ng-if="status != 'ACTIVO'">
+        <div class="explain-contents">
+        <div class="explain-title">Progreso</div>
+        <div class="explain-subtitle">-</div>
+         </div>   
+        <div class="explain-contents">
+         <div class="explain-title">Termino del nivel</div>
+        <div class="explain-subtitle">  <i class="material-icons">workspace_premium</i><span style="margin-left: 5px;">Diploma</span></div>
+         </div>
+        <div class="explain-contents">
+        <div class="explain-title">Horas en video</div>
+          <div class="explain-subtitle"><i class="material-icons">tv</i><span style="margin-left: 5px;">12 horas</span></div>
+         </div>
+        <div class="explain-contents">
+        <div class="explain-title">Recursos</div>
+        <div class="explain-subtitle">  <i class="material-icons">audio_file</i><span style="margin-left: 5px;">30 actividades</span></div>
+         </div>
+                </div> 
                </div>
      </div>
     <!-- CSS Course Start -->
@@ -2143,7 +2168,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="lesson.id <= lsn && lvl >= 1 && status === 'ACTIVO'">
+        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lesson.id <= lsn || lvl > 1) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons">{{material.icon}}</i>
             {{material.title}}</div>
@@ -2182,8 +2207,8 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-<button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/profile';" ng-if="lvl == 2 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/payment';" ng-if="lvl == 2 && status != 'ACTIVO'"> Inscribirse </button>  
+<button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 2 && status == 'ACTIVO'"> Ver progreso </button>   
+ <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 2 && status != 'ACTIVO'"> Inscribirse </button>  
       </div> 
       <div class="job-explain-content">
       <div class="job-title-wrapper">
@@ -2281,7 +2306,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-       <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="lesson.id <= lsn && lvl >= 2  && status === 'ACTIVO'">
+       <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lvl > 2 || lesson.id <= lsn) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons" >{{material.icon}}</i>
             {{material.title}}</div>
@@ -2320,8 +2345,8 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-        <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/profile';" ng-if="lvl == 3 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/payment';" ng-if="lvl == 3 && status != 'ACTIVO'"> Inscribirse </button>  
+        <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 3 && status == 'ACTIVO'"> Ver progreso </button>   
+ <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 3 && status != 'ACTIVO'"> Inscribirse </button>  
       </div> 
       <div class="job-explain-content">
       <div class="job-title-wrapper">
@@ -2415,7 +2440,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-     <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="lesson.id <= lsn && lvl >= 3  && status === 'ACTIVO'">
+     <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lvl > 3 || lesson.id <= lsn) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons" >{{material.icon}}</i>
             {{material.title}}</div>
@@ -2452,8 +2477,8 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-        <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/profile';" ng-if="lvl == 4 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/payment';" ng-if="lvl == 4 && status != 'ACTIVO'"> Inscribirse </button> 
+        <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 4 && status == 'ACTIVO'"> Ver progreso </button>   
+ <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 4 && status != 'ACTIVO'"> Inscribirse </button> 
       </div> 
       <div class="job-explain-content">
       <div class="job-title-wrapper">
@@ -2548,7 +2573,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="lesson.id <= lsn && lvl >= 4  && status === 'ACTIVO'">
+        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lvl > 4 || lesson.id <= lsn) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons">{{material.icon}}</i>
             {{material.title}}</div>
@@ -2584,8 +2609,8 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-        <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/profile';" ng-if="lvl == 5 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://app.mozartacademy.mx/main#/menu/payment';" ng-if="lvl == 5 && status != 'ACTIVO'"> Inscribirse </button> 
+        <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 5 && status == 'ACTIVO'"> Ver progreso </button>   
+ <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 5 && status != 'ACTIVO'"> Inscribirse </button> 
       </div> 
       <div class="job-explain-content">
       <div class="job-title-wrapper">
@@ -2680,7 +2705,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="lesson.id <= lsn && lvl >= 5 && status === 'ACTIVO'">
+        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lvl > 5 || lesson.id <= lsn) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons" >{{material.icon}}</i>
             {{material.title}}</div>
@@ -2938,7 +2963,8 @@ var app = angular.module('materializeApp', ['ui.materialize']);
 app.factory('SharedState', function($http, $q) {
   var requestData = {
     action: "getBasicData",
-    token: localStorage.getItem('MStoken')
+    token: "U2FsdGVkX18Y3Ikd7Ppb+2aVdv2AgN/p1JCgChHIAXGylvVbAToWW9G0M2yhM3aa"
+    //localStorage.getItem('TPtoken')
   };
 
   var config = {
@@ -2950,7 +2976,7 @@ app.factory('SharedState', function($http, $q) {
   var getNum = function() {
     var deferred = $q.defer();
 
-    $http.post('https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec', requestData, config)
+    $http.post('https://script.google.com/macros/s/AKfycbzuRdRbf_Yy-JUEUm4E2qzvWLm6hquJNhqEGEKecOPLowyjBJU8SS_wQ57W2--XobEA/exec', requestData, config)
       .then(function(response) {
         deferred.resolve({
           lvl: response.data.lvl,
