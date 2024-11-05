@@ -1,8 +1,6 @@
 
+
 <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
-<link rel="icon" href="https://lh3.googleusercontent.com/d/1k9LA88h-FVVn9EeryBRVBrtc5tPl92CK" type="image/x-icon">
-    <title>Mozart Academy</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.1/angular-materialize.min.js"></script>
@@ -19,12 +17,21 @@
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-
+*,
+::after,
+::before {
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+}
 
 body {
 
   font-family: "Poppins", sans-serif;
-background-color: #e5ecef;
+/*background-color: #e5ecef;*/
 }
   
   .collection {
@@ -248,19 +255,6 @@ background-color: #e5ecef;
   
 
 
-
-
-@media screen and (max-width:575px) {
-     #drive{
-    height: 420px;
-    width: 120%;
-    margin-left: -25px;
-  }
-}
-  
-
-
-
 .video-modal,
 .video-modal .overlay {
     position: absolute;
@@ -421,23 +415,12 @@ iframe#quiz {
   display: none;
 }
 
-.progressbtn{
-  position: absolute;
-            background-color: black;
-  color: white;
-            padding: 7px 7px;
-            list-style: none;
-             border-radius: 5px;
-  margin-top: 40px;
- right: 25px;
-            font-weight: 550;
-  box-shadow: 0px 8px 20px -8px rgba(26, 33, 43, 0.5), 0px 4px 12px 0px rgba(26, 33, 43, 0.05), 0px 1px 3px 0px rgba(26, 33, 43, 0.25), 0px 1.5px 0.5px 0px #454D57 inset, 0px -3px 1px 0px rgba(0, 0, 0, 0.5) inset;
-}
+
+
 /* Cambia el diseño a vertical en pantallas amplias (médium y superiores) */
-  @media (min-width: 990px) {
-/*@media (min-width: 600px) {*/
-    
-    .mainContain{
+@media (min-width: 900px) {
+  
+  .mainContain{
       display: flex;
       flex-direction: row;
     }
@@ -475,7 +458,7 @@ iframe#quiz {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   transform: scale(0.9);
-     /* width: 100%;*/
+   /*   width: 100%;*/
        text-transform: none;
   }
   
@@ -773,489 +756,19 @@ iframe#quiz {
 
 
 
-  
-  
-  .menu-bar {
-    position: absolute;
-            display: flex;
-            justify-content: space-around;
-            background-color: black;
-            padding: 10px 0;
-            list-style: none;
-            margin-top: -20px;
-    margin-left: 140px;
-             border-radius: 10px;
-            font-weight: 550;
-  box-shadow: 0px 8px 20px -8px rgba(26, 33, 43, 0.5), 0px 4px 12px 0px rgba(26, 33, 43, 0.05), 0px 1px 3px 0px rgba(26, 33, 43, 0.25), 0px 1.5px 0.5px 0px #454D57 inset, 0px -3px 1px 0px rgba(0, 0, 0, 0.5) inset;
-        }
 
-        .menu-bar li {
-            color: white;
-          transition: transform 0.2s;
-        }
 
-        .menu-bar a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-        }
-
-.menu-bar li:hover {
-  color: white;
-            text-decoration: none;
-    transform: scaleX(1.03) scaleY(1.06) translateZ(0);
-}
-
-.menu-bar li:active {
-   color: white;
-   text-decoration: none;
-    transform: scale(0.96) translateZ(0);
-}
-
-    .menu-bar2 {
-      position: absolute;
-            display: flex;
-            justify-content: space-around;
-            background-color: black;
-            padding: 10px 0;
-            list-style: none;
-       margin-top: -20px;
-    margin-left: 120px;
-            font-weight: 550;
-  box-shadow: 0px 8px 20px -8px rgba(26, 33, 43, 0.5), 0px 4px 12px 0px rgba(26, 33, 43, 0.05), 0px 1px 3px 0px rgba(26, 33, 43, 0.25), 0px 1.5px 0.5px 0px #454D57 inset, 0px -3px 1px 0px rgba(0, 0, 0, 0.5) inset;
-        }
-
-        .menu-bar2 li {
-            color: white;
-          transition: transform 0.2s;
-        }
-
-        .menu-bar2 a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-        }
-
-.menu-bar2 li:hover {
-  color: white;
-            text-decoration: none;
-    transform: scaleX(1.03) scaleY(1.06) translateZ(0);
-}
-
-.menu-bar2 li:active {
-   color: white;
-   text-decoration: none;
-    transform: scale(0.96) translateZ(0); 
-}
-
-.mic-container{
-  display: none;
-  margin-top: 350px;
-  position: absolute;
- background: transparent;
-
-}
-
-.audio-record {
-     display: flex;
-     align-items: center;
-}
-
-.audio-record i {
-     color: gray;
-     font-size: 50px;
-     cursor: pointer;
-     padding: 1px;
-}
-.audio-record span {
-  position: absolute;
-  color: white;
-   text-shadow: 1px 2px 3px black, 0px 2px 5px black, 0px 1px 3px black!important; 
-  font-weight: 300;
-  font-size: 14px;
-  margin-left: -7px;
-  margin-top: 70px;
-}
- .audio-record input[type=checkbox] {
-     position: absolute;
-     visibility: hidden;
-}
-.audio-record input[type=checkbox]:checked ~ label i {
-     color: #fff;
-     background: black;
-     border-radius: 100%;
-     animation: shadow-expansion 1.5s infinite;
-}
-
-.audio-properties .audio_record-control {
-     width: 100%;
-     display: flex;
-     flex-flow: row nowrap;
-}
- .audio-properties .audio_record-control .audio-overwrite {
-     flex-grow: 2;
-     font-size: 11px;
-     font-weight: regular;
-     padding-top: 6px;
-     text-align: right;
-}
-.audio-properties .audio_record-control .audio-overwrite > label {
-     padding-right: 10px;
-}
-
-
-
- .player-bar {
-     font-size: 14px;
-     font-weight: bold;
-     width: 100%;
-     display: flex;
-     flex-flow: row nowrap;
-     margin: 10px 0;
-}
-
- 
-#recorder2 {
-  position: relative;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 3rem; 
-  background: red;
-  border: 1px solid #f9f9fa33;
-  cursor: pointer;
-  box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.15);
-  transition: 0.2s ease;
-  animation: shadow-expansion 1.5s infinite;
-}
-#recorder2 #record {
-  width: 20px;
-  height: 20px;
-  top: 3px;
-  left: 10px;
-  position: absolute;
-  transition: inherit;
-}
-
- @keyframes shadow-expansion {
-    0% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
-  }
-  40% {
-    box-shadow: 0 0 0 20px rgba(255, 0, 0, 0);
-  }
-  80% {
-    box-shadow: 0 0 0 20px rgba(255, 0, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
-  }
-}
- .by {
-     font-family: sans-serif;
-     position: fixed;
-     bottom: 20px;
-     text-align: center;
-     width: 100%;
-     font-size: 10px;
-}
- .by a {
-     text-decoration: none;
-     color: #007bff;
-     transition: all 0.5s;
-}
- .by a:hover {
-     color: #0062cc;
-}
-
-
-#record-audio {
-
-  margin-top: -35px;
-  margin-left: -20px;
-}
-
-
-
- .metronome { 
-   position: absolute;
-   display: block;
-  width: calc(100% - 5em);
-  padding: 1em 0.001em 0.5em 1em;   
-   margin-top: -50px;
-   margin-left: -20px;
-   transform: scale(0.8);
-  font: inherit;
-  line-height: 1;
-  overflow: hidden;
-   background: black;
-  box-shadow: 0px 8px 20px -8px rgba(26, 33, 43, 0.5), 0px 4px 12px 0px rgba(26, 33, 43, 0.05), 0px 1px 3px 0px rgba(26, 33, 43, 0.25), 0px 1.5px 0.5px 0px #454D57 inset, 0px -3px 1px 0px rgba(0, 0, 0, 0.5) inset;
-  color: white;
-   border-radius: 10px;
-  cursor: default;
-  z-index: 10;
-}
-
-#stop{
-  display:none;
-}
-
-
-
-
-
-
-
-
-
-
-#dotTarget{
-  display:flex;
-  margin: auto;
-}
-
-.beat{
-  width:20px;
-  height:30px;
-  background:#7d7d7d;
-  border-radius:2px;
-  margin:0px 5px;
-  cursor:pointer;
-  transition:.25s;
-}
-
-
-
-.on-temp{
-  background:#bfcc57;
-  transform:scale(1, 1.5);
-}
-
-.box{
-  padding:40px;
-}
-
-.beat-count{
-  text-align:center;
-  width:25px;
-  border:none;
-  background:none;
-  font-size:24px;
-}
-
-
-
-.button-active{
-  background:white;
-}
-
-#digitalDisplayContainer{
-  display:none;
-}
-
-
-
-.input-section {
-  z-index: 2;
-  position: relative;
-  width: 95%;
-  height: 40px;
-
-  overflow: hidden;
-} 
-
-
-
-.input-section .thick-fill {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-5px);
-  left: 0;
-  background: orange;
-  border-radius: 1px;
-  border: 2px solid white;
-  z-index: -1;
-  height: 20px;
-  width: 80px;
-}
- 
-.tempoSlider {
-  border: none;
-  height: 20px;
-   width: 270px !important;
-}
-
-.tempoSlider::-webkit-slider-runnable-track {
-  background: transparent !important; /* Hacer la pista (track) transparente */
-  border: none !important; /* Elimina cualquier borde de la pista */
-}
-
-.tempoSlider::-webkit-slider-thumb {
-  -webkit-appearance: none !important;  /* Remueve el estilo predeterminado */
-  height: 25px !important;
-  width: 25px !important;
-  border-radius: 2px !important;
-  background: #2d303b !important;
-  border: 1px solid white !important;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) !important;
-  cursor: pointer !important;
-  -webkit-appearance: none !important;
-  margin-top: -11px !important;
-}
-
-.thumb {
-  display: none;
-}
-
-
-.main-btn{ 
-  border: white;
-  background: transparent !important;
-  border-radius: 50%; /* Esto hace que el contorno sea circular */
-  cursor: pointer;
-  font-size: 20px;
-  float: right;
-  margin-right: 20px;
-}
-
-
-
-
-
-
-
-
-
-
-  
-   @media screen and (min-width:600px){
-   #drive{
-    height: 480px;
-    width: 180%;
-    margin-left: -40%;
-  }
-
-      .metronome { 
-        margin-top: -10px;
-     margin-left: -200px;
-       width: 300px;
-  }
-  .menu-bar{
-     margin-top: -400px;
-     margin-left: -145px;
-  }
-     .menu-bar2{
-        margin-top: -350px;
-     margin-left: -145px;
-  }
-     .mic-container{
-       margin-top: 10px;
-    margin-left: 450px;
-  }
-
-
-      #record-audio{
-        margin-top: 30px;
-    margin-left: -605px;
-  }
-     #lsnContainer{
-       height: 285px !important;
-       max-height: 285px !important;
-     }
-     
-     .profile-user-data{
-       margin-top: 20px;
-     }
-     
-     .p-image{
-       margin-top: 20px;
-     }
-     
-     .achievement-list-panel{
-       margin-top: 50px;
-     }
-        #noDocAlert{
-        display: none;
-      }
    
-}
-  
-    @media screen and (min-width:850px){
-   #drive{
-    width: 300%;
-    margin-left: -100%;
-  }
-       .metronome { 
-     margin-left: -250px;
-  }
-  .menu-bar{
-     margin-left: -190px;
-  } 
-      .menu-bar2{
-     margin-left: -190px;
-  }
-
-        .mic-container{
-    margin-left: 500px;
-  }
-       #record-audio{ 
-    margin-left: -700px;
-  } 
-   
-   
-}
-  
-      @media screen and (min-width:1050px){
-   #drive{
-     margin-top: 15px;
-    width: 400%;
-     height: 840px;
-    margin-left: -150%;
-  }
-
-       .metronome { 
-     margin-left: -330px;
-       
-  }
-  .menu-bar{
-     margin-top: -780px;
-     margin-left: -300px;
-  } 
-      .menu-bar2{  
-         margin-top: -730px;
-     margin-left: -300px;
-  }
-
-        .mic-container{
-    margin-left: 640px;
-  }
-       #record-audio{ 
-          margin-top: 25px;
-    margin-left: -940px;
-  } 
-}
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
 .quiz *{
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 .quiz {
-  font-family: "Montserrat", sans-serif;
+ font-family: system-ui, sans-serif;
   margin: 0;
   padding: 10px;
+  
 }
 
 .quiz-intro {
@@ -1269,8 +782,8 @@ iframe#quiz {
 
 .imageQuiz{
   height: 100px;
-  width: 160px;
-}
+  width: 300px;
+} 
 
 #quiz {
   width: 100%;
@@ -1278,37 +791,37 @@ iframe#quiz {
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  background-color: #fff;
-  color: #444;
   -webkit-transition: 0.5s all;
   -o-transition: 0.5s all;
   transition: 0.5s all;
+  background-color: #E6EAEF;
 }
 
+
+
 #quiz-content {
-  width: 100%;
+ max-width: 350px;
   margin: 10% auto 0 auto;
-  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+
   border-radius: 10px;
-  background-color: #fff;
-  color: #444;
   -webkit-transition: 0.5s all;
   -o-transition: 0.5s all;
   transition: 0.5s all;
+  background-color: #1c232b;
+  color: #E6EAEF;
 }
 
 #results {
-  width: 100%;
+  max-width: 380px;
   margin: 10% auto 0 auto;
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  background-color: white !important;
-  color: #444;
   -webkit-transition: 0.5s all;
   -o-transition: 0.5s all;
   transition: 0.5s all;
+  background-color: #1c232b;
+  color: #E6EAEF ;
 }
 
 .quiz-started {
@@ -1316,9 +829,7 @@ iframe#quiz {
 }
 
 #quiz-bg {
-  background: -webkit-linear-gradient(45deg, #0277bd, #4fc3f7);
-  background: -o-linear-gradient(45deg, #0277bd, #4fc3f7);
-  background: linear-gradient(45deg, #0277bd, #4fc3f7);
+
   padding: 25px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -1340,7 +851,6 @@ iframe#quiz {
 #quiz-body h1 {
   text-align: center;
   font-size: 22px;
-  color: #444;
   font-weight: 700;
   margin: 0;
 }
@@ -1390,14 +900,14 @@ iframe#quiz {
 }
 
 #stats span {
-  color: #666;
+  color: #ADD8E6;
   font-weight: 700;
 }
 
 #answers h2 {
   margin: 50px 0;
-  color: #444;
-  font-size: 24px;
+  color: #E6EAEF;
+  font-size: 20px;
 }
 
 .answer {
@@ -1417,18 +927,16 @@ label {
   width: 100%;
   padding: 7px;
   height: 38px !important;
-  background-color: #f5f5f5;
+  background-color: #28323E;
   border-radius: 5px;
-  color: #666;
-  font-size: 14px;
-  -webkit-transition: 0.2s background-color;
-  -o-transition: 0.2s background-color;
-  transition: 0.2s background-color;
+  border: 1px solid #384656;
+  color: #E6EAEF !important;
+
   
 }
 
 input[type="radio"]:hover:not(:disabled) + label {
-  background-color: rgba(0, 0, 0, 0.13);
+  background-color: #384656;
 }
 
 input[type="radio"] {
@@ -1478,7 +986,7 @@ input[type="radio"]:checked + label.green-bg::after {
   width: 100%;
   border-radius: 10px;
   padding: 0 0 20px 0;
-
+  margin-left: -10px;
   background-color: transparent;
   text-align: center;
 }
@@ -1554,20 +1062,36 @@ input[type="radio"]:checked + label.green-bg::after {
 
 
 
-.blue-btn {
-  color: white;
-  background-color: #2196f3;
+.close-btn {
+  background-color: transparent !important;
+  border-radius: 5px !important;
+  color: #E6EAEF !important;
+  font-weight: 600 ;
+  border: 1px solid #384656 !important;
 }
 
 
-.blue-btn:hover {
+.close-btn:hover {
   background-color: #1565c0;
 }
 
-.blue-btn:active,
-.blue-btn:focus {
+.close-btn:active,
+.close-btn:focus {
   background-color: #074286;
 }
+
+
+.next-btn {
+  border-radius: 5px ;
+  color: #384656;
+  font-weight: 600 ;
+  border: 1px solid #384656 ;
+}
+
+.next-btn:hover {
+  background-color: #e0e4ea;
+}
+
 
 /* Utility classes */
 .text-center {
@@ -1614,10 +1138,19 @@ input[type="radio"]:checked + label.green-bg::after {
 
 
 
-@media (min-width: 576px) {
+@media (min-width: 550px) {
   .quiz-started {
     max-width: 450px;
   }
+  #quiz-content {
+ max-width: 400px;
+  }
+  
+  #notification{
+  margin-top: -260px;
+    margin-left: -15px;
+  }
+  
   
   .imgQuizContainer{
   margin-bottom: 0px;
@@ -1654,6 +1187,198 @@ input[type="radio"]:checked + label.green-bg::after {
   }
 }
 
+  .menu-bar {
+    position: absolute;
+            display: none;
+            justify-content: space-around;
+            background-color: black;
+             padding: 10px 20px;
+    color: white;
+            list-style: none;
+            margin: 0;
+    margin-left: -200px;
+    margin-top: -30px;
+             border-radius: 10px;
+            font-weight: 550;
+  box-shadow: 0px 8px 20px -8px rgba(26, 33, 43, 0.5), 0px 4px 12px 0px rgba(26, 33, 43, 0.05), 0px 1px 3px 0px rgba(26, 33, 43, 0.25), 0px 1.5px 0.5px 0px #454D57 inset, 0px -3px 1px 0px rgba(0, 0, 0, 0.5) inset;
+        }
+
+
+
+.menu-bar:hover {
+  color: white;
+            text-decoration: none;
+    transform: scaleX(1.03) scaleY(1.06) translateZ(0);
+}
+
+.menu-bar:active {
+   color: white;
+   text-decoration: none;
+    transform: scale(0.96) translateZ(0);
+}
+
+
+
+
+
+   
+  
+  @media screen and (min-width:700px){
+   #drive{
+    height: 480px;
+    width: 280%;
+    margin-left: -90%;
+  }
+     .close-modal {
+       margin-right: -250px;
+     }
+}
+  
+
+
+  @media screen and (min-width:1250px){
+   #drive{
+     margin-top: -35px;
+    width: 240%;
+     height: 800px;
+    margin-left: -70%;
+  }
+    
+     .close-modal {
+       margin-right: -300px;
+     }
+
+     .menu-bar{
+      display: flex;
+     }
+
+}
+
+
+  
+@media screen and (max-width:699px) {
+     #drive{
+    height: 420px;
+    width: 120%;
+    margin-left: -25px;
+       
+  }
+}
+  
+
+   
+
+  
+  .unlockBtn{
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  z-index: 30;
+  box-sizing: border-box;
+  position: absolute;
+    top: 50px;
+    right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
+  overflow: hidden;
+  font-weight: 700;
+  color: white;
+  border-radius: 0.375rem;
+  --tw-ring-offset-width: 2px;
+  cursor: pointer;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 0.3s;
+  --tw-ring-offset-color: #c7d2fe;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
+    var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
+    calc(1px + 2px) rgb(59 130 246 / 0.5);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+    var(--tw-shadow, 0 0 #0000);
+  --tw-ring-offset-color: #c7d2fe;
+}
+
+.unlockBtn:hover{
+  --tw-ring-offset-color: #6366f1;
+}
+
+.unlockBtn:focus{
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+}
+
+
+.btnBorderRight{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2rem;
+  height: 5rem;
+  margin-bottom: -2rem;
+  margin-right: -1.25rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  background-color: rgb(255 255 255);
+  opacity: 0.1;
+  transform: translate(0.25rem, 0) rotate(45deg);
+}
+
+
+.btnBorderLeft{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5rem;
+  height: 2rem;
+  margin-top: -0.25rem;
+  margin-left: -3rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  background-color: rgb(255 255 255);
+  opacity: 0.1;
+  transform: translate(-0.25rem, 0) rotate(-45deg);
+}
+
+
+.btniContainer{
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+
+
+
+.btnIcon {
+  background: none;
+  box-shadow: none;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+
+  color: white;
+  /*border: 1px solid #d8d8d8;*/
+  margin-left: 7px;
+  margin-top: auto;
+}
 </style>
  
 
@@ -1661,10 +1386,8 @@ input[type="radio"]:checked + label.green-bg::after {
 
   <!-- End Header -->
   <!-- Tabs Nav Start -->    
- <!-- <div class="row"> -->  
-  <div class="mainContain">
-      <!-- <div class="col s12 m4" ng-controller="lvlMenu">  -->
-     <div  ng-controller="lvlMenu">
+  <div class="mainContain"> 
+       <div  ng-controller="lvlMenu">  
    <div class="col s12" style="overflow-x: auto;">
   <ul class="tabs lvlmenu"  > 
       <li class="tab levelp"> 
@@ -1886,25 +1609,31 @@ input[type="radio"]:checked + label.green-bg::after {
     <!-- Tabs Nav End -->
 
      
-   <!--<div class="col s12 m8">  -->    
-    <div style="width: 100%; margin-right: 10px;">
+   <div style="width: 100%; margin-right: 10px;">      
     <div id="test1" class="col s12" ng-controller="levelP">
   <!-- CSS Course Start -->
        
-      <div class="job-explain">
+      <div class="job-explain" >
       <img class="job-bg" src="https://lh3.googleusercontent.com/d/1rlF9FPo-cn93vx7NaYK6Z0LNogarJWk_">
       <div class="job-logos"> 
  
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-         <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 0 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 0 && status != 'ACTIVO'"> Inscribirse </button>  
+
+         <button class="unlockBtn" onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="status != 'ACTIVO'" style="background-color: #1894cc">
+            <span class="btnBorderRight"></span>
+            <span class="btnBorderLeft"></span>
+            <span class="btniContainer">
+             <i class="btnIcon ri-lock-fill" style="margin-top: -1px; margin-left: -5px;"> </i>
+           Desbloquear
+            </span>
+          </button>
       </div>  
       <div class="job-explain-content">
       <div class="job-title-wrapper">
        <div class="job-card-title2" >Taller de Piano </div>
        <div class="job-action"> 
          <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #F44336" ng-if="lvl > 0 && status == 'ACTIVO'"> </i>
-      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="status != 'ACTIVO'"> </i>
+ 
          
        </div> 
        </div>
@@ -1945,7 +1674,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{progress}} %</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">{{convertirFecha(currentlsns[1].limitdate)}}</div>
          </div>
             <div class="explain-contents"> 
@@ -1953,31 +1682,29 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{history[0].beginDate}}</div>
          </div>   
         <div class="explain-contents"> 
-        <div class="explain-title">Fecha de termino</div>
+        <div class="explain-title">Próximo pago</div>
         <div class="explain-subtitle">-</div>
          </div> 
                 </div> 
           
-      
-            <div class="overview-text-subheader" style="margin-top: 15px;" ng-if="status != 'ACTIVO'">Este curso establece las bases para lograr una lectura fluida de partituras, lo cual se traduce en una interpretación más limpia y precisa de las piezas.</div>
-        
+
           <div class="explain-bar" ng-if="status != 'ACTIVO'">
-        <div class="explain-contents">
+      <div class="explain-contents">
         <div class="explain-title">Progreso</div>
         <div class="explain-subtitle">-</div>
+         </div>
+        <div class="explain-contents">
+        <div class="explain-title">Límite de entrega</div>
+        <div class="explain-subtitle">-</div>
+         </div>
+            <div class="explain-contents"> 
+        <div class="explain-title">Fecha de inicio</div>
+        <div class="explain-subtitle">-</div>
          </div>   
-        <div class="explain-contents">
-         <div class="explain-title">Termino del nivel</div>
-        <div class="explain-subtitle">  <i class="material-icons">workspace_premium</i><span style="margin-left: 5px;">Diploma</span></div>
-         </div>
-        <div class="explain-contents">
-        <div class="explain-title">Horas en video</div>
-          <div class="explain-subtitle"><i class="material-icons">tv</i><span style="margin-left: 5px;">12 horas</span></div>
-         </div>
-        <div class="explain-contents">
-        <div class="explain-title">Recursos</div>
-        <div class="explain-subtitle">  <i class="material-icons">audio_file</i><span style="margin-left: 5px;">30 actividades</span></div>
-         </div>
+        <div class="explain-contents"> 
+        <div class="explain-title">Fecha de termino</div>
+        <div class="explain-subtitle">-</div>
+         </div> 
                 </div>
          
                </div>
@@ -2001,7 +1728,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton ">
      <div class="linehorizontal"></div>        
-        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lvl > 0 || lesson.id <= lsn) && status === 'ACTIVO'">
+        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="((lesson.id <= lsn && lvl == 0) || lvl > 0) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons" >{{material.icon}}</i>
             {{material.title}}<span class="secondary-content"></span></div>
@@ -2053,16 +1780,23 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-   <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 1 && status == 'ACTIVO'"> Ver progreso </button> 
- <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 1 && status != 'ACTIVO'"> Inscribirse </button>  
+
+<button class="unlockBtn" onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="status != 'ACTIVO'" style="background-color: #9024dc">
+            <span class="btnBorderRight"></span>
+            <span class="btnBorderLeft"></span>
+            <span class="btniContainer">
+             <i class="btnIcon ri-lock-fill" style="margin-top: -1px; margin-left: -5px;"> </i>
+           Desbloquear
+            </span>
+          </button>
       </div>  
      
       <div class="job-explain-content"> 
       <div class="job-title-wrapper">
        <div class="job-card-title2" >Taller de Piano </div>
        <div class="job-action"> 
-    <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #F44336" ng-if="lvl > 1 && status == 'ACTIVO'"> </i>
-      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl<1 || status != 'ACTIVO'"> </i>   
+    <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #9024dc" ng-if="lvl > 1 && status == 'ACTIVO'"> </i>
+      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl<1  && status == 'ACTIVO'"> </i>   
        </div> 
        </div>
        <div class="job-subtitle-wrapper">
@@ -2099,7 +1833,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{progress}} %</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">{{convertirFecha(currentlsns[1].limitdate)}}</div>
          </div>
             <div class="explain-contents"> 
@@ -2107,18 +1841,18 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{history[0].beginDate}}</div>
          </div>   
         <div class="explain-contents"> 
-        <div class="explain-title">Fecha de termino</div>
+        <div class="explain-title">Próximo pago</div>
         <div class="explain-subtitle">-</div>
          </div> 
                 </div> 
 
-                  <div class="explain-bar" ng-if="lvl < 1 && status == 'ACTIVO'">
+                  <div class="explain-bar" ng-if="lvl < 1 || status != 'ACTIVO'">
         <div class="explain-contents">
         <div class="explain-title">Progreso</div>
         <div class="explain-subtitle">-</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">-</div>
          </div>
             <div class="explain-contents"> 
@@ -2132,24 +1866,6 @@ input[type="radio"]:checked + label.green-bg::after {
                 </div> 
         
      <!--   <div class="overview-text-subheader" style="margin-top: 15px;" ng-if="status != 'ACTIVO'">Este nivel establece los fundamentos del concepto de tonalidad.</div>  -->
-            <div class="explain-bar" ng-if="status != 'ACTIVO'">
-        <div class="explain-contents">
-        <div class="explain-title">Progreso</div>
-        <div class="explain-subtitle">-</div>
-         </div>   
-        <div class="explain-contents">
-         <div class="explain-title">Termino del nivel</div>
-        <div class="explain-subtitle">  <i class="material-icons">workspace_premium</i><span style="margin-left: 5px;">Diploma</span></div>
-         </div>
-        <div class="explain-contents">
-        <div class="explain-title">Horas en video</div>
-          <div class="explain-subtitle"><i class="material-icons">tv</i><span style="margin-left: 5px;">12 horas</span></div>
-         </div>
-        <div class="explain-contents">
-        <div class="explain-title">Recursos</div>
-        <div class="explain-subtitle">  <i class="material-icons">audio_file</i><span style="margin-left: 5px;">30 actividades</span></div>
-         </div>
-                </div> 
                </div>
      </div>
     <!-- CSS Course Start -->
@@ -2168,7 +1884,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lesson.id <= lsn || lvl > 1) && status === 'ACTIVO'">
+        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="((lesson.id <= lsn && lvl == 1) || lvl > 1) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons">{{material.icon}}</i>
             {{material.title}}</div>
@@ -2207,15 +1923,22 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-<button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 2 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 2 && status != 'ACTIVO'"> Inscribirse </button>  
+
+<button class="unlockBtn" onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="status != 'ACTIVO'" style="background-color: #1894cc;">
+            <span class="btnBorderRight"></span>
+            <span class="btnBorderLeft"></span>
+            <span class="btniContainer">
+             <i class="btnIcon ri-lock-fill" style="margin-top: -1px; margin-left: -5px;"> </i>
+           Desbloquear
+            </span>
+          </button> 
       </div> 
       <div class="job-explain-content">
       <div class="job-title-wrapper">
        <div class="job-card-title2">Taller de Piano </div>
        <div class="job-action"> 
-    <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #F44336" ng-if="lvl > 2 && status == 'ACTIVO'"> </i>
-      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl < 2 || status != 'ACTIVO'"> </i>
+    <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #1894cc" ng-if="lvl > 2 && status == 'ACTIVO'"> </i>
+      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl < 2  && status == 'ACTIVO'"> </i>
        </div> 
        </div>
        <div class="job-subtitle-wrapper">
@@ -2254,7 +1977,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{progress}} %</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">{{convertirFecha(currentlsns[1].limitdate)}}</div>
          </div>
             <div class="explain-contents"> 
@@ -2262,7 +1985,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{history[0].beginDate}}</div>
          </div>   
         <div class="explain-contents"> 
-        <div class="explain-title">Fecha de termino</div>
+        <div class="explain-title">Próximo pago</div>
         <div class="explain-subtitle">-</div>
          </div> 
                 </div> 
@@ -2274,7 +1997,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">-</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">-</div>
          </div>
             <div class="explain-contents"> 
@@ -2306,7 +2029,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-       <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lvl > 2 || lesson.id <= lsn) && status === 'ACTIVO'">
+       <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="((lesson.id <= lsn && lvl == 2) || lvl > 2) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons" >{{material.icon}}</i>
             {{material.title}}</div>
@@ -2345,15 +2068,22 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-        <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 3 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 3 && status != 'ACTIVO'"> Inscribirse </button>  
+
+<button class="unlockBtn" onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="status != 'ACTIVO'" style="background-color: #489454;">
+            <span class="btnBorderRight"></span>
+            <span class="btnBorderLeft"></span>
+            <span class="btniContainer">
+             <i class="btnIcon ri-lock-fill" style="margin-top: -1px; margin-left: -5px;"> </i>
+           Desbloquear
+            </span>
+          </button> 
       </div> 
       <div class="job-explain-content">
       <div class="job-title-wrapper">
        <div class="job-card-title2">Taller de Piano</div>
        <div class="job-action"> 
-       <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #F44336" ng-if="lvl > 3 && status == 'ACTIVO'"> </i>
-      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl < 3 || status != 'ACTIVO'"> </i>
+       <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #489454" ng-if="lvl > 3 && status == 'ACTIVO'"> </i>
+      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl < 3  && status == 'ACTIVO'"> </i>
        </div> 
        </div>
        <div class="job-subtitle-wrapper">
@@ -2388,7 +2118,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{progress}} %</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">{{convertirFecha(currentlsns[1].limitdate)}}</div>
          </div>
             <div class="explain-contents"> 
@@ -2396,7 +2126,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{history[0].beginDate}}</div>
          </div>   
         <div class="explain-contents"> 
-        <div class="explain-title">Fecha de termino</div>
+        <div class="explain-title">Próximo pago</div>
         <div class="explain-subtitle">-</div>
          </div> 
                 </div> 
@@ -2409,7 +2139,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">-</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">-</div>
          </div>
             <div class="explain-contents"> 
@@ -2440,7 +2170,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-     <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lvl > 3 || lesson.id <= lsn) && status === 'ACTIVO'">
+     <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="((lesson.id <= lsn && lvl == 3) || lvl > 3) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons" >{{material.icon}}</i>
             {{material.title}}</div>
@@ -2477,15 +2207,22 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-        <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 4 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 4 && status != 'ACTIVO'"> Inscribirse </button> 
+    
+<button class="unlockBtn" onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="status != 'ACTIVO'" style="background-color: #f0ac14;">
+            <span class="btnBorderRight"></span>
+            <span class="btnBorderLeft"></span>
+            <span class="btniContainer">
+             <i class="btnIcon ri-lock-fill" style="margin-top: -1px; margin-left: -5px;"> </i>
+           Desbloquear
+            </span>
+          </button>
       </div> 
       <div class="job-explain-content">
       <div class="job-title-wrapper">
        <div class="job-card-title2">Taller de Piano</div>
        <div class="job-action"> 
-      <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #F44336" ng-if="lvl > 4 && status == 'ACTIVO'"> </i>
-      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl < 4 || status != 'ACTIVO'"> </i>
+      <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #f0ac14" ng-if="lvl > 4 && status == 'ACTIVO'"> </i>
+      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl < 4  && status == 'ACTIVO'"> </i>
        </div> 
        </div>
        <div class="job-subtitle-wrapper">
@@ -2521,7 +2258,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{progress}} %</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">{{convertirFecha(currentlsns[1].limitdate)}}</div>
          </div>
             <div class="explain-contents"> 
@@ -2529,7 +2266,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{history[0].beginDate}}</div>
          </div>   
         <div class="explain-contents"> 
-        <div class="explain-title">Fecha de termino</div>
+        <div class="explain-title">Próximo pago</div>
         <div class="explain-subtitle">-</div>
          </div> 
                 </div> 
@@ -2542,7 +2279,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">-</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">-</div>
          </div>
             <div class="explain-contents"> 
@@ -2573,7 +2310,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lvl > 4 || lesson.id <= lsn) && status === 'ACTIVO'">
+        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="((lesson.id <= lsn && lvl == 4) || lvl > 4) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons">{{material.icon}}</i>
             {{material.title}}</div>
@@ -2609,15 +2346,22 @@ input[type="radio"]:checked + label.green-bg::after {
       <div class="job-logos">
 
          <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="80" height="80" style="margin-right: 10px; border-radius: 15px;"/>
-        <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/profile';" ng-if="lvl == 5 && status == 'ACTIVO'"> Ver progreso </button>   
- <button class="progressbtn"  onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="lvl == 5 && status != 'ACTIVO'"> Inscribirse </button> 
+
+<button class="unlockBtn" onclick="window.top.location.href='https://cubiculociencias.github.io/tallerdepiano/main#/menu/payment';" ng-if="status != 'ACTIVO'" style="background-color: #485cb4;">
+            <span class="btnBorderRight"></span>
+            <span class="btnBorderLeft"></span>
+            <span class="btniContainer">
+             <i class="btnIcon ri-lock-fill" style="margin-top: -1px; margin-left: -5px;"> </i>
+           Desbloquear
+            </span>
+          </button>
       </div> 
       <div class="job-explain-content">
       <div class="job-title-wrapper">
        <div class="job-card-title2">Taller de Piano</div>
        <div class="job-action"> 
-     <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #F44336" ng-if="lvl > 5 && status == 'ACTIVO'"> </i>
-      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl < 5 || status != 'ACTIVO'"> </i>
+     <i class="locklvl ri-award-fill" style="font-size: 25px; margin-right: 5px; color: #485cb4" ng-if="lvl > 5 && status == 'ACTIVO'"> </i>
+      <i class="locklvl ri-lock-fill" style="font-size: 20px; margin-right: 10px;" ng-if="lvl < 5 && status == 'ACTIVO'"> </i>
        </div>  
        </div>
        <div class="job-subtitle-wrapper">
@@ -2654,7 +2398,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{progress}} %</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">{{convertirFecha(currentlsns[1].limitdate)}}</div>
          </div>
             <div class="explain-contents"> 
@@ -2662,7 +2406,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">{{history[0].beginDate}}</div>
          </div>   
         <div class="explain-contents"> 
-        <div class="explain-title">Fecha de termino</div>
+        <div class="explain-title">Próximo pago</div>
         <div class="explain-subtitle">-</div>
          </div> 
                 </div> 
@@ -2675,7 +2419,7 @@ input[type="radio"]:checked + label.green-bg::after {
         <div class="explain-subtitle">-</div>
          </div>
         <div class="explain-contents">
-        <div class="explain-title">Límite de próxima entrega</div>
+        <div class="explain-title">Límite de entrega</div>
         <div class="explain-subtitle">-</div>
          </div>
             <div class="explain-contents"> 
@@ -2705,7 +2449,7 @@ input[type="radio"]:checked + label.green-bg::after {
       
       <ul class="collapsible popout" data-collapsible="accordion" ng-if="lesson.showButton">
      <div class="linehorizontal" ></div>
-        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="(lvl > 5 || lesson.id <= lsn) && status === 'ACTIVO'">
+        <li ng-repeat="material in lesson.material" class="container-lessons" ng-if="((lesson.id <= lsn && lvl == 5) || lvl > 5) && status === 'ACTIVO'">
           <div class="collapsible-header">
    <i class="material-icons" >{{material.icon}}</i>
             {{material.title}}</div>
@@ -2788,70 +2532,11 @@ input[type="radio"]:checked + label.green-bg::after {
   
 
   
-<div id="modalPDF" class="modal-container" ng-controller="pdfHandler">
+<div id="modalPDF" class="modal-container">
         <div class="modal-background">
             <div class="modal-doc">
-              
-        <div class="mic-container" id="recorder" >
-      <div class="audio-record" id="recorder2">
-        <input type="checkbox" id="audio_record-icon" name="audio_record-icon ">
-        <label for="audio_record-icon" class="player-icon audio_record-icon">
-   <img id="record" src="https://assets.codepen.io/3537853/record.svg" />
-        </label> 
-        <span> grabando... </span>
-      </div>
-      <div class="audio-properties" style="display: none;">              
-        <div class="audio_record-control">         
-          <button class="btn btn-default player-icon save" id="save-recording" onclick="saveRecording();">
-          </button>
-        
-        </div>
-      </div>
- 
-<div id="record-audio"></div>
-<!-- <button id="delete-audio">Eliminar</button> -->
-  <input type="hidden" id="AudioData" current-index="">
-<span id="clicks"></span>
-         
-</div>
-     
-       <div class="metronome">  
-    <div hidden>
-    <button class="main-btn blue flex-centered" id="tap" hidden>Tap</button> 
-              <button class="min-btn" id="beatMinus">-</button>
-              <input type="number" class="beat-count" id="beatCount" value="4" readonly>
-              <button class="min-btn" id="beatPlus">+</button>
-    </div>
-    
-     <ul id="dotTarget" style="display: none;">
-            <li class="beat"></li>
-            <li class="beat"></li>
-            <li class="beat"></li>
-            <li class="beat"></li>
-          </ul>
-          <div id='digitalDisplayContainer'>
-            <h3 id="beatFlag">1</h3><h3 id="beatNbr">/4</h3>
-          </div>
-
-     <div style="float: left">   
-       <span id="tempo-disp" style="font-size:40px;">60</span>  bpm
-     </div> 
-      
-          <button class="main-btn" id="start">
-    <i class="ri-play-fill" style="font-size: 44px; color: white;"></i>
-          </button>
-      <button class="main-btn" id="stop">
-               <i class="ri-pause-fill" style="font-size: 44px; color: white;"></i>
-             </button>
-      
-      
-      <div class="input-section" style="opacity: 1">
-    <input type="range" min="0" max="200" value="60" class="tempoSlider" step="1" oninput="temp(this.value)" id="tempo">
-    <div class="thin-fill"></div>
-    <div class="thick-fill"></div>
-  </div>   
-  </div>            
-              
+                        
+     <button class="menu-bar" onclick="closemodal()"> Salir </button>           
      <iframe id="drive" src="" frameborder="0"></iframe>     
                 <a 
           href="#" 
@@ -2875,15 +2560,7 @@ input[type="radio"]:checked + label.green-bg::after {
           </svg> 
         </a>
               
-     <ul class="menu-bar" id="menu-bar1">
-            <li><a href="#" id="back-menu-bar"  onclick="closemodal()">Salir</a></li> 
-           <li><a href="#" id="toggle-recorder">Grabar</a></li> 
-        </ul> 
-       <ul class="menu-bar2" id="menu-bar2" style="visibility: hidden;">
-            <li><a href="#" id="delete-audio">Eliminar</a></li>
-           <li><a href="#" ng-click="uploadAudio()">Enviar</a></li> 
-        </ul>           
-            
+
             </div> 
         </div>
     </div>
@@ -2928,8 +2605,8 @@ input[type="radio"]:checked + label.green-bg::after {
     <p>Obtuviste <span class="bold" id="correctAnswers"></span> de <span class="bold" id="totalQuestions"></span> preguntas correctas.</p>
     <p style="margin-top: 10px;">Tiempo empleado: <span class="bold" id="finalTime"></span></p>
     <div class="buttons-container">
-      <button type="button" id="close-results-btn" class="btn blue-btn">Cerrar</button>
-      <button type="button" id="start-over-btn" class="btn blue-btn">De nuevo</button> 
+      <button type="button" id="close-results-btn" class="btn close-btn">Cerrar</button>
+      <button type="button" id="start-over-btn" class="btn close-btn">De nuevo</button> 
     </div>
   </section>
 </div>
@@ -2963,8 +2640,7 @@ var app = angular.module('materializeApp', ['ui.materialize']);
 app.factory('SharedState', function($http, $q) {
   var requestData = {
     action: "getBasicData",
-    token: "U2FsdGVkX18Y3Ikd7Ppb+2aVdv2AgN/p1JCgChHIAXGylvVbAToWW9G0M2yhM3aa"
-    //localStorage.getItem('TPtoken')
+    token: localStorage.getItem('TPtoken')
   };
 
   var config = {
@@ -3000,23 +2676,7 @@ app.factory('SharedState', function($http, $q) {
 });
  
   app
-    .controller('pdfHandler', ["$scope", "SharedState", function($scope, SharedState){
-     $scope.uploadAudio = function() { 
-     
-      SharedState.getNum().then(function(data) {
-        var index = document.getElementById("AudioData").getAttribute('current-index')
-      $scope.currentlsns = filterCurrent(data.lssons, data.lsn);
-        alert($scope.currentlsns[index].status)
-  })
-   }
-    
-     function filterCurrent(obj, lsn) {
-    return obj.filter(function(entry) {
-        return entry.index == lsn;
-    });
-}
-    
-  }])
+
   .controller('lvlMenu', ["$scope", "SharedState", function($scope, SharedState){ 
       SharedState.getNum().then(function(data) {
         $scope.lvl = data.lvl;
@@ -3086,14 +2746,16 @@ app.factory('SharedState', function($http, $q) {
                   type: 'Lección',
                   media: 'video',
                   url: 'https://www.youtube.com/embed/qh-4OyTcuJw'
-                  },{
+                  },
+            /*{
                   title: 'Intervalos de 4ta y 5ta',
                   icon: 'quiz',
                   type: 'Block Test',
                   media: 'quiz',
                   package: 2
-                  },{
-                  title: 'Intervalos de 2da y 3era',
+                  },*/
+                {
+                  title: 'Ritmo y métrica',
                   icon: 'bolt',
                   type: 'Quick Test',
                   media: 'quiz',
@@ -3160,7 +2822,6 @@ app.factory('SharedState', function($http, $q) {
                   },{
                   icon: 'description',
                   type: 'Ejercicios',
-                  index: 0,
                   media: 'pdf',
                   url: 'https://drive.google.com/file/d/1Ys_fybQsMIjS4zaCRLO9lV8qsvmvooXq/preview'
                   }
@@ -3177,7 +2838,6 @@ app.factory('SharedState', function($http, $q) {
                   },{
                   icon: 'description',
                   type: 'Partitura',
-                  index: 1,
                   media: 'pdf',
                   url: 'https://drive.google.com/file/d/15amNYqOJwINhWNjw8I77uRWZ-6sh15-e/preview'
                   }
@@ -3208,7 +2868,6 @@ app.factory('SharedState', function($http, $q) {
                   icon: 'description',
                   type: 'Ejercicios',
                   media: 'pdf',
-                    index: 0,
                   url: 'https://drive.google.com/file/d/1Dom_0ZjNoslBKZpUa3IUDN8XMzcxZ1Jd/preview'
                   }
                 ]
@@ -3225,7 +2884,6 @@ app.factory('SharedState', function($http, $q) {
                   icon: 'description',
                   type: 'Partitura',
                   media: 'pdf',
-                    index: 1,
                   url: 'https://drive.google.com/file/d/1jo4LcVuPV-Q0eytfVFyDdCPqbTDX1aU9/preview'
                   }
                 ] 
@@ -4536,12 +4194,12 @@ app.factory('SharedState', function($http, $q) {
                   icon: 'smart_display',
                   type: 'Lección',
                   media: 'video',
-                  url: 'https://www.youtube.com/embed/'
+                  url: 'https://www.youtube.com/embed/v1e-4OnBlI0'
                   },{
                   icon: 'auto_stories',
                   type: 'Teoría',
                   media: 'pdf',
-                  url: 'https://drive.google.com/file/d//preview'
+                  url: 'https://drive.google.com/file/d/1KC_u0nOi-PjotEKLGuEAPDXiDEJvDUwA/preview'
                   }
                 ]
               },
@@ -4552,12 +4210,12 @@ app.factory('SharedState', function($http, $q) {
                   icon: 'piano',
                   type: 'Ejemplo',
                   media: 'video',
-                  url: 'https://www.youtube.com/embed/'
+                  url: 'https://www.youtube.com/embed/NIYHDXfB9UQ'
                   },{
                   icon: 'description',
                   type: 'Partitura',
                   media: 'pdf',
-                  url: 'https://drive.google.com/file/d//preview'
+                  url: 'https://drive.google.com/file/d/1WhaTn70R8qil68wjWdMAmLfa6Ij77dzC/preview'
                   }
                 ]
               }
@@ -5621,40 +5279,21 @@ function toggle_video_modal(element) {
       });
  
 
-
 function showModal(element) {
      var url = element.getAttribute('data-pdf-id');
-  var currentlvl = element.getAttribute('current-lvl');
-     var thislvl = element.getAttribute('this-lvl');
-     var currentlsn = element.getAttribute('current-lsn');
-  var currentIndex = element.getAttribute('current-index'); 
-     var lsnid = element.getAttribute('lsn-id');
-   var currentStatus = element.getAttribute('current-status'); 
-  
-          $("#drive").attr('src', url);    
-    $("#AudioData").attr('current-index', currentIndex); 
+          $("#drive").attr('src', url);        
         document.getElementById('modalPDF').classList.add('four');
-  
-  if(currentlsn === lsnid && currentlvl === thislvl && (currentStatus == 'A corrección' || currentStatus == 'Límite de entrega: ')){
-  $(".metronome").css('display', 'block'); 
-  $("#menu-bar1").css('display', 'flex'); 
-
-  if (!/Android|webOS|iPhone|iPad|IEMobile|Opera Mini/i.test(navigator.userAgent)) { 
+    if (!/Android|webOS|iPhone|iPad|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
    if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
     } else if (document.documentElement.mozRequestFullScreen) { // Firefox
         document.documentElement.mozRequestFullScreen();
     } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari y Opera
         document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+        document.documentElement.msRequestFullscreen();
     }
-  } 
-
-}else{
-   $(".metronome").css('display', 'none'); 
-  $("#menu-bar1").css('display', 'none'); 
-}
-    
-  
+} 
 }
  
       function closemodal() {
@@ -5670,7 +5309,6 @@ function showModal(element) {
     document.exitFullscreen()
     }
   }
-        
       }
 
 </script>
@@ -5704,23 +5342,50 @@ function startQuiz(lvl, title, subtitle, datapackage, icon) {
   
   if(datapackage == 1){
    questions = [
-    {
-      question: "What is Earth's largest continent?",
-      img: "https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8",
-      answers: ["Asia", "Africa", "Antarctica", "Europe"],
-      correctAnswer: 1
+       {
+      question: "¿Nombre de la herramienta musical que gradua el tiempo?",
+      img: "",
+      answers: ["Reloj", "Cronómetro", "Metronemo", "Metrónomo"],
+      correctAnswer: 4
     },
     {
-      question: "Which of these countries is NOT part of the European Union?",
+      question: "¿Cómo se le llama a este parámetro musical?",
+      img: "https://lh3.googleusercontent.com/d/1DI-QO9klmH-QUpKAN1Re-Wj8Y4RQ6oKs",
+      answers: ["Ritmo", "Métrica", "Tempo", "Metro"],
+      correctAnswer: 2
+    }, {
+      question: "¿Cuantos clicks de metronomo dura esta nota?",
+      img: "https://lh3.googleusercontent.com/d/1C12iR5SYfg-2gwPO1jjarmkRO4BwPOnB",
+      answers: ["2", "3", "1", "4"],
+      correctAnswer: 2
+    },
+    {
+      question: "¿Cuantas teclas tiene un piano?",
       img: "",
-      answers: ["Spain", "Germany", "Russia", "Italy"],
+      answers: ["85", "80", "88", "78"],
+      correctAnswer: 3
+    },
+        {
+      question: "¿Cuál debe ser la métrica?",
+      img: "https://lh3.googleusercontent.com/d/12ZXAwhvjV1t5rnODPdV_5l-9RNR9aOZp",
+      answers: ["2/4", "3/4", "4/4", "1/2"],
       correctAnswer: 3
     },
     {
-      question: "What is the capital of Romania?",
+      question: "¿Cómo se mide la velocidad de un metrónomo?",
        img: "",
-      answers: ["Kiev", "Bucharest", "Budapest", "Chisinau"],
+      answers: ["En BPM", "En segundos", "Con clicks", "En BBM"],
+      correctAnswer: 1
+    },  {
+      question: "¿Cual es la traducción de measure al español?",
+      img: "https://lh3.googleusercontent.com/d/16pxirb4CtxRLx3PSNMNpgvEBdtBbAq9f",
+      answers: ["Medida", "Compás", "Medir", "Sección"],
       correctAnswer: 2
+    },  {
+      question: "¿Que indice tiene la nota C central?",
+      img: "https://lh3.googleusercontent.com/d/1C12iR5SYfg-2gwPO1jjarmkRO4BwPOnB",
+      answers: ["C4", "C5", "C3", "C1"],
+      correctAnswer: 1
     }
   ];
  }
@@ -5898,9 +5563,11 @@ var startButton = document.getElementById('start-quiz-btn');
     if (selectedAnswer === rightAnswer) {
       score++;
       message.textContent = "Respuesta correcta!";
+        message.style.color = "#8bc34a";
       label.classList.add("green-bg");
     } else {
       message.textContent = "Respuesta incorrecta";
+      message.style.color = "#f44336";
       label.classList.add("red-bg");
 
       answers.forEach(answer => {
@@ -5911,7 +5578,8 @@ var startButton = document.getElementById('start-quiz-btn');
     }
 
     let button = document.createElement("button");
-    button.classList.add("blue-btn")
+    button.classList.add("next-btn")
+    button.style.backgroundColor = "#E6EAEF";
 
     if (isLastQuestion()) {
       button.id = "show-results-btn";
@@ -5968,483 +5636,6 @@ function destroyQuiz() {
 
 
 
-
-
-
- document.getElementById('toggle-recorder').addEventListener('click', function() {
-          var metronome = document.getElementById('recorder');
-          var menuBar1 = document.getElementById('menu-bar1');
-          var menuBar2 = document.getElementById('menu-bar2');
-   
-            if (metronome.style.display === 'none' || metronome.style.display === '') {
-               document.getElementById('recorder2').style.visibility = 'visible';
-                metronome.style.display = 'block';
-              document.getElementById('back-menu-bar').style.visibility = 'hidden';     
-              $('#audio_record-icon').prop('checked', true);
-               $('#toggle-recorder').text('Detener');
-              startRecording();
-              vol(0.3)
-            } else {
-                //metronome.style.display = 'none';
-              //document.getElementById('back-menu-bar').style.visibility = 'visible';
-              menuBar1.style.visibility = 'hidden';
-               menuBar2.style.visibility = 'visible';
-              document.getElementById('recorder2').style.visibility = 'hidden';
-               $('#audio_record-icon').prop('checked', false);
-               $('#toggle-recorder').text('Grabar');
-              vol(1)
-              stopRecording();
-              
-            }
-        });
-
-
- 
-
-
- function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
-    navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
-  }
-
-  var mediaConstraints = {
-    audio: true
-  };
-  document.querySelector('#save-recording').onclick = function () {
-      this.disabled = true;
-      mediaRecorder.save();
-      // alert('Drop WebM file on Chrome or Firefox. Both can play entire file. VLC player or other players may not work.');
-  };
-  //Parto con la registrazione audio
-  function startRecording(idx) {
-    
-    $('#start-recording').disabled = true;
-    audiosContainer = document.getElementById('audios-container');
-    //document.getElementById("clicks").innerHTML = "Recording Started";
-
-    var f = document.getElementById('clicks');
-    setInterval(function () {
-        f.style.display = (f.style.display == 'none' ? '' : 'none');
-    }, 1000);
-
-    captureUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
-  };
-  //Stoppo la registrazione audio
-  function stopRecording() {
-      $('#stop-recording').disabled = true;
-   
-      //document.getElementById("clicks").innerHTML = "Recording Stopped";
-
-      var f = document.getElementById('clicks');
-      setInterval(function () {
-          f.style.display = (f.style.display == 'none' ? '' : 'none');
-      }, 1000);
-    mediaRecorder.stop();
-    mediaRecorder.stream.stop();
-   
-   
-    $('.start-recording').disabled = false;
-  };
-
-  //Falvo Il file
-  function saveRecording() {
-      mediaRecorder.save();
-  };
-
-  var mediaRecorder;
-
-
-
-  function onMediaSuccess(stream) {
-    mediaRecorder = new MediaStreamRecorder(stream);
-    mediaRecorder.stream = stream;
-    mediaRecorder.mimeType = 'audio/wav';  
-    //mediaRecorder.mimeType = 'audio/webm';  
-    mediaRecorder.audioChannels = 1;
-    mediaRecorder.ondataavailable = function(blob) {
-      $('#record-audio').html("<audio id='player1' src=" + URL.createObjectURL(blob) + " style='width: 310px;' type='audio/mp3' controls></audio> ");
-       const player = new MediaElementPlayer('player1', {
-        features: ['playpause', 'progress'],
-    }); 
-      $('#delete-audio').on('click', function() {
-        $('#record-audio').empty(); 
-        document.getElementById("AudioData").value = "";
-        document.getElementById('recorder').style.display = 'none';
-        var menuBar1 = document.getElementById('menu-bar1');
-        var menuBar2 = document.getElementById('menu-bar2');
-        menuBar2.style.visibility = 'hidden';
-        menuBar1.style.visibility = 'visible';
-        document.getElementById('back-menu-bar').style.visibility = 'visible';
-       
-  });
-      var reader = new FileReader();
-          reader.onloadend = function() {
-            base64Audio = reader.result.split(";")[1];
-           // var base64Audio = "data:audio/mp3;"+reader.result.split(";")[1];
-            document.getElementById("AudioData").value = base64Audio;
-          };
-          reader.readAsDataURL(blob);
-    };
- 
-    var timeInterval = 360 * 1000;
-    mediaRecorder.start(timeInterval);
-    $('#stop-recording').disabled = false;
-  }
-
-
-
-
-  function onMediaError(e) {
-    console.error('media error', e);
-  }
-
-  function bytesToSize(bytes) {
-    var k = 1000;
-    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-    if (bytes === 0) return '0 Bytes';
-    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)), 10);
-    return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
-  }
-
-  function getTimeLength(milliseconds) {
-    var data = new Date(milliseconds);
-    return data.getUTCHours() + " hours, " + data.getUTCMinutes() + " minutes and " + data.getUTCSeconds() + " second(s)";
-  }
-
-  window.onbeforeunload = function() {
-    $('#start-recording').disabled = false;
-  };
-
-
-$(document).on('click','input[name="audio_record-icon"]',function(){
-  var checked = $('#audio_record-icon').prop('checked');
-  if(checked == true)
-    {
-        startRecording();
-    }
-  else
-    {
-        stopRecording();
-    }
-});
-
-
-const slider = document.querySelector(".tempoSlider");
-const sliderMax = slider.getAttribute("max");
-const sliderThickFill = document.querySelector(".thick-fill");
-const currentLeads = document.getElementById("tempo-disp");
-
-
-function handleChange() {
-  const leads = this.value;
-  currentLeads.textContent = leads;
-  const sliderLineWidth = leads / sliderMax * 100;
-   var hue = 70 - (this.value / 200 * 70);
-  sliderThickFill.style.backgroundColor = 'hsl(' + hue + ', 100%, 50%)';
-  sliderThickFill.style.width = sliderLineWidth + "%";
-}
-
-slider.addEventListener("input", handleChange);
-
-
-
-
-
-var audioCtx = new (window.AudioContext || window.webkitAudioContext)(),
-    SubAudioCtx = new (window.AudioContext || window.webkitAudioContext)(),
-    volume = audioCtx.createGain(),
-    subvolume = SubAudioCtx.createGain(),
-    noteFlag = 0,
-    curtime = 0.0,
-    timer,
-    delta = 0;
-
-
-// Elements INIT
-var tempo = 60000 / (document.getElementById('tempo').value),
-    
-    tempo_rge = document.getElementById('tempo'),
-    tempo_disp = document.getElementById('tempo-disp'),
-    firstBeating = document.getElementById('checkBox'),
-    plus = document.getElementById('plus'),
-    minus = document.getElementById('minus'),
-    extraPlus = document.getElementById('extraPlus'),
-    extraMinus = document.getElementById('extraMinus'),
-    beatPlus = document.getElementById('beatPlus'),
-    beatMinus = document.getElementById('beatMinus'),
-    start = document.getElementById('start'),
-    stop = document.getElementById('stop'),
-    close = document.getElementById('icon-x-close'), 
-    tap = document.getElementById('tap'),
-    beatFlag = document.getElementById('beatFlag'),
-    beatNbr = document.getElementById('beatNbr'),
-    beatCount = document.getElementById('beatCount'),
-    digitalDisplayContainer = document.getElementById('digitalDisplayContainer'),  
-    dotTarget = document.getElementById('dotTarget'),
-    dotsDisplay = document.getElementById('dotsDisplay'),    
-    digitalDisplay = document.getElementById('digitalDisplay'),
-    bothDisplay = document.getElementById('bothDisplay'),
-    beatDots = document.getElementsByClassName('beat'),
-    semiquaver = document.getElementById('semiquaver');
-
-
-function temp(v){
-  tempo_disp.innerHTML = v;  
-}
-
-function vol(l){
-  volume.gain.setValueAtTime(l, audioCtx.currentTime);
-}
-
-function schedule(){
-  while(curtime < audioCtx.currentTime + 0.1){
-    if(noteFlag >= beatCount.value){
-      noteFlag = 0;
-    }
-    playNote(curtime); 
-
-    
-    console.log(curtime);
-    console.log(curtime);
-    
-    updateTime();
-
-    var child = document.querySelectorAll('#dotTarget li');      
-    
-    if(noteFlag === 0){
-      child[noteFlag].className += " on-temp";
-      child[child.length - 1].classList.remove("on-temp");
-    }
-    else{
-      child[noteFlag].className += " on-temp";
-      child[noteFlag - 1].classList.remove("on-temp");
-    }
-    beatFlag.innerHTML = noteFlag+1;
-    noteFlag++;
-  }
-  timer = window.setTimeout(schedule, 0.1);
-}
-
-function updateTime(){
-  curtime += 60.0 / parseInt(tempo_rge.value, 10);
-}
-
-function playNote(t){
-  var note = audioCtx.createOscillator();
-  note.connect(volume);
-  volume.connect(audioCtx.destination);
-  
-  note.type = 'sine';
-  
-
- /* 
-var now = audioCtx.currentTime;
-var attackTime = .1;
-var releaseTime = 0.01;
-
-volume.gain.setValueAtTime(0, now);
-volume.gain.linearRampToValueAtTime(2, now + attackTime);
-volume.gain.linearRampToValueAtTime(0, now + attackTime + releaseTime);*/
-
-note.frequency.setValueAtTime(2100, audioCtx.currentTime);  
-
-/*  if(firstBeating.checked){
-    if(noteFlag == 0){
-      note.frequency.setValueAtTime(1600, audioCtx.currentTime);    
-    }
-    else{
-      for(var i=0; i < beatDots.length; i++){    
-        if(beatDots[noteFlag].className == "beat active"){
-            note.frequency.setValueAtTime(800, audioCtx.currentTime);
-           }
-        else{
-           note.frequency.setValueAtTime(400, audioCtx.currentTime);       
-        }
-      } 
-    }
-  }  
-  else{
-      for(var i=0; i < beatDots.length; i++){    
-        if(beatDots[noteFlag].className == "beat active"){
-          note.frequency.setValueAtTime(800, audioCtx.currentTime);
-        }
-        else{
-          note.frequency.setValueAtTime(400, audioCtx.currentTime);       
-        }
-      } 
-    }*/
-  
-  note.start(t);
-  note.stop(t + 0.04);  
-}
-
-function playSubNote(nt){
-  var subnote = SubAudioCtx.createOscillator();
-  
-  subvolume.connect(SubAudioCtx.destination);
-  subvolume.gain.setValueAtTime(0.2, SubAudioCtx.currentTime);   
-  
-  subnote.connect(subvolume);
-  subnote.type = 'sine';
-  subnote.frequency.setValueAtTime(400, SubAudioCtx.currentTime);  
-  
-  subnote.start(nt);
-  subnote.stop(nt + 0.04); 
-}
-
-function clickDots(){
-  for(u = 0; u < beatDots.length; u++){
-    beatDots[u].addEventListener('click', function(){
-      if(this.className === "beat active"){
-         this.className = "beat";
-      }
-      else{
-        this.className += " active";     
-      }
-    });
-  }  
-}
-clickDots()
-
-start.addEventListener('click', function(){
-  curtime = audioCtx.currentTime;
-  schedule(); 
-  this.style.display = "none";
-  stop.style.display = "block";
-});
-
-stop.addEventListener('click', function(){
-  window.clearInterval(timer);
-  noteFlag = 0;
-  beatFlag.innerHTML = 1;
-  for(u = 0; u < beatDots.length; u++){
-    beatDots[u].classList.remove("on-temp");
-  }
-
-  this.style.display = "none";
-  start.style.display = "block";
-});
-
-close.addEventListener('click', function(){
-  window.clearInterval(timer);
-  noteFlag = 0;
-  beatFlag.innerHTML = 1;
-  for(u = 0; u < beatDots.length; u++){
-    beatDots[u].classList.remove("on-temp");
-  }
-  stop.style.display = "none";
-  start.style.display = "block";
-
-});
-
-tap.addEventListener('click', function(){
-  var d = new Date();
-  var temp = d.getTime();
-  
-  var tap_temp = Math.ceil(60000 / (temp - delta));
-  
-  tempo_disp.innerHTML = tap_temp; 
-  tempo_rge.value = tap_temp;
-  delta = temp;
-  
-  if(tap_temp > 240){
-    tempo_disp.innerHTML = 240;
-    tempo_rge.value = 240;
-  } 
-});
-
-plus.addEventListener('click', function(){
-    tempo_rge.value +++ 1;
-    tempo_disp.innerHTML = tempo_rge.value;
-});
-
-extraPlus.addEventListener('click', function(){
-    tempo_rge.value = tempo_rge.value +++ 5;
-    tempo_disp.innerHTML = tempo_rge.value;
-});
-
-beatPlus.addEventListener('click', function(){
-    beatCount.value = beatCount.value +++ 1;
-    if( beatCount.value > 12){
-      beatCount.value = 12;
-    }
-    beatNbr.innerHTML =  "/"+beatCount.value;
-    var i = 0,
-    target = document.getElementById('dotTarget');
-    target.innerHTML = "";
-    while(i < beatCount.value){
-      var dot = document.createElement("li");
-      dot.className = "beat";  
-      target.append(dot);  
-      i++;
-    }
-    clickDots()
-});
-
-minus.addEventListener('click', function(){
-    tempo_rge.value --- 1;
-    tempo_disp.innerHTML = tempo_rge.value;
-});
-
-extraMinus.addEventListener('click', function(){
-    tempo_rge.value = tempo_rge.value --- 5;
-    tempo_disp.innerHTML = tempo_rge.value;
-});
-
-beatMinus.addEventListener('click', function(){
-    beatCount.value = beatCount.value --- 1;
-    if( beatCount.value < 1){
-      beatCount.value = 1;
-    }
-    beatNbr.innerHTML =  "/"+beatCount.value;
-    var i = 0,
-    target = document.getElementById('dotTarget');
-    target.innerHTML = "";
-    while(i < beatCount.value){
-      var dot = document.createElement("li");
-      dot.className = "beat";  
-      target.append(dot);  
-      i++;
-    }
-    clickDots();
-});
-
-
-dotsDisplay.addEventListener('click', function(){
-    dotsDisplay.className = 'header-btn button-active';
-    if(digitalDisplay.className == 'header-btn button-active' || bothDisplay.className == 'header-btn button-active'){
-      digitalDisplay.classList.remove('button-active');
-      bothDisplay.classList.remove('button-active');
-    }
-    dotTarget.style.display = 'flex';
-    digitalDisplayContainer.style.display = 'none';
-});
-
-
-
-digitalDisplay.addEventListener('click', function(){
-    digitalDisplay.className = 'header-btn button-active';
-    if(dotsDisplay.className == 'header-btn button-active' || bothDisplay.className == 'header-btn button-active'){
-      dotsDisplay.classList.remove('button-active');
-      bothDisplay.classList.remove('button-active');
-    }
-    digitalDisplayContainer.style.display = 'flex';
-    dotTarget.style.display = 'none';
-});
-
-bothDisplay.addEventListener('click', function(){
-    bothDisplay.className = 'header-btn button-active';
-    if(dotsDisplay.className == 'header-btn button-active' || digitalDisplay.className == 'header-btn button-active'){
-      dotsDisplay.classList.remove('button-active');
-      digitalDisplay.classList.remove('button-active');
-    }
-    dotTarget.style.display = 'flex';
-    digitalDisplayContainer.style.display = 'flex';
-});
-
-
-  setInterval(function() {
-    location.reload(); 
-}, 60000); 
 
 
 
