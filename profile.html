@@ -1325,15 +1325,7 @@ iframe#youtube {
        max-height: 285px !important;
      }
      
-     .profile-user-data{
-       margin-top: 10px;
-     }
-     
    
-     
-     .achievement-list-panel{
-       margin-top: 50px;
-     }
      
      .close-modal {
        margin-right: -150px;
@@ -1860,7 +1852,23 @@ html {
 
 
     <div class="row" >
-      <div class="col-sm-12">
+     
+      
+      
+      
+      <div class="col-sm-8 order-2 order-sm-1" >
+        <div class="dashboard-panel achievement-list-panel">
+
+         <div class="panel-body" style="max-height: 550px !important">
+ 
+         
+ <div class="iframe-container" id="lsnIframe"><iframe src="https://www.mozartacademy.mx/lessons" frameborder="0" allowfullscreen></iframe></div>
+ 
+    </div>
+ </div> 
+ </div> 
+
+   <div class="col-sm-4 order-1 order-sm-2">
         <div class="profile-user-data clearfix">
           <div class="circle">
               <img class="profile-pic" src={{picture}}>
@@ -1910,7 +1918,7 @@ html {
         <h4><i class="fa fa-fw fa-flag"></i> Actividad</h4>
           
           </div>
-          <div class="panel-body log-list-container" id="lsnContainer" style="max-height: 400px;"> 
+          <div class="panel-body log-list-container" id="lsnContainer" style="max-height: 185px;"> 
              <ul class="list-unstyled log-list">
              <li ng-repeat="entry in history | filter:filterByLevel" ng-class="{'status-pending': entry.status === 'En revisión', 'status-delayed': entry.status === 'Límite de entrega: ' && stringToDate(entry.limitdate) < today, 'status-completed': entry.status === 'Evaluada', 'status-error': entry.status === 'A corrección', 'status-default': (entry.status === 'Límite de entrega: '  && stringToDate(entry.limitdate) >= today) || entry.status === 'Asignado'}">
                 <button style="float:right; margin-right: -15px; margin-top: 7px; font-size: 11px;" data-pdf-url="{{entry.pdf}}" onclick="showModal(this)" ng-click="selectEntry(entry)" ng-if="entry.status !== 'En revisión' && entry.status !== 'Evaluada'" class="btn btn-dark btn-sm">Abrir </button>
@@ -1932,8 +1940,6 @@ class="js-trigger-video-modal" onclick="toggle_video_modal(this)" style="color: 
           </div>
         </div>
       </div>
-
-  
   
   
   
