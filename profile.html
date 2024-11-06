@@ -40,7 +40,7 @@
 .dashboard-panel .panel-header h4 {margin: 0; padding: 6px; font-size: 18px; }
 .dashboard-panel .panel-header h4 i {color: #d8d8d8; }
 
-.dashboard-panel .panel-body {margin-top: 10px; max-height: 225px; border: 1px solid #d8d8d8; overflow-y: auto; }
+.dashboard-panel .panel-body {margin-top: 10px; height: 350px; border: 1px solid #d8d8d8; overflow-y: auto; }
  
 /*-- Datos del usuario --*/
 .profile-user-data {padding: 10px 0;}
@@ -1286,13 +1286,16 @@ iframe#youtube {
   }
 
 
-
+ @media (max-width:600px){
+     .lsnContainer{
+       display: none;
+     }
+  }
  
 
-
-
-  
    @media screen and (min-width:700px){
+
+     
    #drivemodal{
     height: 480px;
     width: 180%;
@@ -1837,7 +1840,7 @@ html {
   /*border: 1px solid #d8d8d8;*/
   margin-left: 7px;
   margin-top: auto;
-}
+  }
 
 
 
@@ -1877,7 +1880,7 @@ html {
       
       
       
-      <div class="col-sm-8 order-2 order-sm-1" >
+      <div class="col-sm-8 lsnContainer" >
         <div class="dashboard-panel achievement-list-panel">
 
          <div class="panel-body" style="height: 550px !important">
@@ -1889,7 +1892,7 @@ html {
  </div> 
  </div> 
 
-   <div class="col-sm-4 order-1 order-sm-2">
+   <div class="col-sm-4 ">
         <div class="profile-user-data clearfix">
           <div class="circle">
               <img class="profile-pic" src={{picture}}>
@@ -1939,7 +1942,7 @@ html {
         <h4><i class="fa fa-fw fa-flag"></i> Actividad</h4>
           
           </div>
-          <div class="panel-body log-list-container" id="lsnContainer" style="max-height: 185px;"> 
+          <div class="panel-body log-list-container logContainer"> 
              <ul class="list-unstyled log-list">
              <li ng-repeat="entry in history | filter:filterByLevel" ng-class="{'status-pending': entry.status === 'En revisión', 'status-delayed': entry.status === 'Límite de entrega: ' && stringToDate(entry.limitdate) < today, 'status-completed': entry.status === 'Evaluada', 'status-error': entry.status === 'A corrección', 'status-default': (entry.status === 'Límite de entrega: '  && stringToDate(entry.limitdate) >= today) || entry.status === 'Asignado'}">
                 <button style="float:right; margin-right: -15px; margin-top: 7px; font-size: 11px;" data-pdf-url="{{entry.pdf}}" onclick="showModal(this)" ng-click="selectEntry(entry)" ng-if="entry.status !== 'En revisión' && entry.status !== 'Evaluada'" class="btn btn-dark btn-sm">Abrir </button>
