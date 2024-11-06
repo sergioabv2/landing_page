@@ -1,4 +1,4 @@
-<head> 
+<head>  
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -12,7 +12,7 @@
 
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&family=Roboto:wght@300;400;500;700&display=swap");
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 :root {
   --bg-body: rgb(245, 247, 255);
@@ -27,18 +27,6 @@
   --accent-color: rgb(194, 33, 105);
 }
 
-.darkmode {
-  --bg-body: rgb(6, 5, 40);
-  --primary-color: rgb(248, 248, 248);
-  --primary-hover-color: rgb(159, 159, 159);
-  --scrollbar-color: rgba(44, 49, 88, 0.7);
-  --card-bg-color: rgb(24, 26, 50);
-  --star-color: #a1d31a;
-  --border-color: rgba(189, 192, 234, 0.4);
-  --shadow-color: rgba(208, 195, 226, 0.13);
-  --accent-color: rgb(185, 129, 250);
-}
-
 *,
 *::before,
 *::after {
@@ -48,16 +36,10 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-nav {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-}
+
 
 ul,
 ul li {
@@ -69,18 +51,16 @@ ul li a {
   text-decoration: none;
 }
 
-img {
-  width: 100%;
-  user-select: none;
-  pointer-events: none;
-}
+
 
 h1 {
   font-size: clamp(1rem, 4vw, 1.2rem) !important;
+  font-weight: 600 !important;
 }
 
 h2 {
   font-size: clamp(0.9rem, 4vw, 1rem) !important;
+  font-weight: 600 !important;
 }
 
 body {
@@ -130,39 +110,6 @@ body {
   margin: -15px 0 30px;
 }
 
-.nav-item {
-  display: block;
-}
-
-.nav-item a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-color);
-  font-size: 1rem;
-  padding: 12px 0;
-  margin: 0 8px;
-  border-radius: 5px;
-}
-
-.nav-item.active a {
-  background: rgba(106, 109, 155, 0.4);
-  text-decoration: none;
-  box-shadow: 0px 1px 4px var(--shadow-color);
-}
-
-.nav-icon {
-  width: 40px;
-  height: 20px;
-  font-size: 1.1rem;
-}
-
-.nav-text {
-  display: block;
-  width: 70px;
-  height: 20px;
-  letter-spacing: 0;
-}
 
 /* CONTENT */
 
@@ -177,12 +124,17 @@ body {
 }
 
 .card {
-  background-color: var(--card-bg-color) !important;
-  border-radius: 8px !important;
-  border: 2px solid rgba(169, 150, 253, 0.5) !important;
-  box-shadow: 0px 4px 5px 0px var(--shadow-color),
-    0px 1px 8px 0px var(--shadow-color), 0px 2px 4px -1px var(--shadow-color) !important;
+  padding: 20px 16px;
+  background-color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+    box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);
 }
+  
+  .card:hover{
+    transform: scale(1.02)
+  }
 
 /* LEFT CONTENT */
 
@@ -193,42 +145,8 @@ body {
   overflow: auto;
 }
 
-/* SEARCH */
 
-.search-box {
-  position: relative;
-  display: flex;
-}
 
-.search-box input {
-  width: 80%;
-  height: 40px;
-  background: var(--card-bg-color);
-  color: var(--primary-color);
-  outline: 2px solid var(--border-color);
-  border: 0;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.6px;
-  padding: 8px 30px 8px 15px;
-  margin: 0 auto;
-}
-
-.search-box input[type="text"]::placeholder {
-  color: var(--primary-color);
-  opacity: 0.5;
-  font-weight: 400;
-}
-
-.search-box i {
-  position: absolute;
-  right: 11%;
-  top: 25%;
-  font-size: 1.3rem;
-  color: var(--primary-color);
-  cursor: pointer;
-}
 
 /* HEADER */
 
@@ -270,24 +188,26 @@ body {
 
 .event-header {
   position: relative;
-  height: 180px;
-  margin-bottom: 8px;
+
+  margin-bottom: 2px;
 }
 
 .event-header img {
   position: relative;
   inset: 0;
-  width: 100%;
-  height: 180px;
-  border-radius: 6px;
-  border: 2px solid rgba(125, 125, 137, 0.5);
+  width: 80px;
+  height: 80px;
+  margin-left: 15px; 
+  margin-top: 15px;
+  border-radius: 10px;
+
   object-fit: cover;
 }
 
 .event-header p {
   position: absolute;
-  right: 4px;
-  bottom: 4px;
+  right: 7px;
+  top: 7px;
   font-size: 0.8rem;
   color: rgb(240, 248, 255);
   background-color: rgba(17, 16, 45, 0.6);
@@ -307,26 +227,13 @@ body {
   padding: 4px;
   border-radius: 50%;
   box-shadow: 0 8px 20px rgba(74, 72, 72, 0.1);
-  cursor: pointer;
 }
 
-.bounce-in {
-  animation: pulse 0.8s 1 ease-in-out alternate;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}
 
 /* Event Content */
 
 .event-content {
+  height: 70px;
   display: grid;
   grid-auto-flow: dense;
   grid-template-rows: 2fr 1fr;
@@ -334,7 +241,7 @@ body {
 }
 
 .event-content h2 {
-  margin-bottom: 6px;
+margin-top: -20px;
   line-height: 1.3;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -402,47 +309,6 @@ body {
   position: relative;
 }
 
-.popup {
-  position: absolute;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  top: -45px;
-  left: -15px;
-  min-width: 70px;
-  padding: 5px 8px 3px;
-  border-radius: 10px;
-  background-color: var(--pop-bg-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  opacity: 0;
-  transform: translateY(50px) scale(0);
-  -webkit-transform: translateY(50px) scale(0);
-  transition: 0.4s ease-in-out;
-  -webkit-transition: 0.4s ease-in-out;
-  cursor: auto;
-}
-
-.popup.active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  -webkit-transform: translateY(0) scale(1);
-}
-
-.popup::after {
-  content: "";
-  position: absolute;
-  height: 10px;
-  width: 20px;
-  background-color: var(--pop-bg-color);
-  clip-path: polygon(100% 0, 0 0, 50% 100%);
-  -webkit-clip-path: polygon(100% 0, 0 0, 50% 100%);
-  transform: translate(0px, 20px);
-  -webkit-transform: translate(0px, 20px);
-}
-
-.popup li a i {
-  font-size: 1.4rem;
-}
 
 /* REVIEWS */
 
@@ -840,8 +706,8 @@ body::-webkit-scrollbar-thumb {
 
     grid-template-columns: 100%;
     grid-template-areas:
-      "rightContent"
-      "leftContent";
+      "leftContent"
+      "rightContent";
     overflow: auto;
   }
 
@@ -1050,7 +916,34 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: -25px;
 }
 
-
+@media (max-width: 770px){
+  /*.analytics{
+    display: none;
+  }
+  .contacts{
+    display: none;
+  }*/
+  
+  .reviews{
+     display: none;
+  }
+  .header{
+    display: none;
+  }
+  .profile-user-data{
+    display: none;
+  }
+  .upcoming-events h1{
+    display: none;
+  }
+  .right-content{
+    margin-top: -40px;
+    background-color: rgb(245, 247, 255);
+  }
+  .event-footer{
+    margin-bottom: 7px;
+  }
+}
 
 
  .custom-alert {
@@ -1116,6 +1009,370 @@ body::-webkit-scrollbar-thumb {
             height: 100%;
             border: 0;
         }
+
+
+
+
+
+
+ html {
+    box-sizing: border-box;
+}
+
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    margin: 0;
+}
+
+
+
+#contain-all {
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+}
+.contain {
+    max-width: 73.75rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+.contain::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+@media screen and (min-width: 48rem) {
+    .contain {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+@media screen and (min-width: 73.75rem) {
+    .contain {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+.contain--small {
+    padding-bottom: 0.5rem;
+    margin: 0 auto;
+}
+@media screen and (min-width: 48rem) {
+    .contain--small {
+        padding-top: 1rem;
+    }
+}
+
+
+
+
+
+
+
+.h6 {
+    font-size: 15px;
+   transform: translateY(-7px);;
+    font-weight: 600;
+    color: #7d97ad;
+}
+
+
+.page-leaderboard {
+    background-color: #fafbfc;
+}
+.page-leaderboard .hero {
+    background-image: url(https://d125fmws0bore1.cloudfront.net/assets/pages/leaderboard/hero-leaderboard-b861e1752ed28ae950fcfccd51008fe7f4d158a08c68e909201f46e6086992ad.jpg);
+}
+.page-leaderboard .leaderboard-progress {
+    clear: both;
+}
+.page-leaderboard .leaderboard-progress .contain {
+    padding: 3em 1.5em 2em 1.5em;
+}
+@media (min-width: 70em) {
+    .page-leaderboard .leaderboard-progress .contain {
+        padding: 6em 0 4.5em 0;
+    }
+}
+.page-leaderboard .leaderboard-progress p {
+    max-width: 48.5em;
+    margin: 0 auto;
+}
+.page-leaderboard .ranking {
+    clear: both;
+}
+.page-leaderboard .ranking .contain {
+    padding: 0 1.5em;
+}
+.page-leaderboard .ranking .ranking-table {
+    max-width: 66em;
+    margin: 0 auto;
+}
+.page-leaderboard .ranking .ranking-table-body {
+    box-shadow: 0 0 0.75em 0 rgba(46, 60, 73, 0.12);
+    border-radius: 0.375rem;
+    border: solid 0.063em #dbe2e8;
+    max-height: 24.625em;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-body {
+        max-height: 31.125em;
+    }
+}
+.page-leaderboard .ranking .ranking-table-header-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1.125em;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-header-row {
+        padding-top: 1.875em;
+    }
+}
+.page-leaderboard .ranking .ranking-table-header-data {
+    text-align: center;
+    align-self: center;
+}
+.page-leaderboard .ranking .ranking-table-header-data:first-child {
+    width: 20%;
+}
+@media (min-width: 48em) {
+    .page-leaderboard .ranking .ranking-table-header-data:first-child {
+        width: 15%;
+    }
+}
+.page-leaderboard .ranking .ranking-table-header-data:nth-child(2) {
+    padding-left: 9%;
+    text-align: left;
+    width: 50%;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-header-data:nth-child(2) {
+        padding-left: 6.3%;
+    }
+}
+@media (min-width: 48em) {
+    .page-leaderboard .ranking .ranking-table-header-data:nth-child(2) {
+        padding-left: 9%;
+        width: 55%;
+    }
+}
+@media (min-width: 70em) {
+    .page-leaderboard .ranking .ranking-table-header-data:nth-child(2) {
+        padding-left: 4%;
+    }
+}
+.page-leaderboard .ranking .ranking-table-header-data:nth-child(3) {
+    width: 30%;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-header-data:nth-child(3) {
+        width: 25%;
+    }
+}
+.page-leaderboard .ranking .ranking-table-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: .875em;
+    padding-bottom: .875em;
+    background-color: #fff;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-row {
+        padding-top: 1.125em;
+        padding-bottom: 1.125em;
+    }
+}
+.page-leaderboard .ranking .ranking-table-row:nth-child(even) {
+    background-color: #fafbfc;
+}
+.page-leaderboard .ranking .ranking-table-row-leader-1,
+.page-leaderboard .ranking .ranking-table-row-leader-2,
+.page-leaderboard .ranking .ranking-table-row-leader-3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: .875em;
+    padding-bottom: .875em;
+    background-color: #fff;
+    box-shadow: 0 0 0.75em 0 rgba(46, 60, 73, 0.12);
+    border-radius: 0.375rem;
+    margin-bottom: 1.25em;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-row-leader-1,
+    .page-leaderboard .ranking .ranking-table-row-leader-2,
+    .page-leaderboard .ranking .ranking-table-row-leader-3 {
+        padding-top: 1.125em;
+        padding-bottom: 1.125em;
+    }
+}
+.page-leaderboard .ranking .ranking-table-row-leader-1 .ranking-table-data-leader-1,
+.page-leaderboard .ranking .ranking-table-row-leader-2 .ranking-table-data-leader-2,
+.page-leaderboard .ranking .ranking-table-row-leader-3 .ranking-table-data-leader-3 {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+}
+@media (min-width: 48em) {
+    .page-leaderboard .ranking .ranking-table-row-leader-1 .ranking-table-data-leader-1,
+    .page-leaderboard .ranking .ranking-table-row-leader-2 .ranking-table-data-leader-2,
+    .page-leaderboard .ranking .ranking-table-row-leader-3 .ranking-table-data-leader-3 {
+        width: 15%;
+    }
+}
+.page-leaderboard .ranking .ranking-table-row-leader-1 .ranking-table-data-leader-1 .medal-gold,
+.page-leaderboard .ranking .ranking-table-row-leader-2 .ranking-table-data-leader-2 .medal-silver,
+.page-leaderboard .ranking .ranking-table-row-leader-3 .ranking-table-data-leader-3 .medal-bronze {
+    margin-top: -1.313em;
+    height: 2.875em;
+    width: 2.875em;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-row-leader-1 .ranking-table-data-leader-1 .medal-gold,
+    .page-leaderboard .ranking .ranking-table-row-leader-2 .ranking-table-data-leader-2 .medal-silver,
+    .page-leaderboard .ranking .ranking-table-row-leader-3 .ranking-table-data-leader-3 .medal-bronze {
+        margin-top: -1.563em;
+        height: 3.875em;
+        width: 3.875em;
+    }
+}
+.page-leaderboard .ranking .ranking-table-row-leader-1 {
+    border: solid 0.125em #ecc81a;
+}
+.page-leaderboard .ranking .ranking-table-row-leader-1 .ranking-table-data-leader-1 .medal-gold {
+    background: url(https://d125fmws0bore1.cloudfront.net/assets/pages/leaderboard/medal-gold-c49052bfa07f36621f16dbe77f7fc36cbafd72ff088ea970256ff998be05687b.svg) no-repeat;
+    background-size: contain;
+}
+.page-leaderboard .ranking .ranking-table-row-leader-2 {
+    border: solid 0.125em #dbe2e8;
+}
+.page-leaderboard .ranking .ranking-table-row-leader-2 .ranking-table-data-leader-2 .medal-silver {
+    background: url(https://d125fmws0bore1.cloudfront.net/assets/pages/leaderboard/medal-silver-d099c5dd916c167c3ba4716c8968a819f317daaef1901c8e8bae6c6932852faa.svg) no-repeat;
+    background-size: contain;
+}
+.page-leaderboard .ranking .ranking-table-row-leader-3 {
+    border: solid 0.125em #dfdfd1;
+}
+.page-leaderboard .ranking .ranking-table-row-leader-3 .ranking-table-data-leader-3 .medal-bronze {
+    background: url(https://d125fmws0bore1.cloudfront.net/assets/pages/leaderboard/medal-bronze-d0f15d413800257442c8d4b2d5239cfe28c9fd9594f863ab1fad5258f8d1d5eb.svg) no-repeat;
+    background-size: contain;
+}
+.page-leaderboard .ranking .ranking-table-data {
+    align-self: center;
+    color: #525c65;
+    font-size: 1em;
+}
+.page-leaderboard .ranking .ranking-table-data:first-child {
+    text-align: center;
+    width: 20%;
+    color: #525c65;
+    font-weight: 600;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-data:first-child {
+        font-size: 1.25em;
+    }
+}
+@media (min-width: 48em) {
+    .page-leaderboard .ranking .ranking-table-data:first-child {
+        width: 15%;
+    }
+}
+.page-leaderboard .ranking .ranking-table-data:nth-child(2) {
+    color: #2e3d49;
+    width: 55%;
+    font-size: .875em;
+    padding-left: 9%;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-data:nth-child(2) {
+        font-size: 1em;
+    }
+}
+@media (min-width: 48em) {
+    .page-leaderboard .ranking .ranking-table-data:nth-child(2) {
+        font-size: 1em;
+        width: 55%;
+    }
+}
+@media (min-width: 70em) {
+    .page-leaderboard .ranking .ranking-table-data:nth-child(2) {
+        font-size: 1em;
+        padding-left: 4%;
+    }
+}
+.page-leaderboard .ranking .ranking-table-data:nth-child(3) {
+    font-size: .875em;
+    text-align: center;
+    width: 25%;
+    padding-right: 4%;
+}
+@media (min-width: 33em) {
+    .page-leaderboard .ranking .ranking-table-data:nth-child(3) {
+        padding-right: 0%;
+        font-size: 1em;
+    }
+}
+.page-leaderboard .ranking .ranking-table-data:nth-child(3) .complete {
+    color: gray;
+    font-size: 16px;
+}
+
+
+/*! CSS Used fontfaces */
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local("Open Sans Light"), local("OpenSans-Light"), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTaRDOzjiPcYnFooOUGCOsRk.woff) format("woff");
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format("woff");
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: local("Open Sans Semibold"), local("OpenSans-Semibold"), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSqRDOzjiPcYnFooOUGCOsRk.woff) format("woff");
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 300;
+    src: local("Open Sans Light Italic"), local("OpenSansLight-Italic"), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxvR_54zmj3SbGZQh3vCOwvY.woff) format("woff");
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: local("Open Sans Italic"), local("OpenSans-Italic"), url(https://fonts.gstatic.com/s/opensans/v13/xjAJXh38I15wypJXxuGMBrrIa-7acMAeDBVuclsi6Gc.woff) format("woff");
+}
 </style>
 
 <body >
@@ -1137,7 +1394,7 @@ body::-webkit-scrollbar-thumb {
         </div>
 
         <div class="upcoming-events">
-          <h1>Upcoming Events</h1>
+          <h1>Cursos</h1>
 
 
            <div class="iframe-container" id="lsnIframe"><iframe src="https://www.mozartacademy.mx/lessons" frameborder="0" allowfullscreen></iframe></div>
@@ -1153,13 +1410,13 @@ body::-webkit-scrollbar-thumb {
             <div class="card event-card">
               <div class="event-header">
                 <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/697ef286-1104-4c6c-91d6-0b2a1e04009b"
+                  src="https://lh3.googleusercontent.com/d/1hehOXFySwwgHSYm5ND5NInQoosAscMvx"
                   alt="" />
-                <p>March 19, 8:00 PM</p>
-                <i class="bx bx-heart like-btn"></i>
+                <p>Progreso 50%</p>
+      
               </div>
               <div class="event-content">
-                <h2>Acoustic Serenade Under the Stars</h2>
+                <h2>Taller de Piano</h2>
                 <p>Skyline Amphitheater</p>
               </div>
               <div class="event-footer">
@@ -1190,13 +1447,13 @@ body::-webkit-scrollbar-thumb {
             <div class="card event-card">
               <div class="event-header">
                 <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/19cc9b1d-0dd6-4e4e-ab5c-1d9efd443953"
+                  src="https://lh3.googleusercontent.com/d/1-A9oZ5hVHzA1WyhkUkIC4DnF1gYL1uto"
                   alt="" />
-                <p>March 22, 8:00 PM</p>
+                <p>Progreso 20%</p>
                 <i class="bx bxs-heart like-btn"></i>
               </div>
               <div class="event-content">
-                <h2>Latin Rhythms Fusion</h2>
+                <h2>Historia de la Música</h2>
                 <p>Dance Studio X</p>
               </div>
               <div class="event-footer">
@@ -1227,13 +1484,13 @@ body::-webkit-scrollbar-thumb {
             <div class="card event-card">
               <div class="event-header">
                 <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/34203989-4778-4e9a-8537-d42c073a458d"
+                  src="https://lh3.googleusercontent.com/d/1W2aGnwRwtbQ4NVLjw9RKjbtsSdR7wYQc"
                   alt="" />
-                <p>March 26, 10:00 PM</p>
+                <p>Progreso: -</p>
                 <i class="bx bx-heart like-btn"></i>
               </div>
               <div class="event-content">
-                <h2>Jazz Fusion Night</h2>
+                <h2>Solfeo</h2>
                 <p>Jazz Haven Lounge</p>
               </div>
               <div class="event-footer">
@@ -1262,21 +1519,20 @@ body::-webkit-scrollbar-thumb {
             </div>
 
             <div class="card event-card">
-              <div class="event-header">
-                <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/3990b1bd-f34d-4fda-bfc9-d807d9e2f0f6"
-                  alt="" />
-                <p>March 28, 3:00 PM</p>
-                <i class="bx bx-heart like-btn"></i>
-              </div>
-              <div class="event-content">
-                <h2>Clay Sculpting Class</h2>
-                <p>Artisan Workshop Space</p>
+             <div class="job-card-header"> 
+       <img src="https://lh3.googleusercontent.com/d/1W2aGnwRwtbQ4NVLjw9RKjbtsSdR7wYQc" width="50" height="50" />
+       <div class="menu-dot"> 
+         <span class="price-box__dollar">Progreso: 50%</span>
+        </div>
+      </div>
+       <div class="event-content">
+                <h2>Solfeo</h2>
+                <p>Epoch Theater</p>
               </div>
               <div class="event-footer">
-                <p style="background-color: #582bac">Workshop</p>
+                <p style="background-color: #b31a4d">Theatre</p>
                 <div class="btn-group">
-                   <button>Buy Ticket</button>
+                  <button>Buy Ticket</button>
                   <div class="share">
                     <button class="share-btn">
                       <i class="fa-solid fa-share"></i>
@@ -1428,7 +1684,7 @@ body::-webkit-scrollbar-thumb {
               <img class="profile-pic" src={{picture}}>
           </div>
    
-          <div class="main-data" >
+          <div class="main-data" style="margin-top: 12px;">
             <h4 >{{userData.name}}</h4>
              
          
@@ -1481,20 +1737,74 @@ body::-webkit-scrollbar-thumb {
         
         
              <div class="contacts">
-          <h1>Contacts</h1>
+          <h1>Ranking</h1>
           <div class="contacts-container">
 
 
-            <div class="contact-status" ng-repeat="entry in history | filter:filterByLevel | limitTo:6">
-              <div class="contact-activity">
-              <!--  <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e56800db-687d-4d0e-a470-51e37a4431c7"
-                  alt="" /> -->
-                  <i class="ri-video-chat-fill"></i>
-                <p>{{entry.name}} <span>abrir</span></p>
-              </div>
-              <small>{{entry.status}}</small>
-            </div>
+             <div class="page-leaderboard">
+        
+         
+ <section class="ranking">
+                <div class="contain">
+                    <div class="ranking-table">
+                        <div class="ranking-table-header-row">
+                            <div class="ranking-table-header-data h6"></div>
+                            <div class="ranking-table-header-data h6">Alumno</div>
+                            <div class="ranking-table-header-data h6">Puntaje</div>
+                        </div>
+                        <div class="ranking-table-row-leader-1">
+                            <div class="ranking-table-data-leader-1">
+                                <div class="medal-gold"></div>
+                            </div>
+                            <div class="ranking-table-data">
+                              {{userData.ranking[0].name}} 
+                <br>  <span style="font-size: 12px; color: {{userData.ranking[0].color}}">  {{userData.ranking[0].lvl}}</span>
+                          </div>
+                            <div class="ranking-table-data">
+                                <div class="complete" style="color: orange !important; text-shadow: 0 0 10px orange; font-weight: 700; font-size: 20px !important;">{{userData.ranking[0].score}}</div>
+                            </div>
+                        </div>
+                        <div class="ranking-table-row-leader-2">
+                            <div class="ranking-table-data-leader-2">
+                                <div class="medal-silver"></div>
+                            </div> 
+                            <div class="ranking-table-data">
+                                {{userData.ranking[1].name}}
+        <br>  <span style="font-size: 12px; color: {{userData.ranking[1].color}}">  {{userData.ranking[1].lvl}}</span>
+                        </div>
+                            <div class="ranking-table-data">
+                                <div class="complete" style="color: #2980b9  !important; text-shadow: 0 0 10px #85c1e9 ; font-weight: 500; font-size: 18px !important;">{{userData.ranking[1].score}}</div>
+                            </div> 
+                        </div>
+                        <div class="ranking-table-row-leader-3">
+                            <div class="ranking-table-data-leader-3">
+                                <div class="medal-bronze"></div>
+                            </div>
+                            <div class="ranking-table-data">
+                               {{userData.ranking[2].name}}
+                               <br>  <span style="font-size: 12px; color: {{userData.ranking[2].color}}">  {{userData.ranking[2].lvl}}</span>
+</div>
+                            <div class="ranking-table-data">
+                                <div class="complete" style="color: #85929e   !important; text-shadow: 0 0 5px #85929e; font-size: 16.5px !important;">{{userData.ranking[2].score}}</div>
+                            </div>
+                        </div>
+
+
+                         <div class="ranking-table-body">
+        <div class="ranking-table-row" ng-repeat="user in userData.ranking.slice(3)">
+            <div class="ranking-table-data">{{ $index + 4 }}</div> <!-- Muestra posición -->
+            <div class="ranking-table-data">{{ user.name }}<br>  <span style="font-size: 12px; color: {{user.color}}">  {{user.lvl}}</span></div>
+            <div class="ranking-table-data"><div class="complete">{{ user.score }}</div></div>
+        </div>
+    </div>
+                        </div>
+                    </div>
+
+            </section>  
+    
+                <div class="contain contain--small"></div>
+    
+     </div>
 
      
           </div>
