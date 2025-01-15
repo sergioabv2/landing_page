@@ -1021,7 +1021,7 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
             <div class="control-body">
               <div class="info-message">
                 <i class="zmdi zmdi-info"></i>
-               <span>Los días lunes y martes la academía esta cerrada</span> 
+
     
               </div>
               <div class="calendar">
@@ -2159,10 +2159,13 @@ $('.zmdi-chevron-left').on('click', function() {
     var selectedDay = selectedDateText.split(',')[0].trim().toLowerCase();
     var name = $('.form__field.name').val()
     var phone = $('.form__field.phone').val()
-   if (selectedDay === "lunes" || selectedDay === "martes") {
+   
+   /*if (selectedDay === "lunes" || selectedDay === "martes") {
         // Renderizar mensaje de que la academia está cerrada
         alert("La academia está cerrada los lunes y martes. Por favor, seleccione otra fecha.");
-    }else if(name == ""){
+    }*/
+
+    if(name == ""){
       alert("Ingresa tu nombre")
     }else if (phone === "") {
     alert("Por favor, ingresa tu número de teléfono.");
@@ -2229,7 +2232,7 @@ contentDiv.style.backgroundColor = 'white';
       var validation = JSON.parse(res);
       if (validation.status == "success") {
         setTimeout(function() {
-            window.location.href = 'https://www.mozartacademy.mx';
+            window.location.href = 'https://app.mozartacademy.mx';
         }, 3000);   
       } 
     })
