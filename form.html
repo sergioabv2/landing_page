@@ -1021,7 +1021,7 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
             <div class="control-body">
               <div class="info-message">
                 <i class="zmdi zmdi-info"></i>
-               <span>Los días lunes y martes la academía esta cerrada</span> 
+               <span>Los días martes la academía esta cerrada</span> 
     
               </div>
               <div class="calendar">
@@ -1165,101 +1165,114 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
   
 var flights = [
     {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
-      date: "Miércoles",
+      date: "Lunes",
       discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-28T11:00 AMS 2024-08-28T12:00"]
     },
     {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
-      date: "Miércoles",
+      date: "Lunes",
       discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-28T12:00 AMS 2024-08-28T13:00"]
     },
-    {
-        price: "450 MXN",
+     {
+        price: "400 MXN",
         plan: "Standard",
-      date: "Miércoles",
+      date: "Lunes",
       discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T13:00 AMS 2024-08-28T14:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Lunes",
+      discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-28T14:00 AMS 2024-08-28T15:00"]
     },
     {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Miércoles",
       discount: "$500",
+      special: 1,
         carrier: "KL",
-        nodes: ["CDG 2024-08-28T15:00 AMS 2024-08-28T16:00"]
+        nodes: ["CDG 2024-08-28T11:00 AMS 2024-08-28T12:00"]
     },
     {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Miércoles",
       discount: "$500",
+      special: 1,
         carrier: "KL",
-        nodes: ["CDG 2024-08-28T16:00 AMS 2024-08-28T17:00"]
+        nodes: ["CDG 2024-08-28T12:00 AMS 2024-08-28T13:00"]
     },
-    {
-        price: "450 MXN",
+     {
+        price: "400 MXN",
         plan: "Standard",
       date: "Miércoles",
       discount: "$500",
+      special: 1,
         carrier: "KL",
-        nodes: ["CDG 2024-08-28T17:00 AMS 2024-08-28T18:00"]
+        nodes: ["CDG 2024-08-28T13:00 AMS 2024-08-28T14:00"]
     },
     {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Miércoles",
       discount: "$500",
+      special: 1,
         carrier: "KL",
-        nodes: ["CDG 2024-08-28T18:00 AMS 2024-08-28T19:00"]
+        nodes: ["CDG 2024-08-28T14:00 AMS 2024-08-28T15:00"]
     },
     {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Jueves",
       discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T11:00 AMS 2024-08-29T12:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Jueves",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T12:00 AMS 2024-08-29T13:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Jueves",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T13:00 AMS 2024-08-29T14:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Jueves",
+      discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-29T14:00 AMS 2024-08-29T15:00"]
     },
     {
-        price: "450 MXN",
-        plan: "Standard",
-      date: "Jueves",
-      discount: "$500",
-        carrier: "KL",
-        nodes: ["CDG 2024-08-29T15:00 AMS 2024-08-29T16:00"]
-    },
-    {
-        price: "450 MXN",
-        plan: "Standard",
-      date: "Jueves",
-      discount: "$500",
-        carrier: "KL",
-        nodes: ["CDG 2024-08-29T16:00 AMS 2024-08-29T17:00"]
-    },
-    {
-        price: "450 MXN",
-        plan: "Standard",
-      date: "Jueves",
-      discount: "$500",
-        carrier: "KL",
-        nodes: ["CDG 2024-08-29T17:00 AMS 2024-08-29T18:00"]
-    },
-    {
-        price: "450 MXN",
-        plan: "Standard",
-      date: "Jueves",
-      discount: "$500",
-        carrier: "KL",
-        nodes: ["CDG 2024-08-29T18:00 AMS 2024-08-29T19:00"]
-    }, {
         price: "450 MXN",
         plan: "Standard",
       date: "Viernes",
@@ -1268,50 +1281,64 @@ var flights = [
         nodes: ["CDG 2024-08-30T11:00 AMS 2024-08-30T12:00"]
     },
     {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Viernes",
       discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-30T12:00 AMS 2024-08-30T13:00"]
     },
     {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Viernes",
       discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-30T13:00 AMS 2024-08-30T14:00"]
     },
     {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Viernes",
       discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-30T14:00 AMS 2024-08-30T15:00"]
     },
      {
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Sábado",
       discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-31T10:00 AMS 2024-08-31T11:00"]
     },{
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Sábado",
       discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-31T11:00 AMS 2024-08-31T12:00"]
     },{
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Sábado",
       discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-08-31T12:00 AMS 2024-08-31T13:00"]
+    },{
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Sábado",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T13:00 AMS 2024-08-31T14:00"]
     },{
         price: "450 MXN",
         plan: "Standard",
@@ -1320,10 +1347,10 @@ var flights = [
         carrier: "KL",
         nodes: ["CDG 2024-08-31T14:00 AMS 2024-08-31T15:00"]
     },{
-        price: "450 MXN",
+        price: "500 MXN",
         plan: "Standard",
       date: "Sábado",
-      discount: "$500",
+      discount: "",
         carrier: "KL",
         nodes: ["CDG 2024-08-31T15:00 AMS 2024-08-31T16:00"]
     },{
@@ -1334,33 +1361,35 @@ var flights = [
         carrier: "KL",
         nodes: ["CDG 2024-09-01T09:00 AMS 2024-09-01T10:00"]
     },{
-        price: "450 MXN",
+        price: "400 MXN",
         plan: "Standard",
       date: "Domingo",
       discount: "$500",
+      special: 1,
         carrier: "KL",
         nodes: ["CDG 2024-09-01T10:00 AMS 2024-09-01T11:00"]
+    },{
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Domingo",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T11:00 AMS 2024-09-01T12:00"]
+    },{
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Domingo",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
     },{
         price: "500 MXN",
         plan: "Standard",
       date: "Domingo",
       discount: "",
       msg: "Alta demanda",
-        carrier: "KL",
-        nodes: ["CDG 2024-09-01T11:00 AMS 2024-09-01T12:00"]
-    },{
-        price: "450 MXN",
-        plan: "Standard",
-      date: "Domingo",
-      discount: "$500",
-        carrier: "KL",
-        nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
-    },{
-        price: "400 MXN",
-        plan: "Standard",
-      date: "Domingo",
-      special: 1,
-      discount: "$500",
         carrier: "KL",
         nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
     },
@@ -2159,9 +2188,9 @@ $('.zmdi-chevron-left').on('click', function() {
     var selectedDay = selectedDateText.split(',')[0].trim().toLowerCase();
     var name = $('.form__field.name').val()
     var phone = $('.form__field.phone').val()
-   if (selectedDay === "lunes" || selectedDay === "martes") {
+   if (selectedDay === "martes") {
         // Renderizar mensaje de que la academia está cerrada
-        alert("La academia está cerrada los lunes y martes. Por favor, seleccione otra fecha.");
+        alert("La academia está cerrada los días martes. Por favor, seleccione otra fecha.");
     }else if(name == ""){
       alert("Ingresa tu nombre")
     }else if (phone === "") {
