@@ -2329,10 +2329,9 @@ contentDiv.style.backgroundColor = 'white';
   var plan = $('input[name="plan"]:checked').val();
     var price = flights[thisIndex].price
     var parts = flights[thisIndex].nodes[0].split(' ')
+    var dayName = flights[thisIndex].date
   var start = new Date(parts[1])
   var end = new Date(parts[3])
-  var daysOfWeek = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-  var dayName = daysOfWeek[start.getDay()];
   var startTime = start.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: false });
   var endTime = end.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: false });
   var classtime = `${dayName} de ${startTime} a ${endTime} Hrs`
