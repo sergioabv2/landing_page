@@ -1163,6 +1163,29 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
   
   
   
+  
+   var api = "https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec";
+
+  var validationData = {
+    redirect: "follow",
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify({
+      action: "getClasstimeQuotas"
+    })
+  };
+
+  let flights = []
+  fetch(api, validationData)
+    .then(response => response.text())
+    .then(res => {
+      flights = JSON.parse(res);
+    })
+   
+  
+  /*
 var flights = [
     {
         price: "400 MXN",
@@ -2008,9 +2031,9 @@ var flights = [
       discount: "$450",
         carrier: "KL",
         nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
-    }*/
+    }
     
-];
+]; */
 
 
 
@@ -2340,7 +2363,7 @@ contentDiv.style.backgroundColor = 'white';
       if (validation.status == "success") {
         setTimeout(function() {
             window.location.href = 'https://www.mozartacademy.mx';
-        }, 1300);   
+        }, 3000);   
       } 
     })
 
@@ -2410,7 +2433,7 @@ contentDiv.style.backgroundColor = 'white';
 </div>
       <div class="total" style="margin-top: 40px;">
        <span style="text-decoration: line-through; font-size: 20px;">${flight.discount} MXN</span> <br>
-        <small>Total</small> <span>$${flight.price}</span>
+        <small>Total</small> <span>${flight.price}</span>
       </div>
     `;
 
@@ -2432,13 +2455,45 @@ contentDiv.style.backgroundColor = 'white';
     var plan = $('input[name="plan"]:checked').val();
        return o.date.toLowerCase() === day && o.plan === plan;
     });*/
-    
+      
     var studentFlights = flights.filter(function(o, index) {
     var firstclass = $('.dateinput .control-item span').eq(0).text();
     var day = firstclass.split(",")[0];
     var plan = $('input[name="plan"]:checked').val();
     o.originalIndex = index; 
-    return o.date.toLowerCase() === day && o.plan === plan;
+      o.plan = plan
+      if(plan == "Standard"){
+        o.discount = "$500"
+        if(o.quote >= 1){
+           o.price = "$400 MXN"
+        }else if(o.quote == 0){
+           o.price = "$450 MXN"
+        }else if(o.quote < 0){
+           o.discount = ""
+           o.price = "$500 MXN"
+        }
+      }else if(plan == "PRO"){
+        o.discount = "$800"
+        if(o.quote >= 1){
+           o.price = "$700 MXN"
+        }else if(o.quote == 0){
+           o.price = "$750 MXN"
+        }else if(o.quote < 0){
+           o.discount = ""
+           o.price = "$800 MXN"
+        }
+      }else if(plan == "PREMIUM"){
+        o.discount = "$1400"
+        if(o.quote >= 1){
+           o.price = "$1300 MXN"
+        }else if(o.quote == 0){
+           o.price = "$1350 MXN"
+        }else if(o.quote < 0){
+           o.discount = ""
+           o.price = "$1400 MXN"
+        }
+      }
+    return o.date.toLowerCase() === day ;
   });
     
     var flightsRender = _.map(studentFlights, function(o, i) {
@@ -2469,10 +2524,17 @@ var demandText = "";
 
 if (o.discount === "") {
   demandText = "<span style='color: red; font-size: 1.2em; position: absolute; margin-top: 30px;'>Alta demanda</span>";
-} else if (o.special === 1) {
+} else  {
+  if(o.quote > 0){
   demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento especial</span>";
-}
-      
+  if(o.quote == 1){
+    demandText += "<span style='color: red; font-size: 12px; position: absolute; margin-top: 15px;'>Queda 1 lugar</span>"
+  }else if(o.quote > 1){
+    demandText += "<span style='color: black; font-size: 12px; position: absolute; margin-top: 15px;'>Quedan "+o.quote+" lugares</span>"
+    }    
+  }   
+} 
+       
       var priceColor;
 
 if (demandText.includes("Alta demanda")) {
@@ -2497,7 +2559,7 @@ if (demandText.includes("Alta demanda")) {
           
           <!--<span>${carrier[o.carrier]} ${from} - ${to}</span>-->
 ${demandText}
-          <h5 style='color: ${priceColor}'><small style='text-decoration: line-through; font-size: 15px;'>${o.discount}</small>  $${o.price} </h5>
+          <h5 style='color: ${priceColor}'><small style='text-decoration: line-through; font-size: 15px;'>${o.discount}</small>  ${o.price} </h5>
         </div>
       </article>`;
     });
