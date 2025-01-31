@@ -2210,7 +2210,7 @@ $('.zmdi-chevron-left').on('click', function() {
 
     $control.text(value);
   });
-
+ 
   // SelectInput find index
   $('.select-index').on('click', 'li', function(evt) {
     var index = evt.currentTarget.textContent,
@@ -2292,10 +2292,9 @@ $('.zmdi-chevron-left').on('click', function() {
     var selectedDay = selectedDateText.split(',')[0].trim().toLowerCase();
     var name = $('.form__field.name').val()
     var phone = $('.form__field.phone').val()
-   if (selectedDay === "martes") {
-        // Renderizar mensaje de que la academia está cerrada
+  /* if (selectedDay === "martes") {
         alert("La academia está cerrada los días martes. Por favor, seleccione otra fecha.");
-    }else if(name == ""){
+    }else */if(name == ""){
       alert("Ingresa tu nombre")
     }else if (phone === "") {
     alert("Por favor, ingresa tu número de teléfono.");
@@ -2459,21 +2458,42 @@ contentDiv.style.backgroundColor = 'white';
     var plan = $('input[name="plan"]:checked').val();
     o.originalIndex = index; 
       o.plan = plan
-      if(plan == "Standard"){
+      
+      
+      /*
+if(plan == "Standard"){
         o.discount = "$500"
-        if(o.quote >= 1){
+        if(o.quote > 1){
            o.price = "$400 MXN"
-        }else if(o.quote == 0){
+        }else if(o.quote == 1 || o.quote == 0){
            o.price = "$450 MXN"
         }else if(o.quote < 0){
            o.discount = ""
            o.price = "$500 MXN"
         }
+      }
+      */
+      
+      
+      if(plan == "Standard"){
+        o.discount = "$500"
+        if(o.grants < 2){
+          o.price = "$350 MXN"
+        }else{
+           if(o.quote > 1){
+           o.price = "$400 MXN"
+            }else if(o.quote == 1 || o.quote == 0){
+               o.price = "$450 MXN"
+            }else if(o.quote < 0){
+               o.discount = ""
+               o.price = "$500 MXN"
+            }
+        }
       }else if(plan == "PRO"){
         o.discount = "$800"
-        if(o.quote >= 1){
+        if(o.quote > 1){
            o.price = "$700 MXN"
-        }else if(o.quote == 0){
+        }else if(o.quote == 1 || o.quote == 0){
            o.price = "$750 MXN"
         }else if(o.quote < 0){
            o.discount = ""
@@ -2481,9 +2501,9 @@ contentDiv.style.backgroundColor = 'white';
         }
       }else if(plan == "PREMIUM"){
         o.discount = "$1400"
-        if(o.quote >= 1){
+        if(o.quote > 1){
            o.price = "$1300 MXN"
-        }else if(o.quote == 0){
+        }else if(o.quote == 1 || o.quote == 0){
            o.price = "$1350 MXN"
         }else if(o.quote < 0){
            o.discount = ""
@@ -2522,21 +2542,42 @@ var demandText = "";
 if (o.discount === "") {
   demandText = "<span style='color: red; font-size: 1.2em; position: absolute; margin-top: 30px;'>Alta demanda</span>";
 } else  {
-  if(o.quote > 0){
-  demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento especial</span>";
-  if(o.quote == 1){
-    demandText += "<span style='color: red; font-size: 12px; position: absolute; margin-top: 15px;'>Queda 1 lugar</span>"
-  }else if(o.quote > 1){
-    demandText += "<span style='color: black; font-size: 12px; position: absolute; margin-top: 15px;'>Quedan "+o.quote+" lugares</span>"
-    }    
-  }   
-} 
+
+    if(o.plan == "Standard"){
+       if(o.grants < 2){
+          demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Oferta especial</span>";
+          if(o.grants == 1){
+            demandText += "<span style='color: red; font-size: 12px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
+          }else if(o.grants == 0){
+            demandText += "<span style='color: orange; font-size: 12px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
+          }
+        }else{
+          if(o.quote > 1){
+              demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento</span>";
+              if(o.quote > 2){
+                demandText += "<span style='color: orange; font-size: 12px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
+              }else if(o.grants == 2){
+                demandText += "<span style='color: red; font-size: 12px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
+              }  
+          }
+       }
+    }else{
+        if(o.quote > 1){
+          demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento</span>";
+          if(o.quote > 2){
+            demandText += "<span style='color: orange; font-size: 12px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
+          }else if(o.grants == 2){
+            demandText += "<span style='color: red; font-size: 12px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
+          }
+        }
+    } 
+}
        
       var priceColor;
 
 if (demandText.includes("Alta demanda")) {
   priceColor = "red";
-} else if (demandText.includes("Descuento especial")) {
+} else if (demandText.includes("Oferta especial") || demandText.includes("Descuento")) {
   priceColor = "#28a745";
 } else {
   priceColor = "#4A4A4A"; // Por defecto, negro
