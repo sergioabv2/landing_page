@@ -2547,17 +2547,17 @@ if (o.discount === "") {
        if(o.grants < 2){
           demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Oferta especial</span>";
           if(o.grants == 1){
-            demandText += "<span style='color: red; font-size: 12px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
+            demandText += "<span style='color: red; font-size: 13px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
           }else if(o.grants == 0){
-            demandText += "<span style='color: orange; font-size: 12px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
+            demandText += "<span style='color: orange; font-size: 13px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
           }
         }else{
           if(o.quote > 1){
               demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento</span>";
               if(o.quote > 2){
-                demandText += "<span style='color: orange; font-size: 12px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
+                demandText += "<span style='color: orange; font-size: 13px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
               }else if(o.grants == 2){
-                demandText += "<span style='color: red; font-size: 12px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
+                demandText += "<span style='color: red; font-size: 13px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
               }  
           }
        }
@@ -2565,9 +2565,9 @@ if (o.discount === "") {
         if(o.quote > 1){
           demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento</span>";
           if(o.quote > 2){
-            demandText += "<span style='color: orange; font-size: 12px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
+            demandText += "<span style='color: orange; font-size: 13px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
           }else if(o.grants == 2){
-            demandText += "<span style='color: red; font-size: 12px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
+            demandText += "<span style='color: red; font-size: 13px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
           }
         }
     } 
