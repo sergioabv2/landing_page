@@ -2460,26 +2460,10 @@ contentDiv.style.backgroundColor = 'white';
       o.plan = plan
       
       
-      /*
-if(plan == "Standard"){
-        o.discount = "$500"
-        if(o.quote > 1){
-           o.price = "$400 MXN"
-        }else if(o.quote == 1 || o.quote == 0){
-           o.price = "$450 MXN"
-        }else if(o.quote < 0){
-           o.discount = ""
-           o.price = "$500 MXN"
-        }
-      }
-      */
+
       
       
       if(plan == "Standard"){
-        o.discount = "$500"
-        if(o.grants < 1){
-          o.price = "$350 MXN"
-        }else{
            if(o.quote > 1){
            o.price = "$400 MXN"
             }else if(o.quote == 1 || o.quote == 0){
@@ -2488,7 +2472,6 @@ if(plan == "Standard"){
                o.discount = ""
                o.price = "$500 MXN"
             }
-        }
       }else if(plan == "PRO"){
         o.discount = "$800"
         if(o.quote > 1){
@@ -2544,12 +2527,6 @@ if (o.discount === "") {
 } else  {
 
     if(o.plan == "Standard"){
-       if(o.grants < 1){
-          demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Oferta especial</span>";
-          if(o.grants == 0){
-            demandText += "<span style='color: red; font-size: 13px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
-          }
-        }else{
           if(o.quote > 1){
               demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento</span>";
               if(o.quote > 2){
@@ -2558,7 +2535,6 @@ if (o.discount === "") {
                 demandText += "<span style='color: red; font-size: 13px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
               }  
           }
-       }
     }else{
         if(o.quote > 1){
           demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento</span>";
