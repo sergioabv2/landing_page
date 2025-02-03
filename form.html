@@ -2465,27 +2465,27 @@ contentDiv.style.backgroundColor = 'white';
       
       if(plan == "Standard"){
          o.discount = "$500"
-          o.price = "$450 MXN"
-          if(o.quote == 5 || o.quote == 4){
-               o.price = "$400 MXN"
+          o.price = "$400 MXN"
+          if(o.quote == 1 || o.quote == 0){
+               o.price = "$450 MXN"
             }else if(o.quote < 0){
                o.discount = ""
                o.price = "$500 MXN"
             }
       }else if(plan == "PRO"){
         o.discount = "$800"
-        o.price = "$750 MXN"
-        if(o.quote == 5 || o.quote == 4){
-           o.price = "$700 MXN"
+        o.price = "$700 MXN"
+        if(o.quote == 1 || o.quote == 0){
+           o.price = "$750 MXN"
         }else if(o.quote < 0){
            o.discount = ""
            o.price = "$800 MXN"
         }
       }else if(plan == "PREMIUM"){
         o.discount = "$1400"
-        o.price = "$1350 MXN"
-        if(o.quote == 5 || o.quote == 4){
-           o.price = "$1300 MXN"
+        o.price = "$1300 MXN"
+        if(o.quote == 1 || o.quote == 0){
+           o.price = "$1350 MXN"
         }else if(o.quote < 0){
            o.discount = ""
            o.price = "$1400 MXN"
@@ -2526,7 +2526,7 @@ var demandText = "";
 if (o.discount === "") {
   demandText = "<span style='color: red; font-size: 1.2em; position: absolute; margin-top: 30px;'>Alta demanda</span>";
 } else  {
-    if(o.quote > 3){
+    if(o.quote < 3){
         if(o.date == "Lunes" || o.date == "Martes" || o.date == "Miércoles" || o.date == "Jueves" ){
             demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento estudiante UNAM</span>";
         }else{
