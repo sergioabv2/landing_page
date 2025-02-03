@@ -2527,20 +2527,25 @@ if (o.discount === "") {
   demandText = "<span style='color: red; font-size: 1.2em; position: absolute; margin-top: 30px;'>Alta demanda</span>";
 } else  {
     if(o.quote > 3){
+        if(o.date == "Lunes" || o.date == "Martes" || o.date == "Miércoles" || o.date == "Jueves" ){
+            demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento estudiante UNAM</span>";
+        }else{
               demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Baja demanda</span>";
+        }
              /* if(o.quote == 5){
                 demandText += "<span style='color: orange; font-size: 13px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
               }else if(o.quote == 4){
                 demandText += "<span style='color: red; font-size: 13px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
               }  */
-          }
+        }
 }
+
        
       var priceColor;
 
 if (demandText.includes("Alta demanda")) {
   priceColor = "red";
-} else if (demandText.includes("Baja")) {
+} else if (demandText.includes("Baja") || demandText.includes("Descuento")) {
   priceColor = "#28a745";
 } else {
   priceColor = "#4A4A4A"; // Por defecto, negro
