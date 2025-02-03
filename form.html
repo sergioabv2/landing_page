@@ -2526,7 +2526,7 @@ var demandText = "";
 if (o.discount === "") {
   demandText = "<span style='color: red; font-size: 1.2em; position: absolute; margin-top: 30px;'>Alta demanda</span>";
 } else  {
-    if(o.quote < 3){
+    if(o.quote > 1){
         if(o.date == "Lunes" || o.date == "Martes" || o.date == "Miércoles" || o.date == "Jueves" ){
             demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Descuento estudiante UNAM</span>";
         }else{
