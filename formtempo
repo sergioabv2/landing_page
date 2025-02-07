@@ -1,5 +1,4 @@
 
-
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
 <link rel="icon" href="https://lh3.googleusercontent.com/d/1k9LA88h-FVVn9EeryBRVBrtc5tPl92CK" type="image/x-icon">
@@ -992,7 +991,7 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
              <div class="control-item">
                <div>
              <h6>Nombre</h6>
-         <input type="text" name="name" class="form__field name" placeholder="Nombre y apellido" >
+         <input type="text" name="name" class="form__field name" placeholder="Nombre completo" >
                     </div>
                   </div>
              </div>
@@ -1184,7 +1183,857 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
     .then(res => {
       flights = JSON.parse(res);
     })
+   
+  
+  /*
+var flights = [
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Lunes",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T11:00 AMS 2024-08-28T12:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Lunes",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T12:00 AMS 2024-08-28T13:00"]
+    },
+     {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Lunes",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T13:00 AMS 2024-08-28T14:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Lunes",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T14:00 AMS 2024-08-28T15:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Miércoles",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T11:00 AMS 2024-08-28T12:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Miércoles",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T12:00 AMS 2024-08-28T13:00"]
+    },
+     {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Miércoles",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T13:00 AMS 2024-08-28T14:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Miércoles",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T14:00 AMS 2024-08-28T15:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Jueves",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T11:00 AMS 2024-08-29T12:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Jueves",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T12:00 AMS 2024-08-29T13:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Jueves",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T13:00 AMS 2024-08-29T14:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Jueves",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T14:00 AMS 2024-08-29T15:00"]
+    },
+    {
+        price: "450 MXN",
+        plan: "Standard",
+      date: "Viernes",
+      discount: "$500",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T11:00 AMS 2024-08-30T12:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Viernes",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T12:00 AMS 2024-08-30T13:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Viernes",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T13:00 AMS 2024-08-30T14:00"]
+    },
+    {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Viernes",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T14:00 AMS 2024-08-30T15:00"]
+    },
+     {
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Sábado",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T10:00 AMS 2024-08-31T11:00"]
+    },{
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Sábado",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T11:00 AMS 2024-08-31T12:00"]
+    },{
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Sábado",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T12:00 AMS 2024-08-31T13:00"]
+    },{
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Sábado",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T13:00 AMS 2024-08-31T14:00"]
+    },{
+        price: "450 MXN",
+        plan: "Standard",
+      date: "Sábado",
+      discount: "$500",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T14:00 AMS 2024-08-31T15:00"]
+    },{
+        price: "500 MXN",
+        plan: "Standard",
+      date: "Sábado",
+      discount: "",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T15:00 AMS 2024-08-31T16:00"]
+    },{
+        price: "450 MXN",
+        plan: "Standard",
+      date: "Domingo",
+      discount: "$500",
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T09:00 AMS 2024-09-01T10:00"]
+    },{
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Domingo",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T10:00 AMS 2024-09-01T11:00"]
+    },{
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Domingo",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T11:00 AMS 2024-09-01T12:00"]
+    },{
+        price: "400 MXN",
+        plan: "Standard",
+      date: "Domingo",
+      discount: "$500",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
+    },{
+        price: "500 MXN",
+        plan: "Standard",
+      date: "Domingo",
+      discount: "",
+      msg: "Alta demanda",
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
+    },
 
+
+
+
+
+
+     {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Lunes",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T11:00 AMS 2024-08-28T12:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Lunes",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T12:00 AMS 2024-08-28T13:00"]
+    },
+     {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Lunes",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T13:00 AMS 2024-08-28T14:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Lunes",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T14:00 AMS 2024-08-28T15:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Miércoles",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T11:00 AMS 2024-08-28T12:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Miércoles",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T12:00 AMS 2024-08-28T13:00"]
+    },
+     {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Miércoles",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T13:00 AMS 2024-08-28T14:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Miércoles",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T14:00 AMS 2024-08-28T15:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Jueves",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T11:00 AMS 2024-08-29T12:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Jueves",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T12:00 AMS 2024-08-29T13:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Jueves",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T13:00 AMS 2024-08-29T14:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Jueves",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T14:00 AMS 2024-08-29T15:00"]
+    },
+    {
+        price: "750 MXN",
+        plan: "PRO",
+      date: "Viernes",
+      discount: "$800",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T11:00 AMS 2024-08-30T12:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Viernes",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T12:00 AMS 2024-08-30T13:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Viernes",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T13:00 AMS 2024-08-30T14:00"]
+    },
+    {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Viernes",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T14:00 AMS 2024-08-30T15:00"]
+    },
+     {
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Sábado",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T10:00 AMS 2024-08-31T11:00"]
+    },{
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Sábado",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T11:00 AMS 2024-08-31T12:00"]
+    },{
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Sábado",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T12:00 AMS 2024-08-31T13:00"]
+    },{
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Sábado",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T13:00 AMS 2024-08-31T14:00"]
+    },{
+        price: "750 MXN",
+        plan: "PRO",
+      date: "Sábado",
+      discount: "$800",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T14:00 AMS 2024-08-31T15:00"]
+    },{
+        price: "800 MXN",
+        plan: "PRO",
+      date: "Sábado",
+      discount: "",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T15:00 AMS 2024-08-31T16:00"]
+    },{
+        price: "750 MXN",
+        plan: "PRO",
+      date: "Domingo",
+      discount: "$800",
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T09:00 AMS 2024-09-01T10:00"]
+    },{
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Domingo",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T10:00 AMS 2024-09-01T11:00"]
+    },{
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Domingo",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T11:00 AMS 2024-09-01T12:00"]
+    },{
+        price: "700 MXN",
+        plan: "PRO",
+      date: "Domingo",
+      discount: "$800",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
+    },{
+        price: "800 MXN",
+        plan: "PRO",
+      date: "Domingo",
+      discount: "",
+      msg: "Alta demanda",
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
+    },
+
+
+
+
+
+
+ {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Lunes",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T11:00 AMS 2024-08-28T12:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Lunes",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T12:00 AMS 2024-08-28T13:00"]
+    },
+     {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Lunes",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T13:00 AMS 2024-08-28T14:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Lunes",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T14:00 AMS 2024-08-28T15:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Miércoles",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T11:00 AMS 2024-08-28T12:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Miércoles",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T12:00 AMS 2024-08-28T13:00"]
+    },
+     {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Miércoles",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T13:00 AMS 2024-08-28T14:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Miércoles",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T14:00 AMS 2024-08-28T15:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Jueves",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T11:00 AMS 2024-08-29T12:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Jueves",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T12:00 AMS 2024-08-29T13:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Jueves",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T13:00 AMS 2024-08-29T14:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Jueves",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T14:00 AMS 2024-08-29T15:00"]
+    },
+    {
+        price: "1350 MXN",
+        plan: "PREMIUM",
+      date: "Viernes",
+      discount: "$1400",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T11:00 AMS 2024-08-30T12:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Viernes",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T12:00 AMS 2024-08-30T13:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Viernes",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T13:00 AMS 2024-08-30T14:00"]
+    },
+    {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Viernes",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T14:00 AMS 2024-08-30T15:00"]
+    },
+     {
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Sábado",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T10:00 AMS 2024-08-31T11:00"]
+    },{
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Sábado",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T11:00 AMS 2024-08-31T12:00"]
+    },{
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Sábado",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T12:00 AMS 2024-08-31T13:00"]
+    },{
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Sábado",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T13:00 AMS 2024-08-31T14:00"]
+    },{
+        price: "1350 MXN",
+        plan: "PREMIUM",
+      date: "Sábado",
+      discount: "$1400",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T14:00 AMS 2024-08-31T15:00"]
+    },{
+        price: "1400 MXN",
+        plan: "PREMIUM",
+      date: "Sábado",
+      discount: "",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T15:00 AMS 2024-08-31T16:00"]
+    },{
+        price: "1350 MXN",
+        plan: "PREMIUM",
+      date: "Domingo",
+      discount: "$1400",
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T09:00 AMS 2024-09-01T10:00"]
+    },{
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Domingo",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T10:00 AMS 2024-09-01T11:00"]
+    },{
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Domingo",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T11:00 AMS 2024-09-01T12:00"]
+    },{
+        price: "1300 MXN",
+        plan: "PREMIUM",
+      date: "Domingo",
+      discount: "$1400",
+      special: 1,
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
+    },{
+        price: "1400 MXN",
+        plan: "PREMIUM",
+      date: "Domingo",
+      discount: "",
+      msg: "Alta demanda",
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
+    }
+
+
+
+/*
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Miércoles",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T11:00 AMS 2024-08-28T12:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Miércoles",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T12:00 AMS 2024-08-28T13:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Miércoles",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T14:00 AMS 2024-08-28T15:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Miércoles",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T15:00 AMS 2024-08-28T16:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Miércoles",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T16:00 AMS 2024-08-28T17:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Miércoles",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T17:00 AMS 2024-08-28T18:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Miércoles",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-28T18:00 AMS 2024-08-28T19:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Jueves",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T14:00 AMS 2024-08-29T15:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Jueves",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T15:00 AMS 2024-08-29T16:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Jueves",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T16:00 AMS 2024-08-29T17:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Jueves",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T17:00 AMS 2024-08-29T18:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Jueves",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-29T18:00 AMS 2024-08-29T19:00"]
+    }, 
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Viernes",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T12:00 AMS 2024-08-30T13:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Viernes",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T13:00 AMS 2024-08-30T14:00"]
+    },
+    {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Viernes",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-30T14:00 AMS 2024-08-30T15:00"]
+    },
+     {
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Sábado",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T12:00 AMS 2024-08-31T13:00"]
+    },{
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Sábado",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-08-31T15:00 AMS 2024-08-31T16:00"]
+    },{
+        price: "350 MXN",
+        plan: "Estudiante",
+      date: "Domingo",
+      discount: "$450",
+        carrier: "KL",
+        nodes: ["CDG 2024-09-01T12:00 AMS 2024-09-01T13:00"]
+    }
+    
+]; */
 
 
 
@@ -1611,40 +2460,47 @@ contentDiv.style.backgroundColor = 'white';
       o.plan = plan
       
       
-
+      /*
+if(plan == "Standard"){
+        o.discount = "$500"
+        if(o.quote > 1){
+           o.price = "$400 MXN"
+        }else if(o.quote == 1 || o.quote == 0){
+           o.price = "$450 MXN"
+        }else if(o.quote < 0){
+           o.discount = ""
+           o.price = "$500 MXN"
+        }
+      }
+      */
       
       
       if(plan == "Standard"){
-         o.discount = "$500"
-          o.price = "$400 MXN"
-          if(o.quote == 1 || o.quote == 0){
+        o.discount = "$500"
+        if(o.grants < 1 ){
+          o.price = "$350 MXN"
+        }else{
                o.price = "$450 MXN"
-            }else if(o.quote < 0){
+            if(o.quote < 0){
                o.discount = ""
                o.price = "$500 MXN"
             }
+        }
       }else if(plan == "PRO"){
         o.discount = "$800"
-        o.price = "$700 MXN"
-        if(o.quote == 1 || o.quote == 0){
            o.price = "$750 MXN"
-        }else if(o.quote < 0){
+          if(o.quote < 0){
            o.discount = ""
            o.price = "$800 MXN"
         }
       }else if(plan == "PREMIUM"){
         o.discount = "$1400"
-        o.price = "$1300 MXN"
-        if(o.quote == 1 || o.quote == 0){
            o.price = "$1350 MXN"
-        }else if(o.quote < 0){
+        if(o.quote < 0){
            o.discount = ""
            o.price = "$1400 MXN"
         }
       }
-
-
-
     return o.date.toLowerCase() === day ;
   });
     
@@ -1677,22 +2533,22 @@ var demandText = "";
 if (o.discount === "") {
   demandText = "<span style='color: red; font-size: 1.2em; position: absolute; margin-top: 30px;'>Alta demanda</span>";
 } else  {
-    if(o.quote > 1){
-              demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Baja demanda</span>";
-             /* if(o.quote == 5){
-                demandText += "<span style='color: orange; font-size: 13px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
-              }else if(o.quote == 4){
-                demandText += "<span style='color: red; font-size: 13px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
-              }  */
-        }
-}
 
+    if(o.plan == "Standard"){
+       if(o.grants < 1){
+          demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>OFERTA ESPECIAL!</span>";
+          if(o.grants == 0){
+            demandText += "<span style='color: red; font-size: 13px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
+          }
+        }
+    }
+}
        
       var priceColor;
 
 if (demandText.includes("Alta demanda")) {
   priceColor = "red";
-} else if (demandText.includes("Baja") ) {
+} else if (demandText.includes("OFERTA ESPECIAL")) {
   priceColor = "#28a745";
 } else {
   priceColor = "#4A4A4A"; // Por defecto, negro
