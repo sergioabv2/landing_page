@@ -24,19 +24,22 @@
   
 
 <style>
+
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+  
   body {
   position: relative;
 }
 
 input {
-  background-color: #202830!important;
-  color: white!important;
+  background-color: white !important;
+  color: black !important;
   margin-bottom: 5px;
 }
   
   select{
-    background-color: #202830!important;
-  color: white!important;
+    background-color:  white!important;
+  color: black !important;
     margin-bottom: 5px;
   }
 
@@ -49,7 +52,7 @@ input {
 
 
 .card {
-  background-color: #202830!important;
+  background-color: white !important;
 }
 
 
@@ -73,7 +76,7 @@ input {
 
 .card__side {
   transition: all 0.8s ease;
-  color: white;
+  color: black;
   font-size: 2rem;
   position: absolute;
   top: 0;
@@ -86,7 +89,7 @@ input {
 }
 
 .card__side--front {
-  background-color: #2196f3;
+  background-color: whiite;
   position: relative;
   background-position: center;
   background-repeat: no-repeat;
@@ -94,7 +97,7 @@ input {
 }
 
 .card__side--back {
-  background-color: #303f9f;
+  background-color: white;
   transform: rotateY(180deg);
   background-position: center;
   background-repeat: no-repeat;
@@ -151,24 +154,140 @@ hr {
   margin-bottom: 3%!important;
 }
 
-.jumbotron {
-  background: URL(https://lh3.googleusercontent.com/d/1N-Idp7uUKN5vEuGcGIqJ2xtsgUMfeM8l);
-  background-size: cover;
-  background-position: top;
-  border-radius: 0px!important;
+
+
+.video-background {
   text-align: center;
   margin-top: 55px;
+  background: #000;
+  position: relative; /* Cambiado de 'fixed' a 'relative' para limitar su tamaño */
+  height: 500px; /* Ajusta la altura al tamaño deseado */
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#vidtop-content {
+  top: 0;
+  color: #fff;
+}
+
+.vid-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 33%;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  padding: 1rem;
+  font-family: Avenir, Helvetica, sans-serif;
+}
+
+.vid-info h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+.vid-info a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(0,0,0,0.5);
+  transition: .6s background;
+  border-bottom: none;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .vid-info {
+    width: 50%;
+    padding: .5rem;
+  }
+  .vid-info h1 {
+    margin-bottom: .2rem;
+  }
+  .video-background {
+    height: 300px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .vid-info .acronym {
+    display: none;
+  }
 }
 
 
+
+#fashion {
+  position: absolute;
+  min-height: 120vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#fashion h2 { 
+  font-family: Century Schoolbook, Century Schoolbook L, Georgia, serif;
+  font-size: 12vmin;
+  text-align: center;
+  margin: 2rem 3rem 0;
+  mix-blend-mode: overlay;
+  color: #fff;
+  font-weight: 100;
+}
+  
+  
 
 
 .strong-shadow {
   text-shadow: 1px 2px 3px black, 0px 8px 13px black, 0px 18px 23px black!important;  
 }
 
-
-
+ .nav-item{
+    font-size: 14.2px;
+    margin: 0 10px;
+     font-family: 'Poppins', sans-serif;
+   font-weight: 400;
+  }
+ .nav-item a{
+     color: black !important;
+  }
+ .nav-item a:hover{
+   color: #0162ff !important;
+  }
+  .nav-item a.active{
+   color: #0162ff !important;
+  } 
 
 
 
@@ -192,15 +311,24 @@ hr {
   font-size: 18px;
   font-weight: 400;
   margin: 0px; 
-  color: #8198ae;
+  color: black;
 }
+
+   .swiper-container-main{
+     box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);
+  }
+  
+  .card-deck .card{
+     box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);
+  }
+
 
 .price-box{
   padding: 0px 25px;  
 }
 
 .price-box__wrap{
-  background-color: #202830!important;;
+  background-color: white !important;;
   border-radius:6px;
   box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2); /*0px 22px 20px -10px rgba(0, 0, 0,0.2)*/
   padding: 35px 35px 40px 35px;
@@ -252,7 +380,7 @@ hr {
 
 .price-box__people{
   font-size:12px;
-  color:#8198ae;
+  color:black;
   font-weight: 300;
   letter-spacing:1px;
 }
@@ -762,13 +890,13 @@ vertical-align: middle;
 
 
   .swiper-pagination-bullet {
-  background: white; /* Cambia el color de las bolitas a blanco */
+  background: black; /* Cambia el color de las bolitas a blanco */
 }
 
 .swiper-button-prev {
   position: absolute;
-  transform: translateX(-40%);
-  color: white;
+  transform: translateX(-40%) scale(0.7);
+  color: black;
 }
 
 .swiper-button-prev:focus {
@@ -778,8 +906,8 @@ vertical-align: middle;
 
 .swiper-button-next {
   position: absolute;
-  transform: translateX(40%);
-  color: white;
+  transform: translateX(40%) scale(0.7);
+  color: black;
   font-weight: 900;
 
 }
@@ -1001,7 +1129,9 @@ vertical-align: middle;
     height: 105px;
   }
 
-  
+  .navbar{
+    margin-left: -15px;
+  }
   
 }
 
@@ -1022,7 +1152,6 @@ vertical-align: middle;
   height:130px;
   }
   .price-box__wrap {
-    background-color: #202830!important;;
   border-radius:6px;
   box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2); /*0px 22px 20px -10px rgba(0, 0, 0,0.2)*/
   padding: 35px 35px 40px 35px;
@@ -1201,50 +1330,49 @@ vertical-align: middle;
  
 </style>
   
-<body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-dark text-light">
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Mozart Academy</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+<body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-light text-dark">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-light fixed-top text-dark" style="box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);">
+    <a class="navbar-brand" href="/" style="color: black; font-weight: 500; font-size: 18px; margin-left: 15px;  font-family: 'Poppins', sans-serif"> <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="35" height="35" style="margin-right: 10px; border-radius: 50%;"/>Mozart Academy</a>
+    <button class="navbar-toggler btn bg-dark" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <div class="collapse navbar-collapse" id="myNavbar" style="margin-right: 10px;">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#services">Servicios <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#services" >Servicios <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#payment">Planes de pago</a>
+          <a class="nav-link" href="#payment" >Planes de pago</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/gallery" >Galería</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact">Informes</a>
-        </li>
+          <a class="nav-link" href="/cursos" >Cursos</a>
+        </li>     
       </ul>
 
-      <div class="form-inline my-2 my-lg-0" style="float: right;">
-      <!--  <input class="form-control mr-sm-2" type="email" placeholder="Usuario">
-        <input class="form-control mr-sm-2" type="password" placeholder="Contraseña"> -->
-       <a href="https://app.mozartacademy.mx" ><button class="btn btn-outline-light my-2 my-sm-0"  >Inicia sesión</button></a>
-      </div>
     </div>
   </nav>
 
-  <div id="jumbotron" class="jumbotron text-light">
 
-      <h1 class="strong-shadow" style="text-align: center; font-size: 12vw;">Mozart Studio</h1>
-      
-<br><br><br><br><br><br><br><br>
-   
-  
-           
+    
+<div class="video-background">
+    <div class="video-foreground">
+      <iframe src="https://www.youtube.com/embed/gTv0PnMrY14?version=3&autoplay=1&mute=1&controls=0&fs=0&loop=1&playlist=gTv0PnMrY14" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
+
+
+
 
   
   
   
   <div id="services" class="container">
     <h1 class="reduce">Innovamos la educación musical</h1>
-    <p id="summary-paragraph">Razones por las que Mozart Piano Academy es tu mejor opción<br><br>Te ofrecemos:</p>
+    <p id="summary-paragraph">Razones por las que Mozart Academy es tu mejor opción:</p>
   </div>
   <div class="container">
     <div class="card-deck">
@@ -1256,17 +1384,16 @@ vertical-align: middle;
         </div>
       </div> 
 
+
       <div class="card">
         <div class="card-img-top"> 
           <div class="swiper swiper-container-main">
     <div class="swiper-wrapper">
-         <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1XBWyFeO4wVvB8jgYlGjywplnTQjiJJnw"></div>
+       <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1fULd1JKA0gaJkgupWc9UWW8bNBYLEZQf"></div>
+       <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1XBWyFeO4wVvB8jgYlGjywplnTQjiJJnw"></div>
          <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1GWV7YUKWP-Xru1gz0ds15HLkyXcNNUq2"></div>
-        <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/12Kr6jxvGVOvwKdoZb3r3NDIDkcTvqLTh"></div>
-       <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/194vyavb-hJO2p1UkW7d3RGNk7AzQ7YmM"></div>
 
-      <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/19pYGsX_W7a9_eiy_8gwnPd5j5XsgjZNo"></div>
-
+       <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1rGdYAwWDSWdYSSrxA0bBF3onbAn1FIJ4"></div>
       <div class="swiper-slide minimum-height"><img class="card-img-top swiper-slide-img" src="https://lh3.googleusercontent.com/d/1oz_MUQCq-0cSMJ0gOWR45CUNI2EVWaTy"></div>
      
       
@@ -1276,10 +1403,10 @@ vertical-align: middle;
 
     </div>
     <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination" style="background: white;"></div>
     <!-- Add Pagination -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next" style="color: white;"></div>
+    <div class="swiper-button-prev" style="color: white;"></div>
   </div>
 
       <!-- Swiper thumbnails -->
@@ -1290,35 +1417,43 @@ vertical-align: middle;
         </div>
         <div class="card-body">
           <h5 class="card-title"><i class="ri-building-fill"></i> Instalaciones equipadas</h5>
-          <p class="card-text">Disfruta de nuestras amplias instalaciones equipadas con pianos de alta gama y tecnología integrada.  </p>
+          <p class="card-text">Disfruta de nuestras amplias instalaciones equipadas con pianos de gama alta y tecnología integrada.  </p>
         </div>
       </div>
 
  <div class="card">
-         <img class="card-img-top button" src="https://lh3.googleusercontent.com/d/1vctm_kgQJGOP-SU7gdsitBSofMPc9JC6" alt="Card image cap" data-modal="modal2">
+      <!--   <img class="card-img-top button" src="https://lh3.googleusercontent.com/d/1WROzbisVSKdJeu_7n2SHR1wSDcOfjKVh" data-modal="modal2"> -->
+
+    <img class="card-img-top button" src="https://lh3.googleusercontent.com/d/1vctm_kgQJGOP-SU7gdsitBSofMPc9JC6" data-modal="modal2">
+   
         <div class="card-body">
           <h5 class="card-title"><i class="ri-calendar-schedule-fill"></i> Horarios flexibles  <div class="img-resize" style="font-size: 15px;">    (Da click en la imagen para ampliarla) </div></h5>
         
           <p class="card-text">
-        Nos adaptamos a tu disponibilidad con horarios flexibles que se ajustan a tu rutina. Si lo requieres, puedes agendar un horario distinto cada semana. </p>
+        Nos adaptamos a tu disponibilidad con horarios flexibles que se ajustan a tu rutina. Puedes cambiar de horario cada semana si lo necesitas. </p>
         </div>
       </div>
 
     </div>
   </div>
   <br>
-  <div class="container">
+
+
+
+
+ <div class="container">
     <div class="card-deck">
 
       <div class="card">
-        <img class="card-img-top" src="https://lh3.googleusercontent.com/d/1SV55fehgbU5aAnTrs2kZcPVSZJGiXQva" alt="Card image cap">
+   <img class="card-img-top" src="https://lh3.googleusercontent.com/d/1SV55fehgbU5aAnTrs2kZcPVSZJGiXQva" alt="Card image cap"> 
+       
         <div class="card-body">
           <h5 class="card-title"><i class="ri-discount-percent-line"></i> Costos accesibiles</h5>
           <p class="card-text">Ofrecemos distintos planes de pago según la cantidad de sesiones que desees tomar. ¿Vives lejos? Plan en línea. ¿Quieres avanzar más rápido? Plan premium. ¡Encuentra tu plan ideal!.</p>
         </div>
       </div>
 
-       <div class="card">
+      <div class="card">
       <!--  <iframe class="card-img-top" id="youtube" src="https://www.youtube.com/embed/bT89XVAU2sw" > </iframe> -->
          <img class="card-img-top" src="https://lh3.googleusercontent.com/d/19NvgjcAJbGClcdTZG9NAGsu-WwcsAx82" alt="Card image cap">
         <div class="card-body">
@@ -1341,14 +1476,17 @@ vertical-align: middle;
   </div>
 
 
+
+  
+
   <div class="sect sect--padding-bottom" >
     <div class="container" id="payment">
 
       <div class="container text-center">
         <h1>Planes de pago</h1>
-        <p>Encuentra tu plan ideal</p>
+        <p>Conoce nuestros planes de pago para cada formato de enseñanza, desde clases presenciales, en línea por ZOOM y clases híbridas.</p>
       </div>
-     <div class="row row--center row--margin">
+    <div class="row row--center row--margin">
       
  <!-- First -->
 <div class="col-md-4 col-sm-4 price-box price-box--blue">
@@ -1545,7 +1683,7 @@ vertical-align: middle;
 <br><br>
           </ul>
       
-            <a class="btn btn--violet btn--width button" style="color: white;"  href="hhttps://www.mozartacademy.mx/inscripcionzoom">Agendar</a>
+            <a class="btn btn--violet btn--width button" style="color: white;"  href="https://www.mozartacademy.mx/inscripcionzoom">Agendar</a>
           
         </div>
 
@@ -1718,21 +1856,13 @@ vertical-align: middle;
   </div>
   </div>
 
-  <div id="contact" class="contact-info" style="background-color: #202830;">
-    <div class="container text-center strong-shadow ">
+
+ 
   
-      <h3 class="card-title"> Cupo limitado </h3>  
-      <h2 class="card-title">¡Aparta tu lugar!</h2> <br>
-     
-      <br>
-    </div>    
-  </div>
-  
-  <div class="text-center" style="margin-top: 15px;">
+  <section class="trial-block shadow3" style="background-color: #202830; color: white">
+     <div class="text-center" > <br>  
             <button class="btn btn-outline-light mb-2" id="redirectButton">Más información</button>
           </div>
-  
-  <section class="trial-block shadow3">
              <div class="social-overlap process-scetion ">
               <div class="container">
                   <div class="row justify-content-center">
@@ -1740,10 +1870,10 @@ vertical-align: middle;
                               <div class="social-icons text-center">
                                  
                                   
-                <a href="https://www.facebook.com/mozart.academiadepiano" class="slider-nav-item"><i class="ri-facebook-fill"></i></a>
+                <a href="https://www.facebook.com/mozart.tallerdepiano" class="slider-nav-item"><i class="ri-facebook-fill"></i></a>
                                 
                                  
-               <a href="https://www.instagram.com/mozart.pianoacademy/"  class="slider-nav-item"><i class="ri-instagram-line"></i></a>
+               <a href="https://www.instagram.com/mozart.pianoacademy"  class="slider-nav-item"><i class="ri-instagram-line"></i></a>
                                  
                                   <a href="https://www.youtube.com/@mozart.academy" class="slider-nav-item"><i class="ri-youtube-fill"></i></a>
                                  <a href="https://maps.app.goo.gl/Jhf1sMdnQ7QRA3RP9"  class="slider-nav-item"><i class="ri-map-pin-line"></i></a> <!-- https://twitter.com/m0zart_studio -->
@@ -1760,14 +1890,14 @@ vertical-align: middle;
 
   <footer class="fixed-bottom">
       <div class="col-md-2 col-xs-6">
-       <h1 class="footer__title">Mozart<span class="footer__light">&nbspPiano Academy</span></h1>   
+       <h1 class="footer__title">Mozart<span class="footer__light"> Piano Academy</span></h1>   
       </div> 
   </footer>
 
 
   
   
-  <div id="modal1" class="modal-container modal-hidden">
+ <div id="modal1" class="modal-container modal-hidden">
   <div class="modal-background">
     <div class="modal"> 
      
@@ -1776,120 +1906,27 @@ vertical-align: middle;
 
     </div>
   </div>
-</div>
-  
-  
+</div> 
+
+
+
 <div id="modal2" class="modal-container modal-hidden">
   <div class="modal-background">
     <div class="modal"> 
      
-     <img src="https://lh3.googleusercontent.com/d/1vctm_kgQJGOP-SU7gdsitBSofMPc9JC6">
+
+   <!--  <img src="https://lh3.googleusercontent.com/d/1WROzbisVSKdJeu_7n2SHR1wSDcOfjKVh"> -->
+      <img src="https://lh3.googleusercontent.com/d/1vctm_kgQJGOP-SU7gdsitBSofMPc9JC6">
 
     </div>
   </div>
 </div>
+  
+  
 
 
 
 
-<!--
- <div ng-app="myApp"> 
-  <div id="modal3" class="modal-container modal-hidden">
-  <div class="modal-background">
-    <div class="modal form-insc"> 
-       
-<div class="card" ng-controller="FormController1" >
-              <div class="card-body">
-                <h4>Formulario de registro</h4>
-                <div class="settings-profile">
-                  <div class="form-row mt-4">
-                    <div class="col-md-6">
-                      <label for="dayList">Día</label>
-                      <select id="dayList" class="form-control" ng-model="formData.dia" ng-change="updateHourList()" ng-options="day for day in days">
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <label ng-if="formData.dia" for="hourList">Hora</label>
-                      <select ng-if="formData.dia" id="hourList" class="form-control" ng-model="formData.hora" ng-options="hour for hour in hours">
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <label ng-if="formData.hora" for="dateClass">Fecha de tu primer clase</label>
-                      <select ng-if="formData.hora" id="dateClass" class="form-control" ng-model="formData.fecha" ng-options="date for date in dates">
-                      </select>
-                    </div>
-                    
-                     <div class="col-md-6">
-                      <label for="formFirst" ng-if="formData.fecha">Nombre</label>
-                      <input id="formFirst" type="text" class="form-control" placeholder="Nombre completo" autocomplete="off" ng-model="formData.nombre" ng-if="formData.fecha">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="phone" ng-if="formData.fecha">Teléfono</label>
-                      <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono" ng-if="formData.fecha">
-                    </div>
-                    
-                    
-                  </div>
-                </div>
-               </div>  
-                <div class="modal-footer col-md-12">
-                  <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
-                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                </div>
-            </div>
-
-    </div>
-  </div>
-</div>
-
- <div id="modal4" class="modal-container modal-hidden">
-  <div class="modal-background">
-    <div class="modal form-insc"> 
-       
-<div class="card" ng-controller="FormController2" >
-              <div class="card-body">
-                <h4>Formulario de registro</h4>
-                <div class="settings-profile">
-                  <div class="form-row mt-4">
-                    <div class="col-md-6">
-                      <label for="dayList">Día</label>
-                      <select id="dayList" class="form-control" ng-model="formData.dia" ng-change="updateHourList()" ng-options="day for day in days">
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <label ng-if="formData.dia" for="hourList">Hora</label>
-                      <select ng-if="formData.dia" id="hourList" class="form-control" ng-model="formData.hora" ng-options="hour for hour in hours">
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <label ng-if="formData.hora" for="dateClass">Fecha de tu primer clase</label>
-                      <select ng-if="formData.hora" id="dateClass" class="form-control" ng-model="formData.fecha" ng-options="date for date in dates">
-                      </select>
-                    </div>
-                    
-                     <div class="col-md-6">
-                      <label for="formFirst" ng-if="formData.fecha">Nombre</label>
-                      <input id="formFirst" type="text" class="form-control" placeholder="Nombre completo" autocomplete="off" ng-model="formData.nombre" ng-if="formData.fecha">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="phone" ng-if="formData.fecha">Teléfono</label>
-                      <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" maxlength="10" id="phone" autocomplete="off" placeholder="Número de teléfono" ng-model="formData.telefono" ng-if="formData.fecha">
-                    </div>
-                    
-                    
-                  </div>
-                </div>
-               </div>  
-                <div class="modal-footer col-md-12">
-                  <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
-                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                </div>
-            </div>
-
-    </div>
-  </div>
-</div> -->
-   
    
 </div>
 
@@ -1986,274 +2023,8 @@ var swiper = new Swiper('.swiper-container-main', {
 
 });
     
+
     
-    
-    
-   /* 
-    
-angular.module('myApp', [])
-  .controller('FormController1', ['$scope', function($scope) {
-    $scope.formData = {};
-
-
-    $scope.classtime = {
-      lunes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      martes: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      miercoles: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      jueves: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs", "16:00 a 17:00 Hrs", "17:00 a 18:00 Hrs", "18:00 a 19:00 Hrs"],
-      viernes: ["11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
-      sabado: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "14:00 a 15:00 Hrs", "15:00 a 16:00 Hrs"],
-      domingo: ["9:00 a 10:00 Hrs", "10:00 a 11:00 Hrs", "11:00 a 12:00 Hrs", "12:00 a 13:00 Hrs"]
-    };
-
-    $scope.capacity = {
-      lunes: {
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
-        "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
-      },
-      martes: {
-         "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
-        "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
-      },
-      miercoles: {
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
-        "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
-      },
-      jueves: {
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 1,
-        "15:00 a 16:00 Hrs": 1,
-        "16:00 a 17:00 Hrs": 2,
-        "17:00 a 18:00 Hrs": 1,
-        "18:00 a 19:00 Hrs": 1
-      },
-      viernes: {
-        "11:00 a 12:00 Hrs": 1,
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 1,
-        "14:00 a 15:00 Hrs": 2,
-        "15:00 a 16:00 Hrs": 2,
-      },
-      sabado: {
-        "9:00 a 10:00 Hrs": 1,
-        "10:00 a 11:00 Hrs": 3,
-        "11:00 a 12:00 Hrs": 2,
-        "14:00 a 15:00 Hrs": 4,
-        "15:00 a 16:00 Hrs": 2,
-      },
-      domingo: {
-        "9:00 a 10:00 Hrs": 1,
-        "10:00 a 11:00 Hrs": 2,
-        "11:00 a 12:00 Hrs": 3,
-        "12:00 a 13:00 Hrs": 2,
-      }
-    };
-    
-
-        $scope.days = ["Jueves", "Viernes", "Sábado", "Domingo"];
-
-
-    $scope.updateHourList = function() {
-      var plan = $scope.formData.plan;
-      var day = $scope.formData.dia;
-      $scope.dates = getDat(day);
-      const selectedDay = $scope.formData.dia.toLowerCase();
-      const availableHours = $scope.classtime[selectedDay] || [];
-      $scope.hours = availableHours.filter(hour => $scope.capacity[selectedDay][hour] > 0);
-      if (plan.includes("ESTUDIANTE") && day == "Sábado") {
-        $scope.hours = ["13:00 a 14:00 Hrs"];
-      }
-    };
-
-    $scope.submitForm = function() {
-      console.log('Form submitted with:', $scope.formData);
-    };
-
-   
-    
-    function getDat(day) {
-      const options = { weekday: 'long', month: 'long', day: 'numeric' };
-      const date1 = new Date();
-      const currentDay = date1.getDay();
-      var dayOfWeek = getNumDay(day);
-      const daysUntilNextDay = (dayOfWeek + 7 - currentDay) % 7;
-      const daysToAdd = daysUntilNextDay === 0 ? 7 : daysUntilNextDay;
-      date1.setDate(date1.getDate() + daysToAdd);
-      var date2 = new Date(date1);
-      date2.setDate(date2.getDate() + 7);
-  
-      var dat1 = date1.toLocaleDateString("es-mx", options).replace(",", "");
-      var dat2 = date2.toLocaleDateString("es-mx", options).replace(",", "");
-      return [dat1.charAt(0).toUpperCase() + dat1.slice(1), dat2.charAt(0).toUpperCase() + dat2.slice(1)];
-    }
-
-    function getNumDay(day) {
-      switch(day) {
-        case "Domingo":
-          return 0;
-        case "Lunes":
-          return 1;
-        case "Martes":
-          return 2;
-        case "Miércoles":
-          return 3;
-        case "Jueves":
-          return 4;
-        case "Viernes":
-          return 5;
-        case "Sábado":
-          return 6;
-        default:
-          return 0;
-      }
-    }
-    
-    
-    $scope.cancel = function() {
-        var modal = angular.element(document.getElementById('modal3'));
-        modal.addClass('out');
-        angular.element(document.body).removeClass('modal-active');
-        setTimeout(function() {
-            modal.removeClass('four out').addClass('modal-hidden');
-        }, 500); // Ajusta el tiempo según la duración de tu animación
-    };
-    
-  }])
-.controller('FormController2', ['$scope', function($scope) {
-    $scope.formData = {};
-
-
-    $scope.classtime = {
-      lunes: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
-      martes: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
-      miercoles: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
-      jueves: ["19:00 a 20:00 Hrs", "20:00 a 21:00 Hrs", "21:00 a 22:00 Hrs"],
-      sabado: ["12:00 a 13:00 Hrs", "13:00 a 14:00 Hrs"],
-
-    };
-
-    $scope.capacity = {
-      lunes: {
-        "19:00 a 20:00 Hrs": 2,
-        "20:00 a 21:00 Hrs": 2,
-        "21:00 a 22:00 Hrs": 1
-      },
-      martes: {
-        "19:00 a 20:00 Hrs": 2,
-        "20:00 a 21:00 Hrs": 2,
-        "21:00 a 22:00 Hrs": 1
-      },
-      miercoles: {
-        "19:00 a 20:00 Hrs": 2,
-        "20:00 a 21:00 Hrs": 2,
-        "21:00 a 22:00 Hrs": 1
-      },
-      jueves: {
-        "19:00 a 20:00 Hrs": 2,
-        "20:00 a 21:00 Hrs": 2,
-        "21:00 a 22:00 Hrs": 1
-      },
-      viernes: {
-        "11:00 a 12:00 Hrs": 1,
-        "12:00 a 13:00 Hrs": 2,
-        "13:00 a 14:00 Hrs": 1,
-        "14:00 a 15:00 Hrs": 2,
-        "15:00 a 16:00 Hrs": 2,
-      },
-      sabado: {
-        "12:00 a 13:00 Hrs": 1,
-        "13:00 a 14:00 Hrs": 3
-      }
-    };
-    
-
-        $scope.days = ["Lunes", "Martes", "Miércoles", "Jueves", "Sábado"];
-
-
-    $scope.updateHourList = function() {
-      var plan = $scope.formData.plan;
-      var day = $scope.formData.dia;
-      $scope.dates = getDat(day);
-      const selectedDay = $scope.formData.dia.toLowerCase();
-      const availableHours = $scope.classtime[selectedDay] || [];
-      $scope.hours = availableHours.filter(hour => $scope.capacity[selectedDay][hour] > 0);
-      if (plan.includes("ESTUDIANTE") && day == "Sábado") {
-        $scope.hours = ["13:00 a 14:00 Hrs"];
-      }
-    };
-
-    $scope.submitForm = function() {
-      console.log('Form submitted with:', $scope.formData);
-    };
-
-   
-    
-    function getDat(day) {
-      const options = { weekday: 'long', month: 'long', day: 'numeric' };
-      const date1 = new Date();
-      const currentDay = date1.getDay();
-      var dayOfWeek = getNumDay(day);
-      const daysUntilNextDay = (dayOfWeek + 7 - currentDay) % 7;
-      const daysToAdd = daysUntilNextDay === 0 ? 7 : daysUntilNextDay;
-      date1.setDate(date1.getDate() + daysToAdd);
-      var date2 = new Date(date1);
-      date2.setDate(date2.getDate() + 7);
-  
-      var dat1 = date1.toLocaleDateString("es-mx", options).replace(",", "");
-      var dat2 = date2.toLocaleDateString("es-mx", options).replace(",", "");
-      return [dat1.charAt(0).toUpperCase() + dat1.slice(1), dat2.charAt(0).toUpperCase() + dat2.slice(1)];
-    }
-
-    function getNumDay(day) {
-      switch(day) {
-        case "Domingo":
-          return 0;
-        case "Lunes":
-          return 1;
-        case "Martes":
-          return 2;
-        case "Miércoles":
-          return 3;
-        case "Jueves":
-          return 4;
-        case "Viernes":
-          return 5;
-        case "Sábado":
-          return 6;
-        default:
-          return 0;
-      }
-    }
-    
-    
-    $scope.cancel = function() {
-        var modal = angular.element(document.getElementById('modal4'));
-        modal.addClass('out');
-        angular.element(document.body).removeClass('modal-active');
-        setTimeout(function() {
-            modal.removeClass('four out').addClass('modal-hidden');
-        }, 500); // Ajusta el tiempo según la duración de tu animación
-    };
-    
-  }])
-
-*/
 
   </script>
 
