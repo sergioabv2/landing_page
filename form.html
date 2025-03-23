@@ -1020,7 +1020,7 @@ div.rotate span:nth-child(3) { animation-delay: .3s }
             </div>
             <div class="control-body">
               <div class="info-message">
-                <i class="zmdi zmdi-info"></i>
+                <i class="zmdi zmdi-info"></i> Los academía cierra los martes
                <span></span> 
     
               </div>
@@ -1442,9 +1442,9 @@ $('.zmdi-chevron-left').on('click', function() {
     var selectedDay = selectedDateText.split(',')[0].trim().toLowerCase();
     var name = $('.form__field.name').val()
     var phone = $('.form__field.phone').val()
-  /* if (selectedDay === "martes") {
-        alert("La academia está cerrada los días martes. Por favor, seleccione otra fecha.");
-    }else */if(name == ""){
+   if (selectedDay === "martes") {
+        alert("La academia cierra los días martes. Por favor, seleccione otra fecha.");
+    }else if(name == ""){
       alert("Ingresa tu nombre")
     }else if (phone === "") {
     alert("Por favor, ingresa tu número de teléfono.");
