@@ -1339,38 +1339,46 @@ vertical-align: middle;
 </style>
   
 <body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-light text-dark">
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-light fixed-top text-dark" style="box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);">
+ <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-light fixed-top text-dark" style="box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);">
     <a class="navbar-brand" href="/" style="color: black; font-weight: 500; font-size: 18px; margin-left: 15px;  font-family: 'Poppins', sans-serif"> <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="35" height="35" style="margin-right: 10px; border-radius: 50%;"/>Mozart Academy</a>
     <button class="navbar-toggler btn bg-dark" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="myNavbar" style="margin-right: 10px;">
-      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/land" >Inicio <span class="sr-only">(current)</span></a>
+         
         </li>
         <li class="nav-item">
           <a class="nav-link" href="" >ABRSM</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="/forum" >Modalidades</a>
+          <a class="nav-link" href="/forum" >Niveles</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="/payment" >Inscripciones</a>
+          <a class="nav-link" href="/payment" >Evaluación</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/payment" >Programas</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="/forum" >Foro</a>
+          <a class="nav-link" href="/forum" >Sede</a>
         </li>
+        
+      </ul>
+      
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+       
         <li class="nav-item">
-          <a class="nav-link" href="/forum" >Contacto</a>
+          <a class="nav-link" href="/forum" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px 	#FFAA33; ">Precios</a>
         </li>
         
       </ul>
 
           <div class="form-inline my-2 my-lg-0" style="float: right; margin-left: 10px;">
      
-       <a href="https://app.mozartacademy.mx" ><button class="btn btn-outline-dark my-2 my-sm-0"  >Inicia sesión</button></a>
+       <a href="https://app.mozartacademy.mx" ><button class="btn btn-outline-dark my-2 my-sm-0"  >Iniciar sesión</button></a>
       </div>
 
     </div>
@@ -1378,10 +1386,24 @@ vertical-align: middle;
 
 
     
-  <div id="jumbotron" class="jumbotron text-light">
-      <h1 class="strong-shadow" style="text-align: center; font-size: 12vw;">Mozart Studio</h1>
-<br><br><br><br><br><br><br><br>
+<div class="headImg">
+
+<br>
+  <div class="info">
+  <h4><a href="#category">Mozart Academy</a></h4>
+    <h1>KEN BURNS HEADERS ARE THE BEST</h1>
+    <div class="meta">
+      <a  href="https://x.com/nodws" target="_b" class="author"></a><br>
+      By <a href="https://X.com/nodws" target="_b">James Nodws</a> on May 30, 2022
+    </div>
   </div>
+</div>
+
+<section class="content">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisl turpis, porttitor et finibus id, viverra a metus. Praesent non ante sed orci posuere varius quis sit amet dui. Cras molestie magna orci, id gravida dolor molestie in. Duis sollicitudin turpis quis tortor egestas, ut ultrices nisl elementum. Vestibulum sed ipsum eget nulla laoreet cursus in ac sem. Integer a suscipit justo, quis aliquam sapien. Maecenas et tellus nibh. Vivamus tincidunt eros id commodo pellentesque.</p>
+
+</section>
+
 
 
   
@@ -1500,7 +1522,7 @@ vertical-align: middle;
   
   <section class="trial-block shadow3" style="background-color: #202830; color: white">
      <div class="text-center" > <br>  
-            <button class="btn btn-outline-light mb-2" id="redirectButton">Más información</button>
+            <button class="btn btn-outline-light mb-2" id="redirectButton">Contacto <i class="fab fa-whatsapp"></i></button>
           </div>
              <div class="social-overlap process-scetion ">
               <div class="container">
@@ -1580,17 +1602,7 @@ document.getElementById('redirectButton').addEventListener('click', function() {
   window.location.href = 'https://wa.me/5215577676657?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20acerca%20de%20las%20clases%20de%20piano%20%F0%9F%8E%B9'; 
 });
 
-function toggleCard() {
-    const frontSide = document.getElementById("front-1");
-    const backSide = document.getElementById("back-1");
-    if (frontSide.classList.contains("showGreen")) {
-      frontSide.classList.remove("showGreen");
-      backSide.classList.remove("showRed");
-    } else {
-      frontSide.classList.add("showGreen");
-      backSide.classList.add("showRed");
-    }
-  }
+
     
 $(document).ready(function() {
   $('.button').click(function() {
