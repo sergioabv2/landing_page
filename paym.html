@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -14,7 +13,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   
-
+   <link rel="stylesheet" href="https://unpkg.com/swiper@9.2.4/swiper-bundle.min.css">
+   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
   
    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
@@ -50,6 +50,66 @@ input {
   
 
 
+.card {
+  background-color: white !important;
+}
+
+
+
+.cardp {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  width: 50%;
+  transition: all ease-in-out 400ms;
+  cursor: pointer;
+}
+
+.cardp:hover {
+  transform: scale(1.05);
+}
+
+.cardp:active {
+  transform: translateY(-1px);
+}
+
+.card__side {
+  transition: all 0.8s ease;
+  color: black;
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  height: 20vh;
+  width: 20vh;
+  backface-visibility: hidden;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.card__side--front {
+  background-color: whiite;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card__side--back {
+  background-color: white;
+  transform: rotateY(180deg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.showGreen {
+  transform: rotateY(-180deg);
+}
+
+.showRed {
+  transform: rotateY(0);
+}
 
 .text-box {
   position: absolute;
@@ -63,7 +123,15 @@ input {
 }
 
 
+#front-1 {
+  background-image: 
+    url("https://lh3.googleusercontent.com/d/1GGIRHZ6w7Hl-u51og30iqCpOkT3Xc8EC");
+}
 
+#back-1 {
+  background-image: 
+    url("https://lh3.googleusercontent.com/d/1wvSFXvMlQKbyYvqV6L0oFefKFtW0D3lq");
+}
 
 
 
@@ -87,11 +155,95 @@ hr {
 
 
 
+.video-background {
+  text-align: center;
+  margin-top: 55px;
+  background: #000;
+  position: relative; /* Cambiado de 'fixed' a 'relative' para limitar su tamaño */
+  height: 500px; /* Ajusta la altura al tamaño deseado */width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#vidtop-content {
+  top: 0;
+  color: #fff;
+}
+
+.vid-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 33%;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  padding: 1rem;
+  font-family: Avenir, Helvetica, sans-serif;
+}
+
+.vid-info h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+.vid-info a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(0,0,0,0.5);
+  transition: .6s background;
+  border-bottom: none;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .vid-info {
+    width: 50%;
+    padding: .5rem;
+  }
+  .vid-info h1 {
+    margin-bottom: .2rem;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .vid-info .acronym {
+    display: none;
+  }
+}
+
 
 
 #fashion {
   position: absolute;
-  min-height: 120vh;
+  min-height: 90vh;
 
   display: flex;
   align-items: center;
@@ -157,8 +309,169 @@ hr {
   color: black;
 }
 
-
+   .swiper-container-main{
+     box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);
+  }
   
+  .card-deck .card{
+     box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);
+  }
+
+
+.price-box{
+  padding: 0px 25px;  
+}
+
+.price-box__wrap{
+  background-color: white !important;;
+  border-radius:6px;
+  box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2); /*0px 22px 20px -10px rgba(0, 0, 0,0.2)*/
+  padding: 35px 35px 40px 35px;
+  text-align:center;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+
+.price-box__img{
+  display: inline-block;
+}
+
+.price-box__img{
+  width:130px;
+  height:130px;
+  border-radius: 15%;
+  margin-bottom: 2.5vw;
+  background-position: center;
+    background-size:cover;
+  background-repeat:no-repeat;
+}
+
+
+.price-box--purple .price-box__img{
+  background-image: url("https://lh3.googleusercontent.com/d/1e1eIUz8Xrm_zdSqgnlxK3KN6N7T_jXSd");
+
+}
+
+
+.price-box--violet .price-box__img{
+  background-image: url("https://lh3.googleusercontent.com/d/1xjW82PryaovzAfXKQbFkvxq2Ppcc97jR");
+
+}
+
+.price-box--blue .price-box__img{
+  background-image: url("https://lh3.googleusercontent.com/d/1yJRXQkWP87CDiyqSxbGkOhOoKt7w452D");
+}
+
+.price-box__title{
+  font-size:22px;
+  letter-spacing:1px;
+  margin-bottom:4px;
+}
+
+.price-box__people{
+  font-size:12px;
+  color:black;
+  font-weight: 300;
+  letter-spacing:1px;
+}
+.price-box__discount{
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.price-box__dollar {
+    font-size: 18px;
+    font-weight: 400;
+    vertical-align: top;
+    margin-right: 4px;
+}
+
+.price-box--purple .price-box__dollar{
+  color: #8a3aff;
+}
+
+.price-box--violet .price-box__dollar{
+  color: #6f79ff;
+}
+
+.price-box--blue .price-box__dollar{
+  color: #3a9fff;
+}
+
+.price-box__discount--light{
+  font-weight: 400;
+  font-size: 20px;
+  margin-left: 3px;
+}
+
+.price-box__price {
+    margin-top: 3px;
+    font-size: 15px;
+    color: #8198ae;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    font-weight: 300;
+
+}
+
+.price-box__feat {
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+.price-box__list {
+    text-align: left;
+    padding-left: 30px;
+    margin: 0;
+    list-style: none;
+}
+
+.price-box__list-el{
+  position: relative;
+  margin-bottom: 8px;
+  font-weight: 300;
+}
+
+.price-box__list-el:before{
+  content: "✓";
+  position: absolute;
+  left: -25px;
+  font-size: 18px;
+  top: -4px;
+}
+
+.price-box--purple .price-box__list-el:before{
+  color: #8a3aff;
+}
+
+.price-box--violet .price-box__list-el:before{
+  color: #6f79ff;
+}
+
+.price-box--blue .price-box__list-el:before{
+  color: #3a9fff;
+}
+
+.price-box__wrap:hover {
+  backface-visibility: hidden;
+  transform: scale(1.05, 1.05);
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+}
+
+
+
+
+
+
+.price-box__wrap:hover .btn {
+  box-shadow: 0px 25px 18px -6px rgba(0, 0, 0,0.2);
+}
+
 .btn--revert{
     background-color:transparent;
     color: #8198ae;
@@ -210,6 +523,13 @@ hr {
   color: #8198ae;
 }
 
+.price-box__btn {
+    position: absolute;
+    bottom: -17px;
+    left: 50%;
+    margin-left: -55px;
+}
+
 .row__sub--light{
   color: #aec0d2;
 }
@@ -219,9 +539,9 @@ hr {
 }
 
 .sect{
-  padding: 90px 0;
+  padding: 40px 0;
   position: relative;
-  padding-bottom:115px;
+
 }
 
 
@@ -548,11 +868,70 @@ vertical-align: middle;
 }
 
 
+  
+  
+  
+
+
+.swiper-slide-img:hover {
+  cursor: pointer;
+}
+
+.gallery-thumbs .swiper-slide img:hover, .swiper-slide img:hover  {
+    cursor: pointer;
+}
+
+
+  .swiper-pagination-bullet {
+  background: black; /* Cambia el color de las bolitas a blanco */
+}
+
+.swiper-button-prev {
+  position: absolute;
+  transform: translateX(-40%) scale(0.7);
+  color: black;
+}
+
+.swiper-button-prev:focus {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.swiper-button-next {
+  position: absolute;
+  transform: translateX(40%) scale(0.7);
+  color: black;
+  font-weight: 900;
+
+}
+
+.swiper-button-next:focus {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 
 
 
 
 
+
+
+@media screen and (min-width:800px){
+    #youtube {
+    height: 150px;
+  }
+   .jumbotron{    
+    height: 550px;;
+     background-position: center;
+    margin-top: 5px;
+  }
+}
+
+@media screen and (min-width:1000px){
+     #youtube {
+    height: 200px;
+  }
+}
 
 
 @media screen and (min-width:1024px){
@@ -674,8 +1053,50 @@ vertical-align: middle;
 
 
 @media screen and (max-width:991px){
+  .price-box {
+    padding: 0px 10px;
+  }
+  .item__content {
+    height: auto;
+}
 
-    
+}
+
+@media screen and (max-width:767px) {
+
+ .price-box__title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+  .price-box__img {
+    width: 90px;
+    height: 90px;
+  }
+  .price-box__wrap {
+    padding: 20px 20px 30px 20px;
+  }
+  .price-box__people {
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .price-box__discount {
+    font-size: 22px;
+  }
+  .price-box__price {
+    font-size: 12px;
+  }
+  .price-box__feat {
+      margin-top: 15px;
+      font-size: 14px;
+  }
+  .price-box__list-el {
+    font-size: 12px;
+    margin-bottom: 5px;
+} 
+    .btn {
+    font-size: 12px;
+    margin-left: 5px;
+}
   .btn--width {
     width: 100px;
 }
@@ -684,6 +1105,15 @@ vertical-align: middle;
   }
   
 
+  
+   .modal-container .modal-background .modal img{
+      width: 80%;
+      height: auto;
+  }
+
+#youtube {
+    height: 105px;
+  }
 
   .navbar{
     margin-left: -15px;
@@ -693,7 +1123,54 @@ vertical-align: middle;
 
 
 @media screen and (max-width:575px) {
- 
+   .price-box {
+    padding: 0 35px;
+     margin-bottom: 50px;
+  }
+  
+ .price-box__title {
+    font-size:25px;
+  letter-spacing:1px;
+  margin-bottom:4px;
+}
+  .price-box__img {
+    width:130px;
+  height:130px;
+  }
+  .price-box__wrap {
+  border-radius:6px;
+  box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2); /*0px 22px 20px -10px rgba(0, 0, 0,0.2)*/
+  padding: 35px 35px 40px 35px;
+  text-align:center;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  }
+  .price-box__people{
+  font-size:12px;
+}
+.price-box__discount{
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+  .price-box__price{
+    font-size: 15px;
+  }
+  .price-box__feat {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.price-box__list-el{
+  position: relative;
+  margin-bottom: 8px;
+  font-weight: 300;
+  font-size: 15px;
+}
   .btn--width{
   width: 120px;
   font-size: 14px;
@@ -708,8 +1185,19 @@ vertical-align: middle;
   width: 16vh;
   }
 
- 
+   .modal-container .modal-background .modal img{
+      width: 100%;
+      height: auto;
+  }
 
+  #youtube {
+    height: 280px;
+  }
+   #drive{
+    height: 400px;
+    width: 100%;
+  }
+  
   .img-resize{
     display: none;
   }
@@ -723,7 +1211,10 @@ vertical-align: middle;
   .reduce{
     font-size: 26px;
   }
-
+  .price-box {
+    padding: 0px 20px;
+     margin-bottom: 40px;
+  }
 
   .footer {
     padding: 15px 0;
@@ -751,7 +1242,35 @@ vertical-align: middle;
     font-size: 20px;
     margin-bottom: 5px;
    }
-
+  .price-box__title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+  .price-box__img {
+    width: 100px;
+    height: 100px;
+  }
+  .price-box__wrap {
+    padding: 20px 20px 30px 20px;
+  }
+  .price-box__people {
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .price-box__discount {
+    font-size: 22px;
+  }
+  .price-box__price {
+    font-size: 12px;
+  }
+  .price-box__feat {
+      margin-top: 15px;
+      font-size: 14px;
+  }
+  .price-box__list-el {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
   .site__title {
     font-size: 24px;
 }
@@ -765,7 +1284,10 @@ vertical-align: middle;
   .row--margin {
     margin-top: 30px;
 }
-
+  .btn {
+    font-size: 12px;
+    padding: 8px 8px;
+}
   .btn--width {
     width: 100px;
 }
@@ -775,180 +1297,27 @@ vertical-align: middle;
   font-size: 18px;
   font-weight: 500;
 }
+  
+  #youtube {
+    height: 200px;
+  }
+  
 
   
 
 }
   
-
-
-
-	@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap");
-
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  @media (max-height: 500px) {
+     .modal-container .modal-background .modal .card{
+      transform: scale(0.9) translate(0,-35px);
+  }
 }
-
-
-ul {
-  list-style: none;
-}
-
-.main {
-
-  padding: 3em 1.5em;
-  display: grid;
-  place-items: center;
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.2;
-  background-color: #212121;
-  color: #ddd;
-}
-
-.main__heading {
-  font-weight: 600;
-  font-size: 2.25em;
-  margin-bottom: 0.75em;
-  text-align: center;
-  color: #eceff1;
   
-}
-
-.cards {
-  position: relative;
-}
-
-.cards__inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5em;
-}
-
-.cardp {
-  --flow-space: 0.5em;
-  --hsl: var(--hue), var(--saturation), var(--lightness);
-  flex: 1 1 14rem;
-  padding: 1.5em 2em;
-  display: grid;
-  grid-template-rows: auto auto auto 1fr;
-  align-items: start;
-  gap: 1.25em;
-  color: #eceff1;
-  background-color: #2b2b2b;
-  border: 1px solid #eceff133;
-  border-radius: 15px;
-}
-
-.cardp:nth-child(2) {
-  --hue: 195;
-  --saturation: 82.26%;
-  --lightness: 51.37%;
-}
-
-.cardp:nth-child(4) {
-  --hue: 291.34;
-  --saturation: 95.9%;
-  --lightness: 61.76%;
-}
-
-.cardp:nth-child(3) {
-  --hue: 405;
-  --saturation: 100%;
-  --lightness: 48.04%;
-}
-
-.card__bullets {
-  line-height: 1.4;
-}
-
-.card__bullets li::before {
-  display: inline-block;
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='16' title='check' fill='%23dddddd'%3E%3Cpath d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z' /%3E%3C/svg%3E");
-  transform: translatey(0.25ch);
-  margin-right: 1ch;
-}
-
-.card__heading {
-  font-size: 1.05em;
-  font-weight: 600;
-}
-
-.card__price {
-  font-size: 1.75em;
-  font-weight: 700;
-}
-
-.flow > * + * {
-  margin-top: var(--flow-space, 1.25em);
-}
-
-.cta {
-  display: block;
-  align-self: end;
-  margin: 1em 0 0.5em 0;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  background-color: #0d0d0d;
-  padding: 0.7em;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  user-select: none;
-  opacity: var(--opacity, 0);
-  -webkit-mask: radial-gradient(
-    25rem 25rem at var(--x) var(--y),
-    #000 1%,
-    transparent 50%
-  );
-  mask: radial-gradient(
-    25rem 25rem at var(--x) var(--y),
-    #000 1%,
-    transparent 50%
-  );
-  transition: 400ms mask ease;
-  will-change: mask;
-}
-
-.overlay .cardp {
-  background-color: hsla(var(--hsl), 0.15);
-  border-color: hsla(var(--hsl), 1);
-  box-shadow: 0 0 0 1px inset hsl(var(--hsl));
-}
-
-.overlay .cta {
-  display: block;
-  grid-row: -1;
-  width: 100%;
-  background-color: hsl(var(--hsl));
-  box-shadow: 0 0 0 1px hsl(var(--hsl));
-}
-
-:not(.overlay) > .cardp {
-  transition: 400ms background ease;
-  will-change: background;
-}
-
-:not(.overlay) > .cardp:hover {
-  --lightness: 95%;
-  background: hsla(var(--hsl), 0.1);
-}
-
  
 </style>
   
-<body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-light text-dark">
+<body >
+
  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-light fixed-top text-dark" style="box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);">
     <a class="navbar-brand" href="/" style="color: black; font-weight: 500; font-size: 18px; margin-left: 15px;  font-family: 'Poppins', sans-serif"> <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="35" height="35" style="margin-right: 10px; border-radius: 50%;"/>Mozart Academy</a>
     <button class="navbar-toggler btn bg-dark" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -961,19 +1330,19 @@ ul {
          
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/abrsm" >ABRSM</a>
+          <a class="nav-link" href="" >ABRSM</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="/levels" >Niveles</a>
+          <a class="nav-link" href="/forum" >Niveles</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="/evaluation" >Evaluación</a>
+          <a class="nav-link" href="/payment" >Evaluación</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="/programs" >Programas</a>
+          <a class="nav-link" href="/payment" >Sucursales</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="/site" >Sitio</a>
+          <a class="nav-link" href="/forum" >Foro</a>
         </li>
         
       </ul>
@@ -981,7 +1350,7 @@ ul {
       <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
        
         <li class="nav-item">
-          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px 	#FFAA33; ">Precios</a>
+          <a class="nav-link" href="/forum" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px   #FFAA33; ">Precios</a>
         </li>
         
       </ul>
@@ -993,78 +1362,369 @@ ul {
 
     </div>
   </nav>
+<br><br><br>
 
 
 
 
 
+  <div class="sect" >
+    <div class="container" id="payment">
 
-  <br><br><br>
+      <div class="container text-center">
+       <h1>Sistemas de aprendizaje</h1>
+<p>Contamos con diferentes opciones que se adaptan a tu ritmo, disponibilidad y forma de aprender.
+<br>
+Elige la modalidad que mejor se ajuste a ti y avanza de forma cómoda y efectiva.</p>
 
-  
-  
- <main class="main flow">
-  <h1 class="main__heading">Planes de pago</h1>
-  <div class="main__cards cards">
-    <div class="cards__inner">
-      <div class="cards__card cardp">
-        <h2 class="card__heading">Básico</h2>
-        <p class="card__price">$399.90</p>
-        <ul role="list" class="card__bullets flow">
-	<li>1 hora de clase semanal</li>
-          <li>Acceso a Mozart App</li>
-        </ul>
-        <a href="#basic" class="card__cta cta">Comenzar</a>
       </div>
-
-      <div class="cards__card cardp">
-        <h2 class="card__heading">Standard 
-<i class="ri-graduation-cap-fill"></i></h2>
-        <p class="card__price">$749.90</p>
-        <ul role="list" class="card__bullets flow">
-          <li>2 horas de clases semanales</li>
-          <li>Acceso a Mozart App</li>
-          <li>Rotación de horarios de clase</li>
-        </ul>
-        <a href="#pro" class="card__cta cta">Comenzar</a>
-      </div>
-
-      <div class="cards__card cardp">
-        <h2 class="card__heading">Premium  <i class="ri-vip-crown-fill" style="color: orange; text-shadow: 0 0 10px orange;"></i></h2>
-        <p class="card__price">$1350.00</p>
-        <ul role="list" class="card__bullets flow">
-            <li>Avanza más rápido</li>
-          <li>4 horas de clases semanales</li>
-          <li>Acceso a Mozart App</li>
-         <li>Rotación de horarios de clase</li>
-          <li>Seguimiento en línea</li>
-        </ul>
-        <a href="#ultimate" class="card__cta cta">Go Premium</a>
-      </div>
+     <div class="row row--center row--margin">
       
-       <div class="cards__card cardp">
-        <h2 class="card__heading">Profesional  <i class="ri-verified-badge-fill" style="color: silver; text-shadow: 0 0 10px silver;"></i></h2>
-        <p class="card__price">$2050.00</p>
-        <ul role="list" class="card__bullets flow">
-             <li>Certificación</li>
-          <li>1 hora de clase individual</li>
-     
-        </ul>
-        <a href="#ultimate" class="card__cta cta">Certificate</a>
+ <!-- First -->
+<div class="col-md-4 col-sm-4 price-box price-box--blue">
+          <div class="swiper swiper-container-main">
+    <div class="swiper-wrapper">
+
+
+
+
+      <div class="swiper-slide">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+         Online
+          </h1>
+  <p class="price-box__people">
+        Plan Standard
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>350<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <h3 class="price-box__price" style="text-decoration: line-through;">
+           $600/mes
+          </h3>
+         <p class="price-box__feat">
+  
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">4 horas de clases en línea</li>
+              <li class="price-box__list-el">Certificación</li>
+          <li class="price-box__list-el">Acceso a Mozart App</li>
+             <br>
+        
+<br>
+          </ul>
+        <!---    <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a> --->
+          <a class="btn btn--blue btn--width button" style="color: white;" href="https://www.mozartacademy.mx/inscripcionzoom">Consultar</a>
+        </div>
       </div>
+
+
+       <div class="swiper-slide">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+         Online
+          </h1>
+  <p class="price-box__people">
+        Plan PRO <i class="ri-verified-badge-fill " style="color: #20a2f1"></i>
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>700<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <h3 class="price-box__price" style="text-decoration: line-through;">
+           $1200/mes
+          </h3>
+         <p class="price-box__feat">
+  
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">8 horas de clases en línea</li>
+              <li class="price-box__list-el">Certificación</li>
+              <li class="price-box__list-el">Acceso a Mozart App</li>
+            <li class="price-box__list-el">Seguimiento personalizado</li>
+
+<br>
+          </ul>
+        <!---    <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a> --->
+          <a class="btn btn--blue btn--width button" style="color: white;" href="https://www.mozartacademy.mx/inscripcionzoom">Consultar</a>
+        </div>
+      </div>
+
+
+
+       <div class="swiper-slide">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+         Online
+          </h1>
+  <p class="price-box__people">
+        Plan PREMIUM <i class="ri-vip-crown-fill" style="color: orange; text-shadow: 0 0 10px orange;"></i>
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>1200<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <h3 class="price-box__price" style="text-decoration: line-through;">
+           $2400/mes
+          </h3>
+         <p class="price-box__feat">
+  
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">16 horas de clases en línea</li>
+             <li class="price-box__list-el">Certificación</li>
+             <li class="price-box__list-el">Acceso a Mozart App</li>
+            <li class="price-box__list-el">Seguimiento personalizado</li>
+         
+<br>
+          </ul>
+        <!---    <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a> --->
+          <a class="btn btn--blue btn--width button" style="color: white;" href="https://www.mozartacademy.mx/inscripcionzoom">Consultar</a>
+        </div>
+      </div>
+
+
+
+
+     </div> 
+
+
+       <div class="swiper-pagination"></div>
+    <!-- Add Pagination -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+</div>
+</div>
       
-    </div>
+
+      <!-- second -->
+
+        <div class="col-md-4 col-sm-4 price-box price-box--violet">
+          <div class="swiper swiper-container-main">
+    <div class="swiper-wrapper">
+      
+
+
+      
+
+
+    <div class="swiper-slide">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+        Presencial
+          </h1>
+  <p class="price-box__people">
+        Plan Standard
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>450<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <h3 class="price-box__price" style="text-decoration: line-through;">
+           $650/mes
+          </h3>
+           <p class="price-box__feat">
+  
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">4 horas de clases presenciales</li>
+             <li class="price-box__list-el">Certificación</li>
+          <li class="price-box__list-el">Acceso a Mozart App</li>
+               <br>
+<br>
+          </ul>
+        <!---    <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a> --->
+          <a class="btn btn--violet btn--width button" style="color: white;" href="https://www.mozartacademy.mx/form">Consultar</a>
+        </div>
+      </div>
+
+
+        <div class="swiper-slide">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+        Presencial
+          </h1>
+  <p class="price-box__people">
+        Plan PRO <i class="ri-verified-badge-fill " style="color: #20a2f1"></i>
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>750<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <h3 class="price-box__price" style="text-decoration: line-through;">
+           $1450/mes
+          </h3>
+           <p class="price-box__feat">
+  
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">8 horas de clases presenciales</li>
+             <li class="price-box__list-el">Certificación</li>
+          <li class="price-box__list-el">Acceso a Mozart App</li>
+              <li class="price-box__list-el">Seguimiento personalizado</li>
+<br>
+          </ul>
+        <!---    <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a> --->
+          <a class="btn btn--violet btn--width button" style="color: white;" href="https://www.mozartacademy.mx/form">Consultar</a>
+        </div>
+      </div>
+
+        <div class="swiper-slide">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+        Presencial
+          </h1>
+  <p class="price-box__people">
+        Plan PREMIUM <i class="ri-vip-crown-fill" style="color: orange; text-shadow: 0 0 10px orange;"></i>
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>1350<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <h3 class="price-box__price" style="text-decoration: line-through;">
+           $2250/mes
+          </h3>
+           <p class="price-box__feat">
+  
+          </p>
+          <ul class="price-box__list">
+            <li class="price-box__list-el">16 horas de clases presenciales</li>
+             <li class="price-box__list-el">Certificación</li>
+          <li class="price-box__list-el">Acceso a Mozart App</li>
+              <li class="price-box__list-el">Seguimiento personalizado</li>
+<br>
+          </ul>
+        <!---    <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a> --->
+          <a class="btn btn--violet btn--width button" style="color: white;" href="https://www.mozartacademy.mx/form">Consultar</a>
+        </div>
+      </div>
+
+
+
+
+
+
+     </div> 
+
+
+       <div class="swiper-pagination"></div>
+    <!-- Add Pagination -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+</div>
     
-    <div class="overlay cards__inner"></div>
+      </div>
+
+
+
+
+
+      <!-- Third-->    
+
+
+       <div class="col-md-4 col-sm-4 price-box price-box--purple">
+          <div class="swiper swiper-container-main">
+    <div class="swiper-wrapper">
+
+
+
+
+
+
+     <div class="swiper-slide">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+         Mozart App
+          </h1>
+  <p class="price-box__people">
+        Asíncrono
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>150<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <h3 class="price-box__price" style="text-decoration: line-through;">
+           $400/mes
+          </h3>
+           <p class="price-box__feat">
+  
+          </p>
+          <ul class="price-box__list">
+          <li class="price-box__list-el">Acceso a Mozart App</li>
+              <li class="price-box__list-el">Certificación</li>
+               <br><br>
+<br>
+          </ul>
+        <!---    <a class="btn btn--purple btn--width button" style="color: white;" data-modal="modal3">Agendar</a> --->
+          <a class="btn btn--purple btn--width button" style="color: white;" href="https://www.mozar-app.com">Iniciar</a>
+        </div>
+      </div>
+
+
+
+ <div class="swiper-slide">
+        <div class="price-box__wrap">
+          <div class="price-box__img"></div>
+          <h1 class="price-box__title">
+        Mozart App
+          </h1>
+  <p class="price-box__people">
+         Acceso VIP <i class="ri-vip-crown-fill" style="color: orange; text-shadow: 0 0 10px orange;"></i>
+          </p>
+          <h2 class="price-box__discount">
+            <span class="price-box__dollar">$</span>150<span class="price-box__discount--light">/mes</span>
+          </h2>
+          <h3 class="price-box__price" style="text-decoration: line-through;">
+           $400/mes
+          </h3>
+                <p class="price-box__feat">
+  
+          </p>
+          <ul class="price-box__list">
+          <li class="price-box__list-el">Acceso a Mozart App</li>
+              <li class="price-box__list-el">Certificación</li>
+                  <li class="price-box__list-el">Seguimiento personalizado</li>
+                       <br>
+<br>
+          </ul>
+        <!---    <a class="btn btn--purple btn--width button" style="color: white;" data-modal="modal3">Agendar</a> --->
+          <a class="btn btn--purple btn--width button" style="color: white;" href="https://www.mozar-app.com">Iniciar</a>
+        </div>
+      </div>
+
+
+
+
+
+
+     </div> 
+
+
+       <div class="swiper-pagination"></div>
+    <!-- Add Pagination -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+</div>
+    
+      </div>
+
+ <!-- End-->
+
+    
+    </div>
   </div>
-</main>
-  
-  
-  
+  </div>
+
+
+ 
   
   <section class="trial-block shadow3" style="background-color: #202830; color: white">
      <div class="text-center" > <br>  
-            <button class="btn btn-outline-light mb-2" id="redirectButton">Contacto <i class="fab fa-whatsapp"></i></button>
+            <button class="btn btn-outline-light mb-2" id="redirectButton">Más información</button>
           </div>
              <div class="social-overlap process-scetion ">
               <div class="container">
@@ -1098,7 +1758,19 @@ ul {
   </footer>
 
 
- 
+  
+  
+  <div id="modal1" class="modal-container modal-hidden">
+  <div class="modal-background">
+    <div class="modal"> 
+     
+
+    <iframe id="drive" src=" https://drive.google.com/file/d/1O2vidBGrC8lWRg9Z6uyi9eqfGtJtCbVX/preview" frameborder="0" ></iframe>
+
+    </div>
+  </div>
+</div>
+  
   
 
 
@@ -1118,55 +1790,86 @@ document.getElementById('redirectButton').addEventListener('click', function() {
   window.location.href = 'https://wa.me/5215577676657?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20acerca%20de%20las%20clases%20de%20piano%20%F0%9F%8E%B9'; 
 });
 
-
-
-
-console.clear();
-
-const cardsContainer = document.querySelector(".cards");
-const cardsContainerInner = document.querySelector(".cards__inner");
-const cards = Array.from(document.querySelectorAll(".cardp"));
-const overlay = document.querySelector(".overlay");
-
-const applyOverlayMask = (e) => {
-  const overlayEl = e.currentTarget;
-  const x = e.pageX - cardsContainer.offsetLeft;
-  const y = e.pageY - cardsContainer.offsetTop;
-
-  overlayEl.style = `--opacity: 1; --x: ${x}px; --y:${y}px;`;
-};
-
-const createOverlayCta = (overlayCard, ctaEl) => {
-  const overlayCta = document.createElement("div");
-  overlayCta.classList.add("cta");
-  overlayCta.textContent = ctaEl.textContent;
-  overlayCta.setAttribute("aria-hidden", true);
-  overlayCard.append(overlayCta);
-};
-
-const observer = new ResizeObserver((entries) => {
-  entries.forEach((entry) => {
-    const cardIndex = cards.indexOf(entry.target);
-    let width = entry.borderBoxSize[0].inlineSize;
-    let height = entry.borderBoxSize[0].blockSize;
-
-    if (cardIndex >= 0) {
-      overlay.children[cardIndex].style.width = `${width}px`;
-      overlay.children[cardIndex].style.height = `${height}px`;
+function toggleCard() {
+    const frontSide = document.getElementById("front-1");
+    const backSide = document.getElementById("back-1");
+    if (frontSide.classList.contains("showGreen")) {
+      frontSide.classList.remove("showGreen");
+      backSide.classList.remove("showRed");
+    } else {
+      frontSide.classList.add("showGreen");
+      backSide.classList.add("showRed");
     }
+  }
+    
+$(document).ready(function() {
+  $('.button').click(function() {
+    var modalId = $(this).data('modal');
+    $('#' + modalId).removeClass('modal-hidden').addClass('four');
+    $('body').addClass('modal-active');
   });
+
+  $('.modal-container').click(function() {
+    $(this).addClass('out');
+    $('body').removeClass('modal-active');
+    var modal = $(this);
+    setTimeout(function() {
+      modal.removeClass('four out').addClass('modal-hidden');
+    }, 500); // Ajusta el tiempo según la duración de tu animación
+  });
+  
+  $('.form-insc').click(function(event) {
+                event.stopPropagation();
+            });
+});
+    
+    
+    
+<!-- Initialize Swiper -->
+var galleryThumbs = new Swiper('.gallery-thumbs', {
+
 });
 
-const initOverlayCard = (cardEl) => {
-  const overlayCard = document.createElement("div");
-  overlayCard.classList.add("cardp");
-  createOverlayCta(overlayCard, cardEl.lastElementChild);
-  overlay.append(overlayCard);
-  observer.observe(cardEl);
-};
 
-cards.forEach(initOverlayCard);
-document.body.addEventListener("pointermove", applyOverlayMask);
+var swiper = new Swiper('.swiper-container-main', {
+  autoHeight: true, //enable auto height
+
+  //runCallbacksOnInit: true,
+  observer: true,
+  observeParents: true,
+  observeChildren: true,
+  spaceBetween: 0,
+
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  loop: true,
+  preloadImages: false,
+  // Enable lazy loading
+  lazy: true,
+  lazy: {
+    loadPrevNext: true,
+  },
+
+  keyboard: {
+    enabled: true,
+  },
+
+  effect: 'coverflow',
+  coverflowEffect: {
+    rotate: 60,
+    slideShadows: false,
+  },
+  loop: true,
+
+
+});
+    
 
     
 
