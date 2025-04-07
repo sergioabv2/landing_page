@@ -1475,22 +1475,9 @@ vertical-align: middle;
 
 
 
-  @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800");
-html {
-  box-sizing: border-box;
-}
 
-*, *::before, *::after {
-  box-sizing: inherit;
-}
 
-html, body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
+.movie-card-list{
   background-color: #dce1e5;
   font-family: "Montserrat", helvetica, arial, sans-serif;
   font-size: 14px;
@@ -1500,22 +1487,7 @@ body {
   overflow-x: hidden;
 }
 
-* {
-  transition: 0.4s;
-}
 
-a {
-  text-decoration: none;
-}
-
-button {
-  font-family: inherit;
-  border: 0;
-  cursor: pointer;
-}
-button:focus {
-  outline: 0;
-}
 
 .movie-card {
   background-size: contain;
@@ -1655,15 +1627,11 @@ h1, h2, h3 {
   font-weight: 400;
 }
 
-.btn {
-  padding: 0.5rem 2rem;
-  background-color: rgba(255, 255, 255, 0.4);
-  color: white;
-}
 
 .btn-outline {
   background-color: transparent;
   border: 3px solid #ffffff;
+  color: white;
 }
 
 
@@ -1722,16 +1690,15 @@ h1, h2, h3 {
   </nav>
 
 
-
+<br><br><br>
 
 
 <div id="movie-card-list">
   <div class="movie-card" data-movie="Blade Runner">
     <div class="movie-card__overlay"></div>
     <div class="movie-card__share">
-      <button class="movie-card__icon"><i class="material-icons">&#xe87d</i></button>
-      <button class="movie-card__icon"><i class="material-icons">&#xe253</i></button>
-      <button class="movie-card__icon"><i class="material-icons">&#xe80d</i></button>
+      <button class="movie-card__icon"><i class="ri-map-pin-line"></i></button>
+        <button class="movie-card__icon"><i class="ri-whatsapp-fill"></i></button>
     </div>
     <div class="movie-card__content">
       <div class="movie-card__header">
@@ -1745,9 +1712,8 @@ h1, h2, h3 {
   <div class="movie-card" data-movie="Back to the Future">
     <div class="movie-card__overlay"></div>
     <div class="movie-card__share">
-      <button class="movie-card__icon"><i class="material-icons">&#xe87d</i></button>
-      <button class="movie-card__icon"><i class="material-icons">&#xe253</i></button>
-      <button class="movie-card__icon"><i class="material-icons">&#xe80d</i></button>
+      <button class="movie-card__icon"><i class="ri-map-pin-line"></i></button>
+        <button class="movie-card__icon"><i class="ri-whatsapp-fill"></i></button>
     </div>
     <div class="movie-card__content">
       <div class="movie-card__header">
@@ -1761,9 +1727,8 @@ h1, h2, h3 {
   <div class="movie-card" data-movie="Akira">
     <div class="movie-card__overlay"></div>
     <div class="movie-card__share">
-      <button class="movie-card__icon"><i class="material-icons">&#xe87d</i></button>
-      <button class="movie-card__icon"><i class="material-icons">&#xe253</i></button>
-      <button class="movie-card__icon"><i class="material-icons">&#xe80d</i></button>
+     <button class="movie-card__icon"><i class="ri-map-pin-line"></i></button>
+        <button class="movie-card__icon"><i class="ri-whatsapp-fill"></i></button>
     </div>
     <div class="movie-card__content">
       <div class="movie-card__header">
