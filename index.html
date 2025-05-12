@@ -1479,7 +1479,7 @@ vertical-align: middle;
   grid-column-gap: 1px;
   grid-template-columns: repeat(var(--_r, 156), 1fr);
   grid-template-rows: repeat(5, 1fr);
- max-width: 90vw !important;
+   inline-size: max-content;
 }
 .kb [aria-label] {
   --_focus-bxsh: inset 0 0 50px #fff, inset 20px 0 80px hsl(var(--_h,0), 70%, 35%), inset -20px 0 80px hsl(var(--_h,0), 100%, 50%);
@@ -1517,6 +1517,12 @@ vertical-align: middle;
 .kb--32 { --_bs: 6em; --_r: 57;--_h: 300 }
 .kb--25 { --_bs: 6em; --_r: 45;--_h: 45 }
 
+
+	@media(max-width: 600px){
+		.nophone{
+			display: none;
+		}
+	}
 
 </style>
   
@@ -1582,7 +1588,7 @@ vertical-align: middle;
 <section class="content" style="display: flex;justify-content: center;">
   
 
-<div class="synth">
+<div class="synth nophone">
 	<h2>Mozart Academy</h2>
 	<div id="kb25" class="kb kb--25"><button aria-label="C4" data-freq="261.6255653005986" style="--gcs:1" type="button>"></button>
 <button aria-label="C#4" data-freq="277.1826309768721" style="--gcs:3" type="button>"></button>
