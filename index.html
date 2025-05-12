@@ -1115,10 +1115,7 @@ vertical-align: middle;
     font-size: 12px;
     margin-bottom: 5px;
 } 
-    .btn {
-    font-size: 12px;
-    margin-left: 5px;
-}
+    
   .btn--width {
     width: 100px;
 }
@@ -1306,10 +1303,7 @@ vertical-align: middle;
   .row--margin {
     margin-top: 30px;
 }
-  .btn {
-    font-size: 12px;
-    padding: 8px 8px;
-}
+
   .btn--width {
     width: 100px;
 }
@@ -1335,33 +1329,191 @@ vertical-align: middle;
   }
 }
   
+  
+  
+  
+
+.headImg{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  height:70vw;
+  min-height:400px;
+  max-height:750px;
+  min-width:300px;
+  color:#eee;
+  border-radius: 0 0 20px 20px;
+  text-shadow:0 2px 6px #000a
+}
+.headImg:after{
+  content:"";
+  width:100%;
+  height:100%;
+  position:absolute;
+  bottom:0;
+  left:0;
+  z-index:-1;
+ background: linear-gradient(to bottom, rgba(0,0,0,0.12) 40%,rgba(27,32,48,1) 100%);
+}
+.headImg:before{
+  content:"";
+  width:100%;
+  height:200%;
+  position:absolute;
+  top:0;
+  left:0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0); backface-visibility: hidden;
+  scale(1.0, 1.0);
+    transform: translateZ(0);
+  background:#1B2030 url(https://lh3.googleusercontent.com/d/1xjW82PryaovzAfXKQbFkvxq2Ppcc97jR) 50% 0 no-repeat;
+  background-size:100%;
+  background-attachment:fixed;
+  animation: grow 360s  linear 10ms infinite;
+  transition:all 0.4s ease-in-out;
+  z-index:-2
+}
+.headImg a{
+  color:#eee
+}
+
+.logo{
+  border:2px solid #fff;
+  border-radius:3px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  align-content:center;
+  margin:20px;
+  padding:0px 10px;
+  font-weight:900;
+  font-size:1.1em;
+  line-height:1;
+  box-sizing:border-box;
+  height:40px
+}
+.sides, .info{
+  flex: 0 0 auto;
+  width:50%
+}
+.info{
+  width:100%;
+  padding:15% 10% 0 10%;
+  text-align:center; 
+}
+.author{
+  display:inline-block;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:url(https://lh3.googleusercontent.com/d/1RSizMuaKptl1RqPD2KGzsz1qKPY_KzIn) center no-repeat;
+  background-size:cover;
+  box-shadow:0 2px 3px rgba(0,0,0,0.3);
+  margin-bottom:3px
+}
+.info h4, .meta{
+  font-size:1.1em;
+}
+
+
+.meta{
+  font-style:italic;
+}
+@keyframes grow{
+  0% { transform: scale(1) translateY(0px)}
+  50% { transform: scale(1.2) translateY(-10px)}
+}
+.content{  
+  padding:5% 10%;
+  text-align:justify
+}
+
+
+
+
+.twtr{
+  margin-top:100px;
+  
+}
+
+
+
+
+@media (max-width: 1000px){
+ 
+  .headImg:before{
+  margin-top: 60px;
+     transform: scale(1.5) translateY(120px) !important;
+
+  }
+  
+  .info{
+    margin-top: 20px;
+  }
+ 
+  @keyframes grow{
+  0% { transform: scale(1) translateY(0px)}
+  50% { transform: scale(1.2) translateY(10px)}
+}
+}
+
+
+@media (max-width: 500px){
+  .info{
+    margin-top: 60px;
+    font-size: 15px;
+  }
+  .info h1{
+    font-size: 30px;
+  }
+}
+  
  
 </style>
   
 <body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-light text-dark">
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-light fixed-top text-dark" style="box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);">
+ <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-light fixed-top text-dark" style="box-shadow:  0 4px 8px 0px rgba(0,0,0,0.2);">
     <a class="navbar-brand" href="/" style="color: black; font-weight: 500; font-size: 18px; margin-left: 15px;  font-family: 'Poppins', sans-serif"> <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" width="35" height="35" style="margin-right: 10px; border-radius: 50%;"/>Mozart Academy</a>
     <button class="navbar-toggler btn bg-dark" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="myNavbar" style="margin-right: 10px;">
-      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+     
         <li class="nav-item">
-          <a class="nav-link" href="#services" >Servicios <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/abrsm" >ABRSM</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#payment" >Planes de pago</a>
+         <li class="nav-item">
+          <a class="nav-link" href="/method" >Método</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/evaluation" >Evaluación</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/categories" >Modalidades</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="/forum" >Foro</a>
+          <a class="nav-link" href="/site" >Sitio</a>
+        </li>
+        
+      </ul>
+      
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+       
+        <li class="nav-item">
+          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px 	#FFAA33; ">Precios</a>
         </li>
         
       </ul>
 
           <div class="form-inline my-2 my-lg-0" style="float: right; margin-left: 10px;">
      
-       <a href="https://app.mozartacademy.mx" ><button class="btn btn-outline-dark my-2 my-sm-0"  >Inicia sesión</button></a>
+       <a href="https://app.mozartacademy.mx" ><button class="btn btn-outline-dark my-2 my-sm-0"  >Iniciar sesión</button></a>
       </div>
 
     </div>
@@ -1369,10 +1521,24 @@ vertical-align: middle;
 
 
     
-  <div id="jumbotron" class="jumbotron text-light">
-      <h1 class="strong-shadow" style="text-align: center; font-size: 12vw;">Mozart Studio</h1>
-<br><br><br><br><br><br><br><br>
+<div class="headImg">
+
+<br>
+  <div class="info">
+  <h4><a href="#category">Tu camino más corto a la perfección y la certificación</a></h4>
+    <h1>Mozart Academy</h1>
+    <div class="meta">
+      <a  href="https://x.com/nodws" target="_b" class="author"></a><br>
+      By <a href="https://www.mozart-app.com" target="_b">Mozart App</a> on May 30, 2025
+    </div>
   </div>
+</div>
+
+<section class="content">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisl turpis, porttitor et finibus id, viverra a metus. Praesent non ante sed orci posuere varius quis sit amet dui. Cras molestie magna orci, id gravida dolor molestie in. Duis sollicitudin turpis quis tortor egestas, ut ultrices nisl elementum. Vestibulum sed ipsum eget nulla laoreet cursus in ac sem. Integer a suscipit justo, quis aliquam sapien. Maecenas et tellus nibh. Vivamus tincidunt eros id commodo pellentesque.</p>
+
+</section>
+
 
 
   
@@ -1485,309 +1651,13 @@ vertical-align: middle;
 
 
 
-  
-
-  <div class="sect sect--padding-bottom" >
-    <div class="container" id="payment">
-
-      <div class="container text-center">
-        <h1>Planes de pago</h1>
-        <p>Conoce nuestros planes de pago para cada formato de enseñanza, desde clases presenciales, en línea por ZOOM y clases híbridas.</p>
-      </div>
-    <div class="row row--center row--margin">
-      
- <!-- First -->
-<div class="col-md-4 col-sm-4 price-box price-box--blue">
-          <div class="swiper swiper-container-main">
-    <div class="swiper-wrapper">
-      
-
-      <div class="swiper-slide">
-        <div class="price-box__wrap">
-          <div class="price-box__img"></div>
-          <h1 class="price-box__title">
-           Plan Standard
-          </h1>
-  <p class="price-box__people">
-            Clases Presenciales
-          </p>
-          <h2 class="price-box__discount">
-            <span class="price-box__dollar">$</span>450<span class="price-box__discount--light">/mes</span>
-          </h2>
-        <h3 class="price-box__price" style="text-decoration: line-through;">
-           $600/mes
-          </h3>
-       <br>
-          <ul class="price-box__list">
-            <li class="price-box__list-el">4 clases de 1 hora</li>
-            <li class="price-box__list-el">1 clase por semana</li>
-          <li class="price-box__list-el">Acceso a la plataforma</li>
-<br><br>
-          </ul>
-        <!---    <a class="btn btn--blue btn--width button" style="color: white;" data-modal="modal3">Agendar</a> --->
-          <a class="btn btn--blue btn--width button" style="color: white;" href="https://www.mozartacademy.mx/form">Agendar</a>
-        </div>
-
-      </div>
-
-
-      <div class="swiper-slide">
-
-        <div class="price-box__wrap">
-          <div class="price-box__img"></div>
-          <h1 class="price-box__title">
-           Plan Standard
-          </h1>
- <p class="price-box__people">
-            Clases en Línea
-          </p>
-          <h2 class="price-box__discount">
-            <span class="price-box__dollar">$</span>400<span class="price-box__discount--light">/mes</span>
-          </h2>
-          <h3 class="price-box__price" style="text-decoration: line-through;">
-           $450/mes
-          </h3>
-        <br>
-          <ul class="price-box__list">
-            <li class="price-box__list-el">4 clases de 1 hora en ZOOM</li>
-            <li class="price-box__list-el">1 clase por semana</li>
-          <li class="price-box__list-el">Acceso a la plataforma</li>
-         
-<br>
-          </ul>
-      
-            <a class="btn btn--blue btn--width button" style="color: white;" href="https://www.mozartacademy.mx/inscripcionzoom">Agendar</a>     
-        </div>
-      </div>
-
-
-      
-      
-           <div class="swiper-slide">
-
-        <div class="price-box__wrap">
-          <div class="price-box__img"></div>
-          <h1 class="price-box__title">
-           Costo por clase
-          </h1>
- <p class="price-box__people">
-            Clases Presenciales
-          </p>
-          <h2 class="price-box__discount">
-            <span class="price-box__dollar">$</span>150<span class="price-box__discount--light">/clase</span>
-          </h2>
-         <br><br>
-          <ul class="price-box__list">
-            <li class="price-box__list-el">1 clase de 1 hora</li>
-<br><br><br><br>
-          </ul>
-      
-            <a class="btn btn--blue btn--width button" style="color: white;" href="https://www.mozartacademy.mx/form">Agendar</a>        
-        </div>
-      </div>
-
-
-     </div> 
-
-
-       <div class="swiper-pagination"></div>
-    <!-- Add Pagination -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-
-</div>
-</div>
-      
-
-      <!-- second -->
-
-        <div class="col-md-4 col-sm-4 price-box price-box--violet">
-          <div class="swiper swiper-container-main">
-    <div class="swiper-wrapper">
-      
-<div class="swiper-slide">
-
-        <div class="price-box__wrap">
-          <div class="price-box__img"></div>
-          <h1 class="price-box__title">
-          Plan PRO <i class="ri-verified-badge-fill " style="color: #20a2f1"></i>
-          </h1>
- <p class="price-box__people">
-     Clases Presenciales
-          </p>
-          <h2 class="price-box__discount">
-            <span class="price-box__dollar">$</span>750<span class="price-box__discount--light">/mes</span>
-          </h2>
-         <h3 class="price-box__price" style="text-decoration: line-through;">
-           $1200/mes
-          </h3>
-          <ul class="price-box__list">
-             <br>
-           <li class="price-box__list-el">8 clases de 1 hora</li>
-              <li class="price-box__list-el">2 horas por semana</li>
-              <li class="price-box__list-el">Acceso a la plataforma</li>
-<br><br>
-          </ul>
-      
-         <!---   <a class="btn btn--violet btn--width button" style="color: white;" data-modal="modal4">Agendar</a> --->
-         
-          
-           <a class="btn btn--violet btn--width button" style="color: white;" href="https://www.mozartacademy.mx/form">Agendar</a>
-          
-        </div>
-
-      </div>
-
-      <div class="swiper-slide">
-
-        <div class="price-box__wrap">
-          <div class="price-box__img"></div>
-          <h1 class="price-box__title">
-          Plan PRO <i class="ri-verified-badge-fill " style="color: #20a2f1"></i>
-          </h1>
- <p class="price-box__people">
-          Clases en Línea
-          </p>
-          <h2 class="price-box__discount">
-            <span class="price-box__dollar">$</span>700<span class="price-box__discount--light">/año</span>
-          </h2>
-           <h3 class="price-box__price" style="text-decoration: line-through;">
-           $700/mes
-          </h3>
-        <br>
-          <ul class="price-box__list">
-              <li class="price-box__list-el">8 clases de 1 hora en ZOOM</li>
-           <li class="price-box__list-el">1 clase a la semana</li>
-          <li class="price-box__list-el">Acceso a la plataforma</li>
-
-<br><br>
-          </ul>
-      
-            <a class="btn btn--violet btn--width button" style="color: white;"  href="https://www.mozartacademy.mx/inscripcionzoom">Agendar</a>
-          
-        </div>
-
-      </div>
-      
-      
-   
-
-
-     </div> 
-
-
-       <div class="swiper-pagination"></div>
-    <!-- Add Pagination -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-
-</div>
-    
-      </div>
-
-
-
-
-
-      <!-- Third-->    
-
-
-       <div class="col-md-4 col-sm-4 price-box price-box--purple">
-          <div class="swiper swiper-container-main">
-    <div class="swiper-wrapper">
-
-      <div class="swiper-slide">
-
-        <div class="price-box__wrap">
-          <div class="price-box__img"></div>
-          <h1 class="price-box__title">
-          Plan Premium <i class="ri-vip-crown-fill" style="color: orange; text-shadow: 0 0 10px orange;"></i>
-          </h1>
-  <p class="price-box__people">
-          Clases presenciales
-          </p>
-          <h2 class="price-box__discount">
-            <span class="price-box__dollar">$</span>1350<span class="price-box__discount--light">.00</span>
-          </h2>
-          <h3 class="price-box__price" style="text-decoration: line-through;">
-           $2400/mes
-          </h3>
-         <br>
-          <ul class="price-box__list">
-            <li class="price-box__list-el">16 horas de clase</li>
-            <li class="price-box__list-el">2 clases de 2 horas por semana</li>
-          <li class="price-box__list-el">Acceso a la app</li>
-<li class="price-box__list-el">Asesoría en línea</li>
-          </ul>
-            <a class="btn btn--purple btn--width" style="color: white;" href="https://www.mozartacademy.mx/form">Agendar</a>
-        </div>
-
-      </div>
-
-
-
-      
-
- <!--      <div class="swiper-slide">
-
-        <div class="price-box__wrap">
-          <div class="price-box__img"></div>
-          <h1 class="price-box__title">
-           Descuento a Estudiantes UNAM
-          </h1>
- <p class="price-box__people">
-            Clases Presenciales
-          </p>
-          <h2 class="price-box__discount">
-            <span class="price-box__dollar">$</span>350<span class="price-box__discount--light">/mes</span>
-          </h2>
-           <h3 class="price-box__price" style="text-decoration: line-through;">
-           $450/mes
-          </h3>
-          <p class="price-box__feat">
-            Servicios
-          </p>
-          <ul class="price-box__list">
-            <li class="price-box__list-el">4 Clases de 1 hora</li>
-            <li class="price-box__list-el">1 clase a la semana</li>
-          <li class="price-box__list-el">Acceso a la plataforma</li>
-              <li class="price-box__list-el">Reserva de pianos para prácticas</li>
-<br>
-          </ul>
-      
-            <a class="btn btn--purple btn--width button" style="color: white;" href="https://www.mozartacademy.mx/form">Agendar</a>
-          
-        </div>
-
-      </div>  -->
-
-
-
-     </div> 
-
-
-       <div class="swiper-pagination"></div>
-    <!-- Add Pagination -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-
-</div>
-    
-      </div>
-
- <!-- End-->
-
-    
-    </div>
-  </div>
-  </div>
-
+  <br><br><br>
 
  
   
   <section class="trial-block shadow3" style="background-color: #202830; color: white">
      <div class="text-center" > <br>  
-            <button class="btn btn-outline-light mb-2" id="redirectButton">Más información</button>
+            <button class="btn btn-outline-light mb-2" id="redirectButton">Contacto <i class="fab fa-whatsapp"></i></button>
           </div>
              <div class="social-overlap process-scetion ">
               <div class="container">
@@ -1867,17 +1737,7 @@ document.getElementById('redirectButton').addEventListener('click', function() {
   window.location.href = 'https://wa.me/5215577676657?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20acerca%20de%20las%20clases%20de%20piano%20%F0%9F%8E%B9'; 
 });
 
-function toggleCard() {
-    const frontSide = document.getElementById("front-1");
-    const backSide = document.getElementById("back-1");
-    if (frontSide.classList.contains("showGreen")) {
-      frontSide.classList.remove("showGreen");
-      backSide.classList.remove("showRed");
-    } else {
-      frontSide.classList.add("showGreen");
-      backSide.classList.add("showRed");
-    }
-  }
+
     
 $(document).ready(function() {
   $('.button').click(function() {
