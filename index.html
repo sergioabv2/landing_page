@@ -1900,7 +1900,7 @@ const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       btn.addEventListener('click', () => {
         const freq = parseFloat(btn.dataset.freq);
         const note = freqToNote(freq);
-        piano.play(note, audioCtx.currentTime, { gain: 0.7 });
+        piano.play(note, audioCtx.currentTime, { gain: 1 });
       });
     });
   });
