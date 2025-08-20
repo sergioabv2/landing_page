@@ -668,16 +668,44 @@ for (let i = 0; i < 16; i++) {
             return;
         }
 
-        // Simular envío exitoso
-        setTimeout(() => {
-            confirmationDetailsElement.innerHTML = `
+
+     var api = "https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec";
+
+    var validationData = {
+        redirect: "follow",
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify({
+          action: "registration",
+          name: name,
+            email: email,
+            phone: phone,
+            notes: notes,
+            date: selectedDate,
+            time: selectedTime
+        })
+      };
+
+
+     fetch(api, validationData)
+    .then(response => response.text())
+    .then(data => {
+        confirmationDetailsElement.innerHTML = `
                 <strong>${formData.name}</strong>, tu reserva está confirmada.<br><br>
                 <strong>Fecha:</strong> ${formatDate(selectedDate)} a las ${selectedTime}<br>
                 <strong>Correo:</strong> ${formData.email}<br><br>
                 Te hemos enviado un correo con los detalles.
             `;
             showStep('step-confirmation');
-        }, 500);
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Hubo un problema al enviar la reserva. Intenta nuevamente.");
+    });
+
+        
     });
 
     // Funciones auxiliares
@@ -747,6 +775,58 @@ for (let i = 0; i < 16; i++) {
         });
     }
 });
+
+
+
+
+function sendToServer() {
+    event.preventDefault(); 
+
+    // Obtener valores del formulario
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const notes = document.getElementById("notes").value;
+    const dateTime = document.getElementById("form-date-time").textContent;
+
+     var api = "https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec";
+
+  var validationData = {
+    redirect: "follow",
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify({
+      action: "registration",
+      name: name,
+        email: email,
+        phone: phone,
+        notes: notes,
+        dateTime: dateTime
+    })
+  };
+
+ 
+     fetch(api, validationData)
+    .then(response => response.text())
+    .then(data => {
+        // Mostrar confirmación
+        document.getElementById("confirmation-details").innerText = 
+            `Reserva a nombre de ${name} el día ${dateTime}. 
+             Te hemos enviado un correo de confirmación a ${email}.`;
+
+        // Cambiar a la vista de confirmación
+        document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
+        document.getElementById("step-confirmation").classList.add("active");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Hubo un problema al enviar la reserva. Intenta nuevamente.");
+    });
+}
+
+
 
   </script>
 
