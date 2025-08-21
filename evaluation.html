@@ -963,7 +963,10 @@ vertical-align: middle;
   opacity: 0.5;
   left: -6px;
   top: -6px;
+
 }
+
+
 
 .card h1 {
   position: relative;
@@ -983,7 +986,7 @@ vertical-align: middle;
 }
 
 .card-color-1 {
-  background-color: #8F3985 !important;
+  background-color: #fa9223 !important;
 }
 
 .card-color-2 {
@@ -991,7 +994,7 @@ vertical-align: middle;
 }
 
 .card-color-3 {
-  background-color: #888DA7 !important;
+  background-color: #1894cc !important;
 }
 
 /* The cover (expanding background) */
@@ -1167,7 +1170,7 @@ vertical-align: middle;
       <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
        
         <li class="nav-item">
-          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px 	#FFAA33; ">Precios</a>
+          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px   #FFAA33; ">Precios</a>
         </li>
         
       </ul>
@@ -1197,25 +1200,25 @@ vertical-align: middle;
   <div class="card-column column-0">
     <div class="card card-color-0">
       <div class="border"></div>
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/deathtostock-00.jpg" />
-      <h1>Lectura a primer vista</h1>
+      <img style="border-radius: 12px" src="https://lh3.googleusercontent.com/d/1Orl1f-L_PT-4KQ0AGwzTYB_vGHtuKqIt" />
+      <h1>Repertorio</h1>
     </div>
     <div class="card card-color-2">
       <div class="border"></div>
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/deathtostock-02.jpg" />
-      <h1>Repertorio</h1>
+      <img style="border-radius: 12px" src="https://lh3.googleusercontent.com/d/1gnb-HdnTUpKcbGCtbROknp0QFZEW-ov4" />
+      <h1>Teoría Musical</h1>
     </div>
   </div>
   <div class="card-column column-1">
-    <div class="card card-color-1">
-      <div class="border"></div>
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/deathtostock-01.jpg" />
-      <h1>Escalas y Arpegios</h1>
-    </div>
     <div class="card card-color-3">
       <div class="border"></div>
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/deathtostock-03.jpg" />
-      <h1>Examen Auditivo</h1>
+      <img style="border-radius: 12px" src="https://lh3.googleusercontent.com/d/1auIonM5SqvZLzEDrFUOx-MDv6OTfC4rP" />
+      <h1>Escalas y Arpegios</h1>
+    </div>
+    <div class="card card-color-1">
+      <div class="border"></div>
+      <img style="border-radius: 12px" src="https://lh3.googleusercontent.com/d/1IIfjo3rj6-FpHoOhDz0yjxquyA7Bm1pO" />
+      <h1>Lectura a primer vista</h1>
     </div>
   </div>
 </div>
@@ -1224,7 +1227,7 @@ vertical-align: middle;
 
 <div id="open-content" class="open-content">
   <a href="#" id="close-content" class="close-content"><span class="x-1"></span><span class="x-2"></span></a>
-  <img id="open-content-image" src="" />
+  <img style="border-radius: 12px" id="open-content-image" src="" />
   <div class="text" id="open-content-text">
   </div>
 </div>
@@ -1243,7 +1246,7 @@ vertical-align: middle;
                 <a href="https://www.facebook.com/mozartacademy.oficial" class="slider-nav-item"><i class="ri-facebook-fill"></i></a>
                                 
                                  
-               <a href="https://www.instagram.com/mozartacademy.oficial"  class="slider-nav-item"><i class="ri-instagram-line"></i></a>
+               <a href="https://www.instagram.com/mozartacademy_"  class="slider-nav-item"><i class="ri-instagram-line"></i></a>
                                  
                                   <a href="https://www.youtube.com/@mozart.academy" class="slider-nav-item"><i class="ri-youtube-fill"></i></a>
                                  <a href="https://maps.app.goo.gl/Jhf1sMdnQ7QRA3RP9"  class="slider-nav-item"><i class="ri-map-pin-line"></i></a> <!-- https://twitter.com/m0zart_studio -->
@@ -1350,6 +1353,7 @@ function onCardClick(card, i) {
 * absolutely positioned and has no children), and there's just less
 * having to deal with z-index and other elements in the card
 */
+var paragraphText = ""
 function animateCoverUp(card) {
   // get the position of the clicked card
   var cardPosition = card.getBoundingClientRect();
@@ -1359,7 +1363,18 @@ function animateCoverUp(card) {
   setCoverColor(cardStyle);
   scaleCoverToFillWindow(cardPosition);
   // update the content of the opened page
-  openContentText.innerHTML = '<h1>'+card.children[2].textContent+'</h1>'+paragraphText;
+  var type = card.children[2].textContent
+  
+  if(type=="Repertorio"){
+    paragraphText = repertoireText
+  }else if(type=="Teoría Musical"){
+    paragraphText = theoryText
+  }else if(type=="Escalas y Arpegios"){
+    paragraphText = scalesText
+  }else if(type=="Lectura a primer vista"){
+    paragraphText = sightReadText
+  }
+  openContentText.innerHTML = '<h1>'+type+'</h1><br>'+paragraphText;
   openContentImage.src = card.children[1].src;
   setTimeout(function() {
     // update the scroll position to 0 (so it is at the top of the 'opened' page)
@@ -1379,6 +1394,7 @@ function animateCoverBack(card) {
   setTimeout(function() {
     // set content back to empty
     openContentText.innerHTML = '';
+    paragraphText = ''
     openContentImage.src = '';
     // style the cover to 0x0 so it is hidden
     cover.style.width = '0px';
@@ -1464,7 +1480,29 @@ function resize() {
   windowHeight = window.innerHeight;
 }
 
-var paragraphText = '<p>Somebody once told me the world is gonna roll me. I ain\'t the sharpest tool in the shed. She was looking kind of dumb with her finger and her thumb in the shape of an "L" on her forehead. Well the years start coming and they don\'t stop coming. Fed to the rules and I hit the ground running. Didn\'t make sense not to live for fun. Your brain gets smart but your head gets dumb. So much to do, so much to see. So what\'s wrong with taking the back streets? You\'ll never know if you don\'t go. You\'ll never shine if you don\'t glow.</p><p>Hey now, you\'re an all-star, get your game on, go play. Hey now, you\'re a rock star, get the show on, get paid. And all that glitters is gold. Only shooting stars break the mold.</p><p>It\'s a cool place and they say it gets colder. You\'re bundled up now, wait till you get older. But the meteor men beg to differ. Judging by the hole in the satellite picture. The ice we skate is getting pretty thin. The water\'s getting warm so you might as well swim. My world\'s on fire, how about yours? That\'s the way I like it and I never get bored.</p>';
+var sightReadText = `
+<p><strong>Lectura a primera vista (Sight-Reading)</strong></p>
+<p>En esta sección trabajamos la habilidad de leer y tocar una pieza musical por primera vez sin preparación previa. Se desarrolla la rapidez de lectura, reconocimiento de ritmos, notas y patrones musicales, así como la coordinación mano-ojo y la memoria musical inmediata.</p>
+<p>El objetivo es que el alumno pueda interpretar partituras nuevas con seguridad, fluidez y musicalidad, lo cual es fundamental tanto en exámenes como en situaciones de interpretación en vivo.</p>
+`;
+
+var scalesText = `
+<p><strong>Escalas y Arpegios (Scales & Arpeggios)</strong></p>
+<p>Aquí se practican las escalas mayores, menores, modos y arpegios en diferentes tonalidades y velocidades. El trabajo constante mejora la técnica, la digitación, la independencia de dedos y la afinación.</p>
+<p>Se busca que el alumno logre ejecutar patrones técnicos con precisión y musicalidad, sentando las bases para tocar piezas más complejas y desarrollar una base sólida de técnica pianística.</p>
+`;
+
+var theoryText = `
+<p><strong>Teoría Musical (Music Theory)</strong></p>
+<p>En esta área se estudian los fundamentos de la música: lectura de partituras, armonía, ritmo, intervalos, acordes, estructuras de las piezas y análisis musical.</p>
+<p>El propósito es que el alumno entienda la música desde un punto de vista teórico, lo que le permite interpretar con mayor comprensión, improvisar, componer y afrontar exámenes de certificación musical con confianza.</p>
+`;
+
+var repertoireText = `
+<p><strong>Repertorio (Repertoire)</strong></p>
+<p>Se centra en la interpretación de piezas completas de distintos estilos y épocas, seleccionadas según el nivel del alumno. Se trabaja la musicalidad, expresión, fraseo, dinámica y estilo histórico de cada obra.</p>
+<p>El objetivo es que el alumno construya un repertorio variado y sólido, mejore su técnica aplicada y desarrolle su capacidad de interpretación artística, tanto para exámenes como para presentaciones en público.</p>
+`;
 
   </script>
 
