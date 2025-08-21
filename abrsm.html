@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <script src="https://www.modelsofidentity.com/colosal/js/smoothscroll.js"></script>
+  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
   
@@ -29,10 +29,6 @@
   body {
   position: relative;
 }
-
-  /*  body::-webkit-scrollbar {
-  display: none; 
-}*/
 
 input {
   background-color: white !important;
@@ -579,7 +575,6 @@ display: inline-block;
 line-height: 18px;
 vertical-align: middle;
   color:#3a9fff;
-  font-family: Avenir, Helvetica, sans-serif !important;
 }
 
 .footer__light{
@@ -1439,6 +1434,13 @@ vertical-align: middle;
 
 
 
+.twtr{
+  margin-top:100px;
+  
+}
+
+
+
 
 @media (max-width: 1000px){
  
@@ -1472,123 +1474,85 @@ vertical-align: middle;
 
 
 
-  * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  @import url(https://fonts.googleapis.com/css?family=Merriweather:700|Open+Sans:400,700);
+.main {
+  font-family: "Open Sans Regular", "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.618;
+  background: #f4f8fa;
+  color: #324155;
+}
+body .base-proposal {
+  font-size: 18px;
 }
 
-.wrap {
-  margin: 0 auto;
-  max-width: 1140px;
-  padding: 0 20px;
-}
-
-header {
-  position: relative;
-  z-index: 999;
-}
-
-section {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-right: 100px;
-  transition: 0.5s ease;
-}
-section:nth-child(odd) {
-  background-color: #f7f7f7;
-}
-section.intro {
-  text-align: center;
-}
-section.intro h2, section.intro h5 {
-  font-weight: 300;
-  margin-bottom: 10px;
-}
-
-h1, h2, h3, h4, h5, h6, p {
-  color: #222;
-}
-
-h1 {
-  font-size: 8vw;
-  font-family: serif;
-  font-weight: bold;
+strong {
+  font-weight: 700;
 }
 
 p {
-  line-height: 1.4;
-  margin-bottom: 18px;
+  margin-bottom: 0.618em;
+}
+p:last-child {
+  margin-bottom: 0;
 }
 
-body.dragging section {
-  transform: scale(0.7);
-  transform-origin: center center;
+.compare-posts {
+  margin: 3.295em 1.618em;
 }
 
-.slider-navigation {
-  position: fixed;
-  top: 5%;
-  right: 50px;
-  height: 90%;
-  width: 4px;
-  background: #222;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.post {
+  max-width: 29.03em;
+  padding: 1.618em 0;
+  margin: 0 1.618em;
+  box-shadow: inset 0 0.433em 0 #e8f0f5;
+  display: inline-block;
+  vertical-align: top;
 }
-.slider-navigation .tick {
-  display: none;
-  position: relative;
-  cursor: pointer;
-  height: 4px;
-  width: 20px;
-  background: #222;
+.post h1 {
+  font-size: 2.291em;
+  line-height: 1.416;
+  font-family: Merriweather, serif;
+  font-weight: 700;
+  margin: 0;
 }
-.slider-navigation .tick:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateY(-50%);
-  height: 40px;
-  width: 100%;
-  z-index: -1;
+.post .post-meta {
+  color: rgba(50, 65, 85, 0.5);
+  text-transform: uppercase;
+  font-size: 0.875em;
+  font-weight: 700;
+  letter-spacing: 0.056em;
 }
-.slider-navigation .nav-pointer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #222;
-  color: white;
-  font-weight: 300;
-  font-size: 12px;
-  padding: 3px 8px;
-  cursor: pointer;
-  height: 22px;
-  width: 44px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-}
-.slider-navigation .nav-pointer:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateY(-50%);
-  height: 40px;
-  width: 100%;
-  z-index: -1;
+.post .post-meta span {
+  color: rgba(50, 65, 85, 0.3);
+  font-weight: 400;
 }
 
-body.dragging {
-  cursor: -webkit-grab;
-  cursor: grab;
+.base-proposal h1 {
+  font-size: 2.618em;
+  line-height: 1.258;
 }
-body.dragging .nav-pointer {
-  transition: none;
+.base-proposal .post-meta {
+  font-size: 0.778em;
+}
+
+
+
+
+
+.post2 {
+  max-width: 28.03em;
+  padding: 1.618em 0;
+
+  box-shadow: inset 0 0.433em 0 #e8f0f5;
+  vertical-align: top;
+}
+
+@media (max-width: 700px){
+  .hidepost{
+    display: none;
+    
+  }
 }
  
 </style>
@@ -1602,7 +1566,7 @@ body.dragging .nav-pointer {
 
     <div class="collapse navbar-collapse" id="myNavbar" style="margin-right: 10px;">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-         <li class="nav-item">
+       <li class="nav-item">
           <a class="nav-link" href="/abrsm" >ABRSM</a>
         </li>
          <li class="nav-item">
@@ -1623,7 +1587,7 @@ body.dragging .nav-pointer {
       <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
        
         <li class="nav-item">
-          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px   #FFAA33; ">Precios</a>
+          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px 	#FFAA33; ">Precios</a>
         </li>
         
       </ul>
@@ -1645,179 +1609,78 @@ body.dragging .nav-pointer {
 
 
 
+
   
-  <div class='slider-navigation'>
-    <div class='nav-pointer draggable'>
-      0/0
-    </div>
-  </div>
 
-<div class='site-container'>
-  <section class='intro'>
-    <div class='wrap'>
-      <div class='content'>
-        <h1>ABRSM</h1>
-        <h2>Sistema de grados</h2>
-        <h5>Progresión musical desde principiantes hasta nivel profesional</h5>
-      </div>
-    </div>
-  </section>
+<div class="main" style=" display: flex;">
 
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #ff0404;">Grado Preparatorio</h1>
-        <p>En este nivel se busca la <b>familiarización inicial con el piano</b>: el alumno aprende a sentarse correctamente, colocar las manos, conocer las notas en el teclado y leer sus primeras partituras sencillas.</p>
-        <ul>
-          <li><b>Lectura a primera vista:</b> Notas en clave de sol y fa, figuras rítmicas básicas.</li>
-          <li><b>Repertorio:</b> Piezas breves con manos separadas y, gradualmente, juntas.</li>
-          <li><b>Escalas y arpegios:</b> Escalas de Do mayor y La menor (una octava).</li>
-          <li><b>Teoría musical:</b> Notas, figuras, silencios, compás simple y signos básicos.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<section class="compare-posts">
 
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #9024dc;">Grado 1</h1>
-        <p>El estudiante comienza a tocar <b>piezas cortas con ambas manos</b>, desarrollando seguridad en el teclado y musicalidad básica.</p>
-        <ul>
-          <li><b>Lectura a primera vista:</b> Compases de 2/4, 3/4 y 4/4.</li>
-          <li><b>Repertorio:</b> Piezas breves clásicas y populares con coordinación de ambas manos.</li>
-          <li><b>Escalas y arpegios:</b> Do, Sol y Fa mayor; arpegios básicos (una octava).</li>
-          <li><b>Teoría musical:</b> Intervalos sencillos, alteraciones (#, ♭), repeticiones.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <article class="post base-current">
 
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #1894cc;">Grado 2</h1>
-        <p>Se consolida la <b>independencia de manos</b> y la capacidad de interpretar frases musicales con mayor expresividad.</p>
-        <ul>
-          <li><b>Lectura a primera vista:</b> Lectura fluida con cambios de posición.</li>
-          <li><b>Repertorio:</b> Obras con cambios de dinámica y articulaciones variadas.</li>
-          <li><b>Escalas y arpegios:</b> Mayores hasta 2 sostenidos/bemoles; arpegios mayores y menores (dos octavas).</li>
-          <li><b>Teoría musical:</b> Compás 6/8, intervalos mayores y menores, armaduras sencillas.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+ <h1>ABRSM</h1>
 
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #489454;">Grado 3</h1>
-        <p>El alumno adquiere mayor <b>fluidez técnica</b> e interpreta obras con <b>estructura definida</b> (binaria, ternaria).</p>
-        <ul>
-          <li><b>Lectura a primera vista:</b> Patrones rítmicos más variados.</li>
-          <li><b>Repertorio:</b> Obras con cambios de tonalidad y carácter expresivo.</li>
-          <li><b>Escalas y arpegios:</b> Mayores hasta 4 sostenidos/bemoles; menores armónicas; arpegios dos octavas.</li>
-          <li><b>Teoría musical:</b> Acordes tríada, cadencias básicas, indicaciones de tempo.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<p class="post-meta"><span>¿Qué es la </span>Associated Board of the Royal Schools of Music <span>?</span></p>
 
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #f0ac14;">Grado 4</h1>
-        <p>Se tocan <b>piezas de mayor complejidad técnica</b> con saltos, cruces de manos y pedaleo básico.</p>
-        <ul>
-          <li><b>Lectura a primera vista:</b> Con síncopas, cambios de compás y de clave.</li>
-          <li><b>Repertorio:</b> Obras de estilo barroco, clásico y romántico.</li>
-          <li><b>Escalas y arpegios:</b> Hasta 5 sostenidos/bemoles; escalas en terceras; arpegios tres octavas.</li>
-          <li><b>Teoría musical:</b> Cadencias, modulaciones sencillas y análisis de forma.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<p>El <strong>ABRSM</strong> (Associated Board of the Royal Schools of Music) es la organización de exámenes musicales más reconocida a nivel mundial. Fundada en el Reino Unido, ofrece un sistema estructurado de evaluación que abarca desde principiantes hasta niveles profesionales.</p>
 
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #485cb4;">Grado 5</h1>
-        <p>Nivel <b>intermedio</b>, clave para avanzar en estudios formales. Se exige control técnico y expresividad más refinada.</p>
-        <ul>
-          <li><b>Lectura a primera vista:</b> Texturas polifónicas y acompañamientos variados.</li>
-          <li><b>Repertorio:</b> Obras con exigencia técnica, contrapunto y acordes extendidos.</li>
-          <li><b>Escalas y arpegios:</b> Hasta 6 sostenidos/bemoles, escalas cromáticas, arpegios de séptima de dominante.</li>
-          <li><b>Teoría musical:</b> Tonalidades ampliadas, intervalos compuestos, formas ternarias/sonata simple.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<p>Su programa de <strong>Piano</strong> es uno de los más populares, ya que permite a los estudiantes desarrollar técnica, lectura musical, interpretación y teoría de manera progresiva. Cada grado representa un nivel de dominio, y al aprobarlos, los alumnos obtienen una certificación internacionalmente reconocida.</p>
 
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1>Grado 6</h1>
-        <p>El estudiante interpreta <b>obras de dificultad considerable</b> con más control del fraseo, dinámicas y pedaleo avanzado.</p>
-        <ul>
-          <li><b>Lectura a primera vista:</b> Polifonía y ritmos complejos.</li>
-          <li><b>Repertorio:</b> Piezas con pasajes rápidos y texturas densas.</li>
-          <li><b>Escalas y arpegios:</b> Escalas mayores/menores a 4 octavas; arpegios de séptima disminuida.</li>
-          <li><b>Teoría musical:</b> Armonía detallada y modulaciones lejanas.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+</article>
 
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1>Grado 7</h1>
-        <p>Nivel <b>avanzado</b>. El pianista desarrolla madurez interpretativa, dominio del sonido y confianza en escenario.</p>
-        <ul>
-          <li><b>Lectura a primera vista:</b> Texturas de concierto y manos cruzadas.</li>
-          <li><b>Repertorio:</b> Obras extensas como movimientos de sonatas o preludios y fugas.</li>
-          <li><b>Escalas y arpegios:</b> Escalas en terceras y sextas; arpegios extendidos.</li>
-          <li><b>Teoría musical:</b> Análisis de fuga, sonata y armonía avanzada.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<article class="post base-proposal">
 
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1>Grado 8</h1>
-        <p>Máximo nivel antes del diploma. El pianista interpreta <b>repertorio profesional</b> con madurez y pleno control técnico.</p>
-        <ul>
-          <li><b>Lectura a primera vista:</b> Obras de concierto en múltiples claves y tonalidades.</li>
-          <li><b>Repertorio:</b> Piezas de gran complejidad técnica y expresiva.</li>
-          <li><b>Escalas y arpegios:</b> Escalas en terceras, sextas y octavas; arpegios de séptima y novena.</li>
-          <li><b>Teoría musical:</b> Contrapunto, armonía y análisis avanzado.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<h1>Certificación</h1>
+
+<p class="post-meta">ABRSM Piano <span>— Exámenes Internacionales</span></p>
+
+<p>La <strong>certificación ABRSM</strong> valida oficialmente el nivel alcanzado por cada pianista. Los exámenes evalúan interpretación, estudios técnicos, lectura a primera vista y oído musical. </p>
+
+<p>Contar con un certificado ABRSM no solo acredita la formación del alumno, sino que también abre puertas a becas, estudios avanzados y oportunidades profesionales en el ámbito musical a nivel internacional.</p>
+
+</article>
+
+  
+</section><!-- .compare-posts -->
+
+
+
+
+
+
+<section class="compare-posts hidepost">
+
+  <article class="post2 ">
+<img src="https://lh3.googleusercontent.com/d/1TiFtOOUa1rzrpLOv5WCyvVSsMV53EOPu" width="100%" >
+     </article>
+
+   <article class="post2">
+<img src="https://lh3.googleusercontent.com/d/1Tq3IVw6YF8zzzbwD0aalsimvoSIpVLKx" width="100%" >
+     </article>
+
+   <article class="post2">
+<img src="https://lh3.googleusercontent.com/d/1zg9xI45xjG-Bu7UHgSKBiwX6_oJg5yGE" width="100%" >
+     </article>
+  
+<article class="post2">
+<img src="https://lh3.googleusercontent.com/d/1Ao5Y76MBRBjCljprHpS_1KWdSCwdwNH0" width="100%" >
+     </article>
+  
+</section>
+    
+ 
+  
+  
+  
+
+ 
+  
+
+
+
+
+   
 </div>
-
-
-
-  <br>
-
- 
-
-  
-  
-
-  <footer class="fixed-bottom">
-      <div class="col-md-2 col-xs-6">
-       <h1 class="footer__title">Mozart<span class="footer__light"> Academy</span></h1>   
-      </div> 
-  </footer>
-
-
- 
-  
-
 
 </body>
 
@@ -1834,98 +1697,6 @@ document.getElementById('redirectButton').addEventListener('click', function() {
 
 
 
-$(document).ready(function() {
-
-  $('section').each(function(){
-    $('.slider-navigation').prepend('<div class="tick"></div>');
-  });
-
-  $('.tick').on('click',function(){
-    var tickIndex = $(this).index();
-    $('body').scrollTop( $(window).height() * tickIndex );
-  });
-
-  updatePos();
-
-}); // end document ready
-
-
-var isDragging = false;
-var sliderTop,pointerPos,currentSection;
-
-var bodyHeight = $('body').height();
-var sliderHeight = $('.slider-navigation').height();
-var elementHeight = $('section').height();
-var sectionAmount = $('section').length;
-var scale = (bodyHeight - (elementHeight)) / (sliderHeight - $('.nav-pointer').outerHeight() );
-
-
-var waitForFinalEvent = (function () {
-  var timers = {};
-  return function (callback, ms, uniqueId) {
-    if (!uniqueId) {
-      uniqueId = "resize";
-    }
-    if (timers[uniqueId]) {
-      clearTimeout (timers[uniqueId]);
-    }
-    timers[uniqueId] = setTimeout(callback, ms);
-  };
-})();
-
-
-function updatePos() {
-  currentSection = $(window).scrollTop() / elementHeight;
-  currentSectionNum = Math.ceil(currentSection + 0.01) ;
-  sliderTop = $(window).scrollTop() / scale;
-  $('.nav-pointer').css('top', sliderTop).text(currentSectionNum + '/' + sectionAmount);
-}
-
-function sliderMove(e) {
-  $('body').scrollTop(parseInt(e) * scale);
-}
-
-$(window).scroll(function(){
-  if (!isDragging) {
-    updatePos();
-  }
-});
-
-
-$(window).resize(function () {
-  waitForFinalEvent(function(){
-    bodyHeight = $('body').height();
-    sliderHeight = $('.slider-navigation').height();
-    elementHeight = $('section').height();
-    sectionAmount = $('section').length;
-    scale = (bodyHeight - (elementHeight)) / (sliderHeight - $('.nav-pointer').outerHeight() );
-
-    updatePos();
-  }, 500, "resizing");
-});
-
-
-$(window).resize(function(){
-  
-});
-
-$( ".draggable" ).draggable({
-  axis: "y",
-  containment: "parent",
-  start: function() {
-    isDragging = true;
-    $('body').addClass('dragging');
-  },
-  drag: function() {
-    pointerPos = $(this).css('top');
-    sliderMove(pointerPos);
-    updatePos();
-  },
-  stop: function() {
-    isDragging = false;
-    $('body').removeClass('dragging');
-  }
-});
     
 
   </script>
