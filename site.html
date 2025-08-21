@@ -1489,7 +1489,7 @@ iframe {
   height: 0;
   padding-top: 38%;
   position: relative;
-  display: none;
+
   /* Hide for small screens */
 }
 .map-container iframe {
@@ -1512,6 +1512,12 @@ iframe {
   .static-img {
     display: none;
   }
+}
+
+@media (max-width: 600px){
+    .map-container {
+        height: 350px;
+    }
 }
 
  
@@ -1546,7 +1552,7 @@ iframe {
       <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
        
         <li class="nav-item">
-          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px 	#FFAA33; ">Precios</a>
+          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px   #FFAA33; ">Precios</a>
         </li>
         
       </ul>
@@ -1571,26 +1577,19 @@ iframe {
   <!--Pattern HTML-->
   <div id="pattern" class="pattern">
     <div class="map">
-      <a href="https://maps.google.com/maps?q=19.335410,-99.180751&hl=es" class="btn map-link">View Map</a>
+      <a href="https://maps.google.com/maps?q=19.335410,-99.180751&hl=es" class="btn map-link"></a>
     </div>
   </div>
   <!--End Pattern HTML-->
   
-  <div class="containear">	
-		<section class="pattern-description">
-			<h1>Adaptive Map</h1>
-      <p>A map experience that defaults to a text link to Google Maps, loads in a static map image for small screens and an iframe map for larger screens.</p>
-      <p><a href=
-        "http://bradfrostweb.com/blog/post/adaptive-maps/">Read more about Adaptive Maps</a></p>
-		</section>
-		<footer role="contentinfo">   
-			<div>
-				<nav id="menu">
-					<a href="https://bradfrost.github.com/this-is-responsive/patterns.html">&larr;More Responsive Patterns</a>
-				</nav>
-			</div>
-		</footer>
-	</div>
+<div class="containear" style="margin-left: 10px">  
+    <section class="pattern-description">
+        <h1>Dirección</h1>
+        <p>Odontología 69, Copilco Universidad, Coyoacán, 04360 Ciudad de México, CDMX, México.</p>
+        <p><a href="https://maps.app.goo.gl/Jhf1sMdnQ7QRA3RP9" style="margin-left: 10px">Abrir en Google Maps</a></p>
+    </section>
+</div>
+
 
   
   
@@ -1664,26 +1663,18 @@ var static = "https://maps.google.com/maps/api/staticmap?center=19.335410,-99.18
 var embed = '<iframe width="980" height="650" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=19.335410,-99.180751&amp;t=m&amp;ll=19.335410,-99.180751&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>';
 
 function buildMap() {
-  if(sw>bp) { //If Large Screen
-      if($('.map-container').length < 1) { //If map doesn't already exist
-        buildEmbed();
-      }
-  } else {
-      if($('.static-img').length < 1) { //If static image doesn't exist
-        buildStatic();
-      }
-  }
-};
+  $('.map-container, .static-img, .map-link img').remove(); // eliminamos todo
+  buildEmbed();
+
+ 
+}
+
 
 function buildEmbed() { //Build iframe view
     $('<div class="map-container"/>').html(embed).prependTo($map);
 };
   
-function buildStatic() { //Build static map
-   var mapLink = $('.map-link').attr('href'),
-       $img = $('<img class="static-img" />').attr('src',static);
-   $('<a/>').attr('href',mapLink).html($img).prependTo($map); 
-}
+
 
 $(window).resize(function() {
   sw = document.body.clientWidth;
@@ -1697,4 +1688,4 @@ $(window).resize(function() {
 
   </script>
 
-</html>
+</html> 
