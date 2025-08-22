@@ -131,16 +131,6 @@ input {
 }
 
 
-#front-1 {
-  background-image: 
-    url("https://lh3.googleusercontent.com/d/1GGIRHZ6w7Hl-u51og30iqCpOkT3Xc8EC");
-}
-
-#back-1 {
-  background-image: 
-    url("https://lh3.googleusercontent.com/d/1wvSFXvMlQKbyYvqV6L0oFefKFtW0D3lq");
-}
-
 
 
 
@@ -575,6 +565,7 @@ display: inline-block;
 line-height: 18px;
 vertical-align: middle;
   color:#3a9fff;
+  font-family: Avenir, Helvetica, sans-serif !important;
 }
 
 .footer__light{
@@ -1575,7 +1566,7 @@ vertical-align: middle;
 }
 @media screen and (max-width: 600px) {
   .movie-card__content {
-    margin-top: 4.2em;
+    margin-top: 3.2em;
     width: 100%;
     float: inherit;
     max-width: 100%;
@@ -1632,6 +1623,38 @@ h1, h2, h3 {
   color: #2a9fff;
   box-shadow: 0px 1px 8px 0px rgba(245, 199, 0, 0.2);
 }
+
+.horarios {
+  position: absolute;
+  top: 40px;
+  left: 80px;
+  height: 45%;
+  width: 80%;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-shadow: 0 0 5px black;
+}
+
+@media(max-width: 600px){
+    .horarios{
+        top: 0;
+         left: 0;
+    }
+}
+
+.horarios .movie-card__desc {
+  font-size: 0.9em;
+  color: white;
+  opacity: 0.9;
+  margin: 0;
+  text-align: left;
+}
+
+.oculto {
+  display: none;
+}
  
 </style>
   
@@ -1665,7 +1688,7 @@ h1, h2, h3 {
       <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
        
         <li class="nav-item">
-          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px 	#FFAA33; ">Precios</a>
+          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px   #FFAA33; ">Precios</a>
         </li>
         
       </ul>
@@ -1686,46 +1709,60 @@ h1, h2, h3 {
   <div class="movie-card" data-movie="Blade Runner">
     <div class="movie-card__overlay"></div>
     <div class="movie-card__share">
-      <button class="movie-card__icon"><i class="ri-map-pin-line"></i></button>
-        <button class="movie-card__icon"><i class="ri-whatsapp-fill"></i></button>
+      <button class="movie-card__icon" onclick="openUrl('map')"><i class="ri-map-pin-line"></i></button>
+        <button class="movie-card__icon" onclick="openUrl('whats1')"><i class="ri-whatsapp-fill"></i></button>
+         <div class="horarios oculto" id="presencial">
+        <p class="movie-card__desc">
+            <strong>Miércoles y Jueves:</strong> 14:00 a 20:00  <br>
+           <strong>Viernes:</strong> 11:00 a 16:00  <br>
+            <strong>Sábado y Domingo:</strong> 09:00 a 14:00  <br>
+    </p>
+      </div>
     </div>
     <div class="movie-card__content">
       <div class="movie-card__header">
         <h1 class="movie-card__title">Presencial</h1>
-        <h4 class="movie-card__info">Copilco Universidad</h4>
+        <h4 class="movie-card__info">Copilco Universidad, CDMX</h4>
       </div>
-      <p class="movie-card__desc">A blade runner must pursue and try to terminate four replicants who stole a ship in space and have returned to Earth to find their creator.</p>
-      <button class="btn btn-outline movie-card__button" type="button">Ver Horarios</button>
+      <p class="movie-card__desc">Método de trabajo eficiente: cada alumno avanza a su propio rítmo, combinando la guía personalizada de nuestros profesores con herramientas digitales que aceleran el proceso de aprendizaje del alumno.</p>
+      <button class="btn btn-outline movie-card__button" type="button" onclick="toggleHorario('presencial')">Ver Horarios</button>
+      
     </div>
   </div>
   <div class="movie-card" data-movie="Back to the Future">
     <div class="movie-card__overlay"></div>
     <div class="movie-card__share">
-      <button class="movie-card__icon"><i class="ri-map-pin-line"></i></button>
-        <button class="movie-card__icon"><i class="ri-whatsapp-fill"></i></button>
-    </div>
-    <div class="movie-card__content">
-      <div class="movie-card__header">
-        <h1 class="movie-card__title">En línea</h1>
-        <h4 class="movie-card__info">Colonia Roma</h4>
+        <button class="movie-card__icon" onclick="openUrl('whats2')"><i class="ri-whatsapp-fill"></i></button>
+         <div class="horarios oculto" id="online">
+        <p class="movie-card__desc">
+            <strong>Miércoles y Jueves:</strong> 20:00 a 22:00  <br>
+            <strong>Sábados:</strong> 11:00 a 14:00  <br>
+    </p>
       </div>
-      <p class="movie-card__desc">Marty McFly, a 17-year-old high school student, is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.</p>
-      <button class="btn btn-outline movie-card__button" type="button">Ver Horarios</button>
+    </div>
+    <div class="movie-card__content" >
+      <div class="movie-card__header">
+        <h1 class="movie-card__title">Online</h1>
+        <h4 class="movie-card__info">Curso en línea por ZOOM</h4>
+      </div>
+      <p class="movie-card__desc">
+Ideal si la movilidad es un obstáculo. Además de las sesiones por ZOOM, accederás a nuestra plataforma intuitiva, seguirás cada lección con claridad y podrás monitorear tu progreso fácilmente.
+</p>
+
+      <button class="btn btn-outline movie-card__button" type="button" onclick="toggleHorario('online')">Ver Horarios</button>
     </div>
   </div>
   <div class="movie-card" data-movie="Akira">
     <div class="movie-card__overlay"></div>
     <div class="movie-card__share">
-     <button class="movie-card__icon"><i class="ri-map-pin-line"></i></button>
-        <button class="movie-card__icon"><i class="ri-whatsapp-fill"></i></button>
     </div>
     <div class="movie-card__content">
       <div class="movie-card__header">
-        <h1 class="movie-card__title">Plataforma</h1>
-        <h4 class="movie-card__info">Colonia Ermita</h4>
+        <h1 class="movie-card__title">App/Plataforma</h1>
+        <h4 class="movie-card__info">Asíncrono/Híbrido</h4>
       </div>
-      <p class="movie-card__desc">A secret military project endangers Neo-Tokyo when it turns a biker gang member into a rampaging psychic psychopath that only two teenagers and a group of psychics can stop.</p>
-      <button class="btn btn-outline movie-card__button" type="button">Registrate Gratis</button>
+      <p class="movie-card__desc">Ideal si el tiempo es un obstáculo. Avanza a tu propio ritmo, entrega actividades a nuestra plataforma para recibir retroalimentación y permite que profesores y el usuario monitoreen su progreso.</p>
+      <button class="btn btn-outline movie-card__button" type="button" onclick="openUrl('app')" >Registrate Gratis</button>
     </div>
   </div>
 </div>
@@ -1750,7 +1787,7 @@ h1, h2, h3 {
                 <a href="https://www.facebook.com/mozartacademy.oficial" class="slider-nav-item"><i class="ri-facebook-fill"></i></a>
                                 
                                  
-               <a href="https://www.instagram.com/mozartacademy.oficial"  class="slider-nav-item"><i class="ri-instagram-line"></i></a>
+               <a href="https://www.instagram.com/mozartacademy_"  class="slider-nav-item"><i class="ri-instagram-line"></i></a>
                                  
                                   <a href="https://www.youtube.com/@mozart.academy" class="slider-nav-item"><i class="ri-youtube-fill"></i></a>
                                  <a href="https://maps.app.goo.gl/Jhf1sMdnQ7QRA3RP9"  class="slider-nav-item"><i class="ri-map-pin-line"></i></a> <!-- https://twitter.com/m0zart_studio -->
@@ -1767,7 +1804,7 @@ h1, h2, h3 {
 
   <footer class="fixed-bottom">
       <div class="col-md-2 col-xs-6">
-       <h1 class="footer__title">Mozart<span class="footer__light"> Academy</span></h1>   
+       <h4 class="footer__title" >Mozart<span class="footer__light"> Academy</span></h4>   
       </div> 
   </footer>
 
@@ -1792,9 +1829,25 @@ document.getElementById('redirectButton').addEventListener('click', function() {
   window.location.href = 'https://wa.me/5215577676657?text=Hola,%20me%20interesa%20recibir%20informaci%C3%B3n%20acerca%20de%20las%20clases%20de%20piano%20%F0%9F%8E%B9'; 
 });
 
+function toggleHorario(id) {
+  const horarios = document.getElementById(id);
+  horarios.classList.toggle("oculto");
+}
 
 
-
+function openUrl(site){
+    let url = ""
+      if(site == "whats1"){
+        url = "https://wa.me/5215577676657?text=Hola,%20me%20interesa%20inscribirme%20al%20curso%20presencial%20de%20piano"
+      }else if(site == "whats2"){
+        url = "https://wa.me/5215577676657?text=Hola,%20me%20interesa%20inscribirme%20al%20curso%20online%20de%20piano"
+      }else if(site == "app"){
+        url = "https://app.mozartacademy.mx"
+      }else if(site == "map"){
+        url = "https://maps.app.goo.gl/Jhf1sMdnQ7QRA3RP9"
+      }
+      window.open(url, '_blank');
+  }
     
 
   </script>
