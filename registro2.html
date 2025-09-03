@@ -1,0 +1,833 @@
+
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu Clase</title>
+ <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.min.js'></script>
+  
+</head>
+
+  <style>
+    :root {
+    --primary-color: rgb(42, 51, 65);
+    --primary-light: #757de8;
+    --primary-dark: #002984;
+    --secondary-color: #f50057;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #757575;
+    --white: #ffffff;
+    --success-color: #4caf50;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 1px;
+}
+
+header p {
+    color: var(--dark-gray);
+}
+
+.booking-flow {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    min-height: 500px;
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+/* 🎨 FULLCALENDAR MODERNO Y RESPONSIVE */
+
+
+
+
+/* Estilo visual para fechas disponibles */
+/* Estilo para fechas disponibles (blancas) */
+.available-date {
+  background-color: var(--white); /* Fondo blanco */
+  color: var(--primary-color); /* Texto en color primario */
+  box-shadow: inset 0 0 0 1px rgba(63, 81, 181, 0.2);
+  border-radius: 6px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.available-date:hover {
+  background-color: var(--light-gray); /* Gris muy claro al hover */
+  box-shadow: inset 0 0 0 1px var(--primary-color);
+}
+
+/* Estilo para fechas NO disponibles (gris claro) */
+.fc-day:not(.available-date) {
+  background-color: rgba(245, 245, 245, 0.2); /* Gris muy claro */
+  color: silver; /* Texto gris */
+  opacity: 0.7;
+}
+
+/* Mensaje de no disponibilidad */
+
+
+
+
+/* Time Slots */
+.time-slots-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.time-slot {
+    background-color: var(--white);
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    padding: 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.time-slot:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.time-slot.selected {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn.primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn.secondary {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn.secondary:hover {
+    background-color: var(--light-gray);
+}
+
+/* Confirmation */
+.confirmation-message {
+    text-align: center;
+    padding: 2rem;
+}
+
+.confirmation-message svg {
+    margin-bottom: 1.5rem;
+}
+
+.confirmation-message h2 {
+    color: var(--success-color);
+    margin-bottom: 1rem;
+}
+
+.confirmation-message p {
+    margin-bottom: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .time-slots-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+    
+    .fc {
+  direction: ltr;
+  text-align: left;
+
+  max-width: 700px;
+  height: 100vh;
+  margin: auto;
+}
+
+ 
+/* Versión minimalista */
+.fc-col-header-cell {
+    color: white !important;
+
+}
+
+
+
+@media (max-width: 600px) {
+  .fc-daygrid-day,
+  .fc-daygrid-day-frame,
+  .fc .fc-daygrid-day-top,
+  .fc .fc-scrollgrid-sync-table td {
+    height: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    overflow: hidden;
+  }
+
+  /* También reduce el número del día */
+  .fc .fc-daygrid-day-number {
+    font-size: 0.9rem !important;
+
+  }
+  
+   .fc .fc-toolbar-title {
+    font-size: 1.3rem !important;
+  }
+
+
+}
+
+
+.fc-rtl {
+  text-align: right;
+}
+
+body .fc { /* extra precedence to overcome jqui */
+  font-size: 1em;
+    color: gray;
+    font-family: 'Quicksand', sans-serif;
+    
+}
+
+
+
+.fc .fc-button {
+  padding: 0.4rem 0.9rem;
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.fc .fc-button:hover,
+.fc .fc-button:focus {
+  background-color: var(--primary-dark);
+  outline: none;
+}
+
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+
+.fc-divider {
+  border-style: solid;
+  border-width: 1px;
+}
+
+hr.fc-divider {
+  height: 0;
+  margin: 0;
+  padding: 0 0 2px; /* height is unreliable across browsers, so use padding */
+  border-width: 1px 0;
+}
+
+.fc-clear {
+  clear: both;
+}
+
+.fc-bg,
+.fc-bgevent-skeleton,
+.fc-highlight-skeleton,
+.fc-helper-skeleton {
+  /* these element should always cling to top-left/right corners */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.fc-bg {
+  bottom: 0; /* strech bg to bottom edge */
+}
+
+.fc-bg table {
+  height: 100%; /* strech bg to bottom edge */
+}
+
+
+/* Tables
+--------------------------------------------------------------------------------------------------*/
+
+.fc th {
+
+    padding: 2px !important;
+   background-color: #383c44;
+  color: white;
+}
+
+
+
+/* Day Row (used within the header and the DayGrid)
+--------------------------------------------------------------------------------------------------*/
+
+
+/* Scrolling Container
+--------------------------------------------------------------------------------------------------*/
+
+.fc-scroller { /* this class goes on elements for guaranteed vertical scrollbars */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.fc-scroller > * { /* we expect an immediate inner element */
+  position: relative; /* re-scope all positions */
+  width: 100%; /* hack to force re-sizing this inner element when scrollbars appear/disappear */
+  overflow: hidden; /* don't let negative margins or absolute positioning create further scroll */
+}
+
+
+/* Global Event Styles
+--------------------------------------------------------------------------------------------------*/
+
+
+/* overpower some of bootstrap's and jqui's styles on <a> tags */
+.fc-event,
+.fc-event:hover,
+.ui-widget .fc-event {
+  color: #fff; /* default TEXT color */
+  text-decoration: none; /* if <a> has an href */
+  cursor: pointer;
+}
+
+
+
+.fc-not-allowed, /* causes a "warning" cursor. applied on body */
+.fc-not-allowed .fc-event { /* to override an event's custom cursor */
+  cursor: not-allowed;
+}
+
+.fc-event .fc-bg { /* the generic .fc-bg already does position */
+  z-index: 1;
+  background: #fff;
+  opacity: .25;
+  filter: alpha(opacity=25); /* for IE */
+}
+
+.fc-event .fc-content {
+  position: relative;
+  z-index: 2;
+}
+
+.fc-event .fc-resizer {
+  position: absolute;
+  z-index: 3;
+}
+
+
+/* Horizontal Events
+--------------------------------------------------------------------------------------------------*/
+
+/* events that are continuing to/from another week. kill rounded corners and butt up against edge */
+
+.fc-ltr .fc-h-event.fc-not-start,
+.fc-rtl .fc-h-event.fc-not-end {
+  margin-left: 0;
+  border-left-width: 0;
+  padding-left: 1px; /* replace the border with padding */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.fc-ltr .fc-h-event.fc-not-end,
+.fc-rtl .fc-h-event.fc-not-start {
+  margin-right: 0;
+  border-right-width: 0;
+  padding-right: 1px; /* replace the border with padding */
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* resizer */
+
+.fc-h-event .fc-resizer { /* positioned it to overcome the event's borders */
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  width: 5px;
+}
+
+.fc-toolbar {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fc-toolbar-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.fc-toolbar .fc-left {
+  float: left;
+}
+
+.fc-toolbar .fc-right {
+  float: right;
+}
+
+.fc-toolbar .fc-center {
+  display: inline-block;
+}
+
+/* the things within each left/right/center section */
+.fc .fc-toolbar > * > * { /* extra precedence to override button border margins */
+  float: left;
+  margin-left: .75em;
+}
+
+/* the first thing within each left/center/right section */
+.fc .fc-toolbar > * > :first-child { /* extra precedence to override button border margins */
+  margin-left: 0;
+}
+  
+
+
+    
+  </style>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Reserva tu Clase</h1>
+            <p>Selecciona una fecha y horario disponible</p>
+        </header>
+
+    <div class="booking-flow">
+        <!-- Paso 1: Selección de fecha -->
+        <div id="step-date" class="step active">
+            <div id="calendar"></div>
+        </div>
+
+        <!-- Paso 2: Selección de horario -->
+        <div id="step-time" class="step">
+            <h2>Horarios disponibles para <span id="selected-date"></span></h2>
+            <div id="time-slots" class="time-slots-container"></div>
+            <button id="back-to-date" class="btn secondary">Volver</button>
+        </div>
+
+        <!-- Paso 3: Formulario de información -->
+        <div id="step-form" class="step">
+          
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notas adicionales</label>
+                    <textarea id="notes" rows="3"></textarea>
+                </div>
+               <h3>Reserva para <span id="form-date-time"></span></h3>
+                <div class="form-actions">
+                    <button type="button" id="back-to-time" class="btn secondary">Volver</button>
+                    <button type="submit" class="btn primary">Confirmar Reserva</button>
+                </div>
+            </form>
+           
+        </div>
+
+        <!-- Paso 4: Confirmación -->
+        <div id="step-confirmation" class="step">
+            <div class="confirmation-message">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <h2>¡Reserva confirmada!</h2>
+                <p id="confirmation-details"></p>
+                <button id="new-booking" class="btn primary">Hacer otra reserva</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Variables de estado
+    let selectedDate = null;
+    let selectedTime = null;
+
+    // Elementos del DOM
+    const stepDate = document.getElementById('step-date');
+    const stepTime = document.getElementById('step-time');
+    const stepForm = document.getElementById('step-form');
+    const stepConfirmation = document.getElementById('step-confirmation');
+
+    const selectedDateElement = document.getElementById('selected-date');
+    const formDateTimeElement = document.getElementById('form-date-time');
+    const confirmationDetailsElement = document.getElementById('confirmation-details');
+
+    const timeSlotsContainer = document.getElementById('time-slots');
+    const bookingForm = document.getElementById('booking-form');
+
+    const backToDateBtn = document.getElementById('back-to-date');
+    const backToTimeBtn = document.getElementById('back-to-time');
+    const newBookingBtn = document.getElementById('new-booking');
+
+    // Generar fechas disponibles dinámicamente (hoy y los próximos 5 días) 
+    const today = new Date();
+    const availableDates = [];
+    const availableTimes = {};
+ const weeklySchedule = {
+ 
+    // 0: [], ← Lunes (omitido)
+    // 1: [], ← Martes (omitido)
+    2: ['16:00', '17:00', '18:00', '19:00'],   // Miércoles
+    3: ['14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],    // Jueves      
+    4: ['11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],     // Viernes     
+    5: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],      // Sábado    
+    6: ['09:00', '10:00', '11:00', '12:00', '13:00']  // Domingo
+};
+
+for (let i = 0; i < 16; i++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + i);
+    const dateStr = date.toISOString().split('T')[0];
+    const dayOfWeek = date.getDay();
+
+    // Saltar lunes (1) y martes (2)
+    if (dayOfWeek === 0 || dayOfWeek === 1) continue;
+
+    availableDates.push(dateStr);
+    availableTimes[dateStr] = weeklySchedule[dayOfWeek] || [];
+}
+
+
+    // Inicializar calendario
+    const calendarEl = document.getElementById('calendar');
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'es',
+      contentHeight: 'auto',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: ''
+        },
+        dateClick: function(info) {
+            const dateStr = info.dateStr;
+            if (availableDates.includes(dateStr)) {
+                handleDateSelection(dateStr);
+            }
+        },
+        dayCellDidMount: function(info) {
+            const dateStr = info.date.toISOString().split('T')[0];
+            if (availableDates.includes(dateStr)) {
+                info.el.classList.add('available-date');
+            }
+        }
+    });
+    calendar.render();
+
+    // Manejadores de eventos
+    backToDateBtn.addEventListener('click', function() {
+        showStep('step-date');
+    });
+
+    backToTimeBtn.addEventListener('click', function() {
+        showStep('step-time');
+    });
+
+    newBookingBtn.addEventListener('click', function() {
+        resetForm();
+        showStep('step-date');
+    });
+
+    bookingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Validar que se haya seleccionado fecha y hora
+        if (!selectedDate || !selectedTime) {
+            alert('Por favor, selecciona una fecha y un horario.');
+            return;
+        }
+
+        const formData = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            notes: document.getElementById('notes').value.trim(),
+            date: selectedDate,
+            time: selectedTime
+        };
+
+        // Validar campos obligatorios
+        if (!formData.name || !formData.email) {
+            alert('Por favor, completa los campos obligatorios: nombre y correo electrónico.');
+            return;
+        }
+
+
+     var api = "https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec";
+
+    var validationData = {
+        redirect: "follow",
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify({
+          action: "registration",
+          name: name,
+            email: email,
+            phone: phone,
+            notes: notes,
+            date: selectedDate,
+            time: selectedTime
+        })
+      };
+
+
+     fetch(api, validationData)
+    .then(response => response.text())
+    .then(data => {
+        confirmationDetailsElement.innerHTML = `
+                <strong>${formData.name}</strong>, tu reserva está confirmada.<br><br>
+                <strong>Fecha:</strong> ${formatDate(selectedDate)} a las ${selectedTime}<br>
+                <strong>Correo:</strong> ${formData.email}<br><br>
+                Te hemos enviado un correo con los detalles.
+            `;
+            showStep('step-confirmation');
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Hubo un problema al enviar la reserva. Intenta nuevamente.");
+    });
+
+        
+    });
+
+    // Funciones auxiliares
+    function handleDateSelection(dateStr) {
+        selectedDate = dateStr;
+        selectedDateElement.textContent = formatDate(dateStr);
+        renderTimeSlots(dateStr);
+        showStep('step-time');
+    }
+
+    function renderTimeSlots(dateStr) {
+        timeSlotsContainer.innerHTML = '';
+
+        if (availableTimes[dateStr]) {
+            availableTimes[dateStr].forEach(time => {
+                const timeSlot = document.createElement('button');
+                timeSlot.className = 'time-slot';
+                timeSlot.textContent = time;
+                timeSlot.addEventListener('click', function() {
+                    // Remover selección previa
+                    document.querySelectorAll('.time-slot').forEach(slot => {
+                        slot.classList.remove('selected');
+                    });
+
+                    // Seleccionar este horario
+                    timeSlot.classList.add('selected');
+                    selectedTime = time;
+
+                    // Actualizar el formulario
+                    formDateTimeElement.textContent = `${formatDate(dateStr)} a las ${time}`;
+
+                    // Continuar al siguiente paso después de un breve retraso
+                    setTimeout(() => {
+                        showStep('step-form');
+                    }, 300);
+                });
+
+                timeSlotsContainer.appendChild(timeSlot);
+            });
+        } else {
+            timeSlotsContainer.innerHTML = '<p>No hay horarios disponibles para esta fecha.</p>';
+        }
+    }
+
+    function showStep(stepId) {
+        document.querySelectorAll('.step').forEach(step => {
+            step.classList.remove('active');
+        });
+
+        document.getElementById(stepId).classList.add('active');
+    }
+
+   function formatDate(dateStr) {
+    const [year, month, day] = dateStr.split('-');
+    const date = new Date(Number(year), Number(month) - 1, Number(day)); // usa hora local
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('es-MX', options);
+}
+
+
+    function resetForm() {
+        bookingForm.reset();
+        selectedDate = null;
+        selectedTime = null;
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.classList.remove('selected');
+        });
+    }
+});
+
+
+
+
+function sendToServer() {
+    event.preventDefault(); 
+
+    // Obtener valores del formulario
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const notes = document.getElementById("notes").value;
+    const dateTime = document.getElementById("form-date-time").textContent;
+
+     var api = "https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec";
+
+  var validationData = {
+    redirect: "follow",
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify({
+      action: "registration",
+      name: name,
+        email: email,
+        phone: phone,
+        notes: notes,
+        dateTime: dateTime
+    })
+  };
+
+ 
+     fetch(api, validationData)
+    .then(response => response.text())
+    .then(data => {
+        // Mostrar confirmación
+        document.getElementById("confirmation-details").innerText = 
+            `Reserva a nombre de ${name} el día ${dateTime}. 
+             Te hemos enviado un correo de confirmación a ${email}.`;
+
+        // Cambiar a la vista de confirmación
+        document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
+        document.getElementById("step-confirmation").classList.add("active");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Hubo un problema al enviar la reserva. Intenta nuevamente.");
+    });
+}
+
+
+
+  </script>
+
+</html>
