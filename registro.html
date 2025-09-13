@@ -1,2434 +1,675 @@
- <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.min.js'></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu Clase</title>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary-color: rgb(42, 51, 65);
+            --primary-hover-color: rgb(158, 161, 166);
+            --scrollbar-color: rgba(131, 135, 193, 0.4);
+            --card-bg-color: rgba(230, 231, 247, 0.1);
+            --pop-bg-color: rgb(245, 247, 255, 0.9);
+            --star-color: #ddcc14;
+            --border-color: rgba(131, 135, 193, 0.4);
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --accent-color: rgb(194, 33, 105);
+            --primary-light: #757de8;
+            --primary-dark: black;
+            --secondary-color: #f50057;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #757575;
+            --white: #ffffff;
+            --success-color: #4caf50;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: rgb(245, 247, 255);
+            min-height: 100vh;
+        }
 
+        .content {
+            display: flex;
+            min-height: 100vh;
+        }
 
+        .left-content {
+            flex: 1;
+            padding: 20px;
+        }
 
-<style>
-    body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif ;
-}
-  
+        .right-content {
+            width: 400px;
+            background: white;
+            box-shadow: -2px 0 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
 
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
+        header h1 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 28px;
+            font-weight: 600;
+        }
 
+        header p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
 
-:root {
-  --bg-body: rgb(245, 247, 255);
-  --primary-color: rgb(42, 51, 65);
-  --primary-hover-color: rgb(158, 161, 166);
-  --scrollbar-color: rgba(131, 135, 193, 0.4);
-  --card-bg-color: rgba(230, 231, 247, 0.1);
-  --pop-bg-color: rgb(245, 247, 255, 0.9);
-  --star-color: #ddcc14;
-  --border-color: rgba(131, 135, 193, 0.4);
-  --shadow-color: rgba(0, 0, 0, 0.05);
-  --accent-color: rgb(194, 33, 105);
+        .step {
+            display: none;
+        }
 
-    --primary-light: #757de8;
-    --primary-dark: black;
-    --secondary-color: #f50057;
-    --text-color: #333;
-    --light-gray: #f5f5f5;
-    --medium-gray: #e0e0e0;
-    --dark-gray: #757575;
-    --white: #ffffff;
-    --success-color: #4caf50;
-}
+        .step.active {
+            display: block;
+        }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-}
-
-
-
-
-body {
-  position: relative;
-  background: var(--bg-body);
-}
-
-/* MAIN MENU */
-
-
-
-.content {
-
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: auto 380px;
-}
-
-
- /*
-.left-content {
-  color: var(--primary-color);
-  height: 100vh;
-  width: 100% !important;
-  overflow: auto;
-}
-*/
-
-
-/* RIGHT CONTENT */
-
-.right-content {
-  background-color: white;
- position: fixed; 
-  display: flex;
-  flex-direction: column;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); 
-
-  height: 100vh;
- width: 380px; 
- right: 0;
- padding: 10px;
-  overflow: auto;
-}
-
-
-
-/* SCROLLBAR STYLE */
-
-.left-content::-webkit-scrollbar,
-.right-content::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  width: 8px;
-}
-
-.left-content::-webkit-scrollbar-track,
-.right-content::-webkit-scrollbar-track,
-body::-webkit-scrollbar-track {
-  border-radius: 0;
-}
-
-.left-content::-webkit-scrollbar-thumb,
-.right-content::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-color);
-  border-radius: 40px;
-}
-
-/* MEDIA QUERIES */
-
-@media (min-width: 761px) {
-  .logContainer{
-    height: 180px !important;
-  }
-  }
-
-@media (max-width: 760px) {
-  .content {
-    grid-template-columns: 1fr; 
-  }
-
-  .right-content {
-    display: none; 
-  }
-
-  .left-content {
-    width: 100%; 
-    height: auto;
-   padding: 15px;
-  }
-  .logContainer{
-    height: 500px !important;
-  }
-  .whatsContainer{
-    display: none;
-  }
-}
-
-  .iframe-container {
-            position: relative;
+        #calendar {
+            border-radius: 8px;
             overflow: hidden;
-            max-width: 100%;
-            height: 100%;
-    
         }
 
-        /* Estilo para hacer el iframe responsivo */
-        .iframe-container iframe {
+        .available-date {
+            background-color: var(--white);
+            color: var(--primary-color);
+            box-shadow: inset 0 0 0 1px rgba(63, 81, 181, 0.2);
+            border-radius: 6px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .available-date:hover {
+            background-color: var(--light-gray);
+            box-shadow: inset 0 0 0 1px var(--primary-color);
+        }
+
+        .available-date.selected {
+            background-color: var(--light-gray);
+            box-shadow: inset 0 0 0 1px var(--primary-color);
+        }
+
+      
+        /* Time Slots */
+        .time-slots-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .time-slot {
+            background-color: var(--white);
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            padding: 0.75rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .time-slot:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .time-slot.selected {
+            background-color: var(--light-gray);
+            box-shadow: inset 0 0 0 1px var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            height: 100%;
-            border: 0;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
         }
 
-
-
-
-    /*!
- * FullCalendar v2.6.1 Stylesheet
- * Docs & License: https://fullcalendar.io/
- * (c) 2015 Adam Shaw
- */
-@import url(https://fonts.googleapis.com/css?family=Quicksand);
-
-.fc {
-  direction: ltr;
-  text-align: left;
-
-  max-width: 500px;
-  margin: auto;
-}
-
-
-.fc-header-toolbar .fc-center {
-  display: none !important;
-}
-
-/* Mostrar el header derecho solo en pantallas pequeñas */
-@media (max-width: 768px) {
-  .fc-header-toolbar .fc-center  {
-    display: inline-block !important;
-  }
-}
-
-.fc-rtl {
-  text-align: right;
-}
-
-body .fc { /* extra precedence to overcome jqui */
-  font-size: 1em;
-    color: gray;
-    font-family: 'Quicksand', sans-serif;
-    
-}
-
-
-/* Colors
---------------------------------------------------------------------------------------------------*/
-
-.fc-unthemed th,
-.fc-unthemed td,
-.fc-unthemed thead,
-.fc-unthemed tbody,
-.fc-unthemed .fc-divider,
-.fc-unthemed .fc-row,
-.fc-unthemed .fc-popover {
-  border-color: #ddd;
-}
-
-.fc-unthemed .fc-popover {
-  background-color: #fff;
-}
-
-.fc-unthemed .fc-divider,
-.fc-unthemed .fc-popover .fc-header {
-  background: #eee;
-}
-
-.fc-unthemed .fc-popover .fc-header .fc-close {
-  color: #666;
-}
-/* Marcar o dia de HOJE */
-.fc-unthemed .fc-today {
-  background: #ffffcc;
-}
-
-.fc-highlight { /* when user is selecting cells */
-  background: #bce8f1;
-  opacity: .3;
-  filter: alpha(opacity=30); /* for IE */
-}
-
-.fc-bgevent { /* default look for background events */
-    background: #e4faeb;
-/*  background: rgb(143, 223, 130); */
-  opacity: .3;
-  filter: alpha(opacity=30); /* for IE */
-}
-
-.fc-nonbusiness { /* default look for non-business-hours areas */
-  /* will inherit .fc-bgevent's styles */
-  background: #d7d7d7;
-}
-
-
-/* Icons (inline elements with styled text that mock arrow icons)
---------------------------------------------------------------------------------------------------*/
-
-.fc-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  line-height: 1em;
-  font-size: 1em;
-  text-align: center;
-  overflow: hidden;
-  font-family: "Courier New", Courier, monospace;
-
-  /* don't allow browser text-selection */
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  }
-
-/*
-Acceptable font-family overrides for individual icons:
-  "Arial", sans-serif
-  "Times New Roman", serif
-
-NOTE: use percentage font sizes or else old IE chokes
-*/
-
-.fc-icon:after {
-  position: relative;
-  margin: 0 -1em; /* ensures character will be centered, regardless of width */
-}
-
-.fc-icon-left-single-arrow:after {
-  content: "\02039";
-  font-weight: bold;
-  font-size: 200%;
-  top: -7%;
-  left: 3%;
-}
-
-.fc-icon-right-single-arrow:after {
-  content: "\0203A";
-  font-weight: bold;
-  font-size: 200%;
-  top: -7%;
-  left: -3%;
-}
-
-.fc-icon-left-double-arrow:after {
-  content: "\000AB";
-  font-size: 160%;
-  top: -7%;
-}
-
-.fc-icon-right-double-arrow:after {
-  content: "\000BB";
-  font-size: 160%;
-  top: -7%;
-}
-
-.fc-icon-left-triangle:after {
-  content: "\25C4";
-  font-size: 125%;
-  top: 3%;
-  left: -2%;
-}
-
-.fc-icon-right-triangle:after {
-  content: "\25BA";
-  font-size: 125%;
-  top: 3%;
-  left: 2%;
-}
-
-.fc-icon-down-triangle:after {
-  content: "\25BC";
-  font-size: 125%;
-  top: 2%;
-}
-
-.fc-icon-x:after {
-  content: "\000D7";
-  font-size: 200%;
-  top: 6%;
-}
-
-
-/* Buttons (styled <button> tags, normalized to work cross-browser)
---------------------------------------------------------------------------------------------------*/
-
-.fc button {
-  /* force height to include the border and padding */
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-
-  /* dimensions */
-  margin: 0;
-  height: 2.1em;
-  padding: 0 .6em;
-
-  /* text & cursor */
-  font-size: 1em; /* normalize */
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-/* Firefox has an annoying inner border */
-.fc button::-moz-focus-inner { margin: 0; padding: 0; }
-  
-.fc-state-default { /* non-theme */
-  border: 1px solid;
-}
-
-.fc-state-default.fc-corner-left { /* non-theme */
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.fc-state-default.fc-corner-right { /* non-theme */
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-/* icons in buttons */
-
-.fc button .fc-icon { /* non-theme */
-  position: relative;
-  top: -0.05em; /* seems to be a good adjustment across browsers */
-  margin: 0 .2em;
-  vertical-align: middle;
-}
-  
-/*
-  button states
-  borrowed from twitter bootstrap (https://twitter.github.com/bootstrap/)
-*/
-
-.fc-state-default {
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-  background-repeat: repeat-x;
-  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  color: #333;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.fc-state-hover,
-.fc-state-down,
-.fc-state-active,
-.fc-state-disabled {
-  color: #333333;
-  background-color: #e6e6e6;
-}
-
-.fc-state-hover {
-  color: #333333;
-  text-decoration: none;
-  background-position: 0 -15px;
-  -webkit-transition: background-position 0.1s linear;
-     -moz-transition: background-position 0.1s linear;
-       -o-transition: background-position 0.1s linear;
-          transition: background-position 0.1s linear;
-}
-
-.fc-state-down,
-.fc-state-active {
-  background-color: #cccccc;
-  background-image: none;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.fc-state-disabled {
-  cursor: default;
-  background-image: none;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  box-shadow: none;
-}
-
-
-/* Buttons Groups
---------------------------------------------------------------------------------------------------*/
-
-.fc-button-group {
-  display: inline-block;
-}
-
-/*
-every button that is not first in a button group should scootch over one pixel and cover the
-previous button's border...
-*/
-
-.fc .fc-button-group > * { /* extra precedence b/c buttons have margin set to zero */
-  float: left;
-  margin: 0 0 0 -1px;
-}
-
-.fc .fc-button-group > :first-child { /* same */
-  margin-left: 0;
-}
-
-
-/* Popover
---------------------------------------------------------------------------------------------------*/
-
-.fc-popover {
-  position: absolute;
-  box-shadow: 0 2px 6px rgba(0,0,0,.15);
-}
-
-.fc-popover .fc-header { /* TODO: be more consistent with fc-head/fc-body */
-  padding: 2px 4px;
-}
-
-.fc-popover .fc-header .fc-title {
-  margin: 0 2px;
-}
-
-.fc-popover .fc-header .fc-close {
-  cursor: pointer;
-}
-
-.fc-ltr .fc-popover .fc-header .fc-title,
-.fc-rtl .fc-popover .fc-header .fc-close {
-  float: left;
-}
-
-.fc-rtl .fc-popover .fc-header .fc-title,
-.fc-ltr .fc-popover .fc-header .fc-close {
-  float: right;
-}
-
-/* unthemed */
-
-.fc-unthemed .fc-popover {
-  border-width: 1px;
-  border-style: solid;
-}
-
-.fc-unthemed .fc-popover .fc-header .fc-close {
-  font-size: .9em;
-  margin-top: 2px;
-}
-
-/* jqui themed */
-
-.fc-popover > .ui-widget-header + .ui-widget-content {
-  border-top: 0; /* where they meet, let the header have the border */
-}
-
-
-/* Misc Reusable Components
---------------------------------------------------------------------------------------------------*/
-
-.fc-divider {
-  border-style: solid;
-  border-width: 1px;
-}
-
-hr.fc-divider {
-  height: 0;
-  margin: 0;
-  padding: 0 0 2px; /* height is unreliable across browsers, so use padding */
-  border-width: 1px 0;
-}
-
-.fc-clear {
-  clear: both;
-}
-
-.fc-bg,
-.fc-bgevent-skeleton,
-.fc-highlight-skeleton,
-.fc-helper-skeleton {
-  /* these element should always cling to top-left/right corners */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.fc-bg {
-  bottom: 0; /* strech bg to bottom edge */
-}
-
-.fc-bg table {
-  height: 100%; /* strech bg to bottom edge */
-}
-
-
-/* Tables
---------------------------------------------------------------------------------------------------*/
-
-.fc table {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-  border-spacing: 0;
-  font-size: 1em; /* normalize cross-browser */
-
-}
-
-.fc th {
-  text-align: center;
-    padding: 10px !important;
-   background-color: #383c44;
-  color: white;
-}
-.fc th,
-.fc td {
-  border-style: solid;
-  border-width: 1px;
-  padding: 0px;
-  vertical-align: top;
-}
-
-.fc td {
-  background-color: white;
-}
-
-.fc-other-month {
-  background-color: rgb(245, 247, 255) !important;
-
-}
-
-
-.fc td.fc-today {
-/*  border-style: double;  */
-}
-
-
-/* Fake Table Rows
---------------------------------------------------------------------------------------------------*/
-
-.fc .fc-row { /* extra precedence to overcome themes w/ .ui-widget-content forcing a 1px border */
-  /* no visible border by default. but make available if need be (scrollbar width compensation) */
-  border-style: solid;
-  border-width: 0;
-}
-
-.fc-row table {
-  /* don't put left/right border on anything within a fake row.
-     the outer tbody will worry about this */
-  border-left: 0 hidden transparent;
-  border-right: 0 hidden transparent;
-
-  /* no bottom borders on rows */
-  border-bottom: 0 hidden transparent; 
-}
-
-.fc-row:first-child table {
-  border-top: 0 hidden transparent; /* no top border on first row */
-}
-
-
-/* Day Row (used within the header and the DayGrid)
---------------------------------------------------------------------------------------------------*/
-
-.fc-row {
-  position: relative;
-}
-
-.fc-row .fc-bg {
-  z-index: 1;
-}
-
-/* highlighting cells & background event skeleton */
-
-.fc-row .fc-bgevent-skeleton,
-.fc-row .fc-highlight-skeleton {
-  bottom: 0; /* stretch skeleton to bottom of row */
-}
-
-.fc-row .fc-bgevent-skeleton table,
-.fc-row .fc-highlight-skeleton table {
-  height: 100%; /* stretch skeleton to bottom of row */
-}
-
-.fc-row .fc-highlight-skeleton td,
-.fc-row .fc-bgevent-skeleton td {
-  border-color: transparent;
-}
-
-.fc-row .fc-bgevent-skeleton {
-  z-index: 2;
-
-}
-
-.fc-row .fc-highlight-skeleton {
-  z-index: 3;
-}
-
-/*
-row content (which contains day/week numbers and events) as well as "helper" (which contains
-temporary rendered events).
-*/
-
-.fc-row .fc-content-skeleton {
-  position: relative;
-  z-index: 4;
-  padding-bottom: 2px; /* matches the space above the events */
-}
-
-.fc-row .fc-helper-skeleton {
-  z-index: 5;
-}
-
-.fc-row .fc-content-skeleton td,
-.fc-row .fc-helper-skeleton td {
-  /* see-through to the background below */
-  background: none; /* in case <td>s are globally styled */
-  border-color: transparent;
-
-  /* don't put a border between events and/or the day number */
-  border-bottom: 0;
-}
-
-.fc-row .fc-content-skeleton tbody td, /* cells with events inside (so NOT the day number cell) */
-.fc-row .fc-helper-skeleton tbody td {
-  /* don't put a border between event cells */
-  border-top: 0;
-}
-
-
-/* Scrolling Container
---------------------------------------------------------------------------------------------------*/
-
-.fc-scroller { /* this class goes on elements for guaranteed vertical scrollbars */
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.fc-scroller > * { /* we expect an immediate inner element */
-  position: relative; /* re-scope all positions */
-  width: 100%; /* hack to force re-sizing this inner element when scrollbars appear/disappear */
-  overflow: hidden; /* don't let negative margins or absolute positioning create further scroll */
-}
-
-
-/* Global Event Styles
---------------------------------------------------------------------------------------------------*/
-
-.fc-event {
-  position: relative; /* for resize handle and other inner positioning */
-  display: block; /* make the <a> tag block */
-  font-size: .85em;
-  line-height: 1.3;
-/*  border-radius: 1px; */
-  border: 1px solid #3a87ad; /* default BORDER color */
-  background-color: #e4faeb; /* default BACKGROUND color */
-  font-weight: normal; /* undo jqui's ui-widget-header bold */
-}
-
-/* overpower some of bootstrap's and jqui's styles on <a> tags */
-.fc-event,
-.fc-event:hover,
-.ui-widget .fc-event {
-  color: #fff; /* default TEXT color */
-  text-decoration: none; /* if <a> has an href */
-  cursor: pointer;
-}
-
-
-
-.fc-not-allowed, /* causes a "warning" cursor. applied on body */
-.fc-not-allowed .fc-event { /* to override an event's custom cursor */
-  cursor: not-allowed;
-}
-
-.fc-event .fc-bg { /* the generic .fc-bg already does position */
-  z-index: 1;
-  background: #fff;
-  opacity: .25;
-  filter: alpha(opacity=25); /* for IE */
-}
-
-.fc-event .fc-content {
-  position: relative;
-  z-index: 2;
-}
-
-.fc-event .fc-resizer {
-  position: absolute;
-  z-index: 3;
-}
-
-
-/* Horizontal Events
---------------------------------------------------------------------------------------------------*/
-
-/* events that are continuing to/from another week. kill rounded corners and butt up against edge */
-
-.fc-ltr .fc-h-event.fc-not-start,
-.fc-rtl .fc-h-event.fc-not-end {
-  margin-left: 0;
-  border-left-width: 0;
-  padding-left: 1px; /* replace the border with padding */
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.fc-ltr .fc-h-event.fc-not-end,
-.fc-rtl .fc-h-event.fc-not-start {
-  margin-right: 0;
-  border-right-width: 0;
-  padding-right: 1px; /* replace the border with padding */
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-/* resizer */
-
-.fc-h-event .fc-resizer { /* positioned it to overcome the event's borders */
-  top: -1px;
-  bottom: -1px;
-  left: -1px;
-  right: -1px;
-  width: 5px;
-}
-
-/* left resizer  */
-.fc-ltr .fc-h-event .fc-start-resizer,
-.fc-ltr .fc-h-event .fc-start-resizer:before,
-.fc-ltr .fc-h-event .fc-start-resizer:after,
-.fc-rtl .fc-h-event .fc-end-resizer,
-.fc-rtl .fc-h-event .fc-end-resizer:before,
-.fc-rtl .fc-h-event .fc-end-resizer:after {
-  right: auto; /* ignore the right and only use the left */
-  cursor: w-resize;
-}
-
-/* right resizer */
-.fc-ltr .fc-h-event .fc-end-resizer,
-.fc-ltr .fc-h-event .fc-end-resizer:before,
-.fc-ltr .fc-h-event .fc-end-resizer:after,
-.fc-rtl .fc-h-event .fc-start-resizer,
-.fc-rtl .fc-h-event .fc-start-resizer:before,
-.fc-rtl .fc-h-event .fc-start-resizer:after {
-  left: auto; /* ignore the left and only use the right */
-  cursor: e-resize;
-}
-
-
-/* DayGrid events
-----------------------------------------------------------------------------------------------------
-We use the full "fc-day-grid-event" class instead of using descendants because the event won't
-be a descendant of the grid when it is being dragged.
-*/
-
-.fc-day-grid-event {
-  margin: 1px 2px 0; /* spacing between events and edges */
-  padding: 0 1px;
-}
-
-
-.fc-day-grid-event .fc-content { /* force events to be one-line tall */
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.fc-day-grid-event .fc-time {
-  font-weight: bold;
-}
-
-.fc-day-grid-event .fc-resizer { /* enlarge the default hit area */
-  left: -3px;
-  right: -3px;
-  width: 7px;
-}
-
-
-/* Event Limiting
---------------------------------------------------------------------------------------------------*/
-
-/* "more" link that represents hidden events */
-
-a.fc-more {
-  margin: 1px 3px;
-  font-size: .85em;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-a.fc-more:hover {
-  text-decoration: underline;
-}
-
-.fc-limited { /* rows and cells that are hidden because of a "more" link */
-  display: none;
-}
-
-/* popover that appears when "more" link is clicked */
-
-.fc-day-grid .fc-row {
-  z-index: 1; /* make the "more" popover one higher than this */
-}
-
-.fc-more-popover {
-  z-index: 2;
-  width: 220px;
-}
-
-.fc-more-popover .fc-event-container {
-  padding: 10px;
-}
-
-
-/* Now Indicator
---------------------------------------------------------------------------------------------------*/
-
-.fc-now-indicator {
-  position: absolute;
-  border: 0 solid red;
-}
-
-/* Toolbar
---------------------------------------------------------------------------------------------------*/
-
-.fc-toolbar {
-  text-align: center;
-  margin-bottom: 1em;
-}
-
-.fc-toolbar .fc-left {
-  float: left;
-}
-
-.fc-toolbar .fc-right {
-  float: right;
-}
-
-.fc-toolbar .fc-center {
-  display: inline-block;
-}
-
-/* the things within each left/right/center section */
-.fc .fc-toolbar > * > * { /* extra precedence to override button border margins */
-  float: left;
-  margin-left: .75em;
-}
-
-/* the first thing within each left/center/right section */
-.fc .fc-toolbar > * > :first-child { /* extra precedence to override button border margins */
-  margin-left: 0;
-}
-  
-/* title text */
-
-.fc-toolbar h2 {
-  margin: 0;
-}
-
-/* button layering (for border precedence) */
-
-.fc-toolbar button {
-  position: relative;
-}
-
-.fc-toolbar .fc-state-hover,
-.fc-toolbar .ui-state-hover {
-  z-index: 2;
-}
-  
-.fc-toolbar .fc-state-down {
-  z-index: 3;
-}
-
-.fc-toolbar .fc-state-active,
-.fc-toolbar .ui-state-active {
-  z-index: 4;
-}
-
-.fc-toolbar button:focus {
-  z-index: 5;
-}
-
-
-/* View Structure
---------------------------------------------------------------------------------------------------*/
-
-/* undo twitter bootstrap's box-sizing rules. normalizes positioning techniques */
-/* don't do this for the toolbar because we'll want bootstrap to style those buttons as some pt */
-.fc-view-container *,
-.fc-view-container *:before,
-.fc-view-container *:after {
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
-}
-
-.fc-view, /* scope positioning and z-index's for everything within the view */
-.fc-view > table { /* so dragged elements can be above the view's main element */
-  position: relative;
-  z-index: 1;
-}
-
-/* BasicView
---------------------------------------------------------------------------------------------------*/
-
-/* day row structure */
-
-.fc-basicWeek-view .fc-content-skeleton,
-.fc-basicDay-view .fc-content-skeleton {
-  /* we are sure there are no day numbers in these views, so... */
-  padding-top: 1px; /* add a pixel to make sure there are 2px padding above events */
-  padding-bottom: 1em; /* ensure a space at bottom of cell for user selecting/clicking */
-}
-
-.fc-basic-view .fc-body .fc-row {
-  min-height: 4em; /* ensure that all rows are at least this tall */
-}
-
-/* a "rigid" row will take up a constant amount of height because content-skeleton is absolute */
-
-.fc-row.fc-rigid {
-  overflow: hidden;
-}
-
-.fc-row.fc-rigid .fc-content-skeleton {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-/* week and day number styling */
-
-.fc-basic-view .fc-week-number,
-.fc-basic-view .fc-day-number {
-  padding: 0 2px;
-}
-
-.fc-basic-view td.fc-week-number span,
-.fc-basic-view td.fc-day-number {
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-.fc-basic-view .fc-week-number {
-  text-align: center;
-}
-
-.fc-basic-view .fc-week-number span {
-  /* work around the way we do column resizing and ensure a minimum width */
-  display: inline-block;
-  min-width: 1.25em;
-}
-
-.fc-ltr .fc-basic-view .fc-day-number {
-  text-align: right;
-}
-
-.fc-rtl .fc-basic-view .fc-day-number {
-  text-align: left;
-}
-
-.fc-day-number.fc-other-month {
-  opacity: 0.3;
-  filter: alpha(opacity=30); /* for IE */
-  /* opacity with small font can sometimes look too faded
-     might want to set the 'color' property instead
-     making day-numbers bold also fixes the problem */
-}
-
-/* AgendaView all-day area
---------------------------------------------------------------------------------------------------*/
-
-.fc-agenda-view .fc-day-grid {
-  position: relative;
-  z-index: 2; /* so the "more.." popover will be over the time grid */
-}
-
-.fc-agenda-view .fc-day-grid .fc-row {
-  min-height: 3em; /* all-day section will never get shorter than this */
-}
-
-.fc-agenda-view .fc-day-grid .fc-row .fc-content-skeleton {
-  padding-top: 1px; /* add a pixel to make sure there are 2px padding above events */
-  padding-bottom: 1em; /* give space underneath events for clicking/selecting days */
-}
-
- 
-/* TimeGrid axis running down the side (for both the all-day area and the slot area)
---------------------------------------------------------------------------------------------------*/
-
-.fc .fc-axis { /* .fc to overcome default cell styles */
-  vertical-align: middle;
-  padding: 0 4px;
-  white-space: nowrap;
-} 
-
-.fc-ltr .fc-axis {
-  text-align: right;
-}
-
-.fc-rtl .fc-axis {
-  text-align: left;
-}
-
-.ui-widget td.fc-axis {
-  font-weight: normal; /* overcome jqui theme making it bold */
-}
-  
- 
-/* TimeGrid Structure
---------------------------------------------------------------------------------------------------*/
-
-.fc-time-grid-container, /* so scroll container's z-index is below all-day */
-.fc-time-grid { /* so slats/bg/content/etc positions get scoped within here */
-  position: relative;
-  z-index: 1;
-}
-
-.fc-time-grid {
-  min-height: 100%; /* so if height setting is 'auto', .fc-bg stretches to fill height */
-}
-
-.fc-time-grid table { /* don't put outer borders on slats/bg/content/etc */
-  border: 0 hidden transparent;
-}
-
-.fc-time-grid > .fc-bg {
-  z-index: 1;
-}
-
-.fc-time-grid .fc-slats,
-.fc-time-grid > hr { /* the <hr> AgendaView injects when grid is shorter than scroller */
-  position: relative;
-  z-index: 2;
-}
-
-.fc-time-grid .fc-content-col {
-  position: relative; /* because now-indicator lives directly inside */
-}
-
-.fc-time-grid .fc-content-skeleton {
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-/* divs within a cell within the fc-content-skeleton */
-
-.fc-time-grid .fc-business-container {
-  position: relative;
-  z-index: 1;
-}
-
-.fc-time-grid .fc-bgevent-container {
-  position: relative;
-  z-index: 2;
-}
-
-.fc-time-grid .fc-highlight-container {
-  position: relative;
-  z-index: 3;
-}
-
-.fc-time-grid .fc-event-container {
-  position: relative;
-  z-index: 4;
-}
-
-.fc-time-grid .fc-now-indicator-line {
-  z-index: 5;
-}
-
-.fc-time-grid .fc-helper-container { /* also is fc-event-container */
-  position: relative;
-  z-index: 6;
-}
-
-
-/* TimeGrid Slats (lines that run horizontally)
---------------------------------------------------------------------------------------------------*/
-
-.fc-time-grid .fc-slats td {
-  height: 1.5em;
-  border-bottom: 0; /* each cell is responsible for its top border */
-}
-
-.fc-time-grid .fc-slats .fc-minor td {
-  border-top-style: dotted;
-}
-
-.fc-time-grid .fc-slats .ui-widget-content { /* for jqui theme */
-  background: none; /* see through to fc-bg */
-}
-
-
-/* TimeGrid Highlighting Slots
---------------------------------------------------------------------------------------------------*/
-
-.fc-time-grid .fc-highlight-container { /* a div within a cell within the fc-highlight-skeleton */
-  position: relative; /* scopes the left/right of the fc-highlight to be in the column */
-}
-
-.fc-time-grid .fc-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  /* top and bottom will be in by JS */
-}
-
-
-/* TimeGrid Event Containment
---------------------------------------------------------------------------------------------------*/
-
-.fc-ltr .fc-time-grid .fc-event-container { /* space on the sides of events for LTR (default) */
-  margin: 0 2.5% 0 2px;
-}
-
-.fc-rtl .fc-time-grid .fc-event-container { /* space on the sides of events for RTL */
-  margin: 0 2px 0 2.5%;
-}
-
-.fc-time-grid .fc-event,
-.fc-time-grid .fc-bgevent {
-  position: absolute;
-  z-index: 1; /* scope inner z-index's */
-}
-
-.fc-time-grid .fc-bgevent {
-  /* background events always span full width */
-  left: 0;
-  right: 0;
-}
-
-
-/* Generic Vertical Event
---------------------------------------------------------------------------------------------------*/
-
-.fc-v-event.fc-not-start { /* events that are continuing from another day */
-  /* replace space made by the top border with padding */
-  border-top-width: 0;
-  padding-top: 1px;
-
-  /* remove top rounded corners */
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.fc-v-event.fc-not-end {
-  /* replace space made by the top border with padding */
-  border-bottom-width: 0;
-  padding-bottom: 1px;
-
-  /* remove bottom rounded corners */
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-
-/* TimeGrid Event Styling
-----------------------------------------------------------------------------------------------------
-We use the full "fc-time-grid-event" class instead of using descendants because the event won't
-be a descendant of the grid when it is being dragged.
-*/
-
-.fc-time-grid-event {
-  overflow: hidden; /* don't let the bg flow over rounded corners */
-}
-
-.fc-time-grid-event .fc-time,
-.fc-time-grid-event .fc-title {
-  padding: 0 1px;
-}
-
-.fc-time-grid-event .fc-time {
-  font-size: .85em;
-  white-space: nowrap;
-}
-
-/* short mode, where time and title are on the same line */
-
-.fc-time-grid-event.fc-short .fc-content {
-  /* don't wrap to second line (now that contents will be inline) */
-  white-space: nowrap;
-}
-
-.fc-time-grid-event.fc-short .fc-time,
-.fc-time-grid-event.fc-short .fc-title {
-  /* put the time and title on the same line */
-  display: inline-block;
-  vertical-align: top;
-}
-
-.fc-time-grid-event.fc-short .fc-time span {
-  display: none; /* don't display the full time text... */
-}
-
-.fc-time-grid-event.fc-short .fc-time:before {
-  content: attr(data-start); /* ...instead, display only the start time */
-}
-
-.fc-time-grid-event.fc-short .fc-time:after {
-  content: "\000A0-\000A0"; /* seperate with a dash, wrapped in nbsp's */
-}
-
-.fc-time-grid-event.fc-short .fc-title {
-  font-size: .85em; /* make the title text the same size as the time */
-  padding: 0; /* undo padding from above */
-}
-
-/* resizer */
-
-.fc-time-grid-event .fc-resizer {
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 8px;
-  overflow: hidden;
-  line-height: 8px;
-  font-size: 11px;
-  font-family: monospace;
-  text-align: center;
-  cursor: s-resize;
-}
-
-.fc-time-grid-event .fc-resizer:after {
-  content: "=";
-}
-
-
-/* Now Indicator
---------------------------------------------------------------------------------------------------*/
-
-.fc-time-grid .fc-now-indicator-line {
-  border-top-width: 1px;
-  left: 0;
-  right: 0;
-}
-
-/* arrow on axis */
-
-.fc-time-grid .fc-now-indicator-arrow {
-  margin-top: -5px; /* vertically center on top coordinate */
-}
-
-.fc-ltr .fc-time-grid .fc-now-indicator-arrow {
-  left: 0;
-  /* triangle pointing right... */
-  border-width: 5px 0 5px 6px;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-}
-
-.fc-rtl .fc-time-grid .fc-now-indicator-arrow {
-  right: 0;
-  /* triangle pointing left... */
-  border-width: 5px 6px 5px 0;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-}
-
-/* Estilo general de los días */
-.fc-list-heading-main {
-  font-size: 15px;
-  font-weight: bold;
-  color: #333;
-  padding: 10px 15px;
-}
-
-/* Día de la semana (derecha) */
-.fc-list-heading-alt {
-  font-size: 14px;
-  color: #666;
-  padding: 10px 15px;
-}
-
-.fc-listYear-view .fc-scroller {
-    height: 800px !important; 
-}
-
-
-
-.fc-list-item-title {
-  color: #333;
-  padding: 10px 20px !important;
-    cursor: pointer !important;
-}
-
-/* Puntos de evento */
-.fc-event-dot {
-margin: 4px 10px !important;
-  background-color: transparent !important;
-  color:  transparent !important;
-}
-
-
-
-.formLoader {
-  overflow: hidden;
-  height: 80%;
-  position: absolute;
-  width: 90%;
-  min-height: 150px;
-  
-}
-
-.formLoader ul {
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  z-index: 9999;
-  margin: 0;
-}
-
-@keyframes preload {
-  0% {
-    background: #ed7c00;
-    opacity: 1
-  }
-  50% {
-    background: #fff;
-    opacity: 0.5
-  }
-  100% {
-    background: #ed7c00;
-    opacity: 1
-  }
-}
-
-.formLoader .formLoading {
-  display: block;
-  height: 14px;
-  margin: 0 auto;
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
-  transform: translateX(-50%);
-  position: absolute;
-  width: 100%;
-  padding: 0;
-}
-
-.formLoader .formLoading li {
-  background: #fff;
-  opacity: 0.5;
-  display: block;
-  float: left;
-  width: 12px;
-  height: 12px;
-  border: 1px solid #ed7c00;
-  line-height: 12px;
-  padding: 0;
-  position: relative;
-  margin: 0 0 0 4px;
-  animation: preload 1s infinite;
-  top: -50%;
-  border-radius: 50%;
-}
-
-.formLoader .formLoading li:first-child {
-  margin-left: 0
-}
-
-.formLoader .formLoading li:nth-child(2) {
-  animation-delay: .15s
-}
-
-.formLoader .formLoading li:nth-child(3) {
-  animation-delay: .3s
-}
-
-.formLoader.formLoader-complete {
-  opacity: 0;
-  visibility: hidden;
-  transition-duration: 1s
-}
-
-
-.btnAtten{
-  margin-top: 20px; 
-  float: right; 
-  font-size: 18px;
-}
-  @media (min-width: 600px ){
-    .btnAtten{
-
-      display: none;
-    }
-  }
-
-   @media (max-width: 500px ){
-    body{
-        margin-top: 30px;
-    }
-  }
-  header {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-header h1 {
-    color: var(--primary-color);
-    margin-bottom: 1px;
-}
-
-header p {
-    color: var(--dark-gray);
-}
-
-.booking-flow {
-    background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    min-height: 500px;
-}
-
-.step {
-    display: none;
-}
-
-.step.active {
-    display: block;
-}
-
-/* 🎨 FULLCALENDAR MODERNO Y RESPONSIVE */
-
-
-
-
-/* Estilo visual para fechas disponibles */
-/* Estilo para fechas disponibles (blancas) */
-.available-date {
-  background-color: var(--white); /* Fondo blanco */
-  color: var(--primary-color); /* Texto en color primario */
-  box-shadow: inset 0 0 0 1px rgba(63, 81, 181, 0.2);
-  border-radius: 6px;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-.available-date:hover {
-  background-color: var(--light-gray); /* Gris muy claro al hover */
-  box-shadow: inset 0 0 0 1px var(--primary-color);
-}
-
-.available-date.selected {
-  background-color: var(--light-gray); /* Gris muy claro al hover */
-  box-shadow: inset 0 0 0 1px var(--primary-color);
-}
-
-/* Estilo para fechas NO disponibles (gris claro) */
-.fc-day:not(.available-date) {
-  background-color: rgba(245, 245, 245, 0.2); /* Gris muy claro */
-  color: silver; /* Texto gris */
-  opacity: 0.7;
-}
-
-/* Mensaje de no disponibilidad */
-
-
-
-
-/* Time Slots */
-.time-slots-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.time-slot {
-    background-color: var(--white);
-    border: 1px solid var(--medium-gray);
-    border-radius: 4px;
-    padding: 0.75rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.time-slot:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-.time-slot.selected {
-    background-color: var(--light-gray); /* Gris muy claro al hover */
-  box-shadow: inset 0 0 0 1px var(--primary-color);
- 
-    color: var(--primary-color);
-}
-
-/* Form Styles */
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--medium-gray);
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.form-group textarea {
-    resize: vertical;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-}
-
-/* Buttons */
-.btn {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.btn.primary {
-    background-color: var(--primary-color);
-    color: var(--white);
-}
-
-.btn.primary:hover {
-    background-color: var(--primary-dark);
-}
-
-.btn.secondary {
-    background-color: var(--white);
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-}
-
-.btn.secondary:hover {
-    background-color: var(--light-gray);
-}
-
-/* Confirmation */
-.confirmation-message {
-    text-align: center;
-    padding: 2rem;
-}
-
-.confirmation-message svg {
-    margin-bottom: 1.5rem;
-}
-
-.confirmation-message h2 {
-    color: var(--success-color);
-    margin-bottom: 1rem;
-}
-
-.confirmation-message p {
-    margin-bottom: 2rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-    }
-    
-    .time-slots-container {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    }
-}
-    
-    .fc {
-  direction: ltr;
-  text-align: left;
-
-  max-width: 700px;
-  height: 100vh;
-  margin: auto;
-}
-
- 
-/* Versión minimalista */
-.fc-col-header-cell {
-    color: white !important;
-
-}
-
-
-
-@media (max-width: 600px) {
-  .fc-daygrid-day,
-  .fc-daygrid-day-frame,
-  .fc .fc-daygrid-day-top,
-  .fc .fc-scrollgrid-sync-table td {
-    height: 50px !important;
-    min-height: 50px !important;
-    max-height: 50px !important;
-    overflow: hidden;
-  }
-
-  /* También reduce el número del día */
-  .fc .fc-daygrid-day-number {
-    font-size: 0.9rem !important;
-
-  }
-  
-   .fc .fc-toolbar-title {
-    font-size: 1.3rem !important;
-  }
-
-
-}
-
-
-.fc-rtl {
-  text-align: right;
-}
-
-body .fc { /* extra precedence to overcome jqui */
-  font-size: 1em;
-    color: gray;
-    font-family: 'Quicksand', sans-serif;
-    
-}
-
-
-
-.fc .fc-button {
-  padding: 0.4rem 0.9rem;
-  background-color: var(--primary-color);
-  border: none;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 6px;
-  transition: background-color 0.2s;
-}
-
-.fc .fc-button:hover,
-.fc .fc-button:focus {
-  background-color: var(--primary-dark);
-  outline: none;
-}
-
-
-.fc .fc-button-primary:not(:disabled).fc-button-active,
-.fc .fc-button-primary:not(:disabled):active {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-}
-
-
-.fc-divider {
-  border-style: solid;
-  border-width: 1px;
-}
-
-hr.fc-divider {
-  height: 0;
-  margin: 0;
-  padding: 0 0 2px; /* height is unreliable across browsers, so use padding */
-  border-width: 1px 0;
-}
-
-.fc-clear {
-  clear: both;
-}
-
-.fc-bg,
-.fc-bgevent-skeleton,
-.fc-highlight-skeleton,
-.fc-helper-skeleton {
-  /* these element should always cling to top-left/right corners */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.fc-bg {
-  bottom: 0; /* strech bg to bottom edge */
-}
-
-.fc-bg table {
-  height: 100%; /* strech bg to bottom edge */
-}
-
-
-/* Tables
---------------------------------------------------------------------------------------------------*/
-
-.fc th {
-
-    padding: 2px !important;
-   background-color: #383c44;
-  color: white;
-}
-
-
-
-/* Day Row (used within the header and the DayGrid)
---------------------------------------------------------------------------------------------------*/
-
-
-/* Scrolling Container
---------------------------------------------------------------------------------------------------*/
-
-.fc-scroller { /* this class goes on elements for guaranteed vertical scrollbars */
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.fc-scroller > * { /* we expect an immediate inner element */
-  position: relative; /* re-scope all positions */
-  width: 100%; /* hack to force re-sizing this inner element when scrollbars appear/disappear */
-  overflow: hidden; /* don't let negative margins or absolute positioning create further scroll */
-}
-
-
-/* Global Event Styles
---------------------------------------------------------------------------------------------------*/
-
-
-/* overpower some of bootstrap's and jqui's styles on <a> tags */
-.fc-event,
-.fc-event:hover,
-.ui-widget .fc-event {
-  color: #fff; /* default TEXT color */
-  text-decoration: none; /* if <a> has an href */
-  cursor: pointer;
-}
-
-
-
-.fc-not-allowed, /* causes a "warning" cursor. applied on body */
-.fc-not-allowed .fc-event { /* to override an event's custom cursor */
-  cursor: not-allowed;
-}
-
-.fc-event .fc-bg { /* the generic .fc-bg already does position */
-  z-index: 1;
-  background: #fff;
-  opacity: .25;
-  filter: alpha(opacity=25); /* for IE */
-}
-
-.fc-event .fc-content {
-  position: relative;
-  z-index: 2;
-}
-
-.fc-event .fc-resizer {
-  position: absolute;
-  z-index: 3;
-}
-
-
-/* Horizontal Events
---------------------------------------------------------------------------------------------------*/
-
-/* events that are continuing to/from another week. kill rounded corners and butt up against edge */
-
-.fc-ltr .fc-h-event.fc-not-start,
-.fc-rtl .fc-h-event.fc-not-end {
-  margin-left: 0;
-  border-left-width: 0;
-  padding-left: 1px; /* replace the border with padding */
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.fc-ltr .fc-h-event.fc-not-end,
-.fc-rtl .fc-h-event.fc-not-start {
-  margin-right: 0;
-  border-right-width: 0;
-  padding-right: 1px; /* replace the border with padding */
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-/* resizer */
-
-.fc-h-event .fc-resizer { /* positioned it to overcome the event's borders */
-  top: -1px;
-  bottom: -1px;
-  left: -1px;
-  right: -1px;
-  width: 5px;
-}
-
-.fc-toolbar {
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.fc-toolbar-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--primary-color);
-}
-
-.fc-toolbar .fc-left {
-  float: left;
-}
-
-.fc-toolbar .fc-right {
-  float: right;
-}
-
-.fc-toolbar .fc-center {
-  display: inline-block;
-}
-
-/* the things within each left/right/center section */
-.fc .fc-toolbar > * > * { /* extra precedence to override button border margins */
-  float: left;
-  margin-left: .75em;
-}
-
-/* the first thing within each left/center/right section */
-.fc .fc-toolbar > * > :first-child { /* extra precedence to override button border margins */
-  margin-left: 0;
-}
-  
-
-
-
-
-
-
-
-::selection {background: #f31544; color: #FFF;}
-::moz-selection {background: #f31544; color: #FFF;}
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-h1{
-  font-size: 1.5em;
-  color: #444;
-}
-h2{font-size: .9em;}
-h3{
-  font-size: 1.2em;
-  font-weight: 300;
-  line-height: 2em;
-}
-p{
-  font-size: .75em;
-  color: #666;
-  line-height: 1.2em;
-}
-
-#invoiceholder{
-  width:100%;
-  height: 100%;
-  padding: 15px 0;
-}
-#invoice{
-  position: relative;
-  margin: 0 auto;
-  width: 700px;
-  background: #FFF;
-}
-
-[id*='invoice-']{ /* Targets all id with 'col-' */
-/*  border-bottom: 1px solid #EEE;*/
-  padding: 20px;
-}
-
-#invoice-top{border-bottom: 2px solid #00a63f;}
-#invoice-mid{min-height: 110px; }
-#invoice-bot{ min-height: 240px;}
-
-.logo{
-    display: inline-block;
-    vertical-align: middle;
-	width: 110px;
-    overflow: hidden;
-}
-.info{
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 20px;
-}
-.logo img,
-.clientlogo img {
-    width: 100%;
-}
-.clientlogo{
-    display: inline-block;
-    vertical-align: middle;
-	width: 50px;
-}
-.clientinfo {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 20px
-}
-.title{
-  float: right;
-}
-.title p{text-align: right;}
-#message{margin-bottom: 30px; display: block;}
-h2 {
-    margin-bottom: 5px;
-    color: #444;
-}
-
-.cta-group a {
-    display: inline-block;
-    padding: 7px;
-    border-radius: 4px;
-    background: rgb(196, 57, 10);
-    margin-right: 10px;
-    min-width: 100px;
-    text-align: center;
-    color: #fff;
-    font-size: 0.75em;
-}
-
-.cta-group.mobile-btn-group {
-    display: none;
-}
-
-
-footer {
-    border-top: 1px solid #eeeeee;;
-    padding: 15px 20px;
-}
-
-</style>
-
-
-    <section class="content">
-      <div class="left-content">
- 
-         <div class="container">
-      
-
-    <div class="booking-flow">
-        <!-- Paso 1: Selección de fecha -->
-        <div id="step-date" class="step active">
-            <div id="calendar"></div>
-        </div>
-
-        <!-- Paso 2: Selección de horario -->
-       
-
-        <!-- Paso 3: Formulario de información -->
-        <div id="step-form" class="step" style="padding: 40px">
-          
-            <form id="booking-form">
-                <div class="form-group">
-                    <label for="name">Nombre completo</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Teléfono</label>
-                    <input type="tel" id="phone">
-                </div>
-                <div class="form-group">
-                    <label for="notes">Notas adicionales</label>
-                    <textarea id="notes" rows="3"></textarea>
-                </div>
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn.primary {
+            background: #4CAF50;
+            color: white;
+            flex: 1;
+        }
+
+        .btn.primary:hover {
+            background: #45a049;
+        }
+
+        .btn.secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        .confirmation-message {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .confirmation-message svg {
+            margin-bottom: 20px;
+        }
+
+        .confirmation-message h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos mejorados para el review */
+        .booking-review {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 20px;
+            border: 1px solid #e1e5f2;
+        }
+
+        .review-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .review-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .review-subtitle {
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        .academy-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .academy-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #4CAF50;
+        }
+
+        .academy-details h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .academy-details p {
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 2px 0;
+        }
+
+        .booking-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .detail-card {
+            background: white;
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #8e9aaf;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .contact-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #8e9aaf;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 6px 0;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            color: #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
             
-                <div class="form-actions">
-                    <button type="button" id="back-to-time" class="btn secondary">Volver</button>
-                    <button type="submit" class="btn primary">Confirmar Reserva</button>
-                </div>
-            </form>
-           
-        </div>
-
-        <!-- Paso 4: Confirmación -->
-        <div id="step-confirmation" class="step">
-            <div class="confirmation-message">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                <h2>¡Reserva confirmada!</h2>
-                <p id="confirmation-details"></p>
-                <button id="new-booking" class="btn primary">Hacer otra reserva</button>
-            </div>
-        </div>
-    </div>
-</div>
-      </div>
-
-      <div class="right-content" >
- 
-  <header>
-            <h1>Reserva tu Clase</h1>
-            <p>Selecciona una fecha y horario disponible</p>
-        </header>
-
- <div id="step-time" class="step">
-            <h2>Horarios disponibles para <span id="selected-date"></span></h2>
-            <div id="time-slots" class="time-slots-container"></div>
-      
-        </div>
-
-
- 
-       <div id="step-review" class="step">
-  <div id="invoiceholder">
-  <div id="invoice" >
-    
-  
-
-    
-    <div id="invoice-mid">   
-     
-        <div class="clearfix">
-            <div class="col-left" >
-                <div class="clientlogo"><img src="https://lh3.googleusercontent.com/d/1gA-HKzQXWksHNg8jCbUveFUXoE3jfip_" alt="Logo" style="border-radius: 50%; width: 60px"/></div>
-                <div class="clientinfo">
-                    <h2 id="supplier">Mozart Academy</h2>
-                    <p><span id="address">Odontología 69, 404</span><br><span id="city">Copilco Universidad, Coyoacán</span><br><span id="zip">04360, CDMX</span><br><span id="tax_num">55-7767-6657</span><br></p>
-                </div>
-            </div>
-        
-            <div class="col-right">
-                <div  style="border-bottom: 2px solid #00a63f; margin-top: 20px;"> </div>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td><span>Invoice Total</span><label id="invoice_total"><span id="form-date"></span></label></td>
-                            <td><span>Currency</span><label id="currency"><span id="form-time"></span></label></td>
-                        </tr>
-                        <tr>
-                            <td><span>Payment Term</span><label id="payment_term">60 gg DFFM</label></td>
-                            <td><span>Invoice Type</span><label id="invoice_type">EXP REP INV</label></td>
-                        </tr>
-                        <tr><td colspan="2"><span>Note</span>#<label id="note">None</label></td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>       
-    </div><!--End Invoice Mid-->
-     
-
-    <footer>
-      <div id="legalcopy" class="clearfix">
-        <p class="col-right">Our mailing address is:
-            <span class="email"><a href="mailto:supplier.portal@almonature.com">supplier.portal@almonature.com</a></span>
-        </p>
-      </div>
-    </footer>
-  </div><!--End Invoice-->
-</div><!-- End Invoice Holder-->
-</div>
-
-
-
- 
-   </div> 
-   </section>  
-
-<script>
-      document.addEventListener('DOMContentLoaded', function() {
-    // Variables de estado
-    let selectedDate = null;
-    let selectedTime = null;
-
-    // Elementos del DOM
-    const stepDate = document.getElementById('step-date');
-    const stepTime = document.getElementById('step-time');
-    const stepForm = document.getElementById('step-form');
-    const stepConfirmation = document.getElementById('step-confirmation');
-
-    const selectedDateElement = document.getElementById('selected-date');
-    //const formDateTimeElement = document.getElementById('form-date-time');
-    const confirmationDetailsElement = document.getElementById('confirmation-details');
-
-    const timeSlotsContainer = document.getElementById('time-slots');
-    const bookingForm = document.getElementById('booking-form');
-
-    const backToDateBtn = document.getElementById('back-to-date');
-    const backToTimeBtn = document.getElementById('back-to-time');
-    const newBookingBtn = document.getElementById('new-booking');
-
-    // Generar fechas disponibles dinámicamente (hoy y los próximos 5 días) 
-    const today = new Date();
-    const availableDates = [];
-    const availableTimes = {};
- const weeklySchedule = {
- 
-    // 1: [], ← Lunes (omitido)
-    // 2: [], ← Martes (omitido)
-    3: ['16:00', '17:00', '18:00', '19:00'],   // Miércoles
-    4: ['14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],    // Jueves      
-    5: ['11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],     // Viernes     
-    6: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],      // Sábado    
-    0: ['09:00', '10:00', '11:00', '12:00', '13:00']  // Domingo
-};
-
-for (let i = 0; i < 16; i++) {
-    const date = new Date(today);
-    date.setDate(today.getDate() + i);
-    const dateStr = date.toISOString().split('T')[0];
-    const dayOfWeek = date.getDay();
-
-    // Saltar lunes (1) y martes (2)
-    if (dayOfWeek === 1 || dayOfWeek === 2) continue;
-
-    availableDates.push(dateStr);
-    availableTimes[dateStr] = weeklySchedule[dayOfWeek] || [];
-}
-
-let selectedCell = null;
-    // Inicializar calendario
-    const calendarEl = document.getElementById('calendar');
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'es',
-      contentHeight: 'auto',
-        headerToolbar: {
-            left: 'title',
-            center: '',
-            right: 'prev,next'
-        },
-        
-        dateClick: function(info) {
-    const dateStr = info.dateStr;
-    if (availableDates.includes(dateStr)) {
-      handleDateSelection(dateStr);
-
-      // Quitar estilo anterior
-      if (selectedCell) {
-        selectedCell.classList.remove("selected");
-      }
-
-      // Guardar y aplicar estilo a la nueva celda
-      selectedCell = info.dayEl;
-      selectedCell.classList.add("selected");
-    }
-  },
-        dayCellDidMount: function(info) {
-            const dateStr = info.date.toISOString().split('T')[0];
-            if (availableDates.includes(dateStr)) {
-                info.el.classList.add('available-date');
+            .right-content {
+                width: 100%;
+            }
+            
+            .booking-details {
+                grid-template-columns: 1fr;
             }
         }
-    });
-    calendar.render();
+    </style>
+</head>
+<body>
+    <section class="content">
+        <div class="left-content">
+            <div class="container">
+                <div class="booking-flow">
+                    <!-- Paso 1: Selección de fecha -->
+                    <div id="step-date" class="step active">
+                        <div id="calendar"></div>
+                    </div>
 
-    
+                    <!-- Paso 3: Formulario de información -->
+                    <div id="step-form" class="step" style="padding: 40px">
+                        <form id="booking-form">
+                            <div class="form-group">
+                                <label for="name">Nombre completo</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo electrónico</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Teléfono</label>
+                                <input type="tel" id="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Notas adicionales</label>
+                                <textarea id="notes" rows="3"></textarea>
+                            </div>
+                        
+                            <div class="form-actions">
+                                <button type="button" id="back-to-time" class="btn secondary">Volver</button>
+                                <button type="submit" class="btn primary">Confirmar Reserva</button>
+                            </div>
+                        </form>
+                    </div>
 
-    backToTimeBtn.addEventListener('click', function() {
-        document.getElementById('step-form').classList.remove('active');
-        document.getElementById('step-review').classList.remove('active');
-        document.getElementById('step-date').classList.add('active');
-        document.getElementById('step-time').classList.add('active');
-    });
+                    <!-- Paso 4: Confirmación -->
+                    <div id="step-confirmation" class="step">
+                        <div class="confirmation-message">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <h2>¡Reserva confirmada!</h2>
+                            <p id="confirmation-details"></p>
+                            <button id="new-booking" class="btn primary">Hacer otra reserva</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    newBookingBtn.addEventListener('click', function() {
-        resetForm();
-        showStep('step-date');
-    });
+        <div class="right-content">
+            <header>
+                <h1>Reserva tu Clase</h1>
+                <p>Selecciona una fecha y horario disponible</p>
+            </header>
 
-    bookingForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+            <div id="step-time" class="step">
+                <h2>Horarios disponibles para <span id="selected-date"></span></h2>
+                <div id="time-slots" class="time-slots-container"></div>
+            </div>
 
-        // Validar que se haya seleccionado fecha y hora
-        if (!selectedDate || !selectedTime) {
-            alert('Por favor, selecciona una fecha y un horario.');
-            return;
-        }
+            <!-- Review mejorado y minimalista -->
+            <div id="step-review" class="step">
+                <div class="booking-review">
+                    <div class="review-header">
+                        <h2 class="review-title">Resumen de tu reserva</h2>
+                        <p class="review-subtitle">Revisa los detalles antes de confirmar</p>
+                    </div>
 
-        const formData = {
-            name: document.getElementById('name').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            phone: document.getElementById('phone').value.trim(),
-            notes: document.getElementById('notes').value.trim(),
-            date: selectedDate,
-            time: selectedTime
-        };
+                    <div class="academy-info">
+                        <img src="https://lh3.googleusercontent.com/d/1gA-HKzQXWksHNg8jCbUveFUXoE3jfip_" 
+                             alt="Mozart Academy Logo" 
+                             class="academy-logo">
+                        <div class="academy-details">
+                            <h3>Mozart Academy</h3>
+                            <p>Odontología 69, 404</p>
+                            <p>Copilco Universidad, Coyoacán</p>
+                            <p>04360, CDMX</p>
+                        </div>
+                    </div>
 
-        // Validar campos obligatorios
-        if (!formData.name || !formData.email) {
-            alert('Por favor, completa los campos obligatorios: nombre y correo electrónico.');
-            return;
-        }
+                    <div class="booking-details">
+                        <div class="detail-card">
+                            <div class="detail-label">Fecha</div>
+                            <div class="detail-value" id="form-date"></div>
+                        </div>
+                        <div class="detail-card">
+                            <div class="detail-label">Horario</div>
+                            <div class="detail-value" id="form-time"></div>
+                        </div>
+                    </div>
 
+                    <div class="contact-info">
+                        <div class="contact-label">Información de contacto</div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>55-7767-6657</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <span>mozart.academy@email.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
 
-     var api = "https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec";
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables de estado
+            let selectedDate = null;
+            let selectedTime = null;
 
-    var validationData = {
-        redirect: "follow",
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify({
-          action: "registration",
-          name: name,
-            email: email,
-            phone: phone,
-            notes: notes,
-            date: selectedDate,
-            time: selectedTime
-        })
-      };
+            // Elementos del DOM
+            const stepDate = document.getElementById('step-date');
+            const stepTime = document.getElementById('step-time');
+            const stepForm = document.getElementById('step-form');
+            const stepConfirmation = document.getElementById('step-confirmation');
 
+            const selectedDateElement = document.getElementById('selected-date');
+            const confirmationDetailsElement = document.getElementById('confirmation-details');
 
-     fetch(api, validationData)
-    .then(response => response.text())
-    .then(data => {
-        confirmationDetailsElement.innerHTML = `
-                <strong>${formData.name}</strong>, tu reserva está confirmada.<br><br>
-                <strong>Fecha:</strong> ${formatDate(selectedDate)} a las ${selectedTime}<br>
-                <strong>Correo:</strong> ${formData.email}<br><br>
-                Te hemos enviado un correo con los detalles.
-            `;
-            showStep('step-confirmation');
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("Hubo un problema al enviar la reserva. Intenta nuevamente.");
-    });
+            const timeSlotsContainer = document.getElementById('time-slots');
+            const bookingForm = document.getElementById('booking-form');
 
-        
-    });
+            const backToTimeBtn = document.getElementById('back-to-time');
+            const newBookingBtn = document.getElementById('new-booking');
 
-    // Funciones auxiliares
-    function handleDateSelection(dateStr) {
-        selectedDate = dateStr;
-        selectedDateElement.textContent = formatDate(dateStr);
-        renderTimeSlots(dateStr);
-        document.getElementById('step-time').classList.add('active');
+            // Generar fechas disponibles dinámicamente (hoy y los próximos 5 días) 
+            const today = new Date();
+            const availableDates = [];
+            const availableTimes = {};
+            const weeklySchedule = {
+                // 1: [], ← Lunes (omitido)
+                // 2: [], ← Martes (omitido)
+                3: ['16:00', '17:00', '18:00', '19:00'],   // Miércoles
+                4: ['14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],    // Jueves      
+                5: ['11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],     // Viernes     
+                6: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],      // Sábado    
+                0: ['09:00', '10:00', '11:00', '12:00', '13:00']  // Domingo
+            };
 
-    }
+            for (let i = 0; i < 16; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+                const dateStr = date.toISOString().split('T')[0];
+                const dayOfWeek = date.getDay();
 
-    function renderTimeSlots(dateStr) {
-        timeSlotsContainer.innerHTML = '';
+                // Saltar lunes (1) y martes (2)
+                if (dayOfWeek === 1 || dayOfWeek === 2) continue;
 
-        if (availableTimes[dateStr]) {
-            availableTimes[dateStr].forEach(time => {
-                const timeSlot = document.createElement('button');
-                timeSlot.className = 'time-slot';
-                timeSlot.textContent = time;
-                timeSlot.addEventListener('click', function() {
-                    // Remover selección previa
-                    document.querySelectorAll('.time-slot').forEach(slot => {
-                        slot.classList.remove('selected');
+                availableDates.push(dateStr);
+                availableTimes[dateStr] = weeklySchedule[dayOfWeek] || [];
+            }
+
+            let selectedCell = null;
+            
+            // Inicializar calendario
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                contentHeight: 'auto',
+                headerToolbar: {
+                    left: 'title',
+                    center: '',
+                    right: 'prev,next'
+                },
+                
+                dateClick: function(info) {
+                    const dateStr = info.dateStr;
+                    if (availableDates.includes(dateStr)) {
+                        handleDateSelection(dateStr);
+
+                        // Quitar estilo anterior
+                        if (selectedCell) {
+                            selectedCell.classList.remove("selected");
+                        }
+
+                        // Guardar y aplicar estilo a la nueva celda
+                        selectedCell = info.dayEl;
+                        selectedCell.classList.add("selected");
+                    }
+                },
+                dayCellDidMount: function(info) {
+                    const dateStr = info.date.toISOString().split('T')[0];
+                    if (availableDates.includes(dateStr)) {
+                        info.el.classList.add('available-date');
+                    }
+                }
+            });
+            calendar.render();
+
+            backToTimeBtn.addEventListener('click', function() {
+                document.getElementById('step-form').classList.remove('active');
+                document.getElementById('step-review').classList.remove('active');
+                document.getElementById('step-date').classList.add('active');
+                document.getElementById('step-time').classList.add('active');
+            });
+
+            newBookingBtn.addEventListener('click', function() {
+                resetForm();
+                showStep('step-date');
+            });
+
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Validar que se haya seleccionado fecha y hora
+                if (!selectedDate || !selectedTime) {
+                    alert('Por favor, selecciona una fecha y un horario.');
+                    return;
+                }
+
+                const formData = {
+                    name: document.getElementById('name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    notes: document.getElementById('notes').value.trim(),
+                    date: selectedDate,
+                    time: selectedTime
+                };
+
+                // Validar campos obligatorios
+                if (!formData.name || !formData.email) {
+                    alert('Por favor, completa los campos obligatorios: nombre y correo electrónico.');
+                    return;
+                }
+
+                // Simular envío al servidor
+                setTimeout(() => {
+                    confirmationDetailsElement.innerHTML = `
+                        <strong>${formData.name}</strong>, tu reserva está confirmada.<br><br>
+                        <strong>Fecha:</strong> ${formatDate(selectedDate)} a las ${selectedTime}<br>
+                        <strong>Correo:</strong> ${formData.email}<br><br>
+                        Te hemos enviado un correo con los detalles.
+                    `;
+                    showStep('step-confirmation');
+                }, 1000);
+            });
+
+            // Funciones auxiliares
+            function handleDateSelection(dateStr) {
+                selectedDate = dateStr;
+                selectedDateElement.textContent = formatDate(dateStr);
+                renderTimeSlots(dateStr);
+                document.getElementById('step-time').classList.add('active');
+            }
+
+            function renderTimeSlots(dateStr) {
+                timeSlotsContainer.innerHTML = '';
+
+                if (availableTimes[dateStr]) {
+                    availableTimes[dateStr].forEach(time => {
+                        const timeSlot = document.createElement('button');
+                        timeSlot.className = 'time-slot';
+                        timeSlot.textContent = time;
+                        timeSlot.addEventListener('click', function() {
+                            // Remover selección previa
+                            document.querySelectorAll('.time-slot').forEach(slot => {
+                                slot.classList.remove('selected');
+                            });
+
+                            // Seleccionar este horario
+                            timeSlot.classList.add('selected');
+                            selectedTime = time;
+
+                            // Actualizar el review
+                            document.getElementById("form-date").textContent = `${formatDate(dateStr)}`;
+                            document.getElementById("form-time").textContent = `${time}`;
+
+                            // Continuar al siguiente paso después de un breve retraso
+                            setTimeout(() => {
+                                showStep('step-form');
+                                document.getElementById('step-review').classList.add('active');
+                            }, 300);
+                        });
+
+                        timeSlotsContainer.appendChild(timeSlot);
                     });
+                } else {
+                    timeSlotsContainer.innerHTML = '<p>No hay horarios disponibles para esta fecha.</p>';
+                }
+            }
 
-                    // Seleccionar este horario
-                    timeSlot.classList.add('selected');
-                    selectedTime = time;
-
-                    // Actualizar el formulario
-                    //formDateTimeElement.textContent = `${formatDate(dateStr)} a las ${time}`;
-
-                    document.getElementById("form-date").textContent = `${formatDate(dateStr)}`;
-                    document.getElementById("form-time").textContent = `${time}`;
-
-                    // Continuar al siguiente paso después de un breve retraso
-                    setTimeout(() => {
-                        showStep('step-form');
-                        //document.getElementById('step-review').classList.add('active');
-                         document.getElementById('step-review').classList.add('active');
-                    }, 300);
+            function showStep(stepId) {
+                document.querySelectorAll('.step').forEach(step => {
+                    step.classList.remove('active');
                 });
 
-                timeSlotsContainer.appendChild(timeSlot);
-            });
-        } else {
-            timeSlotsContainer.innerHTML = '<p>No hay horarios disponibles para esta fecha.</p>';
-        }
-    }
+                document.getElementById(stepId).classList.add('active');
+            }
 
-    function showStep(stepId) {
-        document.querySelectorAll('.step').forEach(step => {
-            step.classList.remove('active');
+            function formatDate(dateStr) {
+                const [year, month, day] = dateStr.split('-');
+                const date = new Date(Number(year), Number(month) - 1, Number(day));
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                return date.toLocaleDateString('es-MX', options);
+            }
+
+            function resetForm() {
+                bookingForm.reset();
+                selectedDate = null;
+                selectedTime = null;
+                document.querySelectorAll('.time-slot').forEach(slot => {
+                    slot.classList.remove('selected');
+                });
+            }
         });
-
-        document.getElementById(stepId).classList.add('active');
-    }
-
-   function formatDate(dateStr) {
-    const [year, month, day] = dateStr.split('-');
-    const date = new Date(Number(year), Number(month) - 1, Number(day)); // usa hora local
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('es-MX', options);
-}
-
-
-    function resetForm() {
-        bookingForm.reset();
-        selectedDate = null;
-        selectedTime = null;
-        document.querySelectorAll('.time-slot').forEach(slot => {
-            slot.classList.remove('selected');
-        });
-    }
-});
-
-
-
-
-function sendToServer() {
-    event.preventDefault(); 
-
-    // Obtener valores del formulario
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const notes = document.getElementById("notes").value;
-    const dateTime = document.getElementById("form-date-time").textContent;
-
-     var api = "https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec";
-
-  var validationData = {
-    redirect: "follow",
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
-    body: JSON.stringify({
-      action: "registration",
-      name: name,
-        email: email,
-        phone: phone,
-        notes: notes,
-        dateTime: dateTime
-    })
-  };
-
- 
-     fetch(api, validationData)
-    .then(response => response.text())
-    .then(data => {
-        // Mostrar confirmación
-        document.getElementById("confirmation-details").innerText = 
-            `Reserva a nombre de ${name} el día ${dateTime}. 
-             Te hemos enviado un correo de confirmación a ${email}.`;
-
-        // Cambiar a la vista de confirmación
-        document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
-        document.getElementById("step-confirmation").classList.add("active");
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("Hubo un problema al enviar la reserva. Intenta nuevamente.");
-    }); 
-}
-
-
-</script>
+    </script>
+</body>
+</html>
