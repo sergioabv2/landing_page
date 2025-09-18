@@ -26,9 +26,12 @@
 
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
   
-  body {
-  position: relative;
-}
+   html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita que la página principal tenga scroll */
+        }
 
   /*  body::-webkit-scrollbar {
   display: none; 
@@ -579,6 +582,7 @@ display: inline-block;
 line-height: 18px;
 vertical-align: middle;
   color:#3a9fff;
+  font-family: Avenir, Helvetica, sans-serif !important;
 }
 
 .footer__light{
@@ -1470,13 +1474,6 @@ vertical-align: middle;
 
 
 
-
-  * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .wrap {
   margin: 0 auto;
   max-width: 1140px;
@@ -1589,7 +1586,29 @@ body.dragging {
 body.dragging .nav-pointer {
   transition: none;
 }
- 
+
+ .site-container {
+            position: absolute;
+            /* Se posiciona 70px desde arriba (altura aproximada de tu navbar) */
+            top: 70px; 
+            /* Se posiciona 60px desde abajo (altura aproximada de tu footer) */
+            bottom: 60px; 
+            left: 0;
+            right: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .site-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Elimina cualquier borde del iframe */
+        }
+   footer.fixed-bottom {
+            /* Puedes añadir más estilos aquí si es necesario */
+            background-color: #f8f9fa; /* Ejemplo de color de fondo */
+            padding: 10px;
+        }
 </style>
   
 <body data-spy="scroll" data-target="#navbar" data-offset="70" class="bg-light text-dark">
@@ -1622,7 +1641,7 @@ body.dragging .nav-pointer {
       <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
        
         <li class="nav-item">
-          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px 	#FFAA33; ">Precios</a>
+          <a class="nav-link" href="/payment" style=" font-weight: 600;  color: #FF7518 !important; text-shadow: 0 0 15px   #FFAA33; ">Precios</a>
         </li>
         
       </ul>
@@ -1644,98 +1663,12 @@ body.dragging .nav-pointer {
 
 
 
-  
-  <div class='slider-navigation'>
-    <div class='nav-pointer draggable'>
-      0/0
-    </div>
-  </div>
+
 
 <div class='site-container'>
-  <section class='intro'>
-    <div class='wrap'>
-      <div class='content'>
-        <h1>ABRSM</h1>
-        <h2>Sistema de grados</h2>
-        <h5>I create amazing front end interfaces</h5>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #ff0404;">Grado Preparatorio</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat.</p>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #9024dc;">Grado 1</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat.</p>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #1894cc;">Grado 2</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat.</p>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1 style="color: #489454;">Grado 3</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat.</p>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-      <h1 style="color: #f0ac14;">Grado 4</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat.</p>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-     <h1 style="color: #485cb4;">Grado 5</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat.</p>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1>Grado 6</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat.</p>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1>Grado 7</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat.</p>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class='wrap'>
-      <div class='content'>
-        <h1>Grado 8</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo necessitatibus fuga deserunt beatae ut minima, nobis voluptates dolore suscipit corporis temporibus quaerat, vel amet magnam voluptas, aliquid nostrum ipsa fugiat.</p>
-      </div>
-    </div>
-  </section>
-</div>
-
-
+  
+<iframe src="https://drive.google.com/file/d/1gIEIt0Y1BqlVpsq8u_YOFHOVgeWog4lO/preview" frameborder="0"> </iframe>
+  </div> 
 
   <br>
 
@@ -1745,7 +1678,7 @@ body.dragging .nav-pointer {
   
 
   <footer class="fixed-bottom">
-      <div class="col-md-2 col-xs-6">
+      <div >
        <h1 class="footer__title">Mozart<span class="footer__light"> Academy</span></h1>   
       </div> 
   </footer>
