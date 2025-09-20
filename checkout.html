@@ -142,11 +142,11 @@
 </div></div></div>
     
     <section data-testid="order-details" class="OrderDetails App-Overview-OrderDetails my6"><ul class="OrderDetails-items"><li class="OrderDetails-item" style="opacity: 1; transform: scale(1); height: auto; margin-bottom: 16px;"><div class="LineItem flex-container align-items-flex-start"><div class="LineItem-imageContainer mr4 flex-item width-fixed" ><img src="https://lh3.googleusercontent.com/d/1h0PAuatp8mguH19cso6wh19mjMVa0K5V" alt="" class="LineItem-image"></div><div class="flex-container justify-content-space-between align-items-baseline wrap-wrap width-grow"><div class="flex-column-break" style="order: 2;"></div><div class="flex-column-break" style="order: 5;"></div><div class="LineItem-productName flex-item width-auto"  style="order: 0;"><span class="Text Text-color--default Text-fontSize--14 Text-fontWeight--500"><div class="ExpandableText false"><div  class="ExpandableText--truncated" style="-webkit-line-clamp: 2;">{{course.type}}</div></div></span></div><div class="flex-container direction-column wrap-wrap" style="width: 100%; order: 3;"><div class="LineItem-productDescription flex-item width-12" style="order: -1;"><div class="Text Text-color--gray400 Text-fontSize--12 Text-fontWeight--400"><div class="ExpandableText false"><div class="ExpandableText--truncated" style="-webkit-line-clamp: 2;">¡Incluye el acceso a nuestra plataforma de aprendizaje en línea mozart-app.com!</div></div></div></div><div class="flex-container direction-row wrap-wrap"><div class="LineItem-description flex-item width-grow" style="order: 3;"><span class="Text Text-color--gray400 Text-fontSize--12 Text-fontWeight--400">
-        <!--<div class="AdjustableQuantitySelector-hitBox">  
-        <select class="Button AdjustableQuantitySelector Button--link Button--md" ng-model="selectedMonths" ng-change="changeMonth()" style="width: 40px;">
+
+     <!--   <div class="AdjustableQuantitySelector-hitBox">  <select class="Button AdjustableQuantitySelector Button--link Button--md" ng-model="selectedMonths" ng-change="changeMonth()" style="width: 40px;">
     <option value="1">1 </option>
     <option value="6">6 </option>
-  </select> </div><span >Meses a pagar</span> -->
+  </select></div> <span >Meses a pagar</span> -->
 
 </span></div><div class="LineItem-amountDetail flex-item width-auto flex-container align-items-flex-end width-auto" style="order: 4;"><div class="flex-item width-auto flex-item-align-right"></div></div></div></div><div class="LineItem-tierBreakdown flex-item width-auto flex-item-align-left" style="order: 6;"><div class="flex-container" ></div></div><div class="flex-container Placeholder" style="opacity: 1;"><div class="ml2 flex-item width-fixed" style="order: 1;"><span class="Text Text-color--default Text-fontSize--14 Text-fontWeight--500 Text--tabularNumbers"><span class="CurrencyAmount">MX${{course.cost}}.00</span></span></div></div></div></div></li></ul><div class="OrderDetails-footer"></div></section>
       
@@ -519,94 +519,16 @@
 
 <script>
   var app = angular.module('app', []);
-app.controller('main', function($scope, $window) {
-    // Definición de los cursos con sus precios base
-    const pricingData = {
-        'plan1': { type: 'Plan 1', cost: 550, cost_pareja: 850, cost_familia: 1499 },
-        'plan2': { type: 'Plan 2', cost: 850, cost_pareja: 1499 },
-        'intensivo': { type: 'Intensivo', cost: 1499 }
-    };
-
-    // Opciones para el select, usando los nombres de los planes
-    $scope.courses = [
-        { type: 'Plan 1' },
-        { type: 'Plan 2' },
-        { type: 'Intensivo' }
-    ];
-
-    $scope.selectedMonths = 1;
-    $scope.course = {};
-
-    // Función para obtener parámetros de la URL
-    function getUrlParams() {
-        const urlParams = new URLSearchParams($window.location.search);
-        return {
-            plan: urlParams.get('plan'),
-            type: urlParams.get('type')
-        };
-    }
-    
-    // Función para inicializar el select y los costos desde la URL
-    function initializeFromUrl() {
-        const params = getUrlParams();
-        let planTypeFromUrl = 'Plan 1'; // Valor por defecto
-
-        if (params.plan && pricingData[params.plan]) {
-            planTypeFromUrl = pricingData[params.plan].type;
-        }
-        
-        // Encontrar el objeto del curso que coincide con el de la URL
-        $scope.selectedCourse = $scope.courses.find(c => c.type === planTypeFromUrl);
-        
-        // Actualizar el costo inicial
-        $scope.changeCourse();
-    }
-
-    // Se ejecuta al cargar el controlador
-    initializeFromUrl();
-
-    // Esta función se llama cada vez que el usuario cambia la opción del select
-    $scope.changeCourse = function() {
-        const selectedPlanKey = Object.keys(pricingData).find(key => pricingData[key].type === $scope.selectedCourse.type);
-        const planInfo = pricingData[selectedPlanKey];
-        
-        const params = getUrlParams();
-        let baseCost = planInfo.cost;
-        
-        // Se mantiene la lógica de los tipos (individual, pareja, familia)
-        // para que el precio cambie al seleccionar una opción del select,
-        // respetando el tipo que viene en la URL.
-        if (params.type === 'pareja' && planInfo.cost_pareja) {
-            baseCost = planInfo.cost_pareja;
-        } else if (params.type === 'familia' && planInfo.cost_familia) {
-            baseCost = planInfo.cost_familia;
-        }
-
-        $scope.course.type = planInfo.type;
-        $scope.course.cost = baseCost;
-        $scope.updateTotalCost();
-    };
-
-    $scope.changeMonth = function() {
-        $scope.updateTotalCost();
-    };
-
-    $scope.updateTotalCost = function() {
-        const selectedPlanKey = Object.keys(pricingData).find(key => pricingData[key].type === $scope.selectedCourse.type);
-        const planInfo = pricingData[selectedPlanKey];
-
-        const params = getUrlParams();
-        let baseCost = planInfo.cost;
-
-        if (params.type === 'pareja' && planInfo.cost_pareja) {
-            baseCost = planInfo.cost_pareja;
-        } else if (params.type === 'familia' && planInfo.cost_familia) {
-            baseCost = planInfo.cost_familia;
-        }
-        
-        $scope.course.cost = baseCost * $scope.selectedMonths;
-    };
-
+app.controller('main', function($scope) {
+   $scope.courses = [
+    { type: 'Plan 1', cost: 550, description: '' },
+    { type: 'Plan 2', cost: 850, description: '' },
+    { type: 'Plan Intensivo', cost: 1499, description: '' }
+  ];
+  $scope.course = {
+    type: '',
+    cost: ''
+  };
   $scope.changeCourse = function() {
     $scope.course = $scope.selectedCourse;
   };
@@ -622,8 +544,8 @@ app.controller('main', function($scope, $window) {
   $scope.updateTotalCost = function() {  
       $scope.selectedCourse.cost = $scope.selectedCourse.cost * $scope.selectedMonths;
   };
-
 })
+
 
 
 
