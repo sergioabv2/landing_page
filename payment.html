@@ -20,8 +20,8 @@
             font-family: 'Poppins', sans-serif;
         }
 
- 
-      
+    
+        
 /* --- NUEVO HEADER SIN BOOTSTRAP --- */
 .custom-navbar {
     background-color: #f8f9fa;
@@ -229,7 +229,7 @@
         .site-content-container {
             position: absolute;
             top: 70px;
-            bottom: 15px;
+            bottom: 54px; /* Ajustado para la altura del footer */
             left: 0;
             right: 0;
             overflow-y: auto;
@@ -327,7 +327,7 @@
             padding: 0 40px;
             justify-content: center;
             flex-wrap: wrap;
-            padding-bottom: 120px;
+            padding-bottom: 70px;
         }
 
         .card {
@@ -337,7 +337,7 @@
             flex: 1;
             max-width: 290px;
             min-width: 270px;
-            min-height: 420px;
+            min-height: 400px;
             border: 2px solid transparent;
             transition: all 0.2s;
             cursor: pointer;
@@ -388,8 +388,9 @@
 
         .features {
             list-style: none;
+            padding-left: 20px; /* Reemplaza el margin-left negativo */
             margin-bottom: 32px;
-            margin-top: auto; 
+            /* SE ELIMINÓ LA LÍNEA "margin-top: auto;" DE AQUÍ PARA CORREGIR EL CRECIMIENTO HACIA ARRIBA */
         }
 
         .feature {
@@ -443,7 +444,7 @@
 
         .cta-section {
             position: fixed;
-            bottom: 45px; /* Posicionado justo encima del nuevo footer */
+            bottom: 54px; /* Posicionado justo encima del nuevo footer */
             left: 0;
             width: 100%;
             background-color: #fff;
@@ -569,7 +570,7 @@
                 flex-direction: column;
                 padding: 0 20px;
                 gap: 12px;
-                padding-bottom: 280px;
+                padding-bottom: 40px;
             }
             .card {
                 max-width: none;
@@ -672,10 +673,11 @@
                             <div class="radio-input checked"></div>
                         </div>
                         <div class="card-header">
-                            <div class="price price-individual">650,00 MXN <span class="price-period">/ mes</span></div>
+                            <div class="price price-individual">599,00 MXN <span class="price-period">/ mes</span></div>
                             <div class="price price-pareja" style="display: none;">850,00 MXN <span class="price-period">/ mes</span></div>
                             <div class="price price-familia" style="display: none;">1.499,00 MXN <span class="price-period">/ mes</span></div>
 
+                            <div class="price-breakdown breakdown-individual">$150 por clase</div>
                             <div class="price-breakdown breakdown-pareja" style="display: none;">$425 por persona</div>
                             <div class="price-breakdown breakdown-familia" style="display: none;">$375 por persona</div>
 
@@ -685,7 +687,8 @@
                         </div>
                         <ul class="features">
                             <li class="feature">4 clases al mes</li>
-                            <li class="feature">1 clase por semana</li>
+                            <li class="feature">Acceso a las lecciones en la plataforma</li>
+                            <li class="feature">Participación en recitales y eventos</li>
                         </ul>
                     </div>
 
@@ -706,8 +709,9 @@
                         </div>
                         <ul class="features">
                             <li class="feature">8 clases al mes</li>
-                            <li class="feature">Material didáctico incluido</li>
-                            <li class="feature">Acceso a recitales</li>
+                            <li class="feature">Acceso a las lecciones en la plataforma</li>
+                            <li class="feature">Participación en recitales y eventos</li>
+                            <li class="feature">Acceso a pianos para practicar</li>
                         </ul>
                     </div>
 
@@ -723,8 +727,11 @@
                         </div>
                         <ul class="features">
                             <li class="feature">16 clases al mes</li>
-                            <li class="feature">Horarios flexibles</li>
-                            <li class="feature">Clase magistral trimestral</li>
+                            <li class="feature">Acceso a las lecciones en la plataforma</li>
+                            <li class="feature">Participación en recitales y eventos</li>
+                            <li class="feature">Acceso a pianos para practicar</li>
+                            <li class="feature">Soporte en línea</li>
+                             <li class="feature">Flexibilidad para reprogramar clases</li>
                         </ul>
                     </div>
                 </div>
@@ -757,7 +764,7 @@
     <script>
         // --- SCRIPT PARA PÁGINA DE PRECIOS ---
         const pricingData = {
-            'plan1': { name: 'Plan 1', individual: { amount: '650,00 MXN', period: '/ mes' }, pareja: { amount: '850,00 MXN', period: '/ mes' }, familia: { amount: '1.499,00 MXN', period: '/ mes' } },
+            'plan1': { name: 'Plan 1', individual: { amount: '599,00 MXN', period: '/ mes' }, pareja: { amount: '850,00 MXN', period: '/ mes' }, familia: { amount: '1.499,00 MXN', period: '/ mes' } },
             'plan2': { name: 'Plan 2', individual: { amount: '999,00 MXN', period: '/ mes' }, pareja: { amount: '1.499,00 MXN', period: '/ mes' } },
             'intensivo': { name: 'Intensivo', individual: { amount: '1.499,00 MXN', period: '/ mes' } }
         };
