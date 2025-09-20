@@ -49,6 +49,7 @@
 .navbar-left, .navbar-right {
     display: flex;
     align-items: center;
+    margin-right: 40px;
 }
 
 .navbar-brand {
@@ -92,7 +93,9 @@
     color: #0162ff;
 }
 
-a.nav-item.active-price {
+
+
+.active-price {
     font-weight: 600;
     color: #FF7518 !important;
     text-shadow: 0 0 15px #FFAA33;
@@ -130,9 +133,11 @@ a.nav-item.active-price {
 
 .hamburger-menu {
     cursor: pointer;
+    margin-right: 40px;
 }
 
 .hamburger-menu .bar {
+
     display: block;
     width: 25px;
     height: 3px;
@@ -146,6 +151,10 @@ a.nav-item.active-price {
     #navbar-desktop {
         display: none; /* Ocultar menú de escritorio */
     }
+
+    .nav-links {
+        margin-left: 20px;
+    } 
 
     #navbar-mobile {
         display: flex; /* Mostrar menú de móvil */
