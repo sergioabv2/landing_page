@@ -520,102 +520,93 @@
 <script>
   var app = angular.module('app', []);
 app.controller('main', function($scope, $window) {
+    // Definición de los cursos con sus precios base
+    const pricingData = {
+        'plan1': { type: 'Plan 1', cost: 550, cost_pareja: 850, cost_familia: 1499 },
+        'plan2': { type: 'Plan 2', cost: 850, cost_pareja: 1499 },
+        'intensivo': { type: 'Intensivo', cost: 1499 }
+    };
+
+    // Opciones para el select, usando los nombres de los planes
     $scope.courses = [
-            { type: 'Plan 1', cost: 550 },
-            { type: 'Plan 2', cost: 850 },
-            { type: 'Plan Intensivo', cost: 1499 }
-        ];
+        { type: 'Plan 1' },
+        { type: 'Plan 2' },
+        { type: 'Intensivo' }
+    ];
 
-        // This is the new, more flexible data structure
-        const pricingData = {
-            'plan1': { type: 'Plan 1', individual: 550, pareja: 850, familia: 1499 },
-            'plan2': { type: 'Plan 2', individual: 850, pareja: 1499 },
-            'intensivo': { type: 'Plan Intensivo', individual: 1499 }
+    $scope.selectedMonths = 1;
+    $scope.course = {};
+
+    // Función para obtener parámetros de la URL
+    function getUrlParams() {
+        const urlParams = new URLSearchParams($window.location.search);
+        return {
+            plan: urlParams.get('plan'),
+            type: urlParams.get('type')
         };
+    }
+    
+    // Función para inicializar el select y los costos desde la URL
+    function initializeFromUrl() {
+        const params = getUrlParams();
+        let planTypeFromUrl = 'Plan 1'; // Valor por defecto
 
-        $scope.selectedMonths = 1;
+        if (params.plan && pricingData[params.plan]) {
+            planTypeFromUrl = pricingData[params.plan].type;
+        }
+        
+        // Encontrar el objeto del curso que coincide con el de la URL
+        $scope.selectedCourse = $scope.courses.find(c => c.type === planTypeFromUrl);
+        
+        // Actualizar el costo inicial
+        $scope.changeCourse();
+    }
 
-        // Function to update the course based on URL parameters
-        function updateCourseFromUrl() {
-            const urlParams = new URLSearchParams($window.location.search);
-            const urlPlan = urlParams.get('plan');
-            const urlType = urlParams.get('type');
+    // Se ejecuta al cargar el controlador
+    initializeFromUrl();
 
-            if (urlPlan && pricingData[urlPlan]) {
-                const planInfo = pricingData[urlPlan];
-                $scope.selectedCourse = { type: planInfo.type, cost: 0 };
-
-                // Set the cost based on the URL type
-                let baseCost = planInfo.individual;
-                if (urlType === 'pareja' && planInfo.pareja) {
-                    baseCost = planInfo.pareja;
-                } else if (urlType === 'familia' && planInfo.familia) {
-                    baseCost = planInfo.familia;
-                }
-                
-                $scope.course = {
-                    type: planInfo.type,
-                    cost: baseCost
-                };
-            } else {
-                // Default to 'Plan 1' if URL parameters are not valid or missing
-                $scope.selectedCourse = $scope.courses[0];
-                $scope.course = {
-                    type: $scope.selectedCourse.type,
-                    cost: $scope.selectedCourse.cost
-                };
-            }
-            // Ensure the UI updates
-            $scope.$apply();
+    // Esta función se llama cada vez que el usuario cambia la opción del select
+    $scope.changeCourse = function() {
+        const selectedPlanKey = Object.keys(pricingData).find(key => pricingData[key].type === $scope.selectedCourse.type);
+        const planInfo = pricingData[selectedPlanKey];
+        
+        const params = getUrlParams();
+        let baseCost = planInfo.cost;
+        
+        // Se mantiene la lógica de los tipos (individual, pareja, familia)
+        // para que el precio cambie al seleccionar una opción del select,
+        // respetando el tipo que viene en la URL.
+        if (params.type === 'pareja' && planInfo.cost_pareja) {
+            baseCost = planInfo.cost_pareja;
+        } else if (params.type === 'familia' && planInfo.cost_familia) {
+            baseCost = planInfo.cost_familia;
         }
 
-        // Initialize the app with a watcher for URL changes
-        angular.element(document).ready(function() {
-            updateCourseFromUrl();
-        });
+        $scope.course.type = planInfo.type;
+        $scope.course.cost = baseCost;
+        $scope.updateTotalCost();
+    };
 
-        $scope.changeCourse = function() {
-            const selectedPlanKey = Object.keys(pricingData).find(key => pricingData[key].type === $scope.selectedCourse.type);
-            const planInfo = pricingData[selectedPlanKey];
+    $scope.changeMonth = function() {
+        $scope.updateTotalCost();
+    };
 
-            // Update the cost based on the newly selected plan
-            // You can use a default type or get it from the URL again if needed
-            const urlParams = new URLSearchParams($window.location.search);
-            const urlType = urlParams.get('type') || 'individual'; 
+    $scope.updateTotalCost = function() {
+        const selectedPlanKey = Object.keys(pricingData).find(key => pricingData[key].type === $scope.selectedCourse.type);
+        const planInfo = pricingData[selectedPlanKey];
 
-            let baseCost = planInfo.individual;
-            if (urlType === 'pareja' && planInfo.pareja) {
-                baseCost = planInfo.pareja;
-            } else if (urlType === 'familia' && planInfo.familia) {
-                baseCost = planInfo.familia;
-            }
+        const params = getUrlParams();
+        let baseCost = planInfo.cost;
 
-            $scope.course.type = planInfo.type;
-            $scope.course.cost = baseCost;
-            $scope.updateTotalCost();
-        };
+        if (params.type === 'pareja' && planInfo.cost_pareja) {
+            baseCost = planInfo.cost_pareja;
+        } else if (params.type === 'familia' && planInfo.cost_familia) {
+            baseCost = planInfo.cost_familia;
+        }
+        
+        $scope.course.cost = baseCost * $scope.selectedMonths;
+    };
 
-        $scope.changeMonth = function() {
-            $scope.updateTotalCost();
-        };
-
-        $scope.updateTotalCost = function() {
-            const currentPlanKey = Object.keys(pricingData).find(key => pricingData[key].type === $scope.course.type);
-            const currentPlanInfo = pricingData[currentPlanKey];
-            
-            const urlParams = new URLSearchParams($window.location.search);
-            const urlType = urlParams.get('type') || 'individual';
-
-            let baseCost = currentPlanInfo.individual;
-            if (urlType === 'pareja' && currentPlanInfo.pareja) {
-                baseCost = currentPlanInfo.pareja;
-            } else if (urlType === 'familia' && currentPlanInfo.familia) {
-                baseCost = currentPlanInfo.familia;
-            }
-
-            $scope.course.cost = baseCost * $scope.selectedMonths;
-        };
-    });
   $scope.changeCourse = function() {
     $scope.course = $scope.selectedCourse;
   };
@@ -631,8 +622,8 @@ app.controller('main', function($scope, $window) {
   $scope.updateTotalCost = function() {  
       $scope.selectedCourse.cost = $scope.selectedCourse.cost * $scope.selectedMonths;
   };
-})
 
+})
 
 
 
