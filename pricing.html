@@ -824,7 +824,7 @@
                         <div class="selected-price-period" id="selected-price-period">/ mes</div>
                     </div>
                     <div class="cta-right-box">
-                        <button class="subscribe-btn" href="/payment">Inscribirse y pagar</button>
+                        <button class="subscribe-btn" subscribe()>Inscribirse y pagar</button>
                         <div class="terms">
                             Si te suscribes, aceptas los <a href="#">Términos de servicio</a>. Las suscripciones se
                             renuevan automáticamente hasta que se cancelan.
@@ -974,11 +974,8 @@
         }
 
         function subscribe() {
-            const planName = pricingData[selectedPlan].name;
-            let billingName = billingType;
-            if (billingType === 'pareja') billingName = 'en parejas';
-
-            alert(`¡Gracias por suscribirte al ${planName} en la modalidad ${billingName}!`);
+            const paymentUrl = `https://www..mozartacademy.mx/checkout?plan=${selectedPlan}&type=${billingType}`;
+            window.open(paymentUrl, '_blank');
         }
     </script>
 </body>
