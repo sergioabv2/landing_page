@@ -22,7 +22,7 @@
 
  
       
-      /* --- NUEVO HEADER SIN BOOTSTRAP --- */
+/* --- NUEVO HEADER SIN BOOTSTRAP --- */
 .custom-navbar {
     background-color: #f8f9fa;
     box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.1);
@@ -32,10 +32,23 @@
     width: 100%;
     z-index: 1000;
     display: flex;
-    justify-content: flex-start; /* MODIFICADO */
     align-items: center;
+    justify-content: space-between;
     padding: 0 20px;
     height: 70px;
+}
+
+/* --- ESTILOS PARA ESCRITORIO --- */
+#navbar-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
 }
 
 .navbar-brand {
@@ -45,6 +58,7 @@
     text-decoration: none;
     display: flex;
     align-items: center;
+    margin-right: 20px;
 }
 
 .navbar-brand img {
@@ -52,12 +66,6 @@
     height: 35px;
     margin-right: 10px;
     border-radius: 50%;
-}
-
-.nav-menu-wrapper {
-    display: flex;
-    align-items: center;
-    margin-left: auto; /* AÑADIDO */
 }
 
 .nav-links {
@@ -70,6 +78,7 @@
 
 .nav-item {
     padding: 0 15px;
+    text-decoration: none;
 }
 
 .nav-item a {
@@ -83,7 +92,7 @@
     color: #0162ff;
 }
 
-.nav-item a.active-price {
+a.nav-item.active-price {
     font-weight: 600;
     color: #FF7518 !important;
     text-shadow: 0 0 15px #FFAA33;
@@ -99,7 +108,7 @@
     text-decoration: none;
     transition: all 0.2s;
     white-space: nowrap;
-    margin-left: 15px; /* AÑADIDO para separar del último link */
+    margin-left: 15px;
 }
 
 .login-btn:hover {
@@ -107,13 +116,19 @@
     color: white;
 }
 
-/* --- Menú Hamburguesa --- */
+/* --- ESTILOS PARA MÓVIL --- */
+#navbar-mobile {
+    display: none; /* Oculto en escritorio */
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #menu-toggle {
     display: none;
 }
 
 .hamburger-menu {
-    display: none;
     cursor: pointer;
 }
 
@@ -126,8 +141,16 @@
     transition: all 0.3s ease-in-out;
 }
 
-/* --- ESTILOS RESPONSIVE PARA EL HEADER --- */
+/* --- ESTILOS RESPONSIVE --- */
 @media (max-width: 992px) {
+    #navbar-desktop {
+        display: none; /* Ocultar menú de escritorio */
+    }
+
+    #navbar-mobile {
+        display: flex; /* Mostrar menú de móvil */
+    }
+
     .nav-menu-wrapper {
         position: absolute;
         top: 70px;
@@ -137,45 +160,34 @@
         box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.1);
         display: none;
         flex-direction: column;
-        align-items: flex-start;
-        margin-left: 0; /* Restablecer el margen en móvil */
     }
 
-    .custom-navbar {
-        justify-content: space-between; /* Volver a space-between en móvil para que la hamburguesa se vaya a la derecha */
+    #menu-toggle:checked ~ .nav-menu-wrapper {
+        display: flex; 
     }
-    
-    .nav-links {
+
+    #navbar-mobile .nav-links {
         flex-direction: column;
         width: 100%;
         padding: 10px 0;
     }
     
-    .nav-item {
+    #navbar-mobile .nav-item {
         width: 100%;
         padding: 15px 20px;
         border-top: 1px solid #e9ecef;
     }
-    
-    .login-btn-wrapper {
-    margin-left: -50px !important;
-         padding: 15px 20px;
-         width: 100%;
-         border-top: 1px solid #e9ecef;
+
+    #navbar-mobile .login-btn-wrapper {
+        padding: 15px 20px;
+        width: 100%;
+        border-top: 1px solid #e9ecef;
     }
     
-    .login-btn {
+    #navbar-mobile .login-btn {
         width: 100%;
         text-align: center;
-        margin-left: 0; /* Restablecer el margen en móvil */
-    }
-
-    .hamburger-menu {
-        display: block;
-    }
-
-    #menu-toggle:checked ~ .nav-menu-wrapper {
-        display: flex; 
+        margin-left: 0;
     }
 }
 
@@ -579,18 +591,36 @@
 </head>
 
 <body>
-    <header class="custom-navbar">
+   <header class="custom-navbar">
+    <div id="navbar-desktop">
+        <div class="navbar-left">
+            <a class="navbar-brand" href="/">
+                <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" alt="Logo">Mozart Academy
+            </a>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="/abrsm">ABRSM</a></li>
+                <li class="nav-item"><a href="/method">Método</a></li>
+                <li class="nav-item"><a href="/evaluation">Evaluación</a></li>
+                <li class="nav-item"><a href="/categories">Modalidades</a></li>
+                <li class="nav-item"><a href="/site">Sitio</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <a href="/payment" class="nav-item active-price">Precios</a>
+            <a href="https://app.mozartacademy.mx" class="login-btn">Iniciar sesión</a>
+        </div>
+    </div>
+
+    <div id="navbar-mobile">
         <a class="navbar-brand" href="/">
             <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" alt="Logo">Mozart Academy
         </a>
-        
         <input type="checkbox" id="menu-toggle">
         <label for="menu-toggle" class="hamburger-menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </label>
-        
         <div class="nav-menu-wrapper">
             <ul class="nav-links">
                 <li class="nav-item"><a href="/abrsm">ABRSM</a></li>
@@ -601,10 +631,11 @@
                 <li class="nav-item"><a href="/payment" class="active-price">Precios</a></li>
             </ul>
             <div class="login-btn-wrapper">
-                 <a href="https://app.mozartacademy.mx" class="login-btn">Iniciar sesión</a>
+                <a href="https://app.mozartacademy.mx" class="login-btn">Iniciar sesión</a>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
     <div class="site-content-container">
         <div class="pricing-page-body">
