@@ -141,10 +141,14 @@
     </select> 
 </div></div></div>
     
-    <section data-testid="order-details" class="OrderDetails App-Overview-OrderDetails my6"><ul class="OrderDetails-items"><li class="OrderDetails-item" style="opacity: 1; transform: scale(1); height: auto; margin-bottom: 16px;"><div class="LineItem flex-container align-items-flex-start"><div class="LineItem-imageContainer mr4 flex-item width-fixed" ><img src="https://lh3.googleusercontent.com/d/1h0PAuatp8mguH19cso6wh19mjMVa0K5V" alt="" class="LineItem-image"></div><div class="flex-container justify-content-space-between align-items-baseline wrap-wrap width-grow"><div class="flex-column-break" style="order: 2;"></div><div class="flex-column-break" style="order: 5;"></div><div class="LineItem-productName flex-item width-auto"  style="order: 0;"><span class="Text Text-color--default Text-fontSize--14 Text-fontWeight--500"><div class="ExpandableText false"><div  class="ExpandableText--truncated" style="-webkit-line-clamp: 2;">{{course.type}}</div></div></span></div><div class="flex-container direction-column wrap-wrap" style="width: 100%; order: 3;"><div class="LineItem-productDescription flex-item width-12" style="order: -1;"><div class="Text Text-color--gray400 Text-fontSize--12 Text-fontWeight--400"><div class="ExpandableText false"><div class="ExpandableText--truncated" style="-webkit-line-clamp: 2;">¡Incluye 3 horas de clase a la semana, plataforma didáctica, constancias de avance y más!</div></div></div></div><div class="flex-container direction-row wrap-wrap"><div class="LineItem-description flex-item width-grow" style="order: 3;"><span class="Text Text-color--gray400 Text-fontSize--12 Text-fontWeight--400"><div class="AdjustableQuantitySelector-hitBox">  <select class="Button AdjustableQuantitySelector Button--link Button--md" ng-model="selectedMonths" ng-change="changeMonth()" style="width: 40px;">
+    <section data-testid="order-details" class="OrderDetails App-Overview-OrderDetails my6"><ul class="OrderDetails-items"><li class="OrderDetails-item" style="opacity: 1; transform: scale(1); height: auto; margin-bottom: 16px;"><div class="LineItem flex-container align-items-flex-start"><div class="LineItem-imageContainer mr4 flex-item width-fixed" ><img src="https://lh3.googleusercontent.com/d/1h0PAuatp8mguH19cso6wh19mjMVa0K5V" alt="" class="LineItem-image"></div><div class="flex-container justify-content-space-between align-items-baseline wrap-wrap width-grow"><div class="flex-column-break" style="order: 2;"></div><div class="flex-column-break" style="order: 5;"></div><div class="LineItem-productName flex-item width-auto"  style="order: 0;"><span class="Text Text-color--default Text-fontSize--14 Text-fontWeight--500"><div class="ExpandableText false"><div  class="ExpandableText--truncated" style="-webkit-line-clamp: 2;">{{course.type}}</div></div></span></div><div class="flex-container direction-column wrap-wrap" style="width: 100%; order: 3;"><div class="LineItem-productDescription flex-item width-12" style="order: -1;"><div class="Text Text-color--gray400 Text-fontSize--12 Text-fontWeight--400"><div class="ExpandableText false"><div class="ExpandableText--truncated" style="-webkit-line-clamp: 2;">¡Incluye el acceso a nuestra plataforma de aprendizaje en línea mozart-app.com!</div></div></div></div><div class="flex-container direction-row wrap-wrap"><div class="LineItem-description flex-item width-grow" style="order: 3;"><span class="Text Text-color--gray400 Text-fontSize--12 Text-fontWeight--400">
+        <!--<div class="AdjustableQuantitySelector-hitBox">  
+        <select class="Button AdjustableQuantitySelector Button--link Button--md" ng-model="selectedMonths" ng-change="changeMonth()" style="width: 40px;">
     <option value="1">1 </option>
     <option value="6">6 </option>
-  </select></div><span >Meses a pagar</span></span></div><div class="LineItem-amountDetail flex-item width-auto flex-container align-items-flex-end width-auto" style="order: 4;"><div class="flex-item width-auto flex-item-align-right"></div></div></div></div><div class="LineItem-tierBreakdown flex-item width-auto flex-item-align-left" style="order: 6;"><div class="flex-container" ></div></div><div class="flex-container Placeholder" style="opacity: 1;"><div class="ml2 flex-item width-fixed" style="order: 1;"><span class="Text Text-color--default Text-fontSize--14 Text-fontWeight--500 Text--tabularNumbers"><span class="CurrencyAmount">MX${{course.cost}}.00</span></span></div></div></div></div></li></ul><div class="OrderDetails-footer"></div></section>
+  </select> </div><span >Meses a pagar</span> -->
+
+</span></div><div class="LineItem-amountDetail flex-item width-auto flex-container align-items-flex-end width-auto" style="order: 4;"><div class="flex-item width-auto flex-item-align-right"></div></div></div></div><div class="LineItem-tierBreakdown flex-item width-auto flex-item-align-left" style="order: 6;"><div class="flex-container" ></div></div><div class="flex-container Placeholder" style="opacity: 1;"><div class="ml2 flex-item width-fixed" style="order: 1;"><span class="Text Text-color--default Text-fontSize--14 Text-fontWeight--500 Text--tabularNumbers"><span class="CurrencyAmount">MX${{course.cost}}.00</span></span></div></div></div></div></li></ul><div class="OrderDetails-footer"></div></section>
       
     </div></div>
   
@@ -514,188 +518,199 @@
 
 
 <script>
-// --- SCRIPT PARA LA PÁGINA DE PAGO ---
-var app = angular.module('app', []);
+  var app = angular.module('app', []);
 app.controller('main', function($scope, $window) {
-    // Definición de los cursos con sus precios base
-    $scope.coursesData = {
-        'plan1': {
-            type: 'Plan 1',
-            cost: 550, // Precio individual, que será el predeterminado
-            cost_pareja: 850,
-            cost_familia: 1499
-        },
-        'plan2': {
-            type: 'Plan 2',
-            cost: 850, // Precio individual, que será el predeterminado
-            cost_pareja: 1499
-        },
-        'intensivo': {
-            type: 'Intensivo',
-            cost: 1499
-        }
-    };
-    
-    // Opciones para el select, ahora usando los nombres de los planes
     $scope.courses = [
-        { type: 'Plan 1' },
-        { type: 'Plan 2' },
-        { type: 'Intensivo' }
-    ];
+            { type: 'Plan 1', cost: 550 },
+            { type: 'Plan 2', cost: 850 },
+            { type: 'Plan Intensivo', cost: 1499 }
+        ];
 
-    $scope.selectedMonths = 1;
-
-    // Función para obtener parámetros de la URL
-    function getUrlParams() {
-        const urlParams = new URLSearchParams($window.location.search);
-        return {
-            plan: urlParams.get('plan'),
-            type: urlParams.get('type')
+        // This is the new, more flexible data structure
+        const pricingData = {
+            'plan1': { type: 'Plan 1', individual: 550, pareja: 850, familia: 1499 },
+            'plan2': { type: 'Plan 2', individual: 850, pareja: 1499 },
+            'intensivo': { type: 'Plan Intensivo', individual: 1499 }
         };
-    }
-    
-    // Función para actualizar la selección y el costo del curso
-    $scope.updateCourse = function() {
-        const params = getUrlParams();
-        let planName = '';
 
-        if (params.plan) {
-            // Mapeo del parámetro de la URL al nombre de la clase y el tipo
-            if (params.plan === 'plan1') {
-                planName = 'Plan 1';
-            } else if (params.plan === 'plan2') {
-                planName = 'Plan 2';
-            } else if (params.plan === 'intensivo') {
-                planName = 'Intensivo';
-            }
-        }
-        
-        const courseInfo = $scope.coursesData[Object.keys($scope.coursesData).find(key => $scope.coursesData[key].type === planName)];
-        
-        if (courseInfo) {
-            $scope.selectedCourse = { type: courseInfo.type };
-            
-            // Ajustar el costo según el tipo de plan
-            if (params.type === 'pareja' && courseInfo.cost_pareja) {
-                $scope.course.cost = courseInfo.cost_pareja;
-            } else if (params.type === 'familia' && courseInfo.cost_familia) {
-                $scope.course.cost = courseInfo.cost_familia;
+        $scope.selectedMonths = 1;
+
+        // Function to update the course based on URL parameters
+        function updateCourseFromUrl() {
+            const urlParams = new URLSearchParams($window.location.search);
+            const urlPlan = urlParams.get('plan');
+            const urlType = urlParams.get('type');
+
+            if (urlPlan && pricingData[urlPlan]) {
+                const planInfo = pricingData[urlPlan];
+                $scope.selectedCourse = { type: planInfo.type, cost: 0 };
+
+                // Set the cost based on the URL type
+                let baseCost = planInfo.individual;
+                if (urlType === 'pareja' && planInfo.pareja) {
+                    baseCost = planInfo.pareja;
+                } else if (urlType === 'familia' && planInfo.familia) {
+                    baseCost = planInfo.familia;
+                }
+                
+                $scope.course = {
+                    type: planInfo.type,
+                    cost: baseCost
+                };
             } else {
-                $scope.course.cost = courseInfo.cost;
+                // Default to 'Plan 1' if URL parameters are not valid or missing
+                $scope.selectedCourse = $scope.courses[0];
+                $scope.course = {
+                    type: $scope.selectedCourse.type,
+                    cost: $scope.selectedCourse.cost
+                };
             }
-        } else {
-            // Si no se encuentra un plan válido en la URL, establecer un valor predeterminado
-            $scope.selectedCourse = { type: 'Plan 1' };
-            $scope.course.cost = 550;
+            // Ensure the UI updates
+            $scope.$apply();
         }
 
-        $scope.course.type = $scope.selectedCourse.type;
-        $scope.updateTotalCost();
-    };
+        // Initialize the app with a watcher for URL changes
+        angular.element(document).ready(function() {
+            updateCourseFromUrl();
+        });
 
-    // Inicializar el controlador y el curso al cargar la página
-    $scope.course = {};
-    $scope.updateCourse();
+        $scope.changeCourse = function() {
+            const selectedPlanKey = Object.keys(pricingData).find(key => pricingData[key].type === $scope.selectedCourse.type);
+            const planInfo = pricingData[selectedPlanKey];
 
-    $scope.changeCourse = function() {
-        const selectedKey = Object.keys($scope.coursesData).find(key => $scope.coursesData[key].type === $scope.selectedCourse.type);
-        const courseInfo = $scope.coursesData[selectedKey];
-        $scope.course.cost = courseInfo.cost;
-        $scope.updateTotalCost();
-    };
+            // Update the cost based on the newly selected plan
+            // You can use a default type or get it from the URL again if needed
+            const urlParams = new URLSearchParams($window.location.search);
+            const urlType = urlParams.get('type') || 'individual'; 
 
-    $scope.changeMonth = function() {
-        $scope.updateTotalCost();
-    };
+            let baseCost = planInfo.individual;
+            if (urlType === 'pareja' && planInfo.pareja) {
+                baseCost = planInfo.pareja;
+            } else if (urlType === 'familia' && planInfo.familia) {
+                baseCost = planInfo.familia;
+            }
 
-    $scope.updateTotalCost = function() {
-        // Recalcular el costo base antes de aplicar el multiplicador de meses
-        const baseCostKey = Object.keys($scope.coursesData).find(key => $scope.coursesData[key].type === $scope.selectedCourse.type);
-        const baseCostInfo = $scope.coursesData[baseCostKey];
-        
-        let baseCost = baseCostInfo.cost;
-        const params = getUrlParams();
+            $scope.course.type = planInfo.type;
+            $scope.course.cost = baseCost;
+            $scope.updateTotalCost();
+        };
 
-        if (params.type === 'pareja' && baseCostInfo.cost_pareja) {
-            baseCost = baseCostInfo.cost_pareja;
-        } else if (params.type === 'familia' && baseCostInfo.cost_familia) {
-            baseCost = baseCostInfo.cost_familia;
-        }
+        $scope.changeMonth = function() {
+            $scope.updateTotalCost();
+        };
 
-        $scope.course.cost = baseCost * $scope.selectedMonths;
-    };
-});
+        $scope.updateTotalCost = function() {
+            const currentPlanKey = Object.keys(pricingData).find(key => pricingData[key].type === $scope.course.type);
+            const currentPlanInfo = pricingData[currentPlanKey];
+            
+            const urlParams = new URLSearchParams($window.location.search);
+            const urlType = urlParams.get('type') || 'individual';
+
+            let baseCost = currentPlanInfo.individual;
+            if (urlType === 'pareja' && currentPlanInfo.pareja) {
+                baseCost = currentPlanInfo.pareja;
+            } else if (urlType === 'familia' && currentPlanInfo.familia) {
+                baseCost = currentPlanInfo.familia;
+            }
+
+            $scope.course.cost = baseCost * $scope.selectedMonths;
+        };
+    });
+  $scope.changeCourse = function() {
+    $scope.course = $scope.selectedCourse;
+  };
+  
+  $scope.selectedMonths = 1; 
+  $scope.totalCost = 0;  
+
+  $scope.changeMonth = function() {
+    $scope.updateTotalCost();
+  };
+
+ 
+  $scope.updateTotalCost = function() {  
+      $scope.selectedCourse.cost = $scope.selectedCourse.cost * $scope.selectedMonths;
+  };
+})
+
+
+
 
 function transferPay() {
-    // Quitar la clase is-selected del botón OXXO y agregarla al botón de Transferencia
-    document.getElementById("oxxo-tab").classList.remove("Tabs-TabListItem--is-selected");
-    document.getElementById("card-tab").classList.add("Tabs-TabListItem--is-selected");
-    document.getElementById("paymentContainer").style.height = "540px";
+  // Quitar la clase is-selected del botón OXXO y agregarla al botón de Transferencia
+  document.getElementById("oxxo-tab").classList.remove("Tabs-TabListItem--is-selected");
+  document.getElementById("card-tab").classList.add("Tabs-TabListItem--is-selected");
+  document.getElementById("paymentContainer").style.height = "540px";
 
-    // Mostrar el panel de Transferencia y ocultar el panel de OXXO con animación
-    $('#oxxo-tab-panel').slideUp();
-    $('#card-tab-panel').slideDown();
+  // Mostrar el panel de Transferencia y ocultar el panel de OXXO con animación
+  $('#oxxo-tab-panel').slideUp();
+  $('#card-tab-panel').slideDown();
 }
 
 function oxxoPay() {
-    // Quitar la clase is-selected del botón de Transferencia y agregarla al botón OXXO
-    document.getElementById("card-tab").classList.remove("Tabs-TabListItem--is-selected");
-    document.getElementById("oxxo-tab").classList.add("Tabs-TabListItem--is-selected");
-    document.getElementById("paymentContainer").style.height = "320px";
+  // Quitar la clase is-selected del botón de Transferencia y agregarla al botón OXXO
+  document.getElementById("card-tab").classList.remove("Tabs-TabListItem--is-selected");
+  document.getElementById("oxxo-tab").classList.add("Tabs-TabListItem--is-selected");
+  document.getElementById("paymentContainer").style.height = "320px";
 
-    // Mostrar el panel de OXXO y ocultar el panel de Transferencia con animación
-    $('#card-tab-panel').slideUp();
-    $('#oxxo-tab-panel').slideDown();
+  // Mostrar el panel de OXXO y ocultar el panel de Transferencia con animación
+  $('#card-tab-panel').slideUp();
+  $('#oxxo-tab-panel').slideDown();
 }
 
-function generateOrder() {
-    if (document.getElementById("payBtn").getAttribute("status") == "ready") {
-        document.getElementById("waitingStatus").classList.remove("SubmitButton-Text--current");
-        document.getElementById("waitingStatus").classList.add("SubmitButton-Text--pre");
-        document.getElementById("processingStatus").classList.remove("SubmitButton-Text--pre");
-        
-        document.getElementById("processingStatus").classList.add("SubmitButton-Text--current");
+ function generateOrder(){
+   if(document.getElementById("payBtn").getAttribute("status") == "ready"){
+     document.getElementById("waitingStatus").classList.remove("SubmitButton-Text--current");
+   document.getElementById("waitingStatus").classList.add("SubmitButton-Text--pre");
+   document.getElementById("processingStatus").classList.remove("SubmitButton-Text--pre");
+    
+     document.getElementById("processingStatus").classList.add("SubmitButton-Text--current");
 
-        document.getElementById("payIco1").classList.remove("SubmitButton-Icon--current");
-        document.getElementById("payIco2").classList.remove("SubmitButton-Icon--pre");
-        
-        document.getElementById("payIco2").classList.add("SubmitButton-Icon--current");
-    }
-}
+     document.getElementById("payIco1").classList.remove("SubmitButton-Icon--current");
+    document.getElementById("payIco2").classList.remove("SubmitButton-Icon--pre");
+    
+     document.getElementById("payIco2").classList.add("SubmitButton-Icon--current");
+   }
+  } 
 
-function formatPhoneNumber(input) {
+ 
+
+ function formatPhoneNumber(input) {
     // Solo permitir números y eliminar espacios
     let phoneNumber = input.value.replace(/\D/g, '');
-    
+   
 
     // Limitar el número de dígitos a 10
     if (phoneNumber.length > 10) {
-        phoneNumber = phoneNumber.slice(0, 10);
-    } else if (phoneNumber.length == 10) {
-        document.getElementById("payBtn").classList.remove("SubmitButton--incomplete");
-        document.getElementById("payBtn").classList.add("SubmitButton--clickable");
-        document.getElementById("payIco1").classList.remove("SubmitButton-Icon--pre");
-        document.getElementById("payIco1").classList.add("SubmitButton-Icon--current");
-        document.getElementById("payBtn").setAttribute("status", "ready")
-    } else {
-        document.getElementById("payBtn").classList.remove("SubmitButton--clickable");
-        document.getElementById("payBtn").classList.add("SubmitButton--incomplete");
-        document.getElementById("payIco1").classList.remove("SubmitButton-Icon--current");
-        document.getElementById("payIco1").classList.add("SubmitButton-Icon--pre");
-        document.getElementById("payBtn").setAttribute("status", "")
+      phoneNumber = phoneNumber.slice(0, 10);
+    }else if(phoneNumber.length == 10){
+       document.getElementById("payBtn").classList.remove("SubmitButton--incomplete");
+  document.getElementById("payBtn").classList.add("SubmitButton--clickable");
+      document.getElementById("payIco1").classList.remove("SubmitButton-Icon--pre");
+  document.getElementById("payIco1").classList.add("SubmitButton-Icon--current");
+      document.getElementById("payBtn").setAttribute("status", "ready")
+    }else{
+      document.getElementById("payBtn").classList.remove("SubmitButton--clickable");
+  document.getElementById("payBtn").classList.add("SubmitButton--incomplete");
+       document.getElementById("payIco1").classList.remove("SubmitButton-Icon--current");
+  document.getElementById("payIco1").classList.add("SubmitButton-Icon--pre");
+       document.getElementById("payBtn").setAttribute("status", "")
     }
 
     // Aplicar formato: 55 1234 5678
     let formattedPhoneNumber = phoneNumber;
     if (phoneNumber.length > 6) {
-        formattedPhoneNumber = phoneNumber.replace(/(\d{2})(\d{4})(\d{0,4})/, '$1 $2 $3');
+      formattedPhoneNumber = phoneNumber.replace(/(\d{2})(\d{4})(\d{0,4})/, '$1 $2 $3');
     } else if (phoneNumber.length > 2) {
-        formattedPhoneNumber = phoneNumber.replace(/(\d{2})(\d{0,4})/, '$1 $2');
-    }
+      formattedPhoneNumber = phoneNumber.replace(/(\d{2})(\d{0,4})/, '$1 $2');
+    } 
 
     // Establecer el valor formateado en el input
     input.value = formattedPhoneNumber;
-}
+  }
+
+
+ 
 
 function updateFlagEmoji() {
     const select = document.getElementById("countrySelect");
@@ -705,8 +720,9 @@ function updateFlagEmoji() {
     const selectedOption = select.options[select.selectedIndex];
     const emoji = selectedOption.getAttribute("data-emoji");
     flagContainer.textContent = emoji;
-    document.getElementById("flagContainer").style.marginLeft = "-5px";
-}
+  document.getElementById("flagContainer").style.marginLeft = "-5px";
+  }
+
 
 
 
