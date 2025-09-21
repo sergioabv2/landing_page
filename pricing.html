@@ -721,16 +721,15 @@
                 <div class="header">
                     <h1 class="title">Elige tu plan de Piano</h1>
                     <p class="subtitle">
-                        Comienza tu viaje musical. Elige el plan que mejor se adapte a tu ritmo y al de tu familia para
+                        Comienza tu viaje musical. Elige el plan que mejor se adapte a tu ritmo y a tu compromiso para
                         desbloquear todo tu potencial.
                     </p>
                 </div>
 
                 <div class="billing-toggle">
-                    <button class="toggle-btn active" onclick="switchBilling('individual')">Individual</button>
-                    <button class="toggle-btn" onclick="switchBilling('pareja')">En pareja</button>
-                    <button class="toggle-btn" onclick="switchBilling('familia')">
-                        Familiar (4)
+                    <button class="toggle-btn active" onclick="switchBilling('mensual')">Mensual</button>
+                    <button class="toggle-btn" onclick="switchBilling('trimestral')">
+                        Trimestral
                         <span class="best-offer">Mejor oferta</span>
                     </button>
                 </div>
@@ -742,20 +741,17 @@
                             <div class="radio-input checked"></div>
                         </div>
                         <div class="card-header">
-                            <div class="price price-individual">499,00 MXN <span class="price-period">/ mes</span>
+                            <div class="price price-mensual">499,00 MXN <span class="price-period">/ mes</span>
                             </div>
-                            <div class="price price-pareja" style="display: none;">799,00 MXN <span
-                                    class="price-period">/ mes</span></div>
-                            <div class="price price-familia" style="display: none;">1.399,00 MXN <span
-                                    class="price-period">/ mes</span></div>
+                            <div class="price price-trimestral" style="display: none;">1.399,00 MXN <span
+                                    class="price-period">/ 3 meses</span></div>
 
-                            <div class="price-breakdown breakdown-pareja" style="display: none;">$399.5 por persona</div>
-                            <div class="price-breakdown breakdown-familia" style="display: none;">$349.75 por persona
+                            <div class="price-breakdown breakdown-mensual">$124.75 por clase</div>
+                            <div class="price-breakdown breakdown-trimestral" style="display: none;">$116.58 por clase
                             </div>
 
-                            <div class="savings savings-individual"></div>
-                            <div class="savings savings-pareja" style="display: none;">AHORRA UN 20%</div>
-                            <div class="savings savings-familia" style="display: none;">AHORRA UN 30%</div>
+                            <div class="savings savings-mensual"></div>
+                            <div class="savings savings-trimestral" style="display: none;">AHORRA UN 7%</div>
                         </div>
                         <ul class="features">
                             <li class="feature">4 clases al mes</li>
@@ -770,17 +766,17 @@
                             <div class="radio-input"></div>
                         </div>
                         <div class="card-header">
-                            <div class="price price-individual">799,00 MXN <span class="price-period">/ mes</span>
+                            <div class="price price-mensual">799,00 MXN <span class="price-period">/ mes</span>
                             </div>
-                            <div class="price price-pareja" style="display: none;">1.399,00 MXN <span
-                                    class="price-period">/ mes</span></div>
+                            <div class="price price-trimestral" style="display: none;">2.299,00 MXN <span
+                                    class="price-period">/ 3 meses</span></div>
 
-                            <div class="price-breakdown breakdown-individual">$99.88 por clase</div>
-                            <div class="price-breakdown breakdown-pareja" style="display: none;">$699.5 por persona
+                            <div class="price-breakdown breakdown-mensual">$99.88 por clase</div>
+                            <div class="price-breakdown breakdown-trimestral" style="display: none;">$95.79 por clase
                             </div>
 
-                            <div class="savings savings-individual" style="display: none;">AHORRA UN 20%</div>
-                            <div class="savings savings-pareja" style="display: none;">AHORRA UN 30%</div>
+                            <div class="savings savings-mensual"></div>
+                            <div class="savings savings-trimestral" style="display: none;">AHORRA UN 4%</div>
                         </div>
                         <ul class="features">
                             <li class="feature">8 clases al mes</li>
@@ -796,10 +792,17 @@
                             <div class="radio-input"></div>
                         </div>
                         <div class="card-header">
-                            <div class="price price-individual">1.399,00 MXN <span class="price-period">/ mes</span>
+                            <div class="price price-mensual">1.399,00 MXN <span class="price-period">/ mes</span>
                             </div>
-                            <div class="price-breakdown breakdown-individual">$87.44 por clase</div>
-                            <div class="savings savings-individual" style="display: none;">AHORRA UN 30%</div>
+                            <div class="price price-trimestral" style="display: none;">3.999,00 MXN <span
+                                    class="price-period">/ 3 meses</span></div>
+
+                            <div class="price-breakdown breakdown-mensual">$87.44 por clase</div>
+                            <div class="price-breakdown breakdown-trimestral" style="display: none;">$83.31 por clase
+                            </div>
+
+                            <div class="savings savings-mensual"></div>
+                            <div class="savings savings-trimestral" style="display: none;">AHORRA UN 5%</div>
                         </div>
                         <ul class="features">
                             <li class="feature">16 clases al mes</li>
@@ -851,45 +854,45 @@
         const pricingData = {
             'plan1': {
                 name: 'Plan 1',
-                individual: {
+                mensual: {
                     amount: '499,00 MXN',
                     period: '/ mes'
                 },
-                pareja: {
-                    amount: '799,00 MXN',
-                    period: '/ mes'
-                },
-                familia: {
+                trimestral: {
                     amount: '1.399,00 MXN',
-                    period: '/ mes'
+                    period: '/ 3 meses'
                 }
             },
             'plan2': {
                 name: 'Plan 2',
-                individual: {
+                mensual: {
                     amount: '799,00 MXN',
                     period: '/ mes'
                 },
-                pareja: {
-                    amount: '1.399,00 MXN',
-                    period: '/ mes'
+                trimestral: {
+                    amount: '2.299,00 MXN',
+                    period: '/ 3 meses'
                 }
             },
             'intensivo': {
                 name: 'Intensivo',
-                individual: {
+                mensual: {
                     amount: '1.399,00 MXN',
                     period: '/ mes'
+                },
+                trimestral: {
+                    amount: '3.999,00 MXN',
+                    period: '/ 3 meses'
                 }
             }
         };
 
         let selectedPlan = 'plan1';
-        let billingType = 'individual';
+        let billingType = 'mensual';
 
         document.addEventListener('DOMContentLoaded', () => {
             selectPlan('plan1');
-            switchBilling('individual');
+            switchBilling('mensual');
             document.querySelector('.cta-section').style.display = 'none';
 
             // Lógica para el mes actual
@@ -926,6 +929,11 @@
             billingType = type;
 
             document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            if (type === 'mensual') {
+                document.querySelectorAll('.toggle-btn')[0].classList.add('active');
+            } else {
+                document.querySelectorAll('.toggle-btn')[1].classList.add('active');
+            }
 
             const elementsToShow = {
                 prices: `.price-${type}`,
@@ -941,30 +949,6 @@
             document.querySelectorAll(elementsToShow.breakdowns).forEach(el => el.style.display = 'block');
             document.querySelectorAll(elementsToShow.savings).forEach(el => el.style.display = 'block');
 
-            const intensivoCard = document.getElementById('intensivo-card');
-            const plan2Card = document.getElementById('plan2-card');
-
-            if (type === 'individual') {
-                document.querySelectorAll('.toggle-btn')[0].classList.add('active');
-                intensivoCard.style.display = 'flex';
-                plan2Card.style.display = 'flex';
-            } else {
-                intensivoCard.style.display = 'none';
-                if (selectedPlan === 'intensivo') {
-                    selectPlan('plan1');
-                }
-
-                if (type === 'pareja') {
-                    document.querySelectorAll('.toggle-btn')[1].classList.add('active');
-                    plan2Card.style.display = 'flex';
-                } else { // familia
-                    document.querySelectorAll('.toggle-btn')[2].classList.add('active');
-                    plan2Card.style.display = 'none';
-                    if (selectedPlan === 'plan2') {
-                        selectPlan('plan1');
-                    }
-                }
-            }
             updateCtaPrice();
         }
 
@@ -980,9 +964,9 @@
         }
 
         function subscribe() {
-    const paymentUrl = `https://www.mozartacademy.mx/checkout?plan=${selectedPlan}&type=${billingType}`;
-    window.location.href = paymentUrl; 
-}
+            const paymentUrl = `https://www.mozartacademy.mx/checkout?plan=${selectedPlan}&type=${billingType}`;
+            window.location.href = paymentUrl;
+        }
 
     </script>
 </body>
