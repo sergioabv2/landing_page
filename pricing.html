@@ -980,9 +980,10 @@
         }
 
         function subscribe() {
-            const paymentUrl = `https://www.mozartacademy.mx/checkout?plan=${selectedPlan}&type=${billingType}`;
-            window.open(paymentUrl, '_blank');
-        }
+    const paymentUrl = `https://www.mozartacademy.mx/checkout?plan=${selectedPlan}&type=${billingType}`;
+    window.location.href = paymentUrl; 
+}
+
     </script>
 </body>
 
