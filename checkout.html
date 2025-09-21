@@ -1,24 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
 <head>
-<link rel="stylesheet" type="text/css" href="https://app.mozartacademy.mx/paymentstyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://lh3.googleusercontent.com/d/1k9LA88h-FVVn9EeryBRVBrtc5tPl92CK" type="image/x-icon">
+    <title>Mozart Academy - Precios</title>
 
-<link rel="icon" href="https://lh3.googleusercontent.com/d/1k9LA88h-FVVn9EeryBRVBrtc5tPl92CK" type="image/x-icon">
-    <title>Mozart Appcademy</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://app.mozartacademy.mx/paymentstyle.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"></script>
-  <script src="https://unpkg.com/@paypal/paypal-js@2.0.0/dist/paypal.browser.min.js"></script>
-   
-</head>
+ <script src="https://unpkg.com/@paypal/paypal-js@2.0.0/dist/paypal.browser.min.js"></script>
+
+    <style>
+        /* ESTILOS GENERALES */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
 
 
+        /* --- NUEVO HEADER SIN BOOTSTRAP --- */
+        .custom-navbar {
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 70px;
+        }
 
+        /* --- ESTILOS PARA ESCRITORIO --- */
+        #navbar-desktop {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
 
-<style>
-  
+        .navbar-left,
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            margin-right: 40px;
+        }
+
+        .navbar-brand {
+            color: black;
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .navbar-brand img {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            padding: 0 15px;
+            text-decoration: none;
+        }
+
+        .nav-item a {
+            color: black;
+            text-decoration: none;
+            font-size: 14.5px;
+            transition: color 0.2s;
+        }
+
+        .nav-item a:hover {
+            color: #0162ff;
+        }
+
+        .active-price {
+            font-weight: 600;
+            color: #FF7518 !important;
+            text-shadow: 0 0 15px #FFAA33;
+        }
+
+        .login-btn {
+            background-color: transparent;
+            border: 1px solid #343a40;
+            color: #343a40;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        .login-btn:hover {
+            background-color: #343a40;
+            color: white;
+        }
+
+        /* --- ESTILOS PARA MÓVIL --- */
+        #navbar-mobile {
+            display: none;
+            /* Oculto en escritorio */
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger-menu {
+            cursor: pointer;
+            margin-right: 40px;
+        }
+
+        .hamburger-menu .bar {
+
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #333;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- ESTILOS RESPONSIVE --- */
+        @media (max-width: 992px) {
+            #navbar-desktop {
+                display: none;
+                /* Ocultar menú de escritorio */
+            }
+
+            .nav-links {
+                margin-left: 20px;
+            }
+
+            #navbar-mobile {
+                display: flex;
+                /* Mostrar menú de móvil */
+            }
+
+            .nav-menu-wrapper {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #f8f9fa;
+                box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.1);
+                display: none;
+                flex-direction: column;
+            }
+
+            #menu-toggle:checked~.nav-menu-wrapper {
+                display: flex;
+            }
+
+            #navbar-mobile .nav-links {
+                flex-direction: column;
+                width: 100%;
+                padding: 10px 0;
+            }
+
+            #navbar-mobile .nav-item {
+                width: 100%;
+                padding: 15px 20px;
+                border-top: 1px solid #e9ecef;
+            }
+
+            #navbar-mobile .login-btn-wrapper {
+                padding: 15px 20px;
+                width: 100%;
+                border-top: 1px solid #e9ecef;
+            }
+
+            #navbar-mobile .login-btn {
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+            }
+        }
+
+        /* --- NUEVO FOOTER SIN BOOTSTRAP --- */
+        .custom-footer {
+            background: black;
+            padding: 15px 25px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1001;
+            /* Asegura que esté por encima del contenido y el CTA */
+        }
+
+        .footer-title {
+            font-size: 18px;
+            margin: 0;
+            line-height: 1;
+            color: #3a9fff;
+            font-family: Avenir, Helvetica, sans-serif;
+            font-weight: normal;
+        }
+
+        .footer-light {
+            color: #fff;
+        }
+
+        /* --- CONTENEDOR DEL CONTENIDO --- */
+        .site-content-container {
+         font-family: 'Poppins', sans-serif !important;
+            position: absolute;
+            top: 70px;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            overflow-y: auto;
+            background-color: #f7f9f9;
+        }
+
+        /* ESTILOS PARA EL IFRAME */
+        .drive-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
 
 
 
@@ -129,15 +360,62 @@
     margin-top: -8px !important;
   }
 }
-</style>
+    </style>
+</head>
 
-<div id="root" ng-app="app" ng-controller="main"><div class="App-Container is-noBackground flex-container justify-content-center" data-testid="checkout-container"><div class="App App--multiItem"><div class="App-Overview">
+<body>
+    <header class="custom-navbar">
+        <div id="navbar-desktop">
+            <div class="navbar-left">
+                <a class="navbar-brand" href="/">
+                    <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" alt="Logo">Mozart Academy
+                </a>
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="/abrsm">ABRSM</a></li>
+                    <li class="nav-item"><a href="/evaluation">Evaluación</a></li>
+                    <li class="nav-item"><a href="/categories">Modalidades</a></li>
+                    <li class="nav-item"><a href="/site">Sitio</a></li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                <a href="/pricing" class="nav-item active-price">Precios</a>
+                <a href="https://wa.me/5215577676657" class="login-btn">Pedir Información</a>
+            </div>
+        </div>
+
+        <div id="navbar-mobile">
+            <a class="navbar-brand" href="/">
+                <img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" alt="Logo">Mozart Academy
+            </a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <div class="nav-menu-wrapper">
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="/abrsm">ABRSM</a></li>
+                    <li class="nav-item"><a href="/evaluation">Evaluación</a></li>
+                    <li class="nav-item"><a href="/categories">Modalidades</a></li>
+                    <li class="nav-item"><a href="/site">Sitio</a></li>
+                    <li class="nav-item"><a href="/pricing" class="active-price">Precios</a></li>
+                </ul>
+                <div class="login-btn-wrapper">
+                    <a href="https://app.mozartacademy.mx" class="login-btn">Iniciar sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-content-container">
+        <div id="root" ng-app="app" ng-controller="main"><div class="App-Container is-noBackground flex-container justify-content-center" data-testid="checkout-container"><div class="App App--multiItem"><div class="App-Overview">
   
   
-  <header class="Header"><div class="Header-content flex-container justify-content-space-between align-items-stretch"><div class="Header-business flex-item width-grow flex-container align-items-center"><div class="Header-merchantLogoWithLabel"><div class="HeaderImage HeaderImage--icon HeaderImage--iconFallback flex-item width-fixed flex-container justify-content-center align-items-center width-fixed"><img src="https://lh3.googleusercontent.com/d/1EP2I0BOMo_8mXsR9qqAv08PxjztZFaQ8" alt="icono" width="16" height="16">
-</div><h1 class="Header-businessLink-name Text Text-color--gray800 Text-fontSize--14 Text-fontWeight--500 Text--truncate">Mozart Appcademy</h1></div></div></div></header>
+  <header class="Header"><div class="Header-content flex-container justify-content-space-between align-items-stretch"><div class="Header-business flex-item width-grow flex-container align-items-center"><div class="Header-merchantLogoWithLabel"><div class="HeaderImage HeaderImage--icon HeaderImage--iconFallback flex-item width-fixed flex-container justify-content-center align-items-center width-fixed"><img src="https://lh3.googleusercontent.com/d/1CWImzia2Z8LdK-VxeMKK22oa7387Ktwj" alt="icono" width="16" height="16">
+</div><h1 class="Header-businessLink-name Text Text-color--gray800 Text-fontSize--14 Text-fontWeight--500 Text--truncate">Mozart Academy</h1></div></div></div></header>
    
-  <div class="OrderSummaryColumn"><div class="ProductSummary is-recurring"><div class="ProductSummary-productImageContainer" ><div class="ProductImage-container" ><img src="https://lh3.googleusercontent.com/d/1h0PAuatp8mguH19cso6wh19mjMVa0K5V" alt="" class="ProductImage-image" fetchpriority="high"></div></div><div class="ProductSummary-info"><span class="ProductSummary-name Text Text-color--gray500 Text-fontSize--16 Text-fontWeight--500">Subscríbete a <span style="text-transform: uppercase;">{{course.type}}</span></span><div class="ProductSummary-amountsContainer"><div class="ProductSummary-totalsRead" style="opacity: 1;"><div class="ProductSummary-totalAmountContainer" style="opacity: 1;"><span class="ProductSummary-totalAmount Text Text-color--default Text-fontWeight--600 Text--tabularNumbers" id="ProductSummary-totalAmount" ><div class="ProductSummaryTotalAmount flex-container direction-row align-items-baseline wrap-wrap"><div class="mr2 flex-item width-fixed"><span class="CurrencyAmount">MX${{course.cost}}.00</span></div><div class="flex-item width-fixed"><span class="ProductSummaryTotalAmount-billingInterval Text Text-color--gray500 Text-fontSize--14"><div>por <br class="BillingIntervalBreak">mes</div></span></div></div></span></div><div class="AnimateSinglePresence"><div class="AnimateSinglePresenceItem"><div><div class="ProductSummary-amountsDescriptions" ></div></div></div></div></div></div><div class="ProductSummary-buttonsContainer" >
+  <div class="OrderSummaryColumn"><div class="ProductSummary is-recurring"><div class="ProductSummary-productImageContainer" ><div class="ProductImage-container" ><img src="https://lh3.googleusercontent.com/d/1CWImzia2Z8LdK-VxeMKK22oa7387Ktwj" alt="" class="ProductImage-image" fetchpriority="high"></div></div><div class="ProductSummary-info"><span class="ProductSummary-name Text Text-color--gray500 Text-fontSize--16 Text-fontWeight--500">Subscríbete a <span style="text-transform: uppercase;">{{course.type}}</span></span><div class="ProductSummary-amountsContainer"><div class="ProductSummary-totalsRead" style="opacity: 1;"><div class="ProductSummary-totalAmountContainer" style="opacity: 1;"><span class="ProductSummary-totalAmount Text Text-color--default Text-fontWeight--600 Text--tabularNumbers" id="ProductSummary-totalAmount" ><div class="ProductSummaryTotalAmount flex-container direction-row align-items-baseline wrap-wrap"><div class="mr2 flex-item width-fixed"><span class="CurrencyAmount">MX${{course.cost}}.00</span></div><div class="flex-item width-fixed"><span class="ProductSummaryTotalAmount-billingInterval Text Text-color--gray500 Text-fontSize--14"><div>por <br class="BillingIntervalBreak">mes</div></span></div></div></span></div><div class="AnimateSinglePresence"><div class="AnimateSinglePresenceItem"><div><div class="ProductSummary-amountsDescriptions" ></div></div></div></div></div></div><div class="ProductSummary-buttonsContainer" >
     <select class="custom-select Button ProductSummary-actionButton Button--primary Button--md"  ng-model="selectedCourse" style="width: 180px;" ng-options="course.type for course in courses" ng-change="changeCourse()">
   <option value="">Selecciona un curso</option>
     </select> 
@@ -172,7 +450,7 @@
    
           <!--      <div id="paypal-button-container"></div>  -->
                                 
-                           <button class="paypal-button SubmitButton " type="submit" onclick="window.open('https://www.paypal.me/tallerdepiano/300', '_blank')">
+                           <button class="paypal-button SubmitButton " type="submit" onclick="window.open('https://www.paypal.me/pianounam/499', '_blank')">
   <div class="SubmitButton-TextContainer">
     <span class="SubmitButton-Text Text-fontWeight--500 paypaltextContainer" style="color: black;">Pagar con 
       <div class="paypalLogoContainer">
@@ -273,13 +551,13 @@
                                             <div class="FormFieldGroup-child FormFieldGroup-child--width-6 FormFieldGroup-childLeft FormFieldGroup-childBottom">
                                               <div class="FormFieldInput">
                                                 <div class="CheckoutInputContainer"><span class="InputContainer" data-max=""> <div class="CheckoutInput "> <div class="SignUpForm-labelHeader PaymenyHeaderData" style="opacity: 1; font-size: 13px !important; margin-bottom: -5px; margin-top: -5px;">Concepto</div>
-                                                    <div class="SignUpForm-subLabel " id="link-registration-subheader-message">Taller de piano</div> </div></span></div>
+                                                    <div class="SignUpForm-subLabel " id="link-registration-subheader-message">inscripcion</div> </div></span></div>
                                               </div>
                                             </div>
                                             <div class="FormFieldGroup-child FormFieldGroup-child--width-6 FormFieldGroup-childRight FormFieldGroup-childBottom">
                                              <div class="FormFieldInput">
-                                                <div class="CheckoutInputContainer"><span class="InputContainer" data-max=""> <div class="CheckoutInput "> <div class="SignUpForm-labelHeader PaymenyHeaderData" style="opacity: 1; font-size: 13px !important; margin-bottom: -5px; margin-top: -5px;">Beneficiario</div>
-                                                    <div class="SignUpForm-subLabel " id="link-registration-subheader-message">Maria de los Remedios</div> </div></span></div>
+                                                <div class="CheckoutInputContainer"><span class="InputContainer" data-max=""> <div class="CheckoutInput "> <div class="SignUpForm-labelHeader PaymenyHeaderData" style="opacity: 1; font-size: 13px !important; margin-bottom: -5px; margin-top: -5px;">Referencia</div>
+                                                    <div class="SignUpForm-subLabel " id="link-registration-subheader-message">237850</div> </div></span></div>
                                               </div>
                                             </div>
                                             <div class="FieldError-container" style="opacity: 0; height: 0px; margin-top: 0px;"><span class="FieldError Text Text-color--red Text-fontSize--13"><span aria-hidden="true"></span></span></div>
@@ -329,7 +607,7 @@
                                                 <div class="SignUpForm-headerContainer">
                                                   <div class="SignUpForm-header"><span class="SignUpForm-headerText Text Text-color--default">
                                                       <div class="SignUpForm-labelHeader" style="opacity: 1;">Securely save my information for 1-click checkout</div>
-                                                      <div class="SignUpForm-subLabel" id="link-registration-subheader-message">Enter your phone number to create a Link account and pay faster on IDIOMAS LD and everywhere Link is accepted.</div>
+                                                      <div class="SignUpForm-subLabel" id="link-registration-subheader-message">Enter your phone number to create a Link account and pay faster on MOZART ACADEMY and everywhere Link is accepted.</div>
                                                     </span></div>
                                                 </div>
                                                 <div class="AnimateSinglePresence">
@@ -516,10 +794,16 @@
  
  
  </div></div></div>
+    </div>
 
+    <footer class="custom-footer">
+        <h1 class="footer-title">Mozart<span class="footer-light"> Academy</span></h1>
+    </footer>
 
+</body>
 
 <script>
+
   var app = angular.module('app', []);
 app.controller('main', function($scope) {
    $scope.courses = [
@@ -736,3 +1020,4 @@ loadAndRender("order");
 
 */
 </script>
+</html>
