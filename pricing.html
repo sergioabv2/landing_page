@@ -576,8 +576,9 @@
             justify-content: space-between;
             flex-wrap: wrap;
             text-align: center;
-             border: 2px solid #ff7518; /* Borde naranja llamativo */
-    box-shadow: 0 0 15px rgba(255, 117, 24, 0.6); 
+            border: 2px solid #ff7518;
+            /* Borde naranja llamativo */
+            box-shadow: 0 0 15px rgba(255, 117, 24, 0.6);
         }
 
         .banner-text {
@@ -599,7 +600,7 @@
             font-weight: bold;
             color: #ff7518;
         }
-        
+
         @media (min-width: 769px) {
             .registration-banner {
                 margin: 24px 40px 40px;
@@ -684,7 +685,7 @@
                 </ul>
             </div>
             <div class="navbar-right">
-                <a href="/pricing" class="nav-item active-price">Precios</a>
+                <a href="/payment" class="nav-item active-price">Precios</a>
                 <a href="https://wa.me/5215577676657" class="login-btn">Pedir Información</a>
             </div>
         </div>
@@ -741,18 +742,20 @@
                             <div class="radio-input checked"></div>
                         </div>
                         <div class="card-header">
-                            <div class="price price-individual">550,00 MXN <span class="price-period">/ mes</span>
+                            <div class="price price-individual">499,00 MXN <span class="price-period">/ mes</span>
                             </div>
-                            <div class="price price-pareja" style="display: none;">850,00 MXN <span class="price-period">/ mes</span></div>
-                            <div class="price price-familia" style="display: none;">1.499,00 MXN <span class="price-period">/ mes</span></div>
+                            <div class="price price-pareja" style="display: none;">799,00 MXN <span
+                                    class="price-period">/ mes</span></div>
+                            <div class="price price-familia" style="display: none;">1.399,00 MXN <span
+                                    class="price-period">/ mes</span></div>
 
-                            <div class="price-breakdown breakdown-individual">$137.5 por clase</div>
-                            <div class="price-breakdown breakdown-pareja" style="display: none;">$425 por persona</div>
-                            <div class="price-breakdown breakdown-familia" style="display: none;">$375 por persona</div>
+                            <div class="price-breakdown breakdown-pareja" style="display: none;">$399.5 por persona</div>
+                            <div class="price-breakdown breakdown-familia" style="display: none;">$349.75 por persona
+                            </div>
 
                             <div class="savings savings-individual"></div>
-                            <div class="savings savings-pareja" style="display: none;">AHORRA UN 23%</div>
-                            <div class="savings savings-familia" style="display: none;">AHORRA UN 32%</div>
+                            <div class="savings savings-pareja" style="display: none;">AHORRA UN 20%</div>
+                            <div class="savings savings-familia" style="display: none;">AHORRA UN 30%</div>
                         </div>
                         <ul class="features">
                             <li class="feature">4 clases al mes</li>
@@ -767,15 +770,17 @@
                             <div class="radio-input"></div>
                         </div>
                         <div class="card-header">
-                            <div class="price price-individual">850,00 MXN <span class="price-period">/ mes</span>
+                            <div class="price price-individual">799,00 MXN <span class="price-period">/ mes</span>
                             </div>
-                            <div class="price price-pareja" style="display: none;">1.499,00 MXN <span class="price-period">/ mes</span></div>
+                            <div class="price price-pareja" style="display: none;">1.399,00 MXN <span
+                                    class="price-period">/ mes</span></div>
 
-                            <div class="price-breakdown breakdown-individual">$106.25 por clase</div>
-                            <div class="price-breakdown breakdown-pareja" style="display: none;">$749.5 por persona</div>
+                            <div class="price-breakdown breakdown-individual">$99.88 por clase</div>
+                            <div class="price-breakdown breakdown-pareja" style="display: none;">$699.5 por persona
+                            </div>
 
-                            <div class="savings savings-individual" style="display: none;">AHORRA UN 23%</div>
-                            <div class="savings savings-pareja" style="display: none;">AHORRA UN 42%</div>
+                            <div class="savings savings-individual" style="display: none;">AHORRA UN 20%</div>
+                            <div class="savings savings-pareja" style="display: none;">AHORRA UN 30%</div>
                         </div>
                         <ul class="features">
                             <li class="feature">8 clases al mes</li>
@@ -791,10 +796,10 @@
                             <div class="radio-input"></div>
                         </div>
                         <div class="card-header">
-                            <div class="price price-individual">1.499,00 MXN <span class="price-period">/ mes</span>
+                            <div class="price price-individual">1.399,00 MXN <span class="price-period">/ mes</span>
                             </div>
-                            <div class="price-breakdown breakdown-individual">$93.75 por clase</div>
-                            <div class="savings savings-individual" style="display: none;">AHORRA UN 32%</div>
+                            <div class="price-breakdown breakdown-individual">$87.44 por clase</div>
+                            <div class="savings savings-individual" style="display: none;">AHORRA UN 30%</div>
                         </div>
                         <ul class="features">
                             <li class="feature">16 clases al mes</li>
@@ -809,18 +814,19 @@
 
                 <div class="registration-banner">
                     <span class="banner-text">
-                        <span class="strikethrough">Inscripción por persona: 550 MXN</span><br>
-                        ¡Inscríbete en <strong id="current-month"></strong> y paga solo <span class="sale-price">25 MXN</span> de inscripción!
+                        <span class="strikethrough">Inscripción por persona: 499 MXN</span><br>
+                        ¡Inscríbete en <strong id="current-month"></strong> y paga solo <span class="sale-price">25
+                            MXN</span> de inscripción!
                     </span>
                 </div>
-                </div>
+            </div>
 
             <div class="cta-section">
                 <div class="cta-content">
                     <button class="close-cta-btn" onclick="closeCta()">×</button>
                     <div class="selected-price-container">
                         <div class="selected-plan-name">Plan 1</div>
-                        <div class="selected-price" id="selected-price-amount">650,00 MXN</div>
+                        <div class="selected-price" id="selected-price-amount">499,00 MXN</div>
                         <div class="selected-price-period" id="selected-price-period">/ mes</div>
                     </div>
                     <div class="cta-right-box">
@@ -828,7 +834,7 @@
                         <div class="terms">
                             Si te suscribes, aceptas los <a href="#">Términos de servicio</a>. Las suscripciones se
                             renuevan automáticamente hasta que se cancelan.
-                            <a >Cancela en cualquier momento</a>.
+                            <a>Cancela en cualquier momento</a>.
                         </div>
                     </div>
                 </div>
@@ -846,33 +852,33 @@
             'plan1': {
                 name: 'Plan 1',
                 individual: {
-                    amount: '550,00 MXN',
+                    amount: '499,00 MXN',
                     period: '/ mes'
                 },
                 pareja: {
-                    amount: '850,00 MXN',
+                    amount: '799,00 MXN',
                     period: '/ mes'
                 },
                 familia: {
-                    amount: '1.499,00 MXN',
+                    amount: '1.399,00 MXN',
                     period: '/ mes'
                 }
             },
             'plan2': {
                 name: 'Plan 2',
                 individual: {
-                    amount: '850,00 MXN',
+                    amount: '799,00 MXN',
                     period: '/ mes'
                 },
                 pareja: {
-                    amount: '1.499,00 MXN',
+                    amount: '1.399,00 MXN',
                     period: '/ mes'
                 }
             },
             'intensivo': {
                 name: 'Intensivo',
                 individual: {
-                    amount: '1.499,00 MXN',
+                    amount: '1.399,00 MXN',
                     period: '/ mes'
                 }
             }
