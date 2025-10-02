@@ -895,7 +895,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             selectPlan('intensivo');
             switchBilling('mensual');
-            document.querySelector('.cta-section').style.display = 'flex';
+            document.querySelector('.cta-section').style.display = 'none';
 
             const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
             const mesActual = meses[new Date().getMonth()];
