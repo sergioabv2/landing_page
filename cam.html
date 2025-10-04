@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transmisión de Cámara</title>
+    <style>
+        video {
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid black;
+        }
+        #localVideo {
+             /* Video de mi propia cámara */
+        }
+        #remoteVideo {
+            /* Video de la persona que transmite */
+        }
+    </style>
+</head>
+<body>
+    <h1>Cámara en Vivo</h1>
+    <h2>Mi Cámara (Emisor)</h2>
+    <video id="localVideo" autoplay playsinline muted></video>
+
+    <h2>Cámara Remota (Receptor)</h2>
+    <video id="remoteVideo" autoplay playsinline></video>
+
+    <script src="/socket.io/socket.io.js"></script> <script src="script.js"></script> </body>
+</html>
+
+<script>
+  const localVideo = document.getElementById('localVideo');
+const remoteVideo = document.getElementById('remoteVideo');
+
+// 1. Pedir acceso a la cámara trasera del iPhone
+async function startCamera() {
+    try {
+        // 'environment' le dice al navegador que use la cámara trasera
+        const constraints = {
+            video: {
+                facingMode: 'environment' 
+            },
+            audio: false // No pedimos micrófono en este caso
+        };
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        localVideo.srcObject = stream;
+
+        // AQUÍ IRÍA TODA LA LÓGICA COMPLEJA DE WEBRTC
+        // para enviar este 'stream' a otro usuario a través
+        // del servidor de señalización.
+
+    } catch (error) {
+        console.error("Error al acceder a la cámara:", error);
+        alert("No se pudo acceder a la cámara. Asegúrate de dar los permisos necesarios.");
+    }
+}
+
+// Iniciar el proceso
+startCamera();
+
+// La lógica de WebRTC (que es extensa) manejaría la conexión
+// con el otro usuario para mostrar el stream en 'remoteVideo'.
+</script>
