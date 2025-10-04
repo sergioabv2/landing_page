@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptor - Recital de Piano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #000;
+            color: white;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-template-rows: 1fr;
+            height: 100vh;
+            gap: 10px;
+            padding: 10px;
+        }
+        
+        .video-section {
+            position: relative;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-feed {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            color: #444;
+            font-size: 1.5rem;
+        }
+        
+        .info-section {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+        
+        .event-title {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .event-title h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: #ffcc00;
+        }
+        
+        .event-title p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .participant-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .participant-name {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .participant-grade {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        
+        .piece-info {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .piece-title {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .piece-author {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #ddd;
+        }
+        
+        .piece-style {
+            font-size: 1.1rem;
+            color: #aaa;
+            font-style: italic;
+        }
+        
+        .connection-status {
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .connected {
+            background: rgba(0, 255, 0, 0.2);
+            color: #4CAF50;
+        }
+        
+        .disconnected {
+            background: rgba(255, 0, 0, 0.2);
+            color: #f44336;
+        }
+        
+        .next-participant {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid #ffcc00;
+        }
+        
+        .next-participant h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #ffcc00;
+        }
+        
+        .next-participant p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 2fr 1fr;
+            }
+            
+            .participant-name {
+                font-size: 1.8rem;
+            }
+            
+            .participant-grade {
+                font-size: 1.3rem;
+            }
+            
+            .piece-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="video-section">
+            <video id="video-feed" class="video-feed" autoplay muted></video>
+            <div class="video-placeholder" id="video-placeholder">
+                <p>🔴 Esperando transmisión...</p>
+                <p style="font-size: 1rem; margin-top: 10px;">Conectando con el emisor</p>
+            </div>
+        </section>
+        
+        <section class="info-section">
+            <div class="event-title">
+                <h1>Recital de Piano 2023</h1>
+                <p>En vivo desde el auditorio</p>
+            </div>
+            
+            <div class="participant-card">
+                <h2 class="participant-name" id="participant-name">Esperando participante...</h2>
+                <p class="participant-grade" id="participant-grade">Grado: -</p>
+                
+                <div class="piece-info">
+                    <h3 class="piece-title" id="piece-title">Pieza: -</h3>
+                    <p class="piece-author" id="piece-author">Autor: -</p>
+                    <p class="piece-style" id="piece-style">Estilo: -</p>
+                </div>
+                
+                <div class="next-participant">
+                    <h3>Próximamente:</h3>
+                    <p id="next-participant">Cargando...</p>
+                </div>
+            </div>
+            
+            <div id="connection-status" class="connection-status disconnected">
+                Estado: Esperando conexión con el emisor
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Elementos DOM
+        const participantNameEl = document.getElementById('participant-name');
+        const participantGradeEl = document.getElementById('participant-grade');
+        const pieceTitleEl = document.getElementById('piece-title');
+        const pieceAuthorEl = document.getElementById('piece-author');
+        const pieceStyleEl = document.getElementById('piece-style');
+      const nextParticipantEl = document.getElementById('next-participant');
+        const videoFeed = document.getElementById('video-feed');
+        const videoPlaceholder = document.getElementById('video-placeholder');
+        const connectionStatus = document.getElementById('connection-status');
+
+        // Estado actual
+        let currentParticipant = null;
+        let participants = [];
+
+        // Simular recepción de datos del emisor
+        function simulateReception() {
+            // En un entorno real, esto se recibiría a través de WebRTC
+            // Para esta demo, simulamos la recepción de datos
+            
+            // Simular conexión exitosa después de 2 segundos
+            setTimeout(() => {
+                connectionStatus.textContent = "Estado: Conectado al emisor (simulación)";
+                connectionStatus.className = "connection-status connected";
+                
+                videoPlaceholder.style.display = 'none';
+                
+                // Simular recepción de participantes
+                participants = [
+                    {
+                        name: "Ana García López",
+                        grade: "4º Grado",
+                        pieces: [
+                            {
+                                name: "Claro de Luna",
+                                author: "Claude Debussy",
+                                style: "Impresionismo"
+                            }
+                        ]
+                    },
+                    {
+                        name: "Carlos Rodríguez Méndez",
+                        grade: "6º Grado",
+                        pieces: [
+                            {
+                                name: "Sonata Claro de Luna",
+                                author: "Ludwig van Beethoven",
+                                style: "Clásico"
+                            }
+                        ]
+                    },
+                    {
+                        name: "María Fernández Silva",
+                        grade: "5º Grado",
+                        pieces: [
+                            {
+                                name: "Para Elisa",
+                                author: "Ludwig van Beethoven",
+                                style: "Clásico"
+                            }
+                        ]
+                    }
+                ];
+                
+                // Mostrar el primer participante
+                updateParticipant(0);
+                
+                // Simular cambio de participante cada 15 segundos
+                setInterval(() => {
+                    const randomIndex = Math.floor(Math.random() * participants.length);
+                    updateParticipant(randomIndex);
+                }, 15000);
+                
+            }, 2000);
+        }
+
+        // Actualizar la información del participante
+        function updateParticipant(index) {
+            if (participants.length > 0 && index < participants.length) {
+                currentParticipant = participants[index];
+                
+                participantNameEl.textContent = currentParticipant.name;
+                participantGradeEl.textContent = `Grado: ${currentParticipant.grade}`;
+                
+                const piece = currentParticipant.pieces[0];
+                pieceTitleEl.textContent = `Pieza: ${piece.name}`;
+                pieceAuthorEl.textContent = `Autor: ${piece.author}`;
+                pieceStyleEl.textContent = `Estilo: ${piece.style}`;
+                
+                // Mostrar próximo participante
+                const nextIndex = (index + 1) % participants.length;
+                nextParticipantEl.textContent = participants[nextIndex].name;
+            }
+        }
+
+        // Inicializar la aplicación
+        simulateReception();
+    </script>
+</body>
+</html>
