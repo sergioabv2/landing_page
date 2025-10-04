@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emisor - Recital de Piano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            color: #212529;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 32px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #212529;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #6c757d;
+            font-weight: 400;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #212529;
+        }
+        
+        .screen-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e9ecef;
+        }
+        
+        .screen-feed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .screen-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+        }
+        
+        .screen-placeholder-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .screen-placeholder h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+        
+        .screen-placeholder p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #212529;
+            color: white;
+        }
+        
+        button:hover {
+            background: #343a40;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .btn-stop {
+            background: #dc3545;
+        }
+        
+        .btn-stop:hover {
+            background: #c82333;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .controls button {
+            flex: 1;
+        }
+        
+        .participant-info {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .participant-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #212529;
+        }
+        
+        .participant-grade {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 16px;
+        }
+        
+        .piece-info {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .piece-row {
+            display: flex;
+            margin-bottom: 8px;
+        }
+        
+        .piece-label {
+            font-weight: 500;
+            color: #495057;
+            min-width: 80px;
+        }
+        
+        .piece-value {
+            color: #212529;
+        }
+        
+        .participant-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 16px;
+        }
+        
+        .participant-item {
+            padding: 14px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+        }
+        
+        .participant-item:hover {
+            background: #e9ecef;
+        }
+        
+        .participant-item.active {
+            background: #212529;
+            color: white;
+            border-color: #212529;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 16px;
+        }
+        
+        .status-disconnected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-connected {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-sharing {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .room-info {
+            background: #e7f3ff;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border-left: 4px solid #0066cc;
+        }
+        
+        .room-code {
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0066cc;
+            margin-top: 8px;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎹 Control de Emisión - Recital de Piano</h1>
+            <p class="subtitle">Comparte tu pantalla y controla la información de los participantes</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="card">
+                <h2>Transmisión de Pantalla</h2>
+                <div class="screen-container">
+                    <video id="screen-video" class="screen-feed" autoplay muted></video>
+                    <div class="screen-placeholder" id="screen-placeholder">
+                        <div class="screen-placeholder-icon">🖥️</div>
+                        <h3>Sin transmisión activa</h3>
+                        <p>Haz clic en el botón para compartir tu pantalla</p>
+                        <button id="start-screen">Iniciar Transmisión</button>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="stop-screen" class="btn-stop" style="display: none;">Detener Transmisión</button>
+                </div>
+                <div id="connection-status" class="status-badge status-disconnected">
+                    Sin conexión activa
+                </div>
+                
+                <div id="room-info" class="room-info" style="display: none;">
+                    <div style="font-weight: 500; color: #495057;">Código de Sala:</div>
+                    <div class="room-code" id="room-code">-</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Control de Participantes</h2>
+                <div class="participant-info">
+                    <div class="participant-name">Seleccione un participante</div>
+                    <div class="participant-grade">Grado: -</div>
+                    
+                    <div class="piece-info">
+                        <div class="piece-row">
+                            <span class="piece-label">Pieza:</span>
+                            <span class="piece-value" id="piece-title">-</span>
+                        </div>
+                        <div class="piece-row">
+                            <span class="piece-label">Autor:</span>
+                            <span class="piece-value" id="piece-author">-</span>
+                        </div>
+                        <div class="piece-row">
+                            <span class="piece-label">Estilo:</span>
+                            <span class="piece-value" id="piece-style">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="prev-btn">← Anterior</button>
+                    <button id="next-btn">Siguiente →</button>
+                </div>
+                
+                <h2 style="margin-top: 24px; font-size: 1rem;">Lista de Participantes</h2>
+                <div class="participant-list" id="participant-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+        // Configuración de Firebase
+        const fb_config = {
+            apiKey: "AIzaSyCiYZ-_3zXQCu6DIyOd_HRGLCS3s6bIYiE",
+            authDomain: "jcubic-webrtc.firebaseapp.com",
+            databaseURL: "https://jcubic-webrtc.firebaseio.com",
+            projectId: "jcubic-webrtc",
+            storageBucket: "jcubic-webrtc.appspot.com",
+            messagingSenderId: "530153588319"
+        };
+        firebase.initializeApp(fb_config);
+        const database = firebase.database();
+
+        // Datos de participantes
+        const participants = [
+            {
+                name: "Ana García López",
+                grade: "4º Grado",
+                pieces: [{
+                    name: "Claro de Luna",
+                    author: "Claude Debussy",
+                    style: "Impresionismo"
+                }]
+            },
+            {
+                name: "Carlos Rodríguez Méndez",
+                grade: "6º Grado",
+                pieces: [{
+                    name: "Sonata Claro de Luna",
+                    author: "Ludwig van Beethoven",
+                    style: "Clásico"
+                }]
+            },
+            {
+                name: "María Fernández Silva",
+                grade: "5º Grado",
+                pieces: [{
+                    name: "Para Elisa",
+                    author: "Ludwig van Beethoven",
+                    style: "Clásico"
+                }]
+            },
+            {
+                name: "Javier López Torres",
+                grade: "3º Grado",
+                pieces: [{
+                    name: "Minueto en Sol Mayor",
+                    author: "Christian Petzold",
+                    style: "Barroco"
+                }]
+            },
+            {
+                name: "Isabel Martínez Ruiz",
+                grade: "7º Grado",
+                pieces: [{
+                    name: "Nocturno en Mi bemol Mayor",
+                    author: "Frédéric Chopin",
+                    style: "Romántico"
+                }]
+            }
+        ];
+
+        // Variables de estado
+        let currentParticipantIndex = 0;
+        let screenStream = null;
+        let peer = null;
+        let roomId = null;
+
+        // Elementos DOM
+        const participantNameEl = document.querySelector('.participant-name');
+        const participantGradeEl = document.querySelector('.participant-grade');
+        const pieceTitleEl = document.getElementById('piece-title');
+        const pieceAuthorEl = document.getElementById('piece-author');
+        const pieceStyleEl = document.getElementById('piece-style');
+        const participantListEl = document.getElementById('participant-list');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const screenVideo = document.getElementById('screen-video');
+        const screenPlaceholder = document.getElementById('screen-placeholder');
+        const startScreenBtn = document.getElementById('start-screen');
+        const stopScreenBtn = document.getElementById('stop-screen');
+        const connectionStatus = document.getElementById('connection-status');
+        const roomInfo = document.getElementById('room-info');
+        const roomCodeEl = document.getElementById('room-code');
+
+        // Generar ID de sala único
+        function generateRoomId() {
+            return 'recital-' + Math.random().toString(36).substr(2, 9);
+        }
+
+        // Mostrar participante actual
+        function displayCurrentParticipant() {
+            const participant = participants[currentParticipantIndex];
+            
+            participantNameEl.textContent = participant.name;
+            participantGradeEl.textContent = `Grado: ${participant.grade}`;
+            
+            const piece = participant.pieces[0];
+            pieceTitleEl.textContent = piece.name;
+            pieceAuthorEl.textContent = piece.author;
+            pieceStyleEl.textContent = piece.style;
+            
+            updateParticipantList();
+            sendParticipantData();
+        }
+
+        // Actualizar lista de participantes
+        function updateParticipantList() {
+            participantListEl.innerHTML = '';
+            
+            participants.forEach((participant, index) => {
+                const item = document.createElement('div');
+                item.className = `participant-item ${index === currentParticipantIndex ? 'active' : ''}`;
+                item.textContent = participant.name;
+                item.addEventListener('click', () => {
+                    currentParticipantIndex = index;
+                    displayCurrentParticipant();
+                });
+                participantListEl.appendChild(item);
+            });
+        }
+
+        // Navegar entre participantes
+        function showNextParticipant() {
+            currentParticipantIndex = (currentParticipantIndex + 1) % participants.length;
+            displayCurrentParticipant();
+        }
+
+        function showPrevParticipant() {
+            currentParticipantIndex = (currentParticipantIndex - 1 + participants.length) % participants.length;
+            displayCurrentParticipant();
+        }
+
+        // Iniciar compartir pantalla y WebRTC
+        async function startScreenSharing() {
+            try {
+                screenStream = await navigator.mediaDevices.getDisplayMedia({
+                    video: { cursor: "always" },
+                    audio: false
+                });
+                
+                screenVideo.srcObject = screenStream;
+                screenPlaceholder.style.display = 'none';
+                screenVideo.style.display = 'block';
+                startScreenBtn.style.display = 'none';
+                stopScreenBtn.style.display = 'block';
+                
+                updateStatus('sharing', 'Compartiendo pantalla - Esperando receptor...');
+                
+                screenStream.getTracks().forEach(track => {
+                    track.onended = () => stopScreenSharing();
+                });
+                
+                // Inicializar WebRTC como emisor
+                initializeWebRTC();
+                
+            } catch (error) {
+                console.error("Error al compartir pantalla:", error);
+                if (error.name !== 'NotAllowedError') {
+                    alert("No se pudo compartir la pantalla.");
+                }
+            }
+        }
+
+        // Detener compartir pantalla
+        function stopScreenSharing() {
+            if (screenStream) {
+                screenStream.getTracks().forEach(track => track.stop());
+                screenStream = null;
+            }
+            
+            if (peer) {
+                peer.destroy();
+                peer = null;
+            }
+            
+            if (roomId) {
+                database.ref(`rooms/${roomId}`).remove();
+                roomId = null;
+            }
+            
+            screenVideo.srcObject = null;
+            screenPlaceholder.style.display = 'flex';
+            screenVideo.style.display = 'none';
+            startScreenBtn.style.display = 'block';
+            stopScreenBtn.style.display = 'none';
+            roomInfo.style.display = 'none';
+            
+            updateStatus('disconnected', 'Sin conexión activa');
+        }
+
+        // Inicializar WebRTC como emisor (initiator)
+        function initializeWebRTC() {
+            roomId = generateRoomId();
+            roomCodeEl.textContent = roomId;
+            roomInfo.style.display = 'block';
+            
+            peer = new SimplePeer({
+                initiator: true,
+                stream: screenStream,
+                trickle: false
+            });
+            
+            peer.on('signal', data => {
+                database.ref(`rooms/${roomId}/offer`).set(JSON.stringify(data));
+                console.log('Señal de oferta enviada');
+            });
+            
+            peer.on('connect', () => {
+                console.log('Conexión establecida con el receptor');
+                updateStatus('connected', '✓ Conectado con receptor');
+                sendParticipantData();
+            });
+            
+            peer.on('error', err => {
+                console.error('Error en peer:', err);
+                updateStatus('disconnected', 'Error en la conexión');
+            });
+            
+            // Escuchar respuesta del receptor
+            database.ref(`rooms/${roomId}/answer`).on('value', snapshot => {
+                const answer = snapshot.val();
+                if (answer && !peer.destroyed) {
+                    peer.signal(JSON.parse(answer));
+                    console.log('Respuesta del receptor recibida');
+                }
+            });
+        }
+
+        // Enviar datos del participante
+        function sendParticipantData() {
+            if (!peer || peer.destroyed) return;
+            
+            const participant = participants[currentParticipantIndex];
+            const data = {
+                type: 'participant',
+                participant: participant,
+                nextParticipant: participants[(currentParticipantIndex + 1) % participants.length].name
+            };
+            
+            try {
+                peer.send(JSON.stringify(data));
+                console.log('Datos del participante enviados');
+            } catch (error) {
+                console.error('Error al enviar datos:', error);
+            }
+        }
+
+        // Actualizar estado de conexión
+        function updateStatus(type, text) {
+            connectionStatus.textContent = text;
+            connectionStatus.className = `status-badge status-${type}`;
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', showPrevParticipant);
+        nextBtn.addEventListener('click', showNextParticipant);
+        startScreenBtn.addEventListener('click', startScreenSharing);
+        stopScreenBtn.addEventListener('click', stopScreenSharing);
+
+        // Inicializar
+        displayCurrentParticipant();
+    </script>
+</body>
+</html>
