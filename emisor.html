@@ -431,9 +431,10 @@
         const roomCodeEl = document.getElementById('room-code');
 
         // Generar ID de sala único
-        function generateRoomId() {
-            return 'recital-' + Math.random().toString(36).substr(2, 9);
-        }
+        // Generar ID de sala único
+function generateRoomId() {
+    return Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+}
 
         // Mostrar participante actual
         function displayCurrentParticipant() {
