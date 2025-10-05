@@ -338,7 +338,6 @@
             roomId = roomCodeInput.value.trim();
             
             if (!roomId || roomId.length !== 5) {
-                alert('Por favor ingresa un código de sala válido de 5 dígitos');
                 return;
             }
             
@@ -348,7 +347,6 @@
                 const offer = snapshot.val();
                 
                 if (!offer) {
-                    alert('Código de sala inválido o la transmisión ha finalizado.');
                     roomInput.style.display = 'block';
                     return;
                 }
@@ -381,19 +379,14 @@
                         updateParticipantInfo(message.participant, message.nextParticipant);
                     }
                 } catch (error) {
-                    console.error('Error al procesar datos:', error);
                 }
             });
             
             peer.on('error', err => {
-                console.error('Error en peer:', err);
-                alert('Ocurrió un error en la conexión. La sala puede haber sido cerrada.');
                 window.location.reload();
             });
             
             peer.on('close', () => {
-                console.log('Conexión cerrada');
-                alert('La transmisión ha finalizado.');
                 window.location.reload();
             });
             
