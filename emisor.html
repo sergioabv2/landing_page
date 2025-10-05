@@ -190,6 +190,7 @@
         
         .piece-row {
             display: flex;
+            align-items: baseline;
             margin-bottom: 8px;
         }
         
@@ -313,12 +314,13 @@
                 <h2>Control de Participantes</h2>
                 <div class="participant-info">
                     <div class="participant-name">Seleccione un participante</div>
-                    <div class="participant-grade">Grado: -</div>
+                    <div class="participant-grade"></div>
                     
                     <div class="piece-info">
                         <div class="piece-row">
                             <span class="piece-label">Pieza:</span>
                             <span class="piece-value" id="piece-title">-</span>
+                            <span class="piece-value" id="piece-progress" style="margin-left: 8px; color: #6c757d; font-size: 0.9rem;"></span>
                         </div>
                         <div class="piece-row">
                             <span class="piece-label">Autor:</span>
@@ -359,60 +361,196 @@
         const database = firebase.database();
 
         // Datos de participantes
-        const participants = [
+      const participants = [
+    {
+        name: "Nathaly Vasquez",
+        grade: "Grado 1",
+        pieces: [{
+            name: "Little Whale Explores the Calm Sea",
+            author: "Caroline Tyler",
+            style: "Contemporaneo"
+        }]
+    },
+    {
+        name: "Andrea Romero",
+        grade: "Grado 1",
+        pieces: [{
+            name: "Lovet Faller",
+            author: "Knut Nystedt",
+            style: "Contemporaneo"
+        }]
+    },
+    {
+        name: "Nataly Berrezueta",
+        grade: "Grado 1",
+        pieces: [{
+            name: "Minuet in A minor",
+            author: "Johann Krieger",
+            style: "Barroco"
+        }, {
+            name: "Allemande",
+            author: "Johann Schein",
+            style: "Barroco"
+        }]
+    },
+    {
+        name: "Claudia Morales",
+        grade: "Grado 2",
+        pieces: [{
+            name: "Sneaky Business",
+            author: "Martha Mier",
+            style: "Jazz"
+        }, {
+            name: "A Story From Long Ago",
+            author: "Martha Mier",
+            style: "Contemporaneo"
+        }, {
+            name: "Sonatina in C",
+            author: "Frank Lynnes",
+            style: "Clásico"
+        }]
+    },
+     {
+        name: "Fernando Del Valle",
+        grade: "Grado 2",
+        pieces: [ {
+            name: "Aria in F",
+            author: "Johann Sebastian Bach",
+            style: "Barroco"
+        },{
+            name: "Minuet in G",
+            author: "Johann Sebastian Bach",
+            style: "Barroco"
+        }]
+    },
+    {
+        name: "Aidee Bernal",
+        grade: "Grado 2",
+        pieces: [{
+            name: "Sonatina in C",
+            author: "Frank Lynnes",
+            style: "Clásico"
+        },{
+            name: "Starry Night",
+            author: "Italo Taranta",
+            style: "Contemporaneo"
+        }]
+    },
+    {
+        name: "Victor Castillo",
+        grade: "Grado 2",
+        pieces: [{
+            name: "Spooky Wood Hollow",
+            author: "Reginald Hammond",
+            style: "Contemporaneo"
+        }, {
+            name: "The Singing Swang",
+            author: "Alexis Ffrench",
+            style: "Contemporaneo"
+        }]
+    },
+    {
+        name: "Emiliano Guerrero",
+        grade: "Grado 3",
+        pieces: [{
+            name: "The Sad Ghost",
+            author: "Nancy Litten",
+            style: "Contemporaneo"
+        }]
+    },
+    {
+        name: "Fernanda Cruz",
+        grade: "Grado 3",
+        pieces: [{
+            name: "Moderato",
+            author: "Ludwig Van Beethoven",
+            style: "Clásico"
+        }]
+    },
+    {
+        name: "Armando Rodríguez",
+        grade: "Grado 3",
+        pieces: [{
+            name: "Sérénade espagnole",
+            author: "José Ferrer",
+            style: "Romanticismo"
+        },{
+            name: "Gigue in G",
+            author: "Georg Telemann",
+            style: "Barroco"
+        }]
+    },
+    {
+        name: "Eduardo Gutiérrez",
+        grade: "Grado 3",
+        pieces: [{
+            name: "Sonatina in C op.36",
+            author: "Muzio Clementi",
+            style: "Clásico"
+        }]
+    },
+     {
+        name: "Intermedio",
+        grade: "Pausa de 10 minutos",
+        pieces: [{
+            name: "",
+            author: "",
+            style: ""
+        }]
+    },
+    {
+        name: "Jose Antonio Sastré",
+        grade: "Grado 4",
+        pieces: [ {
+            name: "Sonatina in G",
+            author: "Ludwig Van Beethoven",
+            style: "Clásico"
+        },{
+            name: "Romanza",
+            author: "Ludwig Van Beethoven",
+            style: "Clásico"
+        },{
+            name: "Vivace",
+            author: "Muzio Clementi",
+            style: "Clásico"
+        },{
+            name: "Banges Herzeleid",
+            author: "Robert Fuchs",
+            style: "Romanticismo"
+        }]
+    }, 
+    {
+        name: "Liliana Manjarrez",
+        grade: "Grado 6",
+        pieces: [{
+            name: "Esquisse in D",
+            author: "R. M. Gliere",
+            style: "Romanticismo"
+        },{
+            name: "Spillevaerket",
+            author: "Carl Nielsen",
+            style: "Contemporaneo"
+        }]
+    },
+    {
+        name: "Iktan Corona",
+        grade: "Grado 7",
+        pieces: [
             {
-                name: "Ana García López",
-                grade: "4º Grado",
-                pieces: [{
-                    name: "Claro de Luna",
-                    author: "Claude Debussy",
-                    style: "Impresionismo"
-                },{
-                    name: "Claro de Luna",
-                    author: "Claude Debussy",
-                    style: "Impresionismo"
-                }]
-            },
-            {
-                name: "Carlos Rodríguez Méndez",
-                grade: "6º Grado",
-                pieces: [{
-                    name: "Sonata Claro de Luna",
-                    author: "Ludwig van Beethoven",
-                    style: "Clásico"
-                }]
-            },
-            {
-                name: "María Fernández Silva",
-                grade: "5º Grado",
-                pieces: [{
-                    name: "Para Elisa",
-                    author: "Ludwig van Beethoven",
-                    style: "Clásico"
-                }]
-            },
-            {
-                name: "Javier López Torres",
-                grade: "3º Grado",
-                pieces: [{
-                    name: "Minueto en Sol Mayor",
-                    author: "Christian Petzold",
-                    style: "Barroco"
-                }]
-            },
-            {
-                name: "Isabel Martínez Ruiz",
-                grade: "7º Grado",
-                pieces: [{
-                    name: "Nocturno en Mi bemol Mayor",
-                    author: "Frédéric Chopin",
-                    style: "Romántico"
-                }]
-            }
-        ];
+            name: "Moonlight Sonata",
+            author: "Ludwig Van Beethoven",
+            style: "Romanticismo"
+        },{
+            name: "Marcha Turca",
+            author: "Wolfgang Amadeus Mozart",
+            style: "Clásico"
+        }]
+    },
+];
 
         // Variables de estado
         let currentParticipantIndex = 0;
+        let currentPieceIndex = 0;
         let screenStream = null;
         let peer = null;
         let roomId = null;
@@ -423,6 +561,7 @@
         const pieceTitleEl = document.getElementById('piece-title');
         const pieceAuthorEl = document.getElementById('piece-author');
         const pieceStyleEl = document.getElementById('piece-style');
+        const pieceProgressEl = document.getElementById('piece-progress'); // NUEVO
         const participantListEl = document.getElementById('participant-list');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
@@ -435,22 +574,29 @@
         const roomCodeEl = document.getElementById('room-code');
 
         // Generar ID de sala único
-        // Generar ID de sala único
-function generateRoomId() {
-    return Math.floor(Math.random() * 100000).toString().padStart(5, '0');
-}
+        function generateRoomId() {
+            return Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+        }
 
         // Mostrar participante actual
         function displayCurrentParticipant() {
             const participant = participants[currentParticipantIndex];
+            const piece = participant.pieces[currentPieceIndex];
+            const totalPieces = participant.pieces.length;
             
             participantNameEl.textContent = participant.name;
-            participantGradeEl.textContent = `Grado: ${participant.grade}`;
+            participantGradeEl.textContent = `${participant.grade}`;
             
-            const piece = participant.pieces[0];
             pieceTitleEl.textContent = piece.name;
             pieceAuthorEl.textContent = piece.author;
             pieceStyleEl.textContent = piece.style;
+            
+            // MODIFICADO: Actualiza el contador de piezas
+            if (totalPieces > 1) {
+                pieceProgressEl.textContent = `(${currentPieceIndex + 1}/${totalPieces})`;
+            } else {
+                pieceProgressEl.textContent = ''; // Lo oculta si solo hay una pieza
+            }
             
             updateParticipantList();
             sendParticipantData();
@@ -466,20 +612,33 @@ function generateRoomId() {
                 item.textContent = participant.name;
                 item.addEventListener('click', () => {
                     currentParticipantIndex = index;
+                    currentPieceIndex = 0;
                     displayCurrentParticipant();
                 });
                 participantListEl.appendChild(item);
             });
         }
 
-        // Navegar entre participantes
+        // Navegar entre participantes y piezas
         function showNextParticipant() {
-            currentParticipantIndex = (currentParticipantIndex + 1) % participants.length;
+            const currentParticipant = participants[currentParticipantIndex];
+            
+            if (currentPieceIndex < currentParticipant.pieces.length - 1) {
+                currentPieceIndex++;
+            } else {
+                currentParticipantIndex = (currentParticipantIndex + 1) % participants.length;
+                currentPieceIndex = 0;
+            }
             displayCurrentParticipant();
         }
 
         function showPrevParticipant() {
-            currentParticipantIndex = (currentParticipantIndex - 1 + participants.length) % participants.length;
+            if (currentPieceIndex > 0) {
+                currentPieceIndex--;
+            } else {
+                currentParticipantIndex = (currentParticipantIndex - 1 + participants.length) % participants.length;
+                currentPieceIndex = participants[currentParticipantIndex].pieces.length - 1;
+            }
             displayCurrentParticipant();
         }
 
@@ -503,7 +662,6 @@ function generateRoomId() {
                     track.onended = () => stopScreenSharing();
                 });
                 
-                // Inicializar WebRTC como emisor
                 initializeWebRTC();
                 
             } catch (error) {
@@ -569,7 +727,6 @@ function generateRoomId() {
                 updateStatus('disconnected', 'Error en la conexión');
             });
             
-            // Escuchar respuesta del receptor
             database.ref(`rooms/${roomId}/answer`).on('value', snapshot => {
                 const answer = snapshot.val();
                 if (answer && !peer.destroyed) {
@@ -580,19 +737,36 @@ function generateRoomId() {
         }
 
         // Enviar datos del participante
+     // Enviar datos del participante
         function sendParticipantData() {
-            if (!peer || peer.destroyed) return;
+            if (!peer || peer.destroyed || !peer.connected) return;
             
             const participant = participants[currentParticipantIndex];
+            const piece = participant.pieces[currentPieceIndex];
+            const totalPieces = participant.pieces.length;
+
+            // --- INICIO DE LA CORRECCIÓN ---
+            // Se obtiene la información del siguiente participante en la lista
+            const nextParticipantInfo = participants[(currentParticipantIndex + 1) % participants.length];
+            // --- FIN DE LA CORRECCIÓN ---
+
+            const currentData = {
+                name: participant.name,
+                grade: participant.grade,
+                piece: piece,
+                progress: totalPieces > 1 ? `(${currentPieceIndex + 1}/${totalPieces})` : ''
+            };
+
             const data = {
                 type: 'participant',
-                participant: participant,
-                nextParticipant: participants[(currentParticipantIndex + 1) % participants.length].name
+                participant: currentData,
+                // Se agrega el nombre del siguiente participante al paquete de datos
+                nextParticipant: nextParticipantInfo.name 
             };
             
             try {
                 peer.send(JSON.stringify(data));
-                console.log('Datos del participante enviados');
+                console.log('Datos del participante enviados:', data);
             } catch (error) {
                 console.error('Error al enviar datos:', error);
             }
