@@ -13,33 +13,24 @@
         }
         
         body {
-            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            background-color: #000;
             color: #212529;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-        
-        .container {
-            display: grid;
-            grid-template-columns: 2.5fr 1fr;
-            height: 100vh;
-            gap: 20px;
-            padding: 20px;
         }
         
         .video-section {
-            position: relative;
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
         }
         
         .video-feed {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            background: #000;
+            object-fit: cover;
+            transform: scale(1.2);
         }
         
         .video-placeholder {
@@ -77,60 +68,53 @@
         }
         
         .info-section {
-            background: white;
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 380px;
+            z-index: 10;
+
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            
             border-radius: 16px;
-            padding: 32px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
             display: flex;
             flex-direction: column;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
+            gap: 20px;
         }
-        
-        .event-header {
-            text-align: center;
-            padding-bottom: 24px;
-            margin-bottom: 24px;
-            border-bottom: 2px solid #e9ecef;
-        }
-        
-        .event-title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #212529;
-        }
-        
-        .event-subtitle {
-            font-size: 1rem;
-            color: #6c757d;
+
+        .event-header,
+        #connection-status {
+            display: none; /* Ocultamos los elementos no deseados */
         }
         
         .participant-card {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            /* Ya no necesita flex-grow, su tamaño es natural */
         }
         
         .participant-name {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             color: #212529;
-            line-height: 1.3;
+            line-height: 1.2;
         }
         
         .participant-grade {
-            font-size: 1.25rem;
-            margin-bottom: 28px;
-            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: #495057;
         }
         
         .piece-info {
-            background: #f8f9fa;
+            background: rgba(248, 249, 250, 0.8);
             border-radius: 12px;
-            padding: 24px;
-            margin-top: 20px;
+            padding: 20px;
         }
         
         .piece-row {
@@ -146,59 +130,34 @@
         .piece-label {
             font-weight: 500;
             color: #495057;
-            min-width: 80px;
-            font-size: 0.95rem;
+            min-width: 70px;
+            font-size: 0.9rem;
         }
         
         .piece-value {
             color: #212529;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-weight: 500;
         }
         
         .next-section {
-            margin-top: auto;
-            padding-top: 24px;
-            border-top: 2px solid #e9ecef;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .next-title {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #6c757d;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .next-name {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #212529;
             font-weight: 500;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .status-waiting {
-            background: #fff3cd;
-            color: #856404;
-        }
-        
-        .status-connected {
-            background: #d4edda;
-            color: #155724;
-        }
-        
-        .status-error {
-            background: #f8d7da;
-            color: #721c24;
         }
         
         .room-input-section {
@@ -210,7 +169,7 @@
             padding: 32px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            z-index: 10;
+            z-index: 20; /* Debe estar por encima de todo */
             min-width: 400px;
         }
         
@@ -268,16 +227,13 @@
             transform: translateY(0);
         }
         
-        @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-                grid-template-rows: 2fr 1fr;
+        @media (max-width: 768px) {
+            .info-section {
+                width: auto;
+                left: 16px;
+                right: 16px;
+                bottom: 16px;
             }
-            
-            .participant-name {
-                font-size: 1.5rem;
-            }
-            
             .room-input-section {
                 min-width: 90%;
             }
@@ -289,57 +245,55 @@
         <h3>🎹 Conectar a Transmisión</h3>
         <p>Ingresa el código de sala proporcionado por el emisor</p>
         <div class="input-group">
-            <input type="text" id="room-code-input" placeholder="recital-xxxxxx" autocomplete="off">
+            <input type="text" id="room-code-input" placeholder="12345" autocomplete="off" maxlength="5">
             <button id="connect-btn">Conectar</button>
         </div>
     </div>
 
-    <div class="container">
-        <section class="video-section">
-            <video id="video-feed" class="video-feed" autoplay></video>
-            <div class="video-placeholder" id="video-placeholder">
-                <div class="placeholder-icon">🎥</div>
-                <div class="placeholder-text">Esperando transmisión</div>
-                <div class="placeholder-subtext">Conectando con el emisor...</div>
-            </div>
-        </section>
+    <section class="video-section">
+        <video id="video-feed" class="video-feed" autoplay></video>
+        <div class="video-placeholder" id="video-placeholder">
+            <div class="placeholder-icon">🎥</div>
+            <div class="placeholder-text">Esperando transmisión</div>
+            <div class="placeholder-subtext">Ingresa un código de sala para conectar</div>
+        </div>
+    </section>
+    
+    <section class="info-section">
+        <div class="event-header">
+            <h1 class="event-title">Recital de Piano 2025</h1>
+            <p class="event-subtitle">En vivo desde Mozart Academy</p>
+        </div>
         
-        <section class="info-section">
-            <div class="event-header">
-                <h1 class="event-title">Recital de Piano 2025</h1>
-                <p class="event-subtitle">En vivo desde Mozart Academy</p>
-            </div>
+        <div class="participant-card">
+            <h2 class="participant-name" id="participant-name">Esperando participante...</h2>
+            <p class="participant-grade" id="participant-grade"></p>
             
-            <div class="participant-card">
-                <h2 class="participant-name" id="participant-name">Esperando participante...</h2>
-                <p class="participant-grade" id="participant-grade">Grado: -</p>
-                
-                <div class="piece-info">
-                    <div class="piece-row">
-                        <span class="piece-label">Pieza:</span>
-                        <span class="piece-value" id="piece-title">-</span>
-                    </div>
-                    <div class="piece-row">
-                        <span class="piece-label">Autor:</span>
-                        <span class="piece-value" id="piece-author">-</span>
-                    </div>
-                    <div class="piece-row">
-                        <span class="piece-label">Estilo:</span>
-                        <span class="piece-value" id="piece-style">-</span>
-                    </div>
+            <div class="piece-info">
+                <div class="piece-row">
+                    <span class="piece-label">Pieza:</span>
+                    <span class="piece-value" id="piece-title">-</span>
+                </div>
+                <div class="piece-row">
+                    <span class="piece-label">Autor:</span>
+                    <span class="piece-value" id="piece-author">-</span>
+                </div>
+                <div class="piece-row">
+                    <span class="piece-label">Estilo:</span>
+                    <span class="piece-value" id="piece-style">-</span>
                 </div>
             </div>
-            
-            <div class="next-section">
-                <div class="next-title">Próximamente</div>
-                <div class="next-name" id="next-participant">Cargando...</div>
-            </div>
-            
-            <div id="connection-status" class="status-badge status-waiting">
-                Esperando conexión...
-            </div>
-        </section>
-    </div>
+        </div>
+        
+        <div class="next-section">
+            <div class="next-title">Próximamente</div>
+            <div class="next-name" id="next-participant">Cargando...</div>
+        </div>
+        
+        <div id="connection-status" class="status-badge status-waiting">
+            Esperando conexión...
+        </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -370,29 +324,31 @@
         const roomInput = document.getElementById('room-input');
         const roomCodeInput = document.getElementById('room-code-input');
         const connectBtn = document.getElementById('connect-btn');
+        const infoSection = document.querySelector('.info-section');
 
         // Variables de estado
         let peer = null;
         let roomId = null;
 
+        // Ocultar la tarjeta de info al inicio
+        infoSection.style.display = 'none';
+
         // Conectar a la sala
         function connectToRoom() {
             roomId = roomCodeInput.value.trim();
             
-            if (!roomId) {
-                alert('Por favor ingresa un código de sala válido');
+            if (!roomId || roomId.length !== 5) {
+                alert('Por favor ingresa un código de sala válido de 5 dígitos');
                 return;
             }
             
             roomInput.style.display = 'none';
-            updateStatus('waiting', 'Conectando con el emisor...');
             
-            // Escuchar la oferta del emisor
             database.ref(`rooms/${roomId}/offer`).once('value', snapshot => {
                 const offer = snapshot.val();
                 
                 if (!offer) {
-                    updateStatus('error', 'Código de sala inválido');
+                    alert('Código de sala inválido o la transmisión ha finalizado.');
                     roomInput.style.display = 'block';
                     return;
                 }
@@ -410,14 +366,12 @@
             
             peer.on('signal', data => {
                 database.ref(`rooms/${roomId}/answer`).set(JSON.stringify(data));
-                console.log('Respuesta enviada al emisor');
             });
             
             peer.on('stream', stream => {
-                console.log('Stream recibido del emisor');
                 videoFeed.srcObject = stream;
                 videoPlaceholder.style.display = 'none';
-                updateStatus('connected', '✓ Conectado - Transmisión activa');
+                infoSection.style.display = 'flex'; // Mostrar la info cuando hay video
             });
             
             peer.on('data', data => {
@@ -431,22 +385,18 @@
                 }
             });
             
-            peer.on('connect', () => {
-                console.log('Conexión WebRTC establecida');
-            });
-            
             peer.on('error', err => {
                 console.error('Error en peer:', err);
-                updateStatus('error', 'Error en la conexión');
+                alert('Ocurrió un error en la conexión. La sala puede haber sido cerrada.');
+                window.location.reload();
             });
             
             peer.on('close', () => {
                 console.log('Conexión cerrada');
-                videoPlaceholder.style.display = 'flex';
-                updateStatus('waiting', 'Conexión cerrada');
+                alert('La transmisión ha finalizado.');
+                window.location.reload();
             });
             
-            // Señalar con la oferta recibida
             peer.signal(JSON.parse(offer));
         }
 
@@ -460,13 +410,7 @@
             pieceAuthorEl.textContent = piece.author;
             pieceStyleEl.textContent = piece.style;
             
-            nextParticipantEl.textContent = nextParticipant || 'Sin información';
-        }
-
-        // Actualizar estado de conexión
-        function updateStatus(type, text) {
-            connectionStatus.textContent = text;
-            connectionStatus.className = `status-badge status-${type}`;
+            nextParticipantEl.textContent = nextParticipant || 'Fin del recital';
         }
 
         // Event listeners
@@ -477,7 +421,6 @@
             }
         });
 
-        // Auto-focus en el input
         roomCodeInput.focus();
     </script>
 </body>
