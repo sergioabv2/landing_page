@@ -29,7 +29,7 @@
         .video-feed {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+              object-fit: cover;
             transform: scale(1.2);
         }
         
@@ -71,30 +71,22 @@
             position: fixed;
             bottom: 24px;
             left: 24px;
-            width: 380px;
+            width: 420px; /* Un poco más ancho para el contador */
             z-index: 10;
-
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            
             border-radius: 16px;
             padding: 24px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
-
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .event-header,
-        #connection-status {
-            display: none; /* Ocultamos los elementos no deseados */
-        }
-        
         .participant-card {
-            /* Ya no necesita flex-grow, su tamaño es natural */
+            /* Estilos del card */
         }
         
         .participant-name {
@@ -169,7 +161,7 @@
             padding: 32px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            z-index: 20; /* Debe estar por encima de todo */
+            z-index: 20;
             min-width: 400px;
         }
         
@@ -260,11 +252,6 @@
     </section>
     
     <section class="info-section">
-        <div class="event-header">
-            <h1 class="event-title">Recital de Piano 2025</h1>
-            <p class="event-subtitle">En vivo desde Mozart Academy</p>
-        </div>
-        
         <div class="participant-card">
             <h2 class="participant-name" id="participant-name">Esperando participante...</h2>
             <p class="participant-grade" id="participant-grade"></p>
@@ -273,6 +260,7 @@
                 <div class="piece-row">
                     <span class="piece-label">Pieza:</span>
                     <span class="piece-value" id="piece-title">-</span>
+                    <span class="piece-value" id="piece-progress" style="margin-left: 8px; color: #6c757d; font-size: 0.9rem;"></span>
                 </div>
                 <div class="piece-row">
                     <span class="piece-label">Autor:</span>
@@ -289,10 +277,6 @@
             <div class="next-title">Próximamente</div>
             <div class="next-name" id="next-participant">Cargando...</div>
         </div>
-        
-        <div id="connection-status" class="status-badge status-waiting">
-            Esperando conexión...
-        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
@@ -303,7 +287,7 @@
         const fb_config = {
             apiKey: "AIzaSyCiYZ-_3zXQCu6DIyOd_HRGLCS3s6bIYiE",
             authDomain: "jcubic-webrtc.firebaseapp.com",
-            databaseURL: "https://jcubic-webrtc.firebaseio.com",
+             databaseURL: "https://jcubic-webrtc.firebaseio.com",
             projectId: "jcubic-webrtc",
             storageBucket: "jcubic-webrtc.appspot.com",
             messagingSenderId: "530153588319"
@@ -317,10 +301,10 @@
         const pieceTitleEl = document.getElementById('piece-title');
         const pieceAuthorEl = document.getElementById('piece-author');
         const pieceStyleEl = document.getElementById('piece-style');
+        const pieceProgressEl = document.getElementById('piece-progress'); // NUEVO
         const nextParticipantEl = document.getElementById('next-participant');
         const videoFeed = document.getElementById('video-feed');
         const videoPlaceholder = document.getElementById('video-placeholder');
-        const connectionStatus = document.getElementById('connection-status');
         const roomInput = document.getElementById('room-input');
         const roomCodeInput = document.getElementById('room-code-input');
         const connectBtn = document.getElementById('connect-btn');
@@ -336,21 +320,16 @@
         // Conectar a la sala
         function connectToRoom() {
             roomId = roomCodeInput.value.trim();
-            
-            if (!roomId || roomId.length !== 5) {
-                return;
-            }
+            if (!roomId || roomId.length !== 5) return;
             
             roomInput.style.display = 'none';
             
             database.ref(`rooms/${roomId}/offer`).once('value', snapshot => {
                 const offer = snapshot.val();
-                
                 if (!offer) {
                     roomInput.style.display = 'block';
                     return;
                 }
-                
                 initializeWebRTC(offer);
             });
         }
@@ -369,49 +348,52 @@
             peer.on('stream', stream => {
                 videoFeed.srcObject = stream;
                 videoPlaceholder.style.display = 'none';
-                infoSection.style.display = 'flex'; // Mostrar la info cuando hay video
+                infoSection.style.display = 'flex';
             });
             
             peer.on('data', data => {
                 try {
                     const message = JSON.parse(data.toString());
                     if (message.type === 'participant') {
+                        // MODIFICADO: Se pasa el objeto 'participant' completo y el nombre del siguiente
                         updateParticipantInfo(message.participant, message.nextParticipant);
                     }
                 } catch (error) {
                 }
             });
             
-            peer.on('error', err => {
-                window.location.reload();
-            });
-            
-            peer.on('close', () => {
-                window.location.reload();
-            });
+            peer.on('error', err => { window.location.reload(); });
+            peer.on('close', () => { window.location.reload(); });
             
             peer.signal(JSON.parse(offer));
         }
 
         // Actualizar información del participante
         function updateParticipantInfo(participant, nextParticipant) {
+            // -- INICIO DE CÓDIGO MODIFICADO --
             participantNameEl.textContent = participant.name;
-            participantGradeEl.textContent = `Grado: ${participant.grade}`;
+            participantGradeEl.textContent = participant.grade;
             
-            const piece = participant.pieces[0];
-            pieceTitleEl.textContent = piece.name;
-            pieceAuthorEl.textContent = piece.author;
-            pieceStyleEl.textContent = piece.style;
+            // El objeto 'piece' ahora viene directamente en 'participant'
+            const piece = participant.piece;
+            if (piece) {
+                pieceTitleEl.textContent = piece.name;
+                pieceAuthorEl.textContent = piece.author;
+                pieceStyleEl.textContent = piece.style;
+            }
             
+            // Se actualiza el contador de progreso
+            pieceProgressEl.textContent = participant.progress || '';
+
+            // Se actualiza el siguiente participante
             nextParticipantEl.textContent = nextParticipant || 'Fin del recital';
+            // -- FIN DE CÓDIGO MODIFICADO --
         }
 
         // Event listeners
         connectBtn.addEventListener('click', connectToRoom);
         roomCodeInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                connectToRoom();
-            }
+            if (e.key === 'Enter') connectToRoom();
         });
 
         roomCodeInput.focus();
