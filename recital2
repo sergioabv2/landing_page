@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptor - Recital de Piano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #212529;
+        }
+        
+        .video-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+        }
+        
+        .video-feed {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.2);
+        }
+        
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #6c757d;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .placeholder-icon {
+            font-size: 72px;
+            margin-bottom: 24px;
+            opacity: 0.4;
+        }
+        
+        .placeholder-text {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #495057;
+        }
+        
+        .placeholder-subtext {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+        
+        .info-section {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 380px;
+            z-index: 10;
+
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .event-header,
+        #connection-status {
+            display: none; /* Ocultamos los elementos no deseados */
+        }
+        
+        .participant-card {
+            /* Ya no necesita flex-grow, su tamaño es natural */
+        }
+        
+        .participant-name {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #212529;
+            line-height: 1.2;
+        }
+        
+        .participant-grade {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: #495057;
+        }
+        
+        .piece-info {
+            background: rgba(248, 249, 250, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .piece-row {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 12px;
+        }
+        
+        .piece-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .piece-label {
+            font-weight: 500;
+            color: #495057;
+            min-width: 70px;
+            font-size: 0.9rem;
+        }
+        
+        .piece-value {
+            color: #212529;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .next-section {
+            padding-top: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .next-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #6c757d;
+            margin-bottom: 6px;
+        }
+        
+        .next-name {
+            font-size: 1rem;
+            color: #212529;
+            font-weight: 500;
+        }
+        
+        .room-input-section {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 20; /* Debe estar por encima de todo */
+            min-width: 400px;
+        }
+        
+        .room-input-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: #212529;
+        }
+        
+        .room-input-section p {
+            color: #6c757d;
+            margin-bottom: 24px;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: monospace;
+            transition: border-color 0.2s;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #212529;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #212529;
+            color: white;
+        }
+        
+        button:hover {
+            background: #343a40;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .info-section {
+                width: auto;
+                left: 16px;
+                right: 16px;
+                bottom: 16px;
+            }
+            .room-input-section {
+                min-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="room-input" class="room-input-section">
+        <h3>🎹 Conectar a Transmisión</h3>
+        <p>Ingresa el código de sala proporcionado por el emisor</p>
+        <div class="input-group">
+            <input type="text" id="room-code-input" placeholder="12345" autocomplete="off" maxlength="5">
+            <button id="connect-btn">Conectar</button>
+        </div>
+    </div>
+
+    <section class="video-section">
+        <video id="video-feed" class="video-feed" autoplay></video>
+        <div class="video-placeholder" id="video-placeholder">
+            <div class="placeholder-icon">🎥</div>
+            <div class="placeholder-text">Esperando transmisión</div>
+            <div class="placeholder-subtext">Ingresa un código de sala para conectar</div>
+        </div>
+    </section>
+    
+    <section class="info-section">
+        <div class="event-header">
+            <h1 class="event-title">Recital de Piano 2025</h1>
+            <p class="event-subtitle">En vivo desde Mozart Academy</p>
+        </div>
+        
+        <div class="participant-card">
+            <h2 class="participant-name" id="participant-name">Esperando participante...</h2>
+            <p class="participant-grade" id="participant-grade"></p>
+            
+            <div class="piece-info">
+                <div class="piece-row">
+                    <span class="piece-label">Pieza:</span>
+                    <span class="piece-value" id="piece-title">-</span>
+                </div>
+                <div class="piece-row">
+                    <span class="piece-label">Autor:</span>
+                    <span class="piece-value" id="piece-author">-</span>
+                </div>
+                <div class="piece-row">
+                    <span class="piece-label">Estilo:</span>
+                    <span class="piece-value" id="piece-style">-</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="next-section">
+            <div class="next-title">Próximamente</div>
+            <div class="next-name" id="next-participant">Cargando...</div>
+        </div>
+        
+        <div id="connection-status" class="status-badge status-waiting">
+            Esperando conexión...
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+        // Configuración de Firebase
+        const fb_config = {
+            apiKey: "AIzaSyCiYZ-_3zXQCu6DIyOd_HRGLCS3s6bIYiE",
+            authDomain: "jcubic-webrtc.firebaseapp.com",
+            databaseURL: "https://jcubic-webrtc.firebaseio.com",
+            projectId: "jcubic-webrtc",
+            storageBucket: "jcubic-webrtc.appspot.com",
+            messagingSenderId: "530153588319"
+        };
+        firebase.initializeApp(fb_config);
+        const database = firebase.database();
+
+        // Elementos DOM
+        const participantNameEl = document.getElementById('participant-name');
+        const participantGradeEl = document.getElementById('participant-grade');
+        const pieceTitleEl = document.getElementById('piece-title');
+        const pieceAuthorEl = document.getElementById('piece-author');
+        const pieceStyleEl = document.getElementById('piece-style');
+        const nextParticipantEl = document.getElementById('next-participant');
+        const videoFeed = document.getElementById('video-feed');
+        const videoPlaceholder = document.getElementById('video-placeholder');
+        const connectionStatus = document.getElementById('connection-status');
+        const roomInput = document.getElementById('room-input');
+        const roomCodeInput = document.getElementById('room-code-input');
+        const connectBtn = document.getElementById('connect-btn');
+        const infoSection = document.querySelector('.info-section');
+
+        // Variables de estado
+        let peer = null;
+        let roomId = null;
+
+        // Ocultar la tarjeta de info al inicio
+        infoSection.style.display = 'none';
+
+        // Conectar a la sala
+        function connectToRoom() {
+            roomId = roomCodeInput.value.trim();
+            
+            if (!roomId || roomId.length !== 5) {
+                return;
+            }
+            
+            roomInput.style.display = 'none';
+            
+            database.ref(`rooms/${roomId}/offer`).once('value', snapshot => {
+                const offer = snapshot.val();
+                
+                if (!offer) {
+                    roomInput.style.display = 'block';
+                    return;
+                }
+                
+                initializeWebRTC(offer);
+            });
+        }
+
+        // Inicializar WebRTC como receptor
+        function initializeWebRTC(offer) {
+            peer = new SimplePeer({
+                initiator: false,
+                trickle: false
+            });
+            
+            peer.on('signal', data => {
+                database.ref(`rooms/${roomId}/answer`).set(JSON.stringify(data));
+            });
+            
+            peer.on('stream', stream => {
+                videoFeed.srcObject = stream;
+                videoPlaceholder.style.display = 'none';
+                infoSection.style.display = 'flex'; // Mostrar la info cuando hay video
+            });
+            
+            peer.on('data', data => {
+                try {
+                    const message = JSON.parse(data.toString());
+                    if (message.type === 'participant') {
+                        updateParticipantInfo(message.participant, message.nextParticipant);
+                    }
+                } catch (error) {
+                }
+            });
+            
+            peer.on('error', err => {
+                window.location.reload();
+            });
+            
+            peer.on('close', () => {
+                window.location.reload();
+            });
+            
+            peer.signal(JSON.parse(offer));
+        }
+
+        // Actualizar información del participante
+        function updateParticipantInfo(participant, nextParticipant) {
+            participantNameEl.textContent = participant.name;
+            participantGradeEl.textContent = `Grado: ${participant.grade}`;
+            
+            const piece = participant.pieces[0];
+            pieceTitleEl.textContent = piece.name;
+            pieceAuthorEl.textContent = piece.author;
+            pieceStyleEl.textContent = piece.style;
+            
+            nextParticipantEl.textContent = nextParticipant || 'Fin del recital';
+        }
+
+        // Event listeners
+        connectBtn.addEventListener('click', connectToRoom);
+        roomCodeInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                connectToRoom();
+            }
+        });
+
+        roomCodeInput.focus();
+    </script>
+</body>
+</html>
