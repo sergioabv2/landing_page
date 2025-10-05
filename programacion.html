@@ -10,21 +10,28 @@
     background: #fafafa;
     color: #333;
     padding: 20px;
-    line-height: 1.5;
+    line-height: 1.6;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
   }
   h2 {
-    background: #333;
+    background: linear-gradient(90deg, #333, #555);
     color: white;
     padding: 8px 12px;
     border-radius: 8px;
+    margin-top: 25px;
   }
   .participant {
     margin-bottom: 15px;
     padding-left: 15px;
-    border-left: 3px solid #666;
+    border-left: 3px solid #888;
   }
   .participant h3 {
     margin-bottom: 5px;
+    color: #222;
   }
   ul {
     list-style: none;
@@ -33,11 +40,33 @@
   li::before {
     content: "🎵 ";
   }
+  /* 🔹 Estilo mejorado del intermedio */
   .intermission {
     text-align: center;
+    margin: 50px 0;
+    padding: 30px 15px;
+    background: linear-gradient(135deg, #f8f8f8, #e0e0e0);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 1.2em;
     font-style: italic;
-    color: #666;
-    margin: 30px 0;
+    color: #444;
+    position: relative;
+  }
+  .intermission::before {
+    content: "🎼";
+    font-size: 3em;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .intermission span {
+    display: block;
+    font-weight: bold;
+    font-size: 1.4em;
+    color: #222;
+    margin-top: 10px;
   }
 </style>
 </head>
@@ -64,13 +93,13 @@ const participants = [
   { name: "Iktan Corona", grade: "Grado 7", pieces: [{ name: "Moonlight Sonata", author: "Ludwig Van Beethoven", style: "Romanticismo" }, { name: "Marcha Turca", author: "Wolfgang Amadeus Mozart", style: "Clásico" }] }
 ];
 
-// Ordenar por grado (manteniendo el "Intermedio" en su posición)
+// Ordenar grados
 const ordered = participants.filter(p => p.grade.startsWith("Grado"))
   .sort((a, b) => parseInt(a.grade.replace("Grado ", "")) - parseInt(b.grade.replace("Grado ", "")));
 
 const intermission = participants.find(p => p.name === "Intermedio");
 
-// Insertar el intermedio en su lugar (entre grado 3 y 4)
+// Insertar el intermedio entre grado 3 y 4
 const indexAfter3 = ordered.findIndex(p => p.grade === "Grado 4");
 if (indexAfter3 !== -1) ordered.splice(indexAfter3, 0, intermission);
 
@@ -79,7 +108,12 @@ let currentGrade = "";
 
 ordered.forEach(p => {
   if (p.name === "Intermedio") {
-    container.innerHTML += `<div class="intermission">🎼 ${p.grade}</div>`;
+    container.innerHTML += `
+      <div class="intermission">
+        <span>🌿 Intermedio</span>
+        ${p.grade}
+      </div>
+    `;
   } else {
     if (p.grade !== currentGrade) {
       currentGrade = p.grade;
