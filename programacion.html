@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa del Recital</title>
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background: #fafafa;
+    color: #333;
+    padding: 20px;
+    line-height: 1.5;
+  }
+  h2 {
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+  .participant {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 3px solid #666;
+  }
+  .participant h3 {
+    margin-bottom: 5px;
+  }
+  ul {
+    list-style: none;
+    padding-left: 15px;
+  }
+  li::before {
+    content: "🎵 ";
+  }
+  .intermission {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin: 30px 0;
+  }
+</style>
+</head>
+<body>
+  <h1>🎹 Programa del Recital</h1>
+  <div id="program"></div>
+
+<script>
+const participants = [
+  { name: "Nathaly Vasquez", grade: "Grado 1", pieces: [{ name: "Little Whale Explores the Calm Sea", author: "Caroline Tyler", style: "Contemporaneo" }] },
+  { name: "Andrea Romero", grade: "Grado 1", pieces: [{ name: "Lovet Faller", author: "Knut Nystedt", style: "Contemporaneo" }] },
+  { name: "Nataly Berrezueta", grade: "Grado 1", pieces: [{ name: "Minuet in A minor", author: "Johann Krieger", style: "Barroco" }, { name: "Allemande", author: "Johann Schein", style: "Barroco" }] },
+  { name: "Claudia Morales", grade: "Grado 2", pieces: [{ name: "Sneaky Business", author: "Martha Mier", style: "Jazz" }, { name: "A Story From Long Ago", author: "Martha Mier", style: "Contemporaneo" }, { name: "Sonatina in C", author: "Frank Lynnes", style: "Clásico" }] },
+  { name: "Fernando Del Valle", grade: "Grado 2", pieces: [{ name: "Aria in F", author: "Johann Sebastian Bach", style: "Barroco" }, { name: "Minuet in G", author: "Johann Sebastian Bach", style: "Barroco" }] },
+  { name: "Aidee Bernal", grade: "Grado 2", pieces: [{ name: "Sonatina in C", author: "Frank Lynnes", style: "Clásico" }, { name: "Starry Night", author: "Italo Taranta", style: "Contemporaneo" }] },
+  { name: "Victor Castillo", grade: "Grado 2", pieces: [{ name: "Spooky Wood Hollow", author: "Reginald Hammond", style: "Contemporaneo" }, { name: "The Singing Swang", author: "Alexis Ffrench", style: "Contemporaneo" }] },
+  { name: "Emiliano Guerrero", grade: "Grado 3", pieces: [{ name: "The Sad Ghost", author: "Nancy Litten", style: "Contemporaneo" }] },
+  { name: "Fernanda Cruz", grade: "Grado 3", pieces: [{ name: "Moderato", author: "Ludwig Van Beethoven", style: "Clásico" }] },
+  { name: "Armando Rodríguez", grade: "Grado 3", pieces: [{ name: "Sérénade espagnole", author: "José Ferrer", style: "Romanticismo" }, { name: "Gigue in G", author: "Georg Telemann", style: "Barroco" }] },
+  { name: "Eduardo Gutiérrez", grade: "Grado 3", pieces: [{ name: "Sonatina in C op.36", author: "Muzio Clementi", style: "Clásico" }] },
+  { name: "Intermedio", grade: "Pausa de 10 minutos", pieces: [{ name: "", author: "", style: "" }] },
+  { name: "Jose Antonio Sastré", grade: "Grado 4", pieces: [{ name: "Sonatina in G", author: "Ludwig Van Beethoven", style: "Clásico" }, { name: "Romanza", author: "Ludwig Van Beethoven", style: "Clásico" }, { name: "Vivace", author: "Muzio Clementi", style: "Clásico" }, { name: "Banges Herzeleid", author: "Robert Fuchs", style: "Romanticismo" }] },
+  { name: "Liliana Manjarrez", grade: "Grado 6", pieces: [{ name: "Esquisse in D", author: "R. M. Gliere", style: "Romanticismo" }, { name: "Spillevaerket", author: "Carl Nielsen", style: "Contemporaneo" }] },
+  { name: "Iktan Corona", grade: "Grado 7", pieces: [{ name: "Moonlight Sonata", author: "Ludwig Van Beethoven", style: "Romanticismo" }, { name: "Marcha Turca", author: "Wolfgang Amadeus Mozart", style: "Clásico" }] }
+];
+
+// Ordenar por grado (manteniendo el "Intermedio" en su posición)
+const ordered = participants.filter(p => p.grade.startsWith("Grado"))
+  .sort((a, b) => parseInt(a.grade.replace("Grado ", "")) - parseInt(b.grade.replace("Grado ", "")));
+
+const intermission = participants.find(p => p.name === "Intermedio");
+
+// Insertar el intermedio en su lugar (entre grado 3 y 4)
+const indexAfter3 = ordered.findIndex(p => p.grade === "Grado 4");
+if (indexAfter3 !== -1) ordered.splice(indexAfter3, 0, intermission);
+
+const container = document.getElementById("program");
+let currentGrade = "";
+
+ordered.forEach(p => {
+  if (p.name === "Intermedio") {
+    container.innerHTML += `<div class="intermission">🎼 ${p.grade}</div>`;
+  } else {
+    if (p.grade !== currentGrade) {
+      currentGrade = p.grade;
+      container.innerHTML += `<h2>${p.grade}</h2>`;
+    }
+
+    let piecesHTML = p.pieces.map(piece => 
+      `<li><strong>${piece.name}</strong> — ${piece.author} <em>(${piece.style})</em></li>`
+    ).join("");
+
+    container.innerHTML += `
+      <div class="participant">
+        <h3>${p.name}</h3>
+        <ul>${piecesHTML}</ul>
+      </div>
+    `;
+  }
+});
+</script>
+</body>
+</html>
