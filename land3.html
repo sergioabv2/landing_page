@@ -94,7 +94,7 @@
         .nav-logo.logo-dark .nav-logo-text-white { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2rem; color: black; line-height: 1; }
 
         /* Home */
-        .home { position: relative; height: 468px; background: url('https://lh3.googleusercontent.com/d/19w_dgdDABMcQS9yOjZxCdsOX5EhCxWaC'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 18rem 0 2rem; z-index: -2; }
+        .home { position: relative; height: 468px; background: url('https://lh3.googleusercontent.com/d/1xjW82PryaovzAfXKQbFkvxq2Ppcc97jR'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 18rem 0 2rem; z-index: -2; }
         .home::after { position: absolute; content: ''; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 3, 32, .66); z-index: -1; }
 
         /* Gallery Video Section */
@@ -111,10 +111,18 @@
         .indicator-dot { width: 10px; height: 10px; border-radius: 50%; background-color: var(--border-color); cursor: pointer; transition: .3s; }
         .indicator-dot.active { background-color: var(--first-color); width: 30px; border-radius: 5px; }
 
-        /* Gallery Images */
-        .gallery-images { padding: 3rem 0 5rem; }
-        .images-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .image-item { position: relative; overflow: hidden; border-radius: .8rem; height: 300px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        /* Gallery Images with Parallax */
+        .gallery-images { padding: 3rem 0 5rem; overflow: hidden; }
+        .images-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        .images-row.visible { opacity: 1; transform: translateY(0); }
+        
+        .image-item { position: relative; overflow: hidden; border-radius: .8rem; height: 300px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }
+        
+        /* Parallax effect on individual items */
+        .image-item.parallax-slow { transform: translateY(var(--parallax-offset-slow, 0)); }
+        .image-item.parallax-medium { transform: translateY(var(--parallax-offset-medium, 0)); }
+        .image-item.parallax-fast { transform: translateY(var(--parallax-offset-fast, 0)); }
+        
         .image-item img { width: 100%; height: 100%; object-fit: cover; transition: .5s ease; }
         .image-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, transparent 0%, rgba(87, 68, 203, 0.9) 100%); opacity: 0; transition: .5s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
         .image-item:hover img { transform: scale(1.15); }
@@ -149,7 +157,7 @@
 
         @media screen and (max-width: 1024px) {
             .container { margin-left: 1.5rem; margin-right: 1.5rem; }
-            .images-grid { grid-template-columns: repeat(2, 1fr); }
+            .images-row { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media screen and (max-width: 767px) {
@@ -162,7 +170,7 @@
             .nav-link { color: var(--title-color); }
             .active-link::before { background-color: var(--title-color); }
             .show-menu { top: 0; }
-            .images-grid { grid-template-columns: 1fr; }
+            .images-row { grid-template-columns: 1fr; }
             .video-controls { flex-direction: column; }
             .footer-container { grid-template-columns: 1fr; row-gap: 2rem; justify-items: center; place-items: center; }
             .footer-content { display: flex; align-items: center; justify-content: center; flex-direction: column; }
@@ -246,52 +254,85 @@
             <h2 class="section-title">Galería de Imágenes</h2>
             <p class="section-subtitle">Momentos especiales de nuestra academia</p>
 
-            <div class="images-grid container">
-                <div class="image-item">
-                    <img src="https://u.cubeupload.com/Leo21/course1.jpg" alt="Clase de piano">
-                    <div class="image-overlay">
-                        <h3 class="image-title">Clase de Piano Nivel 1</h3>
-                        <p class="image-description">Estudiantes aprendiendo las bases del piano</p>
+            <div class="container">
+                <!-- Primera fila -->
+                <div class="images-row" data-row="1">
+                    <div class="image-item parallax-slow">
+                        <img src="https://u.cubeupload.com/Leo21/course1.jpg" alt="Clase de piano">
+                        <div class="image-overlay">
+                            <h3 class="image-title">Clase de Piano Nivel 1</h3>
+                            <p class="image-description">Estudiantes aprendiendo las bases del piano</p>
+                        </div>
+                    </div>
+
+                    <div class="image-item parallax-medium">
+                        <img src="https://u.cubeupload.com/Leo21/course2.jpg" alt="Teoría musical">
+                        <div class="image-overlay">
+                            <h3 class="image-title">Teoría Musical</h3>
+                            <p class="image-description">Fundamentos de la música</p>
+                        </div>
+                    </div>
+
+                    <div class="image-item parallax-fast">
+                        <img src="https://u.cubeupload.com/Leo21/course3.jpg" alt="Piano avanzado">
+                        <div class="image-overlay">
+                            <h3 class="image-title">Piano Avanzado</h3>
+                            <p class="image-description">Técnicas y armonía musical</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="image-item">
-                    <img src="https://u.cubeupload.com/Leo21/course2.jpg" alt="Teoría musical">
-                    <div class="image-overlay">
-                        <h3 class="image-title">Teoría Musical</h3>
-                        <p class="image-description">Fundamentos de la música</p>
+                <!-- Segunda fila -->
+                <div class="images-row" data-row="2">
+                    <div class="image-item parallax-medium">
+                        <img src="https://u.cubeupload.com/Leo21/course4.jpg" alt="Repertorio clásico">
+                        <div class="image-overlay">
+                            <h3 class="image-title">Repertorio Clásico</h3>
+                            <p class="image-description">Interpretación de grandes obras</p>
+                        </div>
+                    </div>
+
+                    <div class="image-item parallax-fast">
+                        <img src="https://u.cubeupload.com/Leo21/course5.jpg" alt="Piano jazz">
+                        <div class="image-overlay">
+                            <h3 class="image-title">Piano Jazz</h3>
+                            <p class="image-description">Improvisación y creatividad</p>
+                        </div>
+                    </div>
+
+                    <div class="image-item parallax-slow">
+                        <img src="https://u.cubeupload.com/Leo21/course6.jpg" alt="Composición">
+                        <div class="image-overlay">
+                            <h3 class="image-title">Composición Musical</h3>
+                            <p class="image-description">Creando nuevas piezas</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="image-item">
-                    <img src="https://u.cubeupload.com/Leo21/course3.jpg" alt="Piano avanzado">
-                    <div class="image-overlay">
-                        <h3 class="image-title">Piano Avanzado</h3>
-                        <p class="image-description">Técnicas y armonía musical</p>
+                <!-- Tercera fila -->
+                <div class="images-row" data-row="3">
+                    <div class="image-item parallax-fast">
+                        <img src="https://u.cubeupload.com/Leo21/course1.jpg" alt="Clase de piano">
+                        <div class="image-overlay">
+                            <h3 class="image-title">Clases Grupales</h3>
+                            <p class="image-description">Aprendizaje colaborativo</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="image-item">
-                    <img src="https://u.cubeupload.com/Leo21/course4.jpg" alt="Repertorio clásico">
-                    <div class="image-overlay">
-                        <h3 class="image-title">Repertorio Clásico</h3>
-                        <p class="image-description">Interpretación de grandes obras</p>
+                    <div class="image-item parallax-slow">
+                        <img src="https://u.cubeupload.com/Leo21/course2.jpg" alt="Teoría musical">
+                        <div class="image-overlay">
+                            <h3 class="image-title">Solfeo y Entonación</h3>
+                            <p class="image-description">Desarrollo del oído musical</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="image-item">
-                    <img src="https://u.cubeupload.com/Leo21/course5.jpg" alt="Piano jazz">
-                    <div class="image-overlay">
-                        <h3 class="image-title">Piano Jazz</h3>
-                        <p class="image-description">Improvisación y creatividad</p>
-                    </div>
-                </div>
-
-                <div class="image-item">
-                    <img src="https://u.cubeupload.com/Leo21/course6.jpg" alt="Composición">
-                    <div class="image-overlay">
-                        <h3 class="image-title">Composición Musical</h3>
-                        <p class="image-description">Creando nuevas piezas</p>
+                    <div class="image-item parallax-medium">
+                        <img src="https://u.cubeupload.com/Leo21/course3.jpg" alt="Piano avanzado">
+                        <div class="image-overlay">
+                            <h3 class="image-title">Técnica Pianística</h3>
+                            <p class="image-description">Perfeccionamiento de la técnica</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -407,6 +448,66 @@
         nextBtn.addEventListener('click', () => {
             currentVideoIndex = (currentVideoIndex + 1) % videos.length;
             changeVideo(currentVideoIndex);
+        });
+
+        // Parallax and reveal effect for gallery images
+        const imageRows = document.querySelectorAll('.images-row');
+        const parallaxItems = document.querySelectorAll('.image-item');
+
+        function checkRowVisibility() {
+            imageRows.forEach(row => {
+                const rect = row.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                if(rect.top < windowHeight * 0.85) {
+                    row.classList.add('visible');
+                }
+            });
+        }
+
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            
+            parallaxItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const itemTop = rect.top + scrolled;
+                const windowHeight = window.innerHeight;
+                
+                // Only apply parallax when item is in viewport
+                if(rect.top < windowHeight && rect.bottom > 0) {
+                    let speed;
+                    
+                    if(item.classList.contains('parallax-slow')) {
+                        speed = 0.05;
+                    } else if(item.classList.contains('parallax-medium')) {
+                        speed = 0.1;
+                    } else if(item.classList.contains('parallax-fast')) {
+                        speed = 0.15;
+                    }
+                    
+                    const yPos = (scrolled - itemTop + windowHeight) * speed;
+                    item.style.setProperty('--parallax-offset-slow', speed === 0.05 ? `${yPos}px` : '0');
+                    item.style.setProperty('--parallax-offset-medium', speed === 0.1 ? `${yPos}px` : '0');
+                    item.style.setProperty('--parallax-offset-fast', speed === 0.15 ? `${yPos}px` : '0');
+                }
+            });
+        }
+
+        // Initial check
+        checkRowVisibility();
+        updateParallax();
+
+        // Update on scroll with throttling for better performance
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if(!ticking) {
+                window.requestAnimationFrame(() => {
+                    checkRowVisibility();
+                    updateParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
     </script>
 </body>
