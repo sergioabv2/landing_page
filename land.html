@@ -212,7 +212,42 @@ img { max-width: 100%; height: auto; }
     .footer-copy a { font-family: var(--signature-font); color: var(--gray-color); font-weight: var(--font-semibold); transition: .4s; }
         .footer-copy a:hover { color: var(--body-color); }
 
-/*Media Queries*/
+
+
+/* Estilo del icono PNG */
+.nav-logo-icon {
+    height: 36px;           
+    margin-right: 8px;      /* Espacio entre el icono y el texto */
+    border-radius: 50%;
+}
+
+
+
+.nav-logo.logo-light .nav-logo-text {
+    font-family: 'Poppins', sans-serif; /* Usa una fuente parecida a la de la imagen */
+    font-weight: 700;       /* Bold */
+    font-size: 2rem;        /* Tamaño (ajusta a tu gusto) */
+    color: #3b82f6;         /* Color azul (ajusta el hexadecimal) */
+    line-height: 1;         /* Para alinear mejor */
+}
+
+/* Estilo de la parte oscura ("cal") */
+.nav-logo.logo-light .nav-logo-text-dark {
+    color: white;         /* Color azul oscuro (ajusta el hexadecimal) */
+}
+
+
+.nav-logo.logo-dark .nav-logo-text-white {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: black;         /* Color blanco */
+    line-height: 1;
+}
+
+
+
+
 @media screen and (max-width: 1206px) {
     .container { margin-left: 2rem; margin-right: 2rem; }
     .about-course-item { padding: 16px 18px; height: 80px; }
@@ -284,8 +319,21 @@ img { max-width: 100%; height: auto; }
 <body>
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="index.html" class="nav-logo logo-light"><img src="https://u.cubeupload.com/Leo21/922logolight.png" alt=""></a>
-            <a href="index.html" class="nav-logo logo-dark"><img src="https://u.cubeupload.com/Leo21/logodark.png" alt=""></a>
+           <a href="" class="nav-logo logo-light">
+    <img src="https://lh3.googleusercontent.com/d/16LaOit3l9NJ-CJ0ljYE05196n0N4BoXt=s100" alt="Logo Educal" class="nav-logo-icon" >
+    
+    <span class="nav-logo-text" >
+        moz<span class="nav-logo-text-dark">art</span>
+    </span>
+</a>
+
+<a href="" class="nav-logo logo-dark">
+    <img src="https://lh3.googleusercontent.com/d/16LaOit3l9NJ-CJ0ljYE05196n0N4BoXt=s100" alt="Logo Educal" class="nav-logo-icon">
+    
+    <span class="nav-logo-text-white">
+        mozart
+    </span>
+</a>
 
             <div class="nav-menu" id="nav-menu">
                 <ul class="nav-list">
