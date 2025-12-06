@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="teacherApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuentra tu Profesor de Piano</title>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #FF4757;
+            --primary-hover: #ff6b81;
+            --secondary-color: #2ed573;
+            --text-dark: #2f3542;
+            --text-light: #747d8c;
+            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --card-hover: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-gradient); 
+            min-height: 100vh; 
+            padding: 20px; 
+            color: var(--text-dark);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* --- HEADER & BANNER --- */
+        .service-banner {
+            width: 100%;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+        }
+        .service-banner-img {
+            width: 100%;
+            display: block;
+            min-height: 450px;
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+        .service-banner-text {
+            position: absolute;
+            top: 40%;
+            left: 6%;
+            transform: translateY(-50%);
+            z-index: 5;
+        }
+        .service-banner-text strong {
+            font-family: 'Inter', sans-serif;
+            font-size: 48px;
+            line-height: 1.2;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .service-banner-text strong span {
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            display: block;
+        }
+        .service-banner-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #fff;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            margin: 10px 0 0;
+            max-width: 500px;
+        }
+
+        .header { 
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            width: auto;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 15px 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            gap: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 10;
+        }
+        .header-brand { display: flex; align-items: center; gap: 12px; }
+        .header-icon { 
+            width: 45px; height: 45px; 
+            background: var(--primary-color); 
+            border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            color: white; font-size: 20px; 
+        }
+        .header-text h1 { font-size: 20px; font-weight: 700; }
+        .header-text p { color: var(--text-light); font-size: 13px; }
+
+        .search-container { flex-grow: 1; max-width: 500px; position: relative; }
+        .search-input { 
+            width: 100%; 
+            padding: 14px 20px 14px 45px; 
+            border-radius: 50px; 
+            border: 1px solid #dfe4ea; 
+            background: #f1f2f6;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        .search-input:focus { outline: none; background: white; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.1); }
+        .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #a4b0be; }
+
+        /* --- LAYOUT --- */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .filters-panel {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 20px;
+        }
+        .filters-panel h3 { font-size: 18px; margin-bottom: 20px; font-weight: 700; }
+        .filter-group { margin-bottom: 25px; }
+        .filter-label { font-weight: 600; font-size: 13px; color: var(--text-dark); display: block; margin-bottom: 10px; text-transform: uppercase; }
+        .filter-select { 
+            width: 100%; padding: 12px; 
+            border: 1px solid #dfe4ea; border-radius: 8px; 
+            background: #fff; font-size: 14px; color: var(--text-dark); 
+            cursor: pointer;
+        }
+
+        /* --- CARDS --- */
+        .teachers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        
+        .teacher-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .teacher-card:hover { transform: translateY(-5px); box-shadow: var(--card-hover); }
+        
+        .card-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #f1f2f6;
+        }
+        .teacher-avatar {
+            width: 70px; height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .teacher-basics h2 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .teacher-specialty {
+    color: #2f3542; /* Usamos el color rojo/rosa para destacar */
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px; /* Espacio antes del rating */
+    display: block;
+}
+        .teacher-rating { color: #ffa502; font-size: 13px; font-weight: 600; }
+        
+        .card-body { padding: 20px; flex-grow: 1; }
+        .teacher-headline { 
+            font-size: 14px; color: var(--text-dark); 
+            margin-bottom: 15px; line-height: 1.5; 
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        
+        .tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+        .tag { 
+            background: #f1f2f6; color: var(--text-light); 
+            padding: 4px 10px; border-radius: 4px; 
+            font-size: 11px; font-weight: 600; text-transform: uppercase;
+        }
+        .tag.lang { background: #e3f2fd; color: #2196f3; }
+
+        .card-footer {
+            padding: 15px 20px;
+            background: #fafbfc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f1f2f6;
+        }
+        .price-amount { font-size: 18px; font-weight: 700; }
+        .price-label { font-size: 11px; color: var(--text-light); }
+        
+        .btn-profile {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-profile:hover { background: var(--primary-color); color: white; }
+        .super-badge {
+            position: absolute; top: 15px; right: 15px;
+            background: #fffa65; color: #4b4b4b;
+            padding: 4px 8px; border-radius: 4px;
+            font-size: 10px; font-weight: 800;
+            display: flex; align-items: center; gap: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(3px);
+            z-index: 1000; display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: all 0.3s;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-card {
+            background: white; width: 90%; max-width: 800px;
+            border-radius: 20px; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            transform: translateY(20px); transition: 0.3s;
+            max-height: 90vh; overflow-y: auto;
+        }
+        .modal-overlay.active .modal-card { transform: translateY(0); }
+        
+        .modal-grid { display: grid; grid-template-columns: 1fr 300px; }
+        .modal-content { padding: 30px; }
+        .modal-sidebar { background: #f8f9fa; padding: 30px; border-left: 1px solid #eee; }
+
+        /* --- VIDEO --- */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            background: #000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .video-wrapper iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .no-video-placeholder {
+            width: 100%; height: 250px;
+            background: #eee; border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex; align-items: center; justify-content: center;
+            color: #888; flex-direction: column; gap: 10px;
+        }
+
+        /* --- REDES SOCIALES & CERTIFICACIONES --- */
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        /* Colores de marcas */
+        .social-btn.spotify { background: #1DB954; }
+        .social-btn.linkedin { background: #0077b5; }
+        .social-btn.youtube { background: #FF0000; }
+        .social-btn.instagram { background: #C13584; }
+        .social-btn.soundcloud { background: #ff5500; }
+        
+        /* COLOR DORADO PARA CERTIFICACIONES */
+        .social-btn.certificate { 
+            background: #f1c40f; 
+            color: #fff;
+            border: 2px solid #f39c12; /* Borde un poco más oscuro */
+        }
+
+
+        .booking-btn {
+            width: 100%; background: var(--primary-color); color: white;
+            border: none; padding: 15px; border-radius: 10px;
+            font-size: 16px; font-weight: 700; cursor: pointer;
+            margin-top: 20px; transition: 0.2s;
+        }
+        .booking-btn:hover { background: var(--primary-hover); transform: scale(1.02); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .filters-panel { display: none; } 
+            .modal-grid { grid-template-columns: 1fr; }
+            .modal-sidebar { border-left: none; border-top: 1px solid #eee; }
+        }
+        @media only screen and (max-width: 991px) {
+            .service-banner-text strong { font-size: 32px; }
+            .header { flex-direction: column; position: relative; margin: -50px auto 0 auto; bottom: auto; width: 95%; }
+        }
+        @media only screen and (max-width: 575px) {
+            .header { width: 100%; margin: 0; border-radius: 0; }
+            .service-banner { border-radius: 0; }
+            body { padding: 0; }
+            .main-layout { margin-top: 20px; padding: 0 15px; }
+        }
+    </style>
+</head>
+<body ng-controller="teacherCtrl">
+
+    <div class="container">
+        
+        <section class="service-banner">
+            <img src="https://lh3.googleusercontent.com/d/1BrVBVLsgMo1vrzkcTuN1-pOU7GvzXeqk"  class="service-banner-img">
+            <div class="service-banner-text">
+                <strong>
+                    <span>Clases 1-a-1</span>
+                    Tu Profesor Personal
+                </strong>
+                <p>Elige un profesor verificado. Conéctate en vivo.</p>
+            </div>
+            <header class="header">
+                <div class="header-brand">
+                    <div class="header-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="header-text">
+                        <h1>Profesores de Piano</h1>
+                        <p>Clases 1 a 1 en nuestra sala virtual</p>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Buscar por nombre, idioma o estilo..." ng-model="filters.text">
+                </div>
+            </header>
+        </section>
+
+        <div class="main-layout">
+            <aside class="filters-panel">
+                <h3>Filtrar Resultados</h3>
+                <div class="filter-group">
+                    <label class="filter-label">Especialidad</label>
+                    <select class="filter-select" ng-model="filters.specialty">
+                        <option value="">Todas</option>
+                        <option value="Clásico">Piano Clásico</option>
+                        <option value="Jazz">Jazz & Improvisación</option>
+                        <option value="Pop">Pop & Moderno</option>
+                        <option value="Niños">Iniciación Niños</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Idioma</label>
+                    <select class="filter-select" ng-model="filters.language">
+                        <option value="">Cualquiera</option>
+                        <option value="Español">Español</option>
+                        <option value="Inglés">Inglés</option>
+                        <option value="Francés">Francés</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Precio Máximo (USD)</label>
+                    <select class="filter-select" ng-model="filters.priceMax">
+                        <option value="">Sin límite</option>
+                        <option value="20">Hasta $20</option>
+                        <option value="35">Hasta $35</option>
+                        <option value="50">Hasta $50</option>
+                    </select>
+                </div>
+            </aside>
+
+            <main class="teachers-grid">
+                <div class="teacher-card" ng-repeat="teacher in teachers | filter:customFilter | orderBy:'price'">
+                    <div class="super-badge" ng-if="teacher.superProf"><i class="fas fa-medal"></i> Super Teacher</div>
+                    <div class="card-header">
+                        <img ng-src="{{teacher.photo}}" alt="{{teacher.name}}" class="teacher-avatar">
+                        <div class="teacher-basics">
+                            <h2>{{teacher.name}}</h2>
+                            
+                            <div class="teacher-rating">
+                                <i class="fas fa-star"></i> {{teacher.rating}}
+                                <span class="review-count">({{teacher.reviews}} reseñas)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="tags-container">
+                            <span class="tag lang" ng-repeat="lang in teacher.languages">{{lang}}</span>
+                        </div>
+                          <span class="teacher-specialty">{{teacher.specialty}}</span>
+                        <p class="teacher-headline">{{teacher.headline}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="price-info">
+                            <span class="price-amount">${{teacher.price}}</span>
+                            <span class="price-label">/ hora</span>
+                        </div>
+                        <button class="btn-profile" ng-click="openProfile(teacher)">Ver Perfil</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- PROFILE MODAL -->
+    <div class="modal-overlay" ng-class="{'active': selectedTeacher}" ng-click="closeProfile()">
+        <div class="modal-card" ng-click="$event.stopPropagation()">
+            <div class="modal-grid" ng-if="selectedTeacher">
+                
+                <!-- Left Content -->
+                <div class="modal-content">
+                    
+                    <!-- VIDEO -->
+                    <div class="video-wrapper" ng-if="selectedTeacher.videoId">
+                        <iframe 
+                            ng-src="{{getSafeVideoUrl(selectedTeacher.videoId)}}" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    
+                    <div class="no-video-placeholder" ng-if="!selectedTeacher.videoId">
+                        <i class="fas fa-video-slash" style="font-size: 24px;"></i>
+                        <span>Este profesor no ha subido video.</span>
+                    </div>
+                    
+                    <h2 style="margin-bottom: 10px;">Sobre {{selectedTeacher.name}}</h2>
+                    <p style="color: #555; line-height: 1.6;">{{selectedTeacher.bio}}</p>
+                    
+                    <h3 style="margin-top: 25px; margin-bottom: 15px; font-size: 16px;">Metodología</h3>
+                    <div class="tags-container">
+                        <span class="tag" style="background: #eee;" ng-repeat="method in selectedTeacher.methodology">
+                            <i class="fas fa-check" style="color:var(--secondary-color); margin-right:5px;"></i> {{method}}
+                        </span>
+                    </div>
+
+                    <!-- REDES SOCIALES & CERTIFICACIONES -->
+                    <div ng-if="selectedTeacher.socials && selectedTeacher.socials.length > 0">
+                        <h3 style="margin-top: 25px; margin-bottom: 15px; font-size: 16px;">Redes Sociales</h3>
+                        <div class="social-buttons">
+                            <a ng-repeat="social in selectedTeacher.socials" 
+                               href="{{social.url}}" 
+                               target="_blank" 
+                               class="social-btn {{social.type}}"
+                               title="{{social.tooltip || ('Ver en ' + social.type)}}">
+                                <!-- Usamos 'fas fa-certificate' si es un certificado, 'fab' si es marca -->
+                                <i ng-class="social.type === 'certificate' ? 'fas fa-file' : 'fab fa-' + social.type"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Sidebar (Booking) -->
+                <div class="modal-sidebar">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img ng-src="{{selectedTeacher.photo}}" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px;">
+                        <h3 style="font-size: 18px;">{{selectedTeacher.name}}</h3>
+                        <div style="color: #ffa502; font-size: 14px; margin-top: 5px;">
+                            <i class="fas fa-star"></i> {{selectedTeacher.rating}}
+                        </div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 15px;">
+                        <div style="font-size: 12px; color: #888; margin-bottom: 5px;">Tarifa por clase</div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--text-dark);">${{selectedTeacher.price}}</div>
+                    </div>
+                    <div style="font-size: 13px; color: #666; margin-bottom: 20px;">
+                        <i class="fas fa-video" style="margin-right: 8px;"></i> Aula Virtual Propia<br>
+                        <i class="fas fa-clock" style="margin-right: 8px;"></i> Respuesta en 1h
+                    </div>
+                    <button class="booking-btn" ng-click="bookClass()">Reservar Clase</button>
+                    <button style="width: 100%; background: none; border: none; color: #888; margin-top: 15px; cursor: pointer; font-size: 13px;" ng-click="closeProfile()">Cerrar ventana</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const app = angular.module('teacherApp', []);
+
+        app.controller('teacherCtrl', function($scope, $sce) {
+            
+            $scope.getSafeVideoUrl = function(videoId) {
+                const url = 'https://www.youtube.com/embed/' + videoId;
+                return $sce.trustAsResourceUrl(url);
+            };
+
+            $scope.teachers = [
+                  {
+                    id: 1,
+                    name: "Andrea Escobar Solis",
+                    photo: "https://lh3.googleusercontent.com/d/1WvsqMiGXbtLo1lrGU9nnbpTJGD__1Cn5",
+                    headline: "Iniciación al piano para niños y adultos. Paciente y divertida.",
+                    bio: "Me encanta trabajar con principiantes. Uso juegos y metodología Suzuki para que aprender piano no sea aburrido. ¡Hablamos en clase!",
+                    rating: 4.9,
+                    reviews: 10,
+                    price: 100,
+                    languages: ["Inglés", "Español"],
+                    specialty: "Niños",
+                    superProf: false,
+                    methodology: ["Suzuki", "Juegos Rítmicos", "Canciones Disney"],
+                    videoId: "bT89XVAU2sw",
+                    socials: [
+                        { type: 'certificate', url: 'https://dev.suzukiassociation.org/people/andrea-escobar/', tooltip: 'Diploma Suzuki' }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "Noe Samuel Bravo",
+                    photo: "https://lh3.googleusercontent.com/d/1CgqoYiFe0RtjJ1u16oJnHybfW78k734C",
+                    headline: "Compositor de música de piano. Compuse mi primer canción desde los 7 años.",
+                    bio: "Si quieres dejar de leer partituras y empezar a crear tu propia música, soy tu profesor. Te enseñaré los secretos de la creatividad, voicings y cómo sacar todo tu potencial.",
+                    rating: 4.8,
+                    reviews: 18,
+                    price: 100,
+                    languages: ["Inglés", "Español"],
+                    specialty: "Composición",
+                    superProf: false,
+                    methodology: ["Improvisación", "Real Book", "Oído Musical"],
+                    videoId: "AtwQQXbjbEg",
+                    socials: [
+                        { type: 'spotify', url: 'https://open.spotify.com/artist/4B31523rdPUkoMJ8JFrD4I' }
+                    ]
+                },
+                {
+                    id: 3,
+                    name: "Sergio Valenzo",
+                    photo: "https://lh3.googleusercontent.com/d/1RC8nhgSOHeSVQnTqeL6DVHlT4WQ67uBa",
+                    headline: "Pianista con 10 años de experiencia. Especialista en lectura a primer vista y técnica avanzada",
+                    bio: "¡Hola! Soy Sergio, me preparé para la certificación del examen ABRSM de piano, he participado en recitales en el Conservatorio Nacional de Música. Mi enfoque es téorico pero tambien muy técnico cuando las bases teoricas ya fueron sentadas.",
+                    rating: 5.0,
+                    reviews: 42,
+                    price: 150,
+                    languages: ["Inglés", "Español"],
+                    specialty: "Clásico",
+                    superProf: false,
+                    methodology: ["Lectura a primera vista", "Técnica Avanzada", "Teoría Musical"],
+                    videoId: "50AKzcMPMxU",
+                    socials: [
+                        { type: 'linkedin', url: 'https://www.linkedin.com/in/sergio-valenzo-2635a8359/' },
+                             { type: 'soundcloud', url: 'https://soundcloud.com/mozartacademy' },
+                    ]
+                },
+            ];
+
+            $scope.filters = { text: '', specialty: '', language: '', priceMax: '' };
+            $scope.selectedTeacher = null;
+
+            $scope.customFilter = function(teacher) {
+                const textMatch = !$scope.filters.text || 
+                    teacher.name.toLowerCase().includes($scope.filters.text.toLowerCase()) || 
+                    teacher.headline.toLowerCase().includes($scope.filters.text.toLowerCase());
+                
+                const specMatch = !$scope.filters.specialty || teacher.specialty === $scope.filters.specialty;
+                const langMatch = !$scope.filters.language || teacher.languages.includes($scope.filters.language);
+                const priceMatch = !$scope.filters.priceMax || teacher.price <= parseInt($scope.filters.priceMax);
+
+                return textMatch && specMatch && langMatch && priceMatch;
+            };
+
+            $scope.openProfile = function(teacher) {
+                $scope.selectedTeacher = teacher;
+                document.body.style.overflow = 'hidden';
+            };
+
+            $scope.closeProfile = function() {
+                $scope.selectedTeacher = null;
+                document.body.style.overflow = 'auto';
+            };
+
+            $scope.bookClass = function() {
+                alert("Redirigiendo al sistema de pagos y calendario para agendar con " + $scope.selectedTeacher.name);
+            };
+        });
+    </script>
+</body>
+</html>
