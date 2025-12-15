@@ -195,56 +195,82 @@
             z-index: 10;
             pointer-events: none; /* Permite clicks en elementos hijos */
         }
-        .slider-content .content-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            text-align: center;
-            height: 100%;
+       .slider-content .content-row {
+    display: flex;
+    align-items: center; /* Centrado verticalmente */
+    justify-content: flex-start; /* Alineado a la IZQUIERDA horizontalmente */
+    width: 100%;
+    text-align: left; /* Texto a la izquierda */
+    height: 100%;
+}eight: 100%;
         }
-        .content-row .content-column {
-            max-width: 70%;
-            margin: 0 auto;
-            pointer-events: auto;
-        }
-        .content-column .slide-subheading {
-            margin-top: 0;
-            font-size: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            line-height: 1.2;
-            color: silver; /* Color de marca */
-            transition: opacity 0.5s ease, filter 0.5s ease;
-            animation: fadeInUp 1s ease forwards;
-            opacity: 0;
-            filter: blur(4px);
-            animation-delay: 0.3s; 
-        }
-        .content-column .slide-heading{
-            font-size: 86px;
-            font-weight: 500;
-            line-height: 1.085;
-            letter-spacing: -0.035em;
-            margin-top: 10px;
-            margin-bottom: 50px;
-            color: white;
-            opacity: 0;
-            filter: blur(4px); 
-            transition: opacity 0.5s ease, filter 0.5s ease; 
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.5s; 
-        }
-        .content-column .creative-btns--wrap {
-            margin-top: 20px;
-            display: inline-flex;
-            transition: opacity 0.5s ease, filter 0.5s ease;
-            animation: fadeInUp 1s ease forwards;
-            opacity: 0;
-            filter: blur(4px);
-            animation-delay: 0.7s; 
-        }
+.content-row .content-column {
+    width: 100%;
+    max-width: 1200px; /* Ancho estándar de tu sitio */
+    margin: 0 auto;    /* Para centrar el contenedor invisible */
+    padding: 0 15px;   /* Márgenes laterales seguros */
+    pointer-events: auto;
+}
+.content-column .slide-subheading {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize; /* O uppercase si prefieres mayúsculas */
+    letter-spacing: 1px;
+    line-height: 1.2;
+    color: #fca311; /* Color Naranja similar a la imagen */
+    margin-bottom: 15px; /* Espacio debajo */
+    
+    /* Mantener animaciones */
+    opacity: 0;
+    filter: blur(4px);
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.3s; 
+}
+   .content-column .slide-heading {
+    font-size: 68px; /* Tamaño grande */
+    font-weight: 700; /* Más negrita */
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: white;
+    
+    /* Mantener animaciones */
+    opacity: 0;
+    filter: blur(4px); 
+    transition: opacity 0.5s ease, filter 0.5s ease; 
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.5s; 
+}
+
+.content-column .slide-text {
+    font-size: 20px;
+    color: #e0e0e0; /* Blanco grisáceo para lectura */
+    max-width: 600px; /* Que no se estire a toda la pantalla */
+    margin-bottom: 35px;
+    line-height: 1.5;
+
+    /* Animación */
+    opacity: 0;
+    filter: blur(4px);
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.6s;
+}
+
+.content-column .creative-btns--wrap {
+    margin-top: 10px;
+    display: flex; /* Cambiado de inline-flex a flex para manejarlo mejor */
+    justify-content: flex-start; /* Alinear a la izquierda */
+    gap: 15px;
+    
+    /* Mantener animaciones */
+    transition: opacity 0.5s ease, filter 0.5s ease;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    filter: blur(4px);
+    animation-delay: 0.7s; 
+}
         .creative-btns--wrap .creative-btn, .creative-btns--wrap .creative-btn.btn-fill {
             margin: 0 10px;
             padding: 16px 38px;
@@ -739,6 +765,15 @@
             .feature-sidebar-preview { order: 1; }
             .level-preview-card { flex-direction: column; align-items: flex-start; gap: 15px; }
             .level-progress, .level-lock { width: 100%; }
+            .content-column .slide-heading {
+        font-size: 42px; /* Más pequeño en móvil */
+    }
+    .content-column .slide-text {
+        font-size: 16px;
+    }
+    .slider-content .content-row {
+        align-items: center; /* En móvil a veces se ve mejor centrado verticalmente */
+    }
         }
     </style>
 </head>
@@ -756,13 +791,18 @@
                             <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1vabNC6Y394zDtGUtGTkDfeqEOoGnPLdc');"></div>
                             <!--  https://lh3.googleusercontent.com/d/1w7PsXn3oHFRUCnxGqUtp9BznS628dvl7-->
                         </div>
-                     
-                        <div class="swiper-slide">
+                         <div class="swiper-slide">
+                            <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1fxgoyfi6hti3_rvOIERV_d2b-Hk0hRzX');"></div>
+                        </div>
+
+                          <div class="swiper-slide">
+                            <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/186UBwWCrtH2J_c8gKc-mc7nIt2IfOEsC');"></div>
+                        </div>
+
+                           <div class="swiper-slide">
                             <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/165E5sFsKJVS26bsIQ_HRzAS-Jg6GuEEp');"></div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/14i8fbOfa3gfLVouaajtwtkcEXtQZd8M6');"></div>
-                        </div>
+                     
                         
 
                     </div>
@@ -770,18 +810,28 @@
             </div>
             <div class="slider-content">
                 <div class="content-row">
-                    <div class="content-column">
-                        <h2 class="slide-subheading">Tu camino más corto a la perfección y la certificación</h2>
-                        <h1 class="slide-heading">Mozart MX <br> Academia de Piano</h1>
-                        <div class="creative-btns--wrap">
-                            <a href="#" class="creative-btn btn-fill">
-                                <span class="btn-animate-y"><span class="btn-animate-y-1">Comenzar Gratis</span><span class="btn-animate-y-2" aria-hidden="true">Comenzar Gratis</span></span>
-                            </a>
-                            <a href="#como-funciona" class="creative-btn" style="border: 1px solid white;">
-                                <span class="btn-animate-y" style="color: white;"><span class="btn-animate-y-1">Ver Demo</span><span class="btn-animate-y-2" aria-hidden="true">Ver Demo</span></span>
-                            </a>
-                        </div> 
-                    </div>
+
+<div class="content-column">
+    <h2 class="slide-subheading">Mozart MX</h2>
+    
+    <h1 class="slide-heading">
+        Inicia tu formación <br>
+        en el Piano 
+    </h1>
+
+    <p class="slide-text">
+        Conoce a nuestros maestros e instalaciones, dedicados a tu crecimiento musical.
+    </p>
+
+    <div class="creative-btns--wrap">
+        <a href="#" class="creative-btn btn-fill">
+            <span class="btn-animate-y">
+                <span class="btn-animate-y-1">Inscribirme</span>
+                <span class="btn-animate-y-2" aria-hidden="true">Inscribirme</span>
+            </span>
+        </a>
+    </div> 
+</div>
                 </div>
                 <div class="creative-status">
                     Disponible en Web, iOS y Android
