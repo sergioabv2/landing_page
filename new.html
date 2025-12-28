@@ -3134,43 +3134,75 @@ width: 200px; /* Ajusta según el tamaño deseado */
 }
 
 
-/* --- 2. Estilo elegante para el menú horizontal (desktop) --- */
 @media (min-width: 850px) {
 
-    /* Contenedor del menú horizontal */
-    .nav-bar-horizontal-menu {
-        display: flex;
-        align-items: center; 
-        height: 100%;
-        margin-left: 20px; /* Aumentamos el margen izquierdo */
-    }
+   /* Contenedor del menú horizontal */
+.nav-bar-horizontal-menu {
+    display: flex !important;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    
+    /* MAGIA PARA CENTRARLO ABSOLUTAMENTE */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 9px;
+    z-index: 999;
 
-    /* Estilo base para CADA botón del menú */
-    .nav-bar-horizontal-menu .button {
-        font-size: 14px;
-        font-weight: 400; 
-        color: #555 !important;   
-        padding-left: 19px !important; 
-        padding-right: 19px !important;
-        
-        /* Reseteo para un look limpio */
-        border: none;
-        border-radius: 0; /* Sin esquinas redondeadas */
-        background: transparent;
-        box-shadow: none;
-        border-bottom: 2px solid transparent; 
-        height: 100%; 
-        display: flex;
-        align-items: center;
-        
-        /* Transición suave para elegancia */
-        transition: color 0.2s ease, border-color 0.2s ease;
-    }
+    /* Estilos visuales de la cápsula */
+    height: 40px !important;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 4px;
+    border-radius: 99px;
+    margin-left: 0 !important;
+    gap: 4px; /* Espacio entre botones */
+}
 
-    /* Efecto HOVER para botones INACTIVOS */
+.nav-bar-horizontal-menu .button {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important; 
+    color: #6b7280 !important;
+    
+    padding: 8px 20px !important;
+    margin: 0 !important;
+    
+    /* RESETEO TOTAL */
+    border: none !important;
+    background: transparent;
+    box-shadow: none;
+    height: 32px !important; /* Altura fija */
+    line-height: 1 !important;
+    min-height: 0 !important; /* Quita el min-height de Ionic */
+    
+    border-radius: 99px !important; 
+    
+    display: flex !important; /* Importante para centrar el texto */
+    align-items: center !important;
+    justify-content: center !important;
+    
+    transition: all 0.2s ease;
+}
+
+.menuSelectedColor {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    font-weight: 700 !important;
+    
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06) !important;
+    
+    text-shadow: none !important;
+    border: none !important;
+    
+    /* Mismo padding y altura que los otros botones */
+    padding: 8px 20px !important;
+    height: 32px !important;
+}
+
+    /* 4. HOVER EN INACTIVOS (Sutil) */
     .nav-bar-horizontal-menu .button:not(.menuSelectedColor):hover {
-         color: #111; /* Color de texto más oscuro */
-         border-bottom-color: #ccc; /* Borde gris sutil al pasar el mouse */
+         color: #374151 !important; /* Se oscurece un poco el texto */
+         border-bottom: none !important; /* Aseguramos que NO salga la línea abajo */
     }
 
 }
@@ -3281,11 +3313,11 @@ width: 200px; /* Ajusta según el tamaño deseado */
  <button class="btn2 btn-login" ng-click="goToLogin()">Inicia sesión</button>
    <!-- <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button>  -->
   </ion-nav-buttons>
-        <ion-nav-buttons side="left">
-          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+      
 
-      <div class="nav-bar-horizontal-menu">
-     <div class="profile-user-data clearfix" style="margin-left: -10px !important; cursor: pointer;" ng-click="goToHome()">
+       <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
@@ -3293,30 +3325,35 @@ width: 200px; /* Ajusta según el tamaño deseado */
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
     <a ui-sref="menu.lessons" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-      Cursos
+        Cursos
     </a>
-     <a ui-sref="menu.library" 
+    <a ui-sref="menu.library" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Galería
+       Galería
     </a>
-  
-    <a ui-sref="menu.workspace" 
+     <a ui-sref="menu.workspace" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Dirección
+      Dirección
     </a>
-    <a ui-sref="menu.reel" 
+    <a ui-sref="menu.blog" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Contacto
+        Blog
     </a>
 </div>
 
-        </ion-nav-buttons>  
+
+
     </ion-nav-bar>
 
 
@@ -3344,11 +3381,11 @@ width: 200px; /* Ajusta según el tamaño deseado */
  <button class="btn2 btn-login" ng-click="goToLogin()">Inicia sesión</button>
   <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button>  -->
   </ion-nav-buttons>
-        <ion-nav-buttons side="left">
-          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+      
 
-      <div class="nav-bar-horizontal-menu">
-     <div class="profile-user-data clearfix" style="margin-left: -10px !important; cursor: pointer;" ng-click="goToHome()">
+         <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
@@ -3356,28 +3393,34 @@ width: 200px; /* Ajusta según el tamaño deseado */
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
     <a ui-sref="menu.lessons" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Cursos
+        Cursos
     </a>
-     <a ui-sref="menu.library" 
+    <a ui-sref="menu.library" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Galería
+       Galería
     </a>
-  
-    <a ui-sref="menu.workspace" 
-       ui-sref-active="menuSelectedColor" 
-       Dirección
-    </a>
-    <a ui-sref="menu.reel" 
+     <a ui-sref="menu.workspace" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Contacto
+      Dirección
     </a>
-</div>     
-        </ion-nav-buttons>  
+    <a ui-sref="menu.blog" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Blog
+    </a>
+</div>
+
+
     </ion-nav-bar>
 
 
@@ -3407,11 +3450,11 @@ width: 200px; /* Ajusta según el tamaño deseado */
  <button class="btn2 btn-login" ng-click="goToLogin()">Inicia sesión</button>
   <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Iniciar sesión</button>  -->
   </ion-nav-buttons>
-        <ion-nav-buttons side="left">
-          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+    
 
-      <div class="nav-bar-horizontal-menu">
-     <div class="profile-user-data clearfix" style="margin-left: -10px !important; cursor: pointer;" ng-click="goToHome()">
+       <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
@@ -3419,29 +3462,34 @@ width: 200px; /* Ajusta según el tamaño deseado */
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
     <a ui-sref="menu.lessons" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Cursos
+        Cursos
     </a>
-     <a ui-sref="menu.library" 
+    <a ui-sref="menu.library" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
        Galería
     </a>
-   
-    <a ui-sref="menu.workspace" 
+     <a ui-sref="menu.workspace" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Dirección
+      Dirección
     </a>
-    <a ui-sref="menu.reel" 
+    <a ui-sref="menu.blog" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Contacto
+        Blog
     </a>
-</div>     
-        </ion-nav-buttons>  
+</div>
+
+
     </ion-nav-bar>
 
 
@@ -3469,11 +3517,11 @@ width: 200px; /* Ajusta según el tamaño deseado */
  <button class="btn2 btn-login" ng-click="goToLogin()">Inicia sesión</button>
   <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button> -->
   </ion-nav-buttons>
-        <ion-nav-buttons side="left">
-          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+       
 
-      <div class="nav-bar-horizontal-menu">
-     <div class="profile-user-data clearfix" style="margin-left: -10px !important; cursor: pointer;" ng-click="goToHome()">
+         <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
@@ -3481,29 +3529,34 @@ width: 200px; /* Ajusta según el tamaño deseado */
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
     <a ui-sref="menu.lessons" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Cursos
+        Cursos
     </a>
-     <a ui-sref="menu.library" 
+    <a ui-sref="menu.library" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
        Galería
     </a>
-   
-    <a ui-sref="menu.workspace" 
+     <a ui-sref="menu.workspace" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Dirección
+      Dirección
     </a>
-    <a ui-sref="menu.reel" 
+    <a ui-sref="menu.blog" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Contacto
+        Blog
     </a>
-</div>      
-        </ion-nav-buttons>  
+</div>
+
+
     </ion-nav-bar>
 
     <ion-content > 
@@ -3655,11 +3708,11 @@ width: 200px; /* Ajusta según el tamaño deseado */
  <button class="btn2 btn-login" ng-click="goToLogin()">Inicia sesión</button>
   <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button> -->
   </ion-nav-buttons>
-        <ion-nav-buttons side="left">
-          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+       
 
-   <div class="nav-bar-horizontal-menu">
-     <div class="profile-user-data clearfix" style="margin-left: -10px !important; cursor: pointer;" ng-click="goToHome()">
+         <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i>menu</button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
@@ -3667,28 +3720,34 @@ width: 200px; /* Ajusta según el tamaño deseado */
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
     <a ui-sref="menu.lessons" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Cursos
+        Cursos
     </a>
-     <a ui-sref="menu.library" 
+    <a ui-sref="menu.library" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
        Galería
     </a>
-    <a ui-sref="menu.workspace" 
+     <a ui-sref="menu.workspace" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Dirección
+      Dirección
     </a>
-    <a ui-sref="menu.reel" 
+    <a ui-sref="menu.blog" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Contacto
+        Blog
     </a>
-</div>      
-        </ion-nav-buttons>  
+</div>
+
+ 
     </ion-nav-bar>
 
 
@@ -3886,7 +3945,7 @@ $scope.goToPayment = function() {
 };
 
  $scope.goToHome = function() {
-   window.location.href = '/';
+   window.location.href = '/new';
 };
 
 
