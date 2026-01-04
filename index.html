@@ -81,20 +81,44 @@
 
         /* --- NAVBAR --- */
         .navbar {
-            background-color: var(--sf-black);
-            color: var(--sf-white);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: var(--font-title); font-weight: 900; font-size: 1.5rem; color: var(--sf-yellow); text-transform: uppercase; letter-spacing: -1px; }
-        .logo span { color: var(--sf-white); }
-        .nav-menu { display: flex; gap: 30px; align-items: center; }
-        .nav-link { font-family: var(--font-title); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; transition: color 0.3s; }
-        .nav-link:hover { color: var(--sf-yellow); }
+    background-color: #FFFFFF; /* Fondo Blanco */
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra muy sutil */
+    border-bottom: 1px solid #f0f0f0;
+}
+     .nav-container { display: flex; justify-content: space-between; align-items: center; }
+     .logo { 
+    font-family: var(--font-title); 
+    font-weight: 900; 
+    font-size: 1.8rem; 
+    color: var(--sf-black); /* Texto "MOZART" en Negro */
+    text-transform: lowercase; /* Estilo Smart Fit */
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.logo span { color: var(--sf-yellow); } /* "ACADEMY" o Icono en Amarillo */
+      .nav-menu { display: flex; gap: 30px; align-items: center; }
+.nav-link { 
+    font-family: var(--font-title); 
+    font-weight: 800; /* Más grueso como en la imagen */
+    font-size: 0.95rem; 
+    text-transform: none; /* Smart Fit usa CamelCase o minúsculas a veces, pero dejémoslo limpio */
+    color: var(--sf-black); /* Color Negro */
+    transition: color 0.3s; 
+}
+.nav-link:hover { color: var(--sf-yellow); }
+
+/* Ajuste del botón en el nav */
+.navbar .btn-primary {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    box-shadow: none; /* Flat style */
+}
         .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
 
         /* --- HERO SECTION --- */
@@ -210,7 +234,7 @@
 /* --- BENEFITS STRIP STYLE (TIPO BANNER HORIZONTAL SUTIL) --- */
 .benefits {
     background-color: var(--sf-black);
-    padding: 60px 0 80px; /* Un poco menos de padding arriba */
+
     position: relative;
     overflow: hidden;
 }
@@ -220,7 +244,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 columnas exactas */
     width: 100%;
-    margin-top: 40px;
+
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
@@ -729,20 +753,23 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">Mozart<span>MX</span></div>
-            <ul class="nav-menu">
-                <li><a href="#clases" class="nav-link">Clases</a></li>
-                <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
-                <li><a href="#planes" class="nav-link">Planes</a></li>
-                <li><button class="btn btn-primary btn-small" onclick="openModal()">Regístrate</button></li>
-            </ul>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            mozart<span>MX</span> </div>
+        
+        <ul class="nav-menu">
+            <li><a href="#clases" class="nav-link">Clases</a></li>
+            <li><a href="#experiencia" class="nav-link">Tu espacio</a></li> <li><a href="#planes" class="nav-link">Planes</a></li>
+            <li>
+                <button class="btn btn-primary" onclick="openModal()">¡Inscríbete ya!</button>
+            </li>
+        </ul>
+
+        <div class="hamburger" style="color: black;"> <i class="fas fa-bars"></i>
         </div>
-    </nav>
+    </div>
+</nav>
 
    <section class="hero-slider-section">
     
@@ -778,13 +805,9 @@
 </section>
 
  <section class="benefits">
-    <div class="container">
-        <div class="section-header-centered">
-            <h2 style="color: white; font-size: 2rem;">NUESTRA METODOLOGÍA ESTRUCTURADA</h2>
-             <p style="color: #999; margin-top: 10px;">Un camino claro diseñado para tu progreso constante.</p>
-        </div>
-    </div>
-
+ 
+   
+  
     <div style="width: 100%; max-width: 1400px; margin: 0 auto;">
         <div class="benefits-grid-full">
             <div class="benefit-module" style="background-image: url('https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=2070&auto=format&fit=crop');">
@@ -1063,7 +1086,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 20px;">MOZART<span>ACADEMY</span></div>
+                    <div class="logo" style="margin-bottom: 20px; color: white !important">MOZART<span>MX</span></div>
                     <p>Revolucionando la educación musical con tecnología y pasión.</p>
                 </div>
                 <div class="footer-col">
