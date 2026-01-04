@@ -3,36 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mozart Academy | Planes y Precios</title>
+    <title>Mozart MX</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- VARIABLES & RESET --- */
         :root {
             --sf-black: #1A1A1A;
-            --sf-dark-grey: #333333;
-            --sf-yellow: #FFC107;     /* Color de Acción Principal */
-            --sf-yellow-hover: #e0a800;
+            --sf-yellow: #FFC107;     
             --sf-white: #FFFFFF;
-            --sf-light-grey: #F4F4F4;
-            --text-color: #333;
-            
+            --sf-light-grey: #F8F9FA;
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Roboto', sans-serif;
+            --radius-card: 16px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-body);
-            color: var(--text-color);
+            color: #333;
             background-color: var(--sf-white);
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
@@ -45,43 +44,40 @@
             padding: 12px 30px;
             border-radius: 30px;
             font-family: var(--font-title);
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
             cursor: pointer;
             border: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            text-align: center;
         }
 
-        .btn:hover { transform: scale(1.05); }
-
-        .btn-primary { background-color: var(--sf-yellow); color: var(--sf-black); }
+        .btn:hover { transform: scale(1.03); }
+        .btn-primary { background-color: var(--sf-yellow); color: var(--sf-black); box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); }
         .btn-secondary { background-color: transparent; border: 2px solid var(--sf-white); color: var(--sf-white); }
         .btn-secondary:hover { background-color: var(--sf-white); color: var(--sf-black); }
         .btn-small { padding: 8px 20px; font-size: 0.8rem; }
 
-        .section-title {
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .section-header-centered {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 50px;
+        }
+
+        .section-header-centered h2 {
             font-family: var(--font-title);
             font-weight: 800;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
             color: var(--sf-black);
-            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 15px;
         }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        .highlight { color: var(--sf-yellow); }
 
         /* --- NAVBAR --- */
         .navbar {
@@ -91,8 +87,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: var(--font-title); font-weight: 900; font-size: 1.5rem; color: var(--sf-yellow); text-transform: uppercase; letter-spacing: -1px; }
         .logo span { color: var(--sf-white); }
@@ -102,49 +98,330 @@
         .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
 
         /* --- HERO SECTION --- */
-        .hero {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=2070&auto=format&fit=crop');
+        /* --- HERO SLIDER SECTION (NUEVO) --- */
+.hero-slider-section {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* Altura imponente */
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--sf-black); /* Fondo base por si tarda en cargar */
+}
+
+/* El slider en el fondo */
+.creative-slider--wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* Efecto de zoom suave (Ken Burns) */
+    transform: scale(1);
+    transition: transform 8s ease;
+}
+
+.swiper-slide-active .slide-bg {
+    transform: scale(1.1); /* Zoom al activarse */
+}
+
+/* Overlay oscuro para leer el texto */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.6) 0%, 
+        rgba(0, 0, 0, 0.3) 50%, 
+        rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+}
+
+/* Contenido del Hero */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    color: var(--sf-white);
+}
+
+.hero-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--sf-white);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: var(--font-title);
+}
+
+.hero-content h1 {
+    font-family: var(--font-title);
+    font-size: 2.9rem; /* Grande e impactante */
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+    max-width: 600px;
+    font-weight: 300;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+
+/* --- BENEFITS STRIP STYLE (TIPO BANNER HORIZONTAL SUTIL) --- */
+.benefits {
+    background-color: var(--sf-black);
+    padding: 60px 0 80px; /* Un poco menos de padding arriba */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Contenedor que ocupa todo el ancho disponible */
+.benefits-grid-full {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas exactas */
+    width: 100%;
+    margin-top: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Cada módulo individual */
+.benefit-module {
+    position: relative;
+    height: 220px; /* Altura fija para el efecto banner */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    overflow: hidden;
+    border-right: 1px solid rgba(255,255,255,0.1); /* Separador sutil */
+    transition: all 0.3s ease;
+}
+
+/* Eliminar borde derecho del último elemento */
+.benefit-module:last-child { border-right: none; }
+
+/* EL OVERLAY SUTIL (Aquí está la clave del estilo) */
+.benefit-module::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Degradado oscuro elegante (nuestro estilo) en lugar de colores planos */
+    background: linear-gradient(to bottom, rgba(40, 40, 40, 0.85), rgba(10, 10, 10, 0.95));
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+/* Efecto Hover Sutil: Se ilumina ligeramente con tono amarillo */
+.benefit-module:hover::before {
+     background: linear-gradient(to bottom, rgba(255, 193, 7, 0.15), rgba(0, 0, 0, 0.9));
+}
+
+/* Contenido de texto sobre el overlay */
+.module-content {
+    position: relative;
+    z-index: 2;
+    color: var(--sf-white);
+    text-align: left; /* Alineado a la izquierda como la referencia */
+}
+
+/* Subtítulo pequeño (ej: "6 Módulos") */
+.module-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: rgba(255,255,255,0.7); /* Blanco un poco apagado */
+    display: block;
+}
+
+/* Título principal (ej: "Iniciación al Piano") */
+.module-title {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: var(--sf-white);
+    transition: color 0.3s;
+}
+
+/* Al hacer hover, el título se pone amarillo */
+.benefit-module:hover .module-title {
+    color: var(--sf-yellow);
+}
+
+/* Responsive: Se apilan en 2x2 en tablets y 1x4 en móviles */
+@media (max-width: 992px) {
+     .benefits-grid-full { grid-template-columns: repeat(2, 1fr); }
+     .benefit-module { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); height: 200px;}
+}
+@media (max-width: 576px) {
+     .benefits-grid-full { grid-template-columns: 1fr; }
+}
+
+        /* --- PROGRAMS (ESTILO IMAGEN 1 - SMART FIT CLASES) --- */
+        .programs { padding: 80px 0; background-color: #fff; }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .class-card {
+            background: #fff;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .class-card:hover { transform: translateY(-5px); }
+
+        .class-img {
+            height: 200px;
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            color: var(--sf-white);
-            text-align: left;
         }
-        .hero-content { max-width: 800px; }
-        .hero h1 { font-family: var(--font-title); font-size: 3.5rem; font-weight: 900; line-height: 1.1; text-transform: uppercase; margin-bottom: 20px; }
-        .hero p { font-size: 1.3rem; margin-bottom: 30px; font-weight: 300; }
-        .hero-buttons { display: flex; gap: 15px; }
 
-        /* --- BENEFITS STRIP --- */
-        .benefits { background-color: var(--sf-black); color: var(--sf-white); padding: 40px 0; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
-        .benefit-item i { font-size: 2rem; color: var(--sf-yellow); margin-bottom: 10px; }
-        .benefit-item h4 { font-family: var(--font-title); font-weight: 700; text-transform: uppercase; }
+        .class-title-bar {
+            background-color: var(--sf-yellow);
+            padding: 12px;
+            text-align: center;
+            font-family: var(--font-title);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1rem;
+            color: var(--sf-black);
+            letter-spacing: 0.5px;
+        }
 
-        /* --- PROGRAMS (CARDS) --- */
-        .programs { padding: 80px 0; background-color: var(--sf-light-grey); }
-        .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .prog-card { background: var(--sf-white); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column; }
-        .prog-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .prog-card-img { height: 180px; background-color: #ddd; background-size: cover; background-position: center; }
-        .prog-card-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .prog-card-title { font-family: var(--font-title); font-weight: 800; font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase; }
-        .prog-card-desc { font-size: 0.9rem; color: #666; margin-bottom: 20px; flex-grow: 1; }
-        .prog-card-link { font-family: var(--font-title); font-weight: 700; color: var(--sf-black); text-transform: uppercase; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
+        .class-info-row {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 10px 10px;
+            text-align: center;
+        }
 
-        /* --- EXPERIENCE SECTION --- */
-        .experience { padding: 80px 0; }
-        .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .exp-item { height: 300px; position: relative; background-size: cover; background-position: center; border-radius: 5px; overflow: hidden; }
-        .exp-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; }
-        .exp-title { font-family: var(--font-title); font-weight: 700; text-transform: uppercase; font-size: 1.2rem; }
+        .info-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .info-item i { font-size: 1.5rem; color: #aaa; margin-bottom: 5px; }
+        .info-label { font-size: 0.75rem; font-weight: 700; color: #333; text-transform: uppercase; }
+        .info-value { font-size: 0.9rem; color: #555; }
 
-        /* --- PRICING SECTION (INTEGRADO Y ADAPTADO) --- */
+        .class-divider {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 10px 20px;
+        }
+
+        .class-desc {
+            padding: 10px 25px 30px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .programs-cta-container { text-align: center; }
+
+        /* --- EXPERIENCE (ESTILO IMAGEN 2 - SMART FIT AMENITIES) --- */
+        .experience {
+            padding: 80px 0;
+            background-color: var(--sf-light-grey);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .amenity-card {
+            background: #fff;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .amenity-card:hover { transform: translateY(-5px); border-color: var(--sf-yellow); }
+
+        /* Borde amarillo para la tarjeta destacada como en la imagen */
+        .amenity-card.featured { border: 2px solid var(--sf-yellow); }
+
+        .amenity-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .amenity-label {
+            padding: 18px;
+            text-align: center;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* --- PRICING SECTION --- */
         .pricing-section {
             background-color: var(--sf-white);
-            padding: 80px 0 100px 0; /* Padding extra abajo para el sticky bar */
+            padding: 80px 0 100px;
             position: relative;
         }
 
@@ -169,15 +446,12 @@
             border-radius: 50px;
             font-size: 15px;
             font-family: var(--font-title);
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.2s;
             position: relative;
         }
 
-        .toggle-btn.active {
-            background-color: var(--sf-black);
-            color: var(--sf-yellow);
-        }
+        .toggle-btn.active { background-color: var(--sf-black); color: var(--sf-yellow); }
 
         .best-offer {
             position: absolute;
@@ -186,25 +460,20 @@
             transform: translateX(-50%);
             background-color: var(--sf-yellow);
             color: var(--sf-black);
-            padding: 2px 8px;
+            padding: 3px 8px;
             border-radius: 4px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             white-space: nowrap;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .pricing-cards {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        .pricing-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
         .price-card {
             background-color: #f9f9f9;
-            border-radius: 16px;
-            padding: 32px 24px;
+            border-radius: var(--radius-card);
+            padding: 30px 20px;
             flex: 1;
             max-width: 320px;
             min-width: 280px;
@@ -216,168 +485,163 @@
             position: relative;
         }
 
-        .price-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
+        .price-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .price-card.premium { border-color: var(--sf-yellow); background-color: #FFF; box-shadow: 0 10px 40px rgba(255, 193, 7, 0.15); }
 
-        .price-card.premium {
-            border-color: var(--sf-yellow);
-            background-color: #FFF;
-            box-shadow: 0 10px 40px rgba(255, 193, 7, 0.15);
-        }
-
-        .radio-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .plan-name {
-            font-family: var(--font-title);
-            font-size: 22px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
+        .radio-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .plan-name { font-family: var(--font-title); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; }
+        
         .radio-input {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 2px solid #ccc;
-            position: relative;
+            width: 22px; height: 22px; border-radius: 50%; border: 2px solid #ccc; position: relative;
         }
+        .radio-input.checked { border-color: var(--sf-yellow); background-color: var(--sf-yellow); }
+        .radio-input.checked::after { content: "✓"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--sf-black); font-size: 12px; font-weight: bold; }
 
-        .radio-input.checked {
-            border-color: var(--sf-yellow);
-            background-color: var(--sf-yellow);
-        }
-
-        .radio-input.checked::after {
-            content: "✓";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--sf-black);
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .card-header { margin-bottom: 24px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .card-header { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .price { font-family: var(--font-title); font-size: 2rem; font-weight: 800; margin-bottom: 5px; color: var(--sf-black); }
+        .price-period { font-size: 0.9rem; font-weight: 400; color: #666; }
+        .savings { color: #d19a00; font-size: 0.8rem; font-weight: 700; margin-top: 5px; text-transform: uppercase; }
         
-        .price {
-            font-family: var(--font-title);
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 4px;
-            color: var(--sf-black);
-        }
+        .features { list-style: none; padding: 0; margin-bottom: 10px; font-size: 0.95rem; }
+        .feature { display: flex; align-items: flex-start; margin-bottom: 10px; color: #444; }
+        .feature::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--sf-yellow); margin-right: 10px; }
 
-        .price-period { font-size: 15px; font-weight: 400; color: #666; }
-        .savings { color: #d19a00; font-size: 13px; font-weight: 700; margin-top: 5px; text-transform: uppercase; }
-        
-        .features { list-style: none; padding: 0; margin-bottom: 20px; }
-        .feature { display: flex; align-items: flex-start; margin-bottom: 12px; font-size: 15px; color: #444; }
-        .feature::before {
-            content: "\f00c"; /* FontAwesome check */
-            font-family: "Font Awesome 5 Free"; 
-            font-weight: 900;
-            color: var(--sf-yellow);
-            margin-right: 12px;
-            margin-top: 3px;
-        }
-
-        /* Banner de Inscripción */
+        /* Banner Oferta */
         .registration-banner {
             max-width: 800px;
             margin: 40px auto 0;
             background-color: #fff;
             border: 2px solid var(--sf-yellow);
             border-radius: 12px;
-            padding: 20px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.2);
+            padding: 15px 25px;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.15);
         }
-
         .banner-text { font-size: 1.1rem; color: #333; }
         .strikethrough { text-decoration: line-through; color: #999; margin-right: 10px; }
         .sale-price { font-size: 1.5rem; font-weight: 800; color: var(--sf-black); background: var(--sf-yellow); padding: 0 5px; }
 
-        /* Sticky CTA Bar */
+        /* Sticky CTA */
         .cta-section {
-            position: fixed;
-            bottom: 0; /* Pegado abajo */
-            left: 0;
-            width: 100%;
-            background-color: var(--sf-white);
-            padding: 15px 40px;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-            border-top: 4px solid var(--sf-yellow);
-            z-index: 2000; /* Encima de todo */
-            display: none; /* Oculto por defecto */
-            align-items: center;
-            justify-content: center;
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background-color: var(--sf-white); padding: 15px 40px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1); border-top: 4px solid var(--sf-yellow);
+            z-index: 2000; display: none; align-items: center; justify-content: center;
         }
-
-        .cta-content {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-            max-width: 1100px;
-            position: relative;
-        }
-
+        .cta-content { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; width: 100%; max-width: 1100px; position: relative; }
         .close-cta-btn {
-            position: absolute;
-            top: -35px;
-            right: 0;
-            background: var(--sf-black);
-            border: none;
-            color: var(--sf-white);
-            font-size: 20px;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: -35px; right: 0;
+            background: var(--sf-black); border: none; color: var(--sf-white);
+            font-size: 18px; cursor: pointer; width: 30px; height: 30px;
+            display: flex; align-items: center; justify-content: center;
             border-radius: 50% 50% 0 0;
         }
-
-        .selected-plan-info { display: flex; flex-direction: column; }
-        .selected-plan-name { font-weight: 700; font-family: var(--font-title); text-transform: uppercase; color: #666; font-size: 0.9rem;}
         .selected-price { font-size: 2rem; font-weight: 800; font-family: var(--font-title); color: var(--sf-black); line-height: 1; }
         
-        .subscribe-btn {
-            background-color: var(--sf-black);
-            color: var(--sf-yellow);
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-family: var(--font-title);
-            font-weight: 800;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .subscribe-btn:hover { background-color: #333; transform: scale(1.02); }
+  
+  .app-section {
+    background-color: #FFF9EA; /* Fondo crema estilo Smart Fit */
+    color: #1A1A1A;
+    padding: 100px 0;
+    overflow: hidden;
+}
 
-        /* --- APP SECTION --- */
-        .app-section { background-color: var(--sf-black); color: var(--sf-white); padding: 80px 0; overflow: hidden; }
-        .app-container { display: flex; align-items: center; gap: 50px; }
-        .app-text { flex: 1; }
+.app-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.app-text {
+    flex: 1;
+    text-align: left;
+}
+
+.app-text h2 {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    color: #000;
+}
+
+.app-text p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+.scan-text {
+    font-weight: 700;
+    color: #000 !important;
+    margin-bottom: 15px;
+}
+
+.download-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.qr-box img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    padding: 5px;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.store-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.store-buttons img {
+    height: 45px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.store-buttons img:hover {
+    transform: scale(1.05);
+}
+
+/* Área Visual Derecha (Celulares + Fondo Amarillo) */
+.app-visual {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yellow-shape {
+    position: absolute;
+    width: 120%;
+    height: 90%;
+    background-color: var(--sf-yellow); /* El amarillo de la marca */
+    border-radius: 20px;
+    z-index: 1;
+    right: -10%; /* Desplazado un poco a la derecha */
+}
+
+.phones-img {
+    position: relative;
+    z-index: 2;
+    max-width: 80%;
+    height: auto;
+    /* Filtro para eliminar fondo si la imagen no es PNG transparente (opcional) */
+    /* mix-blend-mode: multiply; */ 
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
         .app-image { flex: 1; text-align: center; }
         .app-features li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
         .app-features i { color: var(--sf-yellow); }
-        .mockup { max-width: 100%; height: auto; border-radius: 20px; border: 4px solid #333; }
+        .mockup { max-width: 100%; border-radius: 20px; border: 4px solid #333; }
 
         /* --- TESTIMONIALS --- */
         .testimonials { padding: 80px 0; background-color: var(--sf-white); }
@@ -389,7 +653,7 @@
         .author-avatar { width: 50px; height: 50px; border-radius: 50%; background-color: #ccc; background-size: cover; }
 
         /* --- FOOTER --- */
-        footer { background-color: #111; color: #888; padding: 60px 0 20px; font-size: 0.9rem; margin-bottom: 0px; }
+        footer { background-color: #111; color: #888; padding: 60px 0 20px; font-size: 0.9rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
         .footer-col h5 { color: var(--sf-white); font-family: var(--font-title); text-transform: uppercase; margin-bottom: 20px; font-size: 1.1rem; }
         .footer-links li { margin-bottom: 10px; }
@@ -398,22 +662,68 @@
         .social-icons a:hover { color: var(--sf-yellow); }
         .legal { border-top: 1px solid #222; padding-top: 20px; text-align: center; }
 
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); z-index: 3000;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background-color: white; padding: 40px; border-radius: 15px;
+            width: 90%; max-width: 450px; position: relative;
+            box-shadow: 0 15px 40px rgba(255, 193, 7, 0.2);
+            border-top: 5px solid var(--sf-yellow);
+            transform: translateY(20px); transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .modal-close {
+            position: absolute; top: 15px; right: 15px; background: none; border: none;
+            font-size: 1.5rem; cursor: pointer; color: #999;
+        }
+        .modal-header { text-align: center; margin-bottom: 25px; }
+        .modal-header h3 { font-family: var(--font-title); font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        .form-group { position: relative; margin-bottom: 15px; }
+        .form-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #aaa; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px 15px 12px 45px; border: 2px solid #eee;
+            border-radius: 8px; font-size: 1rem; background: #f9f9f9;
+        }
+        .form-group input:focus { border-color: var(--sf-yellow); outline: none; background: white; }
+        .btn-block { width: 100%; display: block; }
+        .privacy-text { font-size: 0.75rem; text-align: center; margin-top: 15px; color: #999; }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .section-title { font-size: 2rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+    .hero-content p { font-size: 1.1rem; }
+    .hero-slider-section { height: auto; padding: 100px 0; }
+    .hero-buttons { flex-direction: column; }
+    .btn { width: 100%; text-align: center; }
+            .section-header-centered h2 { font-size: 1.8rem; }
             .hamburger { display: block; }
             .nav-menu { position: fixed; top: 60px; left: -100%; width: 100%; background-color: var(--sf-black); flex-direction: column; padding: 40px 0; transition: 0.3s; text-align: center; }
             .nav-menu.active { left: 0; }
-            .experience-grid { grid-template-columns: 1fr; }
-            .app-container { flex-direction: column-reverse; }
-            
-            /* Responsive Pricing */
+            .app-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .app-text { text-align: left; }
+    
+    .yellow-shape {
+        width: 100%;
+        right: 0;
+    }
+    
+    .download-area {
+        flex-direction: row; /* Mantener fila en móvil si cabe */
+        justify-content: flex-start;
+    }
             .pricing-cards { flex-direction: column; align-items: center; }
-            .price-card { width: 100%; max-width: none; }
+            .price-card { width: 100%; }
             .cta-content { grid-template-columns: 1fr; text-align: center; gap: 10px; }
-            .selected-plan-info { align-items: center; }
-            .subscribe-btn { width: 100%; }
         }
     </style>
 </head>
@@ -421,11 +731,12 @@
 
     <nav class="navbar">
         <div class="container nav-container">
-            <div class="logo">Mozart<span>Academy</span></div>
+            <div class="logo">Mozart<span>MX</span></div>
             <ul class="nav-menu">
-                <li><a href="#metodologia" class="nav-link">Metodología</a></li>
-                <li><a href="#planes" class="nav-link">Planes</a></li> <li><a href="#app" class="nav-link">App</a></li>
-                <li><a href="#planes" class="btn btn-primary btn-small">Inscribirme</a></li>
+                <li><a href="#clases" class="nav-link">Clases</a></li>
+                <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+                <li><a href="#planes" class="nav-link">Planes</a></li>
+                <li><button class="btn btn-primary btn-small" onclick="openModal()">Regístrate</button></li>
             </ul>
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
@@ -433,146 +744,244 @@
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Aprende piano desde cero y toca con seguridad</h1>
-            <p>Clases presenciales y online con metodología moderna y resultados reales en meses.</p>
-            <div class="hero-buttons">
-                <a href="#planes" class="btn btn-primary">Ver Planes</a>
-                <a href="#metodologia" class="btn btn-secondary">Conocer más</a>
+   <section class="hero-slider-section">
+    
+    <div class="creative-slider--wrap">
+        <div class="swiper creative-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1vabNC6Y394zDtGUtGTkDfeqEOoGnPLdc');"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1fxgoyfi6hti3_rvOIERV_d2b-Hk0hRzX');"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/165E5sFsKJVS26bsIQ_HRzAS-Jg6GuEEp');"></div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="benefits" id="metodologia">
-        <div class="container">
-            <div class="benefits-grid">
-                <div class="benefit-item"><i class="fas fa-user-graduate"></i><h4>Clases Personalizadas</h4></div>
-                <div class="benefit-item"><i class="far fa-clock"></i><h4>Horarios Flexibles</h4></div>
-                <div class="benefit-item"><i class="fas fa-certificate"></i><h4>Profesores Certificados</h4></div>
-                <div class="benefit-item"><i class="fas fa-tablet-alt"></i><h4>Plataforma Interactiva</h4></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <div class="hero-pill">Mozart MX</div>
+        <h1>Tu camino más corto<br>a la perfección musical.</h1>
+        <p>La primera plataforma de educación musical que combina calidad de conservatorio, certificación ABRSM y tecnología de seguimiento en tiempo real.</p>
+        
+        <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="openModal()">Comenzar Ahora</button>
+            <a href="#planes" class="btn btn-secondary">Ver Planes</a>
+        </div>
+    </div>
+
+</section>
+
+ <section class="benefits">
+    <div class="container">
+        <div class="section-header-centered">
+            <h2 style="color: white; font-size: 2rem;">NUESTRA METODOLOGÍA ESTRUCTURADA</h2>
+             <p style="color: #999; margin-top: 10px;">Un camino claro diseñado para tu progreso constante.</p>
+        </div>
+    </div>
+
+    <div style="width: 100%; max-width: 1400px; margin: 0 auto;">
+        <div class="benefits-grid-full">
+            <div class="benefit-module" style="background-image: url('https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=2070&auto=format&fit=crop');">
+                <div class="module-content">
+                    <span class="module-subtitle">Fase 1: Fundamentos</span>
+                    <h3 class="module-title">Iniciación al Piano & Postura</h3>
+                </div>
+            </div>
+
+            <div class="benefit-module" style="background-image: url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=2070&auto=format&fit=crop');">
+                <div class="module-content">
+                    <span class="module-subtitle">Fase 2: Lenguaje</span>
+                    <h3 class="module-title">Lectura de Partituras Fluida</h3>
+                </div>
+            </div>
+
+            <div class="benefit-module" style="background-image: url('https://images.unsplash.com/photo-1606202836817-411529690109?q=80&w=2070&auto=format&fit=crop');">
+                <div class="module-content">
+                    <span class="module-subtitle">Fase 3: Estructura</span>
+                    <h3 class="module-title">Armonía y Teoría Aplicada</h3>
+                </div>
+            </div>
+
+            <div class="benefit-module" style="background-image: url('https://images.unsplash.com/photo-1544256718-3bcf237f3974?q=80&w=2071&auto=format&fit=crop');">
+                <div class="module-content">
+                    <span class="module-subtitle">Fase 4: Maestría</span>
+                    <h3 class="module-title">Técnica e Interpretación ABRSM</h3>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="programs">
+    <section class="programs" id="clases">
         <div class="container">
-            <h2 class="section-title">¿Qué quieres tocar?</h2>
-            <p class="section-subtitle">Programas diseñados para tus gustos musicales.</p>
+            <div class="section-header-centered">
+                <h2>Conoce las mejores clases en <span class="highlight">Mozart MX</span></h2>
+            </div>
+            
             <div class="programs-grid">
-                <div class="prog-card">
-                    <div class="prog-card-img" style="background-image: url('https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="prog-card-content">
-                        <h3 class="prog-card-title">Piano desde Cero</h3>
-                        <p class="prog-card-desc">Fundamentos sólidos para principiantes.</p>
-                        <a href="#planes" class="prog-card-link">Empezar ahora <i class="fas fa-chevron-right"></i></a>
+                <div class="class-card">
+                    <div class="class-img" style="background-image: url('https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="class-title-bar">PIANO BÁSICO</div>
+                    <div class="class-info-row">
+                        <div class="info-item">
+                            <i class="far fa-clock"></i>
+                            <span class="info-label">Duración</span>
+                            <span class="info-value">55 min</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-bolt"></i>
+                            <span class="info-label">Intensidad</span>
+                            <span class="info-value">Media</span>
+                        </div>
                     </div>
+                    <hr class="class-divider">
+                    <p class="class-desc">
+                        Aprende a leer partituras y tocar tus primeras melodías desde las primeras semanas. Ideal para principiantes absolutos.
+                    </p>
                 </div>
-                <div class="prog-card">
-                    <div class="prog-card-img" style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="prog-card-content">
-                        <h3 class="prog-card-title">Piano Moderno</h3>
-                        <p class="prog-card-desc">Acordes, pop y música contemporánea.</p>
-                        <a href="#planes" class="prog-card-link">Empezar ahora <i class="fas fa-chevron-right"></i></a>
+
+                <div class="class-card">
+                    <div class="class-img" style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="class-title-bar">PIANO MODERNO & POP</div>
+                    <div class="class-info-row">
+                        <div class="info-item">
+                            <i class="far fa-clock"></i>
+                            <span class="info-label">Duración</span>
+                            <span class="info-value">55 min</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-fire"></i>
+                            <span class="info-label">Intensidad</span>
+                            <span class="info-value">Alta</span>
+                        </div>
                     </div>
+                    <hr class="class-divider">
+                    <p class="class-desc">
+                        Domina acordes, improvisación y toca los hits del momento. Enfocado en resultados rápidos y diversión.
+                    </p>
                 </div>
-                <div class="prog-card">
-                    <div class="prog-card-img" style="background-image: url('https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="prog-card-content">
-                        <h3 class="prog-card-title">Certificación ABRSM</h3>
-                        <p class="prog-card-desc">Preparación para exámenes internacionales.</p>
-                        <a href="#planes" class="prog-card-link">Empezar ahora <i class="fas fa-chevron-right"></i></a>
+
+                <div class="class-card">
+                    <div class="class-img" style="background-image: url('https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="class-title-bar">CERTIFICACIÓN ABRSM</div>
+                    <div class="class-info-row">
+                        <div class="info-item">
+                            <i class="far fa-clock"></i>
+                            <span class="info-label">Duración</span>
+                            <span class="info-value">60 min</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-award"></i>
+                            <span class="info-label">Intensidad</span>
+                            <span class="info-value">Alta</span>
+                        </div>
                     </div>
+                    <hr class="class-divider">
+                    <p class="class-desc">
+                        Preparación rigurosa para exámenes internacionales de música. Técnica, teoría y repertorio clásico.
+                    </p>
                 </div>
+            </div>
+
+            <div class="programs-cta-container">
+                <button class="btn btn-primary" onclick="openModal()">¡Inscríbete ya!</button>
             </div>
         </div>
     </section>
 
-    <section class="experience">
+    <section class="experience" id="experiencia">
         <div class="container">
-            <h2 class="section-title">Tu experiencia musical</h2>
+            <div class="section-header-centered">
+                <h2>Vive la experiencia <span class="highlight">Mozart MX</span> y disfruta de un ambiente agradable y seguro con las mejores instalaciones.</h2>
+            </div>
+
             <div class="experience-grid">
-                <div class="exp-item" style="background-image: url('https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=2070&auto=format&fit=crop');"><div class="exp-overlay"><h3 class="exp-title">Jazz & Blues</h3></div></div>
-                <div class="exp-item" style="background-image: url('https://images.unsplash.com/photo-1612225330812-01a9c6b355ec?q=80&w=2070&auto=format&fit=crop');"><div class="exp-overlay"><h3 class="exp-title">App Digital</h3></div></div>
-                <div class="exp-item" style="background-image: url('https://images.unsplash.com/photo-1465847899078-b413929f7120?q=80&w=2070&auto=format&fit=crop');"><div class="exp-overlay"><h3 class="exp-title">Recitales</h3></div></div>
+                <div class="amenity-card">
+                    <div class="amenity-img" style="background-image: url('https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="amenity-label">Pianos Acústicos y Digitales</div>
+                </div>
+
+                <div class="amenity-card featured">
+                    <div class="amenity-img" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="amenity-label">Salón de Clases Equipado</div>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-img" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop');"></div>
+                    <div class="amenity-label">Áreas Funcionales y de Espera</div>
+                </div>
+            </div>
+            
+            <div class="programs-cta-container" style="margin-top: 40px;">
+                <button class="btn btn-primary" onclick="openModal()">¡Inscríbete ya!</button>
             </div>
         </div>
     </section>
 
     <section class="pricing-section" id="planes">
         <div class="container">
-            <h2 class="section-title">ELIGE TU PLAN</h2>
-            <p class="section-subtitle">
-                Comienza tu formación hoy. Elige el plan que mejor se adapte a tu ritmo.
-                <br><span style="font-size: 0.9rem; color: #888;">*Costo por clase sin plan: $150 MXN. Todos los planes ofrecen ahorro.</span>
-            </p>
+            <div class="section-header-centered">
+                <h2>ELIGE TU PLAN</h2>
+                <p style="color: #666; font-size: 1.1rem; margin-top: 10px;">Comienza tu formación hoy. Elige el plan que mejor se adapte a tu ritmo.</p>
+                <p style="font-size: 0.9rem; color: #888;">*Costo por clase suelta: $150 MXN.</p>
+            </div>
 
             <div class="billing-toggle">
                 <button class="toggle-btn active" onclick="switchBilling('mensual')">Mensual</button>
-                <button class="toggle-btn" onclick="switchBilling('trimestral')">
-                    Trimestral
-                    <span class="best-offer">AHORRA +</span>
-                </button>
+                <button class="toggle-btn" onclick="switchBilling('trimestral')">Trimestral <span class="best-offer">AHORRA +</span></button>
             </div>
 
             <div class="pricing-cards">
                 <div class="price-card" id="plan1-card" onclick="selectPlan('plan1')">
-                    <div class="radio-container">
-                        <h3 class="plan-name">Plan 1</h3>
-                        <div class="radio-input"></div>
-                    </div>
+                    <div class="radio-container"><h3 class="plan-name">Plan 1</h3><div class="radio-input"></div></div>
                     <div class="card-header">
-                        <div class="price price-mensual">449 <span class="price-period">MXN / mes</span></div>
-                        <div class="price price-trimestral" style="display: none;">1,200 <span class="price-period">MXN / 3 meses</span></div>
-                        
-                        <div class="savings savings-mensual">Ahorra 17% vs clase suelta</div>
+                        <div class="price price-mensual">449 <span class="price-period">MXN/mes</span></div>
+                        <div class="price price-trimestral" style="display: none;">1,200 <span class="price-period">MXN/3 meses</span></div>
+                        <div class="savings savings-mensual">Ahorra 17%</div>
                         <div class="savings savings-trimestral" style="display: none;">Ahorra 33% Total</div>
                     </div>
                     <ul class="features">
                         <li class="feature">4 clases al mes</li>
-                        <li class="feature">Acceso a plataforma</li>
-                        <li class="feature">Participación en recitales</li>
+                        <li class="feature">Acceso a App</li>
+                        <li class="feature">Recitales básicos</li>
                     </ul>
                 </div>
 
                 <div class="price-card" id="plan2-card" onclick="selectPlan('plan2')">
-                    <div class="radio-container">
-                        <h3 class="plan-name">Plan 2</h3>
-                        <div class="radio-input"></div>
-                    </div>
+                    <div class="radio-container"><h3 class="plan-name">Plan 2</h3><div class="radio-input"></div></div>
                     <div class="card-header">
-                        <div class="price price-mensual">799 <span class="price-period">MXN / mes</span></div>
-                        <div class="price price-trimestral" style="display: none;">2,100 <span class="price-period">MXN / 3 meses</span></div>
-                        
-                        <div class="savings savings-mensual">Ahorra 33% vs clase suelta</div>
+                        <div class="price price-mensual">799 <span class="price-period">MXN/mes</span></div>
+                        <div class="price price-trimestral" style="display: none;">2,100 <span class="price-period">MXN/3 meses</span></div>
+                        <div class="savings savings-mensual">Ahorra 33%</div>
                         <div class="savings savings-trimestral" style="display: none;">Ahorra 41% Total</div>
                     </div>
                     <ul class="features">
                         <li class="feature">8 clases al mes</li>
-                        <li class="feature">Acceso a plataforma</li>
-                        <li class="feature">Pianos de práctica</li>
-                        <li class="feature">Eventos en auditorios</li>
+                        <li class="feature">Acceso a App</li>
+                        <li class="feature">Práctica libre</li>
+                        <li class="feature">Recitales en auditorio</li>
                     </ul>
                 </div>
 
                 <div class="price-card premium" id="intensivo-card" onclick="selectPlan('intensivo')">
-                    <div class="radio-container">
-                        <h3 class="plan-name">Intensivo</h3>
-                        <div class="radio-input checked"></div>
-                    </div>
+                    <div class="radio-container"><h3 class="plan-name">Intensivo</h3><div class="radio-input checked"></div></div>
                     <div class="card-header">
-                        <div class="price price-mensual">1,399 <span class="price-period">MXN / mes</span></div>
-                        <div class="price price-trimestral" style="display: none;">3,450 <span class="price-period">MXN / 3 meses</span></div>
-                        
-                        <div class="savings savings-mensual">Ahorra 41% vs clase suelta</div>
+                        <div class="price price-mensual">1,399 <span class="price-period">MXN/mes</span></div>
+                        <div class="price price-trimestral" style="display: none;">3,450 <span class="price-period">MXN/3 meses</span></div>
+                        <div class="savings savings-mensual">Ahorra 41%</div>
                         <div class="savings savings-trimestral" style="display: none;">Ahorra 55% Total</div>
                     </div>
                     <ul class="features">
                         <li class="feature">16 clases al mes</li>
-                        <li class="feature">Seguimiento Online</li>
-                        <li class="feature">Flexibilidad de horarios</li>
-                        <li class="feature">Acceso VIP a Pianos</li>
-                        <li class="feature">Eventos y Recitales</li>
+                        <li class="feature">Seguimiento 24/7</li>
+                        <li class="feature">Flexibilidad total</li>
+                        <li class="feature">Acceso VIP</li>
                     </ul>
                 </div>
             </div>
@@ -580,7 +989,7 @@
             <div class="registration-banner">
                 <span class="banner-text">
                     <span class="strikethrough">Inscripción: $399 MXN</span><br>
-                    ¡Inscríbete en <strong id="current-month" style="text-transform:uppercase;"></strong> y paga solo <span class="sale-price">$10 MXN</span> de inscripción!
+                    ¡Inscríbete en <strong id="current-month" style="text-transform: uppercase;"></strong> y paga solo <span class="sale-price">$10 MXN</span> de inscripción!
                 </span>
             </div>
         </div>
@@ -589,37 +998,46 @@
     <div class="cta-section">
         <div class="cta-content">
             <button class="close-cta-btn" onclick="closeCta()"><i class="fas fa-times"></i></button>
-            <div class="selected-plan-info">
-                <span class="selected-plan-name">Estás eligiendo: <strong id="cta-plan-name">INTENSIVO</strong></span>
-                <span class="selected-price" id="selected-price-amount">1,399 MXN</span>
-                <span style="font-size: 0.8rem; color: #888;">Renovación automática. Cancela cuando quieras.</span>
+            <div>
+                <span style="font-weight: 700; display: block; text-transform: uppercase; color: #666; font-size: 0.8rem;">Estás eligiendo:</span>
+                <span class="selected-price" id="cta-plan-name">INTENSIVO</span>
+                <span class="selected-price" id="selected-price-amount" style="margin-left: 10px; font-size: 1.5rem;">1,399 MXN</span>
             </div>
             <div>
-                <button class="subscribe-btn" onclick="subscribe()">INSCRIBIRSE AHORA</button>
+                <button class="btn btn-primary" style="width: 100%;" onclick="subscribe()">INSCRIBIRSE AHORA</button>
             </div>
         </div>
     </div>
 
-    <section class="app-section" id="app">
-        <div class="container app-container">
-            <div class="app-text">
-                <h2 class="section-title" style="color: white; text-align: left;">Tu profesor en tu bolsillo</h2>
-                <p class="section-subtitle" style="text-align: left; margin-left: 0; color: #ccc;">Practica en casa con nuestra plataforma exclusiva.</p>
-                <ul class="app-features">
-                    <li><i class="fas fa-check-circle"></i> Partituras interactivas con acompañamiento</li>
-                    <li><i class="fas fa-check-circle"></i> Seguimiento de progreso en tiempo real</li>
-                    <li><i class="fas fa-check-circle"></i> Acceso 24/7 a lecciones en video</li>
-                </ul>
-            </div>
-            <div class="app-image">
-                <img src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?q=80&w=2071&auto=format&fit=crop" alt="App Piano" class="mockup" style="max-width: 400px; width: 100%;">
+   <section class="app-section" id="app">
+    <div class="container app-container">
+        <div class="app-text">
+            <h2>Mozart App</h2>
+            <p>No importa si ya tienes experiencia o si recién estás comenzando a tocar, una cosa es segura: al descargar gratis la aplicación Mozart MX, obtienes el mejor aliado para tu rutina de práctica. Exclusivo para alumnos.</p>
+            
+            <p class="scan-text">Escanea el código para descargar gratis.</p>
+            
+            <div class="download-area">
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=MozartAcademyApp" alt="QR Code">
+                </div>
+                <div class="store-buttons">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Disponible en Google Play">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Consíguelo en el App Store">
+                </div>
             </div>
         </div>
-    </section>
+
+        <div class="app-visual">
+            <div class="yellow-shape"></div>
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop" class="phones-img" alt="Mozart App Interface">
+        </div>
+    </div>
+</section>
 
     <section class="testimonials">
         <div class="container">
-            <h2 class="section-title">Historias Reales</h2>
+            <div class="section-header-centered"><h2>Historias Reales</h2></div>
             <div class="testi-grid">
                 <div class="testi-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -665,107 +1083,131 @@
                     </div>
                 </div>
             </div>
-            <div class="legal">
-                <p>&copy; 2024 Mozart Academy. Todos los derechos reservados.</p>
-            </div>
+            <div class="legal"><p>&copy; 2024 Mozart MX. Todos los derechos reservados.</p></div>
         </div>
     </footer>
 
+    <div id="leadModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h3>¡TU PRIMERA CLASE ES <span style="color: var(--sf-yellow);">GRATIS!</span></h3>
+                <p>Déjanos tus datos y te contactaremos en minutos para agendar.</p>
+            </div>
+            <form onsubmit="submitLead(event)">
+                <div class="form-group"><i class="fas fa-user"></i><input type="text" placeholder="Nombre Completo" required></div>
+                <div class="form-group"><i class="fab fa-whatsapp"></i><input type="tel" placeholder="WhatsApp" required></div>
+                <div class="form-group">
+                    <i class="fas fa-music"></i>
+                    <select required>
+                        <option value="" disabled selected>Nivel de Piano</option>
+                        <option value="cero">Desde Cero</option>
+                        <option value="basico">Básico</option>
+                        <option value="intermedio">Intermedio</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">AGENDAR AHORA</button>
+                <p class="privacy-text">Aceptas nuestro aviso de privacidad.</p>
+            </form>
+        </div>
+    </div>
+
     <script>
-        // --- NAVBAR MOBILE LOGIC ---
+        // --- NAVBAR MOBILE ---
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => { navMenu.classList.remove('active'); }));
 
-        // --- PRICING LOGIC ---
+        // --- PRICING DATA ---
         const pricingData = {
-            'plan1': {
-                name: 'Plan 1',
-                mensual: { amount: '449 MXN', suffix: '/ mes' },
-                trimestral: { amount: '1,200 MXN', suffix: '/ 3 meses' }
-            },
-            'plan2': {
-                name: 'Plan 2',
-                mensual: { amount: '799 MXN', suffix: '/ mes' },
-                trimestral: { amount: '2,100 MXN', suffix: '/ 3 meses' }
-            },
-            'intensivo': {
-                name: 'Plan Intensivo',
-                mensual: { amount: '1,399 MXN', suffix: '/ mes' },
-                trimestral: { amount: '3,450 MXN', suffix: '/ 3 meses' }
-            }
+            'plan1': { name: 'PLAN 1', mensual: '449 MXN', trimestral: '1,200 MXN' },
+            'plan2': { name: 'PLAN 2', mensual: '799 MXN', trimestral: '2,100 MXN' },
+            'intensivo': { name: 'PLAN INTENSIVO', mensual: '1,399 MXN', trimestral: '3,450 MXN' }
         };
 
         let selectedPlan = 'intensivo';
         let billingType = 'mensual';
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Inicializar mes actual
             const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-            const mesActual = meses[new Date().getMonth()];
-            document.getElementById('current-month').textContent = mesActual;
-            
-            // Estado inicial
+            document.getElementById('current-month').textContent = meses[new Date().getMonth()];
             updateCtaPrice();
         });
 
         function switchBilling(type) {
             billingType = type;
-            
-            // Actualizar botones toggle
             document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            if (type === 'mensual') {
-                document.querySelectorAll('.toggle-btn')[0].classList.add('active');
-            } else {
-                document.querySelectorAll('.toggle-btn')[1].classList.add('active');
-            }
-
-            // Mostrar/Ocultar precios en las cards
+            document.querySelectorAll('.toggle-btn')[type === 'mensual' ? 0 : 1].classList.add('active');
+            
             document.querySelectorAll('.price-mensual, .savings-mensual').forEach(el => el.style.display = type === 'mensual' ? 'block' : 'none');
             document.querySelectorAll('.price-trimestral, .savings-trimestral').forEach(el => el.style.display = type === 'trimestral' ? 'block' : 'none');
-
+            
             updateCtaPrice();
         }
 
         function selectPlan(plan) {
             selectedPlan = plan;
-
-            // Visual update de las cards
-            document.querySelectorAll('.price-card').forEach(card => {
-                card.classList.remove('premium');
-                card.querySelector('.radio-input').classList.remove('checked');
+            document.querySelectorAll('.price-card').forEach(c => {
+                c.classList.remove('premium');
+                c.querySelector('.radio-input').classList.remove('checked');
             });
-
             const activeCard = document.getElementById(plan + '-card');
             if(activeCard) {
                 activeCard.classList.add('premium');
                 activeCard.querySelector('.radio-input').classList.add('checked');
             }
-
-            // Mostrar sticky bar
             document.querySelector('.cta-section').style.display = 'flex';
             updateCtaPrice();
         }
 
         function updateCtaPrice() {
             if (!pricingData[selectedPlan]) return;
-            
-            const data = pricingData[selectedPlan][billingType];
             document.getElementById('cta-plan-name').textContent = pricingData[selectedPlan].name;
-            document.getElementById('selected-price-amount').textContent = data.amount + ' ' + data.suffix;
+            document.getElementById('selected-price-amount').textContent = pricingData[selectedPlan][billingType];
         }
 
-        function closeCta() {
-            document.querySelector('.cta-section').style.display = 'none';
-        }
+        function closeCta() { document.querySelector('.cta-section').style.display = 'none'; }
+        function subscribe() { alert('Redirigiendo a checkout para: ' + selectedPlan); }
 
-        function subscribe() {
-            // Aquí iría tu link real de checkout
-            const paymentUrl = `https://www.mozartacademy.mx/checkout?plan=${selectedPlan}&type=${billingType}`;
-            window.location.href = paymentUrl;
-            alert('Redirigiendo a pago: ' + selectedPlan + ' ' + billingType); // Solo para demo
+        // --- MODAL LOGIC ---
+        function openModal() {
+            const modal = document.getElementById('leadModal');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
         }
+        function closeModal() {
+            const modal = document.getElementById('leadModal');
+            modal.classList.remove('active');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+        document.getElementById('leadModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('leadModal')) closeModal();
+        });
+        function submitLead(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerText = 'ENVIANDO...';
+            setTimeout(() => {
+                btn.innerText = '¡ENVIADO!';
+                setTimeout(() => { closeModal(); btn.innerText = 'AGENDAR AHORA'; }, 1000);
+            }, 1500);
+        }
+        // --- INICIALIZAR HERO SLIDER ---
+document.addEventListener('DOMContentLoaded', () => {
+    const swiper = new Swiper(".creative-slider", {
+        spaceBetween: 0,
+        effect: "fade",       // Efecto de desvanecimiento elegante
+        speed: 2000,          // Transición suave de 2 segundos
+        fadeEffect: { crossFade: true },
+        loop: true,           // Infinito
+        autoplay: {
+            delay: 6000,      // Cambia cada 6 segundos
+            disableOnInteraction: false,
+        },
+        allowTouchMove: false, // Evita que el usuario lo mueva manualmente (opcional)
+    });
+});
     </script>
 </body>
 </html>
