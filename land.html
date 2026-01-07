@@ -1,583 +1,3969 @@
-<!DOCTYPE html>
-<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educal | Clases de Piano Presenciales</title>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
-    <link rel="stylesheet" href="style.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1h0PAuatp8mguH19cso6wh19mjMVa0K5V" type="image/x-icon">
+    <title>Mozart Plus+</title>
+  
+<link href="https://code.ionicframework.com/1.3.3/css/ionic.min.css" rel="stylesheet">
+  <script src="https://code.ionicframework.com/1.3.3/js/ionic.bundle.min.js"></script>
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+ <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+ <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <meta name="google-signin-client_id" content="613538890545-o4p4ft7oji6uhimgh0inqn5l5cgv1gnm.apps.googleusercontent.com">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+ <link rel="manifest" href="/manifest.json">
 </head>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
+ <style>
 
-:root {
-    --header-height: 4.5rem;
+ .itemDividerforitem {
+      border-color: #111;
+      background-color: #444444;
+      color: #fff;
+    }
 
-    --hue: 250;
-    --first-color: hsl(var(--hue), 100%, 58%);
-    --title-color: hsl(var(--hue), 8%, 15%);
-    --text-color: hsl(var(--hue), 8%, 35%);
-    --body-color: #FFFFFF;
-    --golden-color: #FFB352;
-    --lilac-color: #B128FF;
-    --green-color: #30A820;
-    --purple-color: #5744CB;
-    --vibrant-purple-color: #B128FF;
-    --pink-color: #F2277E;
-    --night-color: #0E1133;
-    --gray-color: hsl(var(--hue), 8%, 75%);
-    --border-color: hsl(var(--hue), 8%, 80%);
-    --container-color: hsl(var(--hue), 60%, 97%);
-    --facebook-color: #285DA1;
-    --youtube-color: #D2173F;
 
-    --body-font: 'Hind', sans-serif;
-    --signature-font: 'Turret Road', sans-serif;
-    --biggest-font-size: 4rem;
-    --h1-font-size: 2.25rem;
-    --h2-font-size: 1.5rem;
-    --h3-font-size: 1.25rem;
-    --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
-
-    --font-medium: 500;
-    --font-semibold: 600;
-    --font-bold: 700;
-
-    --z-tooltip: 10;
-    --z-fixed: 100;
+   
+.loadInfo{
+  z-index: 4;
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
 }
 
-@media screen and (max-width: 1024px) {
-    :root {
-        --biggest-font-size: 2.75rem;
-        --h1-font-size: 1.5rem;
-        --h2-font-size: 1.25rem;
-        --h3-font-size: 1rem;
-        --normal-font-size: .938rem;
-        --small-font-size: .813rem;
-        --smaller-font-size: .75rem;
+
+@media only screen and (min-width: 990px) {
+  .col-md-2{
+    margin-top: 130px;
+    margin-left: -20px;
+  }  
+}
+
+
+
+@keyframes beat-fade {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(2.4);
+  }
+  
+  50% {
+    opacity: 0.5;
+    transform: scale(4);
+  }
+}
+
+
+
+
+body {
+  margin: 0;
+  height: 100%;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 99;
+}
+#loading {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);
+  /* path to your loading animation */
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -100px 0 0 -100px;
+}
+
+#loading-text {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 50px);
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+ #loadingProfile {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -50px 0 0 -100px;
+}
+
+ion-side-menu {
+  background-color: #f8f9fc; /* Fondo claro */
+  color: #3a3b3c; /* Texto oscuro */
+  width: 300px;
+  border-right: 1px solid #e0e0e0;
+ 
+}
+
+
+
+ion-side-menu .list .item {
+  padding: 20px 40px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  color: #374151;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 2px; /* Bordes redondeados */
+    border-top: 1px solid transparent !important; 
+    border-bottom: 1px solid transparent !important; 
+  font-weight: 400; 
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+ion-side-menu .list .item i {
+  font-size: 22px;
+  color: #374151;
+  margin-right: 10px; /* Espaciado entre ícono y texto */
+}
+
+
+
+ion-side-menu .item:hover i {
+  transform: scale(1.1); /* Agrandar ligeramente el ícono */
+}
+
+ion-side-menu .item:hover img {
+  transform: scale(1.1); /* Agrandar ligeramente el ícono */
+}
+
+ion-side-menu .list .item:hover {
+  background-color: #f5f6f6; /* Fondo hover */
+  color: #343a40; /* Texto más oscuro al pasar mouse */
+}
+
+.menuSelectedColor {    
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: 550 !important; text-shadow: 0 0 6px silver !important;
+    background-color: #f0f2f5 !important; 
+  color: #1F2937 !important;
+}
+
+.card{
+  font-family: 'Nunito', sans-serif;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  padding: 14px 80px 18px 36px;
+  cursor: pointer;
+  height: 120px;
+  align-items: center; 
+   display: flex; 
+  text-decoration: none; 
+}
+
+
+.card:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.list .card h3{
+  font-weight: 600;
+  font-size: 1.7rem;
+  
+}
+
+.card img{
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  max-height: 120px;
+}
+
+
+
+
+ .iframe-container {
+   overflow: hidden;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            /*height:  88vh;*/
+      height: 100%;
+       padding-top: 15px;
+        }
+
+
+        .iframe-container iframe {
+          position: absolute;
+      /*    top: 15px;*/
+        left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+
+ .iframe-container2 {
+   overflow: hidden;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            /*height:  88vh;*/
+      height: 100%;
+      padding-top: 15px;
+        }
+
+
+        .iframe-container2 iframe {
+          position: absolute;
+
+        left: 0;
+            width: 100%;
+            height: 91vh;
+            border: 0;
+        }
+
+
+
+   .drive{
+    height: 450px;
+    width: 100%;
+  }
+  
+  .modal-container {
+    position: fixed;
+    display: table;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    z-index: 1;
+  }
+
+  .modal-container.four {
+    z-index: 0;
+    transform: scale(1);
+  }
+
+  .modal-container.four .modal-background .modalDoc {
+    animation: blowUpModal 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  .modal-container.four + body {
+    z-index: 1;
+    animation: blowUpContent 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  .modal-container.four.out .modal-background .modalDoc {
+    animation: blowUpModalTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  .modal-container.four.out + body {
+    animation: blowUpContentTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+
+  .modal-container .modal-background {
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    vertical-align: middle;
+  }
+  .modal-container .modal-background .modalDoc {
+    padding: 50px;
+    display: inline-block;
+    border-radius: 3px;
+    font-weight: 300;
+    position: relative;
+  }
+
+.close-modal {
+    display: block;
+    position: absolute;
+  top: 40px;
+    right: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+  @keyframes blowUpContent {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    99.9% {
+      transform: scale(2);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes blowUpContentTwo {
+    0% {
+      transform: scale(2);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes blowUpModal {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes blowUpModalTwo {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+
+
+
+
+
+
+     
+      .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .add-to-btn {
+      background-color: #E02D44;
+      color: white;
+      border: none;
+      outline: none;
+      font-weight: bold;
+      width: 100%;
+      height: 50px;
+    }
+ 
+#myModal {
+    display: block; 
+  }
+
+   
+.ionic-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.2);
+  border-top: 4px solid #333;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+   .anim {
+    position: relative;
+    display: block;
+    
+  animation: slide_in 0.3s ease-in-out forwards;
+    opacity: 0;
+    left: -10px;
+
+}
+
+
+@keyframes slide_in {
+    from {
+        left: -10px;
+        opacity: 0;
+    }
+    to {
+        left: 0px;
+        opacity: 1;
     }
 }
-/*General classes*/
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body, input, textarea { font-family: var(--body-font); font-size: var(--normal-font-size); }
-    body { background-color: var(--body-color); color: var(--text-color); }
-h1, h2, h3 { color: var(--title-color); font-weight: var(--font-semibold); }
-ul { list-style: none; }
-a { text-decoration: none; }
-input { border: none; outline: none; }
-img { max-width: 100%; height: auto; }
-.button { display: inline-block; color: var(--body-color); padding: 0.8rem 1.75rem; border-radius: .5rem; font-weight: var(--font-medium); background-color: var(--first-color); cursor: pointer; }
-.container { max-width: 1140px; margin-left: auto; margin-right: auto; }
-.grid { display: grid;}
-.section { padding: 7rem 0 1rem; }
-.section-title { font-size: var(--h1-font-size); font-weight: var(--font-bold); text-align: center; margin-bottom: 0.25rem; line-height: 140%; }
-.section-subtitle { text-align: center; margin-bottom: 4rem; }
 
-/*Header*/
-.header { width: 100%; background-color: transparent; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); transition: .6s; }
-.nav { height: calc(var(--header-height) + 1.5rem); display: flex; justify-content: space-between; align-items: center; }
-.logo-dark { display: none; }
-.nav-link, .nav-toggle { color: var(--body-color); font-weight: var(--font-semibold); }
-    .nav-toggle { font-size: 1.5rem; cursor: pointer; display: none; }
-.nav-list { display: flex; flex-direction: row; column-gap: 2.5rem; }
-.nav-close { display: none; }
-.active-link { position: relative; }
-    .active-link::before { content: ''; position: absolute; bottom: -0.75rem; left: 45%; width: 5px; height: 5px; background-color: var(--body-color); border-radius: 50%; }
-.scroll-header { background-color: var(--body-color) !important; box-shadow: 0 1px 4px hsl(var(--hue), 4%, 15%, .1); }
-    .scroll-header .logo-light { display: none; }
-    .scroll-header .logo-dark { display: block; }
-    .scroll-header .nav-link { color: var(--title-color); }
-    .scroll-header .active-link::before { background-color: var(--title-color); }
-    .scroll-header .nav-toggle { color: var(--title-color); }
+.dropdownContent {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background: #fff;
+  min-width: 250px;
+  box-shadow: 0px 0px 15px 8px rgba(50, 50, 50, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
+  padding: 20px 10px;
+}
 
-/*Main - Home*/
-.home { position: relative; min-height: 868px; background: url('https://lh3.googleusercontent.com/d/18T8zXfKsnfcNs6IjX-OU0ajnr0CINe65'); background-repeat: no-repeat; padding: 18rem 0 2rem; z-index: -2; }
-    .home::after { position: absolute; content: ''; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 3, 32, .66); z-index: -1; }
-.home-data { max-width: 650px; }
-.home-subtitle { font-size: var(--h3-font-size); font-weight: var(--font-medium); color: var(--golden-color); margin-bottom: 1rem; }
-.home-title { font-size: var(--biggest-font-size); font-weight: var(--font-bold); color: var(--body-color); line-height: 109%; margin-bottom: 1.5rem; }
-.home-description { font-size: var(--h3-font-size); color: var(--gray-color); padding-right: 2.8rem; margin-bottom: 2.5rem; }
-.about-courses { position: absolute; bottom: 0; left: 0; right: 0; z-index: var(--z-tooltip); grid-template-columns: repeat(4, 1fr); }
-.about-course-item { position: relative; height: 100px; padding: 23px 50px; padding-right: 1.8rem; background-color: var(--first-color); z-index: -1; }
-    .about-course-item::after { position: absolute; content: ''; left: 0; top: 0; width: 100%; height: 100%; z-index: -2; }
-    .about-course-item:nth-child(1) { background: url('https://u.cubeupload.com/Leo21/slidernav4.jpg'); background-position: center; }
-        .about-course-item:nth-child(1)::after { background: rgba(247, 100, 30, .8); }
-    .about-course-item:nth-child(2) { background: url('https://u.cubeupload.com/Leo21/slidernav1.jpg'); background-position: center; }
-        .about-course-item:nth-child(2)::after { background: rgba(45, 105, 240, .8); }
-    .about-course-item:nth-child(3) { background: url('https://u.cubeupload.com/Leo21/slidernav2.jpg'); background-position: center; }
-        .about-course-item:nth-child(3)::after { background: rgba(231, 36, 110, .8); }
-    .about-course-item:nth-child(4) { background: url('https://u.cubeupload.com/Leo21/slidernav3.jpg'); background-position: center; }
-        .about-course-item:nth-child(4)::after { background: rgba(12, 174, 116, .8); }
-.about-course-total { display: inline-block; color: var(--body-color); font-size: var(--h3-font-size); }
-.about-course-title { color: var(--body-color); font-size: var(--h3-font-size); }
+#bannerRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
 
-/*Main - About*/
-.about-container { grid-template-columns: repeat(2, 1fr); column-gap: 6rem; }
-.about-group { justify-self: flex-end; position: relative; }
-.about-thumb { margin-left: 6.25rem; }
-.about-thumb-img { width: 370px; }
-.about-review { position: absolute; left: -1.5rem; top: 6.25rem; transform: rotate(90deg); }
-    .about-review p span { font-weight: var(--font-semibold); color: var(--title-color); }
-.about-banner { margin-top: -13rem; }
-.about-banner-img { width: 240px; border-radius: .4rem; }
-.about-students { margin-top: -5rem; margin-left: 18.6rem; }
-.about-student-img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--container-color); }
-    .about-student-img + .about-student-img { margin-left: -0.75rem; }
-.about-student-details { margin-top: 0.25rem; font-size: var(--small-font-size); }
-    .about-student-details span { font-weight: var(--font-semibold); color: var(--title-color); }
-.about-title { margin-bottom: 1rem; text-align: left; }
-.about-description { margin-bottom: 2rem; padding-right: 2rem; }
-.about-details { display: grid; row-gap: .5rem; margin-bottom: 2.5rem; }
-.about-details-description { display: inline-flex; align-items: center; column-gap: .5rem; font-size: var(--small-font-size); color: var(--title-color); }
-.about-details-icon { font-size: 1.25rem; color: var(--first-color); }
-.button-link { color: var(--first-color); border: 2px solid var(--first-color); background-color: transparent; transition: .4s; }
-    .button-link:hover { background-color: var(--first-color); color: var(--body-color); } 
+.profileImageContainer img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
 
-/*Main - Teachers*/
-.teachers-container { grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
-.teacher-item { background-color: var(--container-color); padding: 1.875rem; text-align: center; border-radius: .4rem; }
-.teacher-img-box { margin-bottom: 1.5rem; overflow: hidden; }
-    .teacher-img-box img { transform: scale(1); vertical-align: middle; transition: .4s; }
-        .teacher-img-box:hover img { transform: scale(1.1); }
-.teacher-title { display: inline-block; font-size: var(--h3-font-size); margin-bottom: 0.75rem; }
-.teacher-social { display: flex; justify-content: center; column-gap: 0.6rem; }
-.teacher-social-link { width: 36px; height: 36px; display: grid; place-items: center; border: 2px solid var(--border-color); color: var(--title-color); border-radius: .25rem; transition: .8s; }
-    .teacher-social-link:hover { background-color: var(--first-color); color: var(--body-color); border: none; }
-    .teacher-social-link i { font-weight: var(--font-semibold); }
+.profileName {
+  margin: 10px 0 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
 
-/*Main - Brand*/
-.brand-title { text-align: center; font-size: var(--h2-font-size); margin-bottom: 3rem; }
-.brand-container { grid-template-columns: repeat(6, 1fr); justify-items: center; margin-bottom: 3rem; }
-.brand-button { color: var(--title-color); font-size: var(--normal-font-size); display: flex; align-items: center; justify-content: center; column-gap: 0.25rem; cursor: pointer; }
-.brand-button-icon { font-size: 1.25rem; transition: .4s; }
-    .brand-button:hover .brand-button-icon { transform: translateX(.25rem); }
+.profileEmail {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
 
-/*Main - Courses*/
-.courses-container { grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
-.course-item { background-color: var(--container-color); position: relative; border-radius: 0 0 0.4rem 0.4rem; }
-.course-box { border-radius: 0.4rem 0.4rem 0 0; overflow: hidden; }
-.course-img { transform: scale(1); vertical-align: middle; transition: 0.4s; }
-    .course-box:hover .course-img { transform: scale(1.1); }
-.course-tag { position: absolute; top: 1.25rem; left: 1.25rem; background-color: var(--first-color); color: var(--body-color); font-size: var(--small-font-size); padding: 0.25rem .5rem; border-radius: .25rem; }
-.course-content { padding: 1.5rem 1.875rem; }
-.course-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-.course-lesson, .course-rating { display: inline-flex; align-items: center; column-gap: 0.25rem; font-size: var(--small-font-size); }
-    .course-rating .uis { color: var(--golden-color); }
-.course-title { font-size: var(--h3-font-size); margin-bottom: 1rem; line-height: 1.2; cursor: pointer; transition: .4s; text-align: center; }
-    .course-title:hover { color: var(--first-color); }
-.course-teacher { display: flex; column-gap: 1rem; align-items: center; }
-.course-teacher-img { width: 35px; height: 35px; border: 2px solid var(--body-color); border-radius: 50%; }
-.course-teacher-title { font-size: var(--normal-font-size); font-weight: var(--font-medium); padding-top: 0.125rem; cursor: pointer; transition: .4s; }
-    .course-teacher-title:hover { color: var(--first-color); }
-.course-more { display: flex; justify-content: space-between; padding: 0.6rem 1.875rem 0.75rem; padding-top: 1rem; border-top: 1px solid var(--body-color); }
-.course-prices { display: flex; align-items: center; }
-.course-price { font-size: var(--h2-font-size); font-weight: var(--font-semibold); padding: 0.25rem; }
-.course-discount { font-size: var(--small-font-size); text-decoration: line-through; }
-.course-button { color: var(--title-color); font-size: var(--normal-font-size); display: flex; align-items: center; justify-content: center; column-gap: 0.25rem; cursor: pointer; }
-.course-button-icon { font-size: 1.25rem; transition: .4s; }
-    .course-button:hover .course-button-icon { transform: translateX(.25rem); }
-.course-item:nth-child(1) .course-tag { background-color: var(--lilac-color); }
-.course-item:nth-child(1) .course-price { color: var(--lilac-color); }
-.course-item:nth-child(2) .course-tag { background-color: var(--golden-color); }
-.course-item:nth-child(2) .course-price { color: var(--golden-color); }
-.course-item:nth-child(3) .course-tag { background-color: var(--green-color); }
-.course-item:nth-child(3) .course-price { color: var(--green-color); }
-.course-item:nth-child(4) .course-tag { background-color: var(--purple-color); }
-.course-item:nth-child(4) .course-price { color: var(--purple-color); }
-.course-item:nth-child(5) .course-tag { background-color: var(--pink-color); }
-.course-item:nth-child(5) .course-price { color: var(--pink-color); }
-.course-item:nth-child(6) .course-tag { background-color: var(--vibrant-purple-color); }
-.course-item:nth-child(6) .course-price { color: var(--vibrant-purple-color); }
+.dropdown-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
 
-/*Footer*/
-.footer { margin-top: 8rem; background-color: var(--night-color); }
-.footer-container { grid-template-columns: repeat(4, 1fr); justify-items: center; column-gap: 1rem; }
-.footer-logo { margin-bottom: 1.25rem; }
-.footer-description { color: var(--gray-color); margin-bottom: 2.5rem; }
-.footer-social { display: flex; column-gap: 0.75rem; }
-.footer-social-link { display: inline-block; background-color: var(--container-color); width: 44px; height: 44px; line-height: 42px; text-align: center; border-radius: .25rem; font-size: 1rem; color: var(--body-color); border: 2px solid; transition: .6s; }
-    .footer-social-link:nth-child(1) { background-color: var(--facebook-color); border-color: var(--facebook-color); }
-    .footer-social-link:nth-child(2) { background-color: var(--youtube-color); border-color: var(--youtube-color); }
-    .footer-social-link:hover { background-color: transparent; }
-.footer-title { font-size: var(--h3-font-size); color: var(--body-color); margin-bottom: 1rem; }
-.footer-links { display: grid; row-gap: 0.35rem; }
-.footer-link { font-size: var(--normal-font-size); color: var(--gray-color); transition: .6s; }
-    .footer-link:hover { color: var(--body-color); }
-.footer-copy { display: block; text-align: center; font-size: var(--normal-font-size); color: var(--gray-color); margin-top: 6rem; }
-    .footer-copy a { font-family: var(--signature-font); color: var(--gray-color); font-weight: var(--font-semibold); transition: .4s; }
-        .footer-copy a:hover { color: var(--body-color); }
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-item i {
+  margin-right: 10px;
+}
+
+   
+
+.tabs-icon-top .tab-item .icon {
+  position: relative;
+  top: 9px; 
+} 
+   .tabs-icon-top .tab-item {
+  text-decoration: none;
+}     
+.tabs-striped {
+    display: none;
+}
+.tabframe-container{
+      display: block;
+    }
+.bar-light{
+     box-shadow:  0 2px 4px 0px rgba(0,0,0,0.1);
+      height: 55px !important;
+   }
+/* Mostrar la barra de tabs solo en pantallas de hasta 768px */
+@media (max-width: 850px) {
+    .tabs-striped {
+        display: block;
+    }
+    .tabframe-container{
+      display: none;
+    }
+      .contentHide{
+     display: none !important;
+  }
+    
+  .content {
+  grid-template-columns: 100% 0 !important;
+  }
+   .content2 {
+  grid-template-columns: 0 100% !important;
+  }
+  .rWide{
+    width: 100% !important;
+  }
+
+     #chatFrame{
+   height: 84vh !important;
+}
+
+      .user-info {
+      display: none;
+    }
+}
 
 
+@media (min-width: 850px) {
+.menubtn{
+    display: none;
+  }
+  .online-badge{
+    display: flex !important;
+  }
+ .hintMsg{
+        display: none;
+    }
+    .profilImg{
+    margin-top: -9px;
+      margin-left: 6px;
+  }
+     .user-info {
+      display: block;
+    }
 
-/* Estilo del icono PNG */
-.nav-logo-icon {
-    height: 36px;           
-    margin-right: 8px;      /* Espacio entre el icono y el texto */
+
+    /*
+     #chatFrame{
+  margin-top: -20px;
+}
+.left-content {
+  margin-top: 15px !important;
+}*/
+    
+ /* ion-side-menu .list .item {
+  font-size: 15px;
+  } */
+}
+     
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    color: red;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.pulseTab {
+  animation: pulse 1s ease-in-out 5;
+}
+
+.hintMsg {
+  position: fixed;
+  bottom: 100px; /* Just above the tab bar */
+  left: 50%;
+  transform: translateX(-50%);
+ /* background-color: rgba(0, 0, 0, 0.8);
+  color: white;*/
+    background-color: white;
+  color: black;
+  padding: 10px 15px; 
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 1000;
+  animation: fadeInOut 5s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+     
+
+.profile-user-data {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  margin-bottom: 10px;
+}
+.profile-user-data .circle {
+    flex-shrink: 0; /* Evita que el contenedor de la imagen se reduzca */
+    border-radius: 100% !important;
+    overflow: hidden; 
+    width: 55px;
+    height: 55px;
+    margin: 10px 2px 0 10px; /* Ajusta los márgenes */
+}
+
+.profile-user-data .circle2 {
+    flex-shrink: 0; /* Evita que el contenedor de la imagen se reduzca */
+    border-radius: 25% !important;
+    overflow: hidden; 
+    width: 40px;
+    height: 40px;
+    margin: 10px 2px 0 10px; /* Ajusta los márgenes */
+}
+.profile-user-data img { margin-right: 10px; max-width: 100%;}
+.profile-user-data .main-data {
+    flex-grow: 1; /* Permite que el contenedor de texto use el espacio restante */
+    padding: 10px 10px 20px;
+    margin-bottom: 5px;
+    overflow: hidden; /* Evita desbordamientos */
+}
+
+.main-data .planTag{
+  color: gray; font-weight: 500; text-shadow: 0 0 2px silver;
+  font-size: 11px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+.main-data .userLvl{
+  margin-top: 1px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  color: black; font-weight: 500 !important; text-shadow: 0 0 6px silver !important;
+}
+.main-data h4 {
+    font-size: 17px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+margin-bottom: 1px;
+    overflow: hidden; 
+}
+.profile-user-data .main-data span {font-size: 12px;}
+
+
+.progress{
+ height: 12px;
+width: 155px;
+  margin-top: 5px;
+  margin-bottom: -10px;
+}
+     
+     
+   
+.slide-hint-left {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: slideLeft 1.5s infinite;
+  font-size: 18px;
+  color: #666;
+}
+
+@keyframes slideLeft {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(0) translateY(-50%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-10px) translateY(-50%);
+  }
+}
+
+
+.custom-select {
+  width: 100%; /* Ajusta para ocupar todo el ancho */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px; /* Espacio entre select y botones */
+}
+   
+   .custom-select2 {
+  width: 100%; /* Ajusta para ocupar todo el ancho */
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+     margin-right: 5px;
+}
+   .item-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.item-input span {
+  margin-right: 10px;
+}
+
+.item-input input,
+.item-input select {
+  flex-grow: 1;
+  max-width: 200px; /* Puedes ajustar el tamaño máximo */
+  text-align: center;
+}
+   
+.alertIcon{
+  font-size: 18px;
+}
+
+ #chatFrame{
+     height: 90vh;
+}
+ 
+.content {
+  display: grid;
+  grid-template-columns: auto 300px; /* Deja que el lado izquierdo sea flexible */
+  height: 92.5vh;
+}   
+
+.content2 {
+  display: grid;
+  grid-template-columns: auto 300px; /* Deja que el lado izquierdo sea flexible */
+  height: 92.5vh;
+}   
+
+.left-content {
+  overflow-y: auto; /* Permite scroll si el contenido es más grande */
+  background-color: #f5f5f5; /* Fondo opcional */
+}
+
+.right-content {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e1e8ed;
+  height: 85vh;
+  overflow-y: auto;
+  position: fixed; 
+  right: 0;
+    top: 15px;
+  width: 300px; 
+}
+       
+
+
+  .barImage:before {
+    position: absolute;
+    content: "";
+    height: 50px;
+    width: 50px;
+    top: -3.4px;
+    right: -5.1px;
     border-radius: 50%;
+    border: 1px solid gray;
+    animation: 1.5s linear 0s normal none infinite focuse;
+} 
+   
+   @keyframes focuse {
+  0% {
+    transform: scale(0.8);
+    opacity: 1; }
+  75% {
+    transform: scale(1.2);
+    opacity: 0; }
+  100% {
+    transform: scale(1.2);
+    opacity: 0; } }
+@keyframes slide {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: 40px 0; } }
+
+
+    .popup-custom .popup {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    text-align: center;
+}
+
+.popup-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.popup-full-image {
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 10px;
+}
+ 
+ 
+   .team-detail-background{
+     margin-bottom: 2px;
+   }
+.team-detail{
+  background: -webkit-radial-gradient(circle, #ccc, #000);
+   margin-top: 15px !important;
+}
+
+     .team-detail img{
+width: 200px; /* Ajusta según el tamaño deseado */
+  height: 200px; /* Igual que el ancho para mantener la proporción */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Asegura que la imagen rellene el círculo sin distorsión */
+  display: block;
+}
+     
+.team-detail h2+p{
+  background-color:transparent;
+  color:#fff
+}
+.team-detail h2{
+    margin-top: 20px !important;
+  background-color:transparent;
+  color:#fff
 }
 
 
 
-.nav-logo.logo-light .nav-logo-text {
-    font-family: 'Poppins', sans-serif; /* Usa una fuente parecida a la de la imagen */
-    font-weight: 700;       /* Bold */
-    font-size: 2rem;        /* Tamaño (ajusta a tu gusto) */
-    color: #3b82f6;         /* Color azul (ajusta el hexadecimal) */
-    line-height: 1;         /* Para alinear mejor */
+.tab-item.team-detail-tab-item{
+  font-size:0.8em;
+  
 }
-
-/* Estilo de la parte oscura ("cal") */
-.nav-logo.logo-light .nav-logo-text-dark {
-    color: white;         /* Color azul oscuro (ajusta el hexadecimal) */
+.team-detail-tab-item .tab-heading{
+  position:relative;
+  top:-5px;
+  font-weight:bold;
+  color:#000
 }
-
-
-.nav-logo.logo-dark .nav-logo-text-white {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    color: black;         /* Color blanco */
-    line-height: 1;
+.team-detail-tab-item .tab-sub{
+  position:relative;
+  top:-40px;
+  display:block;
+  font-size:0.9em;
 }
+.team-detail div.team-country-tag {
+  background-color: #c0c0c0;
+  width: 96px;
+  height: 20px;
+  font-size: 0.7em;
+  border: 1px solid;
+  border-radius: 15px;
+    margin-top: 7px;
+  /* padding-left: 5px; */
+  text-align: center;
+}   
 
-
-
-
-@media screen and (max-width: 1206px) {
-    .container { margin-left: 2rem; margin-right: 2rem; }
-    .about-course-item { padding: 16px 18px; height: 80px; }
-    .about-container { column-gap: 3rem; }
-    .about-description { padding-right: 0; }
-}
-
-@media screen and (max-width: 1024px) {
-    .container { margin-left: 1.5rem; margin-right: 1.5rem; }
-    .home { min-height: 868px; }
-    .home-data { max-width: 550px; }
-    .about-container { grid-template-columns: 1fr; row-gap: 3rem; }
-    .about-group { justify-self: center; }
-    .about-banner { margin-top: -110px; }
-    .about-thumb-img { width: 270px; }
-    .about-banner-img { width: 180px; }
-    .about-students { margin-top: -80px; margin-left: 220px; }
-    .about-title, .about-description { text-align: center; }
-    .about-details { display: flex; justify-content: center; align-items: center; flex-direction: column; }
-    .button-link { display: flex; justify-content: center; align-items: center; margin: 0 30%; }
-    .teachers-container, .courses-container { grid-template-columns: repeat(2, 340px); justify-content: center; }
-    .courses-content { padding: 1rem 1.25rem; }
-    .courses-more { padding: 0.5rem 1.25rem; }
-}
-
-@media screen and (max-width: 767px) {
-    .nav { height: var(--header-height); }
-    .button-header { display: none; }
-    .nav-toggle { display: block; }
-    .nav-menu { position: fixed; width: 100%; background-color: var(--container-color); top: -150%; left: 0; padding: 3.5rem 0; z-index: var(--z-fixed); border-radius: 0 0 .4rem .4rem; transition: .4s; }
-    .nav-list { flex-direction: column; row-gap: 1.5rem; align-items: center; }
-    .nav-close { display: block; font-size: 1.8rem; position: absolute; top: 0.5rem; right: 0.7rem; cursor: pointer; }
-    .nav-link { color: var(--title-color); }
-    .active-link::before { background-color: var(--title-color); }
-    .show-menu { top: 0;}
-    .home { min-height: 700px; padding-top: 14rem; }
-    .about-courses { display: none; }
-    .teachers-container, .courses-container { grid-template-columns: 320px; }
-    .teacher-item { padding: 1.25rem; }
-    .brand-container { grid-template-columns: repeat(3, 1fr); row-gap: 2.5rem; }
-    .footer-container { grid-template-columns: 1fr; row-gap: 2rem; justify-items: center; place-items: center; }
-    .footer-content { display: flex; align-items: center; justify-content: center; flex-direction: column; }
-    .footer-description { text-align: center; }
-    .footer-links { text-align: center; }
-    .footer-copy { margin-top: 4.5rem; }
-}
-
-@media screen and (max-width: 576px) {
-    .home-description { padding-right: 0; }
-    .about-thumb-img { width: 240px; }
-    .about-banner-img { width: 160px; }
-    .about-banner { margin-top: -25px; }
-    .about-students { margin-top: 20px; margin-left: 0; }
-    .button-link { margin: 0 20%; }
-    .brand-container { grid-template-columns: repeat(2 , 1fr); }
-}
-
-@media screen and (max-width: 350px) {
-    .container { margin-left: 1rem; margin-right: 1rem; }
-    .home { min-height: 668px; }
-    .home-subtitle { font-size: var(--normal-font-size); }
-    .home-title { font-size: var(--h1-font-size); }
-    .home-description { font-size: var(--normal-font-size); }
-    .about-review { top: 4.5rem; }
-    .about-banner-img { width: 140px; }
-    .courses-container, .teachers-container { grid-template-columns: 1fr; }
-}
-  </style>
-<body>
-    <header class="header" id="header">
-        <nav class="nav container">
-           <a href="" class="nav-logo logo-light">
-    <img src="https://lh3.googleusercontent.com/d/16LaOit3l9NJ-CJ0ljYE05196n0N4BoXt=s100" alt="Logo Educal" class="nav-logo-icon" >
     
-    <span class="nav-logo-text" >
-        moz<span class="nav-logo-text-dark">art</span>
-    </span>
-</a>
 
-<a href="" class="nav-logo logo-dark">
-    <img src="https://lh3.googleusercontent.com/d/16LaOit3l9NJ-CJ0ljYE05196n0N4BoXt=s100" alt="Logo Educal" class="nav-logo-icon">
+   
+   .chat-dropdown {
+  width: 300px;
+  height: 400px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.chat-header {
+  padding: 12px 15px;
+  background: #1e2b47;
+  color: white;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.chat-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.chat-header p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.bot-message {
+  justify-content: flex-start;
+}
+
+.user-message {
+  justify-content: flex-end;
+}
+
+.message-avatar {
+  margin-right: 10px;
+}
+
+.message-avatar img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 18px;
+  position: relative;
+}
+
+.bot-message .message-content {
+  background: white;
+  border: 1px solid #ddd;
+}
+
+.user-message .message-content {
+  background: #3ac5f2;
+  color: white;
+}
+
+.message-time {
+  display: block;
+  font-size: 10px;
+  opacity: 0.7;
+  margin-top: 3px;
+}
+
+.user-message .message-time {
+  text-align: right;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+}
+
+.chat-input button {
+  background: none;
+  border: none;
+  color: #3ac5f2;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+
+
+.notif-dropdown {
+  width: 300px;
+  max-height: 400px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.notif-header {
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e2b47;
+  color: white;
+}
+
+.notif-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.mark-all-read {
+  background: transparent;
+  border: none;
+  color: #3ac5f2;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.mark-all-read:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.notif-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.notif-item {
+  display: flex;
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.notif-item:hover {
+    background: whitesmoke;
+}
+
+
+.notif-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.notif-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notif-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notif-desc {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notif-time {
+  font-size: 11px;
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.notif-time i {
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+.notif-actions {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.notif-action-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.notif-action-btn:hover {
+  background: #f0f0f0;
+  color: #555;
+}
+
+.empty-notifs {
+  padding: 30px 15px;
+  text-align: center;
+  color: #999;
+}
+
+.empty-notifs i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.empty-notifs p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.notif-footer {
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+.view-all {
+  background: transparent;
+  border: none;
+  color: #3ac5f2;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.view-all:hover {
+  background: rgba(58, 197, 242, 0.1);
+}
+
+
+
+
+.close-dropdown {
+  background: transparent;
+  position: absolute;
+  right: 20px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  padding: 0 5px;
+}
+
+.close-dropdown:hover {
+  opacity: 1;
+}
+
+/* Estilo mejorado para el perfil */
+.profile-header {
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.profile-background {
+  height: 120px;
+  background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+}
+
+.profile-content {
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  background: white;
+  margin-top: -50px;
+}
+
+.profile-avatar-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: block;
+}
+
+.profile-avatar2 {
+  width: 40px;
+  height: 40px;
+  margin-top: 1px;
+  margin-right: -2px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: block;
+}
+
+@media(min-width: 850px){
+  .profile-avatar2{
+    margin-top: 10px;
+  }
+}
+
+.profile-level {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #1e2b47;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid #3ac5f2;
+}
+
+ .profile-level-icon {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  height:34px;
+  width: 34px;
+  /*background: #1e2b47;*/
+  background: black;
+  color: white;
+  padding: 3px;
+  border-radius: 50%;
+  font-size: 15px;
+  font-weight: bold;
+ /* border: 1px solid #3ac5f2;*/
+ border: 2px solid white;
+ box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.profile-name {
+  margin: 10px 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 10px;
+}
+
+.stat-item.highlight .stat-value {
+  color: #3ac5f2;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (min-width: 1102px) {
+  .profile-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+    height: 250px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+    z-index: 0;
+  }
+
+  .profile-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding: 0;
+    width: 100%;
+     background-color: transparent !important;
+  }
+
+  .profile-avatar-container {
+    margin-bottom: 0;
+    flex-shrink: 0;
+   
+  }
+
+  .profile-avatar {
+    width: 160px;
+    height: 160px;
+    border-width: 5px;
+  }
+
+  .profile-level {
+    right: 10px;
+    bottom: 10px;
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+
+
+  .profile-level-icon {
+    right: -10px;
+    bottom: 10px;
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+
+
+
+  .profile-name {
+    text-align: left;
+    font-size: 32px;
+    margin: 0 0 15px 0;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  .profile-stats {
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 0;
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .stat-item {
+    padding: 0;
+    min-width: 100px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+    color: #1e2b47;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .stat-item.highlight .stat-value {
+    color: #3ac5f2;
+  }
+}
+
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #f1f1f1;
+  border-radius: 18px;
+  margin: 5px 0;
+  width: fit-content;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background: #666;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typingAnimation 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: 0s; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingAnimation {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+
+
+    :root {
+      --primary: #4a6fa5;
+      --primary-dark: #3a5982;
+      --primary-light: #6b8cbe;
+      --secondary: #ff9e4a;
+      --secondary-dark: #e08530;
+      --success: #4caf50;
+      --danger: #ff6b6b;
+      --warning: #ffc107;
+      --dark: #2c3e50;
+      --light: #f5f7fa;
+      --gray: #78909c;
+      --white: #ffffff;
+      --card-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      --button-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
     
-    <span class="nav-logo-text-white">
-        mozart
-    </span>
-</a>
+   
+    
 
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link active-link">Inicio</a>
-                    </li>
+    .banner-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%; 
+    height: 110px;
+    overflow: hidden;
+    will-change: transform, opacity;
+}
 
-                    <li class="nav-item">
-                        <a href="courses.html" class="nav-link">Cursos</a>
-                    </li>
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
-                    <li class="nav-item">
-                        <a href="teachers.html" class="nav-link">Galería</a>
-                    </li>
+    
+    .piano-content {
+       background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      min-height: 100vh;
+      padding-bottom: 2px;
+      padding-top: 13px !important; 
+    }
+    
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 120px;
+    }
+    
+    @media (min-width: 800px) {
+      .dashboard {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .full-width {
+        grid-column: 1 / -1;
+      }
+    }
+    
+ .card2, .card3 {
+            background: white;
+            border-radius: 16px;
+            margin-top: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e5e7;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
 
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">Contacto</a>
-                    </li>
-                </ul>
+        .card2:hover, .card3:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
 
-                <div class="nav-close" id="nav-close">
-                    <i class="uil uil-times"></i>
-                </div>
-            </div>
+        .card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
 
-            <div class="nav-toggle" id="nav-toggle">
-                <i class="uil uil-apps"></i>
-            </div>
+        .card-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-            <a href="#" class="button button-header">Inscríbete</a>
-        </nav>
-    </header>
+        .card-body {
+            padding: 24px;
+        }
 
-    <main class="main">
-        <section class="home" id="home">
-            <div class="home-container container">
-                <div class="home-data">
-                    <h3 class="home-subtitle">Aprende y Domina</h3>
-                    <h1 class="home-title">Comienza tu viaje musical con clases presenciales</h1>
-                    <p class="home-description">Conoce a nuestros maestros e instalaciones, dedicados a tu crecimiento musical.</p>
-                </div>
-            </div>
+     
 
-            <div class="about-courses grid">
-                <div class="about-course-item">
-                    <span class="about-course-total">6 Módulos</span>
-                    <h3 class="about-course-title">Iniciación al Piano</h3>
-                </div>
+ .status-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+        }
 
-                <div class="about-course-item">
-                    <span class="about-course-total">4 Módulos</span>
-                    <h3 class="about-course-title">Lectura de Partituras</h3>
-                </div>
+        .status-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
 
-                <div class="about-course-item">
-                    <span class="about-course-total">8 Módulos</span>
-                    <h3 class="about-course-title">Armonía y Composición</h3>
-                </div>
+        .status-icon.connected {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+        }
 
-                <div class="about-course-item">
-                    <span class="about-course-total">8 Módulos</span>
-                    <h3 class="about-course-title">Técnica e Interpretación</h3>
-                </div>
-            </div>
-        </section>
+        .status-icon.disconnected {
+            background: linear-gradient(135deg, #ff6b6b, #e53e3e);
+            color: white;
+        }
 
-        <section class="about section" id="about">
-            <div class="about-container grid container">
-                <div class="about-group">
-                    <div class="about-review">
-                        <p><span>8,200+</span> reseñas de cinco estrellas</p>
-                    </div>
+        .status-icon.connecting {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            color: white;
+        }
 
-                    <div class="about-thumb">
-                        <img src="https://u.cubeupload.com/Leo21/about.jpg" alt="" class="about-thumb-img">
-                    </div>
+        .status-info {
+            flex: 1;
+        }
 
-                    <div class="about-banner">
-                        <img src="https://u.cubeupload.com/Leo21/aboutbanner.jpg" alt="" class="about-banner-img">
-                    </div>
+        .status-info h3 {
+            margin: 0 0 8px 0;
+            font-weight: 600;
+            font-size: 18px;
+            color: #2c3e50;
+        }
 
-                    <div class="about-students">
-                        <div class="students-group">
-                            <img src="https://u.cubeupload.com/Leo21/student1.jpg" alt="" class="about-student-img">
-                            <img src="https://u.cubeupload.com/Leo21/student2.jpg" alt="" class="about-student-img">
-                            <img src="https://u.cubeupload.com/Leo21/student3.jpg" alt="" class="about-student-img">
-                            <img src="https://u.cubeupload.com/Leo21/student4.jpg" alt="" class="about-student-img">
-                        </div>
+        .status-info p {
+            margin: 0;
+            color: #78909c;
+            font-size: 14px;
+        }
 
-                        <p class="about-student-details">Únete a más de <span>4,000</span> estudiantes</p>
-                    </div>
-                </div>
+  .connection-button {
+            margin: 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            height: 48px;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            text-align: center;
+            color: white;
+        }
 
-                <div class="about-data">
-                    <h2 class="section-title about-title">Alcanza tus <br> metas con Educal</h2>
-                    <p class="about-description">Desbloquea tu potencial musical con nosotros.</p>
-                    <div class="about-details">
-                        <p class="about-details-description">
-                            <i class="uil uil-check about-details-icon"></i>
-                            Clases individuales y personalizadas.
-                        </p>
+        .connection-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
 
-                        <p class="about-details-description">
-                            <i class="uil uil-check about-details-icon"></i>
-                            Salones de práctica equipados.
-                        </p>
+        .connection-button.connected {
+            background: linear-gradient(135deg, #ff6b6b, #e53935);
+        }
 
-                        <p class="about-details-description">
-                            <i class="uil uil-check about-details-icon"></i>
-                            Aprendizaje de repertorio clásico y moderno.
-                        </p>
-                    </div>
-                    <a href="#" class="button button-link">Inscríbete Ahora</a>
-                </div>
-            </div>
-        </section>
+        .connection-button.disconnected {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+        }
 
-        <section class="teachers section" id="teachers">
-            <h2 class="section-title">Nuestros <br> maestros más populares</h2>
-            <p class="section-subtitle">No tienes que aprender solo. Recibe nuestra asistencia y ayuda.</p>
+        .connection-button.connecting {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            opacity: 0.9;
+        }
 
-            <div class="teachers-container grid container">
-                <div class="teacher-item">
-                    <div class="teacher-img-box">
-                        <img src="https://lh3.googleusercontent.com/d/1x67yQJTGuJ2sLSdIxhjD_D4eScRAIuSk" alt="">
-                    </div>
-                    <h3 class="teacher-title">Sergio Valenzo,</h3>
-                    <span>Fundador y Maestro Principal</span>
-                    <div class="teacher-social">
-                        <a href="https://www.facebook.com/" target="_blank" class="teacher-social-link"><i class="uil uil-facebook-f"></i></a>
-                        <a href="https://www.linkedin.com/" target="_blank" class="teacher-social-link"><i class="uil uil-linkedin"></i></a>
-                    </div>
-                </div>
 
-                <div class="teacher-item">
-                    <div class="teacher-img-box">
-                        <img src="https://u.cubeupload.com/Leo21/teacher2.jpg" alt="">
-                    </div>
-                    <h3 class="teacher-title">Daniel Godinez,</h3>
-                    <span>Maestro Online</span>
-                    <div class="teacher-social">
-                        <a href="https://www.facebook.com/" target="_blank" class="teacher-social-link"><i class="uil uil-facebook-f"></i></a>
-                        <a href="https://www.linkedin.com/" target="_blank" class="teacher-social-link"><i class="uil uil-linkedin"></i></a>
-                    </div>
-                </div>
 
-                <div class="teacher-item">
-                    <div class="teacher-img-box">
-                        <img src="https://u.cubeupload.com/Leo21/teacher3.jpg" alt="">
-                    </div>
-                    <h3 class="teacher-title">Noe Bravo,</h3>
-                    <span>Maestro composición musical</span>
-                    <div class="teacher-social">
-                        <a href="https://www.facebook.com/" target="_blank" class="teacher-social-link"><i class="uil uil-facebook-f"></i></a>
-                        <a href="https://www.linkedin.com/" target="_blank" class="teacher-social-link"><i class="uil uil-linkedin"></i></a>
-                    </div>
-                </div>
 
-           
-            </div>
-        </section>
+  .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
 
-        <section class="brand section container">
-            <h3 class="brand-title">Nuestros pianos son de las mejores marcas</h3>
+        .stat-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
 
-            <div class="brand-container grid">
-                <img src="https://u.cubeupload.com/Leo21/brand1.png" alt="">
-                <img src="https://u.cubeupload.com/Leo21/brand2.png" alt="">
-                <img src="https://u.cubeupload.com/Leo21/brand3.png" alt="">
-                <img src="https://u.cubeupload.com/Leo21/brand4.png" alt="">
-                <img src="https://u.cubeupload.com/Leo21/brand5.png" alt="">
-                <img src="https://u.cubeupload.com/Leo21/brand6.png" alt="">
-            </div>
+        .stat-item:hover {
+            background: #f1f5f9;
+            transform: translateY(-1px);
+        }
 
-            <span class="brand-button">Ver todos nuestros pianos <i class="uil uil-arrow-right brand-button-icon"></i></span>
-        </section>
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-icon.mic.muted {
+            background: #78909c;
+            color: white;
+        }
+
+        .stat-icon.mic {
+            background: linear-gradient(135deg, #ff6b6b, #e53935);
+            color: white;
+        }
+
+        .stat-icon.video {
+            background: linear-gradient(135deg, #42a5f5, #1976d2);
+            color: white;
+        }
+
+        .stat-icon.connection {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            color: white;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: #2c3e50;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #78909c;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .task-item:hover {
+            background: rgba(248, 250, 252, 0.5);
+            margin: 0 -16px;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-item.completed .task-title {
+            text-decoration: line-through;
+            color: #78909c;
+        }
+
+        .task-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            cursor: pointer;
+            color: #78909c;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .task-check:hover {
+            color: #4caf50;
+            transform: scale(1.1);
+        }
+
+        .task-item.completed .task-check {
+            color: #4caf50;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .task-date {
+            font-size: 13px;
+            color: #78909c;
+        }
+
+        .task-item.completed .task-date {
+            color: #4caf50;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .schedule-item:hover {
+            background: rgba(248, 250, 252, 0.5);
+            margin: 0 -12px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+       /* Estilos por defecto para .schedule-date (activos) */
+.schedule-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 47px;
+    height: 47px;
+    background: linear-gradient(135deg, #4a6fa5, #3a5982); /* Fondo original azul */
+    border-radius: 12px;
+    color: white; /* Texto blanco original */
+    margin-right: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(74, 111, 165, 0.2);
+    position: relative; /* Necesario para la franja roja */
+    overflow: hidden;   /* Asegura que la franja roja no se salga de los bordes redondeados */
+}
+
+/* CSS MODIFICADO PARA FECHAS PASADAS */
+
+/* 1. Estilos del contenedor principal con un gris más claro */
+.schedule-date.schedule-date-past {
+    background: linear-gradient(135deg, #e9ecef, #dee2e6); /* Degradado de gris más claro */
+    color: #6c757d; /* Texto gris oscuro para mejor contraste */
+    box-shadow: none; /* Quitamos la sombra para un look más plano */
+    border: 1px solid #ced4da; /* Borde sutil */
+}
+
+/* 2. Pseudo-elemento para crear la línea diagonal (la "tache") */
+.schedule-date.schedule-date-past::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Centra la línea verticalmente */
+    left: -10%; /* Inicia un poco a la izquierda para cubrir las esquinas */
+    width: 120%; /* Ancho extendido para que la línea cruce todo el elemento */
+    height: 2px; /* Grosor de la línea */
+    background-color: rgba(108, 117, 125, 0.55); /* Color de la línea (gris semi-transparente) */
+    transform: rotate(-20deg); /* Rota la línea para crear el efecto diagonal */
+}
+
+/* 3. Asegura que el texto sea legible y no sea afectado por la línea */
+.schedule-date.schedule-date-past .schedule-day,
+.schedule-date.schedule-date-past .schedule-number {
+    color: #6c757d; /* Mismo color de texto gris oscuro */
+    z-index: 1; /* Pone el texto por encima de la línea */
+}
+
+/* Estilos para .schedule-date cuando NO es la próxima clase (inactivos) */
+.schedule-date.schedule-date-inactive {
+    background: white; /* Fondo blanco */
+    color: black;      /* Texto negro */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    border: 1px solid #e0e0e0; /* Borde sutil */
+}
+
+/* Franja superior roja para .schedule-date-inactive */
+.schedule-date.schedule-date-inactive::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Altura de la franja */
+    background-color: #dc3545; /* Color rojo */
+    border-top-left-radius: 11px; /* Ajusta a los bordes redondeados del padre */
+    border-top-right-radius: 11px; /* Ajusta a los bordes redondeados del padre */
+}
+
+/* Ajustes para el texto dentro de .schedule-date-inactive */
+.schedule-date.schedule-date-inactive .schedule-day,
+.schedule-date.schedule-date-inactive .schedule-number {
+    color: black; /* Asegura que el texto sea negro */
+}
+
+        .schedule-day {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .schedule-number {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .schedule-info {
+            flex: 1;
+        }
+
+       
+
+        .schedule-title {
+             font-size: 16px;
+            font-weight: 600;
+   
+        }
+
+        .schedule-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #f1f5f9;
+            color: #78909c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .schedule-btn:hover, .schedule-btn.active {
+            background: linear-gradient(135deg, #4a6fa5, #3a5982);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .achievement-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .achievement-item.unlocked {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e5e5e7;
+            cursor: pointer;
+        }
+
+        .achievement-item.locked {
+            opacity: 0.6;
+            filter: grayscale(0.8);
+        }
+
+        .achievement-item.unlocked:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .achievement-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-item.unlocked .achievement-icon {
+            background: linear-gradient(135deg, #4a6fa5, #3a5982);
+            color: white;
+        }
+
+        .achievement-item.locked .achievement-icon {
+            background: #e2e8f0;
+            color: #78909c;
+            box-shadow: none;
+        }
+
+        .achievement-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .teacher-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .teacher-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a6fa5, #3a5982);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(74, 111, 165, 0.2);
+        }
+
+        .teacher-info h3 {
+            margin: 0 0 4px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .teacher-info p {
+            margin: 0;
+            color: #78909c;
+            font-size: 14px;
+        }
+
+        .class-details {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .detail-value {
+            color: #4a6fa5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard {
+                padding: 16px;
+                padding-top: 120px;
+                gap: 16px;
+            }
+            
+            .card-header {
+                padding: 16px 20px;
+            }
+            
+            .card-body {
+                padding: 20px;
+            }
+            
+            .status-card {
+                padding: 20px;
+                gap: 16px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .status-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .status-icon {
+                width: 54px;
+                height: 54px;
+                font-size: 22px;
+            }
+            
+            .connection-button i {
+                display: none;
+            }
+        }
+
+
+
+.instruction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instruction-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.instruction-list li:last-child {
+    border-bottom: none;
+}
+
+.instruction-list .number {
+    background: var(--primary-light);
+    color: var(--white);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px; /* 0.8rem -> 12.8px */
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.message-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.preview-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #f8fafc;
+    transition: background 0.2s ease;
+}
+
+.preview-item:hover {
+    background: #f1f5f9;
+}
+
+.preview-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.preview-content {
+    flex: 1;
+}
+
+.preview-sender {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 14px; /* 0.9rem -> 14.4px */
+}
+
+.preview-text {
+    font-size: 14px; /* 0.9rem -> 14.4px */
+    color: var(--gray);
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.preview-time {
+    font-size: 12px; /* 0.75rem -> 12px */
+    color: #94a3b8;
+}
+
+.view-all-btn {
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.view-all-btn:hover {
+    background: #f8fafc;
+}
+
+.floating-buttons {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: var(--button-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 22px; /* 1.4rem -> 22.4px */
+    position: relative;
+}
+
+.floating-btn:active {
+    transform: scale(0.95);
+}
+
+.floating-btn.chat {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+    color: var(--white);
+}
+
+.floating-btn.mic {
+    background: linear-gradient(135deg, var(--danger) 0%, #ff6b6b 100%);
+    box-shadow: 0 0 15px #ff6b6b;
+    color: var(--white);
+}
+
+.floating-btn.mic.muted {
+    background: linear-gradient(135deg, var(--gray) 0%, #546e7a 100%);
+    box-shadow: none; 
+}
+
+.floating-btn.video {
+    background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%);
+    color: var(--white);
+}
+
+.chat-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--danger);
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.video-container {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    width: 300px;
+    height: 180px;
+    background: #000;
+    border-radius: 12px;
+    border: 3px solid var(--primary);
+    z-index: 998;
+    overflow: hidden;
+    cursor: move;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.video-container:hover {
+    box-shadow: 0 15px 35px rgba(74, 111, 165, 0.3);
+    transform: scale(1.02);
+}
+
+.video-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    z-index: 1000;
+    cursor: default;
+    border: none;
+}
+
+.video-container.dragging {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transform: scale(1.03);
+}
+
+.video-controls {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 999;
+    background: rgba(0,0,0,0.7);
+    border-radius: 8px;
+    padding: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    gap: 5px;
+}
+
+.video-container:hover .video-controls {
+    opacity: 1;
+}
+
+.video-control-btn {
+    background: rgba(255,255,255,0.1); 
+    border: none;
+    color: white;
+    padding: 8px;
+    margin: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px; /* 1rem -> 16px */
+    transition: background 0.2s ease;
+}
+
+.video-control-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.remote-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+
+/* Mejoras responsivas */
+@media (max-width: 768px) {
+    .video-container {
+        left: 15px;
+        top: 70px;
+    }
+
+     .video-container.fullscreen video { 
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
+        object-position: center;
+        background-color: #000; 
+      }
+
+    
+    .floating-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 19px; /* 1.2rem -> 19.2px */
+    }
+    
+    .floating-buttons {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        width: 250px;
+        height: 150px;
+    }
+
+    .video-control-btn{
+        font-size: 10px;
+      }
+    
+
+    .status-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .status-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px; /* 1.5rem -> 24px */
+    }
+}
+
+
+
+   
+   .toggle-royal {
+    margin-top: 7px !important; 
+  margin-right: 5px !important;
+     cursor: pointer;
+}
+
+.item-input-wrapper{
+  max-width: 96px ;
+  justify-content: flex-end;
+}
+
+.item-input-wrapper select {
+  /* Hide the default dropdown arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 24px;
+  
+  /* Reset button styles */
+  background-color: transparent;
+  border: none;
+ 
+  /* Text and positioning */
+  color: inherit;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+
+}
+
+
+
+
+/* Estilos para el botón de upgrade moderno */
+.upgrade-btn-modern {
+  /* Diseño y alineación */
+
+ 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  background: linear-gradient(120deg, #e0eafc, #cfdef3); /* Degradado suave */
+  border: none;
+  border-radius: 12px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra sutil para darle profundidad */ 
+  
+  /* Texto */
+  color: #2d3748; 
+  font-size: 16px;
+  font-weight: 600 !important;
+  text-shadow: 0 0 6px silver !important;
+  /* Tamaño y espaciado */
+  padding: 1px 24px !important;
+  position: absolute;
+  /* Comportamiento */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out; /* Transición suave para efectos */
+  outline: none;
+  margin-top:4px;
+  right: 70px;
+}
+
+/* Efecto al pasar el cursor por encima */
+.upgrade-btn-modern:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada */
+}
+
+
+
+
+ .pro-badge {
+   transform: scale(0.7);
+            background: linear-gradient(145deg, #3a4148 0%, #2d3339 50%, #242a30 100%);
+            border-radius: 14px;
+            padding: 2px 9px;
+            display: flex;
+            align-items: center;
+   position: absolute;
+ right: 6px;
+            gap: 3px;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+        }
 
       
-    </main>
 
-    <footer class="footer section">
-        <div class="footer-container grid container">
-            <div class="footer-content">
-                <img src="https://u.cubeupload.com/Leo21/922logolight.png" alt="" class="footer-logo">
-                <p class="footer-description">Excelentes ideas y planes de lecciones <br> para futuros pianistas.</p>
+        .pro-badge i {
+            color: #FFD700;
+            font-size: 20px;
+            filter: drop-shadow(0 2px 4px orange);
+        }
 
-                <div class="footer-social">
-                    <a href="https://www.facebook.com" class="footer-social-link"><i class="uil uil-facebook"></i></a>
-                    <a href="https://www.youtube.com" class="footer-social-link"><i class="uil uil-youtube"></i></a>
-                </div>
-            </div>
+        .pro-text {
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            color: #ffffff !important;
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+            letter-spacing: -0.5px !important;
+        }
 
-            <div class="footer-content">
-                <h3 class="footer-title">Acerca de</h3>
 
-                <ul class="footer-links">
-                    <li><a href="#" class="footer-link">Nosotros</a></li>
-                    <li><a href="#" class="footer-link">Cursos</a></li>
-                    <li><a href="#" class="footer-link">Instructores</a></li>
-                </ul>
-            </div>
 
-            <div class="footer-content">
-                <h3 class="footer-title">Nuestros Servicios</h3>
-
-                <ul class="footer-links">
-                    <li><a href="#" class="footer-link">Tutoriales</a></li>
-                    <li><a href="#" classs="footer-link">Biblioteca</a></li>
-                    <li><a href="#" class="footer-link">Noticias y Blog</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-content">
-                <h3 class="footer-title">Nuestra Academia</h3>
-
-                <ul class="footer-links">
-                    <li><a href="#" class="footer-link">Carrera</a></li>
-                    <li><a href="#" class="footer-link">Contáctanos</a></li>
-                    <li><a href="#" class="footer-link">Cursos </a></li>
-                </ul>
-            </div>
-        </div>
-
-        <span class="footer-copy">&#169; <a href="https://codepen.io/leonam-silva-de-souza" target="_blank">ULTRA CODE</a>. Todos los derechos reservados</span>
-    </footer>
-
-    <script >
-      //Changing Background Header
-
-function scrollHeader() {
-    const header = document.getElementById('header');
-    if(this.scrollY >= 50) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
+.free-badge {
+    transform: scale(0.7);
+    background: linear-gradient(145deg, #e0e0e0 0%, #d5d5d5 50%, #cccccc 100%); /* Fondo gris claro de la imagen */
+    border-radius: 14px;
+    padding: 2px 9px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 6px;
+    gap: 3px;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.1), /* Sombra más sutil */
+        inset 0 1px 0 rgba(255, 255, 255, 0.6); /* Borde interior más claro */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-window.addEventListener('scroll', scrollHeader);
+.free-badge i {
+    color: #888888; /* Color de icono gris medio */
+    font-size: 20px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2)); /* Sombra sutil para el icono */
+}
 
-//Enabling Mobile Menu
+.free-text {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #333333 !important; /* Color de texto gris oscuro de la imagen */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.6) !important; /* Sombra de texto clara para resaltar */
+    letter-spacing: -0.5px !important;
+}
 
-const navMenu = document.getElementById('nav-menu');
-const navToggle = document.getElementById('nav-toggle');
-const navClose = document.getElementById('nav-close');
 
-if(navToggle) { navToggle.addEventListener('click', () => { navMenu.classList.add('show-menu')} )}
-if(navClose) { navClose.addEventListener('click', () => { navMenu.classList.remove('show-menu')} )}
-    </script>
+
+/* Estilos del modal y animación (sin cambios) */
+.custom-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1001;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.custom-modal.show {
+  display: flex;
+}
+
+.modal-content3 {
+  margin: 2% auto;
+  background: white;
+  width: 95%;
+  height: 85%;
+  max-width: 400px;
+  max-height: 500px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideIn 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- INICIO DE CAMBIOS --- */
+
+/* Encabezado del chat - CORREGIDO */
+.modal-header3 {
+  background: white;
+  color: #1a1a1a;
+
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;    
+  justify-content: space-between !important; 
+  align-items: center;   
+}
+
+.modal-header3 h3 {
+  margin: 0;
+  margin-left: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+   font-size: 18px;
+  gap: 10px;
+}
+
+
+.modal-header3 .button-clear {
+  color: #1a1a1a !important;
+  font-size: 20px;
+  background: transparent; /* Sin fondo */
+  border: none;       
+  padding: 0;         
+  cursor: pointer;   
+  flex-shrink: 0;     
+}
+
+
+
+.modal-body {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor de mensajes */
+.chat-messages2 {
+  flex: 1;
+  overflow-y: auto;
+
+  background: white; /* Fondo blanco como en la imagen */
+}
+
+/* Estilo general para cada burbuja de mensaje */
+.message-item {
+  display: inline-block; /* Permite que el ancho se ajuste al contenido */
+  clear: both; /* Asegura que cada mensaje esté en su propia línea */
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 20px; /* Bordes bien redondeados */
+  max-width: 75%;
+  word-wrap: break-word;
+  box-shadow: none; /* Sin sombra para un look plano */
+  animation: messageAppear 0.3s ease;
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tus mensajes (derecha) */
+.message-item.own {
+  background: #1DA1F2; /* Azul sólido (similar a Twitter) */
+  color: white;
+  float: right; /* Alineado a la derecha */
+}
+
+/* Mensajes de otros (izquierda) */
+.message-item.other {
+  background: #f0f2f5; /* Gris claro */
+  color: #333;
+  float: left; /* Alineado a la izquierda */
+}
+
+/* Ocultamos el nombre del remitente para un look de chat 1-a-1 */
+.message-sender {
+  display: none;
+}
+
+/* Estilo para la hora del mensaje */
+.message-time {
+  font-size: 11px;
+  opacity: 0.8;
+  margin-top: 4px;
+  display: block; /* Asegura que esté en una nueva línea dentro de la burbuja */
+  text-align: right; /* Alinea la hora a la derecha dentro de la burbuja */
+}
+
+/* Área para escribir el mensaje */
+.chat-input2 {
+  display: flex;
+  gap: 8px;
+  padding: 10px ;
+  border-top: 1px solid #eee;
+  background: white;
+  align-items: center;
+}
+
+.chat-input2 input {
+  flex: 1;
+  padding: 8px 12px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 20px;
+  outline: none;
+}
+
+.chat-input2 button {
+  border-radius: 50%;
+  width: 35px ;
+  height: 35px ;
+  padding: 14px ;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black !important; /* Mismo azul que los mensajes */
+  color: white;
+  box-shadow: none; /* Sin sombra */
+  transition: background-color 0.2s ease;
+}
+
+.chat-input2 .button:hover {
+  background: #0c85d0; /* Un azul un poco más oscuro al pasar el cursor */
+}
+
+.chat-input2 .button:active {
+  transform: scale(0.95);
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+     /* Estilos para el nuevo formato de fecha y hora */
+.schedule-info-detailed {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.schedule-full-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+}
+
+.schedule-time-range {
+  font-size: 14px;
+   font-weight: 500;
+  color: gray;
+}
+
+
+
+/* Estilo para tachar el texto de clases pasadas */
+.text-strikethrough {
+    text-decoration: line-through;
+    color: silver !important; /* Color de texto más opaco */
+}
+
+/* Estilo de sombra para resaltar la próxima clase */
+.shadow-text {
+    font-weight: bold;
+    color: #333; /* Un color de texto más oscuro si es necesario */
+   text-shadow: 0 0 4px silver
+}
+
+/* Estilo base para el texto de estado (opcional, para consistencia) */
+.schedule-time-range {
+    font-size: 0.85em;
+    font-style: italic;
+    color: #6c757d;
+    margin-top: 4px;
+}
+
+/* Insignia de texto */
+.schedule-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  transform: scale(0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.schedule-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.schedule-action-wrapper:hover .schedule-badge::before {
+  left: 100%;
+}
+
+
+
+.schedule-action-wrapper:has(.schedule-btn.active) .schedule-badge {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% {
+    transform: scale(0.8);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    transform: scale(0.85);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* Botón circular */
+.schedule-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.8));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.schedule-btn:hover::before {
+  opacity: 1;
+}
+
+
+ 
+.schedule-btn.active {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  animation: pulse-button 2s infinite;
+}
+
+.schedule-btn.active:hover {
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+@keyframes pulse-button {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4), 0 0 0 8px rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* Iconos */
+.schedule-btn i {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+
+
+.schedule-btn.active i {
+  animation: ring 2s infinite;
+}
+
+@keyframes ring {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  10%, 30% {
+    transform: rotate(-10deg);
+  }
+  20%, 40% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .chatIco{
+        display: none;
+    }
+  .schedule-action-wrapper {
+    gap: 8px;
+    padding: 6px;
+  }
+  
+  .schedule-badge {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .schedule-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+}
+
+.livestreamBottomSpace{
+  height: 40px;
+}
+@media (max-width: 780px) {
+.livestreamBottomSpace{
+  height: 80px
+}
+}
+
+/* Mejoras adicionales para accesibilidad */
+.schedule-btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.schedule-action-wrapper:focus-within {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+
+.headIcon {
+    margin-top: 4px;
+ width: 38px;
+  height: 38px;
+  border-radius: 50% !important; /* Esto lo hace circular */
+  background-color: #e4e6eb !important;
+
+  color: #050505 !important;
+  transition: background-color 0.2s ease-in-out !important;
+}
+
+
+
+.headIcon:hover {
+  background-color: #d8dbdf !important;
+}
+
+/* Estilo para resaltar toda la fila del recordatorio de pago */
+.notif-item.pay-day-highlight {
+    background-color: #f6ffed; /* Un verde muy claro */
+    border-left: 3px solid #52c41a; /* Borde izquierdo verde */
+}
+
+/* Estilo para el contenedor del ícono de pago a la izquierda */
+.schedule-date.schedule-date-payday {
+    background: linear-gradient(135deg, #73d13d, #52c41a);
+    color: white;
+}
+
+/* Centra el ícono de dólar dentro de su contenedor */
+.payday-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 24px;
+}
+
+
+
+ .online-badge {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .status-indicator {
+            position: relative;
+            width: 12px;
+            height: 12px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #10b981;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .status-pulse {
+            width: 12px;
+            height: 12px;
+            background-color: #34d399;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .status-ring {
+            width: 12px;
+            height: 12px;
+            background-color: #86efac;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .status-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin: 0;
+        }
+
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+
+      .btn2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+          transform: scale(0.8);
+            padding: 5px 20px !important;
+
+            font-size: 17px !important;
+            font-weight: 600 !important;
+            border: 1px solid #000 ;
+    display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-login {
+           margin-right: 5px;
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-login:hover {
+            background: #f5f5f5;
+        }
+
+        .btn-register {
+          margin-right: 15px;
+            background: #e91e63;
+            color: #fff;
+            border: 1px solid #e91e63;
+        }
+
+        .btn-register:hover {
+            background: #d81b60;
+            border-color: #d81b60;
+        }
+
+        .btn2:active {
+            transform: scale(0.78);
+        }
+
+
+
+
+/* --- 1. Ocultar el nuevo menú horizontal por defecto (móvil) --- */
+.nav-bar-horizontal-menu {
+    display: none;
+}
+
+
+@media (min-width: 850px) {
+
+   /* Contenedor del menú horizontal */
+.nav-bar-horizontal-menu {
+    display: flex !important;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    
+    /* MAGIA PARA CENTRARLO ABSOLUTAMENTE */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 9px;
+    z-index: 999;
+
+    /* Estilos visuales de la cápsula */
+    height: 40px !important;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 4px;
+    border-radius: 99px;
+    margin-left: 0 !important;
+    gap: 4px; /* Espacio entre botones */
+}
+
+.nav-bar-horizontal-menu .button {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important; 
+    color: #6b7280 !important;
+    
+    padding: 8px 20px !important;
+    margin: 0 !important;
+    
+    /* RESETEO TOTAL */
+    border: none !important;
+    background: transparent;
+    box-shadow: none;
+    height: 32px !important; /* Altura fija */
+    line-height: 1 !important;
+    min-height: 0 !important; /* Quita el min-height de Ionic */
+    
+    border-radius: 99px !important; 
+    
+    display: flex !important; /* Importante para centrar el texto */
+    align-items: center !important;
+    justify-content: center !important;
+    
+    transition: all 0.2s ease;
+}
+
+.menuSelectedColor {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    font-weight: 700 !important;
+    
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06) !important;
+    
+    text-shadow: none !important;
+    border: none !important;
+    
+    /* Mismo padding y altura que los otros botones */
+    padding: 8px 20px !important;
+    height: 32px !important;
+}
+
+    /* 4. HOVER EN INACTIVOS (Sutil) */
+    .nav-bar-horizontal-menu .button:not(.menuSelectedColor):hover {
+         color: #374151 !important; /* Se oscurece un poco el texto */
+         border-bottom: none !important; /* Aseguramos que NO salga la línea abajo */
+    }
+
+}
+
+</style>
+
+<body>
+
+
+    
+  <section class="mainSection" >
+
+
+ <div ng-app="ionicApp">
+  <div ng-controller="AppCtrl">
+
+<ion-nav-bar class="nav-title-slide-ios bar-stable">
+    <ion-nav-back-button icon="caret-back" style="color: black">regresar
+    </ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-nav-view animation="slide-left"></ion-nav-view>
+
+
+
+
+
+
+
+
+
+    
+ <script id="menu.html" type="text/ng-template">
+    <ion-side-menus >
+ <ion-side-menu side="left" width='270' > 
+       
+        <ion-content >
+
+  <div class="profile-user-data clearfix" ng-click="goToHome()">
+          <div class="circle">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF">
+          </div>
+          <div class="main-data" style="margin-top: 22px;" >
+            <h4 class="userLvl" >Mozart <br>MX</h4>
+          </div>  
+  </div>
+
+
+<ul class="list">
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="item" 
+       menu-toggle="left">
+        <i class="ri-presentation-line"></i>&nbspMétodo
+    </a> 
+        <hr>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="item" 
+       menu-toggle="left">
+        <i class="ri-multi-image-line"></i>&nbspGalería
+    </a>
+
+
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="item" 
+       menu-toggle="left">
+        <i class="ri-map-2-line"></i>&nbspUbicación
+    </a>
+
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="item" 
+       menu-toggle="left">
+        <i class="ri-mail-send-line"></i>&nbspContacto
+    </a>
+</ul>
+
+
+  
+        </ion-content>
+ <ion-footer-bar style="z-index: 999 !important;">
+  <button class="button pull-right" ng-click="goToLogin()"><i class="icon ri-login-circle-line"></i>Regístrate</button>
+</ion-footer-bar>
+
+      </ion-side-menu>
+      <ion-side-menu-content >        
+        <ion-nav-view name="menuContent"></ion-nav-view>
+      </ion-side-menu-content>
+
+    </ion-side-menus>
+  </script>     
+    
+ 
+
+
+
+
+
+
+ <script id="home.html" type="text/ng-template">
+    <ion-view >
+      
+ 
+   <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+   <!-- <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button>  -->
+  </ion-nav-buttons>
+      
+
+       <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Contacto
+    </a>
+</div>
+
+
+
+    </ion-nav-bar>
+
+
+     <ion-content > 
+
+        <div class="iframe-container"><iframe src="https://www.mozartacademy.mx/home" frameborder="0" allowfullscreen></iframe></div>   
+      </ion-content>
+     
+    </ion-view>
+  </script>
+
+
+
+
+
+
+
+
+      
+    <script id="ubicacion.html" type="text/ng-template">
+    <ion-view >
+ 
+       <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button>  -->
+  </ion-nav-buttons>
+      
+
+         <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Contacto
+    </a>
+</div>
+
+
+    </ion-nav-bar>
+
+
+
+   <ion-content>
+   
+
+  <div class="iframe-container2" style=" padding-top: 3px !important;"><iframe src="https://www.mozartacademy.mx/ubicacion" frameborder="0" allowfullscreen ></iframe> </div> 
+      </ion-content>
+
+
+ 
+
+    </ion-view>
+  </script>  
+
+
+
+
+
+
+        
+<script id="lessons.html" type="text/ng-template">
+  <ion-view>
+        <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Iniciar sesión</button>  -->
+  </ion-nav-buttons>
+    
+
+       <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+     Ubicacion
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Contacto
+    </a>
+</div>
+
+
+    </ion-nav-bar>
+
+
+
+    <ion-content > 
+      <!-- achievements -->
+        <div class="iframe-container"><iframe src="https://www.mozartacademy.mx/lessons" frameborder="0" allowfullscreen ></iframe></div> 
+    </ion-content> 
+
+  
+
+  </ion-view>
+</script>
+
+
+
+
+        
+        
+<script id="contacto.html" type="text/ng-template">
+  <ion-view>
+      
+        <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button> -->
+  </ion-nav-buttons>
+       
+
+         <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Contacto
+    </a>
+</div>
+
+
+    </ion-nav-bar>
+
+    <ion-content > 
+      <!-- achievements -->
+        <div class="iframe-container"><iframe src="https://www.mozartacademy.mx/contacto" frameborder="0" allowfullscreen ></iframe></div> 
+    </ion-content> 
+
+   
+
+  </ion-view>
+</script>
+
+
+
+    
+
+
+
+
+         <script id="payment.html" type="text/ng-template">
+    <ion-view >
+
+   <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button>  -->
+  </ion-nav-buttons>
+        <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+
+     <div class="nav-bar-horizontal-menu">
+     <div class="profile-user-data clearfix" style="margin-left: -10px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Lecciones
+    </a>
+     <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Galería
+    </a>
+   
+    <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Contacto  
+    </a>
+</div>      
+        </ion-nav-buttons>  
+    </ion-nav-bar>
+
+      <div id="g_id_onload" data-client_id="613538890545-o4p4ft7oji6uhimgh0inqn5l5cgv1gnm.apps.googleusercontent.com" data-context="signup" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="true"></div>
+    
+      <ion-content>
+           
+        <div class="iframe-container"><iframe src="https://www.mozart-app.com/pricing" frameborder="0" allowfullscreen ></iframe></div> 
+      </ion-content>
+    </ion-view>
+  </script>
+
+
+
+
+
+
+
+
+   <script id="finder.html" type="text/ng-template">
+    <ion-view >
+
+        <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+   <!-- <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button> -->
+  </ion-nav-buttons>
+        <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+
+   <div class="nav-bar-horizontal-menu">
+     <div class="profile-user-data clearfix" style="margin-left: -10px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Lecciones
+    </a>
+     <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Galería
+    </a>
+    
+    <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Contacto
+    </a>
+</div>      
+        </ion-nav-buttons>  
+    </ion-nav-bar>
+
+
+
+     <ion-content>
+  <div class="iframe-container"><iframe src="https://www.mozartacademy.mx.com" frameborder="0" allowfullscreen ></iframe></div> 
+      </ion-content>
+      
+       
+
+     
+    </ion-view>
+  </script>  
+
+
+
+
+
+
+    
+   <script id="galeria.html" type="text/ng-template">
+    <ion-view >
+
+       <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button> -->
+  </ion-nav-buttons>
+       
+
+         <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Contacto
+    </a>
+</div>
+
+ 
+    </ion-nav-bar>
+
+
+
+     <ion-content >
+  <div class="iframe-container"><iframe src="https://www.mozartacademy.mx/galeria" frameborder="0" ></iframe></div> 
+      </ion-content>
+   
+
+     
+    </ion-view>
+  </script>   
+
+
+
+
+
+  </div>
+</div>
+
+  </section>
+
+   <section class="preloader" style="display: none;">
+    <div id="loading">&nbsp;</div>
+    <div id="loading-text">Cargando</div>
+  </section> 
+
+
 </body>
-</html>
+
+
+<script>
+
+  var app = angular.module('ionicApp', ['ionic']);
+app
+ .run(function($ionicPlatform) {
+      $ionicPlatform.ready(function() {
+        if (window.StatusBar) {
+          StatusBar.styleDefault();
+        }
+      });
+    })
+
+
+
+
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+   $stateProvider
+
+
+
+    .state('menu', {
+      url: "",
+      abstract: true,
+      templateUrl: "menu.html",
+      controller: 'MenuCtrl'
+    })
+   .state('menu.home', {
+      url: "",
+      views: {
+        'menuContent': {
+          templateUrl: "home.html"
+        }
+      }
+    })
+ 
+
+    .state('menu.lessons', {
+      url: "/lessons",
+      views: {
+        'menuContent': {
+          templateUrl: "lessons.html"
+        }
+      }
+    }) 
+     
+ .state('menu.contacto', {
+      url: "/contacto",
+      views: {
+        'menuContent' :{
+          templateUrl: "contacto.html"
+        }
+      }
+    })
+
+
+    
+     .state('menu.ubicacion', {
+      url: "/ubicacion",
+      views: {
+        'menuContent': {
+          templateUrl: "ubicacion.html"
+        }
+      }
+    }) 
+    
+  
+ .state('menu.payment', {
+      url: "/payment",
+      views: {
+        'menuContent': {
+          templateUrl: "payment.html"
+        }
+      }
+    })
+
+   .state('menu.galeria', {
+      url: "/galeria",
+      views: {
+        'menuContent': {
+          templateUrl: "galeria.html"
+        }
+      }
+    })
+
+    .state('menu.finder', {
+      url: "/finder",
+      views: {
+        'menuContent': {
+          templateUrl: "finder.html"
+        }
+      }
+    })
+ 
+   
+
+
+    ; 
+
+  $urlRouterProvider.otherwise("");
+  $ionicConfigProvider.tabs.position('bottom'); 
+})
+
+ .controller('AppCtrl', function($scope) {
+      
+    
+
+    })
+
+
+.controller('MenuCtrl', ['$http', '$scope', '$ionicSideMenuDelegate', '$ionicModal', '$ionicHistory', '$timeout', function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $ionicHistory, $timeout) {
+  $scope.toggleRight = function() {
+    $('.item').removeClass('anim');
+    setTimeout(function() {
+        $('.item').each(function(index) {
+            $(this).addClass('anim').css('animation-delay', (index * 0.1) + 's');
+        });
+    }, 10);
+
+ 
+      
+    $ionicSideMenuDelegate.toggleLeft();
+      $scope.isDropdownVisible = false;
+};
+
+
+
+
+     $scope.isDropdownVisible = false;
+    $scope.btnBar = true;
+    $scope.toggleDropdown = function() {
+      $scope.isDropdownVisible = !$scope.isDropdownVisible;
+        $scope.btnBar = false;
+    };
+
+
+
+
+
+
+   $scope.goToProfile = function() {
+  window.location.href = '#/menu/profile';
+};  
+     $scope.goToChat = function() {
+  window.location.href = '#/menu/chat';
+}; 
+  $scope.goToAccount = function() {
+  window.location.href = '#/menu/account';
+}; 
+     $scope.goToStatus = function() {
+  window.location.href = '#/menu/status';
+};
+  $scope.goToStats = function() {
+  window.location.href = '#/menu/statistics';
+};
+      $scope.goToLogin = function() {
+  window.location.href = 'https://www.mozart-app.com/login';
+};
+$scope.goToPayment = function() {
+   window.location.href = '#/menu/payment';
+};
+    $scope.goToMain = function() {
+   window.location.href = '#/main';
+};
+
+ $scope.goToHome = function() {
+   window.location.href = '/';
+};
+
+
+$scope.goBack = function() {
+     if ($ionicHistory.backView()) {
+        $ionicHistory.goBack();
+      } else {
+        window.location.href = '#/main';
+      }
+    };
+
+
+
+
+ }])
+
+
+
+
+    </script>
+ 
