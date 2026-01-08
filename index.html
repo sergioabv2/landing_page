@@ -1,1236 +1,3969 @@
-<!DOCTYPE html>
-<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mozart MX</title>
-    
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1h0PAuatp8mguH19cso6wh19mjMVa0K5V" type="image/x-icon">
+    <title>Mozart Plus+</title>
+  
+<link href="https://code.ionicframework.com/1.3.3/css/ionic.min.css" rel="stylesheet">
+  <script src="https://code.ionicframework.com/1.3.3/js/ionic.bundle.min.js"></script>
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+ <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+ <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <meta name="google-signin-client_id" content="613538890545-o4p4ft7oji6uhimgh0inqn5l5cgv1gnm.apps.googleusercontent.com">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        /* --- VARIABLES & RESET --- */
-        :root {
-            --sf-black: #1A1A1A;
-            --sf-yellow: #FFC107;     
-            --sf-white: #FFFFFF;
-            --sf-light-grey: #F8F9FA;
-            --font-title: 'Montserrat', sans-serif;
-            --font-body: 'Roboto', sans-serif;
-            --radius-card: 16px;
-        }
+ <link rel="manifest" href="/manifest.json">
+</head>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+ <style>
 
-        body {
-            font-family: var(--font-body);
-            color: #333;
-            background-color: var(--sf-white);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
+ .itemDividerforitem {
+      border-color: #111;
+      background-color: #444444;
+      color: #fff;
+    }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
 
-        /* --- UI COMPONENTS GENERIC --- */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-family: var(--font-title);
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            letter-spacing: 0.5px;
-            text-align: center;
-        }
-
-        .btn:hover { transform: scale(1.03); }
-        .btn-primary { background-color: var(--sf-yellow); color: var(--sf-black); box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); }
-        .btn-secondary { background-color: transparent; border: 2px solid var(--sf-white); color: var(--sf-white); }
-        .btn-secondary:hover { background-color: var(--sf-white); color: var(--sf-black); }
-        .btn-small { padding: 8px 20px; font-size: 0.8rem; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        .section-header-centered {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto 50px;
-        }
-
-        .section-header-centered h2 {
-            font-family: var(--font-title);
-            font-weight: 800;
-            font-size: 2.2rem;
-            color: var(--sf-black);
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
-        
-        .highlight { color: var(--sf-yellow); }
-
-        /* --- NAVBAR --- */
-        .navbar {
-    background-color: #FFFFFF; /* Fondo Blanco */
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra muy sutil */
-    border-bottom: 1px solid #f0f0f0;
+   
+.loadInfo{
+  z-index: 4;
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
 }
-     .nav-container { display: flex; justify-content: space-between; align-items: center; }
-     .logo { 
-    font-family: var(--font-title); 
-    font-weight: 900; 
-    font-size: 1.8rem; 
-    color: var(--sf-black); /* Texto "MOZART" en Negro */
-    text-transform: lowercase; /* Estilo Smart Fit */
-    letter-spacing: -1px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.logo span { color: var(--sf-yellow); } /* "ACADEMY" o Icono en Amarillo */
-      .nav-menu { display: flex; gap: 30px; align-items: center; }
-.nav-link { 
-    font-family: var(--font-title); 
-    font-weight: 800; /* Más grueso como en la imagen */
-    font-size: 0.95rem; 
-    text-transform: none; /* Smart Fit usa CamelCase o minúsculas a veces, pero dejémoslo limpio */
-    color: var(--sf-black); /* Color Negro */
-    transition: color 0.3s; 
-}
-.nav-link:hover { color: var(--sf-yellow); }
 
-/* Ajuste del botón en el nav */
-.navbar .btn-primary {
-    padding: 10px 25px;
-    font-size: 0.9rem;
-    box-shadow: none; /* Flat style */
-}
-        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
 
-        /* --- HERO SECTION --- */
-        /* --- HERO SLIDER SECTION (NUEVO) --- */
-.hero-slider-section {
-    position: relative;
+@media only screen and (min-width: 990px) {
+  .col-md-2{
+    margin-top: 130px;
+    margin-left: -20px;
+  }  
+}
+
+
+
+@keyframes beat-fade {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(2.4);
+  }
+  
+  50% {
+    opacity: 0.5;
+    transform: scale(4);
+  }
+}
+
+
+
+
+body {
+  margin: 0;
+  height: 100%;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 99;
+}
+#loading {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);
+  /* path to your loading animation */
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -100px 0 0 -100px;
+}
+
+#loading-text {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 50px);
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+ #loadingProfile {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -50px 0 0 -100px;
+}
+
+ion-side-menu {
+  background-color: #f8f9fc; /* Fondo claro */
+  color: #3a3b3c; /* Texto oscuro */
+  width: 300px;
+  border-right: 1px solid #e0e0e0;
+ 
+}
+
+
+
+ion-side-menu .list .item {
+  padding: 20px 40px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  color: #374151;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 2px; /* Bordes redondeados */
+    border-top: 1px solid transparent !important; 
+    border-bottom: 1px solid transparent !important; 
+  font-weight: 400; 
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+ion-side-menu .list .item i {
+  font-size: 22px;
+  color: #374151;
+  margin-right: 10px; /* Espaciado entre ícono y texto */
+}
+
+
+
+ion-side-menu .item:hover i {
+  transform: scale(1.1); /* Agrandar ligeramente el ícono */
+}
+
+ion-side-menu .item:hover img {
+  transform: scale(1.1); /* Agrandar ligeramente el ícono */
+}
+
+ion-side-menu .list .item:hover {
+  background-color: #f5f6f6; /* Fondo hover */
+  color: #343a40; /* Texto más oscuro al pasar mouse */
+}
+
+.menuSelectedColor {    
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: 550 !important; text-shadow: 0 0 6px silver !important;
+    background-color: #f0f2f5 !important; 
+  color: #1F2937 !important;
+}
+
+.card{
+  font-family: 'Nunito', sans-serif;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  padding: 14px 80px 18px 36px;
+  cursor: pointer;
+  height: 120px;
+  align-items: center; 
+   display: flex; 
+  text-decoration: none; 
+}
+
+
+.card:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.list .card h3{
+  font-weight: 600;
+  font-size: 1.7rem;
+  
+}
+
+.card img{
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  max-height: 120px;
+}
+
+
+
+
+ .iframe-container {
+   overflow: hidden;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            /*height:  88vh;*/
+      height: 100%;
+       padding-top: 15px;
+        }
+
+
+        .iframe-container iframe {
+          position: absolute;
+      /*    top: 15px;*/
+        left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+
+ .iframe-container2 {
+   overflow: hidden;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            /*height:  88vh;*/
+      height: 100%;
+      padding-top: 15px;
+        }
+
+
+        .iframe-container2 iframe {
+          position: absolute;
+
+        left: 0;
+            width: 100%;
+            height: 91vh;
+            border: 0;
+        }
+
+
+
+   .drive{
+    height: 450px;
     width: 100%;
-    height: 90vh; /* Altura imponente */
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background-color: var(--sf-black); /* Fondo base por si tarda en cargar */
-}
-
-/* El slider en el fondo */
-.creative-slider--wrap {
-    position: absolute;
+  }
+  
+  .modal-container {
+    position: fixed;
+    display: table;
+    height: 100%;
+    width: 100%;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-.swiper {
-    width: 100%;
-    height: 100%;
-}
-
-.slide-bg {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    /* Efecto de zoom suave (Ken Burns) */
-    transform: scale(1);
-    transition: transform 8s ease;
-}
-
-.swiper-slide-active .slide-bg {
-    transform: scale(1.1); /* Zoom al activarse */
-}
-
-/* Overlay oscuro para leer el texto */
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, 
-        rgba(0, 0, 0, 0.6) 0%, 
-        rgba(0, 0, 0, 0.3) 50%, 
-        rgba(0, 0, 0, 0.7) 100%);
+    transform: scale(0);
     z-index: 1;
-}
+  }
 
-/* Contenido del Hero */
-.hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: left;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-    color: var(--sf-white);
-}
+  .modal-container.four {
+    z-index: 0;
+    transform: scale(1);
+  }
 
-.hero-pill {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--sf-white);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-family: var(--font-title);
-}
+  .modal-container.four .modal-background .modalDoc {
+    animation: blowUpModal 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  .modal-container.four + body {
+    z-index: 1;
+    animation: blowUpContent 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  .modal-container.four.out .modal-background .modalDoc {
+    animation: blowUpModalTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  .modal-container.four.out + body {
+    animation: blowUpContentTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
 
-.hero-content h1 {
-    font-family: var(--font-title);
-    font-size: 2.9rem; /* Grande e impactante */
-    line-height: 1.1;
-    font-weight: 900;
-    margin-bottom: 24px;
-    text-transform: uppercase;
-}
-
-.hero-content p {
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 40px;
-    max-width: 600px;
+  .modal-container .modal-background {
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    vertical-align: middle;
+  }
+  .modal-container .modal-background .modalDoc {
+    padding: 50px;
+    display: inline-block;
+    border-radius: 3px;
     font-weight: 300;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    position: relative;
+  }
+
+.close-modal {
+    display: block;
+    position: absolute;
+  top: 40px;
+    right: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.hero-buttons {
+  @keyframes blowUpContent {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    99.9% {
+      transform: scale(2);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes blowUpContentTwo {
+    0% {
+      transform: scale(2);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes blowUpModal {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes blowUpModalTwo {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+
+
+
+
+
+
+     
+      .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .add-to-btn {
+      background-color: #E02D44;
+      color: white;
+      border: none;
+      outline: none;
+      font-weight: bold;
+      width: 100%;
+      height: 50px;
+    }
+ 
+#myModal {
+    display: block; 
+  }
+
+   
+.ionic-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.2);
+  border-top: 4px solid #333;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+   .anim {
+    position: relative;
+    display: block;
+    
+  animation: slide_in 0.3s ease-in-out forwards;
+    opacity: 0;
+    left: -10px;
+
+}
+
+
+@keyframes slide_in {
+    from {
+        left: -10px;
+        opacity: 0;
+    }
+    to {
+        left: 0px;
+        opacity: 1;
+    }
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background: #fff;
+  min-width: 250px;
+  box-shadow: 0px 0px 15px 8px rgba(50, 50, 50, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
+  padding: 20px 10px;
+}
+
+#bannerRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.profileImageContainer img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.profileName {
+  margin: 10px 0 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.profileEmail {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.dropdown-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-item i {
+  margin-right: 10px;
+}
+
+   
+
+.tabs-icon-top .tab-item .icon {
+  position: relative;
+  top: 9px; 
+} 
+   .tabs-icon-top .tab-item {
+  text-decoration: none;
+}     
+.tabs-striped {
+    display: none;
+}
+.tabframe-container{
+      display: block;
+    }
+.bar-light{
+     box-shadow:  0 2px 4px 0px rgba(0,0,0,0.1);
+      height: 55px !important;
+   }
+/* Mostrar la barra de tabs solo en pantallas de hasta 768px */
+@media (max-width: 850px) {
+    .tabs-striped {
+        display: block;
+    }
+    .tabframe-container{
+      display: none;
+    }
+      .contentHide{
+     display: none !important;
+  }
+    
+  .content {
+  grid-template-columns: 100% 0 !important;
+  }
+   .content2 {
+  grid-template-columns: 0 100% !important;
+  }
+  .rWide{
+    width: 100% !important;
+  }
+
+     #chatFrame{
+   height: 84vh !important;
+}
+
+      .user-info {
+      display: none;
+    }
+}
+
+
+@media (min-width: 850px) {
+.menubtn{
+    display: none;
+  }
+  .online-badge{
+    display: flex !important;
+  }
+ .hintMsg{
+        display: none;
+    }
+    .profilImg{
+    margin-top: -9px;
+      margin-left: 6px;
+  }
+     .user-info {
+      display: block;
+    }
+
+
+    /*
+     #chatFrame{
+  margin-top: -20px;
+}
+.left-content {
+  margin-top: 15px !important;
+}*/
+    
+ /* ion-side-menu .list .item {
+  font-size: 15px;
+  } */
+}
+     
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    color: red;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.pulseTab {
+  animation: pulse 1s ease-in-out 5;
+}
+
+.hintMsg {
+  position: fixed;
+  bottom: 100px; /* Just above the tab bar */
+  left: 50%;
+  transform: translateX(-50%);
+ /* background-color: rgba(0, 0, 0, 0.8);
+  color: white;*/
+    background-color: white;
+  color: black;
+  padding: 10px 15px; 
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 1000;
+  animation: fadeInOut 5s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+     
+
+.profile-user-data {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    margin-left: 10px;
+  margin-bottom: 10px;
+}
+.profile-user-data .circle {
+    flex-shrink: 0; /* Evita que el contenedor de la imagen se reduzca */
+    border-radius: 100% !important;
+    overflow: hidden; 
+    width: 55px;
+    height: 55px;
+    margin: 10px 2px 0 10px; /* Ajusta los márgenes */
+}
+
+.profile-user-data .circle2 {
+    flex-shrink: 0; /* Evita que el contenedor de la imagen se reduzca */
+    border-radius: 25% !important;
+    overflow: hidden; 
+    width: 40px;
+    height: 40px;
+    margin: 10px 2px 0 10px; /* Ajusta los márgenes */
+}
+.profile-user-data img { margin-right: 10px; max-width: 100%;}
+.profile-user-data .main-data {
+    flex-grow: 1; /* Permite que el contenedor de texto use el espacio restante */
+    padding: 10px 10px 20px;
+    margin-bottom: 5px;
+    overflow: hidden; /* Evita desbordamientos */
+}
+
+.main-data .planTag{
+  color: gray; font-weight: 500; text-shadow: 0 0 2px silver;
+  font-size: 11px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+.main-data .userLvl{
+  margin-top: 1px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  color: black; font-weight: 500 !important; text-shadow: 0 0 6px silver !important;
+}
+.main-data h4 {
+    font-size: 17px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+margin-bottom: 1px;
+    overflow: hidden; 
+}
+.profile-user-data .main-data span {font-size: 12px;}
+
+
+.progress{
+ height: 12px;
+width: 155px;
+  margin-top: 5px;
+  margin-bottom: -10px;
+}
+     
+     
+   
+.slide-hint-left {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: slideLeft 1.5s infinite;
+  font-size: 18px;
+  color: #666;
+}
+
+@keyframes slideLeft {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(0) translateY(-50%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-10px) translateY(-50%);
+  }
 }
 
 
-/* --- BENEFITS STRIP STYLE (TIPO BANNER HORIZONTAL SUTIL) --- */
-.benefits {
-    background-color: var(--sf-black);
+.custom-select {
+  width: 100%; /* Ajusta para ocupar todo el ancho */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px; /* Espacio entre select y botones */
+}
+   
+   .custom-select2 {
+  width: 100%; /* Ajusta para ocupar todo el ancho */
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+     margin-right: 5px;
+}
+   .item-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
 
+.item-input span {
+  margin-right: 10px;
+}
+
+.item-input input,
+.item-input select {
+  flex-grow: 1;
+  max-width: 200px; /* Puedes ajustar el tamaño máximo */
+  text-align: center;
+}
+   
+.alertIcon{
+  font-size: 18px;
+}
+
+ #chatFrame{
+     height: 90vh;
+}
+ 
+.content {
+  display: grid;
+  grid-template-columns: auto 300px; /* Deja que el lado izquierdo sea flexible */
+  height: 92.5vh;
+}   
+
+.content2 {
+  display: grid;
+  grid-template-columns: auto 300px; /* Deja que el lado izquierdo sea flexible */
+  height: 92.5vh;
+}   
+
+.left-content {
+  overflow-y: auto; /* Permite scroll si el contenido es más grande */
+  background-color: #f5f5f5; /* Fondo opcional */
+}
+
+.right-content {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e1e8ed;
+  height: 85vh;
+  overflow-y: auto;
+  position: fixed; 
+  right: 0;
+    top: 15px;
+  width: 300px; 
+}
+       
+
+
+  .barImage:before {
+    position: absolute;
+    content: "";
+    height: 50px;
+    width: 50px;
+    top: -3.4px;
+    right: -5.1px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    animation: 1.5s linear 0s normal none infinite focuse;
+} 
+   
+   @keyframes focuse {
+  0% {
+    transform: scale(0.8);
+    opacity: 1; }
+  75% {
+    transform: scale(1.2);
+    opacity: 0; }
+  100% {
+    transform: scale(1.2);
+    opacity: 0; } }
+@keyframes slide {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: 40px 0; } }
+
+
+    .popup-custom .popup {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    text-align: center;
+}
+
+.popup-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.popup-full-image {
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 10px;
+}
+ 
+ 
+   .team-detail-background{
+     margin-bottom: 2px;
+   }
+.team-detail{
+  background: -webkit-radial-gradient(circle, #ccc, #000);
+   margin-top: 15px !important;
+}
+
+     .team-detail img{
+width: 200px; /* Ajusta según el tamaño deseado */
+  height: 200px; /* Igual que el ancho para mantener la proporción */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Asegura que la imagen rellene el círculo sin distorsión */
+  display: block;
+}
+     
+.team-detail h2+p{
+  background-color:transparent;
+  color:#fff
+}
+.team-detail h2{
+    margin-top: 20px !important;
+  background-color:transparent;
+  color:#fff
+}
+
+
+
+.tab-item.team-detail-tab-item{
+  font-size:0.8em;
+  
+}
+.team-detail-tab-item .tab-heading{
+  position:relative;
+  top:-5px;
+  font-weight:bold;
+  color:#000
+}
+.team-detail-tab-item .tab-sub{
+  position:relative;
+  top:-40px;
+  display:block;
+  font-size:0.9em;
+}
+.team-detail div.team-country-tag {
+  background-color: #c0c0c0;
+  width: 96px;
+  height: 20px;
+  font-size: 0.7em;
+  border: 1px solid;
+  border-radius: 15px;
+    margin-top: 7px;
+  /* padding-left: 5px; */
+  text-align: center;
+}   
+
+    
+
+   
+   .chat-dropdown {
+  width: 300px;
+  height: 400px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.chat-header {
+  padding: 12px 15px;
+  background: #1e2b47;
+  color: white;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.chat-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.chat-header p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.bot-message {
+  justify-content: flex-start;
+}
+
+.user-message {
+  justify-content: flex-end;
+}
+
+.message-avatar {
+  margin-right: 10px;
+}
+
+.message-avatar img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 18px;
+  position: relative;
+}
+
+.bot-message .message-content {
+  background: white;
+  border: 1px solid #ddd;
+}
+
+.user-message .message-content {
+  background: #3ac5f2;
+  color: white;
+}
+
+.message-time {
+  display: block;
+  font-size: 10px;
+  opacity: 0.7;
+  margin-top: 3px;
+}
+
+.user-message .message-time {
+  text-align: right;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+}
+
+.chat-input button {
+  background: none;
+  border: none;
+  color: #3ac5f2;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+
+
+.notif-dropdown {
+  width: 300px;
+  max-height: 400px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.notif-header {
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e2b47;
+  color: white;
+}
+
+.notif-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.mark-all-read {
+  background: transparent;
+  border: none;
+  color: #3ac5f2;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.mark-all-read:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.notif-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.notif-item {
+  display: flex;
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.notif-item:hover {
+    background: whitesmoke;
+}
+
+
+.notif-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.notif-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notif-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notif-desc {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notif-time {
+  font-size: 11px;
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.notif-time i {
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+.notif-actions {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.notif-action-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.notif-action-btn:hover {
+  background: #f0f0f0;
+  color: #555;
+}
+
+.empty-notifs {
+  padding: 30px 15px;
+  text-align: center;
+  color: #999;
+}
+
+.empty-notifs i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.empty-notifs p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.notif-footer {
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+.view-all {
+  background: transparent;
+  border: none;
+  color: #3ac5f2;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.view-all:hover {
+  background: rgba(58, 197, 242, 0.1);
+}
+
+
+
+
+.close-dropdown {
+  background: transparent;
+  position: absolute;
+  right: 20px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  padding: 0 5px;
+}
+
+.close-dropdown:hover {
+  opacity: 1;
+}
+
+/* Estilo mejorado para el perfil */
+.profile-header {
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.profile-background {
+  height: 120px;
+  background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+}
+
+.profile-content {
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  background: white;
+  margin-top: -50px;
+}
+
+.profile-avatar-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: block;
+}
+
+.profile-avatar2 {
+  width: 40px;
+  height: 40px;
+  margin-top: 1px;
+  margin-right: -2px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: block;
+}
+
+@media(min-width: 850px){
+  .profile-avatar2{
+    margin-top: 10px;
+  }
+}
+
+.profile-level {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #1e2b47;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid #3ac5f2;
+}
+
+ .profile-level-icon {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  height:34px;
+  width: 34px;
+  /*background: #1e2b47;*/
+  background: black;
+  color: white;
+  padding: 3px;
+  border-radius: 50%;
+  font-size: 15px;
+  font-weight: bold;
+ /* border: 1px solid #3ac5f2;*/
+ border: 2px solid white;
+ box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.profile-name {
+  margin: 10px 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 10px;
+}
+
+.stat-item.highlight .stat-value {
+  color: #3ac5f2;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (min-width: 1102px) {
+  .profile-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+    height: 250px;
+    border-radius: 20px;
     position: relative;
     overflow: hidden;
-}
+  }
 
-/* Contenedor que ocupa todo el ancho disponible */
-.benefits-grid-full {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas exactas */
+  .profile-background {
+    position: absolute;
     width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+    z-index: 0;
+  }
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  .profile-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding: 0;
+    width: 100%;
+     background-color: transparent !important;
+  }
+
+  .profile-avatar-container {
+    margin-bottom: 0;
+    flex-shrink: 0;
+   
+  }
+
+  .profile-avatar {
+    width: 160px;
+    height: 160px;
+    border-width: 5px;
+  }
+
+  .profile-level {
+    right: 10px;
+    bottom: 10px;
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+
+
+  .profile-level-icon {
+    right: -10px;
+    bottom: 10px;
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+
+
+
+  .profile-name {
+    text-align: left;
+    font-size: 32px;
+    margin: 0 0 15px 0;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  .profile-stats {
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 0;
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .stat-item {
+    padding: 0;
+    min-width: 100px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+    color: #1e2b47;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .stat-item.highlight .stat-value {
+    color: #3ac5f2;
+  }
 }
 
-/* Cada módulo individual */
-.benefit-module {
-    position: relative;
-    height: 220px; /* Altura fija para el efecto banner */
-    background-size: cover;
-    background-position: center;
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #f1f1f1;
+  border-radius: 18px;
+  margin: 5px 0;
+  width: fit-content;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background: #666;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typingAnimation 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: 0s; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingAnimation {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+
+
+    :root {
+      --primary: #4a6fa5;
+      --primary-dark: #3a5982;
+      --primary-light: #6b8cbe;
+      --secondary: #ff9e4a;
+      --secondary-dark: #e08530;
+      --success: #4caf50;
+      --danger: #ff6b6b;
+      --warning: #ffc107;
+      --dark: #2c3e50;
+      --light: #f5f7fa;
+      --gray: #78909c;
+      --white: #ffffff;
+      --card-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      --button-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    
+   
+    
+
+    .banner-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%; 
+    height: 110px;
+    overflow: hidden;
+    will-change: transform, opacity;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+    
+    .piano-content {
+       background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      min-height: 100vh;
+      padding-bottom: 2px;
+      padding-top: 13px !important; 
+    }
+    
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 120px;
+    }
+    
+    @media (min-width: 800px) {
+      .dashboard {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .full-width {
+        grid-column: 1 / -1;
+      }
+    }
+    
+ .card2, .card3 {
+            background: white;
+            border-radius: 16px;
+            margin-top: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e5e7;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .card2:hover, .card3:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+     
+
+ .status-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+        }
+
+        .status-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .status-icon.connected {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+        }
+
+        .status-icon.disconnected {
+            background: linear-gradient(135deg, #ff6b6b, #e53e3e);
+            color: white;
+        }
+
+        .status-icon.connecting {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            color: white;
+        }
+
+        .status-info {
+            flex: 1;
+        }
+
+        .status-info h3 {
+            margin: 0 0 8px 0;
+            font-weight: 600;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        .status-info p {
+            margin: 0;
+            color: #78909c;
+            font-size: 14px;
+        }
+
+  .connection-button {
+            margin: 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            height: 48px;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            text-align: center;
+            color: white;
+        }
+
+        .connection-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .connection-button.connected {
+            background: linear-gradient(135deg, #ff6b6b, #e53935);
+        }
+
+        .connection-button.disconnected {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+        }
+
+        .connection-button.connecting {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            opacity: 0.9;
+        }
+
+
+
+
+  .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .stat-item:hover {
+            background: #f1f5f9;
+            transform: translateY(-1px);
+        }
+
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-icon.mic.muted {
+            background: #78909c;
+            color: white;
+        }
+
+        .stat-icon.mic {
+            background: linear-gradient(135deg, #ff6b6b, #e53935);
+            color: white;
+        }
+
+        .stat-icon.video {
+            background: linear-gradient(135deg, #42a5f5, #1976d2);
+            color: white;
+        }
+
+        .stat-icon.connection {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            color: white;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: #2c3e50;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #78909c;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .task-item:hover {
+            background: rgba(248, 250, 252, 0.5);
+            margin: 0 -16px;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-item.completed .task-title {
+            text-decoration: line-through;
+            color: #78909c;
+        }
+
+        .task-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            cursor: pointer;
+            color: #78909c;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .task-check:hover {
+            color: #4caf50;
+            transform: scale(1.1);
+        }
+
+        .task-item.completed .task-check {
+            color: #4caf50;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .task-date {
+            font-size: 13px;
+            color: #78909c;
+        }
+
+        .task-item.completed .task-date {
+            color: #4caf50;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .schedule-item:hover {
+            background: rgba(248, 250, 252, 0.5);
+            margin: 0 -12px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+       /* Estilos por defecto para .schedule-date (activos) */
+.schedule-date {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 30px;
-    overflow: hidden;
-    border-right: 1px solid rgba(255,255,255,0.1); /* Separador sutil */
-    transition: all 0.3s ease;
+    width: 47px;
+    height: 47px;
+    background: linear-gradient(135deg, #4a6fa5, #3a5982); /* Fondo original azul */
+    border-radius: 12px;
+    color: white; /* Texto blanco original */
+    margin-right: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(74, 111, 165, 0.2);
+    position: relative; /* Necesario para la franja roja */
+    overflow: hidden;   /* Asegura que la franja roja no se salga de los bordes redondeados */
 }
 
-/* Eliminar borde derecho del último elemento */
-.benefit-module:last-child { border-right: none; }
+/* CSS MODIFICADO PARA FECHAS PASADAS */
 
-/* EL OVERLAY SUTIL (Aquí está la clave del estilo) */
-.benefit-module::before {
+/* 1. Estilos del contenedor principal con un gris más claro */
+.schedule-date.schedule-date-past {
+    background: linear-gradient(135deg, #e9ecef, #dee2e6); /* Degradado de gris más claro */
+    color: #6c757d; /* Texto gris oscuro para mejor contraste */
+    box-shadow: none; /* Quitamos la sombra para un look más plano */
+    border: 1px solid #ced4da; /* Borde sutil */
+}
+
+/* 2. Pseudo-elemento para crear la línea diagonal (la "tache") */
+.schedule-date.schedule-date-past::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Centra la línea verticalmente */
+    left: -10%; /* Inicia un poco a la izquierda para cubrir las esquinas */
+    width: 120%; /* Ancho extendido para que la línea cruce todo el elemento */
+    height: 2px; /* Grosor de la línea */
+    background-color: rgba(108, 117, 125, 0.55); /* Color de la línea (gris semi-transparente) */
+    transform: rotate(-20deg); /* Rota la línea para crear el efecto diagonal */
+}
+
+/* 3. Asegura que el texto sea legible y no sea afectado por la línea */
+.schedule-date.schedule-date-past .schedule-day,
+.schedule-date.schedule-date-past .schedule-number {
+    color: #6c757d; /* Mismo color de texto gris oscuro */
+    z-index: 1; /* Pone el texto por encima de la línea */
+}
+
+/* Estilos para .schedule-date cuando NO es la próxima clase (inactivos) */
+.schedule-date.schedule-date-inactive {
+    background: white; /* Fondo blanco */
+    color: black;      /* Texto negro */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    border: 1px solid #e0e0e0; /* Borde sutil */
+}
+
+/* Franja superior roja para .schedule-date-inactive */
+.schedule-date.schedule-date-inactive::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    /* Degradado oscuro elegante (nuestro estilo) en lugar de colores planos */
-    background: linear-gradient(to bottom, rgba(40, 40, 40, 0.85), rgba(10, 10, 10, 0.95));
-    z-index: 1;
-    transition: all 0.4s ease;
+    height: 4px; /* Altura de la franja */
+    background-color: #dc3545; /* Color rojo */
+    border-top-left-radius: 11px; /* Ajusta a los bordes redondeados del padre */
+    border-top-right-radius: 11px; /* Ajusta a los bordes redondeados del padre */
 }
 
-/* Efecto Hover Sutil: Se ilumina ligeramente con tono amarillo */
-.benefit-module:hover::before {
-     background: linear-gradient(to bottom, rgba(255, 193, 7, 0.15), rgba(0, 0, 0, 0.9));
+/* Ajustes para el texto dentro de .schedule-date-inactive */
+.schedule-date.schedule-date-inactive .schedule-day,
+.schedule-date.schedule-date-inactive .schedule-number {
+    color: black; /* Asegura que el texto sea negro */
 }
 
-/* Contenido de texto sobre el overlay */
-.module-content {
-    position: relative;
-    z-index: 2;
-    color: var(--sf-white);
-    text-align: left; /* Alineado a la izquierda como la referencia */
-}
-
-/* Subtítulo pequeño (ej: "6 Módulos") */
-.module-subtitle {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: rgba(255,255,255,0.7); /* Blanco un poco apagado */
-    display: block;
-}
-
-/* Título principal (ej: "Iniciación al Piano") */
-.module-title {
-    font-family: var(--font-title);
-    font-size: 1.4rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    line-height: 1.2;
-    color: var(--sf-white);
-    transition: color 0.3s;
-}
-
-/* Al hacer hover, el título se pone amarillo */
-.benefit-module:hover .module-title {
-    color: var(--sf-yellow);
-}
-
-/* Responsive: Se apilan en 2x2 en tablets y 1x4 en móviles */
-@media (max-width: 992px) {
-     .benefits-grid-full { grid-template-columns: repeat(2, 1fr); }
-     .benefit-module { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); height: 200px;}
-}
-@media (max-width: 576px) {
-     .benefits-grid-full { grid-template-columns: 1fr; }
-}
-
-        /* --- PROGRAMS (ESTILO IMAGEN 1 - SMART FIT CLASES) --- */
-        .programs { padding: 80px 0; background-color: #fff; }
-        
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .class-card {
-            background: #fff;
-            border-radius: var(--radius-card);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-            border: 1px solid #eee;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .class-card:hover { transform: translateY(-5px); }
-
-        .class-img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .class-title-bar {
-            background-color: var(--sf-yellow);
-            padding: 12px;
-            text-align: center;
-            font-family: var(--font-title);
-            font-weight: 800;
+        .schedule-day {
+            font-size: 11px;
+            font-weight: 600;
             text-transform: uppercase;
-            font-size: 1rem;
-            color: var(--sf-black);
-            letter-spacing: 0.5px;
         }
 
-        .class-info-row {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px 10px 10px;
-            text-align: center;
-        }
-
-        .info-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-        .info-item i { font-size: 1.5rem; color: #aaa; margin-bottom: 5px; }
-        .info-label { font-size: 0.75rem; font-weight: 700; color: #333; text-transform: uppercase; }
-        .info-value { font-size: 0.9rem; color: #555; }
-
-        .class-divider {
-            border: 0;
-            height: 1px;
-            background: #eee;
-            margin: 10px 20px;
-        }
-
-        .class-desc {
-            padding: 10px 25px 30px;
-            text-align: center;
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .programs-cta-container { text-align: center; }
-
-        /* --- EXPERIENCE (ESTILO IMAGEN 2 - SMART FIT AMENITIES) --- */
-        .experience {
-            padding: 80px 0;
-            background-color: var(--sf-light-grey);
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .amenity-card {
-            background: #fff;
-            border-radius: var(--radius-card);
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            border: 1px solid #eee;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .amenity-card:hover { transform: translateY(-5px); border-color: var(--sf-yellow); }
-
-        /* Borde amarillo para la tarjeta destacada como en la imagen */
-        .amenity-card.featured { border: 2px solid var(--sf-yellow); }
-
-        .amenity-img {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .amenity-label {
-            padding: 18px;
-            text-align: center;
-            font-family: var(--font-body);
-            font-weight: 500;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        /* --- PRICING SECTION --- */
-        .pricing-section {
-            background-color: var(--sf-white);
-            padding: 80px 0 100px;
-            position: relative;
-        }
-
-        .billing-toggle {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-            background-color: #f0f0f0;
-            border-radius: 50px;
-            padding: 4px;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .toggle-btn {
-            padding: 10px 24px;
-            background: none;
-            border: none;
-            color: #666;
-            cursor: pointer;
-            border-radius: 50px;
-            font-size: 15px;
-            font-family: var(--font-title);
+        .schedule-number {
+            font-size: 18px;
             font-weight: 700;
-            transition: all 0.2s;
-            position: relative;
+            line-height: 1;
         }
 
-        .toggle-btn.active { background-color: var(--sf-black); color: var(--sf-yellow); }
-
-        .best-offer {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--sf-yellow);
-            color: var(--sf-black);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 800;
-            white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .pricing-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-
-        .price-card {
-            background-color: #f9f9f9;
-            border-radius: var(--radius-card);
-            padding: 30px 20px;
+        .schedule-info {
             flex: 1;
-            max-width: 320px;
-            min-width: 280px;
-            border: 2px solid transparent;
-            transition: all 0.2s;
-            cursor: pointer;
+        }
+
+       
+
+        .schedule-title {
+             font-size: 16px;
+            font-weight: 600;
+   
+        }
+
+        .schedule-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #f1f5f9;
+            color: #78909c;
             display: flex;
-            flex-direction: column;
-            position: relative;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
         }
 
-        .price-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .price-card.premium { border-color: var(--sf-yellow); background-color: #FFF; box-shadow: 0 10px 40px rgba(255, 193, 7, 0.15); }
-
-        .radio-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .plan-name { font-family: var(--font-title); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; }
-        
-        .radio-input {
-            width: 22px; height: 22px; border-radius: 50%; border: 2px solid #ccc; position: relative;
+        .schedule-btn:hover, .schedule-btn.active {
+            background: linear-gradient(135deg, #4a6fa5, #3a5982);
+            color: white;
+            transform: scale(1.05);
         }
-        .radio-input.checked { border-color: var(--sf-yellow); background-color: var(--sf-yellow); }
-        .radio-input.checked::after { content: "✓"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--sf-black); font-size: 12px; font-weight: bold; }
 
-        .card-header { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-        .price { font-family: var(--font-title); font-size: 2rem; font-weight: 800; margin-bottom: 5px; color: var(--sf-black); }
-        .price-period { font-size: 0.9rem; font-weight: 400; color: #666; }
-        .savings { color: #d19a00; font-size: 0.8rem; font-weight: 700; margin-top: 5px; text-transform: uppercase; }
-        
-        .features { list-style: none; padding: 0; margin-bottom: 10px; font-size: 0.95rem; }
-        .feature { display: flex; align-items: flex-start; margin-bottom: 10px; color: #444; }
-        .feature::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--sf-yellow); margin-right: 10px; }
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
 
-        /* Banner Oferta */
-        .registration-banner {
-            max-width: 800px;
-            margin: 40px auto 0;
-            background-color: #fff;
-            border: 2px solid var(--sf-yellow);
+        .achievement-item {
+            background: #f8fafc;
             border-radius: 12px;
-            padding: 15px 25px;
-            display: flex; align-items: center; justify-content: center; text-align: center;
-            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.15);
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 1px solid #e2e8f0;
         }
-        .banner-text { font-size: 1.1rem; color: #333; }
-        .strikethrough { text-decoration: line-through; color: #999; margin-right: 10px; }
-        .sale-price { font-size: 1.5rem; font-weight: 800; color: var(--sf-black); background: var(--sf-yellow); padding: 0 5px; }
 
-        /* Sticky CTA */
-        .cta-section {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background-color: var(--sf-white); padding: 15px 40px;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1); border-top: 4px solid var(--sf-yellow);
-            z-index: 2000; display: none; align-items: center; justify-content: center;
+        .achievement-item.unlocked {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e5e5e7;
+            cursor: pointer;
         }
-        .cta-content { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; width: 100%; max-width: 1100px; position: relative; }
-        .close-cta-btn {
-            position: absolute; top: -35px; right: 0;
-            background: var(--sf-black); border: none; color: var(--sf-white);
-            font-size: 18px; cursor: pointer; width: 30px; height: 30px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50% 50% 0 0;
+
+        .achievement-item.locked {
+            opacity: 0.6;
+            filter: grayscale(0.8);
         }
-        .selected-price { font-size: 2rem; font-weight: 800; font-family: var(--font-title); color: var(--sf-black); line-height: 1; }
-        
-  
-  .app-section {
-    background-color: #FFF9EA; /* Fondo crema estilo Smart Fit */
-    color: #1A1A1A;
-    padding: 100px 0;
-    overflow: hidden;
+
+        .achievement-item.unlocked:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .achievement-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-item.unlocked .achievement-icon {
+            background: linear-gradient(135deg, #4a6fa5, #3a5982);
+            color: white;
+        }
+
+        .achievement-item.locked .achievement-icon {
+            background: #e2e8f0;
+            color: #78909c;
+            box-shadow: none;
+        }
+
+        .achievement-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .teacher-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .teacher-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a6fa5, #3a5982);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(74, 111, 165, 0.2);
+        }
+
+        .teacher-info h3 {
+            margin: 0 0 4px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .teacher-info p {
+            margin: 0;
+            color: #78909c;
+            font-size: 14px;
+        }
+
+        .class-details {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .detail-value {
+            color: #4a6fa5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard {
+                padding: 16px;
+                padding-top: 120px;
+                gap: 16px;
+            }
+            
+            .card-header {
+                padding: 16px 20px;
+            }
+            
+            .card-body {
+                padding: 20px;
+            }
+            
+            .status-card {
+                padding: 20px;
+                gap: 16px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .status-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .status-icon {
+                width: 54px;
+                height: 54px;
+                font-size: 22px;
+            }
+            
+            .connection-button i {
+                display: none;
+            }
+        }
+
+
+
+.instruction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.app-container {
+.instruction-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.instruction-list li:last-child {
+    border-bottom: none;
+}
+
+.instruction-list .number {
+    background: var(--primary-light);
+    color: var(--white);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 60px;
+    justify-content: center;
+    font-size: 13px; /* 0.8rem -> 12.8px */
+    font-weight: 600;
+    flex-shrink: 0;
 }
 
-.app-text {
-    flex: 1;
-    text-align: left;
-}
-
-.app-text h2 {
-    font-family: var(--font-title);
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin-bottom: 25px;
-    line-height: 1.2;
-    color: #000;
-}
-
-.app-text p {
-    font-size: 1.1rem;
-    color: #444;
-    margin-bottom: 25px;
-    line-height: 1.6;
-}
-.scan-text {
-    font-weight: 700;
-    color: #000 !important;
-    margin-bottom: 15px;
-}
-
-.download-area {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.qr-box img {
-    width: 100px;
-    height: 100px;
-    border: 2px solid #000;
-    padding: 5px;
-    border-radius: 8px;
-    background: #fff;
-}
-
-.store-buttons {
+.message-preview {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
-.store-buttons img {
-    height: 45px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.store-buttons img:hover {
-    transform: scale(1.05);
-}
-
-/* Área Visual Derecha (Celulares + Fondo Amarillo) */
-.app-visual {
-    flex: 1;
-    position: relative;
+.preview-item {
     display: flex;
-    justify-content: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #f8fafc;
+    transition: background 0.2s ease;
+}
+
+.preview-item:hover {
+    background: #f1f5f9;
+}
+
+.preview-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
     align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 600;
+    flex-shrink: 0;
 }
 
-.yellow-shape {
-    position: absolute;
-    width: 120%;
-    height: 90%;
-    background-color: var(--sf-yellow); /* El amarillo de la marca */
-    border-radius: 20px;
-    z-index: 1;
-    right: -10%; /* Desplazado un poco a la derecha */
+.preview-content {
+    flex: 1;
 }
 
-.phones-img {
+.preview-sender {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 14px; /* 0.9rem -> 14.4px */
+}
+
+.preview-text {
+    font-size: 14px; /* 0.9rem -> 14.4px */
+    color: var(--gray);
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.preview-time {
+    font-size: 12px; /* 0.75rem -> 12px */
+    color: #94a3b8;
+}
+
+.view-all-btn {
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.view-all-btn:hover {
+    background: #f8fafc;
+}
+
+.floating-buttons {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: var(--button-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 22px; /* 1.4rem -> 22.4px */
     position: relative;
-    z-index: 2;
-    max-width: 80%;
-    height: auto;
-    /* Filtro para eliminar fondo si la imagen no es PNG transparente (opcional) */
-    /* mix-blend-mode: multiply; */ 
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
 }
-        .app-image { flex: 1; text-align: center; }
-        .app-features li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
-        .app-features i { color: var(--sf-yellow); }
-        .mockup { max-width: 100%; border-radius: 20px; border: 4px solid #333; }
 
-        /* --- TESTIMONIALS --- */
-        .testimonials { padding: 80px 0; background-color: var(--sf-white); }
-        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .testi-card { background: var(--sf-light-grey); padding: 30px; border-radius: 10px; }
-        .stars { color: var(--sf-yellow); margin-bottom: 15px; }
-        .testi-text { font-style: italic; margin-bottom: 20px; color: #444; }
-        .testi-author { display: flex; align-items: center; gap: 15px; }
-        .author-avatar { width: 50px; height: 50px; border-radius: 50%; background-color: #ccc; background-size: cover; }
+.floating-btn:active {
+    transform: scale(0.95);
+}
 
-        /* --- FOOTER --- */
-        footer { background-color: #111; color: #888; padding: 60px 0 20px; font-size: 0.9rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-col h5 { color: var(--sf-white); font-family: var(--font-title); text-transform: uppercase; margin-bottom: 20px; font-size: 1.1rem; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a:hover { color: var(--sf-yellow); }
-        .social-icons a { font-size: 1.5rem; margin-right: 15px; transition: color 0.3s; }
-        .social-icons a:hover { color: var(--sf-yellow); }
-        .legal { border-top: 1px solid #222; padding-top: 20px; text-align: center; }
+.floating-btn.chat {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+    color: var(--white);
+}
 
-        /* --- MODAL --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.85); z-index: 3000;
-            display: none; justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 0.3s ease;
-        }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content {
-            background-color: white; padding: 40px; border-radius: 15px;
-            width: 90%; max-width: 450px; position: relative;
-            box-shadow: 0 15px 40px rgba(255, 193, 7, 0.2);
-            border-top: 5px solid var(--sf-yellow);
-            transform: translateY(20px); transition: transform 0.3s ease;
-        }
-        .modal-overlay.active .modal-content { transform: translateY(0); }
-        .modal-close {
-            position: absolute; top: 15px; right: 15px; background: none; border: none;
-            font-size: 1.5rem; cursor: pointer; color: #999;
-        }
-        .modal-header { text-align: center; margin-bottom: 25px; }
-        .modal-header h3 { font-family: var(--font-title); font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
-        .form-group { position: relative; margin-bottom: 15px; }
-        .form-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #aaa; }
-        .form-group input, .form-group select {
-            width: 100%; padding: 12px 15px 12px 45px; border: 2px solid #eee;
-            border-radius: 8px; font-size: 1rem; background: #f9f9f9;
-        }
-        .form-group input:focus { border-color: var(--sf-yellow); outline: none; background: white; }
-        .btn-block { width: 100%; display: block; }
-        .privacy-text { font-size: 0.75rem; text-align: center; margin-top: 15px; color: #999; }
+.floating-btn.mic {
+    background: linear-gradient(135deg, var(--danger) 0%, #ff6b6b 100%);
+    box-shadow: 0 0 15px #ff6b6b;
+    color: var(--white);
+}
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-    .hero-content p { font-size: 1.1rem; }
-    .hero-slider-section { height: auto; padding: 100px 0; }
-    .hero-buttons { flex-direction: column; }
-    .btn { width: 100%; text-align: center; }
-            .section-header-centered h2 { font-size: 1.8rem; }
-            .hamburger { display: block; }
-            .nav-menu { position: fixed; top: 60px; left: -100%; width: 100%; background-color: var(--sf-black); flex-direction: column; padding: 40px 0; transition: 0.3s; text-align: center; }
-            .nav-menu.active { left: 0; }
-            .app-container {
+.floating-btn.mic.muted {
+    background: linear-gradient(135deg, var(--gray) 0%, #546e7a 100%);
+    box-shadow: none; 
+}
+
+.floating-btn.video {
+    background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%);
+    color: var(--white);
+}
+
+.chat-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--danger);
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.video-container {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    width: 300px;
+    height: 180px;
+    background: #000;
+    border-radius: 12px;
+    border: 3px solid var(--primary);
+    z-index: 998;
+    overflow: hidden;
+    cursor: move;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.video-container:hover {
+    box-shadow: 0 15px 35px rgba(74, 111, 165, 0.3);
+    transform: scale(1.02);
+}
+
+.video-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    z-index: 1000;
+    cursor: default;
+    border: none;
+}
+
+.video-container.dragging {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transform: scale(1.03);
+}
+
+.video-controls {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 999;
+    background: rgba(0,0,0,0.7);
+    border-radius: 8px;
+    padding: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    gap: 5px;
+}
+
+.video-container:hover .video-controls {
+    opacity: 1;
+}
+
+.video-control-btn {
+    background: rgba(255,255,255,0.1); 
+    border: none;
+    color: white;
+    padding: 8px;
+    margin: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px; /* 1rem -> 16px */
+    transition: background 0.2s ease;
+}
+
+.video-control-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.remote-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+
+/* Mejoras responsivas */
+@media (max-width: 768px) {
+    .video-container {
+        left: 15px;
+        top: 70px;
+    }
+
+     .video-container.fullscreen video { 
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
+        object-position: center;
+        background-color: #000; 
+      }
+
+    
+    .floating-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 19px; /* 1.2rem -> 19.2px */
+    }
+    
+    .floating-buttons {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        width: 250px;
+        height: 150px;
+    }
+
+    .video-control-btn{
+        font-size: 10px;
+      }
+    
+
+    .status-card {
         flex-direction: column;
         text-align: center;
+        gap: 10px;
     }
     
-    .app-text { text-align: left; }
-    
-    .yellow-shape {
-        width: 100%;
-        right: 0;
+    .status-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px; /* 1.5rem -> 24px */
     }
-    
-    .download-area {
-        flex-direction: row; /* Mantener fila en móvil si cabe */
-        justify-content: flex-start;
-    }
-            .pricing-cards { flex-direction: column; align-items: center; }
-            .price-card { width: 100%; }
-            .cta-content { grid-template-columns: 1fr; text-align: center; gap: 10px; }
+}
+
+
+
+   
+   .toggle-royal {
+    margin-top: 7px !important; 
+  margin-right: 5px !important;
+     cursor: pointer;
+}
+
+.item-input-wrapper{
+  max-width: 96px ;
+  justify-content: flex-end;
+}
+
+.item-input-wrapper select {
+  /* Hide the default dropdown arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 24px;
+  
+  /* Reset button styles */
+  background-color: transparent;
+  border: none;
+ 
+  /* Text and positioning */
+  color: inherit;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+
+}
+
+
+
+
+/* Estilos para el botón de upgrade moderno */
+.upgrade-btn-modern {
+  /* Diseño y alineación */
+
+ 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  background: linear-gradient(120deg, #e0eafc, #cfdef3); /* Degradado suave */
+  border: none;
+  border-radius: 12px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra sutil para darle profundidad */ 
+  
+  /* Texto */
+  color: #2d3748; 
+  font-size: 16px;
+  font-weight: 600 !important;
+  text-shadow: 0 0 6px silver !important;
+  /* Tamaño y espaciado */
+  padding: 1px 24px !important;
+  position: absolute;
+  /* Comportamiento */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out; /* Transición suave para efectos */
+  outline: none;
+  margin-top:4px;
+  right: 70px;
+}
+
+/* Efecto al pasar el cursor por encima */
+.upgrade-btn-modern:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada */
+}
+
+
+
+
+ .pro-badge {
+   transform: scale(0.7);
+            background: linear-gradient(145deg, #3a4148 0%, #2d3339 50%, #242a30 100%);
+            border-radius: 14px;
+            padding: 2px 9px;
+            display: flex;
+            align-items: center;
+   position: absolute;
+ right: 6px;
+            gap: 3px;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
         }
-    </style>
-</head>
+
+      
+
+        .pro-badge i {
+            color: #FFD700;
+            font-size: 20px;
+            filter: drop-shadow(0 2px 4px orange);
+        }
+
+        .pro-text {
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            color: #ffffff !important;
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+            letter-spacing: -0.5px !important;
+        }
+
+
+
+.free-badge {
+    transform: scale(0.7);
+    background: linear-gradient(145deg, #e0e0e0 0%, #d5d5d5 50%, #cccccc 100%); /* Fondo gris claro de la imagen */
+    border-radius: 14px;
+    padding: 2px 9px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 6px;
+    gap: 3px;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.1), /* Sombra más sutil */
+        inset 0 1px 0 rgba(255, 255, 255, 0.6); /* Borde interior más claro */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.free-badge i {
+    color: #888888; /* Color de icono gris medio */
+    font-size: 20px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2)); /* Sombra sutil para el icono */
+}
+
+.free-text {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #333333 !important; /* Color de texto gris oscuro de la imagen */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.6) !important; /* Sombra de texto clara para resaltar */
+    letter-spacing: -0.5px !important;
+}
+
+
+
+/* Estilos del modal y animación (sin cambios) */
+.custom-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1001;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.custom-modal.show {
+  display: flex;
+}
+
+.modal-content3 {
+  margin: 2% auto;
+  background: white;
+  width: 95%;
+  height: 85%;
+  max-width: 400px;
+  max-height: 500px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideIn 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- INICIO DE CAMBIOS --- */
+
+/* Encabezado del chat - CORREGIDO */
+.modal-header3 {
+  background: white;
+  color: #1a1a1a;
+
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;    
+  justify-content: space-between !important; 
+  align-items: center;   
+}
+
+.modal-header3 h3 {
+  margin: 0;
+  margin-left: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+   font-size: 18px;
+  gap: 10px;
+}
+
+
+.modal-header3 .button-clear {
+  color: #1a1a1a !important;
+  font-size: 20px;
+  background: transparent; /* Sin fondo */
+  border: none;       
+  padding: 0;         
+  cursor: pointer;   
+  flex-shrink: 0;     
+}
+
+
+
+.modal-body {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor de mensajes */
+.chat-messages2 {
+  flex: 1;
+  overflow-y: auto;
+
+  background: white; /* Fondo blanco como en la imagen */
+}
+
+/* Estilo general para cada burbuja de mensaje */
+.message-item {
+  display: inline-block; /* Permite que el ancho se ajuste al contenido */
+  clear: both; /* Asegura que cada mensaje esté en su propia línea */
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 20px; /* Bordes bien redondeados */
+  max-width: 75%;
+  word-wrap: break-word;
+  box-shadow: none; /* Sin sombra para un look plano */
+  animation: messageAppear 0.3s ease;
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tus mensajes (derecha) */
+.message-item.own {
+  background: #1DA1F2; /* Azul sólido (similar a Twitter) */
+  color: white;
+  float: right; /* Alineado a la derecha */
+}
+
+/* Mensajes de otros (izquierda) */
+.message-item.other {
+  background: #f0f2f5; /* Gris claro */
+  color: #333;
+  float: left; /* Alineado a la izquierda */
+}
+
+/* Ocultamos el nombre del remitente para un look de chat 1-a-1 */
+.message-sender {
+  display: none;
+}
+
+/* Estilo para la hora del mensaje */
+.message-time {
+  font-size: 11px;
+  opacity: 0.8;
+  margin-top: 4px;
+  display: block; /* Asegura que esté en una nueva línea dentro de la burbuja */
+  text-align: right; /* Alinea la hora a la derecha dentro de la burbuja */
+}
+
+/* Área para escribir el mensaje */
+.chat-input2 {
+  display: flex;
+  gap: 8px;
+  padding: 10px ;
+  border-top: 1px solid #eee;
+  background: white;
+  align-items: center;
+}
+
+.chat-input2 input {
+  flex: 1;
+  padding: 8px 12px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 20px;
+  outline: none;
+}
+
+.chat-input2 button {
+  border-radius: 50%;
+  width: 35px ;
+  height: 35px ;
+  padding: 14px ;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black !important; /* Mismo azul que los mensajes */
+  color: white;
+  box-shadow: none; /* Sin sombra */
+  transition: background-color 0.2s ease;
+}
+
+.chat-input2 .button:hover {
+  background: #0c85d0; /* Un azul un poco más oscuro al pasar el cursor */
+}
+
+.chat-input2 .button:active {
+  transform: scale(0.95);
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+     /* Estilos para el nuevo formato de fecha y hora */
+.schedule-info-detailed {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.schedule-full-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+}
+
+.schedule-time-range {
+  font-size: 14px;
+   font-weight: 500;
+  color: gray;
+}
+
+
+
+/* Estilo para tachar el texto de clases pasadas */
+.text-strikethrough {
+    text-decoration: line-through;
+    color: silver !important; /* Color de texto más opaco */
+}
+
+/* Estilo de sombra para resaltar la próxima clase */
+.shadow-text {
+    font-weight: bold;
+    color: #333; /* Un color de texto más oscuro si es necesario */
+   text-shadow: 0 0 4px silver
+}
+
+/* Estilo base para el texto de estado (opcional, para consistencia) */
+.schedule-time-range {
+    font-size: 0.85em;
+    font-style: italic;
+    color: #6c757d;
+    margin-top: 4px;
+}
+
+/* Insignia de texto */
+.schedule-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  transform: scale(0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.schedule-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.schedule-action-wrapper:hover .schedule-badge::before {
+  left: 100%;
+}
+
+
+
+.schedule-action-wrapper:has(.schedule-btn.active) .schedule-badge {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% {
+    transform: scale(0.8);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    transform: scale(0.85);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* Botón circular */
+.schedule-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.8));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.schedule-btn:hover::before {
+  opacity: 1;
+}
+
+
+ 
+.schedule-btn.active {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  animation: pulse-button 2s infinite;
+}
+
+.schedule-btn.active:hover {
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+@keyframes pulse-button {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4), 0 0 0 8px rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* Iconos */
+.schedule-btn i {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+
+
+.schedule-btn.active i {
+  animation: ring 2s infinite;
+}
+
+@keyframes ring {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  10%, 30% {
+    transform: rotate(-10deg);
+  }
+  20%, 40% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .chatIco{
+        display: none;
+    }
+  .schedule-action-wrapper {
+    gap: 8px;
+    padding: 6px;
+  }
+  
+  .schedule-badge {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .schedule-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+}
+
+.livestreamBottomSpace{
+  height: 40px;
+}
+@media (max-width: 780px) {
+.livestreamBottomSpace{
+  height: 80px
+}
+}
+
+/* Mejoras adicionales para accesibilidad */
+.schedule-btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.schedule-action-wrapper:focus-within {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+
+.headIcon {
+    margin-top: 4px;
+ width: 38px;
+  height: 38px;
+  border-radius: 50% !important; /* Esto lo hace circular */
+  background-color: #e4e6eb !important;
+
+  color: #050505 !important;
+  transition: background-color 0.2s ease-in-out !important;
+}
+
+
+
+.headIcon:hover {
+  background-color: #d8dbdf !important;
+}
+
+/* Estilo para resaltar toda la fila del recordatorio de pago */
+.notif-item.pay-day-highlight {
+    background-color: #f6ffed; /* Un verde muy claro */
+    border-left: 3px solid #52c41a; /* Borde izquierdo verde */
+}
+
+/* Estilo para el contenedor del ícono de pago a la izquierda */
+.schedule-date.schedule-date-payday {
+    background: linear-gradient(135deg, #73d13d, #52c41a);
+    color: white;
+}
+
+/* Centra el ícono de dólar dentro de su contenedor */
+.payday-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 24px;
+}
+
+
+
+ .online-badge {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .status-indicator {
+            position: relative;
+            width: 12px;
+            height: 12px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #10b981;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .status-pulse {
+            width: 12px;
+            height: 12px;
+            background-color: #34d399;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .status-ring {
+            width: 12px;
+            height: 12px;
+            background-color: #86efac;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .status-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin: 0;
+        }
+
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+
+      .btn2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+          transform: scale(0.8);
+            padding: 5px 20px !important;
+
+            font-size: 17px !important;
+            font-weight: 600 !important;
+            border: 1px solid #000 ;
+    display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-login {
+           margin-right: 5px;
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-login:hover {
+            background: #f5f5f5;
+        }
+
+        .btn-register {
+          margin-right: 15px;
+            background: #e91e63;
+            color: #fff;
+            border: 1px solid #e91e63;
+        }
+
+        .btn-register:hover {
+            background: #d81b60;
+            border-color: #d81b60;
+        }
+
+        .btn2:active {
+            transform: scale(0.78);
+        }
+
+
+
+
+/* --- 1. Ocultar el nuevo menú horizontal por defecto (móvil) --- */
+.nav-bar-horizontal-menu {
+    display: none;
+}
+
+
+@media (min-width: 850px) {
+
+   /* Contenedor del menú horizontal */
+.nav-bar-horizontal-menu {
+    display: flex !important;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    
+    /* MAGIA PARA CENTRARLO ABSOLUTAMENTE */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 9px;
+    z-index: 999;
+
+    /* Estilos visuales de la cápsula */
+    height: 40px !important;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 4px;
+    border-radius: 99px;
+    margin-left: 0 !important;
+    gap: 4px; /* Espacio entre botones */
+}
+
+.nav-bar-horizontal-menu .button {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important; 
+    color: #6b7280 !important;
+    
+    padding: 8px 20px !important;
+    margin: 0 !important;
+    
+    /* RESETEO TOTAL */
+    border: none !important;
+    background: transparent;
+    box-shadow: none;
+    height: 32px !important; /* Altura fija */
+    line-height: 1 !important;
+    min-height: 0 !important; /* Quita el min-height de Ionic */
+    
+    border-radius: 99px !important; 
+    
+    display: flex !important; /* Importante para centrar el texto */
+    align-items: center !important;
+    justify-content: center !important;
+    
+    transition: all 0.2s ease;
+}
+
+.menuSelectedColor {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    font-weight: 700 !important;
+    
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06) !important;
+    
+    text-shadow: none !important;
+    border: none !important;
+    
+    /* Mismo padding y altura que los otros botones */
+    padding: 8px 20px !important;
+    height: 32px !important;
+}
+
+    /* 4. HOVER EN INACTIVOS (Sutil) */
+    .nav-bar-horizontal-menu .button:not(.menuSelectedColor):hover {
+         color: #374151 !important; /* Se oscurece un poco el texto */
+         border-bottom: none !important; /* Aseguramos que NO salga la línea abajo */
+    }
+
+}
+
+</style>
+
 <body>
 
-<nav class="navbar">
-    <div class="container nav-container">
-        <div class="logo">
-            mozart<span>MX</span> </div>
-        
-        <ul class="nav-menu">
-            <li><a href="#clases" class="nav-link">Clases</a></li>
-            <li><a href="#experiencia" class="nav-link">Tu espacio</a></li> <li><a href="#planes" class="nav-link">Planes</a></li>
-            <li>
-                <button class="btn btn-primary" onclick="openModal()">¡Inscríbete ya!</button>
-            </li>
-        </ul>
 
-        <div class="hamburger" style="color: black;"> <i class="fas fa-bars"></i>
-        </div>
-    </div>
-</nav>
-
-   <section class="hero-slider-section">
     
-    <div class="creative-slider--wrap">
-        <div class="swiper creative-slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1vabNC6Y394zDtGUtGTkDfeqEOoGnPLdc');"></div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1fxgoyfi6hti3_rvOIERV_d2b-Hk0hRzX');"></div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/165E5sFsKJVS26bsIQ_HRzAS-Jg6GuEEp');"></div>
-                </div>
-            </div>
-        </div>
+  <section class="mainSection" >
+
+
+ <div ng-app="ionicApp">
+  <div ng-controller="AppCtrl">
+
+<ion-nav-bar class="nav-title-slide-ios bar-stable">
+    <ion-nav-back-button icon="caret-back" style="color: black">regresar
+    </ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-nav-view animation="slide-left"></ion-nav-view>
+
+
+
+
+
+
+
+
+
+    
+ <script id="menu.html" type="text/ng-template">
+    <ion-side-menus >
+ <ion-side-menu side="left" width='270' > 
+       
+        <ion-content >
+
+  <div class="profile-user-data clearfix" ng-click="goToHome()">
+          <div class="circle">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF">
+          </div>
+          <div class="main-data" style="margin-top: 22px;" >
+            <h4 class="userLvl" >Mozart <br>MX</h4>
+          </div>  
+  </div>
+
+
+<ul class="list">
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="item" 
+       menu-toggle="left">
+        <i class="ri-presentation-line"></i>&nbspMétodo
+    </a> 
+        <hr>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="item" 
+       menu-toggle="left">
+        <i class="ri-multi-image-line"></i>&nbspGalería
+    </a>
+
+
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="item" 
+       menu-toggle="left">
+        <i class="ri-map-2-line"></i>&nbspUbicación
+    </a>
+
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="item" 
+       menu-toggle="left">
+        <i class="ri-mail-send-line"></i>&nbspContacto
+    </a>
+</ul>
+
+
+  
+        </ion-content>
+ <ion-footer-bar style="z-index: 999 !important;">
+  <button class="button pull-right" ng-click="goToLogin()"><i class="icon ri-login-circle-line"></i>Regístrate</button>
+</ion-footer-bar>
+
+      </ion-side-menu>
+      <ion-side-menu-content >        
+        <ion-nav-view name="menuContent"></ion-nav-view>
+      </ion-side-menu-content>
+
+    </ion-side-menus>
+  </script>     
+    
+ 
+
+
+
+
+
+
+ <script id="home.html" type="text/ng-template">
+    <ion-view >
+      
+ 
+   <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+   <!-- <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button>  -->
+  </ion-nav-buttons>
+      
+
+       <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
     </div>
+        </ion-nav-buttons>  
 
-    <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-        <div class="hero-pill">Mozart MX</div>
-        <h1>Tu camino más corto<br>a la perfección musical.</h1>
-        <p>La primera plataforma de educación musical que combina calidad de conservatorio, certificación ABRSM y tecnología de seguimiento en tiempo real.</p>
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Contacto
+    </a>
+</div>
+
+
+
+    </ion-nav-bar>
+
+
+     <ion-content > 
+
+        <div class="iframe-container"><iframe src="https://www.mozartacademy.mx/home" frameborder="0" allowfullscreen></iframe></div>   
+      </ion-content>
+     
+    </ion-view>
+  </script>
+
+
+
+
+
+
+
+
+      
+    <script id="ubicacion.html" type="text/ng-template">
+    <ion-view >
+ 
+       <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button>  -->
+  </ion-nav-buttons>
+      
+
+         <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Contacto
+    </a>
+</div>
+
+
+    </ion-nav-bar>
+
+
+
+   <ion-content>
+   
+
+  <div class="iframe-container2" style=" padding-top: 3px !important;"><iframe src="https://www.mozartacademy.mx/ubicacion" frameborder="0" allowfullscreen ></iframe> </div> 
+      </ion-content>
+
+
+ 
+
+    </ion-view>
+  </script>  
+
+
+
+
+
+
         
-        <div class="hero-buttons">
-            <button class="btn btn-primary" onclick="openModal()">Comenzar Ahora</button>
-            <a href="#planes" class="btn btn-secondary">Ver Planes</a>
-        </div>
+<script id="lessons.html" type="text/ng-template">
+  <ion-view>
+        <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Iniciar sesión</button>  -->
+  </ion-nav-buttons>
+    
+
+       <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
     </div>
+        </ion-nav-buttons>  
 
-</section>
 
- <section class="benefits">
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+     Ubicacion
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Contacto
+    </a>
+</div>
+
+
+    </ion-nav-bar>
+
+
+
+    <ion-content > 
+      <!-- achievements -->
+        <div class="iframe-container"><iframe src="https://www.mozartacademy.mx/lessons" frameborder="0" allowfullscreen ></iframe></div> 
+    </ion-content> 
+
+  
+
+  </ion-view>
+</script>
+
+
+
+
+        
+        
+<script id="contacto.html" type="text/ng-template">
+  <ion-view>
+      
+        <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button> -->
+  </ion-nav-buttons>
+       
+
+         <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Contacto
+    </a>
+</div>
+
+
+    </ion-nav-bar>
+
+    <ion-content > 
+      <!-- achievements -->
+        <div class="iframe-container"><iframe src="https://www.mozartacademy.mx/contacto" frameborder="0" allowfullscreen ></iframe></div> 
+    </ion-content> 
+
+   
+
+  </ion-view>
+</script>
+
+
+
+    
+
+
+
+
+         <script id="payment.html" type="text/ng-template">
+    <ion-view >
+
+   <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button>  -->
+  </ion-nav-buttons>
+        <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+
+     <div class="nav-bar-horizontal-menu">
+     <div class="profile-user-data clearfix" style="margin-left: -10px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Lecciones
+    </a>
+     <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Galería
+    </a>
+   
+    <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Contacto  
+    </a>
+</div>      
+        </ion-nav-buttons>  
+    </ion-nav-bar>
+
+      <div id="g_id_onload" data-client_id="613538890545-o4p4ft7oji6uhimgh0inqn5l5cgv1gnm.apps.googleusercontent.com" data-context="signup" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="true"></div>
+    
+      <ion-content>
+           
+        <div class="iframe-container"><iframe src="https://www.mozart-app.com/pricing" frameborder="0" allowfullscreen ></iframe></div> 
+      </ion-content>
+    </ion-view>
+  </script>
+
+
+
+
+
+
+
+
+   <script id="finder.html" type="text/ng-template">
+    <ion-view >
+
+        <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+   <!-- <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button> -->
+  </ion-nav-buttons>
+        <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+
+   <div class="nav-bar-horizontal-menu">
+     <div class="profile-user-data clearfix" style="margin-left: -10px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Lecciones
+    </a>
+     <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+        Galería
+    </a>
+    
+    <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Contacto
+    </a>
+</div>      
+        </ion-nav-buttons>  
+    </ion-nav-bar>
+
+
+
+     <ion-content>
+  <div class="iframe-container"><iframe src="https://www.mozartacademy.mx.com" frameborder="0" allowfullscreen ></iframe></div> 
+      </ion-content>
+      
+       
+
+     
+    </ion-view>
+  </script>  
+
+
+
+
+
+
+    
+   <script id="galeria.html" type="text/ng-template">
+    <ion-view >
+
+       <ion-nav-bar class="bar-light" >      
+        <ion-nav-buttons side="right">
+ <button class="btn2 btn-login" ng-click="goToLogin()">Regístrate</button>
+  <!--  <button class="btn2 btn-register" ng-click="goToLogin()">Regístrate</button> -->
+  </ion-nav-buttons>
+       
+
+         <ion-nav-buttons side="left">
+          <button class="button button-clear menubtn" ng-click="toggleRight()"><i class="button button-icon ion-navicon"></i></button>
+        <div class="profile-user-data clearfix" style="margin-left: -1px !important; cursor: pointer;" ng-click="goToHome()">
+          <div class="circle2">
+              <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
+          </div>
+          <div class="main-data" style="margin-top: 35px;" >
+            <h5 class="userLvl" >Mozart <br>MX</h5>
+          </div>  
+    </div>
+        </ion-nav-buttons>  
+
+
+   <div class="nav-bar-horizontal-menu">
+               
+    <a ui-sref="menu.lessons" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Método
+    </a>
+    <a ui-sref="menu.galeria" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+       Galería
+    </a>
+     <a ui-sref="menu.ubicacion" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Ubicación
+    </a>
+    <a ui-sref="menu.contacto" 
+       ui-sref-active="menuSelectedColor" 
+       class="button button-clear" style="font-weight: 400;">
+      Contacto
+    </a>
+</div>
+
+ 
+    </ion-nav-bar>
+
+
+
+     <ion-content >
+  <div class="iframe-container"><iframe src="https://www.mozartacademy.mx/galeria" frameborder="0" ></iframe></div> 
+      </ion-content>
+   
+
+     
+    </ion-view>
+  </script>   
+
+
+
+
+
+  </div>
+</div>
+
+  </section>
+
+   <section class="preloader" style="display: none;">
+    <div id="loading">&nbsp;</div>
+    <div id="loading-text">Cargando</div>
+  </section> 
+
+
+</body>
+
+
+<script>
+
+  var app = angular.module('ionicApp', ['ionic']);
+app
+ .run(function($ionicPlatform) {
+      $ionicPlatform.ready(function() {
+        if (window.StatusBar) {
+          StatusBar.styleDefault();
+        }
+      });
+    })
+
+
+
+
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+   $stateProvider
+
+
+
+    .state('menu', {
+      url: "",
+      abstract: true,
+      templateUrl: "menu.html",
+      controller: 'MenuCtrl'
+    })
+   .state('menu.home', {
+      url: "",
+      views: {
+        'menuContent': {
+          templateUrl: "home.html"
+        }
+      }
+    })
+ 
+
+    .state('menu.lessons', {
+      url: "/lessons",
+      views: {
+        'menuContent': {
+          templateUrl: "lessons.html"
+        }
+      }
+    }) 
+     
+ .state('menu.contacto', {
+      url: "/contacto",
+      views: {
+        'menuContent' :{
+          templateUrl: "contacto.html"
+        }
+      }
+    })
+
+
+    
+     .state('menu.ubicacion', {
+      url: "/ubicacion",
+      views: {
+        'menuContent': {
+          templateUrl: "ubicacion.html"
+        }
+      }
+    }) 
+    
+  
+ .state('menu.payment', {
+      url: "/payment",
+      views: {
+        'menuContent': {
+          templateUrl: "payment.html"
+        }
+      }
+    })
+
+   .state('menu.galeria', {
+      url: "/galeria",
+      views: {
+        'menuContent': {
+          templateUrl: "galeria.html"
+        }
+      }
+    })
+
+    .state('menu.finder', {
+      url: "/finder",
+      views: {
+        'menuContent': {
+          templateUrl: "finder.html"
+        }
+      }
+    })
  
    
-  
-    <div style="width: 100%; max-width: 1400px; margin: 0 auto;">
-        <div class="benefits-grid-full">
-            <div class="benefit-module" style="background-image: url('https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=2070&auto=format&fit=crop');">
-                <div class="module-content">
-                    <span class="module-subtitle">Fase 1: Fundamentos</span>
-                    <h3 class="module-title">Iniciación al Piano & Postura</h3>
-                </div>
-            </div>
 
-            <div class="benefit-module" style="background-image: url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=2070&auto=format&fit=crop');">
-                <div class="module-content">
-                    <span class="module-subtitle">Fase 2: Lenguaje</span>
-                    <h3 class="module-title">Lectura de Partituras Fluida</h3>
-                </div>
-            </div>
 
-            <div class="benefit-module" style="background-image: url('https://images.unsplash.com/photo-1606202836817-411529690109?q=80&w=2070&auto=format&fit=crop');">
-                <div class="module-content">
-                    <span class="module-subtitle">Fase 3: Estructura</span>
-                    <h3 class="module-title">Armonía y Teoría Aplicada</h3>
-                </div>
-            </div>
+    ; 
 
-            <div class="benefit-module" style="background-image: url('https://images.unsplash.com/photo-1544256718-3bcf237f3974?q=80&w=2071&auto=format&fit=crop');">
-                <div class="module-content">
-                    <span class="module-subtitle">Fase 4: Maestría</span>
-                    <h3 class="module-title">Técnica e Interpretación ABRSM</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  $urlRouterProvider.otherwise("");
+  $ionicConfigProvider.tabs.position('bottom'); 
+})
 
-    <section class="programs" id="clases">
-        <div class="container">
-            <div class="section-header-centered">
-                <h2>Conoce las mejores clases en <span class="highlight">Mozart MX</span></h2>
-            </div>
-            
-            <div class="programs-grid">
-                <div class="class-card">
-                    <div class="class-img" style="background-image: url('https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="class-title-bar">PIANO BÁSICO</div>
-                    <div class="class-info-row">
-                        <div class="info-item">
-                            <i class="far fa-clock"></i>
-                            <span class="info-label">Duración</span>
-                            <span class="info-value">55 min</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-bolt"></i>
-                            <span class="info-label">Intensidad</span>
-                            <span class="info-value">Media</span>
-                        </div>
-                    </div>
-                    <hr class="class-divider">
-                    <p class="class-desc">
-                        Aprende a leer partituras y tocar tus primeras melodías desde las primeras semanas. Ideal para principiantes absolutos.
-                    </p>
-                </div>
+ .controller('AppCtrl', function($scope) {
+      
+    
 
-                <div class="class-card">
-                    <div class="class-img" style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="class-title-bar">PIANO MODERNO & POP</div>
-                    <div class="class-info-row">
-                        <div class="info-item">
-                            <i class="far fa-clock"></i>
-                            <span class="info-label">Duración</span>
-                            <span class="info-value">55 min</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-fire"></i>
-                            <span class="info-label">Intensidad</span>
-                            <span class="info-value">Alta</span>
-                        </div>
-                    </div>
-                    <hr class="class-divider">
-                    <p class="class-desc">
-                        Domina acordes, improvisación y toca los hits del momento. Enfocado en resultados rápidos y diversión.
-                    </p>
-                </div>
+    })
 
-                <div class="class-card">
-                    <div class="class-img" style="background-image: url('https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="class-title-bar">CERTIFICACIÓN ABRSM</div>
-                    <div class="class-info-row">
-                        <div class="info-item">
-                            <i class="far fa-clock"></i>
-                            <span class="info-label">Duración</span>
-                            <span class="info-value">60 min</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-award"></i>
-                            <span class="info-label">Intensidad</span>
-                            <span class="info-value">Alta</span>
-                        </div>
-                    </div>
-                    <hr class="class-divider">
-                    <p class="class-desc">
-                        Preparación rigurosa para exámenes internacionales de música. Técnica, teoría y repertorio clásico.
-                    </p>
-                </div>
-            </div>
 
-            <div class="programs-cta-container">
-                <button class="btn btn-primary" onclick="openModal()">¡Inscríbete ya!</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="experience" id="experiencia">
-        <div class="container">
-            <div class="section-header-centered">
-                <h2>Vive la experiencia <span class="highlight">Mozart MX</span> y disfruta de un ambiente agradable y seguro con las mejores instalaciones.</h2>
-            </div>
-
-            <div class="experience-grid">
-                <div class="amenity-card">
-                    <div class="amenity-img" style="background-image: url('https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="amenity-label">Pianos Acústicos y Digitales</div>
-                </div>
-
-                <div class="amenity-card featured">
-                    <div class="amenity-img" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="amenity-label">Salón de Clases Equipado</div>
-                </div>
-
-                <div class="amenity-card">
-                    <div class="amenity-img" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop');"></div>
-                    <div class="amenity-label">Áreas Funcionales y de Espera</div>
-                </div>
-            </div>
-            
-            <div class="programs-cta-container" style="margin-top: 40px;">
-                <button class="btn btn-primary" onclick="openModal()">¡Inscríbete ya!</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing-section" id="planes">
-        <div class="container">
-            <div class="section-header-centered">
-                <h2>ELIGE TU PLAN</h2>
-                <p style="color: #666; font-size: 1.1rem; margin-top: 10px;">Comienza tu formación hoy. Elige el plan que mejor se adapte a tu ritmo.</p>
-                <p style="font-size: 0.9rem; color: #888;">*Costo por clase suelta: $150 MXN.</p>
-            </div>
-
-            <div class="billing-toggle">
-                <button class="toggle-btn active" onclick="switchBilling('mensual')">Mensual</button>
-                <button class="toggle-btn" onclick="switchBilling('trimestral')">Trimestral <span class="best-offer">AHORRA +</span></button>
-            </div>
-
-            <div class="pricing-cards">
-                <div class="price-card" id="plan1-card" onclick="selectPlan('plan1')">
-                    <div class="radio-container"><h3 class="plan-name">Plan 1</h3><div class="radio-input"></div></div>
-                    <div class="card-header">
-                        <div class="price price-mensual">449 <span class="price-period">MXN/mes</span></div>
-                        <div class="price price-trimestral" style="display: none;">1,200 <span class="price-period">MXN/3 meses</span></div>
-                        <div class="savings savings-mensual">Ahorra 17%</div>
-                        <div class="savings savings-trimestral" style="display: none;">Ahorra 33% Total</div>
-                    </div>
-                    <ul class="features">
-                        <li class="feature">4 clases al mes</li>
-                        <li class="feature">Acceso a App</li>
-                        <li class="feature">Recitales básicos</li>
-                    </ul>
-                </div>
-
-                <div class="price-card" id="plan2-card" onclick="selectPlan('plan2')">
-                    <div class="radio-container"><h3 class="plan-name">Plan 2</h3><div class="radio-input"></div></div>
-                    <div class="card-header">
-                        <div class="price price-mensual">799 <span class="price-period">MXN/mes</span></div>
-                        <div class="price price-trimestral" style="display: none;">2,100 <span class="price-period">MXN/3 meses</span></div>
-                        <div class="savings savings-mensual">Ahorra 33%</div>
-                        <div class="savings savings-trimestral" style="display: none;">Ahorra 41% Total</div>
-                    </div>
-                    <ul class="features">
-                        <li class="feature">8 clases al mes</li>
-                        <li class="feature">Acceso a App</li>
-                        <li class="feature">Práctica libre</li>
-                        <li class="feature">Recitales en auditorio</li>
-                    </ul>
-                </div>
-
-                <div class="price-card premium" id="intensivo-card" onclick="selectPlan('intensivo')">
-                    <div class="radio-container"><h3 class="plan-name">Intensivo</h3><div class="radio-input checked"></div></div>
-                    <div class="card-header">
-                        <div class="price price-mensual">1,399 <span class="price-period">MXN/mes</span></div>
-                        <div class="price price-trimestral" style="display: none;">3,450 <span class="price-period">MXN/3 meses</span></div>
-                        <div class="savings savings-mensual">Ahorra 41%</div>
-                        <div class="savings savings-trimestral" style="display: none;">Ahorra 55% Total</div>
-                    </div>
-                    <ul class="features">
-                        <li class="feature">16 clases al mes</li>
-                        <li class="feature">Seguimiento 24/7</li>
-                        <li class="feature">Flexibilidad total</li>
-                        <li class="feature">Acceso VIP</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="registration-banner">
-                <span class="banner-text">
-                    <span class="strikethrough">Inscripción: $399 MXN</span><br>
-                    ¡Inscríbete en <strong id="current-month" style="text-transform: uppercase;"></strong> y paga solo <span class="sale-price">$10 MXN</span> de inscripción!
-                </span>
-            </div>
-        </div>
-    </section>
-
-    <div class="cta-section">
-        <div class="cta-content">
-            <button class="close-cta-btn" onclick="closeCta()"><i class="fas fa-times"></i></button>
-            <div>
-                <span style="font-weight: 700; display: block; text-transform: uppercase; color: #666; font-size: 0.8rem;">Estás eligiendo:</span>
-                <span class="selected-price" id="cta-plan-name">INTENSIVO</span>
-                <span class="selected-price" id="selected-price-amount" style="margin-left: 10px; font-size: 1.5rem;">1,399 MXN</span>
-            </div>
-            <div>
-                <button class="btn btn-primary" style="width: 100%;" onclick="subscribe()">INSCRIBIRSE AHORA</button>
-            </div>
-        </div>
-    </div>
-
-   <section class="app-section" id="app">
-    <div class="container app-container">
-        <div class="app-text">
-            <h2>Mozart App</h2>
-            <p>No importa si ya tienes experiencia o si recién estás comenzando a tocar, una cosa es segura: al descargar gratis la aplicación Mozart MX, obtienes el mejor aliado para tu rutina de práctica. Exclusivo para alumnos.</p>
-            
-            <p class="scan-text">Escanea el código para descargar gratis.</p>
-            
-            <div class="download-area">
-                <div class="qr-box">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=MozartAcademyApp" alt="QR Code">
-                </div>
-                <div class="store-buttons">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Disponible en Google Play">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Consíguelo en el App Store">
-                </div>
-            </div>
-        </div>
-
-        <div class="app-visual">
-            <div class="yellow-shape"></div>
-            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop" class="phones-img" alt="Mozart App Interface">
-        </div>
-    </div>
-</section>
-
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header-centered"><h2>Historias Reales</h2></div>
-            <div class="testi-grid">
-                <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">"La flexibilidad del Plan 2 me permite trabajar y aprender piano sin presiones."</p>
-                    <div class="testi-author">
-                        <div class="author-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg');"></div>
-                        <div class="author-info"><strong>Carlos M.</strong><span>Alumno Plan 2</span></div>
-                    </div>
-                </div>
-                 <div class="testi-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testi-text">"El plan Intensivo cambió mi técnica por completo. Poder ir 4 veces a la semana es increíble."</p>
-                    <div class="testi-author">
-                        <div class="author-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
-                        <div class="author-info"><strong>Sofia R.</strong><span>Alumna Intensivo</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 20px; color: white !important">MOZART<span>MX</span></div>
-                    <p>Revolucionando la educación musical con tecnología y pasión.</p>
-                </div>
-                <div class="footer-col">
-                    <h5>Academia</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">Planes y Precios</a></li>
-                        <li><a href="#">Login Alumnos</a></li>
-                        <li><a href="#">Términos y Condiciones</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Síguenos</h5>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="legal"><p>&copy; 2024 Mozart MX. Todos los derechos reservados.</p></div>
-        </div>
-    </footer>
-
-    <div id="leadModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
-            <div class="modal-header">
-                <h3>¡TU PRIMERA CLASE ES <span style="color: var(--sf-yellow);">GRATIS!</span></h3>
-                <p>Déjanos tus datos y te contactaremos en minutos para agendar.</p>
-            </div>
-            <form onsubmit="submitLead(event)">
-                <div class="form-group"><i class="fas fa-user"></i><input type="text" placeholder="Nombre Completo" required></div>
-                <div class="form-group"><i class="fab fa-whatsapp"></i><input type="tel" placeholder="WhatsApp" required></div>
-                <div class="form-group">
-                    <i class="fas fa-music"></i>
-                    <select required>
-                        <option value="" disabled selected>Nivel de Piano</option>
-                        <option value="cero">Desde Cero</option>
-                        <option value="basico">Básico</option>
-                        <option value="intermedio">Intermedio</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">AGENDAR AHORA</button>
-                <p class="privacy-text">Aceptas nuestro aviso de privacidad.</p>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // --- NAVBAR MOBILE ---
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
-        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => { navMenu.classList.remove('active'); }));
-
-        // --- PRICING DATA ---
-        const pricingData = {
-            'plan1': { name: 'PLAN 1', mensual: '449 MXN', trimestral: '1,200 MXN' },
-            'plan2': { name: 'PLAN 2', mensual: '799 MXN', trimestral: '2,100 MXN' },
-            'intensivo': { name: 'PLAN INTENSIVO', mensual: '1,399 MXN', trimestral: '3,450 MXN' }
-        };
-
-        let selectedPlan = 'intensivo';
-        let billingType = 'mensual';
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-            document.getElementById('current-month').textContent = meses[new Date().getMonth()];
-            updateCtaPrice();
+.controller('MenuCtrl', ['$http', '$scope', '$ionicSideMenuDelegate', '$ionicModal', '$ionicHistory', '$timeout', function($http, $scope, $ionicSideMenuDelegate, $ionicModal, $ionicHistory, $timeout) {
+  $scope.toggleRight = function() {
+    $('.item').removeClass('anim');
+    setTimeout(function() {
+        $('.item').each(function(index) {
+            $(this).addClass('anim').css('animation-delay', (index * 0.1) + 's');
         });
+    }, 10);
 
-        function switchBilling(type) {
-            billingType = type;
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.toggle-btn')[type === 'mensual' ? 0 : 1].classList.add('active');
-            
-            document.querySelectorAll('.price-mensual, .savings-mensual').forEach(el => el.style.display = type === 'mensual' ? 'block' : 'none');
-            document.querySelectorAll('.price-trimestral, .savings-trimestral').forEach(el => el.style.display = type === 'trimestral' ? 'block' : 'none');
-            
-            updateCtaPrice();
-        }
+ 
+      
+    $ionicSideMenuDelegate.toggleLeft();
+      $scope.isDropdownVisible = false;
+};
 
-        function selectPlan(plan) {
-            selectedPlan = plan;
-            document.querySelectorAll('.price-card').forEach(c => {
-                c.classList.remove('premium');
-                c.querySelector('.radio-input').classList.remove('checked');
-            });
-            const activeCard = document.getElementById(plan + '-card');
-            if(activeCard) {
-                activeCard.classList.add('premium');
-                activeCard.querySelector('.radio-input').classList.add('checked');
-            }
-            document.querySelector('.cta-section').style.display = 'flex';
-            updateCtaPrice();
-        }
 
-        function updateCtaPrice() {
-            if (!pricingData[selectedPlan]) return;
-            document.getElementById('cta-plan-name').textContent = pricingData[selectedPlan].name;
-            document.getElementById('selected-price-amount').textContent = pricingData[selectedPlan][billingType];
-        }
 
-        function closeCta() { document.querySelector('.cta-section').style.display = 'none'; }
-        function subscribe() { alert('Redirigiendo a checkout para: ' + selectedPlan); }
 
-        // --- MODAL LOGIC ---
-        function openModal() {
-            const modal = document.getElementById('leadModal');
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
-        }
-        function closeModal() {
-            const modal = document.getElementById('leadModal');
-            modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-        document.getElementById('leadModal').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('leadModal')) closeModal();
-        });
-        function submitLead(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            btn.innerText = 'ENVIANDO...';
-            setTimeout(() => {
-                btn.innerText = '¡ENVIADO!';
-                setTimeout(() => { closeModal(); btn.innerText = 'AGENDAR AHORA'; }, 1000);
-            }, 1500);
-        }
-        // --- INICIALIZAR HERO SLIDER ---
-document.addEventListener('DOMContentLoaded', () => {
-    const swiper = new Swiper(".creative-slider", {
-        spaceBetween: 0,
-        effect: "fade",       // Efecto de desvanecimiento elegante
-        speed: 2000,          // Transición suave de 2 segundos
-        fadeEffect: { crossFade: true },
-        loop: true,           // Infinito
-        autoplay: {
-            delay: 6000,      // Cambia cada 6 segundos
-            disableOnInteraction: false,
-        },
-        allowTouchMove: false, // Evita que el usuario lo mueva manualmente (opcional)
-    });
-});
+     $scope.isDropdownVisible = false;
+    $scope.btnBar = true;
+    $scope.toggleDropdown = function() {
+      $scope.isDropdownVisible = !$scope.isDropdownVisible;
+        $scope.btnBar = false;
+    };
+
+
+
+
+
+
+   $scope.goToProfile = function() {
+  window.location.href = '#/menu/profile';
+};  
+     $scope.goToChat = function() {
+  window.location.href = '#/menu/chat';
+}; 
+  $scope.goToAccount = function() {
+  window.location.href = '#/menu/account';
+}; 
+     $scope.goToStatus = function() {
+  window.location.href = '#/menu/status';
+};
+  $scope.goToStats = function() {
+  window.location.href = '#/menu/statistics';
+};
+      $scope.goToLogin = function() {
+  window.location.href = 'https://www.mozart-app.com/login';
+};
+$scope.goToPayment = function() {
+   window.location.href = '#/menu/payment';
+};
+    $scope.goToMain = function() {
+   window.location.href = '#/main';
+};
+
+ $scope.goToHome = function() {
+   window.location.href = '/';
+};
+
+
+$scope.goBack = function() {
+     if ($ionicHistory.backView()) {
+        $ionicHistory.goBack();
+      } else {
+        window.location.href = '#/main';
+      }
+    };
+
+
+
+
+ }])
+
+
+
+
     </script>
-</body>
-</html>
+ 
