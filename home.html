@@ -3,832 +3,537 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piano Quest Pro - Infraestructura de Aprendizaje</title>
+    <title>Mozart+ App | Plataforma Educativa Musical</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<style>
+    /* --- VARIABLES MOZART+ --- */
+    :root {
+        /* Paleta Premium */
+        --bg-color: #F2EFE9;        /* Crema Base */
+        --surface-color: #FFFFFF;    /* Blanco puro para tarjetas */
+        --surface-border: #E5E2DC;   /* Borde sutil crema oscuro */
+        
+        --text-main: #1C1C1C;        /* Negro casi puro */
+        --text-muted: #595959;       /* Gris elegante */
+        
+        --accent-color: #1C1C1C;     /* El acento es el negro mismo */
+        
+        /* Paleta Oscura (Secciones inmersivas) */
+        --dark-bg: #0F0F0F;
+        --dark-surface: #1A1A1A;
+        --dark-text: #B0B0B0;
+        --dark-title: #F2EFE9;
+
+        /* Tipografía */
+        --font-title: 'Outfit', sans-serif;
+        --font-body: 'Inter', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+        
+        /* UI */
+        --spacing-md: 2rem;
+        --spacing-lg: 4rem;
+        --border-radius: 12px;
+        --shadow-soft: 0 15px 40px rgba(28, 28, 28, 0.05); /* Sombra cálida */
+        --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        font-family: var(--font-body);
+        line-height: 1.6;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- TIPOGRAFÍA --- */
+    h1, h2, h3, h4 { 
+        font-family: var(--font-title); 
+        font-weight: 600; 
+        line-height: 1.1; 
+        color: var(--text-main);
+        letter-spacing: -0.02em;
+    }
     
-    <style>
-        :root {
-            /* Paleta clara y gris elegante */
-            --bg-body: #f8f9fa;       /* Fondo gris muy claro */
-            --text-primary: #1a1a1a;  /* Negro suave */
-            --text-secondary: #6b7280;
-            --accent-green: #4b5563;
-            --accent-light: #d1d5db;
-            --surface: #ffffff;       /* Blanco puro para tarjetas */
-            --border: #e5e7eb;        /* Bordes sutiles grises */
-            
-            /* Espaciado y Radio */
-            --radius-lg: 12px;
-            --radius-sm: 6px;
-            --font-sans: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+    h4 { font-size: 1.2rem; margin-bottom: 1rem; }
+    p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; position: relative; z-index: 2; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .center-text { text-align: center; }
+    .mb-large { margin-bottom: 4rem; }
+    section { padding: 6rem 0; }
 
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-primary);
-            font-family: var(--font-sans);
-            font-size: 14px;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-    max-width: 100vw;
-        }
+    /* --- BOTONES PREMIUM --- */
+    .btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        padding: 16px 32px; border-radius: 6px; /* Menos redondeado, más serio */
+        font-weight: 500; text-decoration: none; cursor: pointer; 
+        transition: var(--transition); font-size: 0.95rem; margin-right: 10px;
+        font-family: var(--font-title); letter-spacing: 0.5px;
+    }
+    
+    /* Botón Primario: Negro sólido */
+    .btn-primary { 
+        background-color: var(--text-main); 
+        color: var(--bg-color); 
+        border: 1px solid var(--text-main);
+    }
+    .btn-primary:hover { 
+        background-color: transparent; 
+        color: var(--text-main); 
+        transform: translateY(-2px);
+    }
 
-        /* --- UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative; /* Importante para z-index */
-            z-index: 2;
-            overflow-x: hidden;
-        }
-        
-        .mono {
-            font-family: var(--font-mono);
-            letter-spacing: -0.5px;
-            font-size: 0.85em;
-            text-transform: uppercase;
-        }
+    /* Botón Outline: Borde Negro */
+    .btn-outline { 
+        background: transparent; 
+        border: 1px solid var(--text-main); 
+        color: var(--text-main); 
+    }
+    .btn-outline:hover { 
+        background: rgba(28,28,28,0.05);
+    }
 
-          .pill {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-         border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 99px;
-            font-size: 12px;
-            font-weight: 500;
-           color: #ffffff; /* Asegúrate que sea blanco */
-    background: rgba(255, 255, 255, 0.1); /* Fondo más transparente para que combine */
-    backdrop-filter: blur(4px);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
+    /* Botón Secundario: Crema Oscuro */
+    .btn-secondary { 
+        background-color: #E5E2DC; 
+        color: var(--text-main); 
+        border: none;
+    }
+    .btn-secondary:hover { background-color: #D6D3CD; }
 
-        /* --- HEADER --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 0;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-            z-index: 100;
-            background: rgba(248, 249, 250, 0.8);
-            backdrop-filter: blur(10px);
-        }
+    /* Botón Large (Try it now) */
+    .btn-large { padding: 20px 40px; font-size: 1.1rem; border-radius: 8px; }
 
-        .logo {
-            font-weight: 600;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .logo-box {
-            width: 20px;
-            height: 20px;
-            background: var(--text-primary);
-            border-radius: 4px;
-        }
 
-        .nav-links {
-            display: flex;
-            gap: 24px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            font-size: 13px;
-        }
-
-        .btn {
-            background: var(--text-primary);
-            color: var(--bg-body);
-            padding: 10px 18px;
-            border-radius: var(--radius-sm);
-            text-decoration: none;
-            font-weight: 500;
-            transition: transform 0.1s;
-        }
-        
-        .btn:hover { transform: translateY(-1px); }
-
-        /* --- HERO SLIDER INTEGRATION --- */
-        .hero-slider-section {
-            position: relative;
-            width: 100%;
-            /* Altura ajustada: Alto pero no pantalla completa para ver que hay contenido abajo */
-            height: 80vh; 
-            min-height: 600px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            max-width: 100vw;
-        }
-
-        /* El contenedor del slider (fondo absoluto) */
-        .creative-slider--wrap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .swiper {
-            width: 100%;
-            height: 100%;
-        }
-
-        .slide-bg {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            /* Efecto Ken Burns suave */
-            transform: scale(1);
-            transition: transform 8s ease;
-        }
-        
-        .swiper-slide-active .slide-bg {
-            transform: scale(1.1);
-        }
-
-        /* Overlay blanco para mantener la legibilidad del texto negro */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+    /* --- HERO SLIDER --- */
+   .hero-slider-section { 
+    position: relative; 
+    width: 100%; 
+    height: 90vh; 
+    min-height: 600px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; /* Alinea el contenido general a la izquierda */
+    overflow: hidden; 
+}
+    .creative-slider--wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+    .swiper { width: 100%; height: 100%; }
+    .slide-bg { width: 100%; height: 100%; background-size: cover; background-position: center; transform: scale(1); transition: transform 8s ease; /* Fotos en BN */ }
+    .swiper-slide-active .slide-bg { transform: scale(1.1); }
+    
+    /* Overlay Gradiente Crema */
+    .hero-overlay { 
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
         background: linear-gradient(to bottom, 
-                rgba(0, 0, 0, 0.5) 0%,      /* Arriba: Sombra media (50%) */
-                rgba(0, 0, 0, 0.2) 50%,     /* Centro: Muy transparente, se ve la foto clara */
-                rgba(0, 0, 0, 0.6) 100%);   /* Abajo: Sombra media para el texto inferior */
-            z-index: 1;
+                rgba(0, 0, 0, 0.2) 0%, 
+                rgba(0, 0, 0, 0.3) 50%, 
+                rgba(0, 0, 0, 0.5) 100%); /* Funde con el fondo crema */
 
-        }
-
-        /* Contenido del Hero (Texto) */
-       /* Contenedor del texto: Alineamos a la izquierda */
-.hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: left; /* <--- CAMBIO: De center a left */
-    max-width: 1200px; /* Aumentamos un poco el ancho para aprovechar espacio */
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    
+   .hero-content { 
+    position: relative; 
+    z-index: 10; 
+    text-align: left; /* Texto alineado a la izquierda */
+    max-width: 800px; 
+    padding: 0 5%; /* Margen lateral porcentual para que no pegue al borde */
+    margin-left: 0; /* Asegura que esté a la izquierda */
 }
 
-/* Título: Color blanco */
-.hero-content h1 {
-    font-size: 56px;
+.hero-content h1 { 
+    color: #FFFFFF;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.6); /* Sombra para legibilidad */
+    font-size: clamp(2.5rem, 5vw, 4.5rem); 
+    margin-bottom: 1.5rem;
     line-height: 1.1;
-    letter-spacing: -1.5px;
-    margin-bottom: 24px;
-    color: #EAEAEA; /* <--- CAMBIO: Color blanco */
 }
 
-/* Párrafo: Color blanco y quitamos margen automático */
-.hero-content p {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.9); /* Blanco con ligera transparencia */
-    margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: 0;  /* <--- CAMBIO: Antes era 'auto', ahora 0 */
-    margin-right: 0; /* <--- CAMBIO: Antes era 'auto', ahora 0 */
-      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+/* Párrafo Blanco con Sombra */
+.hero-content p { 
+    color: #F0F0F0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-left: 0; 
+    margin-right: auto; /* Evita que se centre */
+    margin-bottom: 2.5rem;
 }
 
-        /* --- BENTO GRID LAYOUT --- */
-        .grid-section {
-            padding: 60px 0;
-            position: relative;
-            background: var(--bg-body); /* Asegura fondo sólido */
-        }
+.hero-content .pill.mono { 
+    color: #FFFFFF;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(4px);
+    margin-bottom: 25px;
+}
 
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto auto;
-            gap: 16px;
-        }
+/* Botones Específicos del Hero (Sobreescribiendo globales) */
+.hero-content .btn-primary { 
+    background-color: #FFFFFF; 
+    color: #1C1C1C; 
+    border: 1px solid #FFFFFF;
+    font-weight: 600;
+}
+.hero-content .btn-primary:hover { 
+    background-color: #F2EFE9; 
+    transform: translateY(-2px);
+}
 
-        /* Tarjetas estilo Framer */
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
+.hero-content .btn-outline { 
+    background: transparent; 
+    border: 1px solid #FFFFFF; 
+    color: #FFFFFF; 
+}
+.hero-content .btn-outline:hover { 
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(2px);
+}
+    
+    .pill.mono { 
+        display: inline-block; padding: 8px 16px; 
+        border: 1px solid var(--text-main); 
+        border-radius: 99px; font-size: 11px; font-weight: 500; 
+        background: transparent; 
+        font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px; color: var(--text-main);
+    }
 
-        .card:hover {
-            border-color: var(--text-secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
+    /* --- TABLET ANIMATION (Adaptada a Crema) --- */
+    .tablet-section.no-bg {
+        background-color: transparent; border-top: none; padding: 40px 0 120px; overflow: visible;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        position: relative; z-index: 5;
+    }
+    .tablet-header { text-align: center; margin-bottom: 80px; z-index: 5; position: relative; }
+    
+    .surface-container {
+        position: relative; width: 500px; height: 317px; transform-origin: center center; z-index: 2;
+        margin-top: 20px; margin-bottom: 120px;
+        transform: scale(1.5) translateY(40px); opacity: 0; 
+        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .surface-container.visible { opacity: 1; transform: scale(1.5) translateY(0) !important; }
+    
+    /* Tablet Marco */
+    .surface { 
+        border: 2px solid #333; /* Marco oscuro */
+        overflow: hidden; 
+        box-shadow: 0 40px 100px rgba(0,0,0,0.2); 
+        background-color: #111; 
+        border-radius: 12px; width: 500px; height: 317px; position: absolute; left: 0; top: 0; pointer-events: none; transition: transform 0.9s;
+    }
+    .display { position: absolute; left: 15px; right: 15px; top: 15px; bottom: 15px; background-color: #000; z-index: 1; overflow: hidden; border-radius: 4px; }
+    
+    .tablet-content { width: 100%; height: 100%; background: #000; position: relative; overflow: hidden; }
+    .tablet-slider-wrapper { display: flex; width: 300%; height: 100%; animation: tabletSlide 12s infinite cubic-bezier(0.45, 0, 0.55, 1); }
+    .t-slide { width: 33.333%; height: 100%; flex-shrink: 0; }
+    .t-slide-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+    @keyframes tabletSlide { 0%, 25% { transform: translateX(0); } 33%, 58% { transform: translateX(-33.333%); } 66%, 91% { transform: translateX(-66.666%); } 100% { transform: translateX(0); } }
+    
+    .sense { width: 100px; height: 84.25px; float: left; position: relative; z-index: 10; }
+    /* Brillo sutil */
+    .shine { width: 900px; height: 537px; margin-left: -200px; margin-top: -100px; transition: all 0.9s; background: linear-gradient(115deg, rgba(255,255,255,0), rgba(255,255,255,0) 60%, rgba(255,255,255,0.1) 60%, rgba(255,255,255,0.4) 100%); z-index: 2; opacity: 0.3; position: absolute; pointer-events: none; }
+    
+    /* Hover effects Tablet */
+    .sense:hover ~ .surface { transform: perspective(50em) rotateX(-5deg) rotateY(5deg); }
+    .sense:nth-child(5n-4):hover ~ .surface { transform: perspective(50em) rotateX(-5deg) rotateY(-5deg); }
+    .sense:nth-child(n+10):hover ~ .surface { transform: perspective(50em) rotateX(5deg) rotateY(5deg); }
 
-        /* Span 2 columnas para la tarjeta principal */
-        .col-span-2 { grid-column: span 2; }
-        .row-span-2 { grid-row: span 2; }
 
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
+    /* --- CHIPS (Minimalistas) --- */
+    .download-chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .chip {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 8px 16px; border-radius: 50px; 
+        font-size: 0.85rem; font-weight: 500; font-family: var(--font-body);
+        border: 1px solid rgba(28,28,28,0.2); color: var(--text-main);
+        background: transparent;
+        transition: var(--transition);
+    }
+    .chip i { font-size: 1.1rem; }
+    .chip:hover { border-color: var(--text-main); background: var(--surface-color); }
 
-        .card p {
-            font-size: 14px;
-            opacity: 0.7;
-        }
 
-        /* Visualizaciones Técnicas (Simulando la estética de Hype) */
-        .tech-viz {
-            margin-top: 24px;
-            background: var(--text-primary);
-            border-radius: var(--radius-sm);
-            padding: 16px;
-            color: var(--bg-body);
-            font-family: var(--font-mono);
-            font-size: 11px;
-            overflow: hidden;
-            position: relative;
-        }
+    /* --- MAC SAFARI SIMULATOR (Theme: Cream) --- */
+    .mac-window {
+        width: 100%; height: 500px;
+        background: var(--surface-color);
+        border-radius: 12px;
+        box-shadow: var(--shadow-soft);
+        display: flex; flex-direction: column; overflow: hidden;
+        border: 1px solid rgba(0,0,0,0.08); position: relative;
+    }
+    @media (min-width: 768px) { .mac-window { height: 600px; } }
 
-        .code-line {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            opacity: 0.8;
-            border-bottom: 1px dashed rgba(255,255,255,0.2);
-            padding-bottom: 2px;
-        }
+    /* Header Safari color Crema Oscuro */
+    .window-header.safari-theme {
+        height: 52px;
+        background: #f3f4f6; /* Crema más oscuro para la barra */
+        border-bottom: 1px solid #DEDBD5;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 18px; gap: 20px; flex-shrink: 0;
+    }
 
-        .stat-big {
-            font-size: 42px;
-            font-weight: 700;
-            letter-spacing: -2px;
-            margin-top: 20px;
-        }
+    /* Puntos Mac minimalistas */
+    .traffic-lights { display: flex; gap: 8px; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); }
+    .close { background: #FF5F57; } .minimize { background: #FEBC2E; } .maximize { background: #28C840; }
 
-        .latency-indicator {
-            display: flex;
-            gap: 4px;
-            margin-top: 20px;
-        }
-        
-        .bar {
-            height: 40px;
-            width: 8px;
-            background: var(--text-primary);
-            opacity: 0.2;
-            border-radius: 2px;
-        }
-        .bar.active { opacity: 1; height: 50px;}
+    .safari-btn {
+        background: transparent; border: none; width: 34px; height: 34px;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--text-main); font-size: 16px; cursor: pointer; border-radius: 4px;
+    }
+    .safari-btn:hover { background: rgba(0,0,0,0.05); }
 
-        /* --- MARQUEE / TICKER --- */
+    .safari-address-bar {
+        flex: 1; height: 34px;
+        background: #FDFBF8; /* Blanco cálido */
+        border: 1px solid #DEDBD5;
+        border-radius: 6px;
+        display: flex; align-items: center; padding: 0 10px; gap: 8px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .url-input {
+        border: none; background: transparent; width: 100%; height: 100%;
+        font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+        text-align: center; outline: none;
+    }
+    .main-iframe { flex: 1; width: 100%; border: none; background: #fff; }
 
-        .tablet-section {
-    border-top: 1px solid var(--border);
-    background-color: var(--cultured);
-    padding: 80px 0 120px;
-    overflow: hidden;
+    
+    /* --- SECCIÓN VISUALS --- */
+    .reader-visual { 
+        background: var(--surface-color); 
+        padding: 2rem; border-radius: var(--border-radius); 
+        box-shadow: var(--shadow-soft); border: 1px solid var(--surface-border);
+    }
+    
+    .sheet-music-ui .ui-header { display: flex; gap: 8px; margin-bottom: 20px; }
+    
+    /* Human Connection */
+    .sessions-section { background: var(--surface-color); border-top: 1px solid var(--surface-border); border-bottom: 1px solid var(--surface-border); }
+    .human-connection-visual { 
+        background: #F2EFE9; /* Invertido */
+        border-radius: var(--border-radius); height: 300px; 
+        display: flex; align-items: center; justify-content: center; gap: 20px; position: relative; 
+    }
+    .avatar-teacher, .avatar-student { 
+        width: 80px; height: 80px; border-radius: 50%; 
+        border: 3px solid #fff; background-size: cover; background-position: center; filter: grayscale(100%); transition: filter 0.3s;
+    }
+    .human-connection-visual:hover .avatar-teacher, .human-connection-visual:hover .avatar-student { filter: grayscale(0%); }
+    .connection-line { 
+        position: absolute; bottom: 20px; 
+        background: var(--text-main); color: #fff; 
+        padding: 4px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; font-family: var(--font-mono);
+    }
+
+
+
+    /* --- SECCIÓN DE MARCAS (BRAND LOGOS) --- */
+.brands-section {
+    padding: 2rem 0; /* Poca altura, solo es una franja */
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Separador sutil */
+    text-align: center;
+}
+
+.brands-title {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+
+opacity: 0.9;
+}
+
+.brands-grid {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    max-width: 100vw; /* Añadir esto */
+    align-items: center;
+    gap: 4rem; /* Espacio amplio entre logos */
+    flex-wrap: wrap; /* Para que baje en móvil */
 }
 
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background: var(--text-primary);
-            color: var(--bg-body);
-            padding: 12px 0;
-            margin-top: 80px;
-            max-width: 100vw;
-        }
-        
-        .ticker {
-            white-space: nowrap;
-            animation: ticker 20s infinite linear;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-        
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
+.brand-logo {
+    height: 30px; /* Altura uniforme para todos */
+    width: auto;
+    object-fit: contain;
+    
+    /* EL TRUCO DE ESTILO PREMIUM: */
+    filter: grayscale(100%); /* Todo a blanco y negro */
+    opacity: 0.4; /* Semi-transparente */
+    transition: all 0.3s ease;
+    cursor: default; /* O pointer si llevan link */
+}
 
-        /* --- SECCIÓN: CICLO DE MEJORA DE RENDIMIENTO (Basado en Image_1.png) --- */
-        .performance-cycle-section {
-            padding: 60px 0 80px 0;
-            border-top: 1px solid var(--border);
-        }
+/* Efecto al pasar el mouse: recuperan color y opacidad */
+.brand-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
 
-        .cycle-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 40px;
-        }
+/* Ajuste Mobile */
+@media (max-width: 768px) {
+    .brands-grid {
+        gap: 2rem;
+        padding: 0 20px;
+    }
+    .brand-logo {
+        height: 24px; /* Un poco más chicos en cel */
+    }
+}
 
-        .cycle-column {
-            display: flex;
-            flex-direction: column;
-        }
+.try-it-now-section {
+    position: relative;
+    width: 100%;
+    
+    /* CAMBIO AQUÍ: De 70vh a 100vh para pantalla completa */
+    height: 100vh; 
+    
+    min-height: 600px; /* Aumenta un poco el mínimo para seguridad */
+    display: flex; 
+    align-items: center; 
+    overflow: hidden; 
+    color: #fff;
+    background-color: var(--dark-bg);
+}
 
-        .cycle-header {
-            margin-bottom: 16px;
-        }
+.try-slider--wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
 
-        .cycle-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            /* Usamos el color primario para el círculo, manteniendo el tema */
-            background-color: var(--text-primary);
-            color: var(--bg-body);
-            border-radius: 50%;
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 16px;
-        }
+/* Overlay oscuro intenso para el contraste del texto blanco */
+.try-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Oscuridad del 60% */
+    z-index: 1;
+}
 
-        .cycle-column h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
+.try-content { position: relative; z-index: 10; max-width: 600px; text-align: left; left: 25px; }
+.try-content h1 { font-size: 3rem; margin-bottom: 1.5rem; color: #fff; }
 
-        .cycle-column p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 24px;
-            min-height: 72px; /* Altura mínima para alinear las tarjetas */
-        }
+/* Nuevo botón Azul para la sección de prueba */
+.btn-blue {
+    background-color: #347AB7; /* Azul similar al de la imagen */
+    color: #ffffff;
+    border: none;
+    border-radius: 10px !important;
+    font-family: var(--font-body);
+    font-weight: 700;
+}
 
-        /* Estilo base para las tarjetas internas */
-        .cycle-card-inner {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            flex-grow: 1;
-            font-size: 13px;
-            display: flex;
-            flex-direction: column;
-        }
+.btn-blue:hover {
+    background-color: #276194; /* Un poco más oscuro al pasar el mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 122, 183, 0.4);
+}
 
-        /* CARD 1: Track (System Log Style) */
-        .system-log {
-            font-family: var(--font-mono);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .log-entry {
-            padding: 10px 14px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--bg-body);
-        }
-        .log-timestamp {
-            color: var(--text-secondary);
-            font-size: 11px;
-            margin-bottom: 4px;
-            display: block;
-        }
-        .log-data {
-            color: var(--text-primary);
-        }
-        .log-highlight {
-            font-weight: 600;
-        }
-
-        /* CARD 2: Analyze (Skill Gap Style) */
-        .skill-gap-card h4 {
-             font-size: 15px;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-        .analysis-context {
-             color: var(--text-secondary);
-             margin-bottom: 20px;
-        }
-        .skill-progress-container {
-            height: 24px;
-            background: var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            margin-bottom: 12px;
-        }
-        .skill-filled {
-            background: var(--text-primary);
-            height: 100%;
-        }
-        /* Patrón rayado para la parte faltante */
-        .skill-empty {
-            flex-grow: 1;
-            background-image: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 5px,
-                rgba(255,255,255,0.5) 5px,
-                rgba(255,255,255,0.5) 10px
-            );
-        }
-        .skill-stats {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            font-size: 16px;
-        }
-        .skill-stats span {
-             display: block;
-            font-size: 11px;
-            color: var(--text-secondary);
-            font-weight: 400;
-            margin-top: 4px;
-        }
-
-        /* CARD 3: Optimize (Task List Style) */
-        .optimize-tasks {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            justify-content: center;
-            height: 100%;
-        }
-        .task-item {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-        .task-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--bg-body);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: var(--text-primary);
-            flex-shrink: 0;
-        }
-        .task-content {
-            display: flex;
-            flex-direction: column;
-        }
-        .task-meta {
-            font-size: 11px;
-            color: var(--text-secondary);
-            margin-bottom: 2px;
-            font-family: var(--font-mono);
-        }
-        .task-title {
-            font-weight: 500;
-            color: var(--text-primary);
-        }
+/* Chips en Dark Mode para la sección final */
+.chip.dark-chip {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px; cursor: default;
+    backdrop-filter: blur(4px); transition: var(--transition);
+}
+.chip.dark-chip i { font-size: 1.2rem; }
+.chip.dark-chip:hover { background: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.4); }
 
 
-        /* --- SECCIÓN: RECOMENDACIONES IA (Split Layout) --- */
-        .ai-recommendation-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
+    /* --- FOOTER (Invertido: Negro) --- */
+    .dark-footer { background-color: #0F0F0F; color: #888; padding: 5rem 0 2rem; font-size: 0.95rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-col h4 { color: #fff; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 1.5rem; font-family: var(--font-body); }
+    
+    .footer-logo { font-size: 1.8rem; font-weight: 600; color: #fff; margin-bottom: 1rem; font-family: var(--font-title); }
+    .logo-accent { font-weight: 400; font-style: italic; }
+    
+    .links-col ul { list-style: none; } .links-col li { margin-bottom: 0.8rem; }
+    .links-col a { color: #888; text-decoration: none; transition: color 0.3s ease; }
+    .links-col a:hover { color: #fff; }
+    
+    .social-icons { display: flex; gap: 1rem; }
+    .social-icons a { 
+        display: flex; align-items: center; justify-content: center; 
+        width: 40px; height: 40px; border-radius: 50%; 
+        background: rgba(255,255,255,0.05); color: #fff; 
+        font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; 
+    }
+    .social-icons a:hover { background: #fff; color: #000; }
+    .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: #555; }
+
+
+    /* --- REVIEWS --- */
+    .reviews-section { background-color: var(--bg-color); padding: 5rem 0; }
+    .review-card { 
+        background: var(--surface-color); padding: 2.5rem; 
+        border-radius: var(--border-radius); box-shadow: var(--shadow-soft); 
+        border: 1px solid var(--surface-border);
+        height: auto; 
+    }
+    .review-stars { color: var(--text-main); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .review-text { font-size: 1.1rem; font-style: italic; color: var(--text-main); font-family: 'Playfair Display', serif; } /* Opcional serif para citas */
+    .author-info strong { font-family: var(--font-title); color: var(--text-main); }
+
+
+    /* Animaciones */
+    .fade-in { opacity: 0; transition: opacity 0.8s ease-out; }
+    .slide-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.2s; }
+
+    /* Browser Loader Line */
+    .browser-loader-container { height: 2px; background: transparent; width: 100%; }
+    .loader-bar { height: 100%; background: var(--text-main); width: 0%; transition: width 0.5s ease; }
+    .loader-bar.loading { width: 70%; }
+    .loader-bar.loaded { width: 100%; opacity: 0; transition: width 0.3s, opacity 0.3s 0.3s; }
+
+    /* RESPONSIVE */
+    @media (min-width: 768px) {
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .center-text { text-align: center; }
+    }
+    @media (max-width: 768px) {
+        h1 { font-size: 2.8rem; }
+        .surface-container {
+            margin-top: 0; margin-bottom: 30px;
+            transform: scale(1.05) translateY(20px); 
         }
-
-        .split-layout {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr; /* La columna izquierda es un poco más ancha como en la imagen */
-            gap: 40px;
-            margin-top: 40px;
-            align-items: start;
-        }
-
-        /* Columna Izquierda: Chat Preview Card */
-        .chat-preview-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        .chat-prompt-pill {
-            background: var(--bg-body);
-            border: 1px solid var(--border);
-            padding: 10px 16px;
-            border-radius: 20px;
-            display: inline-block;
-            font-size: 13px;
-            color: var(--text-primary);
-            margin-bottom: 24px;
-            font-weight: 500;
-        }
-
-        .ai-response-container {
-            border-top: 1px solid var(--border);
-            padding-top: 20px;
-        }
-
-        .ai-text {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        /* Tarjetas de "Productos/Cursos" dentro del chat */
-        .course-cards-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .course-mini-card {
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px;
-            background: #fff;
-            transition: transform 0.2s;
-        }
-        .course-mini-card:hover { transform: translateY(-2px); border-color: var(--text-secondary); }
-
-        .course-img-placeholder {
-            width: 100%;
-            height: 60px;
-            background: var(--bg-body);
-            border-radius: 4px;
-            margin-bottom: 8px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 20px;
-        }
-
-        .course-title {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .course-meta {
-            font-size: 10px;
-            color: var(--text-secondary);
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .star-rating { color: #f59e0b; font-size: 9px; }
-
-        .ai-details-text {
-            font-size: 12px;
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-        .ai-details-text strong { font-weight: 600; }
-
-        /* Columna Derecha: Lista de Características */
-        .feature-list-column {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 16px;
-            padding: 24px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .feature-item:first-child { padding-top: 0; }
-        .feature-item:last-child { border-bottom: none; }
-
-        .feature-icon {
-            font-size: 20px;
-            color: var(--text-secondary);
-            width: 24px;
-            text-align: center;
-            margin-top: 2px;
-        }
-
-        .feature-text h4 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--text-primary);
-        }
-
-        .feature-text p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-
-/* --- SECCIÓN: TESTIMONIOS (Con degradados) --- */
-        .testimonials-section {
-            padding: 80px 0 100px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .testimonials-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px auto;
-        }
-
-        .testimonials-header h2 {
-            font-size: 32px;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .testimonials-header p {
-            font-size: 16px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-        }
-
-        .testimonial-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            position: relative;
-            overflow: hidden; /* Para contener el degradado */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 280px;
-        }
-
-        /* Efectos de degradado sutiles */
-        .gradient-green::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(74, 222, 128, 0.1), transparent 50%);
-            pointer-events: none;
-        }
-
-        .gradient-blue::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1), transparent 50%);
-            pointer-events: none;
-        }
-
-        .company-logo {
-            font-weight: 700;
-            font-size: 20px;
-            margin-bottom: 24px;
-            position: relative; /* Para estar sobre el degradado */
-        }
-        /* Colores de marca sutiles para los logos */
-        .text-green { color: #4ade80; }
-        .text-blue { color: #3b82f6; }
-
-        .quote-text {
-            font-size: 17px;
-            line-height: 1.5;
-            color: var(--text-primary);
-            font-weight: 500;
-            margin-bottom: 32px;
-            position: relative;
-        }
-
-        .author-block {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-        }
-
-        .author-avatar {
-            width: 48px;
-            height: 48px;
-            background: var(--border);
-            border-radius: 50%;
-            /* Placeholder para imagen */
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%236b7280"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>');
-            background-size: 24px;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .author-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .author-name {
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--text-primary);
-        }
-
-        .author-title {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-
-
-     /* Mobile */
-        @media (max-width: 768px) {
-
-            h1 { font-size: 36px; }
-             .hero-content h1{
-                font-size: 34px !important; 
-            }
-            .hero-content p{
-                font-size: 16px !important; 
-            }
-            /* Todas las grids pasan a 1 columna */
-            .bento-grid, .steps-grid, .cycle-grid, .split-layout, .testimonials-grid { 
-                grid-template-columns: 1fr; 
-            }
-            
-            .col-span-2, .row-span-2 { grid-column: span 1; grid-row: span 1; }
-            .nav-links { display: none; }
-            
-            /* Ajustes de espaciado para todas las secciones */
-            .steps-grid, .cycle-grid, .split-layout, .testimonials-grid { gap: 40px; margin-top: 30px;}
-            
-            .testimonials-header h2 { font-size: 28px; }
-            .testimonial-card { min-height: auto; }
-            
-            .hero-slider-section { min-height: 500px; height: auto; padding: 60px 0; }
-        }
-    </style>
+        .surface-container.visible { transform: scale(1.05) translateY(0) !important; }
+        .download-chips { justify-content: center !important; }
+        .reverse-mobile { display: flex; flex-direction: column-reverse; }
+        .footer-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+        .brand-col { align-items: center; display: flex; flex-direction: column; }
+        .footer-desc, .social-icons { margin: 0 auto; }
+        .try-content { padding-left: 0; text-align: center; margin: 0 auto;}
+    }
+    @media (max-width: 548px) {
+         .surface-container { transform: scale(0.75) translateY(20px); }
+        .surface-container.visible { transform: scale(0.75) translateY(0) !important; }
+    }
+</style>
 </head>
 <body>
 
-  
-
     <section class="hero-slider-section">
-        
         <div class="creative-slider--wrap">
             <div class="swiper creative-slider">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                     <div class="swiper-slide">
                         <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1vabNC6Y394zDtGUtGTkDfeqEOoGnPLdc');"></div>
                     </div>
                     <div class="swiper-slide">
@@ -840,339 +545,312 @@
                 </div>
             </div>
         </div>
-
         <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-            <div class="pill mono" style="margin-bottom: 20px;">Mozart MX</div>
-           <h1>Tu camino más corto<br>a la perfección musical.</h1>
-            <p>La primera plataforma de educación musical que combina calidad de conservatorio, certificación ABRSM y tecnología de seguimiento en tiempo real.</p>
-            
-         <div style="display: flex; gap: 10px; justify-content: flex-start;">
-    <a href="#" class="btn" style="padding: 12px 24px; background: #EAEAEA; color: #242426;">Comenzar Ahora</a>
-    <a href="#" class="btn" style="background:transparent; border:1px solid #fff; color:#fff;">Ver Planes</a>
-</div>
-        </div>
-
-    </section>
-
- <div class="container">
-    <section class="grid-section">
-        <div class="bento-grid">
-            
-            <div class="card col-span-2">
-                <div>
-                    <span class="mono" style="opacity: 0.6;">METODOLOGÍA</span>
-                    <h3>Aprendizaje Híbrido Optimizado</h3>
-                    <p>Combinamos la experiencia presencial en nuestras instalaciones con tecnología educativa avanzada. Accede a videolecciones, partituras y seguimiento de progreso desde nuestra app Mozart.</p>
-                </div>
-                <div class="tech-viz" style="display:flex; align-items:flex-end; gap:5px; height: 100px;">
-                    <div style="width:100%; display:flex; justify-content:space-between; align-items:flex-end; gap:4px;">
-                        <div class="bar" style="height: 30%"></div>
-                        <div class="bar" style="height: 50%"></div>
-                        <div class="bar active" style="height: 80%"></div>
-                        <div class="bar" style="height: 40%"></div>
-                        <div class="bar" style="height: 60%"></div>
-                        <div class="bar active" style="height: 90%"></div>
-                        <div class="bar" style="height: 20%"></div>
-                        <div class="bar" style="height: 45%"></div>
-                        <div class="bar" style="height: 70%"></div>
-                        <div class="bar active" style="height: 100%"></div>
-                    </div>
-                    <div style="position:absolute; top:10px; right:10px; color:#4ade80;" class="mono">PROGRESO REAL</div>
-                </div>
+        <div class="hero-content fade-in">
+            <div class="pill mono" style="margin-bottom: 20px;">Mozart MX • Academia de Piano</div>
+            <h1>Tu camino más corto a la prefección.</h1>
+            <p>La plataforma educativa construida con precisión, elegancia y tecnología serverless. Pura transmisión de música.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+                <button class="btn btn-primary">Comenzar</button>
+                <button class="btn btn-outline">Ver especificaciones</button>
             </div>
-
-            <div class="card">
-                <div>
-                    <span class="mono" style="opacity: 0.6;">INSTALACIONES</span>
-                    <h3>Equipamiento Profesional</h3>
-                    <p>Pianos de gama alta en espacios amplios diseñados para tu comodidad y concentración.</p>
-                </div>
-                <div class="stat-big">100%</div>
-                <div class="mono">CALIDAD GARANTIZADA</div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <span class="mono" style="opacity: 0.6;">CERTIFICACIÓN</span>
-                    <h3>Preparación ABRSM</h3>
-                    <p>Te preparamos para los exámenes del programa ABRSM con material actualizado y profesores especializados.</p>
-                </div>
-                <div class="tech-viz">
-                    <div class="code-line"><span>PROGRAMA:</span> <span>ABRSM</span></div>
-                    <div class="code-line"><span>NIVELES:</span> <span>1-8 + DIPLOMA</span></div>
-                    <div class="code-line"><span>STATUS:</span> <span>ACTIVO</span></div>
-                </div>
-            </div>
-
-            <div class="card col-span-2">
-                <div style="display:flex; justify-content: space-between;">
-                    <div>
-                        <span class="mono" style="opacity: 0.6;">TECNOLOGÍA</span>
-                        <h3>App Mozart + Plataforma Web</h3>
-                        <p>Interfaz intuitiva para seguir tu progreso, acceder a lecciones y coordinar tus sesiones. Todo sincronizado en la nube.</p>
-                    </div>
-                    <div style="background:var(--text-primary); width:40px; height:24px; border-radius:12px; position:relative;">
-                        <div style="background:#fff; width:18px; height:18px; border-radius:50%; position:absolute; top:3px; right:3px;"></div>
-                    </div>
-                </div>
-                <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
-                    <span class="pill">Video-lecciones</span>
-                    <span class="pill">Partituras digitales</span>
-                    <span class="pill">Quizzes</span>
-                    <span class="pill">Calendario de sesiones</span>
-                </div>
-            </div>
-
         </div>
     </section>
 
-  
-
-    <section class="performance-cycle-section">
-        <h2 style="text-align: center; margin-bottom: 10px; font-size: 32px; letter-spacing: -1px;">El Ciclo de Aprendizaje Mozart</h2>
-        <p style="text-align: center; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Cómo nuestra metodología te lleva desde principiante hasta virtuoso.</p>
-
-        <div class="cycle-grid">
-            
-            <div class="cycle-column">
-                <div class="cycle-header">
-                    <div class="cycle-number">1</div>
-                    <h3>Evaluar</h3>
-                </div>
-                <p>Evaluación inicial para identificar tu nivel actual y objetivos personales. Diseñamos un plan personalizado para ti.</p>
-                
-                <div class="cycle-card-inner system-log">
-                    <div class="log-entry">
-                        <span class="log-timestamp">[Sesión 01] EVALUACIÓN</span>
-                        <span class="log-data">Nivel actual: <span class="log-highlight">Principiante</span></span>
-                    </div>
-                    <div class="log-entry">
-                        <span class="log-timestamp">[Sistema] ANÁLISIS</span>
-                        <span class="log-data">Objetivo: <span class="log-highlight">ABRSM Grado 3</span> (12 meses)</span>
-                    </div>
-                    <div class="log-entry" style="opacity: 0.7;">
-                        <span class="log-timestamp">[Plan generado]</span>
-                        <span class="log-data mono">Ruta personalizada activa.</span>
+    <section class="tablet-section no-bg">
+        <div class="tablet-header fade-in">
+            <h2>El Ciclo del Virtuosismo</h2>
+            <p>Convierte datos de práctica en progreso tangible con una interfaz limpia.</p>
+        </div> 
+        
+        <div class="surface-container slide-up">
+          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
+          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
+          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
+          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
+          
+          <div class="surface">
+            <div class="display">
+                <div class="tablet-content">
+                    <div class="tablet-slider-wrapper">
+                        <div class="t-slide">
+                            <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="App Screen 1">
+                        </div>
+                        <div class="t-slide">
+                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="App Screen 2">
+                        </div>
+                        <div class="t-slide">
+                             <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="App Screen 3">
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="shine"></div>
+          </div>
+        </div>
 
-            <div class="cycle-column">
-                <div class="cycle-header">
-                    <div class="cycle-number">2</div>
-                    <h3>Practicar</h3>
+         <div class="download-chips fade-in">
+            <span class="chip"><i class='bx bxl-apple'></i> Mac</span>
+            <span class="chip"><i class='bx bxl-windows'></i> Win</span>
+            <span class="chip"><i class='bx bxl-apple'></i> iPad</span>
+            <span class="chip"><i class='bx bxl-android'></i> Android</span>
+        </div>
+    </section>
+
+    <section class="lessons-section">
+        <div class="container">
+            <div class="section-header center-text fade-in" style="margin-bottom: 60px;">
+                <h2>Lecciones secuenciadas</h2>
+                <p>Estructura progresiva. Diseño distraction-free.</p>
+            </div>
+            
+            <div class="grid-2">
+                 <div class="text-content fade-in">
+                     <h3 style="margin-bottom: 1rem;">Teoría aplicada</h3>
+                     <p>No solo aprendas las notas. Entiende la música. Nuestro sistema visualiza la armonía en tiempo real.</p>
+                     <ul style="list-style: none; margin-top: 20px; color: var(--text-muted);">
+                         <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="ri-check-line"></i> Análisis armónico</li>
+                         <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="ri-check-line"></i> Ritmo interactivo</li>
+                         <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="ri-check-line"></i> Repertorio clásico</li>
+                     </ul>
+                 </div>
+                 <div class="reader-visual slide-up">
+                    <div class="sheet-music-ui">
+                        <div class="ui-header">
+                            <span class="dot close"></span><span class="dot minimize"></span><span class="dot maximize"></span>
+                        </div>
+                        <div class="ui-body" style="display: flex; justify-content: center; align-items: center; height: 250px; background: #fff; border-radius: 4px; border: 1px solid #eee;">
+                           <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Beethoven_Sonata_Op31_No1_1st_mov_opening.png" style="width: 80%; opacity: 0.8; filter: contrast(120%);" alt="Partitura">
+                        </div>
+                    </div>
                 </div>
-                <p>Sesiones presenciales u online con profesores expertos, complementadas con ejercicios en la plataforma digital.</p>
-                
-                <div class="cycle-card-inner skill-gap-card">
-                    <h4>Progreso Semanal</h4>
-                    <p class="analysis-context">Semana del 15 de Enero - Escalas Mayores</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reader-section">
+        <div class="container">
+            <div class="text-content center-text mb-large fade-in">
+                <h2>Práctica inteligente en la web</h2>
+                <p>Sin descargas. Accede a tu cuenta Mozart+ desde cualquier navegador moderno.</p>
+            </div>
+            
+            <div class="reader-visual slide-up" style="padding: 0; background: transparent; box-shadow: none; border: none;">
+                <div class="mac-window">
+                    <div class="window-header safari-theme">
+                        <div class="header-controls">
+                            <div class="traffic-lights">
+                                <div class="dot close"></div>
+                                <div class="dot minimize"></div>
+                                <div class="dot maximize"></div>
+                            </div>
+                            <div style="display:flex; margin-left:15px; gap: 5px;">
+                                <button class="safari-btn"><i class="ri-arrow-left-s-line"></i></button>
+                                <button class="safari-btn"><i class="ri-arrow-right-s-line"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="safari-address-bar">
+                            <i class="ri-lock-fill" style="font-size: 12px; color: #888;"></i>
+                            <input type="text" class="url-input" id="browser-input" value="app.mozartplus.com/learn">
+                            <i class="ri-refresh-line refresh-icon" id="browser-reload" style="font-size: 12px; color: #888; cursor: pointer;"></i>
+                        </div>
+
+                        <div style="width: 100px;"></div> </div>
                     
-                    <div style="margin-top: auto;">
-                        <div style="margin-bottom: 10px; font-weight: 500;">Dominio Técnico</div>
-                        <div class="skill-progress-container">
-                            <div class="skill-filled" style="width: 75%;"></div>
-                            <div class="skill-empty"></div>
-                        </div>
-                        
-                        <div class="skill-stats">
-                            <div>
-                                75%
-                                <span>Completado</span>
-                            </div>
-                            <div style="text-align: right; opacity: 0.6;">
-                                25%
-                                <span>Por mejorar</span>
-                            </div>
-                        </div>
+                    <div class="browser-loader-container">
+                        <div class="loader-bar" id="browser-loader"></div>
                     </div>
+
+                    <iframe src="https://www.mozart-app.com/lessons4" class="main-iframe" id="browser-iframe"></iframe>
                 </div>
             </div>
+            </div>
+    </section>
 
-            <div class="cycle-column">
-                <div class="cycle-header">
-                    <div class="cycle-number">3</div>
-                    <h3>Avanzar</h3>
-                </div>
-                <p>Seguimiento continuo de tu evolución con feedback constante y ajuste de objetivos hacia la certificación.</p>
+
+    <section class="brands-section fade-in">
+        <div class="container">
+            <p class="brands-title">Compatible con tus instrumentos favoritos</p>
+            <div class="brands-grid">
+                <img style="transform: scale(1.5);" src="https://lh3.googleusercontent.com/d/1yl2i2LUSqqlIWIpkZ5MxuOP7G9rxEVpp=s500" alt="Yamaha" class="brand-logo">
                 
-                <div class="cycle-card-inner optimize-tasks">
-                    <div class="task-item">
-                        <div class="task-icon">🎹</div>
-                        <div class="task-content">
-                            <span class="task-meta">Próxima sesión: Miércoles 14:00</span>
-                            <span class="task-title">Clase presencial - Repertorio Barroco</span>
-                        </div>
-                    </div>
-                    <div class="task-item">
-                        <div class="task-icon">📚</div>
-                        <div class="task-content">
-                            <span class="task-meta">Material asignado</span>
-                            <span class="task-title">Partitura: Bach - Minueto en Sol Mayor</span>
-                        </div>
-                    </div>
-                    <div class="task-item">
-                        <div class="task-icon">🎯</div>
-                        <div class="task-content">
-                            <span class="task-meta">Objetivo del mes</span>
-                            <span class="task-title">Preparación para examen ABRSM Grado 1</span>
-                        </div>
-                    </div>
-                </div>
+                <img  src="https://lh3.googleusercontent.com/d/1KpEL9a4LKyjWGkHeD8_iOsgULzmO7-57=s400" alt="Casio" class="brand-logo">
+                
+                <img style="transform: scale(1.8);" src="https://lh3.googleusercontent.com/d/1homhmkyW617jXz6-qk08bYIQpRErHv0B=s400" alt="Roland" class="brand-logo">
+                
+                <img style="transform: scale(0.75);" src="https://lh3.googleusercontent.com/d/1OuZ_-ad4Ov9UyHj1L2LjvvGj4MHDgoGt=s400" alt="Alesis" class="brand-logo">
+                
+                <img style="transform: scale(1.38);" src="https://lh3.googleusercontent.com/d/1SleMNMI-OQRcM7_6nfU1A2tfH-cYaZwH=s400" alt="Korg" class="brand-logo">
+                
+                <img style="transform: scale(0.85);" src="https://lh3.googleusercontent.com/d/1z3bbRVETkkquPdbGVQSI0CgYEnhUnQG_=s400" alt="Akai" class="brand-logo">
             </div>
-
         </div>
     </section>
 
-    <section class="ai-recommendation-section">
-        <h2 style="margin-bottom: 10px; font-size: 32px; letter-spacing: -1px;">Guía Personalizada de Aprendizaje</h2>
-        <p style="color: var(--text-secondary); max-width: 600px; margin-bottom: 40px;">Nuestros profesores y plataforma trabajan juntos para recomendarte el mejor camino de estudio.</p>
+    <section class="sessions-section">
+        <div class="container grid-2 reverse-mobile">
+            <div class="text-content fade-in">
+                <h2>Profesores reales, conexión humana</h2>
+                <p>La tecnología facilita el aprendizaje, pero la humanidad lo hace arte. Agenda sesiones en vivo.</p>
+                <button class="btn btn-secondary">Ver profesores</button>
+            </div>
+            <div class="image-placeholder slide-up">
+                <div class="human-connection-visual">
+                    <div class="avatar-teacher" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=200&auto=format&fit=crop');"></div>
+                    <div class="avatar-student" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop');"></div>
+                    <div class="connection-line">Sesión en vivo</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="split-layout">
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-header center-text fade-in" style="margin-bottom: 40px;">
+                <h2>Testimonios</h2>
+            </div>
             
-            <div class="chat-preview-card">
-                <div class="chat-prompt-pill">
-                    ¿Qué ejercicios me recomiendas para mejorar mi técnica?
-                </div>
-                
-                <div class="ai-response-container">
-                    <p class="ai-text">Basado en tu nivel actual y objetivos ABRSM, te recomendamos estos <strong>materiales</strong>:</p>
-                    
-                    <div class="course-cards-row">
-                        <div class="course-mini-card">
-                            <div class="course-img-placeholder">🎹</div>
-                            <div class="course-title">Hanon: El Pianista</div>
-                            <div class="course-meta">
-                                <span>Técnica</span>
-                                <span class="star-rating">★ 5.0</span>
-                            </div>
-                        </div>
-                        <div class="course-mini-card">
-                            <div class="course-img-placeholder">🎼</div>
-                            <div class="course-title">Escalas ABRSM</div>
-                            <div class="course-meta">
-                                <span>Grado 1-3</span>
-                                <span class="star-rating">★ 4.9</span>
-                            </div>
-                        </div>
-                        <div class="course-mini-card">
-                            <div class="course-img-placeholder">📖</div>
-                            <div class="course-title">Burgmüller Op.100</div>
-                            <div class="course-meta">
-                                <span>Repertorio</span>
-                                <span class="star-rating">★ 4.8</span>
-                            </div>
+            <div class="swiper reviews-slider slide-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"La interfaz es preciosa y las lecciones son súper intuitivas. Una experiencia premium."</p>
+                        <div class="review-author" style="margin-top: 20px; display:flex; gap: 15px; align-items: center;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; background-image: url('https://i.pravatar.cc/150?img=68'); background-size: cover;"></div>
+                            <div class="author-info"><strong>Ana M.</strong><br><span style="font-size: 0.8rem; color: #888;">Piano Principiante</span></div>
                         </div>
                     </div>
-
-                    <div class="ai-details-text">
-                        <p><strong>Hanon:</strong> Fundamental para desarrollar fuerza y coordinación en ambas manos.</p>
-                        <p><strong>Escalas ABRSM:</strong> Requisito obligatorio para los exámenes de certificación.</p>
-                        <p><strong>Burgmüller:</strong> Piezas melódicas perfectas para nivel intermedio.</p>
-                        <br>
-                        <p style="opacity: 0.7;">Recuerda: Tu profesor te guiará en el tempo y dificultad adecuados para ti.</p>
+                    <div class="swiper-slide review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"El diseño limpio me ayuda a concentrarme en la música, no en los menús."</p>
+                        <div class="review-author" style="margin-top: 20px; display:flex; gap: 15px; align-items: center;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; background-image: url('https://i.pravatar.cc/150?img=11'); background-size: cover;"></div>
+                            <div class="author-info"><strong>Carlos R.</strong><br><span style="font-size: 0.8rem; color: #888;">Compositor</span></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="feature-list-column">
-                
-                <div class="feature-item">
-                    <div class="feature-icon">👨‍🏫</div>
-                    <div class="feature-text">
-                        <h4>Profesores Capacitados</h4>
-                        <p>Todos nuestros maestros están certificados y tienen experiencia preparando alumnos para ABRSM.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">📅</div>
-                    <div class="feature-text">
-                        <h4>Horarios Flexibles</h4>
-                        <p>Miércoles a Domingo con múltiples horarios para adaptarnos a tu agenda. Modalidad presencial y online.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">📱</div>
-                    <div class="feature-text">
-                        <h4>App Mozart</h4>
-                        <p>Accede a tu calendario de clases, material de estudio y retroalimentación desde tu móvil o computadora.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🎯</div>
-                    <div class="feature-text">
-                        <h4>Seguimiento de Progreso</h4>
-                        <p>Monitoreo constante de tu avance hacia tus objetivos personales y certificación ABRSM.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section class="testimonials-section">
-        <div class="testimonials-header">
-            <h2>Alumnos satisfechos en Copilco Universidad</h2>
-            <p>Descubre cómo nuestros estudiantes han logrado sus objetivos musicales con nuestra metodología híbrida.</p>
+     <section class="try-it-now-section">
+        <div class="try-slider--wrap">
+            <div class="swiper creative-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=2070&auto=format&fit=crop');"></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop');"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <div class="try-overlay"></div>
 
-        <div class="testimonials-grid">
-            
-            <div class="testimonial-card gradient-green">
-                <div class="company-logo text-green">Estudiante Mozart Academy</div>
-                <p class="quote-text">"La combinación de clases presenciales con la plataforma digital es perfecta. Puedo repasar las lecciones en casa y llegar mejor preparada a cada sesión. Los pianos de la academia son increíbles."</p>
-                <div class="author-block">
-                    <div class="author-avatar"></div>
-                    <div class="author-info">
-                        <span class="author-name">Ana Martínez</span>
-                        <span class="author-title">Alumna nivel intermedio</span>
-                    </div>
+        <div class="container" style="height: 100%; display: flex; align-items: center;">
+            <div class="try-content fade-in">
+                <h1>Try it now.<br>Cancel anytime.</h1>
+                <button class="btn btn-blue btn-large" style="margin-bottom: 30px;">Try free for 7 days</button>
+                
+                <div class="download-chips" style="justify-content: flex-start;">
+                    <span class="chip dark-chip"><i class='bx bxl-apple'></i> Mac</span>
+                    <span class="chip dark-chip"><i class='bx bxl-windows'></i> Win</span>
+                    <span class="chip dark-chip"><i class='bx bxl-apple'></i> iPad</span>
+                    <span class="chip dark-chip"><i class='bx bxl-apple'></i> Drums for iPhone</span>
                 </div>
             </div>
-
-            <div class="testimonial-card gradient-blue">
-                <div class="company-logo text-blue">Padre de familia</div>
-                <p class="quote-text">"Mi hija ha avanzado muchísimo en solo 6 meses. Los profesores son muy pacientes y la app nos permite ver su progreso semana a semana. Ya está preparándose para su primer examen ABRSM."</p>
-                <div class="author-block">
-                    <div class="author-avatar"></div>
-                    <div class="author-info">
-                        <span class="author-name">Carlos Rodríguez</span>
-                        <span class="author-title">Padre de alumna de 9 años</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-</div>
-
-    <div class="ticker-wrap">
-        <div class="ticker">
-            MOZART ACADEMY /// CERTIFICACIÓN ABRSM /// CLASES ONLINE Y PRESENCIALES /// APP DE SEGUIMIENTO /// CALIDAD DE CONSERVATORIO /// INNOVACIÓN EDUCATIVA /// PIANOS GAMA ALTA ///
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <div class="footer-logo">Mozart<span class="logo-accent">+</span></div>
+                    <p class="footer-desc">Revolucionando la educación musical con elegancia.</p>
+                </div>
+                <div class="footer-col links-col">
+                    <h4>ACADEMIA</h4>
+                    <ul>
+                        <li><a href="#">Planes</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Términos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col social-col">
+                    <h4>SÍGUENOS</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-tiktok'></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Mozart Plus. Todos los derechos reservados.</p>
+            </div>
         </div>
-    </div>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const swiper = new Swiper(".creative-slider", {
+            // Slider Hero
+            new Swiper(".creative-slider", {
                 spaceBetween: 0,
                 effect: "fade",
                 speed: 2000,
                 fadeEffect: { crossFade: true },
                 loop: true,
-                autoplay: {
-                  delay: 6000,
-                  disableOnInteraction: false,
-                },
+                autoplay: { delay: 6000, disableOnInteraction: false },
+                allowTouchMove: false,
             });
+
+            // Reviews Slider
+            new Swiper(".reviews-slider", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: { delay: 5000 },
+                breakpoints: { 768: { slidesPerView: 2 } }
+            });
+
+            // Animaciones Scroll
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in, .slide-up').forEach(el => observer.observe(el));
+
+            // Browser Loader Logic
+            const browserInput = document.getElementById('browser-input');
+            const browserLoader = document.getElementById('browser-loader');
+            const browserIframe = document.getElementById('browser-iframe');
+            const browserReload = document.getElementById('browser-reload');
+
+            function loadUrl() {
+                browserLoader.classList.remove('loaded');
+                browserLoader.classList.add('loading');
+                setTimeout(() => {
+                    browserLoader.classList.remove('loading');
+                    browserLoader.classList.add('loaded');
+                }, 1500);
+            }
+
+            if(browserReload) browserReload.addEventListener('click', () => {
+                 browserIframe.src = browserIframe.src; 
+                 loadUrl(); 
+            });
+            
+            setTimeout(() => { if(browserLoader) browserLoader.classList.add('loaded'); }, 1000);
         });
     </script>
-
 </body>
 </html>
