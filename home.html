@@ -3,45 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mozart+ App | Plataforma Educativa Musical</title>
+    <title>Mozart+ Academy | Clases de Piano Híbridas</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <style>
-    /* --- VARIABLES MOZART+ --- */
+    /* --- VARIABLES MOZART+ (Mismo estilo Premium) --- */
     :root {
-        /* Paleta Premium */
-        --bg-color: #F2EFE9;        /* Crema Base */
-        --surface-color: #FFFFFF;    /* Blanco puro para tarjetas */
-        --surface-border: #E5E2DC;   /* Borde sutil crema oscuro */
+        --bg-color: #F2EFE9;        
+        --surface-color: #FFFFFF;    
+        --surface-border: #E5E2DC;   
         
-        --text-main: #1C1C1C;        /* Negro casi puro */
-        --text-muted: #595959;       /* Gris elegante */
+        --text-main: #1C1C1C;        
+        --text-muted: #595959;       
         
-        --accent-color: #1C1C1C;     /* El acento es el negro mismo */
+        --accent-color: #1C1C1C;     
         
-        /* Paleta Oscura (Secciones inmersivas) */
         --dark-bg: #0F0F0F;
         --dark-surface: #1A1A1A;
         --dark-text: #B0B0B0;
         --dark-title: #F2EFE9;
 
-        /* Tipografía */
         --font-title: 'Outfit', sans-serif;
         --font-body: 'Inter', sans-serif;
         --font-mono: 'JetBrains Mono', monospace;
         
-        /* UI */
         --spacing-md: 2rem;
         --spacing-lg: 4rem;
         --border-radius: 12px;
-        --shadow-soft: 0 15px 40px rgba(28, 28, 28, 0.05); /* Sombra cálida */
+        --shadow-soft: 0 15px 40px rgba(28, 28, 28, 0.05);
         --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
@@ -67,11 +63,13 @@
     
     h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
     h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+    h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
     h4 { font-size: 1.2rem; margin-bottom: 1rem; }
     p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; position: relative; z-index: 2; }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: flex-start; }
     .center-text { text-align: center; }
     .mb-large { margin-bottom: 4rem; }
     section { padding: 6rem 0; }
@@ -79,13 +77,12 @@
     /* --- BOTONES PREMIUM --- */
     .btn {
         display: inline-flex; align-items: center; justify-content: center;
-        padding: 16px 32px; border-radius: 6px; /* Menos redondeado, más serio */
+        padding: 16px 32px; border-radius: 6px;
         font-weight: 500; text-decoration: none; cursor: pointer; 
         transition: var(--transition); font-size: 0.95rem; margin-right: 10px;
         font-family: var(--font-title); letter-spacing: 0.5px;
     }
     
-    /* Botón Primario: Negro sólido */
     .btn-primary { 
         background-color: var(--text-main); 
         color: var(--bg-color); 
@@ -97,7 +94,6 @@
         transform: translateY(-2px);
     }
 
-    /* Botón Outline: Borde Negro */
     .btn-outline { 
         background: transparent; 
         border: 1px solid var(--text-main); 
@@ -107,7 +103,6 @@
         background: rgba(28,28,28,0.05);
     }
 
-    /* Botón Secundario: Crema Oscuro */
     .btn-secondary { 
         background-color: #E5E2DC; 
         color: var(--text-main); 
@@ -115,11 +110,10 @@
     }
     .btn-secondary:hover { background-color: #D6D3CD; }
 
-    /* Botón Large (Try it now) */
     .btn-large { padding: 20px 40px; font-size: 1.1rem; border-radius: 8px; }
 
 
-    /* --- HERO SLIDER --- */
+    /* --- HERO SLIDER (ACADEMIA) --- */
    .hero-slider-section { 
     position: relative; 
     width: 100%; 
@@ -127,49 +121,47 @@
     min-height: 600px; 
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; /* Alinea el contenido general a la izquierda */
+    justify-content: flex-start;
     overflow: hidden; 
 }
     .creative-slider--wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
     .swiper { width: 100%; height: 100%; }
-    .slide-bg { width: 100%; height: 100%; background-size: cover; background-position: center; transform: scale(1); transition: transform 8s ease; /* Fotos en BN */ }
+    /* Imágenes de fondo orientadas a clases presenciales */
+    .slide-bg { width: 100%; height: 100%; background-size: cover; background-position: center; transform: scale(1); transition: transform 8s ease; filter: brightness(0.7) grayscale(20%); }
     .swiper-slide-active .slide-bg { transform: scale(1.1); }
     
-    /* Overlay Gradiente Crema */
     .hero-overlay { 
         position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-        background: linear-gradient(to bottom, 
-                rgba(0, 0, 0, 0.2) 0%, 
+        background: linear-gradient(to right, 
+                rgba(0, 0, 0, 0.6) 0%, 
                 rgba(0, 0, 0, 0.3) 50%, 
-                rgba(0, 0, 0, 0.5) 100%); /* Funde con el fondo crema */
-
+                rgba(0, 0, 0, 0.1) 100%); 
     }
     
    .hero-content { 
     position: relative; 
     z-index: 10; 
-    text-align: left; /* Texto alineado a la izquierda */
+    text-align: left; 
     max-width: 800px; 
-    padding: 0 5%; /* Margen lateral porcentual para que no pegue al borde */
-    margin-left: 0; /* Asegura que esté a la izquierda */
+    padding: 0 5%; 
+    margin-left: 0; 
 }
 
 .hero-content h1 { 
     color: #FFFFFF;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.6); /* Sombra para legibilidad */
+    text-shadow: 0 4px 12px rgba(0,0,0,0.6);
     font-size: clamp(2.5rem, 5vw, 4.5rem); 
     margin-bottom: 1.5rem;
     line-height: 1.1;
 }
 
-/* Párrafo Blanco con Sombra */
 .hero-content p { 
     color: #F0F0F0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.6);
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-left: 0; 
-    margin-right: auto; /* Evita que se centre */
+    margin-right: auto;
     margin-bottom: 2.5rem;
 }
 
@@ -181,7 +173,6 @@
     margin-bottom: 25px;
 }
 
-/* Botones Específicos del Hero (Sobreescribiendo globales) */
 .hero-content .btn-primary { 
     background-color: #FFFFFF; 
     color: #1C1C1C; 
@@ -211,7 +202,28 @@
         font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px; color: var(--text-main);
     }
 
-    /* --- TABLET ANIMATION (Adaptada a Crema) --- */
+    /* --- NUEVA SECCIÓN DE BENEFICIOS (Tipo Competencia) --- */
+    .benefits-section { background-color: var(--surface-color); border-bottom: 1px solid var(--surface-border); }
+    .benefit-card {
+        padding: 2rem;
+        background: var(--bg-color);
+        border-radius: var(--border-radius);
+        text-align: left;
+        transition: var(--transition);
+        border: 1px solid transparent;
+    }
+    .benefit-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--surface-border);
+        box-shadow: var(--shadow-soft);
+    }
+    .benefit-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-main);
+    }
+
+    /* --- TABLET ANIMATION (Adaptada para "Tecnología en Aula") --- */
     .tablet-section.no-bg {
         background-color: transparent; border-top: none; padding: 40px 0 120px; overflow: visible;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -227,16 +239,14 @@
     }
     .surface-container.visible { opacity: 1; transform: scale(1.5) translateY(0) !important; }
     
-    /* Tablet Marco */
     .surface { 
-        border: 2px solid #333; /* Marco oscuro */
+        border: 2px solid #333; 
         overflow: hidden; 
         box-shadow: 0 40px 100px rgba(0,0,0,0.2); 
         background-color: #111; 
         border-radius: 12px; width: 500px; height: 317px; position: absolute; left: 0; top: 0; pointer-events: none; transition: transform 0.9s;
     }
     .display { position: absolute; left: 15px; right: 15px; top: 15px; bottom: 15px; background-color: #000; z-index: 1; overflow: hidden; border-radius: 4px; }
-    
     .tablet-content { width: 100%; height: 100%; background: #000; position: relative; overflow: hidden; }
     .tablet-slider-wrapper { display: flex; width: 300%; height: 100%; animation: tabletSlide 12s infinite cubic-bezier(0.45, 0, 0.55, 1); }
     .t-slide { width: 33.333%; height: 100%; flex-shrink: 0; }
@@ -244,30 +254,13 @@
     @keyframes tabletSlide { 0%, 25% { transform: translateX(0); } 33%, 58% { transform: translateX(-33.333%); } 66%, 91% { transform: translateX(-66.666%); } 100% { transform: translateX(0); } }
     
     .sense { width: 100px; height: 84.25px; float: left; position: relative; z-index: 10; }
-    /* Brillo sutil */
     .shine { width: 900px; height: 537px; margin-left: -200px; margin-top: -100px; transition: all 0.9s; background: linear-gradient(115deg, rgba(255,255,255,0), rgba(255,255,255,0) 60%, rgba(255,255,255,0.1) 60%, rgba(255,255,255,0.4) 100%); z-index: 2; opacity: 0.3; position: absolute; pointer-events: none; }
     
-    /* Hover effects Tablet */
     .sense:hover ~ .surface { transform: perspective(50em) rotateX(-5deg) rotateY(5deg); }
     .sense:nth-child(5n-4):hover ~ .surface { transform: perspective(50em) rotateX(-5deg) rotateY(-5deg); }
     .sense:nth-child(n+10):hover ~ .surface { transform: perspective(50em) rotateX(5deg) rotateY(5deg); }
 
-
-    /* --- CHIPS (Minimalistas) --- */
-    .download-chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .chip {
-        display: inline-flex; align-items: center; gap: 8px;
-        padding: 8px 16px; border-radius: 50px; 
-        font-size: 0.85rem; font-weight: 500; font-family: var(--font-body);
-        border: 1px solid rgba(28,28,28,0.2); color: var(--text-main);
-        background: transparent;
-        transition: var(--transition);
-    }
-    .chip i { font-size: 1.1rem; }
-    .chip:hover { border-color: var(--text-main); background: var(--surface-color); }
-
-
-    /* --- MAC SAFARI SIMULATOR (Theme: Cream) --- */
+    /* --- MAC SAFARI SIMULATOR --- */
     .mac-window {
         width: 100%; height: 500px;
         background: var(--surface-color);
@@ -278,30 +271,19 @@
     }
     @media (min-width: 768px) { .mac-window { height: 600px; } }
 
-    /* Header Safari color Crema Oscuro */
     .window-header.safari-theme {
         height: 52px;
-        background: #f3f4f6; /* Crema más oscuro para la barra */
+        background: #f3f4f6; 
         border-bottom: 1px solid #DEDBD5;
         display: flex; align-items: center; justify-content: space-between;
         padding: 0 18px; gap: 20px; flex-shrink: 0;
     }
-
-    /* Puntos Mac minimalistas */
     .traffic-lights { display: flex; gap: 8px; }
     .dot { width: 11px; height: 11px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); }
     .close { background: #FF5F57; } .minimize { background: #FEBC2E; } .maximize { background: #28C840; }
-
-    .safari-btn {
-        background: transparent; border: none; width: 34px; height: 34px;
-        display: flex; align-items: center; justify-content: center;
-        color: var(--text-main); font-size: 16px; cursor: pointer; border-radius: 4px;
-    }
-    .safari-btn:hover { background: rgba(0,0,0,0.05); }
-
     .safari-address-bar {
         flex: 1; height: 34px;
-        background: #FDFBF8; /* Blanco cálido */
+        background: #FDFBF8; 
         border: 1px solid #DEDBD5;
         border-radius: 6px;
         display: flex; align-items: center; padding: 0 10px; gap: 8px;
@@ -314,216 +296,500 @@
     }
     .main-iframe { flex: 1; width: 100%; border: none; background: #fff; }
 
-    
-    /* --- SECCIÓN VISUALS --- */
-    .reader-visual { 
-        background: var(--surface-color); 
-        padding: 2rem; border-radius: var(--border-radius); 
-        box-shadow: var(--shadow-soft); border: 1px solid var(--surface-border);
+    /* --- BRANDS --- */
+    .brands-section {
+        padding: 2rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); text-align: center;
     }
-    
-    .sheet-music-ui .ui-header { display: flex; gap: 8px; margin-bottom: 20px; }
-    
-    /* Human Connection */
+    .brands-title { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; font-weight: 600; opacity: 0.7; }
+    .brands-grid { display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap; }
+    .brand-logo { height: 30px; width: auto; object-fit: contain; filter: grayscale(100%); opacity: 0.4; transition: all 0.3s ease; }
+    .brand-logo:hover { filter: grayscale(0%); opacity: 1; }
+
+    /* --- SECCIÓN VISUAL (PROFE) --- */
     .sessions-section { background: var(--surface-color); border-top: 1px solid var(--surface-border); border-bottom: 1px solid var(--surface-border); }
     .human-connection-visual { 
-        background: #F2EFE9; /* Invertido */
-        border-radius: var(--border-radius); height: 300px; 
-        display: flex; align-items: center; justify-content: center; gap: 20px; position: relative; 
+        background: #F2EFE9; 
+        border-radius: var(--border-radius); height: 350px; 
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; position: relative; 
+        background-size: cover; background-position: center;
+        overflow: hidden;
     }
-    .avatar-teacher, .avatar-student { 
-        width: 80px; height: 80px; border-radius: 50%; 
-        border: 3px solid #fff; background-size: cover; background-position: center; filter: grayscale(100%); transition: filter 0.3s;
+    .human-overlay {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.3);
     }
-    .human-connection-visual:hover .avatar-teacher, .human-connection-visual:hover .avatar-student { filter: grayscale(0%); }
-    .connection-line { 
-        position: absolute; bottom: 20px; 
-        background: var(--text-main); color: #fff; 
-        padding: 4px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; font-family: var(--font-mono);
+    .connection-tag { 
+        position: relative; z-index: 2;
+        background: #fff; color: var(--text-main); 
+        padding: 8px 16px; border-radius: 50px; font-size: 14px; font-weight: 600; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        display: flex; align-items: center; gap: 8px;
     }
 
-
-
-    /* --- SECCIÓN DE MARCAS (BRAND LOGOS) --- */
-.brands-section {
-    padding: 2rem 0; /* Poca altura, solo es una franja */
-    border-bottom: 1px solid rgba(0,0,0,0.05); /* Separador sutil */
-    text-align: center;
-}
-
-.brands-title {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-
-opacity: 0.9;
-}
-
-.brands-grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem; /* Espacio amplio entre logos */
-    flex-wrap: wrap; /* Para que baje en móvil */
-}
-
-.brand-logo {
-    height: 30px; /* Altura uniforme para todos */
-    width: auto;
-    object-fit: contain;
+    /* --- TRY IT NOW (CTA FINAL) --- */
+    .try-it-now-section {
+        position: relative; width: 100%; height: 70vh; min-height: 500px; 
+        display: flex; align-items: center; overflow: hidden; 
+        color: #fff; background-color: var(--dark-bg);
+    }
+    .try-slider--wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+    .try-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1; }
+    .try-content { position: relative; z-index: 10; max-width: 600px; text-align: left; margin: 0 auto; }
+    .try-content h1 { font-size: 3rem; margin-bottom: 1.5rem; color: #fff; text-align: center; }
+    .try-content p { color: #ccc; text-align: center; margin-bottom: 2rem; }
     
-    /* EL TRUCO DE ESTILO PREMIUM: */
-    filter: grayscale(100%); /* Todo a blanco y negro */
-    opacity: 0.4; /* Semi-transparente */
-    transition: all 0.3s ease;
-    cursor: default; /* O pointer si llevan link */
-}
-
-/* Efecto al pasar el mouse: recuperan color y opacidad */
-.brand-logo:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-}
-
-/* Ajuste Mobile */
-@media (max-width: 768px) {
-    .brands-grid {
-        gap: 2rem;
-        padding: 0 20px;
+    .btn-cta {
+        background-color: #fff; color: #1C1C1C; border: none;
+        border-radius: 50px !important; font-family: var(--font-title); font-weight: 700;
+        padding: 18px 40px; font-size: 1.2rem;
+        transition: var(--transition);
+        display: block; margin: 0 auto;
     }
-    .brand-logo {
-        height: 24px; /* Un poco más chicos en cel */
-    }
-}
+    .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,255,255,0.2); }
 
-.try-it-now-section {
-    position: relative;
-    width: 100%;
-    
-    /* CAMBIO AQUÍ: De 70vh a 100vh para pantalla completa */
-    height: 100vh; 
-    
-    min-height: 600px; /* Aumenta un poco el mínimo para seguridad */
-    display: flex; 
-    align-items: center; 
-    overflow: hidden; 
-    color: #fff;
-    background-color: var(--dark-bg);
-}
-
-.try-slider--wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-
-/* Overlay oscuro intenso para el contraste del texto blanco */
-.try-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Oscuridad del 60% */
-    z-index: 1;
-}
-
-.try-content { position: relative; z-index: 10; max-width: 600px; text-align: left; left: 25px; }
-.try-content h1 { font-size: 3rem; margin-bottom: 1.5rem; color: #fff; }
-
-/* Nuevo botón Azul para la sección de prueba */
-.btn-blue {
-    background-color: #347AB7; /* Azul similar al de la imagen */
-    color: #ffffff;
-    border: none;
-    border-radius: 10px !important;
-    font-family: var(--font-body);
-    font-weight: 700;
-}
-
-.btn-blue:hover {
-    background-color: #276194; /* Un poco más oscuro al pasar el mouse */
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(52, 122, 183, 0.4);
-}
-
-/* Chips en Dark Mode para la sección final */
-.chip.dark-chip {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 500;
-    display: inline-flex; align-items: center; gap: 8px; cursor: default;
-    backdrop-filter: blur(4px); transition: var(--transition);
-}
-.chip.dark-chip i { font-size: 1.2rem; }
-.chip.dark-chip:hover { background: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.4); }
-
-
-    /* --- FOOTER (Invertido: Negro) --- */
+    /* --- FOOTER --- */
     .dark-footer { background-color: #0F0F0F; color: #888; padding: 5rem 0 2rem; font-size: 0.95rem; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
     .footer-col h4 { color: #fff; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 1.5rem; font-family: var(--font-body); }
-    
     .footer-logo { font-size: 1.8rem; font-weight: 600; color: #fff; margin-bottom: 1rem; font-family: var(--font-title); }
-    .logo-accent { font-weight: 400; font-style: italic; }
-    
-    .links-col ul { list-style: none; } .links-col li { margin-bottom: 0.8rem; }
-    .links-col a { color: #888; text-decoration: none; transition: color 0.3s ease; }
-    .links-col a:hover { color: #fff; }
-    
     .social-icons { display: flex; gap: 1rem; }
-    .social-icons a { 
-        display: flex; align-items: center; justify-content: center; 
-        width: 40px; height: 40px; border-radius: 50%; 
-        background: rgba(255,255,255,0.05); color: #fff; 
-        font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; 
-    }
+    .social-icons a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); color: #fff; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
     .social-icons a:hover { background: #fff; color: #000; }
     .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: #555; }
 
-
-    /* --- REVIEWS --- */
+    /* REVIEWS & ANIMATIONS */
     .reviews-section { background-color: var(--bg-color); padding: 5rem 0; }
-    .review-card { 
-        background: var(--surface-color); padding: 2.5rem; 
-        border-radius: var(--border-radius); box-shadow: var(--shadow-soft); 
-        border: 1px solid var(--surface-border);
-        height: auto; 
-    }
-    .review-stars { color: var(--text-main); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
-    .review-text { font-size: 1.1rem; font-style: italic; color: var(--text-main); font-family: 'Playfair Display', serif; } /* Opcional serif para citas */
-    .author-info strong { font-family: var(--font-title); color: var(--text-main); }
-
-
-    /* Animaciones */
+    .review-card { background: var(--surface-color); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow-soft); border: 1px solid var(--surface-border); }
     .fade-in { opacity: 0; transition: opacity 0.8s ease-out; }
     .slide-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
     .visible { opacity: 1; transform: translateY(0); }
-    .delay-1 { transition-delay: 0.2s; }
-
-    /* Browser Loader Line */
+    
+    /* Browser Loader */
     .browser-loader-container { height: 2px; background: transparent; width: 100%; }
     .loader-bar { height: 100%; background: var(--text-main); width: 0%; transition: width 0.5s ease; }
     .loader-bar.loading { width: 70%; }
     .loader-bar.loaded { width: 100%; opacity: 0; transition: width 0.3s, opacity 0.3s 0.3s; }
 
-    /* RESPONSIVE */
-    @media (min-width: 768px) {
-        .grid-2 { grid-template-columns: 1fr 1fr; }
-        .center-text { text-align: center; }
-    }
     @media (max-width: 768px) {
+        .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
         h1 { font-size: 2.8rem; }
-        .surface-container {
-            margin-top: 0; margin-bottom: 30px;
-            transform: scale(1.05) translateY(20px); 
-        }
-        .surface-container.visible { transform: scale(1.05) translateY(0) !important; }
-        .download-chips { justify-content: center !important; }
         .reverse-mobile { display: flex; flex-direction: column-reverse; }
-        .footer-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-        .brand-col { align-items: center; display: flex; flex-direction: column; }
-        .footer-desc, .social-icons { margin: 0 auto; }
-        .try-content { padding-left: 0; text-align: center; margin: 0 auto;}
+        .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+        .social-icons { justify-content: center; }
+        .surface-container { transform: scale(1.05) translateY(20px); }
+        .surface-container.visible { transform: scale(1.05) translateY(0) !important; }
     }
-    @media (max-width: 548px) {
-         .surface-container { transform: scale(0.75) translateY(20px); }
-        .surface-container.visible { transform: scale(0.75) translateY(0) !important; }
+
+
+    /* --- SECCIÓN BANNER FULL-WIDTH (AULA) --- */
+    .classroom-banner {
+        position: relative;
+        width: 100%;
+        height: 550px; /* Altura imponente */
+        background-attachment: fixed; /* Efecto Parallax Premium */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: flex-end; /* Alinea el botón hacia abajo */
+        justify-content: center;
+        padding-bottom: 80px; /* Espacio desde abajo */
+    }
+
+    .classroom-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        /* Gradiente sutil desde abajo para que el botón resalte */
+        background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%);
+        z-index: 1;
+    }
+
+    .classroom-cta {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+
+    /* Botón flotante específico para esta sección */
+    .btn-floating {
+        background-color: var(--surface-color); /* Blanco */
+        color: var(--text-main);
+        font-weight: 700;
+        padding: 18px 45px;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Sombra difusa elegante */
+        border: none;
+        font-size: 1.1rem;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-floating:hover {
+        transform: scale(1.05) translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    /* --- SECCIÓN GALERÍA ACADEMIA (Estilo Mozart+) --- */
+    .academy-gallery-section {
+        padding: 6rem 24px;
+        background-color: var(--bg-color); /* Mantiene el crema base */
+    }
+
+    .academy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    /* Tarjeta contenedora */
+    .gallery-card {
+        position: relative;
+        height: 500px; /* Altura fija vertical estilo TikTok/Stories */
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-soft);
+        background: #000; /* Fondo de carga */
+    }
+
+    /* Ajustes del Swiper interno */
+    .gallery-card .swiper {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .gallery-card .slide-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    /* Overlay de texto (Gradiente inferior elegante) */
+    .card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px;
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%);
+        z-index: 10;
+        pointer-events: none; /* Permite deslizar tocando el texto */
+    }
+
+    .card-content h3 {
+        color: #fff;
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+        font-weight: 600;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .card-content p {
+        color: rgba(255,255,255,0.9);
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 0;
+        line-height: 1.4;
+    }
+
+    /* Paginación del slider (puntos) */
+    .gallery-card .swiper-pagination-bullet {
+        background: #fff;
+        opacity: 0.5;
+    }
+    .gallery-card .swiper-pagination-bullet-active {
+        opacity: 1;
+    }
+
+    /* Hover Effect */
+    .gallery-card:hover .slide-img {
+        transform: scale(1.05);
+    }
+
+    /* --- SECCIÓN CÓMO FUNCIONA & BENEFICIOS --- */
+    .methodology-section {
+        background-color: var(--surface-color); /* Blanco para contraste con el crema */
+        padding: 6rem 24px;
+        border-top: 1px solid var(--surface-border);
+    }
+
+    /* Layout "Cómo Funciona" */
+    .how-it-works-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 4rem;
+        align-items: center;
+        margin-bottom: 6rem;
+    }
+
+    .steps-list {
+        list-style: none;
+        counter-reset: step-counter;
+    }
+
+    .step-item {
+        position: relative;
+        padding-left: 60px;
+        margin-bottom: 2.5rem;
+    }
+
+    .step-item::before {
+        counter-increment: step-counter;
+        content: "0" counter(step-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-family: var(--font-mono);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-main);
+        border: 1px solid var(--surface-border);
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .step-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .step-item p {
+        margin-left: 0; /* Override global center alignment */
+        max-width: 100%;
+        font-size: 1rem;
+    }
+
+    /* Imagen lateral "Cómo Funciona" */
+    .methodology-image {
+        position: relative;
+        height: 500px;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-soft);
+    }
+    .methodology-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* --- TABLA COMPARATIVA (Estilo Mozart+) --- */
+    .comparison-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--bg-color); /* Fondo crema suave dentro de sección blanca */
+        border-radius: var(--border-radius);
+        padding: 3rem;
+        border: 1px solid var(--surface-border);
+    }
+
+    .comparison-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--text-main);
+    }
+
+    .comp-col h4 {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .comp-col.brand h4 {
+        font-weight: 800;
+    }
+
+    .comparison-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 1.2rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        align-items: center;
+    }
+
+    .comparison-row:last-child {
+        border-bottom: none;
+    }
+
+    .comp-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+    }
+
+    .comp-item.mozart {
+        color: var(--text-main);
+        font-weight: 500;
+        justify-content: flex-end; /* Alineado a la derecha hacia el centro */
+        text-align: right;
+    }
+    
+    .comp-item.traditional {
+        opacity: 0.5; /* Tradicional se ve más débil */
+    }
+
+    .check-icon {
+        color: var(--text-main);
+        font-size: 1.2rem;
+    }
+    
+    .cross-icon {
+        color: #ccc;
+        font-size: 1.2rem;
+    }
+
+    /* Ajuste Mobile */
+    @media (max-width: 900px) {
+        .how-it-works-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .methodology-image { height: 300px; order: -1; } /* Imagen arriba en móvil */
+        
+        .comparison-container { padding: 1.5rem; }
+        .comp-item { font-size: 0.85rem; }
+    }
+
+
+    /* --- SECCIÓN PRICING (FRECUENCIA) --- */
+    .pricing-section {
+        background-color: var(--bg-color);
+        padding: 6rem 24px;
+    }
+
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        align-items: center; /* Alineación vertical centrada */
+    }
+
+    /* Tarjeta Base */
+    .pricing-card {
+        background: var(--surface-color);
+        border: 1px solid var(--surface-border);
+        border-radius: var(--border-radius);
+        padding: 3rem 2rem;
+        text-align: center;
+        transition: var(--transition);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-soft);
+        border-color: var(--text-main);
+    }
+
+    /* TARJETA DESTACADA (STANDARD - DARK MODE) */
+    .pricing-card.featured {
+        background: var(--text-main); /* Negro Mozart */
+        color: #fff;
+        border: 1px solid var(--text-main);
+        padding: 4rem 2rem; /* Un poco más alta */
+        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        z-index: 2;
+        transform: scale(1.05);
+    }
+    
+    .pricing-card.featured:hover {
+        transform: scale(1.05) translateY(-10px);
+    }
+
+    /* Ajuste de colores para modo oscuro */
+    .pricing-card.featured h3,
+    .pricing-card.featured .price-amount,
+    .pricing-card.featured .price-concept,
+    .pricing-card.featured li { color: #fff; }
+    
+    .pricing-card.featured li i { color: #fff; }
+    
+    .pricing-card.featured .btn-outline {
+        border-color: #fff; color: #fff;
+    }
+    .pricing-card.featured .btn-outline:hover {
+        background: #fff; color: #000;
+    }
+
+    /* Tipografía */
+    .price-header h3 {
+        font-size: 1.5rem; margin-bottom: 0.5rem;
+    }
+    .price-header i { font-size: 1.2rem; vertical-align: middle; margin-left: 5px; opacity: 0.7; }
+
+    .price-amount {
+        font-family: var(--font-title);
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--text-main);
+        line-height: 1.2;
+        margin: 1.5rem 0 0.5rem;
+    }
+    
+    .price-concept {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 2rem;
+        display: block;
+    }
+
+    /* Lista de beneficios */
+    .pricing-features {
+        list-style: none;
+        margin-bottom: 2.5rem;
+        text-align: left;
+        padding: 0 10px;
+    }
+
+    .pricing-features li {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 1rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+    }
+
+    .pricing-features li i {
+        color: var(--text-main);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    /* Tag de "Recomendado" */
+    .popular-tag {
+        position: absolute;
+        top: -15px; left: 50%; transform: translateX(-50%);
+        background: #fff; color: #000;
+        padding: 6px 20px; border-radius: 50px;
+        font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700;
+        letter-spacing: 1px; text-transform: uppercase;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Ajuste Mobile */
+    @media (max-width: 900px) {
+        .pricing-card.featured { transform: scale(1); padding: 3rem 2rem; margin: 20px 0; }
+        .pricing-card.featured:hover { transform: translateY(-10px); }
     }
 </style>
 </head>
@@ -533,34 +799,60 @@ opacity: 0.9;
         <div class="creative-slider--wrap">
             <div class="swiper creative-slider">
                 <div class="swiper-wrapper">
-                     <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1vabNC6Y394zDtGUtGTkDfeqEOoGnPLdc');"></div>
+                    <div class="swiper-slide">
+                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1542845815-560f89063717?q=80&w=2068&auto=format&fit=crop');"></div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1fxgoyfi6hti3_rvOIERV_d2b-Hk0hRzX');"></div>
+                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1514119412350-a174d90cb05e?q=80&w=2070&auto=format&fit=crop');"></div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/165E5sFsKJVS26bsIQ_HRzAS-Jg6GuEEp');"></div>
+                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=2070&auto=format&fit=crop');"></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content fade-in">
-            <div class="pill mono" style="margin-bottom: 20px;">Mozart MX • Academia de Piano</div>
-            <h1>Tu camino más corto a la perfección.</h1>
-            <p>La plataforma educativa construida con precisión, elegancia y tecnología serverless. Pura transmisión de música.</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-                <button class="btn btn-primary">Comenzar</button>
-                <button class="btn btn-outline">Ver especificaciones</button>
+            <div class="pill mono">Mozart+ Academy • Mexico</div>
+            <h1>Aprende Piano.<br>En Grupo.<br>En Serio.</h1>
+            <p>La metodología moderna que combina tecnología, diversión y aprendizaje social. Clases presenciales para todas las edades.</p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
+                <button class="btn btn-primary">Agendar Clase Muestra</button>
+                <button class="btn btn-outline">Ver Horarios</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header center-text fade-in mb-large">
+                <h2>¿Por qué Mozart+?</h2>
+                <p>Rompemos el molde tradicional de "una hora a la semana" para darte resultados reales.</p>
+            </div>
+            <div class="grid-3 fade-in">
+                <div class="benefit-card">
+                    <i class="ri-group-fill benefit-icon"></i>
+                    <h3>Aprendizaje Social</h3>
+                    <p style="font-size: 0.95rem;">Aprender con amigos es más divertido. El entorno grupal motiva, reduce el estrés y crea una comunidad musical.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="ri-rocket-fill benefit-icon"></i>
+                    <h3>Tecnología Acelerada</h3>
+                    <p style="font-size: 0.95rem;">Usamos la app Mozart+ en el aula para gamificar el aprendizaje. Recibe feedback instantáneo de tus notas y ritmo.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="ri-wallet-3-fill benefit-icon"></i>
+                    <h3>Costo Inteligente</h3>
+                    <p style="font-size: 0.95rem;">Obtén una educación musical premium en instalaciones de primera, a una fracción del costo de clases particulares.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="tablet-section no-bg">
         <div class="tablet-header fade-in">
-            <h2>El Ciclo del Virtuosismo</h2>
-            <p>Convierte datos de práctica en progreso tangible con una interfaz limpia.</p>
+            <h2>Tecnología en el Aula</h2>
+            <p>Cada piano en nuestra academia está equipado con la última tecnología para guiar tu práctica.</p>
         </div> 
         
         <div class="surface-container slide-up">
@@ -574,13 +866,13 @@ opacity: 0.9;
                 <div class="tablet-content">
                     <div class="tablet-slider-wrapper">
                         <div class="t-slide">
-                            <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="App Screen 1">
+                            <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="Lección de piano">
                         </div>
                         <div class="t-slide">
-                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="App Screen 2">
+                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="Partitura interactiva">
                         </div>
                         <div class="t-slide">
-                             <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="App Screen 3">
+                             <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="Progreso del alumno">
                         </div>
                     </div>
                 </div>
@@ -589,50 +881,42 @@ opacity: 0.9;
           </div>
         </div>
 
-         <div class="download-chips fade-in">
-            <span class="chip"><i class='bx bxl-apple'></i> Mac</span>
-            <span class="chip"><i class='bx bxl-windows'></i> Win</span>
-            <span class="chip"><i class='bx bxl-apple'></i> iPad</span>
-            <span class="chip"><i class='bx bxl-android'></i> Android</span>
+        <div style="text-align: center; margin-top: 30px;" class="fade-in">
+            <p style="margin-bottom: 10px; font-size: 0.9rem;">Plataforma compatible con:</p>
+            <div class="download-chips" style="display: flex; gap: 10px; justify-content: center;">
+                <span class="chip" style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.8rem;"><i class='bx bxl-apple'></i> iPad</span>
+                <span class="chip" style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.8rem;"><i class='bx bxl-windows'></i> PC/Laptop</span>
+                <span class="chip" style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.8rem;"><i class='bx bxl-android'></i> Android</span>
+            </div>
         </div>
     </section>
 
-    <section class="lessons-section">
+    <section class="brands-section fade-in">
         <div class="container">
-            <div class="section-header center-text fade-in" style="margin-bottom: 60px;">
-                <h2>Lecciones secuenciadas</h2>
-                <p>Estructura progresiva. Diseño distraction-free.</p>
+            <p class="brands-title">Aprendes con el mejor equipo</p>
+            <div class="brands-grid">
+                <img style="transform: scale(1.5);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Yamaha_logo.svg/2560px-Yamaha_logo.svg.png" alt="Yamaha" class="brand-logo">
+                <img style="transform: scale(1.8);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Roland_logo.svg/2560px-Roland_logo.svg.png" alt="Roland" class="brand-logo">
+                <img style="transform: scale(1.38);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Korg_Logo.svg/1200px-Korg_Logo.svg.png" alt="Korg" class="brand-logo">
+                <img style="transform: scale(0.85);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Casio_logo.svg/2560px-Casio_logo.svg.png" alt="Casio" class="brand-logo">
             </div>
-            
-            <div class="grid-2">
-                 <div class="text-content fade-in">
-                     <h3 style="margin-bottom: 1rem;">Teoría aplicada</h3>
-                     <p>No solo aprendas las notas. Entiende la música. Nuestro sistema visualiza la armonía en tiempo real.</p>
-                     <ul style="list-style: none; margin-top: 20px; color: var(--text-muted);">
-                         <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="ri-check-line"></i> Análisis armónico</li>
-                         <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="ri-check-line"></i> Ritmo interactivo</li>
-                         <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="ri-check-line"></i> Repertorio clásico</li>
-                     </ul>
-                 </div>
-                 <div class="reader-visual slide-up">
-                    <div class="sheet-music-ui">
-                        <div class="ui-header">
-                            <span class="dot close"></span><span class="dot minimize"></span><span class="dot maximize"></span>
-                        </div>
-                        <div class="ui-body" style="display: flex; justify-content: center; align-items: center; height: 250px; background: #fff; border-radius: 4px; border: 1px solid #eee;">
-                           <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Beethoven_Sonata_Op31_No1_1st_mov_opening.png" style="width: 80%; opacity: 0.8; filter: contrast(120%);" alt="Partitura">
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </section>
+
+    <section class="classroom-banner" style="background-image: url('https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=2070&auto=format&fit=crop');">
+        <div class="classroom-overlay"></div>
+        <div class="classroom-cta fade-in">
+            <a href="#" class="btn btn-floating">
+                Agendar Clase Muestra
+            </a>
         </div>
     </section>
 
     <section class="reader-section">
         <div class="container">
             <div class="text-content center-text mb-large fade-in">
-                <h2>Práctica inteligente en la web</h2>
-                <p>Sin descargas. Accede a tu cuenta Mozart+ desde cualquier navegador moderno.</p>
+                <h2>Tu práctica continúa en casa</h2>
+                <p>Lo que aprendes en la academia se sincroniza en la nube. Accede a tu cuenta Mozart+ desde casa para hacer tu tarea.</p>
             </div>
             
             <div class="reader-visual slide-up" style="padding: 0; background: transparent; box-shadow: none; border: none;">
@@ -640,67 +924,218 @@ opacity: 0.9;
                     <div class="window-header safari-theme">
                         <div class="header-controls">
                             <div class="traffic-lights">
-                                <div class="dot close"></div>
-                                <div class="dot minimize"></div>
-                                <div class="dot maximize"></div>
-                            </div>
-                            <div style="display:flex; margin-left:15px; gap: 5px;">
-                                <button class="safari-btn"><i class="ri-arrow-left-s-line"></i></button>
-                                <button class="safari-btn"><i class="ri-arrow-right-s-line"></i></button>
+                                <div class="dot close"></div><div class="dot minimize"></div><div class="dot maximize"></div>
                             </div>
                         </div>
-
                         <div class="safari-address-bar">
                             <i class="ri-lock-fill" style="font-size: 12px; color: #888;"></i>
-                            <input type="text" class="url-input" id="browser-input" value="app.mozartplus.com/learn">
+                            <input type="text" class="url-input" id="browser-input" value="alumno.mozartplus.com/dashboard" readonly>
                             <i class="ri-refresh-line refresh-icon" id="browser-reload" style="font-size: 12px; color: #888; cursor: pointer;"></i>
                         </div>
-
-                        <div style="width: 100px;"></div> </div>
+                        <div style="width: 50px;"></div> 
+                    </div>
                     
                     <div class="browser-loader-container">
                         <div class="loader-bar" id="browser-loader"></div>
                     </div>
 
-                    <iframe src="https://www.mozart-app.com/lessons4" class="main-iframe" id="browser-iframe"></iframe>
+                    <iframe src="https://www.mozart-app.com" class="main-iframe" id="browser-iframe"></iframe>
                 </div>
             </div>
             </div>
-    </section>
-
-
-    <section class="brands-section fade-in">
-        <div class="container">
-            <p class="brands-title">Compatible con tus instrumentos favoritos</p>
-            <div class="brands-grid">
-                <img style="transform: scale(1.5);" src="https://lh3.googleusercontent.com/d/1yl2i2LUSqqlIWIpkZ5MxuOP7G9rxEVpp=s500" alt="Yamaha" class="brand-logo">
-                
-                <img  src="https://lh3.googleusercontent.com/d/1KpEL9a4LKyjWGkHeD8_iOsgULzmO7-57=s400" alt="Casio" class="brand-logo">
-                
-                <img style="transform: scale(1.8);" src="https://lh3.googleusercontent.com/d/1homhmkyW617jXz6-qk08bYIQpRErHv0B=s400" alt="Roland" class="brand-logo">
-                
-                <img style="transform: scale(0.75);" src="https://lh3.googleusercontent.com/d/1OuZ_-ad4Ov9UyHj1L2LjvvGj4MHDgoGt=s400" alt="Alesis" class="brand-logo">
-                
-                <img style="transform: scale(1.38);" src="https://lh3.googleusercontent.com/d/1SleMNMI-OQRcM7_6nfU1A2tfH-cYaZwH=s400" alt="Korg" class="brand-logo">
-                
-                <img style="transform: scale(0.85);" src="https://lh3.googleusercontent.com/d/1z3bbRVETkkquPdbGVQSI0CgYEnhUnQG_=s400" alt="Akai" class="brand-logo">
-            </div>
-        </div>
     </section>
 
     <section class="sessions-section">
         <div class="container grid-2 reverse-mobile">
             <div class="text-content fade-in">
-                <h2>Profesores reales, conexión humana</h2>
-                <p>La tecnología facilita el aprendizaje, pero la humanidad lo hace arte. Agenda sesiones en vivo.</p>
-                <button class="btn btn-secondary">Ver profesores</button>
+                <div class="pill mono" style="margin-bottom: 15px;">Staff Certificado</div>
+                <h2>Guiados por Maestros Expertos</h2>
+                <p>La tecnología es una herramienta, pero la música se transmite de persona a persona. Nuestros profesores están certificados y aman enseñar.</p>
+                <button class="btn btn-secondary">Conocer al Equipo</button>
             </div>
             <div class="image-placeholder slide-up">
-                <div class="human-connection-visual">
-                    <div class="avatar-teacher" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=200&auto=format&fit=crop');"></div>
-                    <div class="avatar-student" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop');"></div>
-                    <div class="connection-line">Sesión en vivo</div>
+                <div class="human-connection-visual" style="background-image: url('https://images.unsplash.com/photo-1590379204369-09418a032906?q=80&w=2070&auto=format&fit=crop');">
+                    <div class="human-overlay"></div>
+                    <div class="connection-tag"><i class="ri-user-smile-line"></i> Atención Personalizada</div>
+                    <div class="connection-tag"><i class="ri-medal-line"></i> Método ABRSM</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="methodology-section">
+        <div class="container">
+            
+            <div class="how-it-works-grid fade-in">
+                <div class="text-side">
+                    <div class="pill mono" style="margin-bottom: 15px;">Metodología</div>
+                    <h2 style="margin-bottom: 2rem;">La tecnología revolucionó la educación. Nosotros la perfeccionamos.</h2>
+                    
+                    <ul class="steps-list">
+                        <li class="step-item">
+                            <h3>Dinámicas Sociales Divertidas</h3>
+                            <p>Si un profesor te dice que las clases grupales no funcionan, es porque no saben hacerlo bien. El grupo crea motivación y reduce la presión escénica.</p>
+                        </li>
+                        <li class="step-item">
+                            <h3>Feedback Individualizado + IA</h3>
+                            <p>Mientras practicas, nuestra App te corrige nota por nota. El profesor humano se enfoca en tu técnica y expresión, no en corregir notas falsas.</p>
+                        </li>
+                        <li class="step-item">
+                            <h3>Progreso a tu propio ritmo</h3>
+                            <p>Avanza tan rápido como quieras. El sistema se adapta a tu velocidad, permitiéndote desbloquear niveles y repertorio nuevo constantemente.</p>
+                        </li>
+                        <li class="step-item">
+                            <h3>Sistema de Recompensas</h3>
+                            <p>Gamificamos el esfuerzo. Gana trofeos digitales, participa en festivales exclusivos y mantén la racha de práctica activa.</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="methodology-image slide-up">
+                    <img src="https://images.unsplash.com/photo-1513829596324-4bb2800c5efb?q=80&w=2070&auto=format&fit=crop" alt="Clase Mozart+">
+                </div>
+            </div>
+
+            <div class="comparison-wrapper fade-in">
+                <div class="section-header center-text mb-large">
+                    <h2>El Estándar Mozart+</h2>
+                    <p>Por qué nuestra academia supera a las lecciones tradicionales.</p>
+                </div>
+
+                <div class="comparison-container">
+                    <div class="comparison-header">
+                        <div class="comp-col">
+                            <h4>Clases Tradicionales</h4>
+                        </div>
+                        <div class="comp-col brand">
+                            <h4>Academia Mozart+</h4>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comp-item traditional">
+                            <i class="ri-book-line cross-icon"></i> Libros de Papel Estáticos
+                        </div>
+                        <div class="comp-item mozart">
+                            Biblioteca Digital Infinita <i class="ri-checkbox-circle-fill check-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comp-item traditional">
+                            <i class="ri-user-voice-line cross-icon"></i> Feedback 1 vez por semana
+                        </div>
+                        <div class="comp-item mozart">
+                            Feedback Instantáneo 24/7 <i class="ri-checkbox-circle-fill check-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comp-item traditional">
+                            <i class="ri-home-line cross-icon"></i> Práctica en casa solitaria
+                        </div>
+                        <div class="comp-item mozart">
+                            App de Práctica Sincronizada <i class="ri-checkbox-circle-fill check-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comp-item traditional">
+                            <i class="ri-close-line cross-icon"></i> Aislamiento Social
+                        </div>
+                        <div class="comp-item mozart">
+                            Comunidad y Ensambles <i class="ri-checkbox-circle-fill check-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="comparison-row">
+                        <div class="comp-item traditional">
+                            <i class="ri-close-line cross-icon"></i> Reportes subjetivos
+                        </div>
+                        <div class="comp-item mozart">
+                            Analíticas de Progreso Reales <i class="ri-checkbox-circle-fill check-icon"></i>
+                        </div>
+                    </div>
+                     <div class="comparison-row">
+                        <div class="comp-item traditional">
+                            <i class="ri-money-dollar-circle-line cross-icon"></i> Costo Elevado
+                        </div>
+                        <div class="comp-item mozart">
+                            Costo Accesible <i class="ri-checkbox-circle-fill check-icon"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="academy-gallery-section">
+        <div class="container">
+            <div class="section-header center-text fade-in">
+                <div class="pill mono" style="margin-bottom: 15px; border-color: #1C1C1C;">La Experiencia</div>
+                <h2>Domina el piano. Disfruta el proceso.</h2>
+                <p>Nuestra metodología combina lo mejor de la tecnología con la calidez de la enseñanza grupal.</p>
+            </div>
+
+            <div class="academy-grid slide-up">
+                
+                <div class="gallery-card">
+                    <div class="swiper card-slider-1">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Tecnología">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Progreso">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Progreso Acelerado</h3>
+                        <p>Científicamente probado para aprender 4x más rápido gracias a la retroalimentación instantánea.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="swiper card-slider-2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Clase grupal">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Equipamiento">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Inversión Inteligente</h3>
+                        <p>Acceso a equipo premium y profesores expertos a una fracción del costo de clases particulares.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="swiper card-slider-3">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1590379204369-09418a032906?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Niños aprendiendo">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1665686306574-1ace09918530?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Adultos aprendiendo">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Para todas las edades</h3>
+                        <p>Desde niños de 7 años hasta adultos mayores. El método se adapta a tu ritmo de vida.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -708,25 +1143,33 @@ opacity: 0.9;
     <section class="reviews-section">
         <div class="container">
             <div class="section-header center-text fade-in" style="margin-bottom: 40px;">
-                <h2>Testimonios</h2>
+                <h2>Lo que dicen padres y alumnos</h2>
             </div>
             
             <div class="swiper reviews-slider slide-up">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide review-card">
                         <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"La interfaz es preciosa y las lecciones son súper intuitivas. Una experiencia premium."</p>
+                        <p class="review-text">"Nunca creí que mi hijo avanzaría tan rápido. El ambiente de grupo lo motiva a practicar más que cuando iba a clases particulares."</p>
                         <div class="review-author" style="margin-top: 20px; display:flex; gap: 15px; align-items: center;">
-                            <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; background-image: url('https://i.pravatar.cc/150?img=68'); background-size: cover;"></div>
-                            <div class="author-info"><strong>Ana M.</strong><br><span style="font-size: 0.8rem; color: #888;">Piano Principiante</span></div>
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; background-image: url('https://i.pravatar.cc/150?img=32'); background-size: cover;"></div>
+                            <div class="author-info"><strong>Sofía L.</strong><br><span style="font-size: 0.8rem; color: #888;">Mamá de alumno</span></div>
                         </div>
                     </div>
                     <div class="swiper-slide review-card">
                         <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"El diseño limpio me ayuda a concentrarme en la música, no en los menús."</p>
+                        <p class="review-text">"Las instalaciones son hermosas y la tecnología hace que entender la teoría sea mucho más fácil."</p>
                         <div class="review-author" style="margin-top: 20px; display:flex; gap: 15px; align-items: center;">
-                            <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; background-image: url('https://i.pravatar.cc/150?img=11'); background-size: cover;"></div>
-                            <div class="author-info"><strong>Carlos R.</strong><br><span style="font-size: 0.8rem; color: #888;">Compositor</span></div>
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; background-image: url('https://i.pravatar.cc/150?img=12'); background-size: cover;"></div>
+                            <div class="author-info"><strong>Daniel G.</strong><br><span style="font-size: 0.8rem; color: #888;">Alumno Adulto</span></div>
+                        </div>
+                    </div>
+                     <div class="swiper-slide review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Me encanta que no tengo que comprar libros caros, todo está en la pantalla y es muy divertido."</p>
+                        <div class="review-author" style="margin-top: 20px; display:flex; gap: 15px; align-items: center;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; background-image: url('https://i.pravatar.cc/150?img=5'); background-size: cover;"></div>
+                            <div class="author-info"><strong>Valeria P.</strong><br><span style="font-size: 0.8rem; color: #888;">Alumna (12 años)</span></div>
                         </div>
                     </div>
                 </div>
@@ -734,15 +1177,81 @@ opacity: 0.9;
         </div>
     </section>
 
-     <section class="try-it-now-section">
+
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header center-text mb-large fade-in">
+                <h2>Elige tu ritmo de aprendizaje</h2>
+                <p>Planes flexibles basados en la intensidad que deseas. Sin inscripción.</p>
+            </div>
+
+            <div class="pricing-grid slide-up">
+                
+                <div class="pricing-card">
+                    <div class="price-header">
+                        <h3>Básico</h3>
+                    </div>
+                    <div class="price-amount">$449<span style="font-size: 1.5rem;">.90</span></div>
+                    <span class="price-concept">Mensual</span>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="ri-time-line"></i> <strong>1 hora</strong> de clase semanal</li>
+                        <li><i class="ri-smartphone-line"></i> Acceso a Mozart+ App</li>
+                        <li><i class="ri-community-line"></i> Acceso a instalaciones</li>
+                        <li><i class="ri-music-2-line"></i> Participación en recitales</li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%;">Comenzar</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="popular-tag">Mejor Valor</div>
+                    <div class="price-header">
+                        <h3>Standard <i class="ri-graduation-cap-fill"></i></h3>
+                    </div>
+                    <div class="price-amount">$799<span style="font-size: 1.5rem;">.00</span></div>
+                    <span class="price-concept">Mensual</span>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="ri-speed-up-line"></i> <strong>2 horas</strong> semanales (Progreso x2)</li>
+                        <li><i class="ri-calendar-check-line"></i> Rotación de horarios flexible</li>
+                        <li><i class="ri-smartphone-line"></i> Acceso Premium Mozart+ App</li>
+                        <li><i class="ri-vip-crown-line"></i> Prioridad en eventos y recitales</li>
+                        <li><i class="ri-bar-chart-box-line"></i> Reporte de progreso mensual</li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%;">Elegir Standard</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="price-header">
+                        <h3>Intensivo <i class="ri-flashlight-fill" style="color: #FFD700;"></i></h3>
+                    </div>
+                    <div class="price-amount">$1350<span style="font-size: 1.5rem;">.00</span></div>
+                    <span class="price-concept">Mensual</span>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="ri-rocket-2-fill"></i> <strong>4 horas</strong> semanales (Inmersión total)</li>
+                        <li><i class="ri-line-chart-line"></i> Seguimiento en línea personalizado</li>
+                        <li><i class="ri-smartphone-line"></i> Acceso Premium Mozart+ App</li>
+                        <li><i class="ri-calendar-event-line"></i> Rotación de horarios prioritaria</li>
+                        <li><i class="ri-medal-line"></i> Preparación para certificaciones</li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%;">Elegir Intensivo</button>
+                </div>
+
+            </div>
+            
+            <p class="center-text" style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.7;">
+                * Todos los precios son en MXN. No cobramos inscripción anual.
+            </p>
+        </div>
+    </section>
+
+    <section class="try-it-now-section">
         <div class="try-slider--wrap">
             <div class="swiper creative-slider">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=2070&auto=format&fit=crop');"></div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop');"></div>
+                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=2070&auto=format&fit=crop');"></div>
                     </div>
                 </div>
             </div>
@@ -750,17 +1259,11 @@ opacity: 0.9;
         
         <div class="try-overlay"></div>
 
-        <div class="container" style="height: 100%; display: flex; align-items: center;">
-            <div class="try-content fade-in">
-                <h1>Try it now.<br>Cancel anytime.</h1>
-                <button class="btn btn-blue btn-large" style="margin-bottom: 30px;">Try free for 7 days</button>
-                
-                <div class="download-chips" style="justify-content: flex-start;">
-                    <span class="chip dark-chip"><i class='bx bxl-apple'></i> Mac</span>
-                    <span class="chip dark-chip"><i class='bx bxl-windows'></i> Win</span>
-                    <span class="chip dark-chip"><i class='bx bxl-apple'></i> iPad</span>
-                    <span class="chip dark-chip"><i class='bx bxl-apple'></i> Drums for iPhone</span>
-                </div>
+        <div class="container">
+            <div class="try-content fade-in center-text">
+                <h1>Ven a conocer la experiencia Mozart+</h1>
+                <p>Agenda una clase muestra sin costo. Conoce nuestras instalaciones, prueba los pianos y vive una clase grupal.</p>
+                <button class="btn btn-cta">Agendar Visita</button>
             </div>
         </div>
     </section>
@@ -770,26 +1273,32 @@ opacity: 0.9;
             <div class="footer-grid">
                 <div class="footer-col brand-col">
                     <div class="footer-logo">Mozart<span class="logo-accent">+</span></div>
-                    <p class="footer-desc">Revolucionando la educación musical con elegancia.</p>
+                    <p style="color: #888; font-size: 0.9rem;">Academia de piano presencial y plataforma educativa.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>UBICACIÓN</h4>
+                    <p style="color: #888; margin-bottom: 5px;">Av. Principal 123, Centro</p>
+                    <p style="color: #888;">Ciudad de México, CDMX</p>
                 </div>
                 <div class="footer-col links-col">
                     <h4>ACADEMIA</h4>
-                    <ul>
-                        <li><a href="#">Planes</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Términos</a></li>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#">Horarios</a></li>
+                        <li><a href="#">Precios</a></li>
+                        <li><a href="#">Portal Alumnos</a></li>
                     </ul>
                 </div>
                 <div class="footer-col social-col">
                     <h4>SÍGUENOS</h4>
                     <div class="social-icons">
                         <a href="#"><i class='bx bxl-instagram'></i></a>
-                        <a href="#"><i class='bx bxl-tiktok'></i></a>
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-whatsapp'></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 Mozart Plus. Todos los derechos reservados.</p>
+                <p>© 2026 Mozart+ Academy. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -830,7 +1339,6 @@ opacity: 0.9;
             document.querySelectorAll('.fade-in, .slide-up').forEach(el => observer.observe(el));
 
             // Browser Loader Logic
-            const browserInput = document.getElementById('browser-input');
             const browserLoader = document.getElementById('browser-loader');
             const browserIframe = document.getElementById('browser-iframe');
             const browserReload = document.getElementById('browser-reload');
@@ -851,6 +1359,23 @@ opacity: 0.9;
             
             setTimeout(() => { if(browserLoader) browserLoader.classList.add('loaded'); }, 1000);
         });
+
+
+        // Inicializar Sliders de Tarjetas de Beneficios
+            const cardSliderOptions = {
+                loop: true,
+                effect: 'slide',
+                speed: 600,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                grabCursor: true, // Para que se sienta táctil
+            };
+
+            new Swiper(".card-slider-1", cardSliderOptions);
+            new Swiper(".card-slider-2", cardSliderOptions);
+            new Swiper(".card-slider-3", cardSliderOptions);
     </script>
 </body>
 </html>
