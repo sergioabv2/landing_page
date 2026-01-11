@@ -127,15 +127,15 @@
     .creative-slider--wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
     .swiper { width: 100%; height: 100%; }
     /* Imágenes de fondo orientadas a clases presenciales */
-    .slide-bg { width: 100%; height: 100%; background-size: cover; background-position: center; transform: scale(1); transition: transform 8s ease; filter: brightness(0.7) grayscale(20%); }
+    .slide-bg { width: 100%; height: 100%; background-size: cover; background-position: center; transform: scale(1); transition: transform 8s ease;  }
     .swiper-slide-active .slide-bg { transform: scale(1.1); }
     
     .hero-overlay { 
         position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
         background: linear-gradient(to right, 
-                rgba(0, 0, 0, 0.6) 0%, 
-                rgba(0, 0, 0, 0.3) 50%, 
-                rgba(0, 0, 0, 0.1) 100%); 
+                rgba(0, 0, 0, 0.3) 0%, 
+                rgba(0, 0, 0, 0.1) 50%, 
+                rgba(0, 0, 0, 0.05) 100%); 
     }
     
    .hero-content { 
@@ -385,7 +385,7 @@
     .classroom-banner {
         position: relative;
         width: 100%;
-        height: 550px; /* Altura imponente */
+        height: 350px; /* Altura imponente */
         background-attachment: fixed; /* Efecto Parallax Premium */
         background-position: center;
         background-repeat: no-repeat;
@@ -660,62 +660,48 @@
     }
 
 
-    /* --- SECCIÓN PRICING (FRECUENCIA) --- */
+    /* --- SECCIÓN PRICING COMPACTA --- */
     .pricing-section {
         background-color: var(--bg-color);
-        padding: 6rem 24px;
+        padding: 4rem 24px; /* Menos padding vertical general */
     }
 
     .pricing-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        max-width: 1100px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas un poco más estrechas */
+        gap: 1.5rem; /* Menos espacio entre tarjetas */
+        max-width: 1000px;
         margin: 0 auto;
-        align-items: center; /* Alineación vertical centrada */
+        align-items: flex-end; /* Alineados abajo para resaltar la altura del destacado */
     }
 
-    /* Tarjeta Base */
     .pricing-card {
         background: var(--surface-color);
         border: 1px solid var(--surface-border);
-        border-radius: var(--border-radius);
-        padding: 3rem 2rem;
+        border-radius: 8px; /* Radio más sutil */
+        padding: 2rem 1.5rem; /* Padding interno reducido a la mitad */
         text-align: center;
         transition: var(--transition);
         position: relative;
         display: flex;
         flex-direction: column;
-        height: auto;
     }
 
-    .pricing-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-soft);
-        border-color: var(--text-main);
-    }
-
-    /* TARJETA DESTACADA (STANDARD - DARK MODE) */
+    /* TARJETA DESTACADA (Compact Dark Mode) */
     .pricing-card.featured {
-        background: var(--text-main); /* Negro Mozart */
+        background: var(--text-main);
         color: #fff;
         border: 1px solid var(--text-main);
-        padding: 4rem 2rem; /* Un poco más alta */
-        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        padding: 2.5rem 1.5rem; /* Ligeramente más alta que las normales */
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         z-index: 2;
-        transform: scale(1.05);
+        transform: scale(1.02); /* Escala más sutil */
     }
     
-    .pricing-card.featured:hover {
-        transform: scale(1.05) translateY(-10px);
-    }
-
-    /* Ajuste de colores para modo oscuro */
     .pricing-card.featured h3,
     .pricing-card.featured .price-amount,
     .pricing-card.featured .price-concept,
-    .pricing-card.featured li { color: #fff; }
-    
+    .pricing-card.featured li,
     .pricing-card.featured li i { color: #fff; }
     
     .pricing-card.featured .btn-outline {
@@ -725,71 +711,76 @@
         background: #fff; color: #000;
     }
 
-    /* Tipografía */
-    .price-header h3 {
-        font-size: 1.5rem; margin-bottom: 0.5rem;
-    }
-    .price-header i { font-size: 1.2rem; vertical-align: middle; margin-left: 5px; opacity: 0.7; }
-
+    /* Tipografía Compacta */
+    .price-header h3 { font-size: 1.2rem; margin-bottom: 0.2rem; }
+    
     .price-amount {
         font-family: var(--font-title);
-        font-size: 3.5rem;
+        font-size: 2.5rem; /* Reducido de 3.5rem */
         font-weight: 700;
         color: var(--text-main);
-        line-height: 1.2;
-        margin: 1.5rem 0 0.5rem;
+        line-height: 1;
+        margin: 1rem 0 0.2rem;
     }
     
     .price-concept {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         color: var(--text-muted);
         font-family: var(--font-mono);
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         display: block;
     }
 
-    /* Lista de beneficios */
+    /* Badge de Descuento */
+    .discount-badge {
+        display: inline-block;
+        background-color: #E0F2F1; /* Verde menta muy suave */
+        color: #00695C; /* Verde oscuro elegante */
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        font-family: var(--font-mono);
+    }
+    
+    /* Descuento en tarjeta oscura */
+    .pricing-card.featured .discount-badge {
+        background-color: rgba(255,255,255,0.2);
+        color: #fff;
+    }
+
+    /* Lista Compacta */
     .pricing-features {
         list-style: none;
-        margin-bottom: 2.5rem;
+        margin-bottom: 1.5rem;
         text-align: left;
-        padding: 0 10px;
+        padding: 0;
+        font-size: 0.9rem; /* Texto más pequeño */
     }
 
     .pricing-features li {
-        margin-bottom: 1rem;
+        margin-bottom: 0.6rem; /* Menos espacio entre items */
         display: flex;
         align-items: flex-start;
-        gap: 12px;
-        font-size: 1rem;
+        gap: 8px;
         color: var(--text-muted);
-        line-height: 1.4;
+        line-height: 1.3;
     }
 
     .pricing-features li i {
         color: var(--text-main);
-        font-size: 1.2rem;
-        flex-shrink: 0;
+        font-size: 1rem;
         margin-top: 2px;
     }
 
-    /* Tag de "Recomendado" */
-    .popular-tag {
-        position: absolute;
-        top: -15px; left: 50%; transform: translateX(-50%);
-        background: #fff; color: #000;
-        padding: 6px 20px; border-radius: 50px;
-        font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700;
-        letter-spacing: 1px; text-transform: uppercase;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    /* Ajuste Mobile */
-    @media (max-width: 900px) {
-        .pricing-card.featured { transform: scale(1); padding: 3rem 2rem; margin: 20px 0; }
-        .pricing-card.featured:hover { transform: translateY(-10px); }
+    .btn-compact {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        width: 100%;
+        margin-top: auto; /* Empuja el botón al fondo */
     }
 </style>
 </head>
@@ -800,25 +791,100 @@
             <div class="swiper creative-slider">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1542845815-560f89063717?q=80&w=2068&auto=format&fit=crop');"></div>
+                        <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1fxgoyfi6hti3_rvOIERV_d2b-Hk0hRzX');"></div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1514119412350-a174d90cb05e?q=80&w=2070&auto=format&fit=crop');"></div>
+                        <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1TiKkO9mXqloHnNax9cbza9YdP0_jXzNB');"></div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=2070&auto=format&fit=crop');"></div>
+                        <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/165E5sFsKJVS26bsIQ_HRzAS-Jg6GuEEp');"></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content fade-in">
-            <div class="pill mono">Mozart+ Academy • Mexico</div>
-            <h1>Aprende Piano.<br>En Grupo.<br>En Serio.</h1>
-            <p>La metodología moderna que combina tecnología, diversión y aprendizaje social. Clases presenciales para todas las edades.</p>
+            <div class="pill mono">Mozart Plus+ • Academy</div>
+            <h1>Domina el Piano con<br>Calidad de conservatorio</h1>
+            <p>Únete a la mejor comunidad de pianistas. La métodología revolucionaría que combina tecnología de punta con rigor academico. </p>
             <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
                 <button class="btn btn-primary">Agendar Clase Muestra</button>
                 <button class="btn btn-outline">Ver Horarios</button>
+            </div>
+        </div>
+    </section>
+
+
+     <section class="academy-gallery-section">
+        <div class="container">
+            <div class="section-header center-text fade-in">
+                <div class="pill mono" style="margin-bottom: 15px; border-color: #1C1C1C;">La Experiencia</div>
+                <h2>Domina el piano. Disfruta el proceso.</h2>
+                <p>Nuestra metodología combina lo mejor de la tecnología con la calidez de la enseñanza grupal.</p>
+            </div>
+
+            <div class="academy-grid slide-up">
+                
+                <div class="gallery-card">
+                    <div class="swiper card-slider-1">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="https://lh3.googleusercontent.com/d/16Q1QXxnabMSUqfbs1AmLCICrpYj745fW" class="slide-img" alt="Tecnología">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://lh3.googleusercontent.com/d/1XcE-xdTzICEky4-hV0C2ZEcLg1Xj4pSm" class="slide-img" alt="Progreso">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Progreso Acelerado</h3>
+                        <p>Científicamente probado para aprender 4x más rápido gracias a la retroalimentación instantánea.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="swiper card-slider-2">
+                        <div class="swiper-wrapper">
+                             <div class="swiper-slide">
+                                <img src="https://lh3.googleusercontent.com/d/12DJDkSE9BiHxDmKohUuopY5NYVFv5a7f" class="slide-img" alt="Tecnología">
+                            </div>
+                              <div class="swiper-slide">
+                                <img src="https://lh3.googleusercontent.com/d/1-WWB9_XTJHbmNYkKXezn1UgxHOv6SDUS" class="slide-img" alt="Tecnología">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://lh3.googleusercontent.com/d/1d9nFSuVWGMeyhIw3KmB-O7jgzQT4Dfel" class="slide-img" alt="Clase grupal">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://lh3.googleusercontent.com/d/1u-10eINOblqeinHHRUtSiB3iw_4gQ5Wp" class="slide-img" alt="Equipamiento">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Participación en eventos</h3>
+                        <p>Acceso a equipo premium y profesores expertos a una fracción del costo de clases particulares.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="swiper card-slider-3">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="https://lh3.googleusercontent.com/d/1k0Suf-dS2d_oF6GHoYBxQBkxbsiRFkOL" class="slide-img" alt="Niños aprendiendo">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://lh3.googleusercontent.com/d/1P8_bZbN1EOAS_YoncEdFEfJfZQ_zZ_Yi" class="slide-img" alt="Adultos aprendiendo">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Orientado a adultos</h3>
+                        <p>Desde jovenes de 15 años hasta adultos mayores de 95+ años. El método se adapta a tu ritmo de vida.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -849,61 +915,9 @@
         </div>
     </section>
 
-    <section class="tablet-section no-bg">
-        <div class="tablet-header fade-in">
-            <h2>Tecnología en el Aula</h2>
-            <p>Cada piano en nuestra academia está equipado con la última tecnología para guiar tu práctica.</p>
-        </div> 
-        
-        <div class="surface-container slide-up">
-          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
-          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
-          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
-          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
-          
-          <div class="surface">
-            <div class="display">
-                <div class="tablet-content">
-                    <div class="tablet-slider-wrapper">
-                        <div class="t-slide">
-                            <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="Lección de piano">
-                        </div>
-                        <div class="t-slide">
-                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="Partitura interactiva">
-                        </div>
-                        <div class="t-slide">
-                             <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="Progreso del alumno">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="shine"></div>
-          </div>
-        </div>
+  
 
-        <div style="text-align: center; margin-top: 30px;" class="fade-in">
-            <p style="margin-bottom: 10px; font-size: 0.9rem;">Plataforma compatible con:</p>
-            <div class="download-chips" style="display: flex; gap: 10px; justify-content: center;">
-                <span class="chip" style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.8rem;"><i class='bx bxl-apple'></i> iPad</span>
-                <span class="chip" style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.8rem;"><i class='bx bxl-windows'></i> PC/Laptop</span>
-                <span class="chip" style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.8rem;"><i class='bx bxl-android'></i> Android</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="brands-section fade-in">
-        <div class="container">
-            <p class="brands-title">Aprendes con el mejor equipo</p>
-            <div class="brands-grid">
-                <img style="transform: scale(1.5);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Yamaha_logo.svg/2560px-Yamaha_logo.svg.png" alt="Yamaha" class="brand-logo">
-                <img style="transform: scale(1.8);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Roland_logo.svg/2560px-Roland_logo.svg.png" alt="Roland" class="brand-logo">
-                <img style="transform: scale(1.38);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Korg_Logo.svg/1200px-Korg_Logo.svg.png" alt="Korg" class="brand-logo">
-                <img style="transform: scale(0.85);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Casio_logo.svg/2560px-Casio_logo.svg.png" alt="Casio" class="brand-logo">
-            </div>
-        </div>
-    </section>
-
-    <section class="classroom-banner" style="background-image: url('https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=2070&auto=format&fit=crop');">
+    <section class="classroom-banner" style="background-image: url('https://lh3.googleusercontent.com/d/1k5IKFWp-1d9A839eMUBhRirU8n7BjPw-');">
         <div class="classroom-overlay"></div>
         <div class="classroom-cta fade-in">
             <a href="#" class="btn btn-floating">
@@ -912,38 +926,7 @@
         </div>
     </section>
 
-    <section class="reader-section">
-        <div class="container">
-            <div class="text-content center-text mb-large fade-in">
-                <h2>Tu práctica continúa en casa</h2>
-                <p>Lo que aprendes en la academia se sincroniza en la nube. Accede a tu cuenta Mozart+ desde casa para hacer tu tarea.</p>
-            </div>
-            
-            <div class="reader-visual slide-up" style="padding: 0; background: transparent; box-shadow: none; border: none;">
-                <div class="mac-window">
-                    <div class="window-header safari-theme">
-                        <div class="header-controls">
-                            <div class="traffic-lights">
-                                <div class="dot close"></div><div class="dot minimize"></div><div class="dot maximize"></div>
-                            </div>
-                        </div>
-                        <div class="safari-address-bar">
-                            <i class="ri-lock-fill" style="font-size: 12px; color: #888;"></i>
-                            <input type="text" class="url-input" id="browser-input" value="alumno.mozartplus.com/dashboard" readonly>
-                            <i class="ri-refresh-line refresh-icon" id="browser-reload" style="font-size: 12px; color: #888; cursor: pointer;"></i>
-                        </div>
-                        <div style="width: 50px;"></div> 
-                    </div>
-                    
-                    <div class="browser-loader-container">
-                        <div class="loader-bar" id="browser-loader"></div>
-                    </div>
-
-                    <iframe src="https://www.mozart-app.com" class="main-iframe" id="browser-iframe"></iframe>
-                </div>
-            </div>
-            </div>
-    </section>
+  
 
     <section class="sessions-section">
         <div class="container grid-2 reverse-mobile">
@@ -1072,70 +1055,58 @@
         </div>
     </section>
 
-    <section class="academy-gallery-section">
-        <div class="container">
-            <div class="section-header center-text fade-in">
-                <div class="pill mono" style="margin-bottom: 15px; border-color: #1C1C1C;">La Experiencia</div>
-                <h2>Domina el piano. Disfruta el proceso.</h2>
-                <p>Nuestra metodología combina lo mejor de la tecnología con la calidez de la enseñanza grupal.</p>
+   
+
+     <section class="tablet-section no-bg">
+        <div class="tablet-header fade-in">
+            <h2>Tecnología en el Aula</h2>
+            <p>Cada piano en nuestra academia está equipado con la última tecnología para guiar tu práctica.</p>
+        </div> 
+        
+        <div class="surface-container slide-up">
+          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
+          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
+          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
+          <div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div><div class="sense"></div>
+          
+          <div class="surface">
+            <div class="display">
+                <div class="tablet-content">
+                    <div class="tablet-slider-wrapper">
+                        <div class="t-slide">
+                            <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="Lección de piano">
+                        </div>
+                        <div class="t-slide">
+                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="Partitura interactiva">
+                        </div>
+                        <div class="t-slide">
+                             <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop" class="t-slide-img" alt="Progreso del alumno">
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="shine"></div>
+          </div>
+        </div>
 
-            <div class="academy-grid slide-up">
-                
-                <div class="gallery-card">
-                    <div class="swiper card-slider-1">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Tecnología">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Progreso">
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Progreso Acelerado</h3>
-                        <p>Científicamente probado para aprender 4x más rápido gracias a la retroalimentación instantánea.</p>
-                    </div>
-                </div>
+        <div style="text-align: center; margin-top: 30px;" class="fade-in">
+            <p style="margin-bottom: 10px; font-size: 0.9rem;">Plataforma compatible con:</p>
+            <div class="download-chips" style="display: flex; gap: 10px; justify-content: center;">
+                <span class="chip" style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.8rem;"><i class='bx bxl-apple'></i> iPad</span>
+                <span class="chip" style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.8rem;"><i class='bx bxl-windows'></i> PC/Laptop</span>
+                <span class="chip" style="padding: 5px 15px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.8rem;"><i class='bx bxl-android'></i> Android</span>
+            </div>
+        </div>
+    </section>
 
-                <div class="gallery-card">
-                    <div class="swiper card-slider-2">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Clase grupal">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Equipamiento">
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Inversión Inteligente</h3>
-                        <p>Acceso a equipo premium y profesores expertos a una fracción del costo de clases particulares.</p>
-                    </div>
-                </div>
-
-                <div class="gallery-card">
-                    <div class="swiper card-slider-3">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1590379204369-09418a032906?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Niños aprendiendo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1665686306574-1ace09918530?q=80&w=1000&auto=format&fit=crop" class="slide-img" alt="Adultos aprendiendo">
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Para todas las edades</h3>
-                        <p>Desde niños de 7 años hasta adultos mayores. El método se adapta a tu ritmo de vida.</p>
-                    </div>
-                </div>
-
+    <section class="brands-section fade-in">
+        <div class="container">
+            <p class="brands-title">Aprendes con el mejor equipo</p>
+            <div class="brands-grid">
+                <img style="transform: scale(1.5);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Yamaha_logo.svg/2560px-Yamaha_logo.svg.png" alt="Yamaha" class="brand-logo">
+                <img style="transform: scale(1.8);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Roland_logo.svg/2560px-Roland_logo.svg.png" alt="Roland" class="brand-logo">
+                <img style="transform: scale(1.38);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Korg_Logo.svg/1200px-Korg_Logo.svg.png" alt="Korg" class="brand-logo">
+                <img style="transform: scale(0.85);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Casio_logo.svg/2560px-Casio_logo.svg.png" alt="Casio" class="brand-logo">
             </div>
         </div>
     </section>
@@ -1177,12 +1148,10 @@
         </div>
     </section>
 
-
     <section class="pricing-section">
         <div class="container">
-            <div class="section-header center-text mb-large fade-in">
-                <h2>Elige tu ritmo de aprendizaje</h2>
-                <p>Planes flexibles basados en la intensidad que deseas. Sin inscripción.</p>
+            <div class="section-header center-text mb-large fade-in" style="margin-bottom: 3rem;"> <h2>Elige tu ritmo</h2>
+                <p>Planes flexibles. Sin inscripción.</p>
             </div>
 
             <div class="pricing-grid slide-up">
@@ -1191,57 +1160,57 @@
                     <div class="price-header">
                         <h3>Básico</h3>
                     </div>
-                    <div class="price-amount">$449<span style="font-size: 1.5rem;">.90</span></div>
+                    <div class="price-amount">$449.90</div>
                     <span class="price-concept">Mensual</span>
                     
                     <ul class="pricing-features">
-                        <li><i class="ri-time-line"></i> <strong>1 hora</strong> de clase semanal</li>
-                        <li><i class="ri-smartphone-line"></i> Acceso a Mozart+ App</li>
-                        <li><i class="ri-community-line"></i> Acceso a instalaciones</li>
-                        <li><i class="ri-music-2-line"></i> Participación en recitales</li>
+                        <li><i class="ri-time-line"></i> <strong>1 hora</strong> semanal</li>
+                        <li><i class="ri-smartphone-line"></i> App Mozart+</li>
+                        <li><i class="ri-community-line"></i> Acceso instalaciones</li>
                     </ul>
-                    <button class="btn btn-outline" style="width: 100%;">Comenzar</button>
+                    <button class="btn btn-outline btn-compact">Comenzar</button>
                 </div>
 
                 <div class="pricing-card featured">
-                    <div class="popular-tag">Mejor Valor</div>
                     <div class="price-header">
                         <h3>Standard <i class="ri-graduation-cap-fill"></i></h3>
                     </div>
-                    <div class="price-amount">$799<span style="font-size: 1.5rem;">.00</span></div>
+                    <div><span class="discount-badge">AHORRAS 11%</span></div>
+                    
+                    <div class="price-amount">$799.00</div>
                     <span class="price-concept">Mensual</span>
                     
                     <ul class="pricing-features">
-                        <li><i class="ri-speed-up-line"></i> <strong>2 horas</strong> semanales (Progreso x2)</li>
-                        <li><i class="ri-calendar-check-line"></i> Rotación de horarios flexible</li>
-                        <li><i class="ri-smartphone-line"></i> Acceso Premium Mozart+ App</li>
-                        <li><i class="ri-vip-crown-line"></i> Prioridad en eventos y recitales</li>
-                        <li><i class="ri-bar-chart-box-line"></i> Reporte de progreso mensual</li>
+                        <li><i class="ri-speed-up-line"></i> <strong>2 horas</strong> semanales</li>
+                        <li><i class="ri-calendar-check-line"></i> Horarios flexibles</li>
+                        <li><i class="ri-vip-crown-line"></i> <strong>App Premium</strong></li>
+                        <li><i class="ri-bar-chart-box-line"></i> Reporte mensual</li>
                     </ul>
-                    <button class="btn btn-outline" style="width: 100%;">Elegir Standard</button>
+                    <button class="btn btn-outline btn-compact">Elegir Standard</button>
                 </div>
 
                 <div class="pricing-card">
                     <div class="price-header">
                         <h3>Intensivo <i class="ri-flashlight-fill" style="color: #FFD700;"></i></h3>
                     </div>
-                    <div class="price-amount">$1350<span style="font-size: 1.5rem;">.00</span></div>
+                    <div><span class="discount-badge" style="background:#FFF3E0; color:#E65100;">MEJOR PRECIO (-25%)</span></div>
+
+                    <div class="price-amount">$1350.00</div>
                     <span class="price-concept">Mensual</span>
                     
                     <ul class="pricing-features">
-                        <li><i class="ri-rocket-2-fill"></i> <strong>4 horas</strong> semanales (Inmersión total)</li>
-                        <li><i class="ri-line-chart-line"></i> Seguimiento en línea personalizado</li>
-                        <li><i class="ri-smartphone-line"></i> Acceso Premium Mozart+ App</li>
-                        <li><i class="ri-calendar-event-line"></i> Rotación de horarios prioritaria</li>
-                        <li><i class="ri-medal-line"></i> Preparación para certificaciones</li>
+                        <li><i class="ri-rocket-2-fill"></i> <strong>4 horas</strong> semanales</li>
+                        <li><i class="ri-vip-crown-line"></i> <strong>App Premium</strong></li>
+                        <li><i class="ri-calendar-event-line"></i> Prioridad total</li>
+                        <li><i class="ri-medal-line"></i> Certificaciones</li>
                     </ul>
-                    <button class="btn btn-outline" style="width: 100%;">Elegir Intensivo</button>
+                    <button class="btn btn-outline btn-compact">Elegir Intensivo</button>
                 </div>
 
             </div>
             
-            <p class="center-text" style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.7;">
-                * Todos los precios son en MXN. No cobramos inscripción anual.
+            <p class="center-text" style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.6;">
+                * Todos los precios son en MXN. IVA incluido.
             </p>
         </div>
     </section>
@@ -1251,7 +1220,7 @@
             <div class="swiper creative-slider">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=2070&auto=format&fit=crop');"></div>
+                        <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1Cx0rx4Oyvu5VjdKSOx8TpjieYdHVYdic');"></div>
                     </div>
                 </div>
             </div>
