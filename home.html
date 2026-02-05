@@ -14,7 +14,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <style>
-    /* --- VARIABLES MOZART+ (Mismo estilo Premium) --- */
+    @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Salsa&display=swap");
     :root {
         --bg-color: #F2EFE9;        
         --surface-color: #FFFFFF;    
@@ -114,14 +114,14 @@
 
 
     /* --- HERO SLIDER (ACADEMIA) --- */
-   .hero-slider-section { 
+.hero-slider-section { 
     position: relative; 
     width: 100%; 
-    height: 90vh; 
+    height: 100vh; /* Pantalla completa */
     min-height: 600px; 
     display: flex; 
-    align-items: center; 
-    justify-content: flex-start;
+    flex-direction: column; 
+    justify-content: center; 
     overflow: hidden; 
 }
     .creative-slider--wrap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
@@ -138,21 +138,30 @@
                 rgba(0, 0, 0, 0.05) 100%); 
     }
     
-   .hero-content { 
-    position: relative; 
-    z-index: 10; 
-    text-align: left; 
-    max-width: 800px; 
-    padding: 0 5%; 
-    margin-left: 0; 
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1100px; /* Alineado al ancho de la barra */
+    padding: 0 5%;
+    
+    /* TRUCO FLEX: */
+    margin-top: auto; /* Empuja hacia abajo desde el techo */
+    margin-bottom: auto; /* Empuja hacia arriba desde la barra */
+    /* Esto centra el texto perfectamente en el espacio DISPONIBLE */
 }
 
+
+
 .hero-content h1 { 
+  font-family: "Salsa", cursive;
     color: #FFFFFF;
     text-shadow: 0 4px 12px rgba(0,0,0,0.6);
-    font-size: clamp(2.5rem, 5vw, 4.5rem); 
-    margin-bottom: 1.5rem;
+    /* CAMBIO: Reducido de 4.5rem a 3.5rem máximo */
+    font-size: clamp(2rem, 4vw, 3.5rem); 
+    margin-bottom: 1rem;
     line-height: 1.1;
+    font-weight: 700;
 }
 
 .hero-content p { 
@@ -165,12 +174,89 @@
     margin-bottom: 2.5rem;
 }
 
+
 .hero-content .pill.mono { 
     color: #FFFFFF;
     border: 1px solid rgba(255,255,255,0.5);
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(4px);
     margin-bottom: 25px;
+}
+
+.hero-bottom-bar {
+    position: absolute;
+    bottom: 40px;
+    
+    /* TRUCO PARA CENTRAR ABSOLUTOS PERFECTAMENTE: */
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    
+    width: 90%;
+    max-width: 1100px;
+    
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 15px 30px; /* Un poco más compacto */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.bar-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+}
+
+.bar-item i {
+    font-size: 1.8rem;
+}
+
+.bar-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.bar-text strong {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.bar-text span {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* El botón naranja de la imagen */
+.btn-book-now {
+    background-color: #FF8A00; /* Naranja vibrante */
+    color: white;
+    padding: 14px 35px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-book-now:hover {
+    transform: scale(1.05);
+    background-color: #E67A00;
 }
 
 .hero-content .btn-primary { 
@@ -369,6 +455,20 @@
     .loader-bar { height: 100%; background: var(--text-main); width: 0%; transition: width 0.5s ease; }
     .loader-bar.loading { width: 70%; }
     .loader-bar.loaded { width: 100%; opacity: 0; transition: width 0.3s, opacity 0.3s 0.3s; }
+
+@media (max-width: 900px) {
+    .hero-bottom-bar {
+        position: absolute; /* Mantenemos absolute en móvil también */
+        bottom: 20px;
+        flex-direction: column;
+        width: 95%;
+        padding: 20px;
+        gap: 15px;
+    }
+   .hero-content h1 {
+        font-size: 2.2rem; 
+    }
+}
 
     @media (max-width: 768px) {
         .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
@@ -786,34 +886,61 @@
 </head>
 <body>
 
-    <section class="hero-slider-section">
-        <div class="creative-slider--wrap">
-            <div class="swiper creative-slider">
-                <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('http://lh3.googleusercontent.com/d/1Nty2cFtSoXyxDPspnqxhRPVm8QaINBz_');"></div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1fxgoyfi6hti3_rvOIERV_d2b-Hk0hRzX');"></div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1TiKkO9mXqloHnNax9cbza9YdP0_jXzNB');"></div>
-                    </div>
-              
+  <section class="hero-slider-section">
+    <div class="creative-slider--wrap">
+        <div class="swiper creative-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('http://lh3.googleusercontent.com/d/1Nty2cFtSoXyxDPspnqxhRPVm8QaINBz_');"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('https://lh3.googleusercontent.com/d/1fxgoyfi6hti3_rvOIERV_d2b-Hk0hRzX');"></div>
                 </div>
             </div>
         </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content fade-in">
-            <div class="pill mono">Mozart Plus+ • Academy</div>
-            <h1>Domina el Piano con<br>Calidad de conservatorio</h1>
-            <p>Únete a la mejor comunidad de pianistas. La métodología revolucionaría que combina tecnología de punta con rigor academico. </p>
-            <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
-                <button class="btn btn-primary">Agendar Clase Muestra</button>
-                <button class="btn btn-outline">Ver Horarios</button>
+    </div>
+    
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content fade-in">
+        <h1 style="font-weight: 700; margin-bottom: 1rem;">Mozart+ Academy</h1>
+        <p style="font-size: 1.25rem; color: #fff; opacity: 0.9; max-width: 700px; margin-left: 0;">
+            Únete a la mejor comunidad de pianistas. La metodología revolucionaría que combina tecnología de punta con rigor académico.
+        </p>
+        </div>
+
+    <div class="hero-bottom-bar fade-in">
+        
+        <div class="bar-item">
+            <i class="ri-home-4-fill"></i>
+            <div class="bar-text">
+                <strong>Instalaciones</strong>
+                <span>Espacios Premium</span>
             </div>
         </div>
-    </section>
+
+        <div class="bar-item" style="border-left: 1px solid rgba(255,255,255,0.3); padding-left: 20px;">
+            <i class="ri-headphone-fill"></i>
+            <div class="bar-text">
+                <strong>Guía en vivo</strong>
+                <span>Staff disponible</span>
+            </div>
+        </div>
+
+        <div class="bar-item" style="border-left: 1px solid rgba(255,255,255,0.3); padding-left: 20px;">
+            <i class="ri-time-fill"></i>
+            <div class="bar-text">
+                <strong>Flexibilidad</strong>
+                <span>Cancela 48h antes</span>
+            </div>
+        </div>
+
+        <a href="#" class="btn-book-now">
+            BOOK NOW
+        </a>
+
+    </div>
+</section>
 
 
      <section class="academy-gallery-section">
