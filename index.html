@@ -3252,11 +3252,11 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
 <ul class="list">
-    <a ui-sref="menu.lessons" 
+    <a ui-sref="menu.bootcamp" 
        ui-sref-active="menuSelectedColor" 
        class="item" 
        menu-toggle="left">
-        <i class="ri-presentation-line"></i>&nbspMétodo
+        <i class="ri-presentation-line"></i>&nbspBootcamp
     </a> 
         <hr>
     <a ui-sref="menu.galeria" 
@@ -3330,10 +3330,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.lessons" 
+    <a ui-sref="menu.bootcamp" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Método
+        Bootcamp
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3398,10 +3398,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.lessons" 
+    <a ui-sref="menu.bootcamp" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Método
+        Bootcamp
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3443,7 +3443,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
         
-<script id="lessons.html" type="text/ng-template">
+<script id="bootcamp.html" type="text/ng-template">
   <ion-view>
         <ion-nav-bar class="bar-light" >      
         <ion-nav-buttons side="right">
@@ -3467,10 +3467,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.lessons" 
+    <a ui-sref="menu.bootcamp" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Método
+        Bootcamp
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3496,7 +3496,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
     <ion-content > 
       <!-- achievements -->
-        <div class="iframe-container"><iframe src="https://academy.mozartplus.com/lessons" frameborder="0" allowfullscreen ></iframe></div> 
+        <div class="iframe-container"><iframe src="https://academy.mozartplus.com/bootcamp" frameborder="0" allowfullscreen ></iframe></div> 
     </ion-content> 
 
   
@@ -3534,10 +3534,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.lessons" 
+    <a ui-sref="menu.bootcamp" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Método
+        Bootcamp
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3596,7 +3596,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
-    <a ui-sref="menu.lessons" 
+    <a ui-sref="menu.bootcamp" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
        Lecciones
@@ -3657,7 +3657,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
-    <a ui-sref="menu.lessons" 
+    <a ui-sref="menu.bootcamp" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
        Lecciones
@@ -3725,10 +3725,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.lessons" 
+    <a ui-sref="menu.bootcamp" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Método
+       Bootcamp
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3816,11 +3816,11 @@ app
     })
  
 
-    .state('menu.lessons', {
-      url: "/lessons",
+    .state('menu.bootcamp', {
+      url: "/bootcamp",
       views: {
         'menuContent': {
-          templateUrl: "lessons.html"
+          templateUrl: "bootcamp.html"
         }
       }
     }) 
@@ -3935,7 +3935,7 @@ app
   window.location.href = '#/menu/statistics';
 };
       $scope.goToLogin = function() {
-  window.location.href = 'https://academy.mozartplus.com/login';
+  window.location.href = 'https://academy.mozartplus.com/form';
 };
 $scope.goToPayment = function() {
    window.location.href = '#/menu/payment';
