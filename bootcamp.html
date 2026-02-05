@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mozart+ Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #1f2937;
+        }
+        
+        .hero-pattern {
+            background-color: #f9fafb;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .selected-slot {
+            background-color: #2563eb !important; /* Blue 600 */
+            color: white !important;
+            border-color: #2563eb !important;
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+        }
+
+        .slot-card {
+            transition: all 0.2s ease;
+        }
+        
+        .slot-card:hover:not(.selected-slot):not(:disabled) {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        /* Animación suave para el precio */
+        @keyframes pulse-price {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .price-tag {
+            animation: pulse-price 2s infinite;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 1. Top Banner (Urgency) -->
+    <div class="bg-red-600 text-white text-sm py-2 px-4 text-center font-medium sticky top-0 z-50 flex justify-center items-center gap-2 shadow-md">
+        <span>🔥 ¡ÚLTIMOS DÍAS! 40% DE DESCUENTO EN MATRÍCULA</span>
+        <span class="bg-white/20 px-2 py-0.5 rounded text-xs">Termina en 24h</span>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="border-b border-gray-100 bg-white sticky top-[36px] z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              
+                <span class="font-bold text-xl tracking-tight text-gray-900">Mozart+</span>
+            </div>
+            <a href="#reservar" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-semibold text-sm transition-colors shadow-lg shadow-blue-600/20">
+                Reservar Cupo
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+            
+            <!-- Text Content -->
+            <div class="flex-1 text-center md:text-left space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold border border-blue-100">
+               Bootcamp intensivo
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight text-gray-900">
+                    Aprende a tocar <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">en menos de 3 meses</span>
+                </h1>
+                <p class="text-lg text-gray-600 max-w-lg mx-auto md:mx-0">
+                    Únete a nuestro programa intensivo de instrumento + teoría. Un solo precio, acceso total a instalaciones y mentoría personalizada.
+                </p>
+                
+                <!-- Pricing Anchor -->
+                <div class="flex flex-col md:flex-row items-center gap-4 mt-8">
+                    <div class="text-center md:text-left">
+                        <p class="text-gray-400 text-sm font-medium line-through decoration-red-500 decoration-2">Precio Normal: $150 MXN</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl font-bold text-gray-900">$85</span>
+                            <span class="text-xl font-medium text-gray-600">/clase</span>
+                        </div>
+                    </div>
+                    <a href="#horarios" class="w-full md:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg shadow-xl shadow-blue-600/30 transition-transform hover:-translate-y-1 flex justify-center items-center gap-2">
+                        Ver Horarios Disponibles <i data-lucide="arrow-down" class="h-5 w-5"></i>
+                    </a>
+                </div>
+                <p class="text-xs text-gray-500 flex items-center justify-center md:justify-start gap-1">
+                    <i data-lucide="shield-check" class="h-3 w-3"></i> Garantía de devolución de 7 días
+                </p>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="flex-1 relative">
+                <div class="absolute inset-0 bg-blue-600 rounded-3xl rotate-3 opacity-10 blur-xl transform scale-95"></div>
+                <img src="https://lh3.googleusercontent.com/d/16Q1QXxnabMSUqfbs1AmLCICrpYj745fW" alt="Clase de música" class="relative rounded-3xl shadow-2xl border-4 border-white object-cover h-[500px] w-full">
+                
+             
+            </div>
+        </div>
+    </section>
+
+    <!-- What includes -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Todo incluido en tu Membresía</h2>
+            <p class="text-gray-500 mt-2">No cobramos extras. Un solo pago cubre todo lo que necesitas.</p>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <div class="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-shadow">
+                <i data-lucide="mic-2" class="h-10 w-10 text-blue-600 mb-4"></i>
+                <h3 class="font-bold text-xl mb-2">Instrumento a Elección</h3>
+                <p class="text-gray-600 text-sm">Elige entre Piano, Guitarra, Canto o Batería. Puedes cambiar de instrumento cada trimestre.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-shadow">
+                <i data-lucide="book-open" class="h-10 w-10 text-orange-500 mb-4"></i>
+                <h3 class="font-bold text-xl mb-2">Material Digital</h3>
+                <p class="text-gray-600 text-sm">Acceso 24/7 a nuestra plataforma con partituras, pistas de acompañamiento y videos.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-lg transition-shadow">
+                <i data-lucide="award" class="h-10 w-10 text-purple-600 mb-4"></i>
+                <h3 class="font-bold text-xl mb-2">Certificación Anual</h3>
+                <p class="text-gray-600 text-sm">Al completar el ciclo, recibes un diploma certificado por el conservatorio local.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Selection (The Core "Variety") -->
+    <section id="horarios" class="py-20 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Paso 1: Elige tu Horario</h2>
+                <p class="text-gray-400">Selecciona el bloque horario semanal que mejor te convenga. <br> <span class="text-yellow-400 font-medium">¡Atención! Los horarios marcados en rojo están agotados.</span></p>
+            </div>
+
+            <!-- Filter Tabs (Days) -->
+            <div class="flex justify-center gap-2 mb-8" id="day-filters">
+                <!-- JS Injected -->
+            </div>
+
+            <!-- Slots Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8" id="slots-grid">
+                <!-- JS Injected Slots -->
+            </div>
+
+            <!-- Selection Summary -->
+            <div id="selection-summary" class="hidden bg-gray-800 border border-gray-700 p-4 rounded-xl flex justify-between items-center transition-all">
+                <div class="flex items-center gap-3">
+                    <div class="bg-green-500 p-2 rounded-full text-white">
+                        <i data-lucide="check" class="h-5 w-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-400">Horario Seleccionado:</p>
+                        <p class="font-bold text-lg text-white" id="selected-time-text">--</p>
+                    </div>
+                </div>
+                <button onclick="scrollToForm()" class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-lg font-bold text-sm transition-colors">
+                    Continuar
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA / Form -->
+    <section id="reservar" class="py-20 bg-white">
+        <div class="max-w-xl mx-auto px-4">
+            <div class="bg-white p-8 rounded-2xl shadow-2xl border border-gray-100">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">Finalizar Inscripción</h2>
+                    <p class="text-gray-500 text-sm mt-2">Asegura tu precio de oferta de <span class="font-bold text-gray-900 line-through decoration-red-500">$800</span> por solo <span class="font-bold text-blue-600 text-lg">$680</span> al mes.</p>
+                </div>
+
+                <form onsubmit="event.preventDefault(); handleSubmit();" class="space-y-5">
+                    
+                    <!-- Selected Slot Preview in Form -->
+                    <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 flex justify-between items-center">
+                        <span class="text-sm text-blue-800 font-medium">Horario:</span>
+                        <span id="form-slot-display" class="text-sm font-bold text-blue-900">No seleccionado</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Alumno</label>
+                        <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Ej. Juan Pérez">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+                        <input type="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="juan@email.com">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Instrumento de Interés</label>
+                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
+                            <option>Piano</option>
+                            <option>Guitarra</option>
+                            <option>Batería</option>
+                            <option>Canto</option>
+                            <option>Violín</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="submit-btn" disabled class="w-full bg-gray-300 text-gray-500 cursor-not-allowed font-bold py-4 rounded-xl transition-all shadow-lg text-lg flex justify-center items-center gap-2">
+                        Reservar y Pagar
+                    </button>
+                    
+                    <p class="text-center text-xs text-gray-400 mt-4">
+                        <i data-lucide="lock" class="inline w-3 h-3"></i> Pagos procesados de forma segura.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-sm text-gray-500">© Mozart+ Academy.</div>
+            <div class="flex gap-4">
+                <span class="text-gray-400 hover:text-blue-600 cursor-pointer transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></span>
+                <span class="text-gray-400 hover:text-blue-600 cursor-pointer transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></span>
+                <span class="text-gray-400 hover:text-blue-600 cursor-pointer transition-colors"><i data-lucide="message-circle" class="w-5 h-5"></i></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Data: Available Schedule Slots
+        // Note: Sold out items create "Urgency" (Scarcity)
+        const schedule = [
+            { id: 1, day: 'Lunes', time: '16:00 - 17:30', spots: 2 },
+            { id: 2, day: 'Lunes', time: '18:00 - 19:30', spots: 0 }, // Sold out
+            { id: 3, day: 'Martes', time: '10:00 - 11:30', spots: 4 },
+            { id: 4, day: 'Martes', time: '17:00 - 18:30', spots: 1 }, // High urgency
+            { id: 5, day: 'Miércoles', time: '16:00 - 17:30', spots: 3 },
+            { id: 6, day: 'Miércoles', time: '19:00 - 20:30', spots: 0 }, // Sold out
+            { id: 7, day: 'Jueves', time: '15:00 - 16:30', spots: 5 },
+            { id: 8, day: 'Viernes', time: '16:00 - 17:30', spots: 2 },
+            { id: 9, day: 'Sábado', time: '10:00 - 11:30', spots: 1 }  // High urgency
+        ];
+
+        const days = ['Todos', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        let currentDayFilter = 'Todos';
+        let selectedSlotId = null;
+
+        function renderDays() {
+            const container = document.getElementById('day-filters');
+            container.innerHTML = days.map(day => `
+                <button 
+                    onclick="filterDay('${day}')"
+                    class="px-4 py-1.5 rounded-full text-sm font-medium transition-all ${currentDayFilter === day 
+                        ? 'bg-white text-gray-900 shadow-md' 
+                        : 'text-gray-400 hover:text-white hover:bg-gray-800'}"
+                >
+                    ${day}
+                </button>
+            `).join('');
+        }
+
+        function renderSlots() {
+            const container = document.getElementById('slots-grid');
+            const filtered = currentDayFilter === 'Todos' 
+                ? schedule 
+                : schedule.filter(s => s.day === currentDayFilter);
+
+            container.innerHTML = filtered.map(slot => {
+                const isSoldOut = slot.spots === 0;
+                const isLow = slot.spots > 0 && slot.spots < 3;
+                const isSelected = selectedSlotId === slot.id;
+
+                return `
+                <button 
+                    onclick="selectSlot(${slot.id})"
+                    disabled="${isSoldOut}"
+                    class="slot-card relative p-4 rounded-xl border-2 text-left w-full group
+                    ${isSoldOut ? 'border-red-900/30 bg-red-900/10 opacity-60 cursor-not-allowed' : 'bg-gray-800 border-gray-700 cursor-pointer'}
+                    ${isSelected ? 'selected-slot' : ''}
+                    "
+                >
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-sm font-semibold ${isSelected ? 'text-white' : 'text-gray-300'}">${slot.day}</span>
+                        ${isSoldOut 
+                            ? '<span class="text-xs font-bold text-red-500 uppercase tracking-wide">Agotado</span>' 
+                            : isLow 
+                                ? '<span class="text-xs font-bold text-orange-400 animate-pulse">¡Últimos cupos!</span>' 
+                                : '<span class="text-xs text-green-400">Disponible</span>'}
+                    </div>
+                    <div class="text-lg font-bold ${isSoldOut ? 'text-gray-500 line-through' : 'text-white'}">
+                        ${slot.time}
+                    </div>
+                </button>
+            `}).join('');
+        }
+
+        function filterDay(day) {
+            currentDayFilter = day;
+            renderDays();
+            renderSlots();
+        }
+
+        function selectSlot(id) {
+            const slot = schedule.find(s => s.id === id);
+            if (slot.spots === 0) return;
+
+            selectedSlotId = id;
+            
+            // UI Updates
+            renderSlots(); // Re-render to show selection state
+            
+            // Show Summary Bar
+            const summary = document.getElementById('selection-summary');
+            const summaryText = document.getElementById('selected-time-text');
+            const formDisplay = document.getElementById('form-slot-display');
+            const submitBtn = document.getElementById('submit-btn');
+
+            summary.classList.remove('hidden');
+            summaryText.innerText = `${slot.day} | ${slot.time}`;
+            formDisplay.innerText = `${slot.day} de ${slot.time}`;
+            
+            // Enable Form Button
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
+            submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'cursor-pointer');
+        }
+
+        function scrollToForm() {
+            document.getElementById('reservar').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleSubmit() {
+            if (!selectedSlotId) return;
+            const slot = schedule.find(s => s.id === selectedSlotId);
+            alert(`¡Felicidades! Has reservado tu lugar para el ${slot.day} a las ${slot.time}. Te redirigiremos al pago.`);
+        }
+
+        // Init
+        renderDays();
+        renderSlots();
+
+    </script>
+</body>
+</html>
