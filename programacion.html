@@ -2,95 +2,379 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programa del Recital</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mozart+ | Programa del Recital</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+
+  :root {
+    --palette-grey-0: #ffffff;
+    --palette-grey-10: #f8f9fc;
+    --palette-grey-50: #e6eaf0;
+    --palette-grey-200: #cdd4dc;
+    --palette-grey-400: #b7bfd9;
+    --palette-grey-800: #45474d;
+    --palette-grey-1000: #212226;
+
+    --surface: var(--palette-grey-0);
+    --surface-elevated: var(--palette-grey-10);
+    --surface-container: #f3f4f8;
+    --outline-variant: rgba(33, 34, 38, 0.06);
+    --primary: #121317;
+    --on-primary: #ffffff;
+    --primary-soft: rgba(33, 34, 38, 0.08);
+    --text-main: var(--palette-grey-1000);
+    --text-muted: #9ca3af;
+    --accent: #111827;
+    --accent-soft: rgba(17, 24, 39, 0.04);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   body {
-    font-family: "Segoe UI", sans-serif;
-    background: #fafafa;
-    color: #333;
-    padding: 20px;
-    line-height: 1.6;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(0,0,0,0.03), transparent 55%),
+      radial-gradient(circle at 80% 0%, rgba(0,0,0,0.05), transparent 60%),
+      var(--surface);
+    font-family: "Google Sans Flex", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 350;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    color: var(--text-main);
+    padding: 24px;
   }
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2em;
+
+  .app-container {
+    display: flex;
+    width: min(960px, 100%);
+    max-height: 90vh;
+    background: var(--surface);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.09);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--outline-variant);
   }
+
+  .left-panel {
+    width: 40%;
+    background: radial-gradient(circle at top left, #1f2937, #111827);
+    color: var(--on-primary);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .left-panel .title {
+    font-size: 30px;
+    font-weight: 350;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    opacity: 0.95;
+  }
+
+  .left-panel .subtitle {
+    font-size: 14px;
+    font-weight: 350;
+    letter-spacing: 0.08em;
+    opacity: 0.75;
+    margin-top: 16px;
+  }
+
+  .left-panel .details {
+    margin-top: 40px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .left-panel .details div + div {
+    margin-top: 6px;
+  }
+
+  .right-panel {
+    width: 60%;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background: var(--surface-elevated);
+  }
+
+  .right-panel h1 {
+    display: none;
+  }
+
   h2 {
-    background: linear-gradient(90deg, #333, #555);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 8px;
-    margin-top: 25px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--surface);
+    background: var(--accent);
+    padding: 10px 18px;
+    border-radius: 999px;
+    margin-top: 28px;
+    margin-bottom: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    width: fit-content;
   }
+
+  h2:first-of-type {
+    margin-top: 0;
+  }
+
   .participant {
-    margin-bottom: 15px;
-    padding-left: 15px;
-    border-left: 3px solid #888;
+    margin-bottom: 20px;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--outline-variant);
+    border-radius: 14px;
+    border-left: 3px solid var(--accent);
+    transition: border-color 0.18s ease-out, box-shadow 0.18s ease-out;
   }
+
+  .participant:hover {
+    border-color: rgba(17, 24, 39, 0.15);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  }
+
   .participant h3 {
-    margin-bottom: 5px;
-    color: #222;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
   }
+
   ul {
     list-style: none;
-    padding-left: 15px;
+    padding-left: 0;
   }
+
+  li {
+    font-size: 14px;
+    color: var(--text-main);
+    padding: 6px 0;
+    padding-left: 22px;
+    position: relative;
+    font-weight: 350;
+  }
+
   li::before {
-    content: "🎵 ";
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
   }
-  /* 🔹 Estilo mejorado del intermedio */
+
+  li strong {
+    font-weight: 500;
+  }
+
+  li em {
+    color: var(--text-muted);
+    font-weight: 350;
+  }
+
   .intermission {
     text-align: center;
-    margin: 50px 0;
-    padding: 30px 15px;
-    background: linear-gradient(135deg, #f8f8f8, #e0e0e0);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-size: 1.2em;
-    font-style: italic;
-    color: #444;
+    margin: 40px 0;
+    padding: 32px 24px;
+    background: var(--surface-container);
+    border: 1px solid var(--outline-variant);
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 350;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
     position: relative;
   }
-  .intermission::before {
-    content: "🎼";
-    font-size: 3em;
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+
   .intermission span {
     display: block;
-    font-weight: bold;
-    font-size: 1.4em;
-    color: #222;
-    margin-top: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 0;
+    }
+    .app-container {
+      flex-direction: column;
+      width: 100%;
+      max-height: none;
+      min-height: 100vh;
+      border-radius: 0;
+    }
+    .left-panel, .right-panel {
+      width: 100%;
+    }
+    .left-panel {
+      padding: 32px 24px;
+    }
+    .left-panel .title {
+      font-size: 22px;
+      letter-spacing: 0.08em;
+    }
+    .right-panel {
+      padding: 24px 20px 32px;
+      flex: 1;
+    }
   }
 </style>
 </head>
 <body>
-  <h1>🎹 Programa del Recital</h1>
-  <div id="program"></div>
+  <div class="app-container">
+    <div class="left-panel">
+      <div class="title">Programa del Recital</div>
+      <div class="subtitle"></div>
+      <div class="details">
+        <div>Fecha: Domingo 29 de Marzo</div>
+        <div>Hora: Por confirmar</div>
+      </div>
+    </div>
+    <div class="right-panel">
+      <h1>🎹 Programa del Recital</h1>
+      <div id="program"></div>
+    </div>
+  </div>
 
 <script>
 const participants = [
-     { name: "Fernanda Cruz", grade: "Grado 3", pieces: [{ name: "Moderato", author: "Ludwig Van Beethoven", style: "Clásico" }] },
-  { name: "Nathaly Vasquez", grade: "Grado 1", pieces: [{ name: "Little Whale Explores the Calm Sea", author: "Caroline Tyler", style: "Contemporaneo" }] },
-  { name: "Andrea Romero", grade: "Grado 1", pieces: [{ name: "Lovet Faller", author: "Knut Nystedt", style: "Contemporaneo" }] },
-  { name: "Nataly Berrezueta", grade: "Grado 1", pieces: [{ name: "Minuet in A minor", author: "Johann Krieger", style: "Barroco" }, { name: "Allemande", author: "Johann Schein", style: "Barroco" }] },
-  { name: "Claudia Morales", grade: "Grado 2", pieces: [{ name: "Sneaky Business", author: "Martha Mier", style: "Jazz" }, { name: "A Story From Long Ago", author: "Martha Mier", style: "Contemporaneo" }, { name: "Sonatina in C", author: "Frank Lynnes", style: "Clásico" }] },
-  { name: "Fernando Del Valle", grade: "Grado 2", pieces: [{ name: "Aria in F", author: "Johann Sebastian Bach", style: "Barroco" }, { name: "Minuet in G", author: "Johann Sebastian Bach", style: "Barroco" }] },
-  { name: "Aidee Bernal", grade: "Grado 2", pieces: [{ name: "Sonatina in C", author: "Frank Lynnes", style: "Clásico" }, { name: "Starry Night", author: "Italo Taranta", style: "Contemporaneo" }] },
-  { name: "Victor Castillo", grade: "Grado 2", pieces: [{ name: "Spooky Wood Hollow", author: "Reginald Hammond", style: "Contemporaneo" }, { name: "The Singing Swang", author: "Alexis Ffrench", style: "Contemporaneo" }] },
-  { name: "Emiliano Guerrero", grade: "Grado 3", pieces: [{ name: "The Sad Ghost", author: "Nancy Litten", style: "Contemporaneo" }] },
-  { name: "Armando Rodríguez", grade: "Grado 3", pieces: [{ name: "Sérénade espagnole", author: "José Ferrer", style: "Romanticismo" }, { name: "Gigue in G", author: "Georg Telemann", style: "Barroco" }] },
-  { name: "Eduardo Gutiérrez", grade: "Grado 3", pieces: [{ name: "Sonatina in C op.36", author: "Muzio Clementi", style: "Clásico" }] },
-  { name: "Intermedio", grade: "Pausa de 10 minutos", pieces: [{ name: "", author: "", style: "" }] },
-  { name: "Jose Antonio Sastré", grade: "Grado 4", pieces: [{ name: "Sonatina in G", author: "Ludwig Van Beethoven", style: "Clásico" }, { name: "Romanza", author: "Ludwig Van Beethoven", style: "Clásico" }, { name: "Vivace", author: "Muzio Clementi", style: "Clásico" }, { name: "Banges Herzeleid", author: "Robert Fuchs", style: "Romanticismo" }] },
-  { name: "Liliana Manjarrez", grade: "Grado 6", pieces: [{ name: "Esquisse in D", author: "R. M. Gliere", style: "Romanticismo" }, { name: "Spillevaerket", author: "Carl Nielsen", style: "Contemporaneo" }] },
-  { name: "Iktan Corona", grade: "Grado 7", pieces: [{ name: "Moonlight Sonata", author: "Ludwig Van Beethoven", style: "Romanticismo" }, { name: "Marcha Turca", author: "Wolfgang Amadeus Mozart", style: "Clásico" }] }
+  {
+    "name": "Armando Rodriguez",
+    "grade": "Grado 5",
+    "pieces": [
+      {
+        "name": "Preludio en Do mayor BWV 846",
+        "author": "Johann Sebastian Bach",
+        "style": "Barroco"
+      },
+      {
+        "name": "Preludio en Do menor BWV 999",
+        "author": "Johann Sebastian Bach",
+        "style": "Barroco"
+      }
+    ]
+  },
+  {
+    "name": "Claudia González Morales",
+    "grade": "Grado 2",
+    "pieces": []
+  },
+  {
+    "name": "Juan Pablo Castro",
+    "grade": "Grado 1",
+    "pieces": []
+  },
+  {
+    "name": "Iktan Corona Ham",
+    "grade": "Grado 7",
+    "pieces": [
+      {
+        "name": "Allá turca",
+        "author": "Wolfgang Amadeus Mozart",
+        "style": "Clásico"
+      },
+      {
+        "name": "Claro de luna (1er movimiento)",
+        "author": "Ludwig Van Beethoven",
+        "style": "Romanticismo"
+      },
+      {
+        "name": "Claro de luna (2do movimiento)",
+        "author": "Ludwig Van Beethoven",
+        "style": "Romanticismo"
+      }
+    ]
+  },
+  {
+    "name": "José Antonio Sastré Oliva",
+    "grade": "Grado 5",
+    "pieces": [
+      {
+        "name": "Sostenuto",
+        "author": "Frédéric Chopin",
+        "style": "Romanticismo"
+      },
+      {
+        "name": "Sonatina in F major",
+        "author": "Ludwig Van Beethoven",
+        "style": "Clásico"
+      },
+      {
+        "name": "Solfeggietto",
+        "author": "Carl Philipp Emanuel Bach",
+        "style": "Clásico"
+      }
+    ]
+  },
+  {
+    "name": "Eduardo Gutiérrez",
+    "grade": "Grado 3",
+    "pieces": []
+  },
+  {
+    "name": "Frida Lagar Quinto",
+    "grade": "Grado 2",
+    "pieces": [
+      {
+        "name": "Aria en F",
+        "author": "Por definir",
+        "style": "Por definir"
+      },
+      {
+        "name": "Sonatina Op. 39",
+        "author": "Frank Lynnes",
+        "style": "Clásico"
+      }
+    ]
+  },
+  {
+    "name": "Aidee Bernal",
+    "grade": "Grado 2",
+    "pieces": [
+      {
+        "name": "Starry night",
+        "author": "Italo Taranta",
+        "style": "Contemporaneo"
+      },
+      {
+        "name": "The sparkling brook",
+        "author": "Margaret Goldston",
+        "style": "Contemporaneo"
+      },
+      {
+        "name": "Sonatina in C",
+        "author": "Frank Lynnes",
+        "style": "Clásico"
+      }
+    ]
+  }
 ];
 
 // Ordenar grados
@@ -101,17 +385,17 @@ const intermission = participants.find(p => p.name === "Intermedio");
 
 // Insertar el intermedio entre grado 3 y 4
 const indexAfter3 = ordered.findIndex(p => p.grade === "Grado 4");
-if (indexAfter3 !== -1) ordered.splice(indexAfter3, 0, intermission);
+if (indexAfter3 !== -1 && intermission) ordered.splice(indexAfter3, 0, intermission);
 
 const container = document.getElementById("program");
 let currentGrade = "";
 
 ordered.forEach(p => {
-  if (p.name === "Intermedio") {
+  if (p && p.name === "Intermedio") {
     container.innerHTML += `
       <div class="intermission">
-        <span>🌿 Intermedio</span>
-        ${p.grade}
+        <span>Intermedio</span>
+        ${p.grade || ""}
       </div>
     `;
   } else {
@@ -120,7 +404,7 @@ ordered.forEach(p => {
       container.innerHTML += `<h2>${p.grade}</h2>`;
     }
 
-    let piecesHTML = p.pieces.map(piece => 
+    let piecesHTML = p.pieces.map(piece =>
       `<li><strong>${piece.name}</strong> — ${piece.author} <em>(${piece.style})</em></li>`
     ).join("");
 
