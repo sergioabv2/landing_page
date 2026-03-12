@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mozart+ Academy | Contacto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #F2EFE9;
+      --surface-color: #FFFFFF;
+      --surface-border: #E5E2DC;
+      --text-main: #1C1C1C;
+      --text-muted: #595959;
+      --accent-color: #1C1C1C;
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --border-radius: 16px;
+      --shadow-soft: 0 18px 45px rgba(28, 28, 28, 0.08);
+      --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.9), #f4f0e7);
+      border-radius: 28px;
+      padding: 32px 32px 40px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,0.35), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(255,255,255,0.25), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .shell-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid #1C1C1C;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .headline {
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: clamp(2.1rem, 3vw, 2.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 16px 0 12px;
+    }
+
+    .lede {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .info-list {
+      margin-top: 32px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .info-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.06);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .form-card {
+      background: var(--surface-color);
+      border-radius: 20px;
+      padding: 28px 26px;
+      border: 1px solid var(--surface-border);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-title {
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .form-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .input, .textarea {
+      width: 100%;
+      padding: 11px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.12);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      background: #F9F6F0;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .input:focus,
+    .textarea:focus {
+      border-color: var(--accent-color);
+      background: var(--surface-color);
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.12);
+    }
+
+    .textarea {
+      resize: vertical;
+      min-height: 96px;
+    }
+
+    .inline-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .helper-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .submit-row {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      border: none;
+      background: var(--accent-color);
+      color: var(--bg-color);
+      border-radius: 999px;
+      padding: 12px 26px;
+      font-family: var(--font-title);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent-color);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+    }
+
+    .btn-primary span.icon {
+      font-size: 1rem;
+    }
+
+    .small-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      max-width: 260px;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      .shell {
+        padding: 24px 20px 28px;
+        border-radius: 22px;
+      }
+
+      .shell-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="shell">
+    <div class="shell-inner">
+      <div>
+        <div class="pill">Contacto · Mozart+ Academy</div>
+        <h1 class="headline">Hablemos de tu próximo capítulo musical.</h1>
+        <p class="lede">
+          Cuéntanos en qué punto estás y te ayudamos a elegir el programa ideal: clases regulares, bootcamp intensivo o sesiones particulares.
+        </p>
+
+        <div class="info-list">
+          <div>
+            <div class="info-label">Ubicación</div>
+            <div class="info-row">
+              Av. Principal 123, Centro · Ciudad de México, CDMX
+            </div>
+          </div>
+          <div>
+            <div class="info-label">Horarios de atención</div>
+            <div class="info-row">
+              Lunes a Viernes · 10:00 a 19:00 · Sábado · 10:00 a 14:00
+            </div>
+          </div>
+          <div>
+            <div class="info-label">Canales directos</div>
+            <div class="info-row">
+              <span class="chip">WhatsApp · +52 55 0000 0000</span>
+              <span class="chip">Email · hola@mozartacademy.mx</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-card">
+        <div>
+          <h2 class="form-title">Agenda una llamada o visita</h2>
+          <p class="form-sub">Déjanos tus datos y te escribimos en menos de 24 horas.</p>
+        </div>
+
+        <div class="inline-two">
+          <div class="field-group">
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" type="text" class="input" placeholder="Ej. Ana Martínez" required>
+          </div>
+          <div class="field-group">
+            <label for="telefono">Teléfono / WhatsApp</label>
+            <input id="telefono" type="tel" class="input" placeholder="+52 ..." required>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="email">Correo electrónico</label>
+          <input id="email" type="email" class="input" placeholder="tu@correo.com" required>
+          <p class="helper-text">Solo lo usaremos para enviarte información de la academia.</p>
+        </div>
+
+        <div class="field-group">
+          <label for="interes">¿Qué te interesa?</label>
+          <input id="interes" type="text" class="input" placeholder="Clases grupales, bootcamp, niños, adultos, etc.">
+        </div>
+
+        <div class="field-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" class="textarea" placeholder="Cuéntanos sobre tu experiencia previa y qué te gustaría lograr con la música."></textarea>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn-primary">
+            <span class="icon">➝</span>
+            Enviar mensaje
+          </button>
+          <p class="small-note">
+            También puedes escribirnos directo por WhatsApp para una respuesta más rápida.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
+
