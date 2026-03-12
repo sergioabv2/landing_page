@@ -1,528 +1,408 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mozart | Galería</title>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mozart+ Academy | Galería</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #F2EFE9;
+      --surface-color: #FFFFFF;
+      --surface-border: #E5E2DC;
+      --text-main: #1C1C1C;
+      --text-muted: #595959;
+      --accent-color: #1C1C1C;
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --border-radius: 16px;
+      --shadow-soft: 0 18px 45px rgba(28, 28, 28, 0.08);
+      --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
-        :root {
-            --header-height: 4.5rem;
-            --hue: 250;
-            --first-color: hsl(var(--hue), 100%, 58%);
-            --title-color: hsl(var(--hue), 8%, 15%);
-            --text-color: hsl(var(--hue), 8%, 35%);
-            --body-color: #FFFFFF;
-            --golden-color: #FFB352;
-            --lilac-color: #B128FF;
-            --green-color: #30A820;
-            --purple-color: #5744CB;
-            --vibrant-purple-color: #B128FF;
-            --pink-color: #F2277E;
-            --night-color: #0E1133;
-            --gray-color: hsl(var(--hue), 8%, 75%);
-            --border-color: hsl(var(--hue), 8%, 80%);
-            --container-color: hsl(var(--hue), 60%, 97%);
-            --facebook-color: #285DA1;
-            --youtube-color: #D2173F;
-            --body-font: 'Hind', sans-serif;
-            --signature-font: 'Turret Road', sans-serif;
-            --biggest-font-size: 4rem;
-            --h1-font-size: 2.25rem;
-            --h2-font-size: 1.5rem;
-            --h3-font-size: 1.25rem;
-            --normal-font-size: 1rem;
-            --small-font-size: .875rem;
-            --smaller-font-size: .813rem;
-            --font-medium: 500;
-            --font-semibold: 600;
-            --font-bold: 700;
-            --z-tooltip: 10;
-            --z-fixed: 100;
-        }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        @media screen and (max-width: 1024px) {
-            :root {
-                --biggest-font-size: 2.75rem;
-                --h1-font-size: 1.5rem;
-                --h2-font-size: 1.25rem;
-                --h3-font-size: 1rem;
-                --normal-font-size: .938rem;
-                --small-font-size: .813rem;
-                --smaller-font-size: .75rem;
-            }
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, input, textarea { font-family: var(--body-font); font-size: var(--normal-font-size); }
-        body { background-color: var(--body-color); color: var(--text-color); }
-        h1, h2, h3 { color: var(--title-color); font-weight: var(--font-semibold); }
-        ul { list-style: none; }
-        a { text-decoration: none; }
-        input { border: none; outline: none; }
-        img { max-width: 100%; height: auto; }
-        .button { display: inline-block; color: var(--body-color); padding: 0.8rem 1.75rem; border-radius: .5rem; font-weight: var(--font-medium); background-color: var(--first-color); cursor: pointer; }
-        .container { max-width: 1140px; margin-left: auto; margin-right: auto; }
-        .grid { display: grid; }
-        .section { padding: 7rem 0 1rem; }
-        .section-title { font-size: var(--h1-font-size); font-weight: var(--font-bold); text-align: center; margin-bottom: 0.25rem; line-height: 140%; }
-        .section-subtitle { text-align: center; margin-bottom: 4rem; }
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.9), #f4f0e7);
+      border-radius: 28px;
+      padding: 32px 32px 40px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
 
-        /* Header */
-        .header { width: 100%; background-color: transparent; position: fixed; top: 0; left: 0; z-index: var(--z-fixed); transition: .6s; }
-        .nav { height: calc(var(--header-height) + 1.5rem); display: flex; justify-content: space-between; align-items: center; }
-        .logo-dark { display: none; }
-        .nav-link, .nav-toggle { color: var(--body-color); font-weight: var(--font-semibold); }
-        .nav-toggle { font-size: 1.5rem; cursor: pointer; display: none; }
-        .nav-list { display: flex; flex-direction: row; column-gap: 2.5rem; }
-        .nav-close { display: none; }
-        .active-link { position: relative; }
-        .active-link::before { content: ''; position: absolute; bottom: -0.75rem; left: 45%; width: 5px; height: 5px; background-color: var(--body-color); border-radius: 50%; }
-        .scroll-header { background-color: var(--body-color) !important; box-shadow: 0 1px 4px hsl(var(--hue), 4%, 15%, .1); }
-        .scroll-header .logo-light { display: none; }
-        .scroll-header .logo-dark { display: block; }
-        .scroll-header .nav-link { color: var(--title-color); }
-        .scroll-header .active-link::before { background-color: var(--title-color); }
-        .scroll-header .nav-toggle { color: var(--title-color); }
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,0.35), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(255,255,255,0.25), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
 
-        .nav-logo-icon { height: 36px; margin-right: 8px; border-radius: 50%; }
-        .nav-logo.logo-light .nav-logo-text { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2rem; color: #3b82f6; line-height: 1; }
-        .nav-logo.logo-light .nav-logo-text-dark { color: white; }
-        .nav-logo.logo-dark .nav-logo-text-white { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2rem; color: black; line-height: 1; }
+    .shell-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 40px;
+      align-items: stretch;
+    }
 
-        /* Home */
-        .home { position: relative; height: 468px; background: url('https://lh3.googleusercontent.com/d/1xjW82PryaovzAfXKQbFkvxq2Ppcc97jR'); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 18rem 0 2rem; z-index: -2; }
-        .home::after { position: absolute; content: ''; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 3, 32, .66); z-index: -1; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid #1C1C1C;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-        /* Gallery Video Section */
-        .gallery-video { padding: 5rem 0; }
-        .video-container { max-width: 900px; margin: 0 auto 3rem; position: relative; }
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: .8rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .headline {
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: clamp(2.1rem, 3vw, 2.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 16px 0 12px;
+    }
 
-        /* Video Controls */
-        .video-controls { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 2rem; }
-        .video-nav-btn { background-color: var(--first-color); color: var(--body-color); border: none; padding: 0.8rem 1.5rem; border-radius: .5rem; cursor: pointer; font-weight: var(--font-semibold); transition: .4s; display: flex; align-items: center; gap: 0.5rem; }
-        .video-nav-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(87, 68, 203, 0.4); }
-        .video-indicator { display: flex; gap: 0.5rem; }
-        .indicator-dot { width: 10px; height: 10px; border-radius: 50%; background-color: var(--border-color); cursor: pointer; transition: .3s; }
-        .indicator-dot.active { background-color: var(--first-color); width: 30px; border-radius: 5px; }
+    .lede {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
 
-        /* Gallery Images with Parallax */
-        .gallery-images { padding: 3rem 0 5rem; overflow: hidden; }
-        .images-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
-        .images-row.visible { opacity: 1; transform: translateY(0); }
-        
-        .image-item { position: relative; overflow: hidden; border-radius: .8rem; height: 300px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }
-        
-        /* Parallax effect on individual items */
-        .image-item.parallax-slow { transform: translateY(var(--parallax-offset-slow, 0)); }
-        .image-item.parallax-medium { transform: translateY(var(--parallax-offset-medium, 0)); }
-        .image-item.parallax-fast { transform: translateY(var(--parallax-offset-fast, 0)); }
-        
-        .image-item img { width: 100%; height: 100%; object-fit: cover; transition: .5s ease; }
-        .image-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, transparent 0%, rgba(87, 68, 203, 0.9) 100%); opacity: 0; transition: .5s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
-        .image-item:hover img { transform: scale(1.15); }
-        .image-item:hover .image-overlay { opacity: 1; }
-        .image-title { color: var(--body-color); font-size: var(--h3-font-size); font-weight: var(--font-semibold); margin-bottom: 0.5rem; transform: translateY(20px); transition: .5s ease .1s; }
-        .image-description { color: var(--body-color); font-size: var(--small-font-size); transform: translateY(20px); transition: .5s ease .2s; }
-        .image-item:hover .image-title,
-        .image-item:hover .image-description { transform: translateY(0); }
+    .info-list {
+      margin-top: 32px;
+      display: grid;
+      gap: 16px;
+    }
 
-        /* Footer */
-        .footer { margin-top: 8rem; background-color: var(--night-color); }
-        .footer-container { grid-template-columns: repeat(4, 1fr); justify-items: center; column-gap: 1rem; }
-        .footer-logo { margin-bottom: 1.25rem; }
-        .footer-description { color: var(--gray-color); margin-bottom: 2.5rem; }
-        .footer-social { display: flex; column-gap: 0.75rem; }
-        .footer-social-link { display: inline-block; background-color: var(--container-color); width: 44px; height: 44px; line-height: 42px; text-align: center; border-radius: .25rem; font-size: 1rem; color: var(--body-color); border: 2px solid; transition: .6s; }
-        .footer-social-link:nth-child(1) { background-color: var(--facebook-color); border-color: var(--facebook-color); }
-        .footer-social-link:nth-child(2) { background-color: var(--youtube-color); border-color: var(--youtube-color); }
-        .footer-social-link:hover { background-color: transparent; }
-        .footer-title { font-size: var(--h3-font-size); color: var(--body-color); margin-bottom: 1rem; }
-        .footer-links { display: grid; row-gap: 0.35rem; }
-        .footer-link { font-size: var(--normal-font-size); color: var(--gray-color); transition: .6s; }
-        .footer-link:hover { color: var(--body-color); }
-        .footer-copy { display: block; text-align: center; font-size: var(--normal-font-size); color: var(--gray-color); margin-top: 6rem; padding-bottom: 2rem; }
-        .footer-copy a { font-family: var(--signature-font); color: var(--gray-color); font-weight: var(--font-semibold); transition: .4s; }
-        .footer-copy a:hover { color: var(--body-color); }
+    .info-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--text-main);
+    }
 
-        /* ==================== BANNER HERO STYLE ==================== */
-.banner-header {
-    position: relative;
-    width: 100%;
-    height: 350px; /* Un poco más alto para lucir la imagen */
-    overflow: hidden;
-    background-color: var(--body-color);
-    margin-bottom: 2rem; /* Espacio antes de las fotos */
-}
+    .info-row {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
 
-.banner-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 40%;
-}
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.06);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
 
-/* Overlay Glassmorphism que se funde con tu fondo blanco */
-.banner-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, 
-        rgba(255, 255, 255, 0.2) 0%, 
-        rgba(255, 255, 255, 0.6) 50%, 
-        var(--body-color) 100%); /* Se funde con el color de tu body */
-}
+    .gallery-card {
+      background: var(--surface-color);
+      border-radius: 20px;
+      padding: 18px 18px 20px;
+      border: 1px solid var(--surface-border);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
 
-.banner-text {
-    position: absolute;
-    top: 55%; /* Ajustado verticalmente */
-    left: 5%; /* Alineado a la izquierda como el dashboard */
-    transform: translateY(-50%);
-    z-index: 5;
-    max-width: 700px;
-    padding-right: 20px;
-}
+    .gallery-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
 
-.banner-text h1 {
-    font-family: 'Inter', sans-serif;
-    font-size: 3rem; /* Tamaño grande estilo industrial */
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 10px;
-    letter-spacing: -1.5px;
-    color: var(--title-color); /* Usa tu variable de color oscuro */
-    text-shadow: 0 4px 12px rgba(255,255,255,0.8); 
-}
+    .grid-images {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
 
-.banner-text .subtitle-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--first-color); /* Usamos tu morado en vez del rojo */
-    font-weight: 700;
-    display: block;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    background: rgba(255,255,255,0.8);
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 4px;
-}
+    .grid-images img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
 
-.banner-desc {
-    font-family: 'Inter', sans-serif;
-    color: var(--text-color);
-    font-weight: 500;
-    font-size: 1.1rem;
-    max-width: 500px;
-}
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+    }
 
-/* Ajuste Responsive para el Banner */
-@media screen and (max-width: 767px) {
-    .banner-header { height: 280px; }
-    .banner-text h1 { font-size: 2.2rem; }
-    .banner-text { left: 20px; right: 20px; }
-}
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
-        /* Responsive */
-        @media screen and (max-width: 1206px) {
-            .container { margin-left: 2rem; margin-right: 2rem; }
-        }
+    .gallery-footnote {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
 
-        @media screen and (max-width: 1024px) {
-            .container { margin-left: 1.5rem; margin-right: 1.5rem; }
-            .images-row { grid-template-columns: repeat(2, 1fr); }
-        }
+    .thumbs-row {
+      margin-top: 10px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
 
-        @media screen and (max-width: 767px) {
-            .nav { height: var(--header-height); }
-            .button-header { display: none; }
-            .nav-toggle { display: block; }
-            .nav-menu { position: fixed; width: 100%; background-color: var(--container-color); top: -150%; left: 0; padding: 3.5rem 0; z-index: var(--z-fixed); border-radius: 0 0 .4rem .4rem; transition: .4s; }
-            .nav-list { flex-direction: column; row-gap: 1.5rem; align-items: center; }
-            .nav-close { display: block; font-size: 1.8rem; position: absolute; top: 0.5rem; right: 0.7rem; cursor: pointer; }
-            .nav-link { color: var(--title-color); }
-            .active-link::before { background-color: var(--title-color); }
-            .show-menu { top: 0; }
-            .images-row { grid-template-columns: 1fr; }
-            .video-controls { flex-direction: column; }
-            .footer-container { grid-template-columns: 1fr; row-gap: 2rem; justify-items: center; place-items: center; }
-            .footer-content { display: flex; align-items: center; justify-content: center; flex-direction: column; }
-            .footer-description { text-align: center; }
-            .footer-links { text-align: center; }
-            .footer-copy { margin-top: 4.5rem; }
-            .banner-header { height: 280px; }
-    .banner-text h1 { font-size: 2.2rem; }
-    .banner-text { left: 20px; right: 20px; }
-        }
+    .thumbs-row img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
 
-        @media screen and (max-width: 576px) {
-            .video-container { margin: 0 1rem 2rem; }
-        }
-    </style>
+    .thumbs-row img:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .grid-controls {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .grid-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.7);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      padding: 5px 12px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .grid-btn:hover {
+      background: #F3F0EA;
+      color: var(--text-main);
+    }
+
+    .grid-btn.active {
+      background: var(--text-main);
+      color: var(--bg-color);
+      border-color: var(--text-main);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      .shell {
+        padding: 24px 20px 28px;
+        border-radius: 22px;
+      }
+
+      .shell-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  </style>
 </head>
 <body>
-   
 
-    <main class="main">
-       <div class="banner-header">
-        <img src="https://lh3.googleusercontent.com/d/1xjW82PryaovzAfXKQbFkvxq2Ppcc97jR" class="banner-image" alt="Mozart Academy Cover">
-        
-        <div class="banner-overlay"></div>
-        
-        <div class="banner-text">
-            <span class="subtitle-tag">Experiencia Mozart de Aprendizaje Híbrida</span>
-            <h1>Galería Multimedia</h1>
-            <p class="banner-desc">
-                Explora los momentos más destacados, recitales y el progreso de nuestros alumnos.
-            </p>
+  <div class="shell">
+    <div class="shell-inner">
+      <div>
+        <div class="pill">Galería · Mozart+ Academy</div>
+        <h1 class="headline">Momentos que cuentan la historia de la academia.</h1>
+        <p class="lede">
+          Recitales, clases grupales y escenas de estudio que muestran cómo se vive el día a día en Mozart+. Aquí es donde nuestros alumnos crecen.
+        </p>
+
+        <div class="info-list">
+          <div>
+            <div class="info-label">Qué encontrarás</div>
+            <div class="info-row">
+              Ensayos, presentaciones, clases de grupo y sesiones individuales capturadas a lo largo del año.
+            </div>
+          </div>
+          <div>
+            <div class="info-label">Para quién es</div>
+            <div class="info-row">
+              Familias y alumnos que quieren ver el ambiente real dentro del aula antes de inscribirse.
+            </div>
+          </div>
+          <div>
+            <div class="info-label">Sugerencia</div>
+            <div class="info-row">
+              <span class="chip">Mira primero el video resumen</span>
+              <span class="chip">Luego explora la galería de fotos</span>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-tag">Video resumen</div>
+        <div class="video-wrapper">
+          <iframe id="gallery-main-video" src="https://www.youtube.com/embed/f0TeYaXzSjk" allowfullscreen loading="lazy"></iframe>
+        </div>
+
+        <div class="thumbs-row">
+          <img data-video="f0TeYaXzSjk" src="https://img.youtube.com/vi/f0TeYaXzSjk/mqdefault.jpg" alt="Recital 1">
+          <img data-video="aHOyWG3ALeU" src="https://img.youtube.com/vi/aHOyWG3ALeU/mqdefault.jpg" alt="Ensamble adultos">
+          <img data-video="AtwQQXbjbEg" src="https://img.youtube.com/vi/AtwQQXbjbEg/mqdefault.jpg" alt="Clase grupal">
+          <img data-video="9bZkp7q19f0" src="https://img.youtube.com/vi/9bZkp7q19f0/mqdefault.jpg" alt="Practica divertida">
+        </div>
+
+        <div class="gallery-tag" style="margin-top: 10px;">Algunas escenas del aula</div>
+        <div class="grid-images" id="gallery-grid"></div>
+
+        <div class="grid-controls">
+          <button class="grid-btn active" data-grid="0">Galería 1</button>
+          <button class="grid-btn" data-grid="1">Galería 2</button>
+        </div>
+
+        <p class="gallery-footnote">
+          Si quieres ver más fotos o solicitar material específico para prensa, escríbenos desde la sección de contacto.
+        </p>
+      </div>
     </div>
-     
+  </div>
 
-        <section class="gallery-images section">
-
-            <div class="container">
-                <!-- Primera fila -->
-                <div class="images-row" data-row="1">
-                    <div class="image-item parallax-slow">
-                        <img src="https://lh3.googleusercontent.com/d/1HKJk38C2tBmQZq5nprQf0_N7WliE5evX=s500" alt="Clase de piano">
-                        <div class="image-overlay">
-                            <h3 class="image-title">Clase de Piano Nivel 1</h3>
-                            <p class="image-description">Estudiantes aprendiendo las bases del piano</p>
-                        </div>
-                    </div>
-
-                    <div class="image-item parallax-medium">
-                        <img src="https://lh3.googleusercontent.com/d/1fdh-RDgiw30hWv9ICtcJgTxjpwH3DPCc=s500" alt="Teoría musical">
-                        <div class="image-overlay">
-                            <h3 class="image-title">Teoría Musical</h3>
-                            <p class="image-description">Fundamentos de la música</p>
-                        </div>
-                    </div>
-
-                    <div class="image-item parallax-fast">
-                        <img src="https://lh3.googleusercontent.com/d/1VUIh6eFHhPcLOQmZUO-52QP0IPVQFiw9=s500" alt="Piano avanzado">
-                        <div class="image-overlay">
-                            <h3 class="image-title">Piano Avanzado</h3>
-                            <p class="image-description">Técnicas y armonía musical</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Segunda fila -->
-                <div class="images-row" data-row="2">
-                    <div class="image-item parallax-medium">
-                        <img src="https://lh3.googleusercontent.com/d/1lxaO4HBfCOa6N3cWu5Ej-VYKSHPYH4Fl=s500" alt="Repertorio clásico">
-                        <div class="image-overlay">
-                            <h3 class="image-title">Repertorio Clásico</h3>
-                            <p class="image-description">Interpretación de grandes obras</p>
-                        </div>
-                    </div>
-
-                    <div class="image-item parallax-fast">
-                        <img src="https://lh3.googleusercontent.com/d/1oHPUiZ3WHuEG5bAaN06aCVxBoRYngqmC=s500" alt="Piano jazz">
-                        <div class="image-overlay">
-                            <h3 class="image-title">Piano Jazz</h3>
-                            <p class="image-description">Improvisación y creatividad</p>
-                        </div>
-                    </div>
-                    <!-- https://lh3.googleusercontent.com/d/1KiBJSf--diZnseRW7XGXjocwdQLpR9Tc=s500 -->
-                    <div class="image-item parallax-slow">
-                        <img src="https://lh3.googleusercontent.com/d/1646Kq_drvK1Oz0H1LvCkerIzQZxhqqMS=s500" alt="Composición">
-                        <div class="image-overlay">
-                            <h3 class="image-title">Composición Musical</h3>
-                            <p class="image-description">Creando nuevas piezas</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tercera fila -->
-                <div class="images-row" data-row="3">
-                    <div class="image-item parallax-fast">
-                        <img src="https://lh3.googleusercontent.com/d/186UBwWCrtH2J_c8gKc-mc7nIt2IfOEsC=s500" alt="Clase de piano">
-                        <div class="image-overlay">
-                            <h3 class="image-title">Clases Grupales</h3>
-                            <p class="image-description">Aprendizaje colaborativo</p>
-                        </div>
-                    </div>
-
-                    <div class="image-item parallax-slow">
-                        <img src="https://lh3.googleusercontent.com/d/160AP-OEva7xcI7eUSkFUH8gnXIQGnr_D=s500" alt="Teoría musical">
-                        <div class="image-overlay">
-                            <h3 class="image-title">Solfeo y Entonación</h3>
-                            <p class="image-description">Desarrollo del oído musical</p>
-                        </div>
-                    </div>
-
-                    <div class="image-item parallax-medium">
-                        <img src="https://lh3.googleusercontent.com/d/15XlhDsprrJJrf-UYt70n8a5fu9UIcVMR=s500" alt="Piano avanzado">
-                        <div class="image-overlay">
-                            <h3 class="image-title">Técnica Pianística</h3>
-                            <p class="image-description">Perfeccionamiento de la técnica</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-           <section class="gallery-video section">
-            <h2 class="section-title">Nuestros Videos</h2>
-            <p class="section-subtitle">Explora nuestras presentaciones y recitales</p>
-
-            <div class="video-container container">
-                <div class="video-wrapper" id="videoWrapper">
-                    <iframe id="videoFrame" src="https://www.youtube.com/embed/f0TeYaXzSjk" allowfullscreen></iframe>
-                </div>
-
-                <div class="video-controls">
-                    <button class="video-nav-btn" id="prevBtn">
-                        <i class="uil uil-angle-left"></i> Anterior
-                    </button>
-                    <div class="video-indicator" id="videoIndicator"></div>
-                    <button class="video-nav-btn" id="nextBtn">
-                        Siguiente <i class="uil uil-angle-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-  
-
-    <script>
-        // Header scroll effect
-        function scrollHeader() {
-            const header = document.getElementById('header');
-            if(this.scrollY >= 50) header.classList.add('scroll-header'); 
-            else header.classList.remove('scroll-header');
-        }
-        window.addEventListener('scroll', scrollHeader);
-
-        // Mobile menu
-        const navMenu = document.getElementById('nav-menu');
-        const navToggle = document.getElementById('nav-toggle');
-        const navClose = document.getElementById('nav-close');
-
-        if(navToggle) { 
-            navToggle.addEventListener('click', () => { 
-                navMenu.classList.add('show-menu');
-            });
-        }
-        if(navClose) { 
-            navClose.addEventListener('click', () => { 
-                navMenu.classList.remove('show-menu');
-            });
-        }
-
-
-        const videos = [
-            'f0TeYaXzSjk',
-            'aHOyWG3ALeU',    
-            'AtwQQXbjbEg',
-            '9bZkp7q19f0',
-            'kJQP7kiw5Fk'
-        ];
-
-        let currentVideoIndex = 0;
-        const videoFrame = document.getElementById('videoFrame');
-        const videoIndicator = document.getElementById('videoIndicator');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        // Create indicator dots
-        videos.forEach((video, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('indicator-dot');
-            if(index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => changeVideo(index));
-            videoIndicator.appendChild(dot);
-        });
-
-        function changeVideo(index) {
-            currentVideoIndex = index;
-            videoFrame.src = `https://www.youtube.com/embed/${videos[currentVideoIndex]}`;
-            
-            // Update indicators
-            document.querySelectorAll('.indicator-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentVideoIndex);
-            });
-        }
-
-        prevBtn.addEventListener('click', () => {
-            currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
-            changeVideo(currentVideoIndex);
-        });
-
-        nextBtn.addEventListener('click', () => {
-            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-            changeVideo(currentVideoIndex);
-        });
-
-        // Parallax and reveal effect for gallery images
-        const imageRows = document.querySelectorAll('.images-row');
-        const parallaxItems = document.querySelectorAll('.image-item');
-
-        function checkRowVisibility() {
-            imageRows.forEach(row => {
-                const rect = row.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                
-                if(rect.top < windowHeight * 0.85) {
-                    row.classList.add('visible');
-                }
-            });
-        }
-
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            
-            parallaxItems.forEach(item => {
-                const rect = item.getBoundingClientRect();
-                const itemTop = rect.top + scrolled;
-                const windowHeight = window.innerHeight;
-                
-                // Only apply parallax when item is in viewport
-                if(rect.top < windowHeight && rect.bottom > 0) {
-                    let speed;
-                    
-                    if(item.classList.contains('parallax-slow')) {
-                        speed = 0.05;
-                    } else if(item.classList.contains('parallax-medium')) {
-                        speed = 0.1;
-                    } else if(item.classList.contains('parallax-fast')) {
-                        speed = 0.15;
-                    }
-                    
-                    const yPos = (scrolled - itemTop + windowHeight) * speed;
-                    item.style.setProperty('--parallax-offset-slow', speed === 0.05 ? `${yPos}px` : '0');
-                    item.style.setProperty('--parallax-offset-medium', speed === 0.1 ? `${yPos}px` : '0');
-                    item.style.setProperty('--parallax-offset-fast', speed === 0.15 ? `${yPos}px` : '0');
-                }
-            });
-        }
-
-        // Initial check
-        checkRowVisibility();
-        updateParallax();
-
-        // Update on scroll with throttling for better performance
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if(!ticking) {
-                window.requestAnimationFrame(() => {
-                    checkRowVisibility();
-                    updateParallax();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    </script>
 </body>
+<script>
+  (function () {
+    const main = document.getElementById('gallery-main-video');
+    if (main) {
+      document.querySelectorAll('.thumbs-row img[data-video]').forEach(img => {
+        img.addEventListener('click', () => {
+          const code = img.getAttribute('data-video');
+          if (!code) return;
+          main.src = `https://www.youtube.com/embed/${code}`;
+        });
+      });
+    }
+
+    const grids = [
+      [
+        { src: 'https://lh3.googleusercontent.com/d/1HKJk38C2tBmQZq5nprQf0_N7WliE5evX=s500', alt: 'Clase de piano' },
+        { src: 'https://lh3.googleusercontent.com/d/1fdh-RDgiw30hWv9ICtcJgTxjpwH3DPCc=s500', alt: 'Teoría musical' },
+        { src: 'https://lh3.googleusercontent.com/d/1VUIh6eFHhPcLOQmZUO-52QP0IPVQFiw9=s500', alt: 'Piano avanzado' },
+        { src: 'https://lh3.googleusercontent.com/d/1lxaO4HBfCOa6N3cWu5Ej-VYKSHPYH4Fl=s500', alt: 'Repertorio clásico' },
+        { src: 'https://lh3.googleusercontent.com/d/186UBwWCrtH2J_c8gKc-mc7nIt2IfOEsC=s500', alt: 'Clases grupales' },
+        { src: 'https://lh3.googleusercontent.com/d/1646Kq_drvK1Oz0H1LvCkerIzQZxhqqMS=s500', alt: 'Composición musical' }
+      ],
+      [
+        { src: 'https://lh3.googleusercontent.com/d/160AP-OEva7xcI7eUSkFUH8gnXIQGnr_D=s500', alt: 'Solfeo y entonación' },
+        { src: 'https://lh3.googleusercontent.com/d/15XlhDsprrJJrf-UYt70n8a5fu9UIcVMR=s500', alt: 'Técnica pianística' },
+        { src: 'https://lh3.googleusercontent.com/d/1P8_bZbN1EOAS_YoncEdFEfJfZQ_zZ_Yi=s500', alt: 'Adultos en clase' },
+        { src: 'https://lh3.googleusercontent.com/d/12DJDkSE9BiHxDmKohUuopY5NYVFv5a7f=s500', alt: 'Tecnología en aula' },
+        { src: 'https://lh3.googleusercontent.com/d/1d9nFSuVWGMeyhIw3KmB-O7jgzQT4Dfel=s500', alt: 'Clase grupal avanzada' },
+        { src: 'https://lh3.googleusercontent.com/d/1u-10eINOblqeinHHRUtSiB3iw_4gQ5Wp=s500', alt: 'Equipamiento premium' }
+      ]
+    ];
+
+    const gridEl = document.getElementById('gallery-grid');
+    if (!gridEl) return;
+
+    function renderGrid(index) {
+      const set = grids[index] || grids[0];
+      gridEl.innerHTML = set.map(img =>
+        `<img src="${img.src}" alt="${img.alt}" data-full="${img.src}">`
+      ).join('');
+      attachModalHandlers();
+    }
+
+    function attachModalHandlers() {
+      document.querySelectorAll('#gallery-grid img[data-full]').forEach(img => {
+        img.addEventListener('click', () => openModal(img.getAttribute('data-full'), img.alt || ''));
+      });
+    }
+
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.inset = '0';
+    overlay.style.background = 'rgba(0,0,0,0.7)';
+    overlay.style.display = 'none';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = '999';
+    overlay.innerHTML = `
+      <div style="max-width: 90vw; max-height: 90vh; border-radius: 16px; overflow: hidden; box-shadow: 0 18px 45px rgba(0,0,0,0.5); background:#000; position:relative;">
+        <button id="gallery-modal-close" style="position:absolute; top:8px; right:8px; border:none; background:rgba(0,0,0,0.6); color:#fff; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:18px;">×</button>
+        <img id="gallery-modal-img" src="" alt="" style="display:block; max-width:100%; max-height:90vh; object-fit:contain;">
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    function openModal(src, alt) {
+      const imgEl = document.getElementById('gallery-modal-img');
+      if (!imgEl) return;
+      imgEl.src = src;
+      imgEl.alt = alt;
+      overlay.style.display = 'flex';
+    }
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay || e.target.id === 'gallery-modal-close') {
+        overlay.style.display = 'none';
+      }
+    });
+
+    document.querySelectorAll('.grid-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const index = parseInt(btn.getAttribute('data-grid') || '0', 10);
+        document.querySelectorAll('.grid-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderGrid(index);
+      });
+    });
+
+    renderGrid(0);
+  })();
+</script>
 </html>
