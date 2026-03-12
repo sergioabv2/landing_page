@@ -21,10 +21,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
- <link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="manifest.json">
 </head>
 
  <style>
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+/* =========== DESIGN TOKENS (alineados con MenuLayout) =========== */
+:root {
+  --bg-main: #FFFFFF;
+  --text-primary: #111111;
+  --text-secondary: #5F6368;
+  --text-tertiary: #9CA3AF;
+  --nav-hover-bg: rgba(0,0,0,0.04);
+  --nav-active-bg: rgba(0,0,0,0.06);
+  --border-color: #E5E7EB;
+  --sidebar-bg: #fdfdfe;
+  --sidebar-width: 270px;
+}
 
  .itemDividerforitem {
       border-color: #111;
@@ -75,6 +90,10 @@ body {
   height: 100%;
   width: 100% !important;
   box-sizing: border-box;
+  font-family: "Google Sans Flex", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
 }
 
 
@@ -121,75 +140,76 @@ body {
 }
 
 ion-side-menu {
-  background-color: #f8f9fc; /* Fondo claro */
-  color: #3a3b3c; /* Texto oscuro */
-  width: 300px;
-  border-right: 1px solid #e0e0e0;
- 
+  background-color: var(--sidebar-bg);
+  color: var(--text-primary);
+  width: var(--sidebar-width);
+  border-right: 0.5px solid var(--border-color);
+  box-shadow: 4px 0 20px rgba(0,0,0,0.05);
 }
 
 
 
 ion-side-menu .list .item {
-  padding: 20px 40px;
-  font-size: 18px;
+  padding: 10px 12px !important;
+  font-size: 15px;
   display: flex;
   align-items: center;
-  color: #374151;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 2px; /* Bordes redondeados */
-    border-top: 1px solid transparent !important; 
-    border-bottom: 1px solid transparent !important; 
-  font-weight: 400; 
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  color: var(--text-secondary);
+  transition: background 0.2s ease, color 0.2s ease;
+  border-radius: 10px !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  font-weight: 500 !important;
+  font-family: "Google Sans Flex", system-ui, sans-serif !important;
+  margin: 2px 8px !important;
 }
 
 ion-side-menu .list .item i {
   font-size: 22px;
-  color: #374151;
-  margin-right: 10px; /* Espaciado entre ícono y texto */
+  color: var(--text-secondary);
+  margin-right: 12px;
+  flex-shrink: 0;
 }
 
-
-
 ion-side-menu .item:hover i {
-  transform: scale(1.1); /* Agrandar ligeramente el ícono */
+  transform: none;
 }
 
 ion-side-menu .item:hover img {
-  transform: scale(1.1); /* Agrandar ligeramente el ícono */
+  transform: none;
 }
 
 ion-side-menu .list .item:hover {
-  background-color: #f5f6f6; /* Fondo hover */
-  color: #343a40; /* Texto más oscuro al pasar mouse */
+  background: var(--nav-hover-bg) !important;
+  color: var(--text-primary) !important;
 }
 
-.menuSelectedColor {    
-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-weight: 550 !important; text-shadow: 0 0 6px silver !important;
-    background-color: #f0f2f5 !important; 
-  color: #1F2937 !important;
+.menuSelectedColor {
+  font-family: "Google Sans Flex", system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  background: var(--nav-active-bg) !important;
+  color: var(--text-primary) !important;
 }
 
-.card{
-  font-family: 'Nunito', sans-serif;
-    border-radius: 4px;
-    background: #fff;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+.card {
+  font-family: "Google Sans Flex", system-ui, sans-serif !important;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.06);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   padding: 14px 80px 18px 36px;
   cursor: pointer;
   height: 120px;
-  align-items: center; 
-   display: flex; 
-  text-decoration: none; 
+  align-items: center;
+  display: flex;
+  text-decoration: none;
 }
 
-
-.card:hover{
-     transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 .list .card h3{
@@ -449,14 +469,17 @@ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 
 .dropdownContent {
   position: absolute;
-  top: 50px;
+  top: 55px;
   right: 10px;
   background: #fff;
-  min-width: 250px;
-  box-shadow: 0px 0px 15px 8px rgba(50, 50, 50, 0.2);
-  border-radius: 8px;
+  min-width: 260px;
+  box-shadow:
+    0 4px 6px -1px rgba(0,0,0,0.05),
+    0 20px 40px -8px rgba(0,0,0,0.12),
+    0 0 0 1px rgba(0,0,0,0.05);
+  border-radius: 20px;
   z-index: 1000;
-  padding: 20px 10px;
+  padding: 16px 10px;
 }
 
 #bannerRow {
@@ -487,11 +510,16 @@ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 
 .dropdown-item {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  padding: 10px 12px;
+  border-bottom: none;
   display: flex;
   align-items: center;
   cursor: pointer;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s ease;
 }
 
 .dropdown-item:last-child {
@@ -499,11 +527,14 @@ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 
 .dropdown-item:hover {
-  background-color: #f0f0f0;
+  background-color: #F9FAFB;
+  color: var(--text-primary);
 }
 
 .dropdown-item i {
-  margin-right: 10px;
+  margin-right: 12px;
+  font-size: 18px;
+  color: var(--text-tertiary);
 }
 
    
@@ -521,10 +552,12 @@ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 .tabframe-container{
       display: block;
     }
-.bar-light{
-     box-shadow:  0 2px 4px 0px rgba(0,0,0,0.1);
-      height: 55px !important;
-   }
+.bar-light {
+  box-shadow: 0 1px 0 var(--border-color) !important;
+  height: 55px !important;
+  background-color: var(--bg-main) !important;
+  border-bottom: none !important;
+}
 /* Mostrar la barra de tabs solo en pantallas de hasta 768px */
 @media (max-width: 850px) {
     .tabs-striped {
@@ -647,53 +680,58 @@ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
      
 
 .profile-user-data {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+  margin-bottom: 8px;
+  padding: 12px 8px;
 }
 .profile-user-data .circle {
-    flex-shrink: 0; /* Evita que el contenedor de la imagen se reduzca */
-    border-radius: 100% !important;
-    overflow: hidden; 
-    width: 55px;
-    height: 55px;
-    margin: 10px 2px 0 10px; /* Ajusta los márgenes */
+  flex-shrink: 0;
+  border-radius: 10px !important;
+  overflow: hidden;
+  width: 44px;
+  height: 44px;
+  margin: 0 8px 0 4px;
 }
-
 .profile-user-data .circle2 {
-    flex-shrink: 0; /* Evita que el contenedor de la imagen se reduzca */
-    border-radius: 25% !important;
-    overflow: hidden; 
-    width: 40px;
-    height: 40px;
-    margin: 10px 2px 0 10px; /* Ajusta los márgenes */
+  flex-shrink: 0;
+  border-radius: 10px !important;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  margin: 0 8px 0 0;
 }
-.profile-user-data img { margin-right: 10px; max-width: 100%;}
+.profile-user-data img { margin-right: 0; max-width: 100%; }
 .profile-user-data .main-data {
-    flex-grow: 1; /* Permite que el contenedor de texto use el espacio restante */
-    padding: 10px 10px 20px;
-    margin-bottom: 5px;
-    overflow: hidden; /* Evita desbordamientos */
+  flex-grow: 1;
+  padding: 0;
+  margin-bottom: 0;
+  overflow: hidden;
 }
-
-.main-data .planTag{
-  color: gray; font-weight: 500; text-shadow: 0 0 2px silver;
+.main-data .planTag {
+  color: var(--text-tertiary);
+  font-weight: 500;
+  text-shadow: none;
   font-size: 11px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-family: "Google Sans Flex", system-ui, sans-serif !important;
 }
-.main-data .userLvl{
-  margin-top: 1px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  color: black; font-weight: 500 !important; text-shadow: 0 0 6px silver !important;
+.main-data .userLvl {
+  margin-top: 0;
+  font-family: "Google Sans Flex", system-ui, sans-serif !important;
+  color: var(--text-primary);
+  font-weight: 600 !important;
+  text-shadow: none !important;
 }
 .main-data h4 {
-    font-size: 17px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-margin-bottom: 1px;
-    overflow: hidden; 
+  font-size: 14px;
+  font-family: "Google Sans Flex", system-ui, sans-serif !important;
+  font-weight: 600;
+  margin-bottom: 1px;
+  overflow: hidden;
+  color: var(--text-primary);
 }
-.profile-user-data .main-data span {font-size: 12px;}
+.profile-user-data .main-data span { font-size: 12px; }
 
 
 .progress{
@@ -2971,20 +3009,22 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
 .headIcon {
-    margin-top: 4px;
- width: 38px;
-  height: 38px;
-  border-radius: 50% !important; /* Esto lo hace circular */
-  background-color: #e4e6eb !important;
-
-  color: #050505 !important;
-  transition: background-color 0.2s ease-in-out !important;
+  margin-top: 4px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50% !important;
+  background-color: #F3F4F6 !important;
+  color: var(--text-primary) !important;
+  transition: background 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 18px !important;
+  border: none !important;
 }
 
-
-
 .headIcon:hover {
-  background-color: #d8dbdf !important;
+  background-color: #E5E7EB !important;
 }
 
 /* Estilo para resaltar toda la fila del recordatorio de pago */
@@ -3084,126 +3124,112 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
       .btn2 {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-          transform: scale(0.8);
-            padding: 5px 20px !important;
+        font-family: "Google Sans Flex", system-ui, sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        border: none !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 999px !important;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.15s ease;
+        padding: 8px 18px !important;
+        transform: none !important;
+        line-height: 1;
+      }
 
-            font-size: 17px !important;
-            font-weight: 600 !important;
-            border: 1px solid #000 ;
-    display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 7px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
+      .btn-login {
+        margin-right: 6px;
+        background: #111111;
+        color: #ffffff;
+        border: none !important;
+      }
 
-        .btn-login {
-           margin-right: 5px;
-            background: #fff;
-            color: #000;
-        }
+      .btn-login:hover {
+        background: #333333;
+      }
 
-        .btn-login:hover {
-            background: #f5f5f5;
-        }
+      .btn-register {
+        margin-right: 12px;
+        background: #111111;
+        color: #ffffff;
+        border: none !important;
+      }
 
-        .btn-register {
-          margin-right: 15px;
-            background: #e91e63;
-            color: #fff;
-            border: 1px solid #e91e63;
-        }
+      .btn-register:hover {
+        background: #333333;
+      }
 
-        .btn-register:hover {
-            background: #d81b60;
-            border-color: #d81b60;
-        }
-
-        .btn2:active {
-            transform: scale(0.78);
-        }
-
-
+      .btn2:active {
+        transform: scale(0.97) !important;
+      }
 
 
-/* --- 1. Ocultar el nuevo menú horizontal por defecto (móvil) --- */
+
+
+/* --- Menú horizontal estilo cápsula (alineado con MenuLayout) --- */
 .nav-bar-horizontal-menu {
-    display: none;
+  display: none;
 }
-
 
 @media (min-width: 850px) {
 
-   /* Contenedor del menú horizontal */
-.nav-bar-horizontal-menu {
+  .nav-bar-horizontal-menu {
     display: flex !important;
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
-    
-    /* MAGIA PARA CENTRARLO ABSOLUTAMENTE */
+    align-items: center;
+    justify-content: center;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 9px;
+    top: 8px;
     z-index: 999;
-
-    /* Estilos visuales de la cápsula */
     height: 40px !important;
     background: rgba(0, 0, 0, 0.04);
     padding: 4px;
     border-radius: 99px;
     margin-left: 0 !important;
-    gap: 4px; /* Espacio entre botones */
-}
+    gap: 2px;
+  }
 
-.nav-bar-horizontal-menu .button {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  .nav-bar-horizontal-menu .button {
+    font-family: "Google Sans Flex", system-ui, sans-serif !important;
     font-size: 13px !important;
-    font-weight: 500 !important; 
-    color: #6b7280 !important;
-    
-    padding: 8px 20px !important;
+    font-weight: 500 !important;
+    color: var(--text-secondary) !important;
+    padding: 8px 18px !important;
     margin: 0 !important;
-    
-    /* RESETEO TOTAL */
     border: none !important;
-    background: transparent;
-    box-shadow: none;
-    height: 32px !important; /* Altura fija */
+    background: transparent !important;
+    box-shadow: none !important;
+    height: 32px !important;
     line-height: 1 !important;
-    min-height: 0 !important; /* Quita el min-height de Ionic */
-    
-    border-radius: 99px !important; 
-    
-    display: flex !important; /* Importante para centrar el texto */
+    min-height: 0 !important;
+    border-radius: 99px !important;
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    
-    transition: all 0.2s ease;
-}
+    transition: color 0.2s ease, background 0.2s ease;
+    text-decoration: none !important;
+  }
 
-.menuSelectedColor {
-    background-color: #ffffff !important;
-    color: #111827 !important;
+  /* Activo: fondo blanco + sombra sutil (igual que MenuLayout) */
+  .nav-bar-horizontal-menu .menuSelectedColor {
+    background: var(--bg-main) !important;
+    color: var(--text-primary) !important;
     font-weight: 700 !important;
-    
     box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06) !important;
-    
     text-shadow: none !important;
     border: none !important;
-    
-    /* Mismo padding y altura que los otros botones */
-    padding: 8px 20px !important;
+    padding: 8px 18px !important;
     height: 32px !important;
-}
+  }
 
-    /* 4. HOVER EN INACTIVOS (Sutil) */
-    .nav-bar-horizontal-menu .button:not(.menuSelectedColor):hover {
-         color: #374151 !important; /* Se oscurece un poco el texto */
-         border-bottom: none !important; /* Aseguramos que NO salga la línea abajo */
-    }
+  .nav-bar-horizontal-menu .button:not(.menuSelectedColor):hover {
+    color: var(--text-primary) !important;
+    background: rgba(0,0,0,0.04) !important;
+    border-bottom: none !important;
+  }
 
 }
 
@@ -3252,11 +3278,11 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
 <ul class="list">
-    <a ui-sref="menu.bootcamp" 
+    <a ui-sref="menu.curso" 
        ui-sref-active="menuSelectedColor" 
        class="item" 
        menu-toggle="left">
-        <i class="ri-presentation-line"></i>&nbspBootcamp
+        <i class="ri-book-open-line"></i>&nbspCurso
     </a> 
         <hr>
     <a ui-sref="menu.galeria" 
@@ -3285,8 +3311,8 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
   
         </ion-content>
- <ion-footer-bar style="z-index: 999 !important;">
-  <button class="button pull-right" ng-click="goToLogin()"><i class="icon ri-login-circle-line"></i>Regístrate</button>
+ <ion-footer-bar style="z-index: 999 !important; background: var(--bg-main, #fff) !important; border-top: 0.5px solid #E5E7EB !important; box-shadow: none !important;">
+  <button class="button pull-right btn2 btn-login" ng-click="goToLogin()" style="margin: 8px 12px !important; font-size: 13px !important;"><i class="ri-login-circle-line" style="margin-right: 6px;"></i>Regístrate</button>
 </ion-footer-bar>
 
       </ion-side-menu>
@@ -3330,10 +3356,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.bootcamp" 
+    <a ui-sref="menu.curso" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Bootcamp
+        Curso
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3359,7 +3385,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
      <ion-content > 
 
-        <div class="iframe-container"><iframe src="https://academy.mozartplus.com/home" frameborder="0" allowfullscreen></iframe></div>   
+        <div class="iframe-container"><iframe src="home.html" frameborder="0" allowfullscreen></iframe></div>   
       </ion-content>
      
     </ion-view>
@@ -3398,10 +3424,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.bootcamp" 
+    <a ui-sref="menu.curso" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Bootcamp
+        Curso
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3428,7 +3454,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
    <ion-content>
    
 
-  <div class="iframe-container2" style=" padding-top: 3px !important;"><iframe src="https://academy.mozartplus.com/ubicacion" frameborder="0" allowfullscreen ></iframe> </div> 
+  <div class="iframe-container2" style=" padding-top: 3px !important;"><iframe src="ubicacion.html" frameborder="0" allowfullscreen ></iframe> </div> 
       </ion-content>
 
 
@@ -3443,7 +3469,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
         
-<script id="bootcamp.html" type="text/ng-template">
+<script id="curso.html" type="text/ng-template">
   <ion-view>
         <ion-nav-bar class="bar-light" >      
         <ion-nav-buttons side="right">
@@ -3467,10 +3493,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.bootcamp" 
+    <a ui-sref="menu.curso" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Bootcamp
+        Curso
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3495,8 +3521,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
     <ion-content > 
-      <!-- achievements -->
-        <div class="iframe-container"><iframe src="https://academy.mozartplus.com/bootcamp" frameborder="0" allowfullscreen ></iframe></div> 
+        <div class="iframe-container"><iframe src="curso.html" frameborder="0" allowfullscreen ></iframe></div> 
     </ion-content> 
 
   
@@ -3534,10 +3559,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.bootcamp" 
+    <a ui-sref="menu.curso" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-        Bootcamp
+        Curso
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3561,7 +3586,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
     <ion-content > 
       <!-- achievements -->
-        <div class="iframe-container"><iframe src="https://academy.mozartplus.com/contacto" frameborder="0" allowfullscreen ></iframe></div> 
+        <div class="iframe-container"><iframe src="contacto.html" frameborder="0" allowfullscreen ></iframe></div> 
     </ion-content> 
 
    
@@ -3596,10 +3621,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
-    <a ui-sref="menu.bootcamp" 
+    <a ui-sref="menu.curso" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Lecciones
+       Curso
     </a>
      <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3625,7 +3650,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
     
       <ion-content>
            
-        <div class="iframe-container"><iframe src="https://academy.mozartplus.com/pricing" frameborder="0" allowfullscreen ></iframe></div> 
+        <div class="iframe-container"><iframe src="pricing.html" frameborder="0" allowfullscreen ></iframe></div> 
       </ion-content>
     </ion-view>
   </script>
@@ -3657,10 +3682,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
-    <a ui-sref="menu.bootcamp" 
+    <a ui-sref="menu.curso" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Lecciones
+       Curso
     </a>
      <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3685,7 +3710,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
      <ion-content>
-  <div class="iframe-container"><iframe src="https://academy.mozartplus.com" frameborder="0" allowfullscreen ></iframe></div> 
+  <div class="iframe-container"><iframe src="index.html" frameborder="0" allowfullscreen ></iframe></div> 
       </ion-content>
       
        
@@ -3725,10 +3750,10 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.bootcamp" 
+    <a ui-sref="menu.curso" 
        ui-sref-active="menuSelectedColor" 
        class="button button-clear" style="font-weight: 400;">
-       Bootcamp
+       Curso
     </a>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
@@ -3753,7 +3778,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
      <ion-content >
-  <div class="iframe-container"><iframe src="https://academy.mozartplus.com/galeria" frameborder="0" ></iframe></div> 
+  <div class="iframe-container"><iframe src="galeria.html" frameborder="0"></iframe></div> 
       </ion-content>
    
 
@@ -3816,11 +3841,11 @@ app
     })
  
 
-    .state('menu.bootcamp', {
-      url: "/bootcamp",
+   .state('menu.curso', {
+      url: "/curso",
       views: {
         'menuContent': {
-          templateUrl: "bootcamp.html"
+          templateUrl: "curso.html"
         }
       }
     }) 
@@ -3935,7 +3960,7 @@ app
   window.location.href = '#/menu/statistics';
 };
       $scope.goToLogin = function() {
-  window.location.href = 'https://academy.mozartplus.com/form';
+  window.location.href = 'form.html';
 };
 $scope.goToPayment = function() {
    window.location.href = '#/menu/payment';
@@ -3945,7 +3970,7 @@ $scope.goToPayment = function() {
 };
 
  $scope.goToHome = function() {
-   window.location.href = '/';
+   window.location.href = 'index.html';
 };
 
 
