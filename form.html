@@ -1,1727 +1,594 @@
-
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
-<link rel="icon" href="https://lh3.googleusercontent.com/d/1k9LA88h-FVVn9EeryBRVBrtc5tPl92CK" type="image/x-icon">
-    <title>Mozart Academy</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.nanoscroller/0.8.7/css/nanoscroller.min.css">
- <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nanoscroller/0.8.7/javascripts/jquery.nanoscroller.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-
-</head>
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mozart+ | Calendario de Reservas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
-
-
-.begin-container {
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center;    /* Centra verticalmente */
-  height: 100vh; 
-  margin-top: 160px;
-  margin-left: -20px;
-}
-
-.begin {
-  border: 1px solid #e0e3eb;
-  border-radius: 5px;
-  font-size: 20px;
-  height: 50px;
-  width: 145px;
-  background: #007bff;
-  color: white;            /* Añadido para mejor contraste */
-  font-weight: 600;
-  padding: 10px 25px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.slider {
-  position: relative;
-  margin-left: -8px;
-  margin-top: -8px;
-  height: 100vh;
-  width: 100vw;
-  background: #777;
-  overflow: hidden;
-}
-.slider__wrap {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  transform: translateX(100vw);
-  top: 0%;
-  left: 0;
-  right: auto;
-  overflow: hidden;
-  transition: transform 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  transform-origin: 0% 50%;
-  transition-delay: 450ms;
-  opacity: 0;
-}
-.slider__wrap--hacked {
-  opacity: 1;
-}
-.slider__back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: auto 100%;
-  background-position: center;
-  background-repeat: none;
-  transition: filter 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-}
-.slider__inner {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: -5%;
-  right: 1%;
-  background-size: auto 133.3333%;
-  background-position: center;
-  background-repeat: none;
-  transform: scale(0.75);
-  transition: transform 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86), box-shadow 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 450ms step-end;
-  opacity: 0;
-  box-shadow: 0 3vh 3vh rgba(0, 0, 0, 0);
-  box-sizing: border-box;
-}
-.slider__content {
-  position: relative;
-
-  width: auto;
-  transform: translateY(-50%);
-transform: scale(1.2);
-  font-family: "Heebo", sans-serif;
-  opacity: 0;
-  transition: opacity 450ms;
-}
-.slider__content h3 { 
-
-  font-size: 30px;
-}
-.slider__content h5 {
-  font-size: 23px;
-}
-
-.slider__slide {
-  position: absolute;
-  left: 0;
-  height: 100vh;
-  width: 111vw;
-  transition: transform 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  transition-delay: 600ms;
-  pointer-events: none;
-  z-index: 0;
-}
-.slider__slide--active {
-  transform: translatex(0%);
-  z-index: 2;
-}
-.slider__slide--active .slider__wrap {
-  transform: translateX(0);
-  transform-origin: 100% 50%;
-  opacity: 1;
-  -webkit-animation: none;
-          animation: none;
-}
-.slider__slide--active .slider__back {
-  filter: blur(1.5vh);
-  transition: filter 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  transition-delay: 900ms !important;
-}
-.slider__slide--active .slider__inner {
-  transform: scale(0.8);
-  box-shadow: 0 1vh 6vh rgba(0, 0, 0, 0.2);
-  pointer-events: auto;
-  opacity: 1;
-  transition: transform 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86), box-shadow 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 1ms step-end;
-  transition-delay: 900ms;
-}
-.slider__slide--active .slider__content {
-  opacity: 1;
-  transition-delay: 1350ms;
-}
-.slider__slide:not(.slider__slide--active) .slider__wrap {
-  -webkit-animation-name: hack;
-          animation-name: hack;
-  -webkit-animation-duration: 900ms;
-          animation-duration: 900ms;
-  -webkit-animation-delay: 450ms;
-          animation-delay: 450ms;
-  -webkit-animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-          animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-}
-@-webkit-keyframes hack {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
+  :root {
+    --bg-color: #F2EFE9;
+    --text-main: #1C1C1C;
+    --text-muted: #595959;
+    --text-dark: var(--text-main);
+    --text-light: #A3A3A3;
+    --brand-color: #F3F3F3; /* Tono tipo píldora gris claro */
+    --white: #ffffff;
   }
-  50% {
-    transform: translateX(-100vw);
-    opacity: 1;
-  }
-  51% {
-    transform: translateX(-100vw);
-    opacity: 0;
-  }
-  52% {
-    transform: translateX(100vw);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(100vw);
-    opacity: 1;
-  }
-}
-@keyframes hack {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  50% {
-    transform: translateX(-100vw);
-    opacity: 1;
-  }
-  51% {
-    transform: translateX(-100vw);
-    opacity: 0;
-  }
-  52% {
-    transform: translateX(100vw);
-    opacity: 0;
-  } 
-  100% {
-    transform: translateX(100vw);
-    opacity: 1;
-  }
-}
-.slider__slide:nth-child(1) .slider__back, .slider__slide:nth-child(1) .slider__inner {
-  background-image: url(https://lh3.googleusercontent.com/d/1fULd1JKA0gaJkgupWc9UWW8bNBYLEZQf);
-}
-.slider__slide:nth-child(2) .slider__back, .slider__slide:nth-child(2) .slider__inner {
-  background-image: url(https://lh3.googleusercontent.com/d/1dhcTLejQPBoIA-Ff3ftDrikRirIaqBOl);
-}
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  
-  
-  
-  
-  
-  
-   :root {
-  --app-bg-color: #1C1D21;
-  --app-dark-color: #31353D;
-  --app-accent-color: #445878;
-  --app-alt-color: #92CDCF;
-  --app-light-color: #EEEFF7;
-}
-
-
-
-body {
-  font-family: 'Roboto', sans-serif;
-  color: #444;
-  background-color: #f8f9fa;
-}
-
-.wrap {
-  background-color: white;
-  position: relative;
-  display: block;
-  height: 610px;
-  width: 365px;
-  margin: 10px auto;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3);
-  /*border-radius: 5px;*/
-}
-
-.headbar {
-  width: calc(100% - 15px);
-    height: 60px;
-    color: black;
-    background-color: white;
+  body {
+    background-color: var(--bg-color);
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 300;
     display: flex;
-    align-items: center;
-    padding-left: 15px;
-    font-size: 1.1em;
-    font-weight: 500;
-   margin-bottom: 20px;
-}
-
-.headbar .btnBack { 
-  margin-right: 15px;
-  cursor: pointer; 
-}
-
-.header {
-  width: 365px;
-  height: 150px; /*200px;*/
-  position: relative;
-  transition: all 0.8s ease-in-out;
-  background-image: linear-gradient(45deg, #445878 0%, #92CDCF 100%);
-  /*background: var(--app-accent-color);*/
-  transition: all 0.8s ease;
-}
-
-.header .bg,
-.header .filter {
-  position: absolute; 
-  width: 100%; 
-  height: 100vh;
-
-}
-
-.header .bg {
-  background-image: url(https://lh3.googleusercontent.com/d/1XBWyFeO4wVvB8jgYlGjywplnTQjiJJnw);
-  background-size: cover;
-  height: 170px;
-  opacity: 0;
- margin-top: -20px;
-}
-
-.header .map {
-  width: 100%;
-  height: 100%;
-  background-image: url(https://lh3.googleusercontent.com/d/1HPnBwggEOYTcYvtN--zoqgx3zjaTMxh_);
-  /*background-position: -120px -120px;
-  background-size: 680px;*/
-  background-size: cover;
-  height: 170px;
-  transform: translateY(-20px);
-}
-
-.header .title {
-  display: none;
-  align-items: center;
-    justify-content: space-around;
-    font-size: 2em;
-    color: #fff;
-    height: 100%;
-}
-
-.title > div { z-index: 10; }
-.title span { 
-  display: inline-block;
-    font-weight: 400;
-    font-size: 1.2em;
-    text-shadow: 1px 1px 2px rgba(0,0,0,.25); 
-}
-
-div.rotate span { animation: rotate .6s linear }
-div.rotate span:nth-child(2) { animation-delay: .1s }
-div.rotate span:nth-child(3) { animation-delay: .3s }
-
-@keyframes rotate {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
-}
-
-.title .separator i {
-  transform: rotate(90deg);
-  font-size: .7em;
-}
-
-.content {
-  height: calc(100% - 210px);
-  background-color: transparent;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.8s ease;
-}
-
-.content > section {
-  position: relative;
-  width: 300%;
-  height: 100%;
-}
-
-.wrap[data-pos="0"] .content > section { transform: translateX(0) }
-.wrap[data-pos="1"] .content > section { transform: translateX(-365px) }
-.wrap[data-pos="2"] .content > section { transform: translateX(-730px) }
-
-.content > section > div { opacity: 0; }
-.wrap[data-pos="0"] .content > section > div:nth-child(1) { opacity: 1; transition: opacity .8s ease; }
-.wrap[data-pos="1"] .content > section > div:nth-child(2) { opacity: 1; transition: opacity .8s ease; }
-.wrap[data-pos="2"] .content > section > div:nth-child(3) { opacity: 1; transition: opacity .8s ease; }
-
-.wrap[data-pos="0"] .btnBack { display: none; }
-.wrap[data-pos="0"] .header .title { display: flex }
-.wrap[data-pos="0"] .header .bg { opacity: 1 }
-.wrap[data-pos="0"] .header .map { opacity: 0 }
-
-.wrap[data-pos="0"] .header { height: 140px }
-
-.wrap[data-pos="0"] .content {
-  height: calc(100% - 200px);
-  transition: all 0.8s ease;
-}
-
-.wrap[data-pos="1"] .content .list article .img,
-.wrap[data-pos="1"] .content .list article .info { 
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.wrap[data-pos="2"] .header { height: 0px }
-.wrap[data-pos="2"] .content { height: calc(100% - 60px);  margin-top: -20px;}
-
-.form, .list, .ticket {
-  float: left;
-  width: 33.33333%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  color: #e5e5e5;
-  position: relative;
-}
-
-.control {
-  position: relative;
-  top: 0;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  color: black !important;
-  background: white; /*var(--app-bg-color);*/
-  border-bottom: solid 1px rgba(255, 255, 255, 0.05);
-  /*border-top: solid 1px rgba(0, 0, 0, 0.4);*/
-  transition: all .4s ease;
-}
-
-.control:last-child {
-  height: 55px;
-  border-bottom: none;
-  padding: 0;
-}
-
-/*Preview hack*/
-.control-head > * { float: left; }
-
-.control-head > i,
-.control > i {
-  font-size: 1.5em;
-  margin-left: 15px;
-}
-
-.control-head > div,
-.control > .control-item {
-  margin-left: 20px;
-}
-
-.control h6 { 
-  margin: 5px 0;
-  font-weight: 400;
-  font-size: 12px;
-  color: #71797E;
-}
-
-.control.open:nth-child(2) { top: -72px; }
-.control.open:nth-child(3) { top: -144px; }
-
-.control.open {
-  height: 100%;
-  transition: all .4s ease;
-}
-
-.control .control-head { 
-  display: flex; 
-  align-items: center;
-  margin-top: 5px; 
-  cursor: pointer;
-}
-
-.control .control-body { 
-  height: calc(100% - 72px);
-  margin-top: 20px;
-}
-
-.control.open .control-body { 
-  margin-top: 8px; 
-}
-
-.control.dateinput,
-.control.select { display: block; }
-
-.control .close {
-  display: none;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  font-size: 20px;
-}
-.control.open .close {
-  display: block;
-  cursor: pointer;
-}
-
-/*** Begin Select Input ***/
-.select .nano { 
-  width: 304px;
-  height: 418px;
-  margin-left: 50px;
-}
-
-.select ul.select-index,
-.select ul.select-data {
-  margin: 0;
-  margin-top: 10px;
-  padding: 0;
-  list-style: none;
-}
-
-.select.open ul.select-data li {
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform .6s ease;
-}
-.select ul.select-data li {
-  margin: 5px 0;
-  padding: 3px 15px;
-  font-size: .85em;
-  opacity: 0;
-  transform: translateY(700px);
-  transition: all .3s ease;
-  cursor: pointer;
-}
-
-.select ul.select-data li:hover,
-.select ul.select-data li.selected {
-  background-color: rgba(0,0,0, .4);
-}
-
-.select ul.select-data li.sep {
-  background-color: var(--app-accent-color);
-}
-
-.select ul.select-index {  
-  position: absolute;
-  left: 15px;
-}
-
-.select ul.select-index li {
-  margin: 8px 0;
-  padding: 2px 6px;
-  border-radius: 50%;
-  text-align: center;
-  font-size: .9em;
-  background-color: var(--app-accent-color);
-  cursor: pointer;
-}
-
-/*** Begin Date Input ***/
-.dateinput .control-body {
-  opacity: 0;
-  transition: opacity .6s ease;
-}
-
-.dateinput.open .control-body {
-  opacity: 1;
-  transition: opacity .8s ease;
-}
-
-.dateinput .calendar {
-  margin-top: 10px;
-}
-
-.dateinput .calendar .month,
-.dateinput .calendar .week,
-.dateinput .calendar .days { 
-  display: flex; 
-  width: 100%;
-  padding: 5px; 
-}
-
-.dateinput .calendar .month { 
-  justify-content: space-around;
-  background-color: var(--app-accent-color);
-  color: white;
-  margin-left: -5px; 
-}
-
-.dateinput .calendar .week,
-.dateinput .calendar .days {
-  flex-wrap: wrap;
-}
-
-.dateinput .calendar .week span,
-.dateinput .calendar .days span {
-  width: 40px;
-  padding: 5px;
-  text-align: center;
-  font-weight: 300;
-  font-size: .85em;
-  position: relative;
-}
-
-.dateinput .calendar .week span {
-  color: black;
-  font-weight: 400;
-}
-
-.dateinput .calendar .days span:before {
-  content: "";
-  display: block;
-  width: 22px;
-  height: 22px;
-  position: absolute;
-  left: 14px;
-  top: 3px;
-  border-radius: 1px;
-  background-color: transparent;
-  transition: all .4s ease;
-  cursor: pointer;
-}
-
-.dateinput .calendar .days span.checked:before {
-  background-color: rgba(68, 88, 120, 0.5);
-  border-radius: 50%;
-  transition: all .4s ease;
-   margin-top: -1px;
-
-}
-
-.dateinput .calendar .days span:first-child {
-  color: transparent;
-}
-
-.info-message { 
-  margin-top: 30px;
-    padding: 0 5px 0 15px;
-    font-weight: 400;
-    font-style: italic;
-  font-size: .75em;
-  color: red;
-  letter-spacing: .06em; 
-}
-.info-message  i {
-  margin-right: 5px;
-    font-size: 1.2em;
-}
-
-
-/*** Begin Radio Input ***/
-.radio label input[type="radio"] {  
-  display: none;
-}
-
-.radio label > span,
-.radio label > div {
-  cursor: pointer;
-  margin-right: 4px;
-  padding: 4px 8px;
-    border-radius: 3px;
-    background-color: transparent;
-    transition: background .4s ease;
-}
-
-.radio label input[type="radio"]:checked ~ span,
-.radio label input[type="radio"]:checked ~ div {
-  background-color: rgba(150, 150, 150, 0.4);
-  transition: background .4s ease;
-}
-
-.radio label > div { display: inline-block; text-align: center; margin-right: 30px; }
-.radio label > div small { display: block; font-size: .75em; }
-.radio label > div span { margin-right: 4px; }
-.radio label > div i { margin-left: 4px; }
-
-/*** Begin Spinner Input ***/
-.spinner {
-  height: 100%;
-  position: absolute;
-  right: 0;
-}
-.spinner button {
-  width: 42px;
-  height: 50%;
-  display: block;
-  padding: 5px;
-  border: none;
-  color: #fff;
-  background-color: var(--app-dark-color); 
-  outline: none;
-}
-
-.spinner button:first-child {
-  border-bottom: solid 1px #444;
-}
-
-.control > button {
-  width: 100%;
-  height: 100%;
-  padding: 10px 2px;
-  border: none;
-  border-radius: 2px;
-
-  background-color: rgba(0,0,0, .1);
-  outline: none;
-  text-transform: uppercase;
-}
-
-.control button:hover { background-color: rgba(0,0,0, .2); }
-
-.list article {
-  display: flex;
-    width: 100%;
-    height: 100px;
-    transition: all 0.4s ease;
-}
-
-.list article:nth-child(2n+1) {
-  background-color: rgba(229, 228, 226, 0.5);
-}
-
-.list article div.img {
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-  opacity: 0;
-  transform: translateX(-1000px);
-  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.list article img {
-  width: 48px;
-    height: 48px;
-    
-}
-
-.list article .info {
-  padding: 10px;
-  width: 100%;
-  color: #31353D;
-  font-size: .8em;
-  position: relative;
-  opacity: 0;
-  transform: translateX(1000px);
-  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.list article:nth-child(2) > div { transition-delay: .12s }
-.list article:nth-child(3) > div { transition-delay: .24s }
-.list article:nth-child(4) > div { transition-delay: .36s }
-.list article:nth-child(5) > div { transition-delay: .48s }
-
-
-.info span { display: block; }
-.info b { font-weight: 400; }
-.info .time {
-  color: #71797E;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-.info .airline {
-  display: block;
-  font-size: 1.4em;
-}
-
-.info h5 {
-  margin: 0;
-  font-size: 1.4em;
-      font-weight: 500;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-}
-
-.info h5 small {
-  color: #71797E;
-  font-size: .6em;
-}
-
-.ticket {
-  display: flex;
-  flex-direction: column;
     justify-content: center;
-}
-
-.ticket section {
-  background-color: white;
-  color: #4A4A4A;
-  font-weight: 300;
-  height: 350px;
-  margin: 10px 20px;
-    border-radius: 2px;
-}
-
-.ticket .title {
-  display: flex;
-    justify-content: space-around;
-    margin: 15px 10px;
-}
-
-.ticket .title > div { text-align: center; }
-
-.ticket .title span {
-  font-size: 2em;
-  text-shadow: none;
-  display: block;
-}
-
-.ticket .title small { display: block; }
-
-.ticket .separator i { position: relative; top: 10px; }
-
-.ticket .row { 
-  display: flex;
-  justify-content: space-around;
-  width: calc(100% + 40px);
-  margin-top: 20px; 
-}
-
-.ticket .cell { 
-      width: 140px;
-}
-
-.ticket .cell small {
-  display: block;
-  color: #4A4A4A;
-  font-weight: 700;
-}
-
-.ticket .total {
-  margin: 25px 40px 0;
-    text-align: right;
-}
-
-.ticket .total span {
-  font-size: 1.7em;
-}
-
-.ticket .total small {
-  margin-right: 10px;
-  color: gray;
-}
-
-.ticket button {
-  height: 40px;
-  padding: 10px 2px;
-  margin: 10px 20px;
-  border: none;
-  border-radius: 2px;
-  background-color: rgba(0,0,0, .1);
-  outline: none;
-  color: #4A4A4A;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-  
-  .ticket button:hover {
-     background-color: rgba(0,0,0,.2);
+    align-items: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    color: var(--text-main);
   }
 
-.ticket button i {
-  font-size: 16px;
-    margin-right: 5px;
-}
-
-.btnHome { background-color: #432; }
-
-/** Loader **/
-.loader,
-.loader:before,
-.loader:after {
-  border-radius: 50%;
-  width: 1.8em;
-  height: 1.8em;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation: load7 1.8s infinite ease-in-out;
-  animation: load7 1.8s infinite ease-in-out;
-}
-.loader {
-  display: none;
-  color: #ffffff;
-  font-size: 10px;
-  margin: 5px auto;
-  position: relative;
-  text-indent: -9999em;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-}
-.loader:before,
-.loader:after {
-  content: '';
-  position: absolute;
-  top: 0;
-}
-.loader:before {
-  left: -3.5em;
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-.loader:after {
-  left: 3.5em;
-}
-@-webkit-keyframes load7 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 2.5em 0 -1.3em;
+  /* Contenedor Principal Split */
+  .app-container {
+    display: flex;
+    width: 900px;
+    height: 600px;
+    background: var(--white);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    overflow: hidden;
   }
-  40% {
-    box-shadow: 0 2.5em 0 0;
+
+  /* --- PANEL IZQUIERDO (COLOR) --- */
+  .left-panel {
+    width: 40%;
+    background-color: var(--brand-color);
+    color: var(--text-main);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-}
-@keyframes load7 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 2.5em 0 -1.3em;
+
+  .date-display {
+    margin-bottom: 40px;
   }
-  40% {
-    box-shadow: 0 2.5em 0 0;
+
+  .date-day-name {
+    font-size: 32px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.1;
   }
-}
 
+  .date-full {
+    font-size: 32px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
 
-
-
-
-.form__field {
-  font-family: inherit;
-  width: 100%;
-  border: 0;
-  outline: 0;
-  font-size: 1rem;
-  color: black !important;
-  background: transparent;
-  transition: border-color 0.2s;
-}
-
-
-
-
-.form__field:focus {
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, #11998e, #38ef7d);
-  border-image-slice: 1;
-  color: black !important;
-}
-
-.form__field:focus ~ .form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  /*color: #11998e;*/
-  font-weight: 700;
-}
-  
-  .close2{
-    position: absolute; 
-    right: 15px; 
-    margin-top: 5px; 
-    border-radius: 5px;
-    background-color: #445878;
-    color: white;
-     cursor: pointer;
-    border: none;
+  .btn-back {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid rgba(0,0,0,0.08);
     padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: fit-content;
+    margin-top: 24px;
+    display: none;
   }
+
+  .btn-back:hover {
+    background: rgba(0,0,0,0.02);
+    border-color: rgba(0,0,0,0.12);
+  }
+
+  /* --- PANEL DERECHO --- */
+  .right-panel {
+    width: 60%;
+    padding: 48px 56px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  /* Vista: Calendario */
+  #calendar-view {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .year-display {
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-align: right;
+    width: 100%;
+  }
+
+  .months-nav {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 1px;
+  }
+
+  .months-nav span { cursor: pointer; transition: color 0.2s; }
+  .months-nav span:hover { color: var(--text-dark); }
+  .months-nav span.active { color: var(--text-dark); font-weight: 500; }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 24px;
+    text-align: center;
+  }
+
+  .weekday {
+    font-size: 12px;
+    color: var(--text-dark);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .day-cell {
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    width: 36px;
+    margin: 0 auto;
+    border-radius: 50%;
+    transition: all 0.2s;
+  }
+
+  .day-cell:hover:not(.empty) { background-color: #f0f0f0; }
   
-   .close2:hover{
-     background-color: #34425a !important;
+  .day-cell.active {
+    background-color: var(--brand-color);
+    color: var(--white);
+  }
+  .day-cell.sunday { color: var(--brand-color); }
+  .day-cell.active.sunday { color: var(--white); }
+
+  /* Vista: Horarios Disponibles */
+  #hours-view {
+    display: none;
+    animation: fadeIn 0.3s ease;
   }
 
-</style> 
+  .hours-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 10px;
+  }
 
+  .hour-card {
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--white);
+  }
 
+  .hour-card:hover {
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background: var(--brand-color);
+    color: var(--text-main);
+  }
 
-    <div class="slider">
-      <div class="slider__slide slider__slide--active" data-slide="1">
-        <div class="slider__wrap">
-          <div class="slider__back"></div>
-        </div>
-        <div class="slider__inner">
-          <div class="slider__content">
-            <div class="begin-container">
-              <button type="button" class="go-to-next begin"  style="margin-top: 20px; color: #fff;" onclick="nextSlide()">Comenzar</button>
-            </div>
-          </div>
-        </div>
+  .hour-card.full {
+    background: #fafafa;
+    color: #cccccc;
+    border-color: #f5f5f5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .hour-card .time {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+
+  .hour-card .avail {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  /* --- MODALES --- */
+  #modal-overlay {
+    position: fixed; inset: 0; background: rgba(255,255,255,0.8);
+    display: none; justify-content: center; align-items: center; z-index: 100;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-content {
+    background: var(--white);
+    color: var(--text-main);
+    padding: 48px 40px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    width: 360px;
+  }
+
+  .modal-content h3 {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .modal-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  /* Inputs estilo línea delgada integrados al modal */
+  .modal-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    color: var(--text-main);
+    padding: 12px 0;
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 300;
+    outline: none;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .modal-input::placeholder { color: rgba(0,0,0,0.4); }
+  .modal-input:focus { border-bottom-color: var(--text-main); }
+
+  .btn-confirm {
+    background: var(--text-main);
+    color: var(--white);
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 12px;
+    transition: transform 0.2s;
+  }
+
+  .btn-confirm:active { transform: scale(0.96); }
+
+  .btn-cancel {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid rgba(0,0,0,0.12);
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 300;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+  }
+
+  .btn-cancel:hover { background: rgba(0,0,0,0.02); }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid rgba(0,0,0,0.07);
+    border-top-color: var(--text-main);
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto 16px;
+  }
+
+  .success-ring {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    animation: popIn 0.4s cubic-bezier(.34,1.56,.64,1) forwards;
+  }
+
+  .success-ring span {
+    color: var(--white);
+    font-size: 24px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Móviles */
+  @media (max-width: 768px) {
+    .app-container { flex-direction: column; width: 100%; height: 100vh; border-radius: 0; }
+    .left-panel, .right-panel { width: 100%; }
+    .left-panel { height: auto; padding: 32px 24px; }
+    .right-panel { height: 100%; padding: 24px; overflow-y: auto; }
+    .date-day-name, .date-full { font-size: 28px; }
+    .year-display { font-size: 32px; }
+    .months-nav { flex-wrap: wrap; justify-content: center; }
+    .hours-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+  
+  <div class="left-panel">
+    <div>
+      <div class="date-display">
+        <div class="date-day-name" id="display-weekday">SELECCIONA</div>
+        <div class="date-full" id="display-date">UNA FECHA</div>
       </div>
-
-      <div class="slider__slide" data-slide="2">
-        <div class="slider__wrap">
-          <div class="slider__back"></div>
-        </div>
-        <div class="slider__inner">
-          <div class="slider__content">
-            
-            
-            
-<div class="wrap" data-pos="0" style="height: 570px; margin-top: 20px;">
-    <div class="headbar">
-      <i class="zmdi zmdi-arrow-left btnBack"></i> <span>Formulario de registro</span>
     </div>
-    <div class="header">
-      <div class="bg"></div>
-      <div class="filter"></div>
-
-      <div class="map"></div>
-    </div>
-
-    <div class="content" >
-      <section>
-        <div class="form" >
-      
-           <div class="control input-container">
-                        <i class="zmdi zmdi-account"></i>
-             <div class="control-item">
-               <div>
-             <h6>Nombre</h6>
-         <input type="text" name="name" class="form__field name" placeholder="Nombre y apellido" >
-                    </div>
-                  </div>
-             </div>
-          
-          
-            <div class="control input-container">
-                        <i class="zmdi zmdi-smartphone"></i>
-             <div class="control-item">
-               <div>
-             <h6>Teléfono</h6>
-                        <input type="text" inputmode="numeric" maxlength="10" pattern="[0-9]*" name="phone" class="form__field phone" placeholder="Número de teléfono">
-                 
-                    </div>
-                  </div>
-             </div>
-           
-          
-          <div class="control dateinput">
-            <div class="control-head">
-              <i class="zmdi zmdi-calendar"></i>
-              <span class="close"><i class="zmdi zmdi-close"></i></span>
-              <div class="control-item">
-                <h6>Fecha de tu primera clase</h6>
-                <span>Selecciona una fecha</span>
-              </div>
-            </div>
-            <div class="control-body">
-              <div class="info-message">
-                <i class="zmdi zmdi-info"></i> Los academía cierra los martes
-               <span></span> 
-    
-              </div>
-              <div class="calendar">
-                <div class="month"> 
-                  <i class="zmdi zmdi-chevron-left"></i>
-                  <span>Month</span>
-                  <i class="zmdi zmdi-chevron-right"></i>
-                </div>
-                <div class="week">
-                  <span>D</span>
-                  <span>L</span>
-                  <span>Ma</span>
-                  <span>M</span>
-                  <span>J</span>
-                  <span>V</span>
-                  <span>S</span>
-                </div>
-                <div class="days"></div>
-                <button class="close2"> Cerrar </button>
-              </div>
-            </div>
-          </div>
-          
-          
-          
-          
-     <!--      <div class="control select">
-            <div class="control-head">
-              <i class="ri-time-fill"></i>
-              <span class="close"><i class="zmdi zmdi-close"></i></span>
-              <div>
-                <h6>Horario</h6>
-                <span class="airport-name" data-role="to">Escoge un día de la semana</span>
-              </div>      
-            </div>
-            <div class="control-body">
-              <ul class="select-index"></ul>
-              <div class="nano">
-                  <div class="nano-content">
-                    <ul class="select-data"></ul>
-                  </div>
-              </div>
-            </div>
-          </div>  -->
-          
-          
-          
-          <div class="control radio">
-            <i class="zmdi zmdi-collection-music"></i>
-            <div class="control-item">
-              <h6 style="margin-bottom: 8px">Membresía</h6>
-              <label>
-                <input type="radio" name="plan" value="Standard" checked="checked">
-                <span>Standard</span>
-              </label>
-              <label>
-                <input type="radio" name="plan" value="PRO">
-                <span>PRO</span>
-              </label>
-              <label>
-                <input type="radio" name="plan" value="PREMIUM">
-                <span>Premium</span>
-              </label>
-       <!--
-              <label>
-                <input type="radio" name="plan" value="Estudiante">
-                <span>Estudiante</span>
-              </label>
-       -->
-            </div>
-          </div>
-          <div class="control">
-            <button class="btnSearch">Continuar</button>
-          </div>
-
-        </div>
-        <div class="list">
-          <div class="nano">
-              <div class="nano-content">
-                        
-              </div>
-          </div>          
-        </div>
-         
-        <div class="ticket">
-          <section>
-            
-          </section>
-          <button class="btnBook">Agendar clase</button>
-          <!-- <button class="btnHome">BACK TO HOME</button> -->
-          <div class="loader">Cargando...</div>
-        </div>
-
-      </section>
-    </div>    
-  
+    <button id="btn-back" class="btn-back" onclick="showCalendarView()">← Ver Calendario</button>
   </div>
 
-          
-          </div>
-        </div>
+  <div class="right-panel">
+    
+    <div id="calendar-view">
+      <div class="calendar-header">
+        <div class="year-display">2026</div>
       </div>
-
-   
       
-   </div>
-
-
-
-
-<script>
-  
-  
-  
-   $(document).ready(function(){
-    for (var i = 1; i <= $('.slider__slide').length; i++) {
-      $('.slider__indicators').append('<div class="slider__indicator" data-slide="' + i + '"></div>')
-    }
-    setTimeout(function(){
-      $('.slider__wrap').addClass('slider__wrap--hacked');
-    }, 1000);
-  });
-
-  function goToSlide(number) {
-    $('.slider__slide').removeClass('slider__slide--active');
-    $('.slider__slide[data-slide=' + number + ']').addClass('slider__slide--active');
-  }
-
-  function nextSlide(){
-    var currentSlide = Number($('.slider__slide--active').data('slide'));
-    var totalSlides = $('.slider__slide').length;
-    currentSlide++;
-    if (currentSlide > totalSlides) {
-      currentSlide = 1;
-    }
-    goToSlide(currentSlide);
-  }
-
-  
-  
-  
-  
-   var api = "https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec";
-
-  var validationData = {
-    redirect: "follow",
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
-    body: JSON.stringify({
-      action: "getClasstimeQuotas"
-    })
-  };
-
-  let flights = []
-  fetch(api, validationData)
-    .then(response => response.text())
-    .then(res => {
-      flights = JSON.parse(res);
-    })
-
-
-
-
-var thisIndex = 0;
-
-var carrier = {
-    "AF": "Air France",
-    "KL": "KLM Royal Dutch Airlines",
-    "BA": "British Airways"
-};
-
-var airports = [{"name":"Miércoles","city":"Vichy","country":"Día","IATA":"M11"},{"name":"Jueves","city":"Vichy","country":"Día","IATA":"M12"},{"name":"Viernes","city":"Vichy","country":"Día","IATA":"M14"},{"name":"Sábado","city":"Vichy","country":"Día","IATA":"M15"},{"name":"Domingo","city":"Vichy","country":"Día","IATA":"M16"}];
-
-(function () {
-  
-  var _airports = _.groupBy(airports, o => o.country),
-    selectIndex = [], 
-    selectData = [];
-
-  _.each(_airports, (countryList, countryName) => {
-    var firstLeter = countryName.split('')[0];
-    selectData.push(`<li class="sep" data-index="${firstLeter}">${countryName}</li>`);
-    selectIndex.push(`<li>${firstLeter}</li>`);
-
-    _.each(countryList, (airport, i) => {
-      selectData.push(`<li data-iata="${airport.IATA}" data-city="${airport.city}">
-        ${airport.IATA}, ${airport.name}</li>`);
-    });
-  });
-
-  $('.select ul.select-index').html(_.uniq(selectIndex).join(''));
-  $('.select ul.select-data').html(selectData.join(''));
-
-
-  // Calendar days
-var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-
-// Obtener la fecha actual
-var currentDate = new Date();
-var currentMonth = currentDate.getMonth();
-var currentYear = currentDate.getFullYear();
-
-// Mostrar el nombre del mes actual
-$('.calendar .month span').text(monthNames[currentMonth]);
-
-// Obtener el primer día del mes (0 = Domingo, 1 = Lunes, etc.)
-var startDay = new Date(currentYear, currentMonth, 1).getDay();
-
-// Obtener el número de días en el mes actual
-var totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-// Renderizar los días de la semana vacíos antes del primer día del mes
-var daysRender = [];
-for (var i = 0; i < startDay; i++) {
-  daysRender.push('<span class="empty"></span>');
-}
-
-// Renderizar los días del mes
-for (var i = 1; i <= totalDays; i++) {
-  daysRender.push(`<span>${i}</span>`);
-}
-
-// Agregar los días al calendario
-$('.calendar .days').html(daysRender.join(''));
-
-// Opcional: Marcar el día actual
-var currentDay = currentDate.getDate();
-$('.calendar .days span').eq(startDay + currentDay - 1).addClass('checked');
-  
-  
-  
-   
-  
-  function renderCalendarDays(month, year) {
-  var daysContainer = $('.calendar .days');
-  daysContainer.empty();
-
-  var firstDay = new Date(year, month).getDay();
-  var daysInMonth = new Date(year, month + 1, 0).getDate();
-
-  for (var i = 0; i < firstDay; i++) {
-    daysContainer.append('<span class="empty"></span>');
-  }
-
-  for (var day = 1; day <= daysInMonth; day++) {
-    daysContainer.append('<span>' + day + '</span>');
-  }
-
-  // Add click event to the days after rendering
-  $('.calendar .days span:not(.empty)').on('click', function(evt) {
-    var $this = $(evt.currentTarget),
-        day = evt.currentTarget.textContent;
-
-    $this.addClass('checked').siblings('span').removeClass('checked');
-
-    var date = new Date(currentYear, currentMonth, day);
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    var formattedDate = date.toLocaleDateString('es-ES', options);
-
-    // Exportar la fecha formateada
-    $('.dateinput .control-item span').eq(0).text(formattedDate);
-  });
-}
-
-function updateMonthLabel(month, year) {
-  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-  $('.calendar .month span').text(monthNames[month] + ' ' + year);
-}
-
-$('.zmdi-chevron-right').on('click', function() {
-  const nextMonth = currentDate.getMonth() + 1;
-
-  // Restringir al siguiente mes
-  if (currentMonth < nextMonth) {
-    currentMonth++;
-    if (currentMonth > 11) {
-      currentMonth = 0;
-      currentYear++;
-    }
-    updateMonthLabel(currentMonth, currentYear);
-    renderCalendarDays(currentMonth, currentYear);
-  }
-});
-
-$('.zmdi-chevron-left').on('click', function() {
-  const thisMonth = currentDate.getMonth();
-
-  // Restringir al mes actual
-  if (currentMonth > thisMonth) {
-    currentMonth--;
-    if (currentMonth < 0) {
-      currentMonth = 11;
-      currentYear--;
-    }
-    updateMonthLabel(currentMonth, currentYear);
-    renderCalendarDays(currentMonth, currentYear);
-  }
-});
-  
-  
-  
-
-  // Flight Results
-  doFlightsRender(true);
-
-
-  // Events
-  // Open inputs
-  $('.control:not(.open) .control-head').on('click', function(evt) {
-    $(evt.currentTarget).parent('.control').addClass('open');
-  });
-
-  $('.control .close').on('click', function(evt) {
-    var z = $(evt.currentTarget).closest('.control');
-    setTimeout(() => { z.removeClass('open') }, 50);
-  });
-  
-  $('.control .close2').on('click', function(evt) {
-    var z = $(evt.currentTarget).closest('.control');
-    setTimeout(() => { z.removeClass('open') }, 50);
-  });
-
-  // SpinnerInput add/substract action
-  $('.spinner button').on('click', function(evt) {
-    var isAdding = evt.currentTarget.getAttribute('data-action') == 'plus',
-      $input = $('input[name="passengers"]:checked'),
-      $control = $input.siblings('div').find('span'),
-      value = parseInt($control.text());
-
-    if(isAdding)
-      value++;
-    else if (value !== 0)
-      value--;
-
-    $control.text(value);
-  });
- 
-  // SelectInput find index
-  $('.select-index').on('click', 'li', function(evt) {
-    var index = evt.currentTarget.textContent,
-      $nano = $(evt.currentTarget).parent('.select-index').siblings('.nano'),
-      el = $nano.find(`li.sep[data-index="${index}"]`)[0];
-
-    $nano.find('.nano-content').animate({ scrollTop: el.offsetTop }, 600);
-  });
-
-  // SelectInput set data
-  $('.select-data').on('click', 'li:not(.sep)', function(evt) {
-    var text = evt.currentTarget.textContent,
-      iata = evt.currentTarget.getAttribute('data-iata'),
-      $select = $(evt.currentTarget).closest('.select'),
-      $nameContainer = $select.find('.airport-name');
-
-    if($nameContainer.data('role') == 'from') {
-      var _iata = iata.split('');
-      var div = $('.header .fromPlace').addClass('rotate');
-      var span = $('.header .fromPlace span');
-      span.eq(0).text(_iata[0]);
-      span.eq(1).text(_iata[1]);
-      span.eq(2).text(_iata[2]);
-      setTimeout(() => div.removeClass('rotate'), 900);
-      //$('.xfrom').text(iata);
-    }
-    else {
-      var _iata = iata.split('');
-      var div = $('.header .toPlace').addClass('rotate');
-      var span = $('.header .toPlace span');
-      span.eq(0).text(_iata[0]);
-      span.eq(1).text(_iata[1]);
-      span.eq(2).text(_iata[2]);
-      setTimeout(() => div.removeClass('rotate'), 900);
-      //$('.xto').text(iata);
-    }
-
-    $nameContainer.text(text);
-    $select.toggleClass('open');
-
-    $(evt.currentTarget).addClass('selected').siblings('li').removeClass('selected');
-  });
-
-  // Date input
-  $('.calendar .days span').on('click', function(evt) {
-    var $this = $(evt.currentTarget),
-      day = evt.currentTarget.textContent;
-
-    $this.addClass('checked').siblings('span').removeClass('checked');
-
-    var currentMonth = new Date().getMonth(); 
-    var currentYear = new Date().getFullYear(); 
-    var date = new Date(currentYear, currentMonth, day);
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    var formattedDate = date.toLocaleDateString('es-ES', options);
-
-    // Exportar la fecha formateada
-    $('.dateinput .control-item span').eq(0).text(formattedDate);
-  });
-
-
-  $('.btnBack').on('click', function(evt) {
-    var wrap = document.querySelector('.wrap'),
-      index = parseInt(wrap.getAttribute('data-pos'));
-    
-    $('.ticket button.btnBook').text('Agendar clase');
-    wrap.setAttribute('data-pos', index - 1);
-  });
-
-  // Search button
-  $('.btnSearch').on('click', function(evt) {
-    var selectedDateText = $('.dateinput .control-item span').eq(0).text();
-     
-    if (selectedDateText === "Selecciona una fecha") {
-        alert("Por favor, seleccione la fecha de su primer clase para continuar");
-        return;
-    } 
-    
-    var selectedDay = selectedDateText.split(',')[0].trim().toLowerCase();
-    var name = $('.form__field.name').val()
-    var phone = $('.form__field.phone').val()
-   if (selectedDay === "martes") {
-        alert("La academia cierra los días martes. Por favor, seleccione otra fecha.");
-    }else if(name == ""){
-      alert("Ingresa tu nombre")
-    }else if (phone === "") {
-    alert("Por favor, ingresa tu número de teléfono.");
-    } else if (!/^\d{10}$/.test(phone)) {
-    alert("Por favor, ingresa los 10 digitos de tu número de telefono.");
-    } else {
-      const contentDiv = document.querySelector('.content');
-contentDiv.style.backgroundColor = 'white';
-        // Continuar con el renderizado de los vuelos
-        doFlightsRender(false);
-        setTimeout(() => {
-            document.querySelector('.wrap').setAttribute('data-pos', 1);
-        }, 50);
-    }
-  });
-
-  $('.ticket button').on('click', function(evt) {
-    var $button = $(evt.currentTarget);
-    var $loader = $('.loader').show();
-    $button.text('Agendando...');
-
-    setTimeout(() => {
-      $loader.hide();
-      $button.html('<i class="zmdi zmdi-check-circle"></i> Clase agendada');
-      $button.addClass('success');
-    }, 1200);
-     
-    var name = $('.form__field.name').val()
-  var phone = $('.form__field.phone').val()
-  var firstclass = $('.dateinput .control-item span').eq(0).text();
-  var plan = $('input[name="plan"]:checked').val();
-    var price = flights[thisIndex].price
-    var parts = flights[thisIndex].nodes[0].split(' ')
-    var dayName = flights[thisIndex].date
-  var start = new Date(parts[1])
-  var end = new Date(parts[3])
-  var startTime = start.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: false });
-  var endTime = end.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: false });
-  var classtime = `${dayName} de ${startTime} a ${endTime} Hrs`
-  
-  var api = "https://script.google.com/macros/s/AKfycbxXD35z5FSf_m_dwBt5qcBwWq2L7IDc7KBrYGfix6hUa4kvJ1TFpjU82NltFXezUroGgQ/exec";
-
-  var validationData = {
-    redirect: "follow",
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
-    body: JSON.stringify({
-      action: "postForm",
-      name: name,
-      phone: phone,
-      date: firstclass,
-      classtime: classtime,    
-      plan: plan,
-      price: price   
-    })
-  };
-
-  fetch(api, validationData)
-    .then(response => response.text())
-    .then(res => {
-      var validation = JSON.parse(res);
-      if (validation.status == "success") {
-            window.location.href = 'https://app.mozartacademy.mx';
-      } 
-    })
-
-  });
-
-  // Select Flight
-  $('.list').on('click', 'article', function(evt) {
-    var index = parseInt(evt.currentTarget.getAttribute('data-index'))
-        thisIndex = index;
-      flight = flights[index];
-
-    var [from, t1, to, t2] = flight.nodes[0].split(' ');
-
-    var p = $('.radio.passengers label span'),
-      peopleTotal = 0,
-      people = _.map(p, function(el, i) {
-        var v = parseInt(el.textContent),
-          str = '';
-
-        if(i == 0 && v)
-          str = `${v} Adults`;
-        if(i == 1 && v)
-          str = `${v} Kids`;
-        if(i == 2 && v)
-          str = `${v} Elders`;
-        
-        peopleTotal += v;
-
-        return str;
-      });
-
-    from = $('.fromPlace span').text();
-    to = $('.toPlace span').text();
-
-    var time1 = new Date(t1), 
-      time2 = new Date(t2);
-    
-    var name = $('.form__field.name').val()
-    var firstclass = $('.dateinput .control-item span').eq(0).text();
-    var plan = $('input[name="plan"]:checked').val();
-    var day = firstclass.split(",")[0]
-    var flightRender = `
-    
-      <div class="row">
-        <div class="cell">
-          <small>Nombre</small><span>${name}</span>
-        </div>
-        <div class="cell">
-        </div>
+      <div class="months-nav">
+        <span>ENE</span><span>FEB</span><span class="active">MAR</span><span>ABR</span>
+        <span>MAY</span><span>JUN</span><span>JUL</span><span>AGO</span>
+        <span>SEP</span><span>OCT</span><span>NOV</span><span>DIC</span>
       </div>
-      <div class="row">
-        <div class="cell">
-          <small>Horario</small>
-          ${day} <br>
-          <span style="position: absolute">  ${time1.toLocaleTimeString().replace(':00','')} - 
-            ${time2.toLocaleTimeString().replace(':00','')}</span>
-        </div>
-        <div class="cell" >
-          <small>Plan</small><span>${plan}</span>
-        </div>
+
+      <div class="calendar-grid" id="calendar-grid">
+        <div class="weekday">LUN</div><div class="weekday">MAR</div><div class="weekday">MIÉ</div>
+        <div class="weekday">JUE</div><div class="weekday">VIE</div><div class="weekday">SÁB</div><div class="weekday">DOM</div>
       </div>
-      <div class="row" style="display: flex;">
-  <div class="cell" style="flex: 1; padding: 21px;">
-    <small>Fecha de primer clase</small> 
-    <span>${firstclass}</span>
+    </div>
+
+    <div id="hours-view">
+      <div class="calendar-header">
+        <div class="year-display" style="font-size: 28px; color: var(--text-dark);">Horarios Disponibles</div>
+      </div>
+      <div class="hours-grid" id="hours-grid">
+        </div>
+    </div>
+
   </div>
 </div>
-      <div class="total" style="margin-top: 40px;">
-       <span style="text-decoration: line-through; font-size: 20px;">${flight.discount} MXN</span> <br>
-        <small>Total</small> <span>${flight.price}</span>
-      </div>
-    `;
 
-    $('.ticket section').html(flightRender);
-    setTimeout(() => {
-      document.querySelector('.wrap').setAttribute('data-pos', 2);
-    }, 50);
-  });
-
-  // Init scroll
-  $(".nano").nanoScroller();
-
-
-  function doFlightsRender(isInit) {
+<div id="modal-overlay">
+  <div class="modal-content" id="modal-box">
     
-  /*   var studentFlights = flights.filter(function(o) {
-       var firstclass = $('.dateinput .control-item span').eq(0).text();
-       var day = firstclass.split(",")[0]
-    var plan = $('input[name="plan"]:checked').val();
-       return o.date.toLowerCase() === day && o.plan === plan;
-    });*/
+    <div id="modal-form">
+      <h3>Agendar Clase</h3>
+      <p class="modal-subtitle" id="modal-slot-info"></p>
       
-    var studentFlights = flights.filter(function(o, index) {
-    var firstclass = $('.dateinput .control-item span').eq(0).text();
-    var day = firstclass.split(",")[0];
-    var plan = $('input[name="plan"]:checked').val();
-    o.originalIndex = index; 
-      o.plan = plan
+      <input type="text" id="input-name" placeholder="Tu nombre completo" class="modal-input" autocomplete="off">
+      <input type="tel" id="input-phone" placeholder="Tu número de teléfono" class="modal-input" autocomplete="off">
       
-      
+      <button class="btn-confirm" onclick="submitBooking()">Confirmar Reserva</button>
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+    </div>
 
-      
-      
-      if(plan == "Standard"){
-         o.discount = "$500"
-          o.price = "$450 MXN"
-         if(o.quote > 4){
-            o.price = "$400 MXN"
-         }
-            else if(o.quote < 0){
-               o.discount = ""
-               o.price = "$500 MXN"
-            }
-      }else if(plan == "PRO"){
-        o.discount = "$800"
-        o.price = "$750 MXN"
-        if(o.quote > 4){
-            o.price = "$700 MXN"
-         }
-         else if(o.quote < 0){
-           o.discount = ""
-           o.price = "$800 MXN"
-        }
-      }else if(plan == "PREMIUM"){
-        o.discount = "$1400"
-        o.price = "$1350 MXN"
-        if(o.quote > 4){
-            o.price = "$1300 MXN"
-         }
-        else if(o.quote < 0){
-           o.discount = ""
-           o.price = "$1400 MXN"
-        }
-      }
+    <div id="modal-processing" style="display: none;">
+      <div class="spinner"></div>
+      <h3>Procesando...</h3>
+      <p class="modal-subtitle">Asegurando tu lugar.</p>
+    </div>
 
+    <div id="modal-success" style="display: none;">
+      <div class="success-ring"><span>✓</span></div>
+      <h3>¡Reserva confirmada!</h3>
+      <p class="modal-subtitle">Tu lugar ha sido asignado. ¡Nos vemos en clase!</p>
+    </div>
 
+  </div>
+</div>
 
-    return o.date.toLowerCase() === day ;
-  });
-    
-    var flightsRender = _.map(studentFlights, function(o, i) {
-      var sumText = "";
-      var [from, t1, to, t2] = o.nodes[0].split(' ');
+<script>
+// --- BASE DE DATOS DE HORARIOS ---
+const scheduleData = {
+  "Miércoles": { "12:00": ["Carolina A."] },
+  "Jueves": { "14:00": ["Juan C."], "15:00": ["Aidee B."], "16:00": ["Marco F.", "Zaulo C.", "Bryan T."], "17:00": ["Zaulo C.", "Manuel S.", "Belén G."], "18:00": ["Liliana M."] },
+  "Viernes": { "11:00": ["Alicia C.", "Beatriz C."], "12:00": ["Marco F.", "Emiliano G.", "Danna G.", "Armando R."], "13:00": ["Emiliano G.", "Danna G."], "14:00": ["Francisco D.", "Andrea R."], "15:00": ["Hiram M."] },
+  "Sábado": { "10:00": ["Armando R.", "Cesar A.", "Iktan C."], "11:00": ["Jose S."], "12:00": ["Jose S."], "13:00": ["Fernanda C.", "Andrea R."] },
+  "Domingo": { "09:00": ["Oscar G.", "Yaya M.", "Nataly B.", "Nathaly V."], "10:00": ["Ariadna M.", "David R.", "Nathaly V."], "11:00": ["Ariadna M.", "Victor C.", "Fri L.", "David R."], "12:00": ["Cecilia R.", "Victor C.", "Fri L."], "13:00": ["Héctor F.", "Fernando D.", "Crystina G."] },
+  "Lunes": {}, "Martes": {}
+};
 
-      var d1 = new Date(t1), 
-        d2 = new Date(t2);
-      
+const monthNames = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
+const dayNamesFull = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 
-      if(!isInit) {
-        var ppl = $('.radio.passengers label span'),
-          sum = parseInt(ppl.eq(0).text()) + parseInt(ppl.eq(1).text()) + parseInt(ppl.eq(2).text());
+let currentYear = 2026;
+let currentMonth = 2; // Marzo (0-index)
+let selectedDate = null;
+let selectedWeekday = null;
+let selectedTime = null;
 
-        sumText = `${sum} people $${(o.price * sum).toFixed(2)}`;
-        from = $('.fromPlace span').text();
-        to = $('.toPlace span').text();
-      }
+// --- RENDERIZADO DEL CALENDARIO ---
+function renderCalendar() {
+  const grid = document.getElementById("calendar-grid");
+  const cells = grid.querySelectorAll('.day-cell, .empty-cell');
+  cells.forEach(c => c.remove());
 
-      var img;
-      if(o.carrier == 'KL')
-        img = 'https://dl.dropbox.com/s/02ve5kn75rpo0s3/KL.png';
-      else if(o.carrier == 'BA')
-        img = 'https://dl.dropbox.com/s/6fpuy898zzuk7nn/BA.png';
-      else
-        img = 'https://dl.dropbox.com/s/dhmufay65yer2jz/AF.png';
-var demandText = "";
+  let firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  firstDay = firstDay === 0 ? 6 : firstDay - 1; 
+  
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-if (o.discount === "") {
-  demandText = "<span style='color: red; font-size: 1.2em; position: absolute; margin-top: 30px;'>Alta demanda</span>";
-} else  {
-    if(o.quote > 4){
-              demandText = "<span style='color: green; font-size: 1.2em; position: absolute; margin-top: 30px;'>Baja demanda</span>";
-             /* if(o.quote == 5){
-                demandText += "<span style='color: orange; font-size: 13px; position: absolute; margin-top: 15px;'>Quedan 2 lugares a este costo</span>"
-              }else if(o.quote == 4){
-                demandText += "<span style='color: red; font-size: 13px; position: absolute; margin-top: 15px;'>Queda 1 lugar a este costo</span>"
-              }  */
-        }
-}
-
-       
-      var priceColor;
-
-if (demandText.includes("Alta demanda")) {
-  priceColor = "red";
-} else if (demandText.includes("Baja") ) {
-  priceColor = "#28a745";
-} else {
-  priceColor = "#4A4A4A"; // Por defecto, negro
-}
-
-      return `<article data-index="${o.originalIndex}">
-      <!--  <div class="img">
-          <img src="${img}" alt="ualogo" />
-        </div> -->
-        <div class="info">
-        <span style='font-size: 14px;'>${o.date}</span>
-          <span class="time">Plan ${o.plan}</span>
-          <span class="airline">
-            ${d1.toLocaleTimeString().replace(':00','')} - 
-            ${d2.toLocaleTimeString().replace(':00','')}
-          </span>
-          
-          <!--<span>${carrier[o.carrier]} ${from} - ${to}</span>-->
-${demandText}
-          <h5 style='color: ${priceColor}'><small style='text-decoration: line-through; font-size: 15px;'>${o.discount}</small>  ${o.price} </h5>
-        </div>
-      </article>`;
-    });
-
-    $('.list .nano-content').html(flightsRender.join(''));
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement("div");
+    empty.className = "empty-cell";
+    grid.appendChild(empty);
   }
 
-})();
+  for (let d = 1; d <= daysInMonth; d++) {
+    const cell = document.createElement("div");
+    cell.className = "day-cell";
+    cell.innerText = d;
+    
+    const dateObj = new Date(currentYear, currentMonth, d);
+    if (dateObj.getDay() === 0) cell.classList.add("sunday");
 
+    cell.onclick = () => selectDate(d, cell, dateObj.getDay());
+    grid.appendChild(cell);
+  }
+}
+
+// --- FLUJO DE VISTAS (Panel Derecho) ---
+function selectDate(day, cellElement, dayOfWeekIndex) {
+  selectedDate = day;
+  selectedWeekday = dayNamesFull[dayOfWeekIndex];
+  
+  document.querySelectorAll(".day-cell").forEach(c => c.classList.remove("active"));
+  cellElement.classList.add("active");
+  
+  // Actualizar Panel Izquierdo
+  document.getElementById("display-weekday").innerText = selectedWeekday.toUpperCase();
+  document.getElementById("display-date").innerText = `${selectedDate} DE ${monthNames[currentMonth]}`;
+  document.getElementById("btn-back").style.display = "block";
+
+  // Cambiar Vista Derecha
+  document.getElementById("calendar-view").style.display = "none";
+  document.getElementById("hours-view").style.display = "block";
+
+  renderHoursGrid(selectedWeekday);
+}
+
+function showCalendarView() {
+  // Restaurar Panel Izquierdo
+  document.getElementById("display-weekday").innerText = "SELECCIONA";
+  document.getElementById("display-date").innerText = "UNA FECHA";
+  document.getElementById("btn-back").style.display = "none";
+  document.querySelectorAll(".day-cell").forEach(c => c.classList.remove("active"));
+
+  // Restaurar Vista Derecha
+  document.getElementById("hours-view").style.display = "none";
+  document.getElementById("calendar-view").style.display = "block";
+}
+
+// --- RENDERIZADO DE HORARIOS (Grid de Tarjetas) ---
+function renderHoursGrid(weekday) {
+  const container = document.getElementById("hours-grid");
+  container.innerHTML = "";
+
+  const daySchedule = scheduleData[weekday];
+  
+  if (!daySchedule || Object.keys(daySchedule).length === 0) {
+    container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-light); padding: 40px 0; font-size: 16px;">No hay clases programadas para este día.</div>`;
+    return;
+  }
+
+  Object.keys(daySchedule).sort().forEach(time => {
+    const students = daySchedule[time];
+    const available = 8 - students.length;
+    
+    const card = document.createElement("div");
+    
+    if (available === 0) {
+      card.className = "hour-card full";
+      card.innerHTML = `<div class="time">${time}</div><div class="avail">Lleno</div>`;
+    } else {
+      card.className = "hour-card";
+      card.innerHTML = `<div class="time">${time}</div><div class="avail">${available} lugares libres</div>`;
+      card.onclick = () => openModal(time);
+    }
+    
+    container.appendChild(card);
+  });
+}
+
+// --- LÓGICA DEL MODAL ---
+function openModal(time) {
+  selectedTime = time;
+  
+  document.getElementById("modal-slot-info").innerText = `${selectedWeekday} a las ${time}`;
+  document.getElementById("input-name").value = "";
+  document.getElementById("input-phone").value = "";
+
+  document.getElementById("modal-form").style.display = "block";
+  document.getElementById("modal-processing").style.display = "none";
+  document.getElementById("modal-success").style.display = "none";
+
+  const modalOverlay = document.getElementById("modal-overlay");
+  modalOverlay.style.display = "flex";
+  setTimeout(() => document.getElementById("input-name").focus(), 100);
+}
+
+function closeModal() {
+  document.getElementById("modal-overlay").style.display = "none";
+}
+
+function submitBooking() {
+  const name = document.getElementById("input-name").value.trim();
+  const phone = document.getElementById("input-phone").value.trim();
+
+  if (!name || !phone) {
+    alert("Por favor completa tu nombre y teléfono.");
+    return;
+  }
+
+  // Animación de envío
+  document.getElementById("modal-form").style.display = "none";
+  document.getElementById("modal-processing").style.display = "block";
+
+  setTimeout(() => {
+    // Registrar
+    scheduleData[selectedWeekday][selectedTime].push(name);
+    
+    // Éxito
+    document.getElementById("modal-processing").style.display = "none";
+    document.getElementById("modal-success").style.display = "block";
+
+    // Ocultar modal y refrescar tarjetas de horario
+    setTimeout(() => {
+      closeModal();
+      renderHoursGrid(selectedWeekday); // Refresca los cupos automáticamente
+    }, 1800);
+
+  }, 1200);
+}
+
+// Inicializar
+renderCalendar();
 </script>
+</body>
+</html>
