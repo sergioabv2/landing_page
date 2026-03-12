@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mozart+ Academy | Curso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #F2EFE9;
+      --surface-color: #FFFFFF;
+      --surface-border: #E5E2DC;
+      --text-main: #1C1C1C;
+      --text-muted: #595959;
+      --accent-color: #1C1C1C;
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --border-radius: 16px;
+      --shadow-soft: 0 18px 45px rgba(28, 28, 28, 0.08);
+      --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.9), #f4f0e7);
+      border-radius: 28px;
+      padding: 32px 32px 40px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,0.35), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(255,255,255,0.25), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .shell-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid #1C1C1C;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .headline {
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: clamp(2.1rem, 3vw, 2.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 16px 0 12px;
+    }
+
+    .lede {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .info-list {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .info-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .info-row {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .levels {
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .level-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.06);
+      font-size: 0.8rem;
+      font-weight: 500;
+      width: fit-content;
+    }
+
+    .curso-card {
+      background: var(--surface-color);
+      border-radius: 20px;
+      padding: 18px 18px 20px;
+      border: 1px solid var(--surface-border);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .topics {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .topics ul {
+      padding-left: 16px;
+      margin-top: 4px;
+    }
+
+    .topics li {
+      margin-bottom: 3px;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .slot {
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.09);
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      background: #F9F6F0;
+    }
+
+    .slot strong {
+      display: block;
+      font-weight: 600;
+    }
+
+    .slot span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .btn-primary {
+      border: none;
+      background: var(--accent-color);
+      color: var(--bg-color);
+      border-radius: 999px;
+      padding: 10px 22px;
+      font-family: var(--font-title);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      margin-top: 4px;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent-color);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+      transform: translateY(-1px);
+    }
+
+    .helper {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      .shell {
+        padding: 24px 20px 28px;
+        border-radius: 22px;
+      }
+
+      .shell-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .schedule-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="shell">
+    <div class="shell-inner">
+      <div>
+        <div class="pill">Curso · Mozart+ Academy</div>
+        <h1 class="headline">Un recorrido completo del nivel básico al avanzado.</h1>
+        <p class="lede">
+          Diseñado para que aprendas desde cero o retomes tus estudios: avanzarás por niveles con objetivos claros y medibles.
+        </p>
+
+        <div class="info-list">
+          <div>
+            <div class="info-label">Niveles</div>
+            <div class="levels">
+              <span class="level-pill">Básico · Fundamentos del teclado</span>
+              <span class="level-pill">Intermedio · Fluidez y repertorio</span>
+              <span class="level-pill">Avanzado · Interpretación y estilo propio</span>
+            </div>
+          </div>
+          <div>
+            <div class="info-label">Qué estudiarás</div>
+            <div class="info-row">
+              Lectura a primera vista, escalas y arpegios, interpretación musical y teoría aplicada a las piezas que trabajas.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="curso-card">
+        <div class="section-tag">Contenidos principales</div>
+        <div class="topics">
+          <ul>
+            <li><strong>Lectura a primera vista:</strong> reconocimiento rápido de notas, ritmos y patrones.</li>
+            <li><strong>Escalas y arpegios:</strong> técnica para dedos firmes y manos independientes.</li>
+            <li><strong>Interpretación:</strong> dinámica, fraseo y expresión musical.</li>
+            <li><strong>Teoría:</strong> acordes, tonalidades y progresiones aplicadas al repertorio.</li>
+          </ul>
+        </div>
+
+        <div class="section-tag">Horarios de clase disponibles</div>
+        <div class="schedule-grid">
+          <div class="slot">
+            <strong>Jueves</strong>
+            <span>14:00, 15:00, 16:00, 17:00, 18:00</span>
+          </div>
+          <div class="slot">
+            <strong>Viernes</strong>
+            <span>11:00, 12:00, 13:00, 14:00, 15:00</span>
+          </div>
+          <div class="slot">
+            <strong>Sábado</strong>
+            <span>10:00, 11:00, 12:00, 13:00</span>
+          </div>
+          <div class="slot">
+            <strong>Domingo</strong>
+            <span>09:00, 10:00, 11:00, 12:00, 13:00</span>
+          </div>
+        </div>
+
+        <a href="form.html" class="btn-primary">
+          Ver calendario y reservar
+        </a>
+        <p class="helper">
+          Al hacer clic verás el calendario interactivo con todos los horarios y podrás reservar directamente tu clase muestra.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
