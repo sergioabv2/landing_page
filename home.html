@@ -439,15 +439,85 @@
     }
     .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,255,255,0.2); }
 
-    /* --- FOOTER --- */
-    .dark-footer { background-color: #0F0F0F; color: #888; padding: 5rem 0 2rem; font-size: 0.95rem; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-    .footer-col h4 { color: #fff; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 1.5rem; font-family: var(--font-body); }
-    .footer-logo { font-size: 1.8rem; font-weight: 600; color: #fff; margin-bottom: 1rem; font-family: var(--font-title); }
-    .social-icons { display: flex; gap: 1rem; }
-    .social-icons a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); color: #fff; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none !important;}
-    .social-icons a:hover { background: #fff; color: #000; }
-    .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: #555; }
+    /* --- FOOTER (estilo LandingFooter.vue) --- */
+    .landing-footer {
+        background: #F8F9FC;
+        border-top: 1px solid rgba(33, 34, 38, 0.06);
+        padding: 4rem clamp(1.25rem, 5vw, 2.5rem) 2rem;
+        margin-top: 4rem;
+    }
+    .landing-footer h3 {
+        font-size: 1.5em;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        color: #121317;
+        font-family: "Google Sans Flex", var(--font-body), sans-serif;
+    }
+    .landing-footer .footer-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 3rem 2rem;
+        margin: 0 0 3rem 0;
+    }
+    .landing-footer .footer-col h4 {
+        font-weight: 500;
+        font-size: 0.9em;
+        color: #121317;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-family: "Google Sans Flex", var(--font-body), sans-serif;
+    }
+    .landing-footer .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .landing-footer a {
+        color: #45474D;
+        text-decoration: none;
+        font-weight: 300;
+    }
+    .landing-footer a:hover {
+        color: #121317;
+    }
+    .landing-footer .social-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+        padding-top: 0.5rem;
+    }
+    .landing-footer .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(33, 34, 38, 0.06);
+        color: #45474D;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .landing-footer .social-links a:hover {
+        background: #121317;
+        color: #fff;
+        transform: translateY(-2px);
+    }
+    .landing-footer .social-links i {
+        font-size: 1.2rem;
+    }
+    .landing-footer > p {
+        margin: 2rem 0 0 0;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(33, 34, 38, 0.06);
+        color: #45474D;
+        font-size: 0.9em;
+        text-align: center;
+    }
 
     /* REVIEWS & ANIMATIONS */
     .reviews-section { background-color: var(--bg-color); padding: 5rem 0; }
@@ -481,8 +551,6 @@
         .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
         h1 { font-size: 2.8rem; }
         .reverse-mobile { display: flex; flex-direction: column-reverse; }
-        .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-        .social-icons { justify-content: center; }
         .surface-container { 
         transform: scale(0.65) translateY(20px); 
     }
@@ -1376,40 +1444,53 @@
         </div>
     </section>
 
-    <footer class="dark-footer">
+    <footer class="landing-footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col brand-col">
-                    <div class="footer-logo">Mozart<span class="logo-accent">+</span></div>
-                    <p style="color: #888; font-size: 0.9rem;">Academia de Piano Presencial y Online.</p>
-                    <p style="color: #888; font-size: 0.9rem;">contacto@mozartplus.com <br> piano.unam@gmail.com</p>
-                  
-                </div>
+            <h3>Mozart+ Academy</h3>
+            <div class="footer-columns">
                 <div class="footer-col">
-                    <h4>UBICACIÓN</h4>
-                    <p style="color: #888; margin-bottom: 5px;">Odongología 69, Copilco Universidad Coyoacán</p>
-                    <p style="color: #888;">Ciudad de México, CDMX</p>
-                </div>
-                <div class="footer-col links-col">
-                    <h4>ACADEMIA</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><a href="#">Horarios</a></li>
-                        <li><a href="#">Precios</a></li>
-                        <li><a href="#">Ubicación</a></li>
+                    <h4>Compañía</h4>
+                    <ul>
+                        <li><a href="#">Acerca de nosotros</a></li>
+                        <li><a href="#">Lanza tu propia academia de Piano Grupal</a></li>
+                        <li><a href="#">Sedes</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="footer-col social-col">
-                    <h4>SÍGUENOS</h4>
-                    <div class="social-icons" >
-                        <a href="https://www.instagram.com/mozartplus.academy"><i class='bx bxl-instagram'></i></a>
-                        <a href="https://www.facebook.com/mx.mozart"><i class='bx bxl-facebook'></i></a>
-                        <a href="https://www.youtube.com/@mozartplus"><i class='bx bxl-youtube'></i></a>
-                    </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Términos de Suscripción y Facturación</a></li>
+                        <li><a href="#">Políticas de privacidad</a></li>
+                        <li><a href="#">Aviso de Privacidad Integral para Menores</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Foro</a></li>
+                        <li><a href="#">Ayuda y FAQ</a></li>
+                        <li><a href="#">Descarga App</a></li>
+                        <li><a href="#">Soporte Técnico</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 Mozart+ Academy. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/play.mozartplus" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                    <i class='bx bxl-facebook'></i>
+                </a>
+                <a href="https://www.instagram.com/mozartplus.academy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                    <i class='bx bxl-instagram'></i>
+                </a>
+                <a href="https://www.youtube.com/@mozartplus" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+                    <i class='bx bxl-youtube'></i>
+                </a>
+                <a href="https://www.tiktok.com/@mozartplus_" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+                    <i class='bx bxl-tiktok'></i>
+                </a>
             </div>
+            <p>© 2026 Mozart+ Academy. Todos los derechos reservados.</p>
         </div>
     </footer>
 
