@@ -1,13 +1,32 @@
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
+<meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
 <link rel="icon" href="https://lh3.googleusercontent.com/d/1h0PAuatp8mguH19cso6wh19mjMVa0K5V" type="image/x-icon">
-    <title>Mozart Academy</title>
+    <title>Mozart Academy Presencial | Cursos y formacion musical</title>
+<meta name="description" content="Mozart Academy Presencial: cursos de piano, clases personalizadas, galeria de actividades y contacto directo para inscripcion.">
+<meta name="keywords" content="academia de musica, clases de piano, cursos presenciales, formacion musical, Mozart Academy">
+<meta name="author" content="Mozart Academy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mozartplus.com/academy/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Mozart+">
+<meta property="og:title" content="Mozart Academy Presencial | Cursos y formacion musical">
+<meta property="og:description" content="Conoce la academia presencial de Mozart: curso, galeria, ubicacion y contacto para comenzar tu formacion musical.">
+<meta property="og:url" content="https://mozartplus.com/academy/">
+<meta property="og:image" content="https://mozartplus.com/logoHeader.png">
+<meta property="og:image:alt" content="Mozart Academy Presencial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mozart Academy Presencial | Cursos y formacion musical">
+<meta name="twitter:description" content="Academia presencial Mozart: clases y cursos para impulsar tu aprendizaje musical.">
+<meta name="twitter:image" content="https://mozartplus.com/logoHeader.png">
+<meta name="theme-color" content="#121317">
   
 <link href="https://code.ionicframework.com/1.3.3/css/ionic.min.css" rel="stylesheet">
   <script src="https://code.ionicframework.com/1.3.3/js/ionic.bundle.min.js"></script>
-</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +41,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link rel="manifest" href="manifest.json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicSchool",
+  "name": "Mozart Academy",
+  "url": "https://mozartplus.com/academy/",
+  "description": "Academia presencial con cursos de musica y piano.",
+  "sameAs": [
+    "https://mozartplus.com/"
+  ]
+}
+</script>
 </head>
 
  <style>
@@ -30,14 +61,39 @@
 
 /* =========== DESIGN TOKENS (alineados con MenuLayout) =========== */
 :root {
-  --bg-main: #FFFFFF;
-  --text-primary: #111111;
-  --text-secondary: #5F6368;
+  --palette-grey-900: #2F3034;
+  --palette-grey-800: #45474D;
+  --palette-grey-50: #E6EAF0;
+  --palette-grey-0: #FFFFFF;
+  --palette-grey-1000: #212226;
+  --palette-grey-20: #EFF2F7;
+  --palette-grey-1200: #121317;
+  --palette-grey-10: #F8F9FC;
+  --palette-grey-400: #B7BFD9;
+  --palette-grey-1000-rgb: 33, 34, 38;
+  --palette-grey-400-rgb: 183, 191, 217;
+
+  --theme-surface-surface: var(--palette-grey-0);
+  --theme-surface-on-surface: var(--palette-grey-1200);
+  --theme-surface-on-surface-variant: var(--palette-grey-800);
+  --theme-surface-surface-container: var(--palette-grey-10);
+  --theme-primary-primary: var(--palette-grey-1200);
+  --theme-primary-on-primary: var(--palette-grey-0);
+  --theme-outline-variant: rgba(var(--palette-grey-1000-rgb), 0.06);
+  --theme-button-states-primary-hovered: var(--palette-grey-900);
+  --theme-button-secondary-hover: #F0F1F5;
+  --theme-nav-button-hover: rgba(var(--palette-grey-400-rgb), 0.2);
+  --theme-secondary-button: rgba(var(--palette-grey-400-rgb), 0.1);
+
+  /* Aliases para estilos legacy del archivo */
+  --bg-main: var(--theme-surface-surface);
+  --text-primary: var(--theme-surface-on-surface);
+  --text-secondary: var(--theme-surface-on-surface-variant);
   --text-tertiary: #9CA3AF;
-  --nav-hover-bg: rgba(0,0,0,0.04);
-  --nav-active-bg: rgba(0,0,0,0.06);
-  --border-color: #E5E7EB;
-  --sidebar-bg: #fdfdfe;
+  --nav-hover-bg: var(--theme-nav-button-hover);
+  --nav-active-bg: var(--theme-secondary-button);
+  --border-color: var(--theme-outline-variant);
+  --sidebar-bg: var(--theme-surface-surface);
   --sidebar-width: 270px;
 }
 
@@ -591,6 +647,9 @@ ion-side-menu .list .item:hover {
 
 
 @media (min-width: 850px) {
+.nav-bar-horizontal-menu {
+    left: 170px;
+}
 .menubtn{
     display: none;
   }
@@ -3127,38 +3186,43 @@ width: 200px; /* Ajusta según el tamaño deseado */
         font-family: "Google Sans Flex", system-ui, sans-serif !important;
         font-size: 13px !important;
         font-weight: 600 !important;
-        border: none !important;
-        display: flex;
+        border: 1px solid var(--theme-outline-variant) !important;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
-        border-radius: 999px !important;
+        gap: 6px;
+        border-radius: 7px !important;
         cursor: pointer;
-        transition: background 0.2s ease, transform 0.15s ease;
-        padding: 8px 18px !important;
+        transition: background 0.15s, border-color 0.15s, transform 0.15s ease;
+        padding: 5px 10px !important;
         transform: none !important;
         line-height: 1;
+        color: var(--theme-surface-on-surface) !important;
+        background: var(--theme-surface-surface) !important;
       }
 
       .btn-login {
         margin-right: 6px;
-        background: #111111;
-        color: #ffffff;
-        border: none !important;
+        background: var(--theme-surface-surface) !important;
+        color: var(--theme-surface-on-surface) !important;
+        border: 1px solid var(--theme-outline-variant) !important;
       }
 
       .btn-login:hover {
-        background: #333333;
+        background: #f9fafb !important;
+        border-color: #d8dbe2 !important;
       }
 
       .btn-register {
         margin-right: 12px;
-        background: #111111;
-        color: #ffffff;
-        border: none !important;
+        background: var(--theme-surface-surface) !important;
+        color: var(--theme-surface-on-surface) !important;
+        border: 1px solid var(--theme-outline-variant) !important;
       }
 
       .btn-register:hover {
-        background: #333333;
+        background: #f9fafb !important;
+        border-color: #d8dbe2 !important;
       }
 
       .btn2:active {
@@ -3168,67 +3232,148 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
 
 
-/* --- Menú horizontal estilo cápsula (alineado con MenuLayout) --- */
+/* --- Menú horizontal estilo header landing --- */
 .nav-bar-horizontal-menu {
   display: none;
 }
 
 @media (min-width: 850px) {
-
   .nav-bar-horizontal-menu {
     display: flex !important;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 170px;
+    transform: none;
     top: 8px;
     z-index: 999;
     height: 40px !important;
-    background: rgba(0, 0, 0, 0.04);
-    padding: 4px;
-    border-radius: 99px;
+    background: transparent;
+    padding: 0;
     margin-left: 0 !important;
-    gap: 2px;
+    gap: 14px;
   }
 
-  .nav-bar-horizontal-menu .button {
+  .nav-bar-horizontal-menu .button,
+  .nav-bar-horizontal-menu .nav-link-trigger {
     font-family: "Google Sans Flex", system-ui, sans-serif !important;
-    font-size: 13px !important;
+    font-size: 15px !important;
     font-weight: 500 !important;
     color: var(--text-secondary) !important;
-    padding: 8px 18px !important;
+    padding: 0.55em 1em !important;
     margin: 0 !important;
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
-    height: 32px !important;
+    height: auto !important;
     line-height: 1 !important;
     min-height: 0 !important;
-    border-radius: 99px !important;
-    display: flex !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 2px;
     transition: color 0.2s ease, background 0.2s ease;
     text-decoration: none !important;
+    text-transform: none !important;
   }
 
-  /* Activo: fondo blanco + sombra sutil (igual que MenuLayout) */
+  .nav-bar-horizontal-menu .nav-link-caret {
+    font-size: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-item-dropdown.is-open .nav-link-caret {
+    transform: rotate(180deg);
+  }
+
   .nav-bar-horizontal-menu .menuSelectedColor {
-    background: var(--bg-main) !important;
     color: var(--text-primary) !important;
-    font-weight: 700 !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06) !important;
-    text-shadow: none !important;
-    border: none !important;
-    padding: 8px 18px !important;
-    height: 32px !important;
+    font-weight: 600 !important;
+    background: var(--theme-nav-button-hover, rgba(183, 191, 217, 0.2)) !important;
   }
 
-  .nav-bar-horizontal-menu .button:not(.menuSelectedColor):hover {
+  .nav-bar-horizontal-menu .button:hover,
+  .nav-bar-horizontal-menu .nav-link-trigger:hover,
+  .nav-item-dropdown.is-open .nav-link-trigger {
     color: var(--text-primary) !important;
-    background: rgba(0,0,0,0.04) !important;
-    border-bottom: none !important;
+    background: var(--theme-nav-button-hover, rgba(183, 191, 217, 0.2)) !important;
+  }
+
+  .nav-item-dropdown {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .curso-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    min-width: 0;
+    width: min(980px, calc(100vw - 220px));
+    background: var(--theme-surface-surface, #fff);
+    border: 1px solid var(--theme-outline-variant, rgba(33, 34, 38, 0.08));
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    padding: 12px;
+    z-index: 1001;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .curso-dropdown-item {
+    width: 100%;
+    border: 1px solid var(--theme-outline-variant, #e8e9ec);
+    background: #fff;
+    text-align: left;
+    font-family: "Google Sans Flex", system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: normal;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    line-height: 1.25;
+  }
+
+  .curso-dropdown-item:hover {
+    background: #f9fafb;
+    border-color: #d8dbe2;
+    color: var(--text-primary);
+  }
+
+  .curso-dropdown-item strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  .curso-dropdown-item span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    opacity: 0.9;
+  }
+
+  .nav-item-dropdown.is-open .curso-dropdown {
+    animation: cursoPanelIn 0.14s ease-out;
+  }
+
+  @keyframes cursoPanelIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
 }
@@ -3347,7 +3492,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
-          <div class="main-data" style="margin-top: 35px;" >
+          <div class="main-data" style="margin-top: 20px;" >
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
@@ -3356,24 +3501,29 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.curso" 
-       ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
-        Curso
-    </a>
+    <div class="nav-item-dropdown" ng-class="{ 'is-open': isCursoDropdownOpen }">
+      <button type="button" class="button button-clear nav-link-trigger" ng-click="toggleCursoDropdown($event)">
+        Curso <i class="ri-arrow-down-s-line nav-link-caret"></i>
+      </button>
+      <div class="curso-dropdown" ng-show="isCursoDropdownOpen">
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('programa')">Programa</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('horarios')">Horarios</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('costos')">Costos</button>
+      </div>
+    </div>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Galería
     </a>
      <a ui-sref="menu.ubicacion" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
       Ubicación
     </a>
     <a ui-sref="menu.contacto" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
         Contacto
     </a>
 </div>
@@ -3415,7 +3565,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
-          <div class="main-data" style="margin-top: 35px;" >
+          <div class="main-data" style="margin-top: 20px;" >
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
@@ -3424,24 +3574,29 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.curso" 
-       ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
-        Curso
-    </a>
+    <div class="nav-item-dropdown" ng-class="{ 'is-open': isCursoDropdownOpen }">
+      <button type="button" class="button button-clear nav-link-trigger" ng-click="toggleCursoDropdown($event)">
+        Curso <i class="ri-arrow-down-s-line nav-link-caret"></i>
+      </button>
+      <div class="curso-dropdown" ng-show="isCursoDropdownOpen">
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('programa')">Programa</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('horarios')">Horarios</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('costos')">Costos</button>
+      </div>
+    </div>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Galería
     </a>
      <a ui-sref="menu.ubicacion" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
       Ubicación
     </a>
     <a ui-sref="menu.contacto" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Contacto
     </a>
 </div>
@@ -3484,7 +3639,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
-          <div class="main-data" style="margin-top: 35px;" >
+          <div class="main-data" style="margin-top: 20px;" >
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
@@ -3493,24 +3648,29 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.curso" 
-       ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
-        Curso
-    </a>
+    <div class="nav-item-dropdown" ng-class="{ 'is-open': isCursoDropdownOpen }">
+      <button type="button" class="button button-clear nav-link-trigger" ng-click="toggleCursoDropdown($event)">
+        Curso <i class="ri-arrow-down-s-line nav-link-caret"></i>
+      </button>
+      <div class="curso-dropdown" ng-show="isCursoDropdownOpen">
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('programa')">Programa</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('horarios')">Horarios</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('costos')">Costos</button>
+      </div>
+    </div>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Galería
     </a>
      <a ui-sref="menu.ubicacion" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
      Ubicacion
     </a>
     <a ui-sref="menu.contacto" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Contacto
     </a>
 </div>
@@ -3550,7 +3710,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
-          <div class="main-data" style="margin-top: 35px;" >
+          <div class="main-data" style="margin-top: 20px;" >
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
@@ -3559,24 +3719,29 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.curso" 
-       ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
-        Curso
-    </a>
+    <div class="nav-item-dropdown" ng-class="{ 'is-open': isCursoDropdownOpen }">
+      <button type="button" class="button button-clear nav-link-trigger" ng-click="toggleCursoDropdown($event)">
+        Curso <i class="ri-arrow-down-s-line nav-link-caret"></i>
+      </button>
+      <div class="curso-dropdown" ng-show="isCursoDropdownOpen">
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('programa')">Programa</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('horarios')">Horarios</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('costos')">Costos</button>
+      </div>
+    </div>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Galería
     </a>
      <a ui-sref="menu.ubicacion" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
       Ubicación
     </a>
     <a ui-sref="menu.contacto" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Contacto
     </a>
 </div>
@@ -3617,29 +3782,34 @@ width: 200px; /* Ajusta según el tamaño deseado */
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
-          <div class="main-data" style="margin-top: 35px;" >
+          <div class="main-data" style="margin-top: 20px;" >
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
-    <a ui-sref="menu.curso" 
-       ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
-       Curso
-    </a>
+    <div class="nav-item-dropdown" ng-class="{ 'is-open': isCursoDropdownOpen }">
+      <button type="button" class="button button-clear nav-link-trigger" ng-click="toggleCursoDropdown($event)">
+        Curso <i class="ri-arrow-down-s-line nav-link-caret"></i>
+      </button>
+      <div class="curso-dropdown" ng-show="isCursoDropdownOpen">
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('programa')">Programa</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('horarios')">Horarios</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('costos')">Costos</button>
+      </div>
+    </div>
      <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
         Galería
     </a>
    
     <a ui-sref="menu.ubicacion" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Ubicación
     </a>
     <a ui-sref="menu.contacto" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
       Contacto  
     </a>
 </div>      
@@ -3678,29 +3848,34 @@ width: 200px; /* Ajusta según el tamaño deseado */
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
-          <div class="main-data" style="margin-top: 35px;" >
+          <div class="main-data" style="margin-top: 20px;" >
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
-    <a ui-sref="menu.curso" 
-       ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
-       Curso
-    </a>
+    <div class="nav-item-dropdown" ng-class="{ 'is-open': isCursoDropdownOpen }">
+      <button type="button" class="button button-clear nav-link-trigger" ng-click="toggleCursoDropdown($event)">
+        Curso <i class="ri-arrow-down-s-line nav-link-caret"></i>
+      </button>
+      <div class="curso-dropdown" ng-show="isCursoDropdownOpen">
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('programa')">Programa</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('horarios')">Horarios</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('costos')">Costos</button>
+      </div>
+    </div>
      <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
         Galería
     </a>
     
     <a ui-sref="menu.ubicacion" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Ubicación
     </a>
     <a ui-sref="menu.contacto" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
       Contacto
     </a>
 </div>      
@@ -3741,7 +3916,7 @@ width: 200px; /* Ajusta según el tamaño deseado */
           <div class="circle2">
               <img class="profile-pic" src="https://lh3.googleusercontent.com/d/1mX_glMmc6nQez1ma8FSo0VpExvI9w-FF=s200">
           </div>
-          <div class="main-data" style="margin-top: 35px;" >
+          <div class="main-data" style="margin-top: 20px;" >
             <h5 class="userLvl" >Mozart <br>MX</h5>
           </div>  
     </div>
@@ -3750,24 +3925,29 @@ width: 200px; /* Ajusta según el tamaño deseado */
 
    <div class="nav-bar-horizontal-menu">
                
-    <a ui-sref="menu.curso" 
-       ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
-       Curso
-    </a>
+    <div class="nav-item-dropdown" ng-class="{ 'is-open': isCursoDropdownOpen }">
+      <button type="button" class="button button-clear nav-link-trigger" ng-click="toggleCursoDropdown($event)">
+        Curso <i class="ri-arrow-down-s-line nav-link-caret"></i>
+      </button>
+      <div class="curso-dropdown" ng-show="isCursoDropdownOpen">
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('programa')">Programa</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('horarios')">Horarios</button>
+        <button type="button" class="curso-dropdown-item" ng-click="goToCursoSection('costos')">Costos</button>
+      </div>
+    </div>
     <a ui-sref="menu.galeria" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
        Galería
     </a>
      <a ui-sref="menu.ubicacion" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
       Ubicación
     </a>
     <a ui-sref="menu.contacto" 
        ui-sref-active="menuSelectedColor" 
-       class="button button-clear" style="font-weight: 400;">
+       class="button button-clear" style="font-weight: 400;" ng-click="closeCursoDropdown()">
       Contacto
     </a>
 </div>
@@ -3927,17 +4107,48 @@ app
       
     $ionicSideMenuDelegate.toggleLeft();
       $scope.isDropdownVisible = false;
+      $scope.closeCursoDropdown();
 };
 
 
 
 
      $scope.isDropdownVisible = false;
+    $scope.isCursoDropdownOpen = false;
     $scope.btnBar = true;
     $scope.toggleDropdown = function() {
       $scope.isDropdownVisible = !$scope.isDropdownVisible;
         $scope.btnBar = false;
     };
+
+    $scope.toggleCursoDropdown = function($event) {
+      if ($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+      }
+      $scope.isCursoDropdownOpen = !$scope.isCursoDropdownOpen;
+    };
+
+    $scope.closeCursoDropdown = function() {
+      $scope.isCursoDropdownOpen = false;
+    };
+
+    $scope.goToCursoSection = function(section) {
+      $scope.isCursoDropdownOpen = false;
+      window.location.href = 'curso.html#' + section;
+    };
+
+    $(document).off('click.cursoDropdown').on('click.cursoDropdown', function() {
+      if ($scope.isCursoDropdownOpen) {
+        $scope.$applyAsync(function() {
+          $scope.isCursoDropdownOpen = false;
+        });
+      }
+    });
+
+    $scope.$on('$destroy', function() {
+      $(document).off('click.cursoDropdown');
+    });
 
 
 
@@ -3991,4 +4202,4 @@ $scope.goBack = function() {
 
 
     </script>
- 
+</html>
