@@ -6,15 +6,14 @@
 <title>Mozart+ | Calendario de Reservas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-color: #F8F9FA;
     --text-main: #1C1C1C;
     --text-muted: #595959;
-    --text-dark: var(--text-main);
     --text-light: #A3A3A3;
-    --brand-color: #E0E0E0; /* Tono tipo píldora gris claro */
+    --brand-color: #E0E0E0;
     --white: #ffffff;
   }
 
@@ -22,7 +21,7 @@
 
   body {
     background-color: var(--bg-color);
-    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
     font-weight: 300;
     display: flex;
     justify-content: center;
@@ -32,349 +31,395 @@
     color: var(--text-main);
   }
 
-  /* Contenedor Principal Split */
   .app-container {
     display: flex;
-    width: 900px;
-    height: 600px;
+    width: 920px;
+    height: 620px;
     background: var(--white);
     box-shadow: 0 20px 50px rgba(0,0,0,0.05);
     border-radius: 4px;
     overflow: hidden;
   }
 
-  /* --- PANEL IZQUIERDO (COLOR) --- */
+  /* ── PANEL IZQUIERDO ── */
   .left-panel {
-    width: 40%;
+    width: 38%;
     background-color: var(--brand-color);
-    color: var(--text-main);
-    padding: 48px 40px;
+    padding: 40px 32px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    overflow: hidden;
   }
 
-  .date-display {
-    margin-bottom: 40px;
-  }
+  .left-panel-top { flex-shrink: 0; }
 
-  .date-day-name {
-    font-size: 32px;
+  .date-display { margin-bottom: 24px; }
+
+  .date-day-name, .date-full {
+    font-size: 26px;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 1px;
-    line-height: 1.1;
-  }
-
-  .date-full {
-    font-size: 32px;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.1;
+    line-height: 1.15;
   }
 
   .btn-back {
     background: transparent;
-    color: var(--text-main);
-    border: 1px solid rgba(0,0,0,0.08);
-    padding: 10px 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 7px 16px;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
     cursor: pointer;
-    transition: all 0.2s;
     width: fit-content;
-    margin-top: 24px;
+    margin-bottom: 20px;
     display: none;
+    transition: background 0.2s;
+  }
+  .btn-back:hover { background: rgba(0,0,0,0.03); }
+
+  /* ── SIDEBAR ACORDEÓN ── */
+  .sidebar-schedule {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 4px;
   }
 
-  .btn-back:hover {
-    background: rgba(0,0,0,0.02);
-    border-color: rgba(0,0,0,0.12);
+  .sidebar-schedule::-webkit-scrollbar { width: 3px; }
+  .sidebar-schedule::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
+
+  .sidebar-title {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 500;
   }
 
-  /* --- PANEL DERECHO --- */
+  /* Acordeón: cabecera del día */
+  .acc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background 0.15s;
+    margin-bottom: 2px;
+    user-select: none;
+  }
+
+  .acc-header:hover { background: rgba(255,255,255,0.4); }
+
+  .acc-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .acc-day-name {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-main);
+  }
+
+  .acc-count {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .acc-arrow {
+    font-size: 10px;
+    color: var(--text-muted);
+    transition: transform 0.22s ease;
+    line-height: 1;
+  }
+
+  .acc-group.open .acc-arrow { transform: rotate(180deg); }
+
+  /* Acordeón: contenido colapsable */
+  .acc-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.28s ease;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .acc-group.open .acc-body { max-height: 400px; }
+
+  /* Slots dentro del acordeón */
+  .sidebar-slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 10px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    background: rgba(255,255,255,0.45);
+    border: 1px solid rgba(0,0,0,0.03);
+    font-size: 12px;
+    transition: background 0.15s, box-shadow 0.15s;
+  }
+
+  .sidebar-slot.clickable { cursor: pointer; }
+  .sidebar-slot.clickable:hover {
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+
+  .sidebar-slot.sidebar-slot-full {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .sidebar-slot.sidebar-slot-selected {
+    background: var(--text-main);
+    border-color: var(--text-main);
+  }
+
+  .sidebar-slot-time { font-weight: 500; color: var(--text-main); }
+  .sidebar-slot-avail { font-size: 10px; color: var(--text-muted); }
+
+  .sidebar-slot.sidebar-slot-selected .sidebar-slot-time,
+  .sidebar-slot.sidebar-slot-selected .sidebar-slot-avail { color: var(--white); }
+
+  .acc-spacer { height: 6px; }
+
+  /* ── PANEL DERECHO ── */
   .right-panel {
-    width: 60%;
-    padding: 48px 56px;
+    width: 62%;
+    padding: 44px 52px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
   }
 
-  /* Vista: Calendario */
-  #calendar-view {
-    display: block;
-    animation: fadeIn 0.3s ease;
-  }
+  #calendar-view { display: block; animation: fadeIn 0.3s ease; }
 
-  .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-  }
+  .calendar-header { margin-bottom: 28px; }
 
   .year-display {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 300;
     color: var(--text-muted);
     letter-spacing: 1px;
     text-align: right;
-    width: 100%;
   }
 
-  .months-nav {
+  /* Fila de meses */
+  .months-nav-row {
     display: flex;
-    gap: 12px;
-    margin-bottom: 32px;
-    font-size: 11px;
-    color: var(--text-light);
-    letter-spacing: 1px;
+    align-items: center;
+    margin-bottom: 28px;
+    gap: 0;
   }
 
-  .months-nav span { cursor: pointer; transition: color 0.2s; }
-  .months-nav span:hover { color: var(--text-dark); }
-  .months-nav span.active { color: var(--text-dark); font-weight: 500; }
+  .month-arrow {
+    background: none; border: none; cursor: pointer;
+    font-size: 14px; color: var(--text-light);
+    padding: 2px 8px 2px 0;
+    transition: color 0.2s; flex-shrink: 0; line-height: 1;
+  }
+  .month-arrow.right { padding: 2px 0 2px 8px; }
+  .month-arrow:hover:not(:disabled) { color: var(--text-main); }
+  .month-arrow:disabled { opacity: 0.2; cursor: default; }
 
+  .months-list { display: flex; gap: 10px; flex-wrap: wrap; flex: 1; }
+
+  .month-item {
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--text-light); cursor: pointer;
+    transition: color 0.2s; padding: 2px 0; white-space: nowrap;
+    user-select: none;
+  }
+  .month-item:hover:not(.month-disabled) { color: var(--text-main); }
+  .month-item.active { color: var(--text-main); font-weight: 600; }
+  .month-item.month-disabled { color: #d8d8d8; cursor: default; pointer-events: none; }
+
+  /* Grid de calendario */
   .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    row-gap: 24px;
+    row-gap: 18px;
     text-align: center;
   }
 
   .weekday {
-    font-size: 12px;
-    color: var(--text-dark);
-    font-weight: 400;
-    margin-bottom: 8px;
+    font-size: 10px; color: var(--text-muted); font-weight: 500;
+    margin-bottom: 4px; letter-spacing: 0.5px;
   }
 
   .day-cell {
-    font-size: 14px;
-    color: var(--text-dark);
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 36px;
-    width: 36px;
-    margin: 0 auto;
-    border-radius: 50%;
-    transition: all 0.2s;
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    display: flex; justify-content: center; align-items: center;
+    height: 34px; width: 34px; margin: 0 auto;
+    border-radius: 50%; transition: all 0.18s; position: relative;
   }
 
-  .day-cell:hover:not(.empty) { background-color: #f0f0f0; }
-  
-  .day-cell.active {
-    background-color: var(--brand-color);
-    color: var(--white);
+  .day-cell.has-classes::after {
+    content: ''; position: absolute; bottom: 3px;
+    width: 3px; height: 3px; border-radius: 50%;
+    background: var(--text-muted); opacity: 0.4;
   }
-  .day-cell.sunday { color: var(--brand-color); }
+
+  .day-cell:hover:not(.past):not(.no-classes) { background: #ebebeb; }
+  .day-cell.active { background: var(--text-main); color: var(--white); }
+  .day-cell.active::after { background: var(--white); opacity: 0.5; }
+  .day-cell.sunday { color: #bbb; }
   .day-cell.active.sunday { color: var(--white); }
+  .day-cell.past { color: #d4d4d4; cursor: default; font-weight: 300; }
+  .day-cell.past:hover { background: none; }
+  .day-cell.no-classes { color: #c8c8c8; cursor: default; font-weight: 300; }
+  .day-cell.no-classes:hover { background: none; }
 
-  /* Vista: Horarios Disponibles */
-  #hours-view {
-    display: none;
-    animation: fadeIn 0.3s ease;
+  /* Vista horarios */
+  #hours-view { display: none; animation: fadeIn 0.3s ease; }
+
+  .hours-view-title {
+    font-size: 22px; font-weight: 300; color: var(--text-main);
+    margin-bottom: 24px; letter-spacing: 0.5px;
   }
 
   .hours-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 10px;
+    gap: 12px;
   }
 
   .hour-card {
-    border: 1px solid #eeeeee;
-    border-radius: 8px;
-    padding: 24px 16px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: var(--white);
+    border: 1px solid #eee; border-radius: 8px;
+    padding: 20px 12px; text-align: center;
+    cursor: pointer; transition: all 0.18s; background: var(--white);
   }
 
-  .hour-card:hover {
+  .hour-card:hover:not(.full):not(.selected) {
     border-color: rgba(0,0,0,0.08);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
     background: var(--brand-color);
-    color: var(--text-main);
   }
+
+  .hour-card.selected {
+    background: var(--text-main); border-color: var(--text-main); cursor: default;
+  }
+
+  .hour-card.selected .time,
+  .hour-card.selected .avail { color: var(--white); }
 
   .hour-card.full {
-    background: #fafafa;
-    color: #cccccc;
-    border-color: #f5f5f5;
-    cursor: not-allowed;
-    box-shadow: none;
+    background: #fafafa; border-color: #f0f0f0;
+    cursor: not-allowed; opacity: 0.45;
   }
+  .hour-card.full:hover { box-shadow: none; background: #fafafa; }
 
-  .hour-card .time {
-    font-size: 24px;
-    font-weight: 300;
-    margin-bottom: 8px;
-  }
+  .hour-card .time { font-size: 20px; font-weight: 300; margin-bottom: 5px; }
+  .hour-card .avail { font-size: 11px; font-weight: 500; opacity: 0.75; }
 
-  .hour-card .avail {
-    font-size: 13px;
-    font-weight: 500;
-    opacity: 0.8;
-  }
-
-  /* --- MODALES --- */
+  /* Modal */
   #modal-overlay {
     position: fixed; inset: 0; background: rgba(255,255,255,0.8);
-    display: none; justify-content: center; align-items: center; z-index: 100;
-    backdrop-filter: blur(4px);
+    display: none; justify-content: center; align-items: center;
+    z-index: 100; backdrop-filter: blur(4px);
   }
 
   .modal-content {
-    background: var(--white);
-    color: var(--text-main);
-    padding: 48px 40px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    width: 360px;
+    background: var(--white); padding: 48px 40px; border-radius: 8px;
+    text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.08); width: 360px;
   }
 
-  .modal-content h3 {
-    font-size: 24px;
-    font-weight: 300;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-  }
+  .modal-content h3 { font-size: 24px; font-weight: 300; margin-bottom: 8px; letter-spacing: 1px; }
+  .modal-subtitle { font-size: 14px; opacity: 0.9; margin-bottom: 32px; }
 
-  .modal-subtitle {
-    font-size: 14px;
-    opacity: 0.9;
-    margin-bottom: 32px;
-  }
-
-  /* Inputs estilo línea delgada integrados al modal */
   .modal-input {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.25);
-    color: var(--text-main);
-    padding: 12px 0;
-    font-size: 16px;
-    font-family: inherit;
-    font-weight: 300;
-    outline: none;
-    margin-bottom: 24px;
-    text-align: center;
+    width: 100%; background: transparent; border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.22);
+    padding: 12px 0; font-size: 16px; font-family: inherit;
+    font-weight: 300; outline: none; margin-bottom: 24px; text-align: center;
   }
-
-  .modal-input::placeholder { color: rgba(0,0,0,0.4); }
+  .modal-input::placeholder { color: rgba(0,0,0,0.38); }
   .modal-input:focus { border-bottom-color: var(--text-main); }
 
   .btn-confirm {
-    background: var(--text-main);
-    color: var(--white);
-    border: none;
-    padding: 14px;
-    border-radius: 30px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 12px;
-    transition: transform 0.2s;
+    background: var(--text-main); color: var(--white); border: none;
+    padding: 14px; border-radius: 30px; font-size: 15px; font-weight: 500;
+    cursor: pointer; width: 100%; margin-bottom: 12px; transition: transform 0.2s;
   }
-
   .btn-confirm:active { transform: scale(0.96); }
 
   .btn-cancel {
-    background: transparent;
-    color: var(--text-main);
-    border: 1px solid rgba(0,0,0,0.12);
-    padding: 14px;
-    border-radius: 30px;
-    font-size: 15px;
-    font-weight: 300;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.2s;
+    background: transparent; border: 1px solid rgba(0,0,0,0.12);
+    padding: 14px; border-radius: 30px; font-size: 15px; font-weight: 300;
+    cursor: pointer; width: 100%; transition: background 0.2s;
   }
-
   .btn-cancel:hover { background: rgba(0,0,0,0.02); }
 
   .spinner {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 3px solid rgba(0,0,0,0.07);
-    border-top-color: var(--text-main);
-    animation: spin 0.7s linear infinite;
-    margin: 0 auto 16px;
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 3px solid rgba(0,0,0,0.07); border-top-color: var(--text-main);
+    animation: spin 0.7s linear infinite; margin: 0 auto 16px;
   }
 
   .success-ring {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--text-main);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 56px; height: 56px; border-radius: 50%; background: var(--text-main);
+    display: flex; align-items: center; justify-content: center;
     margin: 0 auto 16px;
     animation: popIn 0.4s cubic-bezier(.34,1.56,.64,1) forwards;
   }
-
-  .success-ring span {
-    color: var(--white);
-    font-size: 24px;
-  }
+  .success-ring span { color: var(--white); font-size: 24px; }
 
   @keyframes spin { to { transform: rotate(360deg); } }
-  @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes popIn { 0%{transform:scale(0);opacity:0} 100%{transform:scale(1);opacity:1} }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
-  /* Móviles */
   @media (max-width: 768px) {
     .app-container { flex-direction: column; width: 100%; height: 100vh; border-radius: 0; }
     .left-panel, .right-panel { width: 100%; }
-    .left-panel { height: auto; padding: 32px 24px; }
-    .right-panel { height: 100%; padding: 24px; overflow-y: auto; }
-    .date-day-name, .date-full { font-size: 28px; }
-    .year-display { font-size: 32px; }
-    .months-nav { flex-wrap: wrap; justify-content: center; }
+    .left-panel { height: auto; padding: 28px 24px; }
+    .right-panel { flex: 1; padding: 24px; overflow-y: auto; }
+    .date-day-name, .date-full { font-size: 22px; }
+    .year-display { font-size: 30px; }
     .hours-grid { grid-template-columns: repeat(2, 1fr); }
+    .months-list { gap: 8px; }
   }
 </style>
 </head>
 <body>
 
 <div class="app-container">
-  
+
+  <!-- PANEL IZQUIERDO -->
   <div class="left-panel">
-    <div>
+    <div class="left-panel-top">
       <div class="date-display">
-        <div class="date-day-name" id="display-weekday">SELECCIONA</div>
-        <div class="date-full" id="display-date">UNA FECHA</div>
+        <div class="date-day-name" id="display-weekday">HORARIOS</div>
+        <div class="date-full" id="display-date">DISPONIBLES</div>
       </div>
+      <button id="btn-back" class="btn-back" onclick="showCalendarView()">← Ver Calendario</button>
     </div>
-    <button id="btn-back" class="btn-back" onclick="showCalendarView()">← Ver Calendario</button>
+
+    <!-- Sidebar: acordeón cuando no hay fecha; oculto cuando sí hay fecha -->
+    <div class="sidebar-schedule" id="sidebar-schedule">
+      <div class="sidebar-title" id="sidebar-title">Todos los días</div>
+      <div id="sidebar-slots"></div>
+    </div>
   </div>
 
+  <!-- PANEL DERECHO -->
   <div class="right-panel">
-    
+
     <div id="calendar-view">
       <div class="calendar-header">
-        <div class="year-display">2026</div>
+        <div class="year-display" id="year-display">2026</div>
       </div>
-      
-      <div class="months-nav">
-        <span>ENE</span><span>FEB</span><span class="active">MAR</span><span>ABR</span>
-        <span>MAY</span><span>JUN</span><span>JUL</span><span>AGO</span>
-        <span>SEP</span><span>OCT</span><span>NOV</span><span>DIC</span>
+
+      <div class="months-nav-row">
+        <button class="month-arrow" id="btn-prev-month" onclick="changeMonth(-1)">&#8592;</button>
+        <div class="months-list" id="months-list"></div>
+        <button class="month-arrow right" id="btn-next-month" onclick="changeMonth(1)">&#8594;</button>
       </div>
 
       <div class="calendar-grid" id="calendar-grid">
@@ -384,211 +429,318 @@
     </div>
 
     <div id="hours-view">
-      <div class="calendar-header">
-        <div class="year-display" style="font-size: 28px; color: var(--text-dark);">Horarios Disponibles</div>
-      </div>
-      <div class="hours-grid" id="hours-grid">
-        </div>
+      <div class="hours-view-title" id="hours-view-title">Horarios disponibles</div>
+      <div class="hours-grid" id="hours-grid"></div>
     </div>
 
   </div>
 </div>
 
+<!-- MODAL -->
 <div id="modal-overlay">
-  <div class="modal-content" id="modal-box">
-    
+  <div class="modal-content">
     <div id="modal-form">
       <h3>Agendar Clase</h3>
       <p class="modal-subtitle" id="modal-slot-info"></p>
-      
-      <input type="text" id="input-name" placeholder="Tu nombre completo" class="modal-input" autocomplete="off">
-      <input type="tel" id="input-phone" placeholder="Tu número de teléfono" class="modal-input" autocomplete="off">
-      
+      <input type="text" id="input-name"  placeholder="Tu nombre completo"    class="modal-input" autocomplete="off">
+      <input type="tel"  id="input-phone" placeholder="Tu número de teléfono" class="modal-input" autocomplete="off">
       <button class="btn-confirm" onclick="submitBooking()">Confirmar Reserva</button>
-      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-cancel"  onclick="closeModal()">Cancelar</button>
     </div>
-
-    <div id="modal-processing" style="display: none;">
+    <div id="modal-processing" style="display:none;">
       <div class="spinner"></div>
       <h3>Procesando...</h3>
       <p class="modal-subtitle">Asegurando tu lugar.</p>
     </div>
-
-    <div id="modal-success" style="display: none;">
+    <div id="modal-success" style="display:none;">
       <div class="success-ring"><span>✓</span></div>
       <h3>¡Reserva confirmada!</h3>
       <p class="modal-subtitle">Tu lugar ha sido asignado. ¡Nos vemos en clase!</p>
     </div>
-
   </div>
 </div>
 
 <script>
-// --- BASE DE DATOS DE HORARIOS ---
+// ── DATOS ─────────────────────────────────────────────────────────────
 const scheduleData = {
   "Miércoles": { "12:00": ["Carolina A."] },
-  "Jueves": { "14:00": ["Juan C."], "15:00": ["Aidee B."], "16:00": ["Marco F.", "Zaulo C.", "Bryan T."], "17:00": ["Zaulo C.", "Manuel S.", "Belén G."], "18:00": ["Liliana M."] },
-  "Viernes": { "11:00": ["Alicia C.", "Beatriz C."], "12:00": ["Marco F.", "Emiliano G.", "Danna G.", "Armando R."], "13:00": ["Emiliano G.", "Danna G."], "14:00": ["Francisco D.", "Andrea R."], "15:00": ["Hiram M."] },
-  "Sábado": { "10:00": ["Armando R.", "Cesar A.", "Iktan C."], "11:00": ["Jose S."], "12:00": ["Jose S."], "13:00": ["Fernanda C.", "Andrea R."] },
-  "Domingo": { "09:00": ["Oscar G.", "Yaya M.", "Nataly B.", "Nathaly V."], "10:00": ["Ariadna M.", "David R.", "Nathaly V."], "11:00": ["Ariadna M.", "Victor C.", "Fri L.", "David R."], "12:00": ["Cecilia R.", "Victor C.", "Fri L."], "13:00": ["Héctor F.", "Fernando D.", "Crystina G."] },
-  "Lunes": {}, "Martes": {}
+  "Jueves":    { "14:00": ["Juan C."], "15:00": ["Aidee B."], "16:00": ["Marco F.", "Zaulo C.", "Bryan T."], "17:00": ["Zaulo C.", "Manuel S.", "Belén G."], "18:00": ["Liliana M."] },
+  "Viernes":   { "11:00": ["Alicia C.", "Beatriz C."], "12:00": ["Marco F.", "Emiliano G.", "Danna G.", "Armando R."], "13:00": ["Emiliano G.", "Danna G."], "14:00": ["Francisco D.", "Andrea R."], "15:00": ["Hiram M."] },
+  "Sábado":    { "10:00": ["Armando R.", "Cesar A.", "Iktan C."], "11:00": ["Jose S."], "12:00": ["Jose S."], "13:00": ["Fernanda C.", "Andrea R."] },
+  "Domingo":   { "09:00": ["Oscar G.", "Yaya M.", "Nataly B.", "Nathaly V."], "10:00": ["Ariadna M.", "David R.", "Nathaly V."], "11:00": ["Ariadna M.", "Victor C.", "Fri L.", "David R."], "12:00": ["Cecilia R.", "Victor C.", "Fri L."], "13:00": ["Héctor F.", "Fernando D.", "Crystina G."] },
+  "Lunes":  {},
+  "Martes": {}
 };
 
-const monthNames = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
-const dayNamesFull = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+const MAX_PER_SLOT    = 8;
+const MONTH_LONG      = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
+const MONTH_SHORT     = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
+const DAY_FULL        = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const DAY_ORDER       = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+const HAS_CLASSES     = new Set(Object.keys(scheduleData).filter(d => Object.keys(scheduleData[d]).length > 0));
 
-let currentYear = 2026;
-let currentMonth = 2; // Marzo (0-index)
-let selectedDate = null;
-let selectedWeekday = null;
-let selectedTime = null;
+const TODAY = new Date(); TODAY.setHours(0,0,0,0);
+const MIN_M = TODAY.getMonth(), MIN_Y = TODAY.getFullYear();
+const MAX_M = (MIN_M + 1) % 12, MAX_Y = MIN_M + 1 > 11 ? MIN_Y + 1 : MIN_Y;
 
-// --- RENDERIZADO DEL CALENDARIO ---
+let curYear = MIN_Y, curMonth = MIN_M;
+let selDate = null, selWeekday = null, selTime = null;
+
+// Estado de acordeones: qué día está abierto
+let openDay = null;
+
+// ── HELPERS ───────────────────────────────────────────────────────────
+function monthInRange(m, y) {
+  if (y === undefined) y = curYear;
+  return new Date(y, m, 1) >= new Date(MIN_Y, MIN_M, 1) &&
+         new Date(y, m, 1) <= new Date(MAX_Y, MAX_M, 1);
+}
+
+// ── FILA DE MESES ─────────────────────────────────────────────────────
+function renderMonthsRow() {
+  document.getElementById("year-display").innerText = curYear;
+  const list = document.getElementById("months-list");
+  list.innerHTML = "";
+
+  MONTH_SHORT.forEach((name, idx) => {
+    const span = document.createElement("span");
+    span.className = "month-item";
+    span.innerText = name;
+    const spanYear = idx >= MIN_M ? MIN_Y : MIN_Y + 1;
+    if (!monthInRange(idx, spanYear)) {
+      span.classList.add("month-disabled");
+    } else {
+      if (idx === curMonth && spanYear === curYear) span.classList.add("active");
+      span.onclick = () => goToMonth(idx, spanYear);
+    }
+    list.appendChild(span);
+  });
+
+  const pm = curMonth - 1 < 0 ? 11 : curMonth - 1, py = curMonth - 1 < 0 ? curYear - 1 : curYear;
+  const nm = curMonth + 1 > 11 ? 0  : curMonth + 1, ny = curMonth + 1 > 11 ? curYear + 1 : curYear;
+  document.getElementById("btn-prev-month").disabled = !monthInRange(pm, py);
+  document.getElementById("btn-next-month").disabled = !monthInRange(nm, ny);
+}
+
+function goToMonth(m, y) {
+  curMonth = m; curYear = y;
+  selDate = null; selTime = null;
+  showCalendarView();
+  renderCalendar();
+}
+
+function changeMonth(delta) {
+  let m = curMonth + delta, y = curYear;
+  if (m < 0) { m = 11; y--; } if (m > 11) { m = 0; y++; }
+  if (!monthInRange(m, y)) return;
+  goToMonth(m, y);
+}
+
+// ── CALENDARIO ────────────────────────────────────────────────────────
 function renderCalendar() {
+  renderMonthsRow();
   const grid = document.getElementById("calendar-grid");
-  const cells = grid.querySelectorAll('.day-cell, .empty-cell');
-  cells.forEach(c => c.remove());
+  grid.querySelectorAll('.day-cell,.empty-cell').forEach(c => c.remove());
 
-  let firstDay = new Date(currentYear, currentMonth, 1).getDay();
-  firstDay = firstDay === 0 ? 6 : firstDay - 1; 
-  
-  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+  let first = new Date(curYear, curMonth, 1).getDay();
+  first = first === 0 ? 6 : first - 1;
+  const total = new Date(curYear, curMonth + 1, 0).getDate();
 
-  for (let i = 0; i < firstDay; i++) {
-    const empty = document.createElement("div");
-    empty.className = "empty-cell";
-    grid.appendChild(empty);
+  for (let i = 0; i < first; i++) {
+    const e = document.createElement("div"); e.className = "empty-cell"; grid.appendChild(e);
   }
 
-  for (let d = 1; d <= daysInMonth; d++) {
+  for (let d = 1; d <= total; d++) {
     const cell = document.createElement("div");
+    const dateObj = new Date(curYear, curMonth, d);
+    const dow = dateObj.getDay();
+    const weekday = DAY_FULL[dow];
+    const isPast = dateObj < TODAY;
+    const hasCls = HAS_CLASSES.has(weekday);
+
     cell.className = "day-cell";
     cell.innerText = d;
-    
-    const dateObj = new Date(currentYear, currentMonth, d);
-    if (dateObj.getDay() === 0) cell.classList.add("sunday");
+    if (dow === 0) cell.classList.add("sunday");
 
-    cell.onclick = () => selectDate(d, cell, dateObj.getDay());
+    if (isPast)       { cell.classList.add("past"); }
+    else if (!hasCls) { cell.classList.add("no-classes"); }
+    else {
+      cell.classList.add("has-classes");
+      cell.onclick = () => selectDate(d, cell, dow);
+    }
+
+    if (selDate === d && !isPast && hasCls) cell.classList.add("active");
     grid.appendChild(cell);
   }
 }
 
-// --- FLUJO DE VISTAS (Panel Derecho) ---
-function selectDate(day, cellElement, dayOfWeekIndex) {
-  selectedDate = day;
-  selectedWeekday = dayNamesFull[dayOfWeekIndex];
-  
+// ── SELECCIÓN DE FECHA ────────────────────────────────────────────────
+function selectDate(day, cellEl, dow) {
+  selDate = day;
+  selWeekday = DAY_FULL[dow];
+  selTime = null;
+
   document.querySelectorAll(".day-cell").forEach(c => c.classList.remove("active"));
-  cellElement.classList.add("active");
-  
-  // Actualizar Panel Izquierdo
-  document.getElementById("display-weekday").innerText = selectedWeekday.toUpperCase();
-  document.getElementById("display-date").innerText = `${selectedDate} DE ${monthNames[currentMonth]}`;
-  document.getElementById("btn-back").style.display = "block";
+  cellEl.classList.add("active");
 
-  // Cambiar Vista Derecha
+  // Panel izquierdo: ocultar sidebar, mostrar botón volver
+  document.getElementById("display-weekday").innerText = selWeekday.toUpperCase();
+  document.getElementById("display-date").innerText    = `${selDate} DE ${MONTH_LONG[curMonth]}`;
+  document.getElementById("btn-back").style.display    = "block";
+  document.getElementById("sidebar-schedule").style.display = "none"; // ← ocultar
+
+  // Panel derecho: grid de horarios
   document.getElementById("calendar-view").style.display = "none";
-  document.getElementById("hours-view").style.display = "block";
+  document.getElementById("hours-view").style.display    = "block";
+  const ml = MONTH_LONG[curMonth];
+  document.getElementById("hours-view-title").innerText =
+    `${selWeekday} ${selDate} de ${ml.charAt(0) + ml.slice(1).toLowerCase()}`;
 
-  renderHoursGrid(selectedWeekday);
+  renderHoursGrid();
 }
 
 function showCalendarView() {
-  // Restaurar Panel Izquierdo
-  document.getElementById("display-weekday").innerText = "SELECCIONA";
-  document.getElementById("display-date").innerText = "UNA FECHA";
-  document.getElementById("btn-back").style.display = "none";
-  document.querySelectorAll(".day-cell").forEach(c => c.classList.remove("active"));
+  document.getElementById("display-weekday").innerText = "HORARIOS";
+  document.getElementById("display-date").innerText    = "DISPONIBLES";
+  document.getElementById("btn-back").style.display    = "none";
+  document.getElementById("sidebar-schedule").style.display = "block"; // ← mostrar de nuevo
 
-  // Restaurar Vista Derecha
-  document.getElementById("hours-view").style.display = "none";
+  document.querySelectorAll(".day-cell").forEach(c => c.classList.remove("active"));
+  document.getElementById("hours-view").style.display    = "none";
   document.getElementById("calendar-view").style.display = "block";
+
+  selTime = null; selDate = null; selWeekday = null;
+  renderCalendar();
+  renderAccordion();
 }
 
-// --- RENDERIZADO DE HORARIOS (Grid de Tarjetas) ---
-function renderHoursGrid(weekday) {
-  const container = document.getElementById("hours-grid");
+// ── SIDEBAR ACORDEÓN ──────────────────────────────────────────────────
+function renderAccordion() {
+  const container = document.getElementById("sidebar-slots");
   container.innerHTML = "";
 
-  const daySchedule = scheduleData[weekday];
-  
-  if (!daySchedule || Object.keys(daySchedule).length === 0) {
-    container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-light); padding: 40px 0; font-size: 16px;">No hay clases programadas para este día.</div>`;
+  DAY_ORDER.forEach(day => {
+    const times = Object.keys(scheduleData[day] || {}).sort();
+    if (times.length === 0) return; // omitir días sin clases
+
+    const group = document.createElement("div");
+    group.className = "acc-group" + (openDay === day ? " open" : "");
+
+    // Cabecera clicable
+    const header = document.createElement("div");
+    header.className = "acc-header";
+
+    const availableSlots = times.filter(t => (MAX_PER_SLOT - scheduleData[day][t].length) > 0).length;
+    const totalSlots = times.length;
+
+    header.innerHTML = `
+      <div class="acc-header-left">
+        <span class="acc-day-name">${day}</span>
+        <span class="acc-count">${availableSlots}/${totalSlots} disponibles</span>
+      </div>
+      <span class="acc-arrow">▾</span>
+    `;
+
+    header.onclick = () => {
+      openDay = group.classList.contains("open") ? null : day;
+      renderAccordion();
+    };
+
+    // Cuerpo colapsable
+    const body = document.createElement("div");
+    body.className = "acc-body";
+
+    times.forEach(time => {
+      const students  = scheduleData[day][time];
+      const available = MAX_PER_SLOT - students.length;
+      const isFull    = available === 0;
+
+      const slot = document.createElement("div");
+      let cls = "sidebar-slot";
+      if (isFull) cls += " sidebar-slot-full";
+      slot.className = cls;
+      slot.innerHTML = `
+        <span class="sidebar-slot-time">${time}</span>
+        <span class="sidebar-slot-avail">${isFull ? "Lleno" : available + " libres"}</span>
+      `;
+      body.appendChild(slot);
+    });
+
+    const spacer = document.createElement("div");
+    spacer.className = "acc-spacer";
+    body.appendChild(spacer);
+
+    group.appendChild(header);
+    group.appendChild(body);
+    container.appendChild(group);
+  });
+}
+
+// ── GRID DE TARJETAS ──────────────────────────────────────────────────
+function renderHoursGrid() {
+  const container = document.getElementById("hours-grid");
+  container.innerHTML = "";
+  const times = Object.keys(scheduleData[selWeekday] || {}).sort();
+
+  if (!times.length) {
+    container.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--text-light);padding:40px 0;font-size:15px;">No hay clases este día.</div>`;
     return;
   }
 
-  Object.keys(daySchedule).sort().forEach(time => {
-    const students = daySchedule[time];
-    const available = 8 - students.length;
-    
+  times.forEach(time => {
+    const students  = scheduleData[selWeekday][time];
+    const available = MAX_PER_SLOT - students.length;
+    const isFull    = available === 0;
+    const isSel     = selTime === time;
+
     const card = document.createElement("div");
-    
-    if (available === 0) {
-      card.className = "hour-card full";
-      card.innerHTML = `<div class="time">${time}</div><div class="avail">Lleno</div>`;
-    } else {
-      card.className = "hour-card";
-      card.innerHTML = `<div class="time">${time}</div><div class="avail">${available} lugares libres</div>`;
-      card.onclick = () => openModal(time);
-    }
-    
+    card.className = "hour-card" + (isFull ? " full" : "") + (isSel ? " selected" : "");
+    card.innerHTML = `
+      <div class="time">${time}</div>
+      <div class="avail">${isFull ? "Lleno" : isSel ? "Seleccionado ✓" : available + " lugares libres"}</div>
+    `;
+    if (!isFull && !isSel) card.onclick = () => openModal(time);
     container.appendChild(card);
   });
 }
 
-// --- LÓGICA DEL MODAL ---
+// ── MODAL ─────────────────────────────────────────────────────────────
 function openModal(time) {
-  selectedTime = time;
-  
-  document.getElementById("modal-slot-info").innerText = `${selectedWeekday} a las ${time}`;
-  document.getElementById("input-name").value = "";
+  selTime = time;
+  document.getElementById("modal-slot-info").innerText = `${selWeekday} a las ${time}`;
+  document.getElementById("input-name").value  = "";
   document.getElementById("input-phone").value = "";
-
-  document.getElementById("modal-form").style.display = "block";
+  document.getElementById("modal-form").style.display       = "block";
   document.getElementById("modal-processing").style.display = "none";
-  document.getElementById("modal-success").style.display = "none";
-
-  const modalOverlay = document.getElementById("modal-overlay");
-  modalOverlay.style.display = "flex";
+  document.getElementById("modal-success").style.display    = "none";
+  document.getElementById("modal-overlay").style.display    = "flex";
   setTimeout(() => document.getElementById("input-name").focus(), 100);
 }
 
 function closeModal() {
   document.getElementById("modal-overlay").style.display = "none";
+  renderHoursGrid();
 }
 
 function submitBooking() {
-  const name = document.getElementById("input-name").value.trim();
+  const name  = document.getElementById("input-name").value.trim();
   const phone = document.getElementById("input-phone").value.trim();
+  if (!name || !phone) { alert("Por favor completa tu nombre y teléfono."); return; }
 
-  if (!name || !phone) {
-    alert("Por favor completa tu nombre y teléfono.");
-    return;
-  }
-
-  // Animación de envío
-  document.getElementById("modal-form").style.display = "none";
+  document.getElementById("modal-form").style.display       = "none";
   document.getElementById("modal-processing").style.display = "block";
 
   setTimeout(() => {
-    // Registrar
-    scheduleData[selectedWeekday][selectedTime].push(name);
-    
-    // Éxito
+    scheduleData[selWeekday][selTime].push(name);
     document.getElementById("modal-processing").style.display = "none";
-    document.getElementById("modal-success").style.display = "block";
-
-    // Ocultar modal y refrescar tarjetas de horario
-    setTimeout(() => {
-      closeModal();
-      renderHoursGrid(selectedWeekday); // Refresca los cupos automáticamente
-    }, 1800);
-
+    document.getElementById("modal-success").style.display    = "block";
+    setTimeout(() => closeModal(), 1800);
   }, 1200);
 }
 
-// Inicializar
+// ── INIT ──────────────────────────────────────────────────────────────
 renderCalendar();
+renderAccordion();
 </script>
 </body>
 </html>
