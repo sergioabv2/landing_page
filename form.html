@@ -33,8 +33,8 @@
 
   .app-container {
     display: flex;
-    width: 920px;
-    height: 620px;
+    width: 940px;
+    height: 640px;
     background: var(--white);
     box-shadow: 0 20px 50px rgba(0,0,0,0.05);
     border-radius: 4px;
@@ -56,7 +56,7 @@
   .date-display { margin-bottom: 24px; }
 
   .date-day-name, .date-full {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -66,9 +66,9 @@
   .btn-back {
     background: transparent;
     border: 1px solid rgba(0,0,0,0.1);
-    padding: 7px 16px;
+    padding: 8px 18px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     cursor: pointer;
     width: fit-content;
@@ -89,7 +89,7 @@
   .sidebar-schedule::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
 
   .sidebar-title {
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 1.8px;
     text-transform: uppercase;
     color: var(--text-muted);
@@ -97,43 +97,33 @@
     font-weight: 500;
   }
 
-  /* Acordeón: cabecera del día */
   .acc-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 10px;
+    padding: 9px 10px;
     border-radius: 7px;
     cursor: pointer;
     transition: background 0.15s;
     margin-bottom: 2px;
     user-select: none;
   }
-
   .acc-header:hover { background: rgba(255,255,255,0.4); }
 
-  .acc-header-left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .acc-header-left { display: flex; align-items: center; gap: 8px; }
 
   .acc-day-name {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--text-main);
   }
 
-  .acc-count {
-    font-size: 10px;
-    color: var(--text-muted);
-    font-weight: 400;
-  }
+  .acc-count { font-size: 11px; color: var(--text-muted); font-weight: 400; }
 
   .acc-arrow {
-    font-size: 10px;
+    font-size: 11px;
     color: var(--text-muted);
     transition: transform 0.22s ease;
     line-height: 1;
@@ -141,7 +131,6 @@
 
   .acc-group.open .acc-arrow { transform: rotate(180deg); }
 
-  /* Acordeón: contenido colapsable */
   .acc-body {
     overflow: hidden;
     max-height: 0;
@@ -149,45 +138,28 @@
     padding-left: 4px;
     padding-right: 4px;
   }
-
   .acc-group.open .acc-body { max-height: 400px; }
 
-  /* Slots dentro del acordeón */
   .sidebar-slot {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 7px 10px;
+    padding: 8px 10px;
     border-radius: 6px;
     margin-bottom: 4px;
     background: rgba(255,255,255,0.45);
     border: 1px solid rgba(0,0,0,0.03);
-    font-size: 12px;
+    font-size: 13px;
     transition: background 0.15s, box-shadow 0.15s;
   }
-
   .sidebar-slot.clickable { cursor: pointer; }
-  .sidebar-slot.clickable:hover {
-    background: rgba(255,255,255,0.85);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  }
-
-  .sidebar-slot.sidebar-slot-full {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
-
-  .sidebar-slot.sidebar-slot-selected {
-    background: var(--text-main);
-    border-color: var(--text-main);
-  }
-
+  .sidebar-slot.clickable:hover { background: rgba(255,255,255,0.85); box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+  .sidebar-slot.sidebar-slot-full { opacity: 0.3; cursor: not-allowed; }
+  .sidebar-slot.sidebar-slot-selected { background: var(--text-main); border-color: var(--text-main); }
   .sidebar-slot-time { font-weight: 500; color: var(--text-main); }
-  .sidebar-slot-avail { font-size: 10px; color: var(--text-muted); }
-
+  .sidebar-slot-avail { font-size: 11px; color: var(--text-muted); }
   .sidebar-slot.sidebar-slot-selected .sidebar-slot-time,
   .sidebar-slot.sidebar-slot-selected .sidebar-slot-avail { color: var(--white); }
-
   .acc-spacer { height: 6px; }
 
   /* ── PANEL DERECHO ── */
@@ -204,14 +176,13 @@
   .calendar-header { margin-bottom: 28px; }
 
   .year-display {
-    font-size: 40px;
+    font-size: 42px;
     font-weight: 300;
     color: var(--text-muted);
     letter-spacing: 1px;
     text-align: right;
   }
 
-  /* Fila de meses */
   .months-nav-row {
     display: flex;
     align-items: center;
@@ -221,7 +192,7 @@
 
   .month-arrow {
     background: none; border: none; cursor: pointer;
-    font-size: 14px; color: var(--text-light);
+    font-size: 15px; color: var(--text-light);
     padding: 2px 8px 2px 0;
     transition: color 0.2s; flex-shrink: 0; line-height: 1;
   }
@@ -229,19 +200,17 @@
   .month-arrow:hover:not(:disabled) { color: var(--text-main); }
   .month-arrow:disabled { opacity: 0.2; cursor: default; }
 
-  .months-list { display: flex; gap: 10px; flex-wrap: wrap; flex: 1; }
+  .months-list { display: flex; gap: 11px; flex-wrap: wrap; flex: 1; }
 
   .month-item {
-    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
     color: var(--text-light); cursor: pointer;
-    transition: color 0.2s; padding: 2px 0; white-space: nowrap;
-    user-select: none;
+    transition: color 0.2s; padding: 2px 0; white-space: nowrap; user-select: none;
   }
   .month-item:hover:not(.month-disabled) { color: var(--text-main); }
   .month-item.active { color: var(--text-main); font-weight: 600; }
   .month-item.month-disabled { color: #d8d8d8; cursor: default; pointer-events: none; }
 
-  /* Grid de calendario */
   .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -250,14 +219,14 @@
   }
 
   .weekday {
-    font-size: 10px; color: var(--text-muted); font-weight: 500;
+    font-size: 11px; color: var(--text-muted); font-weight: 500;
     margin-bottom: 4px; letter-spacing: 0.5px;
   }
 
   .day-cell {
-    font-size: 13px; font-weight: 500; cursor: pointer;
+    font-size: 14px; font-weight: 500; cursor: pointer;
     display: flex; justify-content: center; align-items: center;
-    height: 34px; width: 34px; margin: 0 auto;
+    height: 36px; width: 36px; margin: 0 auto;
     border-radius: 50%; transition: all 0.18s; position: relative;
   }
 
@@ -267,11 +236,14 @@
     background: var(--text-muted); opacity: 0.4;
   }
 
+  /* domingo: mismo color que el resto, sin ofuscar */
+  .day-cell.sunday { color: var(--text-main); }
+
   .day-cell:hover:not(.past):not(.no-classes) { background: #ebebeb; }
-  .day-cell.active { background: var(--text-main); color: var(--white); }
+  .day-cell.active { background: var(--text-main); color: var(--white) !important; }
   .day-cell.active::after { background: var(--white); opacity: 0.5; }
-  .day-cell.sunday { color: #bbb; }
-  .day-cell.active.sunday { color: var(--white); }
+
+  /* pasados y sin clases: sí ofuscar */
   .day-cell.past { color: #d4d4d4; cursor: default; font-weight: 300; }
   .day-cell.past:hover { background: none; }
   .day-cell.no-classes { color: #c8c8c8; cursor: default; font-weight: 300; }
@@ -281,7 +253,7 @@
   #hours-view { display: none; animation: fadeIn 0.3s ease; }
 
   .hours-view-title {
-    font-size: 22px; font-weight: 300; color: var(--text-main);
+    font-size: 23px; font-weight: 300; color: var(--text-main);
     margin-bottom: 24px; letter-spacing: 0.5px;
   }
 
@@ -293,31 +265,20 @@
 
   .hour-card {
     border: 1px solid #eee; border-radius: 8px;
-    padding: 20px 12px; text-align: center;
+    padding: 22px 12px; text-align: center;
     cursor: pointer; transition: all 0.18s; background: var(--white);
   }
-
   .hour-card:hover:not(.full):not(.selected) {
     border-color: rgba(0,0,0,0.08);
     box-shadow: 0 4px 12px rgba(0,0,0,0.07);
     background: var(--brand-color);
   }
-
-  .hour-card.selected {
-    background: var(--text-main); border-color: var(--text-main); cursor: default;
-  }
-
-  .hour-card.selected .time,
-  .hour-card.selected .avail { color: var(--white); }
-
-  .hour-card.full {
-    background: #fafafa; border-color: #f0f0f0;
-    cursor: not-allowed; opacity: 0.45;
-  }
+  .hour-card.selected { background: var(--text-main); border-color: var(--text-main); cursor: default; }
+  .hour-card.selected .time, .hour-card.selected .avail { color: var(--white); }
+  .hour-card.full { background: #fafafa; border-color: #f0f0f0; cursor: not-allowed; opacity: 0.45; }
   .hour-card.full:hover { box-shadow: none; background: #fafafa; }
-
-  .hour-card .time { font-size: 20px; font-weight: 300; margin-bottom: 5px; }
-  .hour-card .avail { font-size: 11px; font-weight: 500; opacity: 0.75; }
+  .hour-card .time { font-size: 21px; font-weight: 300; margin-bottom: 5px; }
+  .hour-card .avail { font-size: 12px; font-weight: 500; opacity: 0.75; }
 
   /* Modal */
   #modal-overlay {
@@ -325,15 +286,12 @@
     display: none; justify-content: center; align-items: center;
     z-index: 100; backdrop-filter: blur(4px);
   }
-
   .modal-content {
     background: var(--white); padding: 48px 40px; border-radius: 8px;
     text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.08); width: 360px;
   }
-
   .modal-content h3 { font-size: 24px; font-weight: 300; margin-bottom: 8px; letter-spacing: 1px; }
   .modal-subtitle { font-size: 14px; opacity: 0.9; margin-bottom: 32px; }
-
   .modal-input {
     width: 100%; background: transparent; border: none;
     border-bottom: 1px solid rgba(0,0,0,0.22);
@@ -342,27 +300,23 @@
   }
   .modal-input::placeholder { color: rgba(0,0,0,0.38); }
   .modal-input:focus { border-bottom-color: var(--text-main); }
-
   .btn-confirm {
     background: var(--text-main); color: var(--white); border: none;
     padding: 14px; border-radius: 30px; font-size: 15px; font-weight: 500;
     cursor: pointer; width: 100%; margin-bottom: 12px; transition: transform 0.2s;
   }
   .btn-confirm:active { transform: scale(0.96); }
-
   .btn-cancel {
     background: transparent; border: 1px solid rgba(0,0,0,0.12);
     padding: 14px; border-radius: 30px; font-size: 15px; font-weight: 300;
     cursor: pointer; width: 100%; transition: background 0.2s;
   }
   .btn-cancel:hover { background: rgba(0,0,0,0.02); }
-
   .spinner {
     width: 40px; height: 40px; border-radius: 50%;
     border: 3px solid rgba(0,0,0,0.07); border-top-color: var(--text-main);
     animation: spin 0.7s linear infinite; margin: 0 auto 16px;
   }
-
   .success-ring {
     width: 56px; height: 56px; border-radius: 50%; background: var(--text-main);
     display: flex; align-items: center; justify-content: center;
@@ -375,15 +329,46 @@
   @keyframes popIn { 0%{transform:scale(0);opacity:0} 100%{transform:scale(1);opacity:1} }
   @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
+  /* ── MÓVIL ── */
   @media (max-width: 768px) {
-    .app-container { flex-direction: column; width: 100%; height: 100vh; border-radius: 0; }
-    .left-panel, .right-panel { width: 100%; }
-    .left-panel { height: auto; padding: 28px 24px; }
-    .right-panel { flex: 1; padding: 24px; overflow-y: auto; }
+    .app-container {
+      flex-direction: column;
+      width: 100%; height: 100vh;
+      border-radius: 0;
+    }
+
+    /* En móvil el panel izquierdo es la cabecera fija arriba */
+    .left-panel {
+      width: 100%;
+      height: auto;
+      padding: 28px 24px 20px;
+      flex-shrink: 0;
+    }
+
+    /* Sidebar acordeón: siempre visible en móvil */
+    .sidebar-schedule { display: block !important; }
+
+    /* Ocultar sidebar-schedule en móvil cuando hay fecha seleccionada
+       lo manejamos via clase .date-selected añadida al left-panel */
+    .left-panel.date-selected .sidebar-schedule { display: none !important; }
+
     .date-day-name, .date-full { font-size: 22px; }
-    .year-display { font-size: 30px; }
+
+    /* Panel derecho ocupa el resto con scroll */
+    .right-panel {
+      width: 100%;
+      flex: 1;
+      padding: 24px 20px;
+      overflow-y: auto;
+    }
+
+    .year-display { font-size: 32px; }
     .hours-grid { grid-template-columns: repeat(2, 1fr); }
     .months-list { gap: 8px; }
+    .month-item { font-size: 10px; }
+
+    /* En móvil sin fecha: ocultar el panel derecho de horarios (ya está en sidebar) */
+    .hide-on-mobile { display: none !important; }
   }
 </style>
 </head>
@@ -392,7 +377,7 @@
 <div class="app-container">
 
   <!-- PANEL IZQUIERDO -->
-  <div class="left-panel">
+  <div class="left-panel" id="left-panel">
     <div class="left-panel-top">
       <div class="date-display">
         <div class="date-day-name" id="display-weekday">HORARIOS</div>
@@ -401,9 +386,8 @@
       <button id="btn-back" class="btn-back" onclick="showCalendarView()">← Ver Calendario</button>
     </div>
 
-    <!-- Sidebar: acordeón cuando no hay fecha; oculto cuando sí hay fecha -->
     <div class="sidebar-schedule" id="sidebar-schedule">
-      <div class="sidebar-title" id="sidebar-title">Todos los días</div>
+      <div class="sidebar-title">Todos los días</div>
       <div id="sidebar-slots"></div>
     </div>
   </div>
@@ -472,12 +456,12 @@ const scheduleData = {
   "Martes": {}
 };
 
-const MAX_PER_SLOT    = 8;
-const MONTH_LONG      = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
-const MONTH_SHORT     = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
-const DAY_FULL        = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-const DAY_ORDER       = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
-const HAS_CLASSES     = new Set(Object.keys(scheduleData).filter(d => Object.keys(scheduleData[d]).length > 0));
+const MAX_PER_SLOT = 8;
+const MONTH_LONG   = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
+const MONTH_SHORT  = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
+const DAY_FULL     = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const DAY_ORDER    = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+const HAS_CLASSES  = new Set(Object.keys(scheduleData).filter(d => Object.keys(scheduleData[d]).length > 0));
 
 const TODAY = new Date(); TODAY.setHours(0,0,0,0);
 const MIN_M = TODAY.getMonth(), MIN_Y = TODAY.getFullYear();
@@ -485,9 +469,9 @@ const MAX_M = (MIN_M + 1) % 12, MAX_Y = MIN_M + 1 > 11 ? MIN_Y + 1 : MIN_Y;
 
 let curYear = MIN_Y, curMonth = MIN_M;
 let selDate = null, selWeekday = null, selTime = null;
-
-// Estado de acordeones: qué día está abierto
 let openDay = null;
+
+function isMobile() { return window.innerWidth <= 768; }
 
 // ── HELPERS ───────────────────────────────────────────────────────────
 function monthInRange(m, y) {
@@ -551,15 +535,17 @@ function renderCalendar() {
   }
 
   for (let d = 1; d <= total; d++) {
-    const cell = document.createElement("div");
+    const cell    = document.createElement("div");
     const dateObj = new Date(curYear, curMonth, d);
-    const dow = dateObj.getDay();
+    const dow     = dateObj.getDay();
     const weekday = DAY_FULL[dow];
-    const isPast = dateObj < TODAY;
-    const hasCls = HAS_CLASSES.has(weekday);
+    const isPast  = dateObj < TODAY;
+    const hasCls  = HAS_CLASSES.has(weekday);
 
     cell.className = "day-cell";
     cell.innerText = d;
+
+    // domingo: clase "sunday" solo para referencia visual pero sin cambio de color
     if (dow === 0) cell.classList.add("sunday");
 
     if (isPast)       { cell.classList.add("past"); }
@@ -576,20 +562,22 @@ function renderCalendar() {
 
 // ── SELECCIÓN DE FECHA ────────────────────────────────────────────────
 function selectDate(day, cellEl, dow) {
-  selDate = day;
+  selDate    = day;
   selWeekday = DAY_FULL[dow];
-  selTime = null;
+  selTime    = null;
 
   document.querySelectorAll(".day-cell").forEach(c => c.classList.remove("active"));
   cellEl.classList.add("active");
 
-  // Panel izquierdo: ocultar sidebar, mostrar botón volver
   document.getElementById("display-weekday").innerText = selWeekday.toUpperCase();
   document.getElementById("display-date").innerText    = `${selDate} DE ${MONTH_LONG[curMonth]}`;
   document.getElementById("btn-back").style.display    = "block";
-  document.getElementById("sidebar-schedule").style.display = "none"; // ← ocultar
 
-  // Panel derecho: grid de horarios
+  // Desktop: ocultar sidebar. Móvil: también ocultar (ya tienen el acordeón arriba)
+  document.getElementById("sidebar-schedule").style.display = "none";
+  document.getElementById("left-panel").classList.add("date-selected");
+
+  // Panel derecho: mostrar horarios
   document.getElementById("calendar-view").style.display = "none";
   document.getElementById("hours-view").style.display    = "block";
   const ml = MONTH_LONG[curMonth];
@@ -603,7 +591,10 @@ function showCalendarView() {
   document.getElementById("display-weekday").innerText = "HORARIOS";
   document.getElementById("display-date").innerText    = "DISPONIBLES";
   document.getElementById("btn-back").style.display    = "none";
-  document.getElementById("sidebar-schedule").style.display = "block"; // ← mostrar de nuevo
+
+  // Restaurar sidebar
+  document.getElementById("sidebar-schedule").style.display = "block";
+  document.getElementById("left-panel").classList.remove("date-selected");
 
   document.querySelectorAll(".day-cell").forEach(c => c.classList.remove("active"));
   document.getElementById("hours-view").style.display    = "none";
@@ -621,32 +612,27 @@ function renderAccordion() {
 
   DAY_ORDER.forEach(day => {
     const times = Object.keys(scheduleData[day] || {}).sort();
-    if (times.length === 0) return; // omitir días sin clases
+    if (times.length === 0) return;
 
     const group = document.createElement("div");
     group.className = "acc-group" + (openDay === day ? " open" : "");
 
-    // Cabecera clicable
+    const availableCount = times.filter(t => (MAX_PER_SLOT - scheduleData[day][t].length) > 0).length;
+
     const header = document.createElement("div");
     header.className = "acc-header";
-
-    const availableSlots = times.filter(t => (MAX_PER_SLOT - scheduleData[day][t].length) > 0).length;
-    const totalSlots = times.length;
-
     header.innerHTML = `
       <div class="acc-header-left">
         <span class="acc-day-name">${day}</span>
-        <span class="acc-count">${availableSlots}/${totalSlots} disponibles</span>
+        <span class="acc-count">${availableCount}/${times.length} disponibles</span>
       </div>
       <span class="acc-arrow">▾</span>
     `;
-
     header.onclick = () => {
       openDay = group.classList.contains("open") ? null : day;
       renderAccordion();
     };
 
-    // Cuerpo colapsable
     const body = document.createElement("div");
     body.className = "acc-body";
 
@@ -656,9 +642,7 @@ function renderAccordion() {
       const isFull    = available === 0;
 
       const slot = document.createElement("div");
-      let cls = "sidebar-slot";
-      if (isFull) cls += " sidebar-slot-full";
-      slot.className = cls;
+      slot.className = "sidebar-slot" + (isFull ? " sidebar-slot-full" : "");
       slot.innerHTML = `
         <span class="sidebar-slot-time">${time}</span>
         <span class="sidebar-slot-avail">${isFull ? "Lleno" : available + " libres"}</span>
